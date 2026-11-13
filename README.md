@@ -22,12 +22,16 @@ Preparing work for implementation, including specifications, domain understandin
 Harness features, tools, skills, and agent profiles: what they are, when they help, and how to make them discoverable and usable.
 
 - [Tool choices by purpose](pages/tools-by-purpose.md)
+- [Skills as a changing capability layer](pages/skills-as-capabilities.md)
+- [Useful skills right now](pages/useful-skills.md)
+- [Skills and agent profiles](pages/skills-and-agent-profiles.md)
 
 ### Agent execution and coordination
 
 Working effectively with agents, from CLI use and token efficiency to delegation, distinct roles, and multi-agent workflows.
 
 - [Get more from agents by delegating repo tasks to tools](pages/agent-tool-delegation.md)
+- [Define agent role responsibilities and boundaries](pages/agent-role-boundaries.md)
 
 ## Guided path
 
