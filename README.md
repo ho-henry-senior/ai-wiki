@@ -10,6 +10,8 @@ These are starting lenses, not a complete taxonomy. Add links to authored pages 
 
 Making one repository or a set of repositories easier for agents to understand and work in: domain and architecture context, decisions, inter-repository contracts, diagrams, and deterministic tools.
 
+- [Get more from agents by delegating repo tasks to tools](pages/agent-tool-delegation.md)
+
 ### Shaping work for agents
 
 Preparing work for implementation, including specifications, domain understanding, and ways to use agents to discover or clarify requirements.
@@ -18,9 +20,13 @@ Preparing work for implementation, including specifications, domain understandin
 
 Harness features, tools, skills, and agent profiles: what they are, when they help, and how to make them discoverable and usable.
 
+- [Tool choices by purpose](pages/tools-by-purpose.md)
+
 ### Agent execution and coordination
 
 Working effectively with agents, from CLI use and token efficiency to delegation, distinct roles, and multi-agent workflows.
+
+- [Get more from agents by delegating repo tasks to tools](pages/agent-tool-delegation.md)
 
 ## Guided path
 
