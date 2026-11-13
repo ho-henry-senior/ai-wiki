@@ -4,10 +4,11 @@
 
 ## Source
 
+- **Video:** [Code Review Bottleneck](https://www.youtube.com/watch?v=uPCH2axUpbc)
 - **Transcript:** [`warp-code-review-bottleneck-dump.txt`](warp-code-review-bottleneck-dump.txt)
 - **Title in transcript:** “Code Review Bottleneck”
 - **Reviewed:** 2026-11-13
-- The transcript discusses Warp Factories, but the local text does not include the original video URL, speaker details, or publication date. Add those if available.
+- The transcript discusses Warp Factories. Its product-specific examples and reported results are noted as such below.
 
 ## Summary
 
