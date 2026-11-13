@@ -11,6 +11,8 @@ These are starting lenses, not a complete taxonomy. Add links to authored pages 
 Making one repository or a set of repositories easier for agents to understand and work in: domain and architecture context, decisions, inter-repository contracts, diagrams, and deterministic tools.
 
 - [Furnish repositories with context for agents](pages/repository-context-for-agents.md)
+- [A structure for agent-facing repositories](pages/agent-facing-repository-structure.md)
+- [AGENTS.md as a shared agent entrypoint](pages/agents-md-as-shared-entrypoint.md)
 - [Get more from agents by delegating repo tasks to tools](pages/agent-tool-delegation.md)
 
 ### Shaping work for agents

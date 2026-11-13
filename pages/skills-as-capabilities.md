@@ -30,3 +30,5 @@ See the [current useful-skills list](useful-skills.md) and the [skills/profile c
 ## Keep concepts portable
 
 Describe the need a skill addresses separately from how a particular harness installs or invokes it. Use Copilot as a concrete implementation example where useful, but label harness-specific details and add other harness examples over time.
+
+For an illustrative repository layout that separates skills from agent-oriented reference documentation, see [A structure for agent-facing repositories](agent-facing-repository-structure.md).

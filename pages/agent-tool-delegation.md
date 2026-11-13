@@ -50,3 +50,5 @@ See the [Justfile patterns across Node.js and Python repositories](../sources/re
 A task interface tells an agent **what it can run**. It does not explain the repository's domain, architecture, design constraints, or how to interpret every result. That context is a complementary part of making repositories agent-ready and is covered separately.
 
 For examples of tools grouped by purpose, see [Tool choices by purpose](tools-by-purpose.md).
+
+For a full repository layout showing how a task interface fits alongside `AGENTS.md`, agent documentation, and skills, see [A structure for agent-facing repositories](agent-facing-repository-structure.md).
