@@ -17,6 +17,8 @@ Making one repository or a set of repositories easier for agents to understand a
 
 Preparing work for implementation, including specifications, domain understanding, and ways to use agents to discover or clarify requirements.
 
+- [Unit tests in the age of AI](pages/unit-tests-in-the-age-of-ai.md)
+
 ### Agent capabilities and configuration
 
 Harness features, tools, skills, and agent profiles: what they are, when they help, and how to make them discoverable and usable.
@@ -32,6 +34,7 @@ Working effectively with agents, from CLI use and token efficiency to delegation
 
 - [Get more from agents by delegating repo tasks to tools](pages/agent-tool-delegation.md)
 - [Define agent role responsibilities and boundaries](pages/agent-role-boundaries.md)
+- [Unit tests in the age of AI](pages/unit-tests-in-the-age-of-ai.md)
 
 ## Guided path
 

@@ -28,4 +28,5 @@ The README topic map is the navigation layer, not a directory scheme. Link a pag
 - [Useful skills right now](useful-skills.md) — a living, problem-oriented list, with harness support and review status.
 - [Skills and agent profiles](skills-and-agent-profiles.md) — a comparison of complementary ways to shape agent capability and behavior.
 - [Define agent role responsibilities and boundaries](agent-role-boundaries.md) — positive scope, explicit limits, and workflow responsibility mapping.
+- [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — the value and limits of unit tests as feedback for agent-produced changes.
 - [From CLI agents toward a lightweight software factory](cli-to-software-factory.md) — an exploratory progression path.

@@ -1,0 +1,513 @@
+
+Chapter 1: Intro: the code review bottleneck
+0:000 secondsWelcome to the Code Review Bottleneck stream. We're going to be walking through a number of different things.
+0:055 secondsThis is going to be kind of a deeper dive to explain three core steps, code review loops, verification loops, and merge risk assessment.
+0:1313 secondsThose are the three that we're going to dive into. Well, let's go ahead and dive in here.
+0:1717 secondsI introduced a little bit up front that we're going to be walking through three core components. That's going to be addressing the code review problem on the agent side,
+0:2626 secondsmaking sure that it refines the code before it reaches human eyes, verification, talking about having agents actually verify their work end-to-end,
+0:3434 secondsclicking through the apps that it builds, and merge risk, seeing if the agents can assess the risk of a PR, write better descriptions,
+0:4343 secondstell you up front what is most concerning, so you can spend time on the right things. That's what we're trying to do here.
+0:4848 secondsSo at a high level, I'll start by just introducing the code review bottleneck problem. I could do a show of hands for this just to get a flood of reactions.
+0:5656 secondsHow many people have too many agent PRs waiting for their review right now? All right, so we've got some hands for that already.
+1:041 minute, 4 secondsKeep your hand raised if you have more than 10 PRs that were written by an agent that you have to look at right now.
+1:091 minute, 9 secondsI'm just going to assume as the hands keep going up that a lot of people are buried under this stuff. I personally don't have 10 PRs.
+1:161 minute, 16 secondsI'm actually down below 10. How amazing is that? But I've definitely got some coworkers who are far above that.
+1:231 minute, 23 secondsSo much so that we've built an inbox system into Warp Factories that just lets you keep track of which PRs need your attention, so you don't have to go through GitHub to get that information.
+1:331 minute, 33 secondsSo there's a lot of PRs to review, and we need a system to get through all these PRs.
+1:391 minute, 39 secondsI'm not going to spend this session talking about what you may call a dark
+1:451 minute, 45 secondsfactory or agents that work in the dark trying to get work done, automatically merging their own work and watching it over time.
+1:551 minute, 55 secondsWe're not here to build agents that run your whole business.
+1:591 minute, 59 secondsWe're not even here to build agents that automatically merge code to production, since I have a feeling most people are not at that point in their software journey yet. If you are, then amazing.
+2:112 minutes, 11 secondsMaybe you're ahead of the curve, and there's something we can learn from you.
+2:142 minutes, 14 secondsBut most of the people that we talk to, that I talk to, tend to be in the spot of, we've got agents pumping out a lot of PRs.
+2:222 minutes, 22 secondsThere's a lot of them waiting for our review right now. And we don't want them to merge the work themselves.
+2:272 minutes, 27 secondsWe do want some way to work through all of those open PRs a bit more efficiently.
+2:352 minutes, 35 secondsFigure out what is worth our attention in the PR itself, and also just at a high level, which ones are worth our attention.
+2:412 minutes, 41 secondsAnd also, we want to deal with all these PRs that get to human eyes when it's really not ready. There's a ton of things that I would change.
+2:492 minutes, 49 secondsI don't know why this PR is even in front of me right now. There's so many different facets of this.
+2:532 minutes, 53 secondsThough our goal isn't to auto-merge, it's to reduce the amount of time in PR review by making sure the work is good when
+3:003 minutesit gets to our eyes, and also make sure the agent gives us enough information to make a judgment call, to make a risk assessment on whether or not to hit that merge button, or whether there's more feedback necessary.
+3:123 minutes, 12 secondsNow that takes us back to these three here. Code review, verification, and merge risk.
+3:163 minutes, 16 secondsWe're going to start with code review, and then we'll slowly walk our way through these. Definitely stick around.
+3:233 minutes, 23 secondsI feel like merge risk is the most fascinating one.
+3:263 minutes, 26 secondsThis is where an agent assesses the risk for you, and we have a skill that you can try out in your repositories to teach an agent how
+3:343 minutes, 34 secondsto assess risk, and how to write a very quick little report of the things that are worth looking at in a PR.
+3:433 minutes, 43 secondsSo stick around for that. I'm being a YouTuber right now. Stick around to the end.
+3:473 minutes, 47 secondsBut we'll start with, I think, where most people first think of when it comes to code review bottlenecks, which is agents reviewing the code.
+Chapter 2: Build your own code review agent
+3:563 minutes, 56 secondsYou may be using off-the-shelf solutions for this right now. I won't really name names, but you probably know of the services that do this.
+4:034 minutes, 3 secondsEven the major providers do this. I believe Claude has an adversarial review mode. Codex has an adversarial review mode.
+4:094 minutes, 9 secondsAnd all of these are nice starting points to see if an agent can refine its own work. But what we've found is a little bit more interesting is kind of owning the review loop yourself.
+4:224 minutes, 22 secondsSo you already have the inference available to you. You already have a notion of what you want the agent to look for in a code review.
+4:314 minutes, 31 secondsAnd you probably have some opinions on how an agent should think about code architecture and what it should look for.
+4:384 minutes, 38 secondsOr maybe you're working with a lot of sensitive customer data and PII, and you want to have specific details about how the agent should handle that.
+4:464 minutes, 46 secondsOr maybe pursue code paths that avoid sensitive PII when possible. So all of that speaks to maybe own your review agent.
+4:564 minutes, 56 secondsIf you're going to build one of these at all. And what that review agent looks like is something like this.
+5:035 minutes, 3 secondsSo let's say you have a simple pipeline that an agent works through.
+5:085 minutes, 8 secondsYou may not even call it a pipeline if you don't have like a full-on software factory set up for you yet. You may just call it an agent doing work.
+5:175 minutes, 17 secondsWhere it starts with the prompt that you send in. It implements something. And then it takes it all the way to a pull request.
+5:255 minutes, 25 secondsAnd by default, you kind of just send the prompt.
+5:305 minutes, 30 secondsIf you tell it, pursue this goal and open a PR, it'll go through the implementation phase and open the pull request.
+5:365 minutes, 36 secondsAnd as you start automating more and more of these systems in a software factory-like context, we won't go too deep on that term.
+5:435 minutes, 43 secondsDon't worry. But as you go deep into that idea of maybe the agent's picking up work from Slack. Maybe it's picking up work from Linear.
+5:525 minutes, 52 secondsMaybe it's picking up work from, I don't know, error monitors reporting things. This process kind of becomes more and more invisible.
+6:036 minutes, 3 secondsYou're getting less and less involved in just the minutiae of steering the agent through every last little facet of the work.
+6:116 minutes, 11 secondsSo you have the agent pulling in prompts from all over the place. It's implementing code and it's getting to the pull request. And by default, it's just going to pursue its goal.
+6:216 minutes, 21 secondsIt's going to get a working solution. And you can put skills on top of skills to kind of force it to refine.
+6:276 minutes, 27 secondsBut if it just does one pass in one context window, you may not get the best results there. In fact, I have a benchmark I can show you of what that comparison looks like.
+6:376 minutes, 37 secondsI'll show you right here. This is a benchmark that we ran inside of Warp Factories.
+6:416 minutes, 41 secondsWhich is infrastructure that you can use to build these loops, these sort of like pipelines that agents are running through.
+6:506 minutes, 50 secondsAnd it comes with a benchmarking tool that lets us decide whether or not we should add something to the agent flow.
+6:576 minutes, 57 secondsSo this is actually a benchmark that shows what it looks like to have an agent just review its own work, give it some skills, and just have a go at it,
+7:077 minutes, 7 secondsversus having a sub-agent that reviews the work in a separate context window and sends comments back to the main agent.
+7:177 minutes, 17 secondsThis was a benchmark we ran on our own data. And that's something that Warp Factories gives you, by the way.
+7:227 minutes, 22 secondsYou can run benchmarks against your own past agent runs, and you can kind of fork two different agent configurations to see which one
+7:297 minutes, 29 secondsperforms better. This was a configuration we set up where one of them had no code review agent and one of them had code review agent.
+7:367 minutes, 36 secondsWhat we found was higher cost, higher accuracy.
+7:397 minutes, 39 secondsAnd so it might be something worth adopting for certain intense workflows, which is very interesting.
+7:467 minutes, 46 secondsNow, let me talk about what this code review flow actually is. It works something like this. You have a sub-agent in a separate context window.
+7:557 minutes, 55 secondsWe'll call him the code reviewer.
+7:567 minutes, 56 secondsAnd that code reviewer is going to pull down the work that the implementation agent did. So the implementation agent is going to do a handoff.
+8:048 minutes, 4 secondsIt's going to send over the diff. It's going to send over whatever context on the initial user prompt is relevant.
+8:108 minutes, 10 secondsAnd it's going to tell the code reviewer to boot up and to review the code. And an important little bit here is there is a separate context window.
+8:198 minutes, 19 secondsThe same way that you would trust a coworker reviewing your work instead of you reviewing your own work, it is nice to have a separate context window for the review
+8:298 minutes, 29 secondsphase so that you're not keeping any of the notions that came up during implementation with code review. Code review should just be a blank slate.
+8:368 minutes, 36 secondsHere are the requirements of our code base. Go review it. So this is a separate context window. And they go back and forth with each other to figure out what needs review.
+8:458 minutes, 45 secondsNow, the structure of what the code reviewer returns is a template that you can adopt if you want to.
+8:538 minutes, 53 secondsWe do have a code review stage that I'll share out after this webinar that includes some of these details.
+9:029 minutes, 2 secondsBut basically, the code reviewer is going to return, first off, like the verdict of everything.
+9:099 minutes, 9 secondsSo it's going to return whether it was approved, whether it was requiring changes, so it needs changes, or maybe it requires human input.
+9:229 minutes, 22 secondsSo we gave this gate to the code review agent as kind of an out to say, maybe it's reviewing the code and it discovers some sort of technical decision that
+9:319 minutes, 31 secondswas made in the code where it thinks, I don't even know if this aligns with the user prompt necessarily.
+9:379 minutes, 37 secondsI don't know if, based on my context, this would be a safe change to introduce.
+9:449 minutes, 44 secondsAnd so we kind of give it an out to say, maybe it quits the code review process early and kicks it to PR with a note saying,
+9:519 minutes, 51 secondsthis required human input, I wasn't able to review it all the way because something was going wrong.
+9:559 minutes, 55 secondsUsually it's going to fall into these two buckets, but it is always good to give the agent an out so it doesn't overly prescribe changes on something that it doesn't understand.
+10:0410 minutes, 4 secondsBut usually it'll fall into one of these. And then it also has findings, and findings include kind of the line by line, what you would normally use GitHub comments for, right?
+10:1510 minutes, 15 secondswhere it would include maybe the line that it's looking at, a suggestion, if it has a suggestion on that particular line or block.
+10:2610 minutes, 26 secondsSo it's probably like a block, actually.
+10:3110 minutes, 31 secondsAnd the verdict, again, like maybe there was something that required human input specifically in one of the findings that may appear here.
+10:4110 minutes, 41 secondsAnd any other notes that it may include on that.
+10:4510 minutes, 45 secondsSo it's kind of like GitHub comments, but encoded as this JSON that returns directly back to the implementation agent.
+10:5110 minutes, 51 secondsAnd that's an important note inside of here that when this code review loop happens, this is internal to your agent pipeline.
+11:0111 minutes, 1 secondThis is not something that's happening on GitHub. It's not raining a shower of GitHub comments for every pass of the review.
+11:1011 minutes, 10 secondsIt's sending these notes internally, a sub-agent back to the main agent. And before the PR reaches human eyes, those are going to be addressed.
+11:1911 minutes, 19 secondsThey exist in the conversation trace. So make sure that your conversations are accessible.
+11:2311 minutes, 23 secondsWhen you use something like Warp Factories, all of your runs are going to be accessible across your whole team, which makes it easier to track where all of these things are happening.
+11:3211 minutes, 32 secondsIf you need to go back to the paper trail behind the pull request, they're all stored and ready to go. But in any case, make sure that this is at least accessible somewhere for logging.
+11:4111 minutes, 41 secondsBut it doesn't go on GitHub because GitHub is the place where we're going human to agent and we want minimal noise when we're in that flow.
+11:5011 minutes, 50 secondsWe don't want to have a sea of comments that all say resolved because an agent and sub-agent work together. It's not really something that's necessary to view.
+12:0012 minutesSo that's why we recommend doing it internally. And I also mentioned rounds here.
+12:0512 minutes, 5 secondsI'm realizing I didn't mention that aspect, but when the code reviewer sends these comments back to implementation, it'll address them and then request another review until it's settled on approved.
+12:1612 minutes, 16 secondsI would also suggest, of course, like a max turns, three to five turns, depending on your token risk tolerance and also the latency that you want to have with your agent. That's something that you fine-tune to taste, really.
+12:2812 minutes, 28 secondsBut make sure that you have some maximum turns because sometimes the agents will over-optimize. And also make sure that you have the severity of each of these
+12:3712 minutes, 37 secondsfindings because some things are going to fall into the nit bucket, some things are going to fall into important, and other things are going to fall into critical.
+12:4512 minutes, 45 secondsAnd before you say agents mark everything as critical, it depends on the model that you're using.
+12:5112 minutes, 51 secondsIf we're using a smarter, higher reasoning model, which is what we would suggest for code review agents, you shouldn't run into this too often.
+13:0013 minutesWe found that agents like GPT-6.1 are great candidates for something like this where it won't over-flag necessarily,
+13:0913 minutes, 9 secondsand the nits are something that you could completely filter out of the results before it reaches implementation, again, to avoid having sort of thrash in that way.
+13:1913 minutes, 19 secondsNow, it's an imperfect science. It is an imperfect science.
+13:2313 minutes, 23 secondsIt will depend on your model makeup, and it's why we provide benchmarking tools like this inside of Warp Factories.
+13:2813 minutes, 28 secondsSo you could, for example, try out different code review prompts and see what the average performance on that is by replaying past conversations.
+13:3613 minutes, 36 secondsAnd I'm happy to talk more about benchmarking if anyone's interested in that particular tool. We use it here to see whether code review is useful at all.
+13:4313 minutes, 43 secondsBut once you have code review or you use it maybe for certain features, it is nice to kind of fine-tune it depending on your team's setup.
+13:5313 minutes, 53 secondsSo that's a basic code review loop that you could implement.
+13:5613 minutes, 56 secondsOwning it all yourself, set it to a higher reasoning model, max turns, have it run internally so it's not noising up your GitHub, and only open a pull request when everything feels settled.
+14:0614 minutes, 6 secondsOkay, so we have a couple hands. I will take a look at the Q&A section right now. Do we prefer large or small PRs even for the agent code review workflow?
+Chapter 3: Q&A: PR size, PR comments, how many reviewers
+14:1614 minutes, 16 secondsI mean, that's a very general question. It's hard to say, do we prefer small PRs in all cases? We will get to merge risk later, which kind of addresses this.
+14:2614 minutes, 26 secondsThe thinking is, you want something easy to review.
+14:2914 minutes, 29 secondsYou want something that you could go in and out and make a judgment call within a few minutes. It's why stacking exists, for example.
+14:3814 minutes, 38 secondsYou don't want to open one massive PR for a coworker and expect them to review it.
+14:4214 minutes, 42 secondsNo matter how much code review you put up front, that will just become problematic for a human to review all the time.
+14:5014 minutes, 50 secondsAnd so encouraging agents to break things up, stack PRs, is generally a good strategy anyways, just for the noise on your side.
+14:5814 minutes, 58 secondsSo that's something that I would probably consider.
+15:0115 minutes, 1 secondYou're not only thinking about large or small PRs for the code review agent's performance. You're thinking of it in general. What do you want to review? Do you want to review something that is scoped or something that is very large?
+15:1115 minutes, 11 secondsYou probably want to scope it down.
+15:1315 minutes, 13 secondsIf code review happens on implementation as a loop, what happens on the pull request? Well, not much happens on the pull request with the code review agent.
+15:2115 minutes, 21 secondsThe code review agent's job is kind of done once it gets to the pull request stage.
+15:2815 minutes, 28 secondsBut, of course, if you leave comments on a pull request, what would happen if you set it up as a factory workflow? In fact, let me pull this up.
+15:3515 minutes, 35 secondsSo this is the pipeline that we use for all the PRs that we create. This is Warp Factories, by the way, yes.
+15:4315 minutes, 43 secondsSo this is the infrastructure that's kind of backing the agent workflows that we have. And this is like a little state machine that we describe to our agent, right?
+15:5115 minutes, 51 secondsAnd we give you a config format to define all the stages in that state machine. So this is a state machine that runs whenever a task comes into the factory.
+16:0216 minutes, 2 secondsSo first, we started with like, you do an initial prompt, it goes all the way through these stages. We won't talk about triage and spec much today.
+16:0816 minutes, 8 secondsJust know that it goes from new task, it gets to the implementation, review happens in a loop, and then it hands off to a pull request.
+16:1616 minutes, 16 secondsNow, when you leave comments on a pull request, that will take things back. It's kind of like putting a new prompt back at the start of the machine. So it would go through and say, all right, this is already in progress.
+16:2616 minutes, 26 secondsWe're going to go back to implementation to implement those changes. It might do more rounds of review on that new change.
+16:3416 minutes, 34 secondsSo it's like, a human asked for a change, the agent implements that change, and it might trigger an agent to review those changes again before going back to the
+16:4116 minutes, 41 secondshuman. So it's human feedback back to implementation, more code review back to human is the way that you can look at it.
+16:5016 minutes, 50 secondsAnd it's also why, because that can be a very expensive process. Back to this benchmark. It does increase quality at a much higher cost.
+16:5816 minutes, 58 secondsAnd on our own task, it was 3x.
+17:0017 minutesWe encourage you to run a benchmark on your workflows as well to see if that difference is the same. Maybe your code review requirements change this a lot.
+17:0717 minutes, 7 secondsIt will change with everyone's tech stack, believe me. But in our case, it's much more expensive for some gains.
+17:1517 minutes, 15 secondsAnd so it's why on our factory, anyways, we've added a gate on implementation that lets the agent use its judgment on whether a code review is warranted based on the level of risk in the PR.
+17:2617 minutes, 26 secondsAnd I will tell you about risk once we get to step three. But that's the basis of it. It's a tool that the agent uses whenever it implements a human requested change.
+17:3617 minutes, 36 secondsAnd at least in our experiments, it's good to let it use its judgment on whether it can use that review loop again and again and again or whether it can skip it versus not.
+17:4517 minutes, 45 secondsOkay, I'll take a couple more questions and then we'll keep rolling. How many review agents are recommended? We've only been using one, which is funny. We haven't experimented with multiple.
+17:5417 minutes, 54 secondsI know Matt Pocock, I believe, has two or more agents, one for product and one for technical architecture.
+18:0118 minutes, 1 secondThat's an interesting approach that maybe we're trying out. In our case, we're just using one.
+18:0618 minutes, 6 secondsBut I would recommend trying the simplest possible review agent that you can code up. And then maybe add in a second agent for system architecture review versus product. That's one experiment to try.
+18:1918 minutes, 19 secondsAnd with something like Warp Factories, that's how we really treat it where we add something new and then we benchmark it.
+18:2718 minutes, 27 secondsSo really what I'm suggesting is if you have a review agent, benchmark whether it's useful and then tweak it to have more subagents, benchmark it again against your own previous data to see.
+18:3818 minutes, 38 secondsDoes a code reviewer test your app? We're going to be talking about that.
+18:4118 minutes, 41 secondsThe answer is the implementation agent tests the app, but it really doesn't matter which one. You have to do that. How do you make sure it's really happening?
+18:4918 minutes, 49 secondsWell, as long as you have all of your agent traces, you should be able to see whether a subagent was fired inside of every conversation.
+18:5618 minutes, 56 secondsSo make sure you're using a tool where you can introspect all of that. I kind of trust the process.
+19:0319 minutes, 3 secondsAs long as you have that paper trail and you're not losing all of the agent sessions, you should be able to know. You shouldn't need GitHub as the source of truth for all of that.
+19:1219 minutes, 12 secondsAlthough, if you really, really need it, if your coworkers are not going to adopt like a centralized place for all your agent
+19:1919 minutes, 19 secondstraces, they're all running them locally and you need some admin control on it, Warp Factories is one way, GitHub is another way.
+19:2619 minutes, 26 secondsSo you could do that if you don't mind the noise. That would be my answer to that.
+Chapter 4: Add end-to-end verification
+19:3019 minutes, 30 secondsSo I'm going to move along here and we're going to talk about our next section, which is the verification part.
+19:3919 minutes, 39 secondsSo this one's going to be a little bit skewed towards client-side applications.
+19:4619 minutes, 46 secondsThere are requirements you need to think about when you're working with full stack applications. But we're going to be focusing on if an agent needs to mock out a
+19:5719 minutes, 57 secondsfull stack change. I need to give it the tools to actually look at what it has done.
+20:0420 minutes, 4 secondsSo this inevitably is going to take us to some computer use.
+20:0820 minutes, 8 secondsSo I'm going to be showing off a little bit of computer use and also the skill that we used in this repository. It's a repository that builds a native desktop app.
+20:1820 minutes, 18 secondsI'm going to show off a skill that we use to have the agent set up its own environment and then use computer use to actually click around the app that it
+20:2620 minutes, 26 secondsbuilt. So if we take a look, this is the skill that I'm going to introduce to you all.
+20:3220 minutes, 32 secondsSo at a high level, what we're trying to do here, now that we have code review in place and the agent is deciding whether that code
+20:4020 minutes, 40 secondsmeets the architectural requirements of the system, the agent also needs to be verifying that the change does what it says it does.
+20:5020 minutes, 50 secondsSpot checking code can only go so far. Static checks can only go so far.
+20:5520 minutes, 55 secondsWe're not going to be talking about how to build the best unit test or integration test suite. You need them.
+21:0121 minutes, 1 secondIn fact, your agents are probably writing too many additions to those test suites. We're going to be talking about the end-to-end verification.
+21:1121 minutes, 11 secondsThat may mean to you something like Playwright, having the agent simulate clicks and saving it to a test bank.
+21:1821 minutes, 18 secondsBut really, to me, it means can the agent on a machine pull down the
+21:2421 minutes, 24 secondschange, spin up a test environment, click around it, and then show you that it did so.
+21:3221 minutes, 32 secondsBecause I don't know about you, but I would not trust a PR that my coworker wrote that they did not run on their own machine. I don't care what end-to-end test they wrote.
+21:4221 minutes, 42 secondsIf they didn't pull it up on their machine and click around it before sending me the PR, I wouldn't look at it.
+21:4821 minutes, 48 secondsI feel the same way about my own PRs back when I was writing code, back when we were all writing code. I wouldn't send a PR to a coworker unless I had clicked around the app.
+21:5721 minutes, 57 secondsBecause I don't trust that I'll have the perfect judgment writing the end-to-end test and mocking the exact things, nor do I trust the reviewer to know whether the end-to-end tests are doing that.
+22:0622 minutes, 6 secondsThe best thing you can do is did you click around the thing? And agents are relentlessly good at this.
+22:1422 minutes, 14 secondsSo I suggest setting up a workflow for your application for that sort of thing.
+22:2022 minutes, 20 secondsSo this is a skill. This is an example that you'll definitely need to adapt your own setups, but showing the kinds of things that you would need to think about.
+22:2922 minutes, 29 secondsSo this is a test desktop app skill that shows the agent how to test an Electron app that it built. So it sets some flags up front.
+22:3922 minutes, 39 secondsIt tells the agent how to pull up the dev servers.
+22:4322 minutes, 43 secondsIt tells the agent some specific information for our stack that it needs to know, like how it can inject JavaScript for debugging.
+22:5122 minutes, 51 secondsAnd it also includes some gotchas that the agent has learned over time using this skill across many uses.
+22:5622 minutes, 56 secondsAnd we reached these additions to the skill by using something called skill self-improvement, which is a totally separate topic, but I invite you to learn a little bit more about it.
+23:0623 minutes, 6 secondsBut that is the way that you can have this verification skill get smarter and smarter and more efficient.
+23:1223 minutes, 12 secondsBut at a high level, we start with this, something like this, that tells the agent how to spin it up. So along with this skill, the agent also needs an environment.
+23:2123 minutes, 21 secondsAnd this gets into maybe a more opinionated way of doing things.
+23:2523 minutes, 25 secondsBut I would suggest having a sort of on-demand cloud runner for the agent to click around its own work.
+23:3423 minutes, 34 secondsYou may not have this right now.
+23:3523 minutes, 35 secondsYou may set up this workflow letting the agent click around on your local machine, which is totally fine.
+23:4223 minutes, 42 secondsI know that frontier models, they're like state-of-the-art computer use options for local development.
+23:4923 minutes, 49 secondsBut it is a little bit nicer if you give the agent its own sandbox. The main reason is security.
+23:5623 minutes, 56 secondsIf you give the agent a sandbox where you control the full environment, then it's more likely that the agent's going to do the right thing.
+24:0524 minutes, 5 secondsIt's not able to access keys on your local machine that you wish the agent didn't have access to. It's not going to crawl a.env file that you forgot was in the
+24:1424 minutes, 14 secondsproject. It's going to have its own isolated sandbox every time that it runs changes. And crucially, it's going to be off-machine.
+24:2124 minutes, 21 secondsSo if you kicked off the agent from somewhere else, like a linear ticket or an error monitor, then your computer doesn't need to be running for the agent to verify its own work.
+24:3124 minutes, 31 secondsAll that to say, it is useful to give the agent its own machine. But you don't necessarily have to if you don't have the means to do that right now.
+24:3824 minutes, 38 secondsWarp Factories is something that will give you that. There are a number of other options as well.
+24:4424 minutes, 44 secondsThe baseline requirement, make sure that it can set up a sandbox with as many code repositories as is needed for the agent to test its work.
+24:5324 minutes, 53 secondsAnd ideally, it should have some sort of Docker imaging or some other containerization, like Kubernetes, Apple has its own container solution now for native app development.
+25:0425 minutes, 4 secondsI'll show you the configuration that we have in this repository. If we take a look at this, we configure all of our runners using Docker images.
+25:1325 minutes, 13 secondsSo here you can see selecting the platform, macOS, Linux, Windows, whatever you need for native app development.
+25:2225 minutes, 22 secondsLinux is, of course, preferred for compute cost.
+25:2425 minutes, 24 secondsAnd then Docker image, we provide one if you just want to plug this into your agents. This will give you the baseline toolchain for Python, JavaScript, and other common languages.
+25:3325 minutes, 33 secondsAnd this will get used every time an agent spins up and does work to start up a
+25:4025 minutes, 40 secondscloud sandbox from scratch and boot in the code repositories that it needs to access. And those access permissions are down here inside of this factory YAML.
+25:4925 minutes, 49 secondsAnd if you're overwhelmed by all these config files, don't worry. Don't worry about all that. We have full documentation on how factories' code works inside of warp.
+26:0026 minutesI'm just giving you a high-level skim of how rubber meets the road in this platform.
+26:0426 minutes, 4 secondsJust generally know as a takeaway, the agent should have access to all of its repositories that it needs and should
+26:1026 minutes, 10 secondshave some sort of image so that it can stand up and you control what the agent has access to in that environment. And then from there, you give it a skill.
+26:1926 minutes, 19 secondsSo that's the desktop app skill that I was showing you earlier. It boots up in that environment. This tells it where to go, what to do.
+26:2626 minutes, 26 secondsAnd then on the other side, you want to make sure that the agent can verify to you that it did all the clicking, that the user flow was completed successfully.
+26:3626 minutes, 36 secondsAnd for that, you will want the agent to have some sort of way to upload artifacts.
+26:4426 minutes, 44 secondsAnd that could mean it runs on your local machine, it saves it to an MP4 file as soon as it's done. Agents are very good at figuring that out, by the way.
+26:5226 minutes, 52 secondsThere's nothing for me to show you. Agents will just tell you. It can create an MP4 and you upload it manually.
+26:5926 minutes, 59 secondsThat's one way. Another is, if you're using a provider like Anthropic, I believe, has this, Codex has this, Warp Factories as well, you can get permalinks to the artifact.
+27:0927 minutes, 9 secondsSo instead of having to host the video files and screenshots somewhere, or teaching the agent how to upload those artifacts to GitHub,
+27:1727 minutes, 17 secondswhich it sometimes struggles with in my experience, it is nice if you give the agent some external place to upload artifacts.
+27:2427 minutes, 24 secondsAnd Warp Factories has kind of a folder for this where it can upload these artifacts. And only members of your team can access it, by the way.
+27:3227 minutes, 32 secondsIt's got built-in authentication gateways. So make sure you do that.
+27:3627 minutes, 36 secondsBut in this example, the agent was verifying that it was able to add a right-click menu to copy images inside of the editor that it built.
+27:4527 minutes, 45 secondsSo this is a desktop app for editing markdown files. And the agent shows in here that it's able to add a copy image button.
+27:5227 minutes, 52 secondsNow, a right-click menu like this is something that you could mock in Playwright, but it's really awkward because you're dealing with native menus, you're not just dealing with web technologies.
+28:0328 minutes, 3 secondsSo this was definitely something that benefited from click-by-click computer use.
+28:0828 minutes, 8 secondsSo this showed me visually that if it right-clicks on an image, you get a native context menu.
+28:1428 minutes, 14 secondsAll right, great. And if I just let this play out, it should also show me that if it copies the image path, it's able to paste it somewhere.
+28:2328 minutes, 23 secondsNow, one other thing that I want to pull up here. This is another example of computer use, this time in a Slack environment.
+28:2928 minutes, 29 secondsSo same principle. The agent went through, it implemented a change, it did some code review before opening the pull request, and crucially, it recorded this video for me.
+28:3928 minutes, 39 secondsSo in this example, it was working on file paths inside of that editor that I was just showing you, that editor for files that configure a factory.
+28:4728 minutes, 47 secondsAnd what I wanted to add was the ability to type out nested/path/example.md and have it generate all of the nested folders for me before it would error out and say that I couldn't create new files that had slashes in the name.
+29:0329 minutes, 3 secondsAnd I wanted to be able to just do that.
+29:0529 minutes, 5 secondsSo here the agent verified to me across all of that, that it can create a new file, it can put in that nested path, and then you saw it right there, it's pretty quick because the agent edits its own videos.
+29:1629 minutes, 16 secondsBut it was able to create that nested file and place it inside of that nested folder. So now I'm looking at the code change, and I feel like, okay,
+29:2529 minutes, 25 secondsthere is a unit test, I feel like it works, but seeing that visually, I get a lot more trust.
+29:3029 minutes, 30 secondsI feel like the agent actually did its due diligence, it looked around the machine, and it accomplished the workflow that I was prompting it to do. There was no misalignment here.
+29:3929 minutes, 39 secondsA visual is better than text, is the moral of the story. So that's really the high level of what I'm trying to get at here.
+29:4729 minutes, 47 secondsAgents should have a computer to verify their work, add a baseline, have it run on your machine.
+29:5429 minutes, 54 secondsIf you want to add more security, and also make sure you control the environment, a cloud sandbox is a little bit better.
+30:0130 minutes, 1 secondMake sure you control the config of that sandbox, giving it a runner, controlling the operating system, all of that, Warp Factories gives you that as one potential option.
+30:1130 minutes, 11 secondsAnd also give the agent a skill so that it knows once it boots up inside of that container what it needs to do, what its job is.
+30:1930 minutes, 19 secondsAnd here it tells it how to run the native desktop app. So that's really it on computer use. There are other things to consider, of course, like the back-end side of things.
+30:2930 minutes, 29 secondsWhen an agent boots up inside of that container, does it have access to staging data? Does it have access to a data analytics pipeline?
+30:3730 minutes, 37 secondsDoes it have MCP servers? It gets more and more complicated the deeper the flow is that you're trying to mock.
+30:4330 minutes, 43 secondsAnd that really requires figuring out with an agent how can we create the minimal test environment for whatever we're trying to do.
+30:5030 minutes, 50 secondsOn our own personal setup, we have a Postgres database and we have a bootstrapping command that creates a staging database for the agent to click around.
+30:5930 minutes, 59 secondsAnd we've also set up some faux credentials for the agent to use as well.
+31:0331 minutes, 3 secondsSo it's not much different than the bootstrapping scripts you would give your coworkers to start up on their first day at work.
+31:0931 minutes, 9 secondsSo really just take that and adapt it to a set of agent instructions and lock down all of the MCP servers and other things that the agent has access to.
+31:1931 minutes, 19 secondsAgain, a cloud sandbox makes it easier to control what MCP servers and external services that it has. So I'll take a look again at the Q&A here.
+Chapter 5: Q&A: multi-repo, factory config, specs, sessions
+31:2731 minutes, 27 secondsDo the implementation review agents in Warp support workflows that span multiple repositories? Yes, absolutely.
+31:3231 minutes, 32 secondsSo just as I showed here in the factory definition, you can define all of the repositories that the agent has access to.
+31:4031 minutes, 40 secondsSo as many repositories as you need and whatever tool chain you need, you can define in a Docker image using one of ours or creating a custom image.
+31:4831 minutes, 48 secondsWe also support non-Docker workflows as well if you're looking into that, as well as self-hosting. Agents alone are unnecessarily pricey and unreliable any amount of stages.
+31:5831 minutes, 58 secondsHow you supplement with other tools, arc analyzers, This feels a little bit off the beaten path.
+32:0432 minutes, 4 secondsIf you feel like agents are unreliable and pricey, this may not be the webinar for you.
+32:1232 minutes, 12 secondsIt may not be, which is fine. We haven't looked too much into, I don't know what an arc analyzer is, to be honest, but I would be curious to learn more.
+32:2332 minutes, 23 secondsWhen it comes to like static verifications and data workflows, it is more of an art than a science.
+32:3032 minutes, 30 secondsWe don't have them as like procedurally defining all of the stages. The agent decides where in the state machine it's going to go next.
+32:3932 minutes, 39 secondsSo in our workflow, the agent is deciding when to transition through this state machine. This is a simpler one than what I showed earlier, I believe,
+32:4732 minutes, 47 secondswhere the agent can decide when triage is complete and when to hand off to the next one. But at least to build trust,
+32:5432 minutes, 54 secondsI feel like all the stuff we're showing today, like verification and merge risk assessments, those are ways to build trust in agents. So that would be something to start with if you're feeling that way.
+33:0433 minutes, 4 secondsIs bubble wrap sufficient as an environment for sandboxing agents?
+33:0833 minutes, 8 secondsI would probably ship with priority just to make sure that they take care of the package a little bit more.
+33:1633 minutes, 16 secondsI wouldn't use ground. That would be my recommendation. I'm totally messing with you, by the way. Is there an MCP for these factory YAMLs?
+33:2433 minutes, 24 secondsYes, there is. So there is an MCP server available to let agents tweak their own configuration. You can also just ask the agent directly to tweak its own configuration. So it has full access and you can also extract these to GitHub.
+33:3933 minutes, 39 secondsSo if you want the agent to just make pull requests against the factory configuration, you can track them in GitHub. We also have sort of a built-in version tracker if you want to use that.
+33:4933 minutes, 49 secondsDoes the agent basically instruct itself about what it should be testing in the computer use example? What it should be testing, that's a good question.
+33:5733 minutes, 57 secondsSo in order for the agent to know what it's testing, that's why we added a speccing stage.
+34:0334 minutes, 3 secondsSo this is for larger features that require outlining a workflow and aligning that with a human before it starts working.
+34:1034 minutes, 10 secondsSo in order for a testing agent to know step-by-step what to do, it may hand off to a speccing agent to draft a speccing document.
+34:2034 minutes, 20 secondsAnd that includes the step- by-step of how to do it. And this is actually what we prompt the speccing agent to do. So it's saying look at the technical design and the behavior.
+34:2934 minutes, 29 secondsSo numbered testable behaviors with edge cases. So that's how the verification agent figures out what to do if it's a longer step-by-step workflow.
+34:3834 minutes, 38 secondsSo this is optional. If it's just a bug fix, this may not be written. But if it is, it's something that the human reviews before implementation.
+34:4634 minutes, 46 secondsSo it's a human gate. And that document includes the testing strategy. And you can also check it in as code.
+34:5334 minutes, 53 secondsNot as something to kind of rerun in a test suite necessarily, but as a paper trail of the decision made.
+34:5934 minutes, 59 secondsAnd I believe we have a whole webinar about spec-driven development that you can go find on our YouTube to also see how we think about that.
+35:0635 minutes, 6 secondsIs the Warp Factories platform in this repo? No. So that is our terminal there. It's a Rust-based terminal.
+35:1435 minutes, 14 secondsSeparate thing. If you're wondering about Warp Factories, go to warp.dev/factories. That's where you'll find all the information on that platform.
+35:2035 minutes, 20 secondsDoes Warp Factories create new sessions for each of those steps for the state machine? Good question. So you can decide whether it's a new session or not.
+35:2935 minutes, 29 secondsSorry if this is kind of going deeper into Warp Factories specifically, but these are good questions.
+35:3335 minutes, 33 secondsSo you can see right here, next to all of the stages, there's also the name of the orchestrator.
+35:4035 minutes, 40 secondsSo we can see at the top here, there's the foreman which takes in all of the tasks, and then there's something called a builder, and the builder is a separate agent or context window.
+35:5035 minutes, 50 secondsSo you can decide whether a stage should hand off to a separate agent context window, or whether it can stay inside of the same context window.
+35:5835 minutes, 58 secondsSo here, triage, spec, and implement all bind to the builder, and so they all stay in the same context window.
+36:0436 minutes, 4 secondsThe only thing that has a different context window is this one, and that's because we want to have kind of an agent always available to answer your questions without blocking the main thread of work that's going on inside of here.
+36:1536 minutes, 15 secondsSo that's your way of delineating between the two.
+36:1836 minutes, 18 secondsYou have stages, which is how the agent goes through work, and then you have workers, which define which context window or agent that stage should belong to.
+36:3136 minutes, 31 secondsAnd if it's the same agent, then it all happens in the same context window. And I can actually show you the configuration for agents inside of this definition.
+36:4036 minutes, 40 secondsSo this is where you define those two.
+36:4136 minutes, 41 secondsThere's two agents total and five stages across them, and you can bind a stage to an agent slash worker.
+36:4936 minutes, 49 secondsBefore it used to be a new session for every stage. That's a new one. Can it be maintained in a GitHub repo?
+36:5536 minutes, 55 secondsYes. You can export the entire configuration to GitHub so that you can track all of the commits in there.
+37:0337 minutes, 3 secondsEither that, or you can use our online version of this, which also, by the way, is Git-backed. So if you click here, you can hit clone repository, and that will give you a clone that the agent can push up to with Git as well.
+37:1437 minutes, 14 secondsSo this is a Git-backed version of your factory configuration, but if you want it on GitHub or GitLab, you can export it to those tools.
+Chapter 6: Merge risk assessment
+37:2337 minutes, 23 secondsAll right, so let's take the moments that we have left to talk about merge risk.
+37:2837 minutes, 28 secondsSo going back to our beautiful whiteboard diagram, the last thing we want to talk about merge risk,
+37:3337 minutes, 33 secondswhich is having the agent assess the risk of a PR, both ahead of opening that PR, and also on the PR description itself, to make reviewing a little bit faster.
+37:4537 minutes, 45 secondsSo we've actually been talking about merge risk informally all throughout this. We've been mitigating risk by having the agent run a code review.
+37:5337 minutes, 53 secondsWe've also been mitigating risk by having the agent verify its work with computer use before it gets to you.
+37:5837 minutes, 58 secondsBut there are a number of other areas that can still be risky that the agent probably can't mitigate on its own.
+38:0538 minutes, 5 secondsAnd so it's worth enumerating those for the agent to work through those correctly.
+38:1038 minutes, 10 secondsSo I'm going to show you here a skill that we put together for risk assessment that you can take home and try out yourself.
+38:1738 minutes, 17 secondswarp.dev/merge-risk. You can head over there if you want to look at this on your own machine. It's on GitHub. You can plop in any agent, Warp Factories as well.
+38:2738 minutes, 27 secondsThis is basically the five-step checklist that we have found really distills what a good risk assessment is.
+38:3538 minutes, 35 secondsLet's take a look at each of these. The first one on this list is alignment.
+38:3938 minutes, 39 secondsThis is saying, does the code align with the description that you are seeing in your issue description, in your prompt, and in, of course, the PR description?
+38:4938 minutes, 49 secondsBecause the agent likes doing drive-by fixes. And those drive-by fixes may not be documented necessarily somewhere.
+38:5638 minutes, 56 secondsAnd whenever those happen, it is worth calling those out. By the way, there were some drive- bys that occurred in this PR. And if those drive-bys are irrelevant, they probably need to be dropped.
+39:0539 minutes, 5 secondsSo it's good to assess the alignment. When you're looking at a summary, is it aligned with the code? The second one is impact.
+39:1439 minutes, 14 secondsSo this is looking at what is the impact of the change? And there's a lot that goes into this. There's the blast radius of all the things that it touches.
+39:2239 minutes, 22 secondsHow many surface areas are being touched by this? Is it just the desktop app?
+39:2739 minutes, 27 secondsOr is it also our UI component library that has downstream dependencies to other apps? Like how deep is this change going and what are the implications of that?
+39:3539 minutes, 35 secondsThere's also sensitive code paths.
+39:3739 minutes, 37 secondsSo there could be a one-line change to your data model that has a lot of ramifications. But it could be one line that exposes customer data that is absolutely worth flagging as something we should consider or reconsider.
+39:5139 minutes, 51 secondsSo it's looking at the sensitivity as well as the reach of the change. And then there's verification. So this is what we've already talked about.
+40:0040 minutesDid the agent click around on a machine to verify that the thing worked? And also the test coverage. Is the test coverage right? Is it the right level of coverage? Is it too much test coverage?
+40:0840 minutes, 8 secondsAll that stuff is more tuned to taste. But the primary requirement, did the agent verify its work? And is there some indication that the agent did verify its work?
+40:1740 minutes, 17 secondsAnd then there's rollback costs. This is a more interesting one.
+40:2140 minutes, 21 secondsThis is taken after our own process and also what I've noticed Addy Osmani and Anthropic talking about, where they use incidents as signal
+40:3140 minutes, 31 secondsfor whether the agent did something wrong in a pull request. Though something was merged, it caused an incident, large or small.
+40:4040 minutes, 40 secondsThat was, first off, what is the rollback cost in case of an incident? And also, how do we prevent incidents like this going forward?
+40:4940 minutes, 49 secondsThat's the thinking that goes into the rollback cost.
+40:5240 minutes, 52 secondsSo this is an upfront check for the agent to see, okay, if I merge this thing, we already know about the impact of what it could have.
+41:0041 minutesIf we had an incident and we needed to roll this thing back quickly, what would that cost us?
+41:0441 minutes, 4 secondsWould it be easy? Would we have to downgrade users' versions in an unceremonious way? Is there a feature flag that lets us flip it on and off?
+41:1341 minutes, 13 secondsAll these are things that go into the cost of reverting something. And those should be documented.
+41:1841 minutes, 18 secondsSo in the case of an incident, you can go to the PR and you can look at the rollback cost section and say, okay, here it shows me how I can roll this back.
+41:2641 minutes, 26 secondsLet me go ahead and do that.
+41:2741 minutes, 27 secondsAnd you can also, ahead of merging, decide, oh, shoot, that's pretty high rollback cost.
+41:3241 minutes, 32 secondsMaybe on the other side, okay, it kind of decided to add a feature flag when it's a really low impact change. Maybe we can actually remove the feature flag and still have a low rollback cost.
+41:4141 minutes, 41 secondsIt goes both ways. But really, the agent should be telling you what did it think about when it comes to rollback cost. And the last one is error detection.
+41:4841 minutes, 48 secondsSo this is, once something's deployed into production, how do you know an incident happened? Is it reporting changes somewhere visible, like an error monitor, Sentry, Grafana?
+42:0042 minutesIs it at the very least logging something that you could find in your deployment services, Vercel, AWS, GCloud?
+42:0642 minutes, 6 secondsOr is it swallowing errors in a way that you would not be able to find in production? That's definitely something to flag and probably have the agent fix ahead of the pull request.
+42:1542 minutes, 15 secondsAnd then this is a way to sort of weigh out the verdict and get an overall risk score. So when you're looking at a PR, you can say, oh, it's a medium risk PR.
+42:2442 minutes, 24 secondsI'll go ahead and review it. Or it's a low risk PR.
+42:2742 minutes, 27 secondsRight. I'll just look at the high level summary, drill into some of the bits, and then merge it in.
+42:3242 minutes, 32 secondsIt gives you a way to just at a glance say that one's medium risk, that one's low risk, that one's high risk. Let me look at that one first.
+42:3942 minutes, 39 secondsThis is a way to sort of weight that out and get that high level. And then this is more the low level thinking.
+42:4542 minutes, 45 secondsAnd you can set this up both as something the agent reports on a PR description and also something that you add to your sort of pre-opening pipeline.
+42:5442 minutes, 54 secondsYou might add it to the implementation or code review agents actually as something to review and decide on.
+43:0043 minutesSo this is one example of how you could create like a create PR skill that decides before opening the PR, run the merge risk skill and mitigate any risks that it
+43:0943 minutes, 9 secondsfinds. Right. And then add that report to the PR description once you're done. So two sides of the gate.
+43:1743 minutes, 17 secondsBefore you make the PR, assess the risk and see if there's anything that you could change about it. And then after the PR, once you've already made that assessment yourself, add in those descriptions to the page.
+43:2843 minutes, 28 secondsAnd all of these get reported in a PR description or however else you want to format. It's really up to you. As long as the agent is thinking about these things, that's the important part.
+43:3743 minutes, 37 secondsAnd I'll admit, we are early on in like benchmarking the quality of where merge risk should happen, whether it deserves a different context window.
+43:4643 minutes, 46 secondsAll of these things are open to experiment. This is just the high level. These are things an agent should look for.
+43:5143 minutes, 51 secondsAnd from here, I'd be very interested if y'all try out using a separate context window to assess the merge risk versus letting the same agent do it.
+43:5943 minutes, 59 secondsHow did the agent think about merge risk before the PR and not having it think about merge risk and just add it to the PR description?
+44:0444 minutes, 4 secondsThere's all sorts of ways to look at this thing because there are trade-offs between the cost of adding more and more checks and the quality that you get from all of those checks. So that's worth benchmarking.
+44:1444 minutes, 14 secondsThese are just the raw materials that you can insert into your own setup.
+Chapter 7: What a good agent PR looks like
+44:1844 minutes, 18 secondsThis is an example of a PR that got opened that I would say is a good example of a PR I would want to review from an agent.
+44:2744 minutes, 27 secondsLike this is the ideal. This is what I want to look at. So there are a few things in here that I didn't touch on. Like the summary is generated using a skill called show me.
+44:3744 minutes, 37 secondsIf you just Google show me the skill, you will find this.
+44:4044 minutes, 40 secondsIt generates an ASCII art diagram that shows you how the change was created, which is much quicker than reviewing a paragraph block summary.
+44:5044 minutes, 50 secondsSo that's a little optimization.
+44:5244 minutes, 52 secondsVerification right here, add it to your PR descriptions, give the agent a tool to upload its computer use recordings.
+44:5844 minutes, 58 secondsSo we got those. And then down here we have some of those merge risk assessments. So I can already look at it and say the impact of this is small.
+45:0545 minutes, 5 secondsIt's just adding a settings menu option to this application. And the rollback cost is very low. I could just revert it and it would remove the UI element.
+45:1345 minutes, 13 secondsThere aren't going to be any database migrations to do. Based on this, I could just hit merge. I don't need to go line by line. I don't have to squint and wonder, wait, it added a menu.
+45:2345 minutes, 23 secondsWhat did the menu look like?
+45:2445 minutes, 24 secondsOh, okay. So it added a menu right here and it looks like this and it has a little pop up. Okay. I understand. What is the impact? Oh, it's pretty low.
+45:3245 minutes, 32 secondsAll right, let's merge it. That's how it should feel looking at agent PRs that are low risk. You should be able to just go straight to, that's what it looks like.
+45:4145 minutes, 41 secondsThat's what it does. That's what it would cost me if we messed up. I'll merge it. That's really where we want to get to.
+45:4845 minutes, 48 secondsSo combining all these things together, we got code review to make sure that the code is looking good.
+45:5345 minutes, 53 secondsYou got verifications that you know the agent clicked through it and it works and you know what it looks like.
+45:5845 minutes, 58 secondsAnd then you have risk assessment so that when you're reviewing the PR, you're not wondering what is the impact of this thing. Ours are downstream ramifications.
+46:0646 minutes, 6 secondsWhat should we worry about? And with all that, it should be quicker to get through all of your code review. That's really what we're trying to get to.
+Chapter 8: Q&A: benchmarks, high-risk PRs, models, costs
+46:1446 minutes, 14 secondsAll right, we got five minutes left, which I think is perfect to do any last minute Q&A.
+46:1946 minutes, 19 secondsAnd if there are any resources people are wondering about, since I threw a lot at you today. We will be sharing out resources in the chat right now.
+46:2946 minutes, 29 secondsAnd also, once this thing is on YouTube, we'll make sure that the description includes all the information that you would need to recreate some of these flows.
+46:3646 minutes, 36 secondsSo we talked about merge risk. Someone in the chat talked about Show Me. Show Me is an awesome skill from Dex that you can go find, Dex Horthy.
+46:4646 minutes, 46 secondsWhat else did we talk about? Well, we talked about factories themselves. And you can learn more about factory configuration here.
+46:5346 minutes, 53 secondsThe blueprint feature that I showed you, which is the multi-stage factory, this is something that's getting released pretty soon.
+46:5946 minutes, 59 secondsThis is actually ahead of our official launch, but I was too excited to not show you.
+47:0447 minutes, 4 secondsSo this is something that you'll find inside of the factories platform as soon as you use it. Keep your eye out this next week.
+47:1147 minutes, 11 secondsWe're going to be having a full course that will show you how to build a factory. It's something that I'm going to be working on right after this webinar.
+47:1947 minutes, 19 secondsThat'll go a lot deeper into what are the stages and the workers and all that stuff that we hinted at today. All right. Let me check the Q&A.
+47:2847 minutes, 28 secondsI'm sure there's a lot. Did you determine what made for higher correctness in that benchmark?
+47:3547 minutes, 35 secondsSo what we did is we introduced a code review loop and we enforced that the agent always reviews its work against Opus in multiple rounds.
+47:4347 minutes, 43 secondsSo it was Opus 5.5 specifically. So are there different reasons that correctness happened? What if we changed the model from Opus to Codex?
+47:5047 minutes, 50 secondsOr to GPT-6.1? Would that change the cost analysis? These are all experiments that you can run. There's so many different things.
+47:5847 minutes, 58 secondsWhat if we changed the instructions of the code review? What if there was only one maximum round?
+48:0348 minutes, 3 secondsWhat if the code reviewer could commit the changes instead of responding to the implementation agent?
+48:0848 minutes, 8 secondsThere's so many different experiments that you can run in order to figure out what the actual best practice is.
+48:1448 minutes, 14 secondsThis experiment just shows the first step on that journey that says, okay, we added it with this model. This was the difference. If we changed the model, we might get a lower price and the same correctness.
+48:2448 minutes, 24 secondsOkay, now it seems more appealing. You can keep going down that road to figure out which one.
+48:2948 minutes, 29 secondsCould you perhaps show an example of what a complex high-risk PR description looks like? I didn't prepare one, unfortunately, but I totally understand. Yeah, that would be more helpful.
+48:3848 minutes, 38 secondsLet me actually see if I can find one real quick, and I'll keep maybe answering questions as we go.
+48:4448 minutes, 44 secondsI have a public project that I work on where I've actually done some risk assessments, so that one might be safe to include inside of here.
+48:5248 minutes, 52 secondsSo the interesting part is like, even for large changes, my goal is to drive down the risk.
+48:5948 minutes, 59 secondsSo it starts as high-risk and then it becomes low-risk the more that we work through the changes. So if I look at, for example, this change, this one started high-risk and then went low-risk.
+49:0949 minutes, 9 secondsSo this was something where I added support for diagramming inside of this editor.
+49:1349 minutes, 13 secondsIt's a very large change that touches a ton of surface areas, but over time, it builds up better and better verification.
+49:1949 minutes, 19 secondsIt originally gave me poor verification because it didn't verify every user flow, and now, of course, there's a lot of verification inside of here.
+49:2649 minutes, 26 secondsIt also gave me poor because it didn't verify performance, and so we added performance monitoring.
+49:3049 minutes, 30 secondsImpact went down to medium as we kind of scoped it out and broke out some PRs, and rollback cost remains low inside of here.
+49:3749 minutes, 37 secondsSo really, the answer is this started high-risk, but I drove it down by telling the agent, oh, there's more user flows to verify.
+49:4449 minutes, 44 secondsGo verify those. The impact could be lower if we split out a PR.
+49:4749 minutes, 47 secondsGo split out a PR. And eventually, the agent might get automatic with this and review that merge risk ahead of time and do that for me. This was manual to start.
+49:5749 minutes, 57 secondsSo the answer is, drive down the risk. Hopefully, none of your PRs still say high-risk by the time you merge it.
+50:0350 minutes, 3 secondsBut of course, sometimes it touches a sensitive code path and there's nothing you can do, in which case, what are you going to do? How do you render these agents into services like Daytona, or do you not do that?
+50:1350 minutes, 13 secondsHonestly, I don't have experience using those other hosting platforms.
+50:1750 minutes, 17 secondsThe most I can tell you is the Warp Factories setup that I showed you is self-hostable. So if you want to bring your own compute and have us own the dashboard and the configuration format, you can do that.
+50:2950 minutes, 29 secondsGet in touch with us.
+50:3050 minutes, 30 secondsI would be curious if we could get this thing running on Daytona, which we might be able to. And to get in touch, by the way, warp.dev/factories, go over there.
+50:3950 minutes, 39 secondsThere is a place where you can actually sign up as a team. Is it important which models you use? It's important which models you use in general.
+50:4550 minutes, 45 secondsWe've done benchmarking across the frontier and found that GPT-6.1 was a good cost to quality right now.
+50:5250 minutes, 52 secondsIt performed better than Opus 5.5, just benchmarking raw implementation performance. We haven't done as much benchmarking on which agent for code review, I don't think.
+51:0151 minutes, 1 secondBut we are using 6.1 for that as well. That's the most I can share right now. But we'll be constantly running more benchmarks and sharing them out.
+51:1151 minutes, 11 secondsAdditionally, this benchmarking tool is something you can run. I want to make that clear. This is not a platform that owns all of the best practices.
+51:2051 minutes, 20 secondsThis is a benchmarking tool that you can run on your own tasks.
+51:2451 minutes, 24 secondsSo if you want to run an experiment, you set up your Warp Factories dashboard, you can, inside of Warp Factories, hit new benchmark,
+51:3251 minutes, 32 secondsdescribe the change you want to make, like I want to add code review to that factory YAML file.
+51:3751 minutes, 37 secondsYou can describe that and then run a benchmark against those two configurations on your past conversations. So you can be the experimenter.
+51:4551 minutes, 45 secondsYou don't have to take all of the guidance from us. You can go run these experiments.
+51:4951 minutes, 49 secondsI encourage most people to go do that since everyone's setup is going to yield a different result of some kind.
+51:5551 minutes, 55 secondsI recommend getting going with, we don't have a free plan, but we do have sort of a pay-as-you-go and we'll be rolling out some new pricing that makes that a little bit more clear.
+52:0552 minutes, 5 secondsSo you can set it up, you can run the compute through us if you just want to keep it simple. You can also self-host if you want to.
+52:1152 minutes, 11 secondsAnd I would probably get started with open-weight models like GLM.
+52:1552 minutes, 15 secondsI've been running experiments, running a full backlog of issues on a project, and it was about like $30, $40 to run 20,
+52:2252 minutes, 22 seconds30 tasks through the factory just to get it to implement end-to-end with computer use. So that's, I'm realizing that's just a random metric that I threw at you,
+52:3252 minutes, 32 secondsbut I'm basically saying you can use open-weight models, the cost will be manageable in that vein, and you can bring your own keys, and even use different harnesses.
+52:4252 minutes, 42 secondsSo that's the setup that you can use today if you're trying out more factories for the first time. We're also giving free credits to teams.
+52:5052 minutes, 50 secondsSo if you sign up for the platform and you describe a little bit about what your team and what your company are doing, we can send some credit your way to start working with it.
+53:0053 minutesAnd you can find that warp.dev/get-started. That's the best place to go if you're curious about that part of the things.
+53:1053 minutes, 10 secondsOkay, we're running up on time, but I'm willing to stay maybe five minutes over just to make sure that we get through some of these. Is using computer use pricey?
+53:1853 minutes, 18 secondsDo you have some benchmark? It honestly hasn't been.
+53:2253 minutes, 22 secondsWe don't have a benchmark on exactly what it costs, but you can use the dashboards built into Warp to see how much it costs.
+53:2953 minutes, 29 secondsReally, the cost goes up depending on the compute that you're using.
+53:3353 minutes, 33 secondsIf you are testing a native Mac application, compute will go up a lot more than Linux, unsurprisingly.
+53:3953 minutes, 39 secondsComputer use is also restricted to certain models because open-weight models don't know how to handle computer use super well, so that can affect the cost as well.
+53:4953 minutes, 49 secondsWe support GPT and Anthropic models right now as the computer use layer, and we've tried to drive down the cost as much as possible, so you don't have to think about that part as much.
+53:5853 minutes, 58 secondsBut yes, it can be pricey if the agent is verifying a ton of things.
+54:0454 minutes, 4 secondsIf you have the agent click around every last user flow in your app, including unrelated ones, that'll drive up the cost for sure.
+54:1154 minutes, 11 secondsBut just going, if you sent in a task to click around an app, I'll tell you, this task here, that clicked around this app, it cost under a dollar to record this 1:43 video.
+54:2454 minutes, 24 secondsIt's actually edited down from, I think, five or ten minutes of computer use. It cost a couple dollars. It really wasn't bad.
+54:3154 minutes, 31 secondsI think the whole run cost three or four dollars, including implementation and compute.
+54:3654 minutes, 36 secondsSo it shouldn't cost you too much, but it can definitely scale up if you need to test the native app or if you need to test a lot more user flows.
+54:4454 minutes, 44 secondsSo I wouldn't call it pricey. Do you have an evaluation data set that you use repeatedly? What are your best practices creating a data set?
+54:5054 minutes, 50 secondsThat's a really tough question, and we should share out a little bit more.
+54:5454 minutes, 54 secondsI have a full video on benchmarking that you can go watch that describes our process, where we have an agent basically give us a big set of previous runs.
+55:0555 minutes, 5 secondsWe, as a human, curate the set of runs we want to run, and then we have the agent spin up on that. Very high level. Rank them easy, medium, hard.
+55:1555 minutes, 15 secondsCurate them by hand, and then run the benchmark and see what you get. It's an art, not a science. Even people at the frontier will tell you that.
+55:2255 minutes, 22 secondsBut if you want to go find that webinar, it's probably a good chance for me to take you all to our YouTube.
+55:2755 minutes, 27 secondsThis will have all sorts of live stream recordings, including today's, that you can go through to understand that a little bit more.
+55:3455 minutes, 34 secondsSo scrolling down here, how to make a software factory is not expensive, we'll run through. This here is a full demo of
+55:4355 minutes, 43 secondsbenchmarking, and the first half will talk about gathering the tasks that you want to benchmark. Can we use agents for test frameworks like Google Test?
+55:5455 minutes, 54 secondsYeah. I'm not familiar with Google Test, but I don't know why you couldn't. I would just ask an agent how to set it up.
+Chapter 9: Q&A: specs, agent identity, infrastructure, lock-in, secrets
+56:0256 minutes, 2 secondsDo you persist prompts and specs that are output from any of these agent steps? We do persist the specs. We treat specs as kind of a product decision that was made.
+56:1056 minutes, 10 secondsAnd something we're working on right now actively is drift.
+56:1356 minutes, 13 secondsSo once a spec is shipped and the code drifts from that spec, do you keep that stale context around or do you delete it?
+56:2156 minutes, 21 secondsIt's kind of a tough problem that hasn't fully been solved. So we check them in, but we recognize that spec drift is a real thing and it
+56:2956 minutes, 29 secondsprobably requires a cleanup agent or some other thing or just removing specs that are a certain amount of time out of date. I don't know. It deserves more investigation, but we do keep them around.
+56:3956 minutes, 39 secondsI was wondering how agent identity is managed for services such as GitHub linear. Good question. So right now we have two options for identity.
+56:4656 minutes, 46 secondsYou can either have the agent assume the author's identity.
+56:4956 minutes, 49 secondsSo assuming your GitHub or you can have the agent assume a bot identity and share who co-authored the PR.
+56:5956 minutes, 59 secondsRight now we're making sure of a flow where every commit shows the co-author, but the bot is the one that opens the PR.
+57:0757 minutes, 7 secondsAnd that feels like the right balance of we know the human that is accountable for this PR, but the bot still has its own identity when it's opening because really it's the one that did the work.
+57:1657 minutes, 16 secondsAnd so it makes sense to do it that way, but it is flexible.
+57:1957 minutes, 19 secondsYou can decide whether to assume the author's identity or to let the agent assume its own identity and give credit.
+57:2557 minutes, 25 secondsWhen making infrastructure change, do you find that as something that you can trust an agent with, given an automatic review process?
+57:3157 minutes, 31 secondsWhen it comes to infrastructure changes, again, like you want the risk assessment to show this is high impact because it's touching infrastructure. Right.
+57:4157 minutes, 41 secondsAnd the agent probably can't drive down the impact of an infrastructure change. It's just going to be there. And that's why having it in your pull request description is good.
+57:4957 minutes, 49 secondsSo that, you know, oh, the human review needs to go on the infrastructure changes.
+57:5257 minutes, 52 secondsUI changes we can ship with low risk and just focus our attention on the infrastructure. It's something the agent can do, of course, and you'll build more confidence as you go,
+57:5957 minutes, 59 secondsbut it is tougher to verify an infrastructure change when there isn't a user flow to show necessarily. The best that it can do is you give the agent tools to spin up a mock of that infrastructure.
+58:1058 minutes, 10 secondsI just talked to a teammate that said, we should have better tools for this. I'm like, you're right.
+58:1558 minutes, 15 secondsSome way to mock out our server, our internal server for an agent to try out an infrastructure change and actually test whether that infrastructure change would deploy successfully.
+58:2658 minutes, 26 secondsThat requires a lot of setup in your own infrastructure systems. I'm happy to share out once we discover more there. I'm curious what you'll learn.
+58:3358 minutes, 33 secondsThis is basically an agentophobus template method for vendor lock-in. Ah, I don't think so. For anyone who's like, ah, warp factory seems kind of opinionated.
+58:4058 minutes, 40 secondsWell, I mean, you've got to have opinions somewhere to make things useful.
+58:4358 minutes, 43 secondsBut the beauty of agents is that I don't think any idea is something that requires vendor lock-in.
+58:5158 minutes, 51 secondsLike what I showed you with merge risk, this is something you could stitch on to any pipeline that you've created to have the agent assess its risk.
+58:5858 minutes, 58 secondsWhen it comes to computer use, yes, we have an infrastructure solution for this.
+59:0259 minutes, 2 secondsIf you don't want to stand up sandboxes, you don't want to stand up web links for review, you don't want to stand up having the agent edit its videos, you can use us.
+59:0959 minutes, 9 secondsThat's the reason companies exist.
+59:1159 minutes, 11 secondsBut if you want to set up your own version of this, if you want to set up sandbox with a Docker container with recording permissions, you can do that too.
+59:1959 minutes, 19 secondsAgents have kind of reduced some of that lock-in fear that you might have.
+59:2459 minutes, 24 secondsAnd you might try out Warp Factories and decide, eh, I think I tried out their self-hosted version.
+59:2959 minutes, 29 secondsIt was pretty good. I like their factory config, but I want to fork off and invent my own configuration format. I want to invent my own computer use.
+59:3559 minutes, 35 secondsWell, all the code's there in the factory configuration, it's backed by GitHub, you can just adapt this to something that your agent can run itself.
+59:4359 minutes, 43 secondsYou can build your own visualizer, whatever you want to do.
+59:4659 minutes, 46 secondsSo if you're worried about that, just know that this is going to be pretty freaking flexible.
+59:5159 minutes, 51 secondsYou can self-host it, you can bring whatever compute layer you want, and all the code that's backing the factory is just in GitHub already.
+59:5959 minutes, 59 secondsSo if you want to transform into your own thing, the lock-in's not too bad. It's really not. And it uses any model and any harness.
+1:00:061 hour, 6 secondsSo if you're wanting to bring Claude Code into this, then you can just bring Claude Code into this.
+1:00:111 hour, 11 secondsAnd yeah, just answering the question on secrets before we go, if it needs them to complete a task, how is that managed?
+1:00:161 hour, 16 secondsGood question. In the factory definition, you can decide what secrets the agent has access to.
+1:00:221 hour, 22 secondsSo you have a global set of secrets, and then inside of your factory, you can define what secrets the agent has. So those are defined at the agent level.
+1:00:311 hour, 31 secondsI don't even think this example has a secret that I'll be able to show you a binding for. Maybe the error monitor has one, yeah.
+1:00:371 hour, 37 secondsSo this one is actually using a webhook secret that it binds to with webhook IDs.
+1:00:411 hour, 41 secondsBut you bind them to the agent or to the automation that's running it, and those are injected into the environment.
+1:00:481 hour, 48 secondsSo I need to look deeper into is it obfuscated from the agent if it tries to echo them out? I believe the agent can't just echo out secrets, but it is put in there.
+1:00:581 hour, 58 secondsSo you do need to be aware that secrets are going to be put into the environment. And there's all sorts of improvements that can be made on that.
+1:01:061 hour, 1 minute, 6 secondsYeah, I can probably get more information from our team to make sure of exactly how secrets are put into that platform, just to make sure I'm getting those details right.
+1:01:141 hour, 1 minute, 14 secondsBut just know that you can decide which secrets each agent is going to have access to. It's at the sandbox level. Okay, well this was a really great session.
+Chapter 10: Wrap-up
+1:01:251 hour, 1 minute, 25 secondsHopefully y'all learned a lot from it.
+1:01:271 hour, 1 minute, 27 secondsHead over to my Twitter or the Warp Twitter and we'll be announcing as soon as these things are live. And if you want a written version of everything that we talked about, there is a blog post variant.
+1:01:361 hour, 1 minute, 36 secondsSo if you want to share that with coworkers ahead of the recording, you can do so as well. Although we did answer a lot of really great questions here. So thank you for that.
+1:01:451 hour, 1 minute, 45 secondsSo if I look at, yeah, it's our most recent post addressing the code review bottleneck. So this is a post that you can go to that includes all of this stuff in written form. And yeah, enjoy the rest of your day.
+1:01:571 hour, 1 minute, 57 secondsThank you so much for joining us.
+
