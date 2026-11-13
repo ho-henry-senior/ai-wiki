@@ -11,9 +11,9 @@ Agents should spend their reasoning on understanding the task and making changes
 
 ## Expose a stable task interface
 
-A task runner such as [Just](https://just.systems/) can provide a discoverable interface over the tools a repository already uses. A `justfile` is one practical option, not a universal requirement. The important property is a clear, shared way to find and invoke repository tasks without requiring every agent or developer to reconstruct shell commands.
+Use the repository's existing scripts or task runner to expose a stable, discoverable interface to bounded work. A task runner such as [Just](https://just.systems/) can provide that interface, but is one practical option rather than a universal requirement. See [A Justfile as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) for a focused pattern.
 
-Keep the runnable recipes in one source of truth. Documentation should explain what a recipe is for and when to use it, rather than duplicating its underlying shell command. The interface should help an agent answer:
+Keep runnable commands in one source of truth. Documentation should explain what a task is for and when to use it, rather than duplicating its underlying shell command. The interface should help an agent answer:
 
 - What tasks are available?
 - Which task is appropriate for this change?
@@ -33,17 +33,13 @@ These are useful distinctions, not mandatory categories. Choose commands that fi
 
 ## Make the interface discoverable to agents
 
-A short repository instruction can point the agent to the task interface and explain how to use it. It should tell the agent how to list available recipes, which recipe is the repository's routine gate, and how to run a narrower check such as a targeted test. Link to fuller documentation for diagnostics or unusual prerequisites; avoid copying the full recipe catalog into the instruction.
+A short repository instruction can point the agent to the task interface and explain how to use it. It should identify the repository's routine check and explain how to run a narrower check such as a targeted test. Link to fuller documentation for diagnostics or unusual prerequisites; avoid copying the full task catalog into the instruction.
 
-Recipe names such as `verify` and `run-tests-target` appear in the example repositories below, but they are not universal standards. An agent should follow the contract documented by the repository it is working in, not infer behavior from a familiar name.
+Task names such as `verify` and `run-tests-target` appear in the example repositories, but they are not universal standards. An agent should follow the contract documented by the repository it is working in, not infer behavior from a familiar name.
 
 ## What the repository examples show
 
-The examples span Node.js/JavaScript and Node.js/TypeScript repositories, plus Python repositories for REST APIs and queue consumers. They expose tasks through Justfiles while using different tools underneath. Across them, focused tests and broader checks are available, while dependency, filesystem, and code scans are kept apart from routine verification.
-
-The exact meaning of `check` and `verify` varies across these repositories. That variation is a reason to document each recipe's contract—not to assume that one naming scheme is canonical. Related repositories may choose to share a few names or conventions when that makes agents more effective across them, but this is a contextual choice.
-
-See the [Justfile patterns across Node.js and Python repositories](../sources/repository-justfiles.md) for the observed differences.
+The examples span Node.js/JavaScript, Node.js/TypeScript, and Python repositories. They show how focused tests and broader checks can coexist, with dependency, filesystem, and code scans kept apart from routine verification. Recipe composition and the exact meaning of `check` or `verify` vary; related repositories may share names when useful, but should document each task's actual contract. See the [Justfile pattern](justfile-as-agent-facing-task-interface.md) and [repository examples](../sources/repository-justfiles.md).
 
 ## The boundary with repository context
 

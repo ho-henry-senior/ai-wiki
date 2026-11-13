@@ -14,6 +14,7 @@ Making one repository or a set of repositories easier for agents to understand a
 - [A structure for agent-facing repositories](pages/agent-facing-repository-structure.md)
 - [AGENTS.md as a shared agent entrypoint](pages/agents-md-as-shared-entrypoint.md)
 - [Get more from agents by delegating repo tasks to tools](pages/agent-tool-delegation.md)
+- [A Justfile as an agent-facing task interface](pages/justfile-as-agent-facing-task-interface.md)
 
 ### Shaping work for agents
 
@@ -35,6 +36,7 @@ Harness features, tools, skills, and agent profiles: what they are, when they he
 Working effectively with agents, from CLI use and token efficiency to delegation, distinct roles, and multi-agent workflows.
 
 - [Get more from agents by delegating repo tasks to tools](pages/agent-tool-delegation.md)
+- [A Justfile as an agent-facing task interface](pages/justfile-as-agent-facing-task-interface.md)
 - [Define agent role responsibilities and boundaries](pages/agent-role-boundaries.md)
 - [Unit tests in the age of AI](pages/unit-tests-in-the-age-of-ai.md)
 

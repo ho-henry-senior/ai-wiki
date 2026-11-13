@@ -63,9 +63,7 @@ See [Skills as a changing capability layer](skills-as-capabilities.md) for when 
 
 ### `justfile`: stable task interface
 
-A root `justfile` is a sensible addition for an agent-facing repository. Use it to expose stable, discoverable tasks such as setup, focused tests, linting, and routine verification, delegating to the repository's existing tools and scripts. Keep recipe names and side effects clear; the interface should describe the repository's real commands rather than invent a new build system.
-
-`AGENTS.md` can point agents to the task runner, tell them how to list recipes, and identify the appropriate routine check. `just` is a practical choice, not a universal requirement; an existing task interface may already serve the same purpose. See [delegating repo tasks to tools](agent-tool-delegation.md).
+A root `justfile` is a sensible task interface for an agent-facing repository. Keep its recipes clear and grounded in the tools the repository already uses. See [A Justfile as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) for the focused pattern, or [delegating repo tasks to tools](agent-tool-delegation.md) for the broader principle.
 
 ### `.github/`: GitHub-specific configuration and automation
 
