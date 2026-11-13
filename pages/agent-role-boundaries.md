@@ -24,6 +24,39 @@ RACI does not, by itself, define every prohibition. An empty cell or an “Infor
 
 For example, a team might define that a product role does not implement code, a reviewer evaluates changes but does not implement them, and a business analyst does not perform code review. These are illustrative boundaries to make explicit, not universal definitions of those roles.
 
+## Example role contracts
+
+These short contracts make the example roles' responsibilities and limits explicit. Adapt them to the work and authority model; they are not canonical definitions.
+
+### Product agent
+
+- **Expected:** clarify the problem, desired outcome, constraints, and acceptance intent; advise on priority.
+- **Out of scope:** implementing code, reviewing code, and giving final merge or release approval.
+- **Hands off:** an agreed product direction and acceptance intent to the Business Analyst; prioritization decisions to the human product owner.
+
+### Business analyst
+
+- **Expected:** elicit and organize requirements, draft the spec, and decompose approved scope into tickets or tasks.
+- **Out of scope:** code review in this workflow.
+- **Hands off:** the spec and task breakdown for human approval and prioritization.
+
+### Developer agent
+
+- **Expected:** implement an approved task, add or update tests, run validation, create or update the PR, and address review findings.
+- **Out of scope:** changing the agreed product priority or granting final merge or release approval.
+- **Hands off:** the PR with a summary and validation results to the Reviewer.
+
+### Reviewer agent
+
+- **Expected:** assess the PR against the requirements and code standards; report findings and a review recommendation.
+- **Out of scope:** implementing the change or giving final merge or release approval.
+- **Hands off:** the review recommendation to the human approver; findings to the Developer for resolution.
+
+### Human product owner/approver
+
+- **Expected:** set or confirm priorities, approve product scope, and make the final merge or release approval decision.
+- **Out of scope:** none prescribed here; the human's responsibilities and any delegated authority should be explicit for each workflow.
+
 ## Illustrative delivery-workflow RACI
 
 This example shows one possible division of work, not a prescribed role model. It includes a human product owner/approver because prioritization and final merge/release approval remain human-led here. Adapt the assignments to the actual workflow and authority model.
