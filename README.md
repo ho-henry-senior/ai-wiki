@@ -43,6 +43,13 @@ Working effectively with agents, from CLI use and token efficiency to delegation
 - [Define agent role responsibilities and boundaries](pages/agent-role-boundaries.md)
 - [Unit tests in the age of AI](pages/unit-tests-in-the-age-of-ai.md)
 
+### Security in agent-assisted work
+
+Sensitive-data exposure, tool permissions, and controls for using agents safely.
+
+- [Sensitive data in agent workflows](pages/sensitive-data-in-agent-workflows.md)
+- [Agent data-flow checklist](pages/agent-data-flow-checklist.md)
+
 ### Shared vocabulary
 
 - [AI glossary](pages/glossary.md) — practical definitions of foundational AI and current generative AI terms.

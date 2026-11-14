@@ -93,7 +93,7 @@ Avoid the absolute claim that every model API is stateless. The practical questi
 
 Small, indexed documentation and focused tool results help a harness supply relevant information without loading everything. Clear tool descriptions help a model choose an appropriate action.
 
-This architecture also provides a starting point for examining sensitive-data flows: data can exist in repository files, tool results, model requests, and saved session records. Those are distinct locations, with different access and retention properties; permission to read a file does not itself explain where its contents may subsequently go.
+This architecture also provides a starting point for examining sensitive-data flows: data can exist in repository files, tool results, model requests, and saved session records. Those are distinct locations, with different access and retention properties; permission to read a file does not itself explain where its contents may subsequently go. See [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) for risks and controls.
 
 ## References
 
