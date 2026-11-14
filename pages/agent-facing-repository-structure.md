@@ -82,8 +82,6 @@ These are not interchangeable with shared repository documentation or skills. Ke
 
 The parts have distinct jobs: `AGENTS.md` orients; `docs/agents/` provides durable reference; skills package on-demand procedures; `justfile` exposes deterministic tasks; and `.github/` holds GitHub-specific configuration and automation. Linking these pieces makes them discoverable without copying all project knowledge into every agent's initial context.
 
-The pattern reflects the Egar repositories inspected for this discussion: all five use root `AGENTS.md` and `docs/agents/`, while `.github/` contents vary and no `.copilot/` directory was found. That is evidence of a useful local convention, not proof that the same structure is right for every repository.
-
 ## Sources
 
 - [Agent Skills specification](https://agentskills.io/specification)
