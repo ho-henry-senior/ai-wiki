@@ -6,6 +6,8 @@ on:
   schedule: daily
   workflow_dispatch:
   skip-if-match: 'is:pr is:open in:title "[wiki-review]"'
+  permissions:
+    pull-requests: read
   stale-check: full
   report-blocked-version: false
 if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
