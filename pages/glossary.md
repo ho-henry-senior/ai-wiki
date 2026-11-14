@@ -55,7 +55,7 @@ A numerical representation of data, such as text, where relationships between ve
 
 ### Evaluation (eval)
 
-A test of a model or AI application against criteria relevant to a task, such as correctness, quality, or safety. Evals help detect regressions and compare approaches; results depend on the test data and criteria.
+A test of a model or AI application against criteria relevant to a task, such as correctness, quality, or safety. Evals help detect regressions and compare approaches; results depend on the test data and criteria. See [evals](../concepts/evals.md).
 
 ## F
 

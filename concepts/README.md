@@ -31,6 +31,7 @@ Follow [the freshness guidance](../pages/README.md#keeping-content-current) when
 
 ## Repository feedback
 
+- [Evals](evals.md) — task-specific cases, checks, comparisons, and limitations.
 - [Hill climbing](hill-climbing.md) — iterative local improvement, deterministic and stochastic search, and evaluation limits.
 - [Task names need explicit contracts](task-interface-contracts.md) — scope, side effects, prerequisites, and gates versus diagnostics.
 - [Passing tests are evidence, not proof](tests-are-evidence.md) — assertions, intended behavior, and independent expectations.

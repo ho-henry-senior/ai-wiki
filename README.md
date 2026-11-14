@@ -14,6 +14,7 @@ Get results that match what you intended. Clarify the task, give agents useful c
 - [Give agents repository context](pages/repository-context-for-agents.md)
 - [Check behavior against requirements](pages/unit-tests-in-the-age-of-ai.md)
 - [Passing tests are evidence, not proof](concepts/tests-are-evidence.md) · [slide](slides/tests-are-evidence.md)
+- [Evaluate agent behavior against a task](concepts/evals.md)
 - [Improve candidates with hill climbing](concepts/hill-climbing.md)
 
 Here, alignment means matching a specific task's intended outcome; see the broader [AI alignment definition](pages/glossary.md#alignment).
@@ -27,6 +28,7 @@ Get useful results with less time and fewer tokens, including by reducing rework
 - [Make task contracts explicit](concepts/task-interface-contracts.md)
 - [Load context through focused entrypoints](concepts/progressive-disclosure.md)
 - [Choose tools by purpose](pages/tools-by-purpose.md)
+- [Compare results, time, and token use with evals](concepts/evals.md)
 - [Balance iterative improvement against its cost](concepts/hill-climbing.md)
 
 ### Traceability

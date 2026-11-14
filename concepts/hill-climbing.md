@@ -16,7 +16,7 @@ Randomness in a model's responses or an evaluation is a separate issue from rand
 
 ## Example: improving a prompt
 
-Choose representative tasks and criteria, establish a baseline, then change one part of a prompt and compare the results. Keep a change if the evidence supports an improvement. For variable model outputs, repeat trials and compare results across the same cases rather than trusting one response. Set a limit on time, tokens, or trials.
+Choose representative tasks and criteria, establish a baseline, then change one part of a prompt and compare the results. An [eval](evals.md) can provide this feedback. Keep a change if the evidence supports an improvement. For variable model outputs, repeat trials and compare results across the same cases rather than trusting one response. Set a limit on time, tokens, or trials.
 
 Reserve cases for a final check rather than optimizing only against the examples used during iteration. A higher score on those examples may reflect a narrow test or a poor proxy for what users actually need. As with [passing tests](tests-are-evidence.md), a favorable evaluation is evidence, not proof.
 
