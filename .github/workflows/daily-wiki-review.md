@@ -68,7 +68,7 @@ tools:
     - gh pr list
     - gh pr view
     - just verify
-    - npm exec -- prettier --write
+    - npm exec
 steps:
   - name: Set up Node.js
     uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4

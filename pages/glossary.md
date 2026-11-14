@@ -83,6 +83,10 @@ Controls around an AI system that constrain inputs, outputs, or actions—for ex
 
 Generated content that is false, unsupported, or inconsistent with a provided source, while presented plausibly. The term describes an output problem, not intentional deception. Grounding and citations can help but do not eliminate it. See this [survey of hallucination in natural language generation](https://arxiv.org/abs/2202.03629).
 
+### Hill climbing
+
+A local search approach that repeatedly moves from a candidate to a better nearby alternative according to an evaluation. It can stop at a local optimum even when a better result exists elsewhere. See [hill climbing](../concepts/hill-climbing.md).
+
 ## I
 
 ### In-context learning
@@ -146,6 +150,10 @@ A technique that retrieves external information and includes it in the model's i
 ### Skill
 
 A reusable package of task-specific instructions and optional supporting resources, loaded when relevant. See [skills, profiles, and tools](../concepts/skills-profiles-and-tools.md) for how their purposes differ.
+
+### Stochastic
+
+Involving randomness or probability. A stochastic search uses randomness in its choices; that is separate from variability in the evaluation itself. See [hill climbing](../concepts/hill-climbing.md#deterministic-and-stochastic-approaches).
 
 ### Structured output
 

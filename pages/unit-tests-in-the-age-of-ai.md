@@ -7,6 +7,8 @@ summary: Explore unit tests as fast, deterministic feedback for agents, and the 
 
 Unit tests can help agents produce changes that match intended behavior. They provide fast, repeatable feedback and preserve examples of how a component is expected to behave. This makes them useful both as regression protection and as a tool an agent can run while iterating.
 
+When comparing successive changes against a test-based objective, the iteration can resemble [hill climbing](../concepts/hill-climbing.md). Its usefulness depends on whether the objective captures the behavior that matters.
+
 ## What AI changes
 
 Agents can produce code and tests quickly, which makes a useful test suite more valuable as an automated feedback loop. But generating tests is not the same as generating confidence. An agent can write many tests that add little coverage, mirror the implementation, or encode the same mistaken assumption as the code.
