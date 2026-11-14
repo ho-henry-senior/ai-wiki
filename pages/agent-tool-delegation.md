@@ -13,29 +13,17 @@ Agents should spend their reasoning on understanding the task and making changes
 
 Use the repository's existing scripts or task runner to expose a stable, discoverable interface to bounded work. A task runner such as [Just](https://just.systems/) can provide that interface, but is one practical option rather than a universal requirement. See [A Justfile as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) for a focused pattern.
 
-Keep runnable commands in one source of truth. Documentation should explain what a task is for and when to use it, rather than duplicating its underlying shell command. The interface should help an agent answer:
-
-- What tasks are available?
-- Which task is appropriate for this change?
-- What does it check, and how long or costly is it likely to be?
-- Does it modify files, need special setup, or produce output that requires interpretation?
+Make the command's [task contract](../concepts/task-interface-contracts.md) explicit: an agent needs to know its scope, prerequisites, cost, side effects, and how to interpret the result. Keep execution details in canonical scripts or recipes so documentation does not become a competing source of commands.
 
 ## Offer useful choices without prescribing rigid tiers
 
-Many repositories benefit from offering:
-
-- **Focused checks** for fast feedback, such as running one test file without coverage.
-- **A dependable routine gate** for checking a change before handoff.
-- **Broader diagnostics** for deeper investigation, such as dependency or code scans.
-- **Explicitly mutating commands** for formatting or applying fixes.
-
-These are useful distinctions, not mandatory categories. Choose commands that fit the repository and explain their actual scope. A routine gate should give a stable, actionable signal on a healthy repository. Checks with known baseline findings or noisy output can still be valuable, but should be presented as diagnostics rather than as a clean pass/fail gate. File-changing commands should be clearly identified.
+Focused checks, a routine handoff gate, broader diagnostics, and mutating commands serve different needs. Use the [gate-versus-diagnostic and side-effect distinctions](../concepts/task-interface-contracts.md#what-the-contract-should-explain) to expose choices appropriate to the repository, rather than prescribing mandatory tiers.
 
 ## Make the interface discoverable to agents
 
 A short repository instruction can point the agent to the task interface and explain how to use it. It should identify the repository's routine check and explain how to run a narrower check such as a targeted test. Link to fuller documentation for diagnostics or unusual prerequisites; avoid copying the full task catalog into the instruction.
 
-Task names such as `verify` and `run-tests-target` appear in the example repositories, but they are not universal standards. An agent should follow the contract documented by the repository it is working in, not infer behavior from a familiar name.
+An agent should choose commands by their documented contract, not infer behavior from familiar names such as `verify`.
 
 ## What the repository examples show
 

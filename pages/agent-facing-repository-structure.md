@@ -43,7 +43,7 @@ Create directories only when they have useful contents. In particular, `.github/
 
 ### `AGENTS.md`: shared starting point
 
-Keep this concise and repository-wide. Explain the project and important boundaries, give essential setup and verification commands, and link to the relevant documentation and task interface. It should orient an agent, not duplicate every reference page or workflow.
+Use [progressive disclosure](../concepts/progressive-disclosure.md): keep the entrypoint concise and repository-wide, linking to detailed context and the task interface. It should orient an agent, not duplicate every reference page or workflow.
 
 Support for `AGENTS.md` is growing, but harnesses differ in how they discover, scope, and combine instruction files. Keep any harness-specific instructions explicit, and verify that the tools used by the team actually load them. See [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md).
 
@@ -57,7 +57,9 @@ An index such as `docs/agents/README.md` is helpful once there are several pages
 
 A skill is a directory containing `SKILL.md`, with optional scripts, references, and assets. Use skills for repeatable, task-specific procedures that should be made available when relevant, rather than loading all of their detail as repository-wide instructions.
 
-The Agent Skills format is an open standard, but discovery paths are not universal. `.agents/skills/` is a useful portable project location supported by Codex, Cursor, and GitHub Copilot. Claude Code uses `.claude/skills/`; Copilot also supports `.github/skills/`. Add a harness-specific location only when the team needs it, and avoid maintaining duplicate skill bodies. Confirm discovery in the actual harnesses in use.
+The Agent Skills format is an open standard, but discovery paths are not universal. Copilot documents `.agents/skills/` and `.github/skills/` among its project skill locations; support depends on the surface in use. Confirm discovery in the actual Copilot client rather than maintaining duplicate skill bodies.
+
+Keep [skills, profiles, and tools distinct](../concepts/skills-profiles-and-tools.md): a skill provides a procedure, a profile describes a role, and a tool performs an action.
 
 See [Skills as a changing capability layer](skills-as-capabilities.md) for when a skill is useful and how to keep recommendations current.
 
@@ -86,9 +88,8 @@ The pattern reflects the Egar repositories inspected for this discussion: all fi
 
 - [Agent Skills specification](https://agentskills.io/specification)
 - [GitHub Copilot agent skills](https://docs.github.com/en/copilot/concepts/customizations/agent-skills)
-- [Cursor agent skills](https://cursor.com/docs/skills)
-- [Codex skills](https://developers.openai.com/codex/skills/)
-- [Claude Code skills](https://code.claude.com/docs/en/skills)
 - [GitHub Copilot custom instructions](https://docs.github.com/en/copilot/concepts/prompting-and-context/custom-instructions)
 - [GitHub Copilot custom agents](https://docs.github.com/en/copilot/concepts/customizations/custom-agents)
 - [GitHub Copilot prompt files](https://docs.github.com/en/copilot/concepts/prompting-and-context/prompt-files)
+
+Copilot project-skill locations checked 14 November 2026; other product behavior was not reverified in this review.

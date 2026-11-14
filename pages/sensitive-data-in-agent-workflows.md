@@ -5,7 +5,7 @@ summary: The main risks of running coding agents, how sensitive data can move th
 
 # Sensitive data in agent workflows
 
-Using an agent safely requires understanding both what it can access and what it can do. A locally installed harness may send context to a remote model, call external services, and save conversation history. Local inference does not by itself prevent sensitive data from reaching logs, tools, or published artifacts.
+Using an agent safely requires understanding both what it can access and what it can do. Through [the tool-call loop](../concepts/tool-call-loop.md), file contents and tool results can become model input or further actions. A locally installed harness may use remote inference and services; local inference does not by itself prevent exposure through other routes.
 
 This guide covers AI-assisted software work, not the full subject of securing AI-powered applications. See [How models and harnesses interact](model-harness-interaction.md) for the underlying interaction loop, and use the [data-flow checklist](agent-data-flow-checklist.md) to review a particular setup.
 
@@ -46,38 +46,27 @@ The destinations below are possibilities, not claims that every product sends da
 | Repository and shared artifacts                | Sensitive information is written into files, commits, PRs, issues, CI output, build artifacts, or exported transcripts.             | Review diffs and publication targets; use secret scanning and protected branches; require approval before publishing; inspect generated reports and CI output. |
 | Attacker-controlled systems                    | Prompt injection or a malicious integration causes an outbound request or upload containing data.                                   | Combine isolation, restricted outbound networking, minimal credentials, and approval for consequential actions; treat retrieved content as untrusted.          |
 
-Sending data for inference, retaining it, and using it for training are separate questions. Disabling training use does not establish that data never leaves the machine or is never retained. Likewise, disabling session sync does not disable model requests or external tool calls.
+Assess [inference, retention, and training separately](../concepts/inference-retention-training.md). A no-training policy is not a no-transmission or no-retention guarantee, and disabling session sync does not disable model requests or external tool calls. [Saved history also differs from active model context](../concepts/session-history-vs-context.md), so reducing context is not evidence that stored data has been deleted.
 
 ### Local and remote MCP servers
 
-A **local MCP server** runs code on your machine, possibly inside a container or sandbox. Depending on its permissions and configuration, it may read local files, inherit environment variables or credentials, and execute other programs. Installing and launching one therefore requires trust in its code and dependencies, not just its advertised tool descriptions.
-
-A **remote MCP server** runs on another system. Tool arguments and other data supplied to it cross that boundary, where the operator's access, logging, and retention policies apply. It does not automatically gain access to your local filesystem, but may access connected systems through credentials or permissions granted to it.
-
-**Either kind can make further network requests** if its environment permits them. A local server can forward local data to an external API; a remote server can pass received data to downstream services. "Local" describes where the server runs, not a guarantee that data stays on the machine. Review both the immediate server and its downstream destinations, and verify which filesystem, credential, and network restrictions actually apply.
+Local servers execute on your machine; remote servers receive supplied data on another system. **Either can make further network requests** if permitted. [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) explains the different access risks and why downstream destinations must also be checked.
 
 ### Exposure without an explicit upload
 
-An illustrative accidental flow:
-
-1. A diagnostic command prints a credential in an error message.
-2. Its output becomes a tool result.
-3. The harness records the result in local history and includes it in a subsequent model request.
-4. Session syncing or a shared debugging transcript may create further copies.
-
-Each later step depends on the product and configuration. The important point is that asking the agent to "upload a secret" is not necessary for exposure to occur.
+An ordinary diagnostic can print a credential, which may then enter history, a later model request, and a shared transcript. [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) traces this accidental flow and explains why redacting after transmission is too late.
 
 ## Controls across the workflow
 
-Before a task, minimize accessible data and credentials. Prefer synthetic or sanitized fixtures, read-only access where sufficient, and an isolated environment with only the required filesystem and network access. A separate branch or worktree helps organize changes but is not a security sandbox.
+Before a task, minimize accessible data and credentials. Prefer synthetic or sanitized fixtures, read-only access where sufficient, and an isolated environment with only the required filesystem and network access. [A worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md): separating changes does not restrict execution or credentials.
 
 During work, treat retrieved material as data, not authority to change permissions or send information elsewhere. Check consequential tool requests against the intended action and destination. A local shell restriction does not necessarily constrain a remote MCP service; evaluate each integration's actual execution boundary.
 
 Before handoff, review generated changes, run relevant tests and security checks, and inspect outputs for sensitive information. Keep human approval for high-impact actions such as publishing, infrastructure changes, and use of privileged credentials. Preserve an appropriate audit trail without collecting secrets unnecessarily.
 
-**Enforced boundaries matter more than instructions.** "Do not reveal secrets" is weaker than keeping those secrets inaccessible. Redaction, scanning, approval prompts, and model instructions can all miss problems; use them in combination with access and network controls.
+Use [enforced controls as well as instructions](../concepts/instructions-vs-controls.md). Guidance, scanning, redaction, and approval can all miss problems; combine them with independently enforced access and network restrictions.
 
-Disk encryption protects data at rest, not against an agent or process already permitted to read it. Deleting a local transcript does not necessarily delete remote copies, backups, or published artifacts. If a credential is exposed, revoke or rotate it rather than relying only on removing the visible text.
+Disk encryption protects data at rest, not against an agent or process already permitted to read it. If exposure occurs, follow [the tool-output containment guidance](../concepts/secrets-in-tool-output.md#reduce-exposure-at-the-source): rotate exposed credentials and consider all copies, not just visible text.
 
 ## References
 

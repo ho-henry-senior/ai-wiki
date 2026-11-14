@@ -21,11 +21,11 @@ The goal of shaping a model's behavior to follow intended instructions and value
 
 ### Agent
 
-An AI system that uses a model to pursue a task, often by selecting actions, using tools, and responding to results. The term is used inconsistently; state how much control the model has over the task's steps. See [Building effective agents](https://www.anthropic.com/research/building-effective-agents) and [how models and harnesses interact](model-harness-interaction.md).
+An AI system that uses a model to pursue a task, often by selecting actions, using tools, and responding to results. The term is used inconsistently; state how much control the model has over the task's steps. See [Building effective agents](https://www.anthropic.com/research/building-effective-agents) and [the tool-call loop](../concepts/tool-call-loop.md).
 
 ### Agent harness
 
-The software around a model that supplies context and tools, handles tool requests, and manages the interaction loop. It is distinct from the model and from the overall agent system, although usage varies. See [How models and harnesses interact](model-harness-interaction.md).
+The software around a model that supplies context and tools, handles tool requests, and manages the interaction loop. It is distinct from the model and from the overall agent system, although usage varies. See [the tool-call loop](../concepts/tool-call-loop.md) and [the broader interaction guide](model-harness-interaction.md).
 
 ### Agentic system
 
@@ -45,7 +45,7 @@ Intermediate reasoning steps produced or elicited while solving a task. A displa
 
 ### Context window
 
-The amount of input and generated output a model can consider in a single interaction. It is not the same as persistent memory or training data, and a larger context window does not guarantee that all included information will be used well. See [context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows) and [session history versus the context window](model-harness-interaction.md#session-history-is-not-the-context-window).
+The amount of input and generated output a model can consider in a single interaction. It is not the same as persistent memory or training data, and a larger context window does not guarantee that all included information will be used well. See [session history versus active context](../concepts/session-history-vs-context.md).
 
 ## E
 
@@ -75,7 +75,7 @@ AI systems that use models to generate content, such as text, images, audio, vid
 
 ### Guardrails
 
-Controls around an AI system that constrain inputs, outputs, or actions—for example, content filters, tool permissions, output schemas, or human approval steps. “Guardrails” has no single standard definition, and no single control guarantees safety.
+Controls around an AI system that constrain inputs, outputs, or actions—for example, content filters, tool permissions, output schemas, or human approval steps. “Guardrails” has no single standard definition, and no single control guarantees safety. See [instructions versus enforced controls](../concepts/instructions-vs-controls.md).
 
 ## H
 
@@ -111,7 +111,7 @@ A learned computational component that maps input to output based on parameters 
 
 ### Model Context Protocol (MCP)
 
-An open protocol for connecting AI applications to external servers that provide capabilities such as tools, resources, and prompts. MCP standardizes communication between applications and servers; it is not itself a model or an agent. See the [MCP specification](https://modelcontextprotocol.io/specification/latest).
+An open protocol for connecting AI applications to external servers that provide capabilities such as tools, resources, and prompts. MCP standardizes communication between applications and servers; it is not itself a model or an agent. See the [MCP specification](https://modelcontextprotocol.io/specification/latest) and [local versus remote servers](../concepts/local-and-remote-mcp.md).
 
 ### Multimodal model
 
@@ -143,6 +143,10 @@ A technique that retrieves external information and includes it in the model's i
 
 ## S
 
+### Skill
+
+A reusable package of task-specific instructions and optional supporting resources, loaded when relevant. See [skills, profiles, and tools](../concepts/skills-profiles-and-tools.md) for how their purposes differ.
+
 ### Structured output
 
 Model output constrained to follow a format, such as a JSON schema. Valid structure does not guarantee correct content; applications still need to handle refusals, incomplete responses, and domain-specific validation.
@@ -155,7 +159,7 @@ A unit of text processed by a model, often a word or part of a word. Tokenizatio
 
 ### Tool calling
 
-A pattern in which a model returns a request to invoke an application-provided tool; the surrounding application executes it and supplies the result back to the model. The model's request is not the same as the tool action itself. See [the interaction loop](model-harness-interaction.md#the-interaction-loop).
+A pattern in which a model returns a request to invoke an application-provided tool; the surrounding application executes it and supplies the result back to the model. The model's request is not the same as the tool action itself. See [the tool-call loop](../concepts/tool-call-loop.md).
 
 ### Training
 

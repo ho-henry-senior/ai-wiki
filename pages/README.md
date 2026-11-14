@@ -1,6 +1,12 @@
 # Authored pages
 
-This directory holds authored knowledge, not source archives. Pages can be short references, reusable patterns, or broader guides and articles. Let the purpose determine the length; do not force every page into a slide-sized format.
+This directory holds articles, applied patterns, reference catalogs, and checklists. They connect and apply the focused explanations in [reusable concepts](../concepts/README.md); provenance belongs in [sources](../sources/README.md).
+
+## Articles and concepts
+
+Put a standalone explanation or reusable distinction in `concepts/` when extracting it helps readers reuse or find it. Follow the [concept conventions](../concepts/README.md#writing-a-concept). Keep articles coherent: summarize the idea where it supports the narrative, then link to the canonical explanation rather than duplicate its example and caveats.
+
+Length alone is not a reason to split. Keep tightly coupled explanations together; catalogs, checklists, and concrete workflow examples can remain complete pages. Concepts may provide the basis for short slides, but slide size is not a required format.
 
 Use lightweight YAML front matter to identify each page's role and summarize it:
 
@@ -27,7 +33,7 @@ Check those claims against current primary sources. Update outdated guidance and
 
 For time-sensitive claims or recommendations, record the relevant version or review date where it helps readers judge applicability. A review date should describe what was actually checked, not imply that every claim in the page was reverified. Follow [the source conventions](../sources/README.md) for provenance.
 
-Keep edit-time review focused on the affected material and directly dependent guidance. Treat a whole-wiki freshness review as a separate periodic task, not a prerequisite for every change.
+Keep edit-time review focused on the affected material and directly dependent guidance, including concepts. Treat a whole-wiki review as a separate periodic task, using [the wiki-review skill](../.agents/skills/wiki-review/SKILL.md), not a prerequisite for every change.
 
 ## Current pages
 
@@ -43,7 +49,7 @@ Keep edit-time review focused on the affected material and directly dependent gu
 - [Tool choices by purpose](tools-by-purpose.md) — selection considerations and examples from several repositories.
 - [Skills as a changing capability layer](skills-as-capabilities.md) — why skills fill gaps and how their value can shift as harnesses evolve.
 - [Useful skills right now](useful-skills.md) — a living, problem-oriented list, with harness support and review status.
-- [Skills and agent profiles](skills-and-agent-profiles.md) — a comparison of complementary ways to shape agent capability and behavior.
+- [Skills and agent profiles](skills-and-agent-profiles.md) — choosing procedures, roles, and executable capabilities for a workflow.
 - [Define agent role responsibilities and boundaries](agent-role-boundaries.md) — positive scope, explicit limits, and workflow responsibility mapping.
 - [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — the value and limits of unit tests as feedback for agent-produced changes.
 - [From CLI agents toward a lightweight software factory](cli-to-software-factory.md) — an exploratory progression path.

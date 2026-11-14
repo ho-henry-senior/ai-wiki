@@ -25,10 +25,10 @@ A useful list should be organized around the problem or capability a skill addre
 
 If a harness absorbs a capability, retain that information with a clear status rather than silently treating an external skill as still necessary. This preserves the useful pattern and makes the changing boundary visible.
 
-See the [current useful-skills list](useful-skills.md) and the [skills/profile comparison](skills-and-agent-profiles.md).
+See the [current useful-skills list](useful-skills.md), the [skills/profile guide](skills-and-agent-profiles.md), and the [skills, profiles, and tools distinction](../concepts/skills-profiles-and-tools.md).
 
 ## Keep concepts portable
 
-Describe the need a skill addresses separately from how a particular harness installs or invokes it. Use Copilot as a concrete implementation example where useful, but label harness-specific details and add other harness examples over time.
+Describe the need a skill addresses separately from how a particular harness installs or invokes it. Use Copilot as a concrete example where useful and label product-specific details. Keep other products' setup guidance outside this wiki's scope.
 
 For an illustrative repository layout that separates skills from agent-oriented reference documentation, see [A structure for agent-facing repositories](agent-facing-repository-structure.md).

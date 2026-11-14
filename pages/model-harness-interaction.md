@@ -19,42 +19,13 @@ Anthropic's [architecture explanation](https://code.claude.com/docs/en/how-claud
 
 ## The interaction loop
 
-1. The harness assembles a request containing instructions, relevant conversation context, and definitions of available tools.
-2. The model generates a response or requests a tool call.
-3. For a tool call, the harness applies its permission and validation rules. It may execute the request, ask for approval, or return an error or denial.
-4. The harness supplies the tool result to the model as part of the next request.
-5. The model continues using that information, potentially requesting more tools before producing an answer.
+The model requests an action; the harness checks and dispatches it, then supplies its result for the model to continue. One user turn can involve many such exchanges before an answer is displayed.
 
-A single user request can therefore involve many model requests. The model requests actions; the harness and connected tools perform them.
+See [The model requests; the harness acts](../concepts/tool-call-loop.md) for the canonical loop, tool-definition details, and the difference between requesting and executing an action.
 
 ### A small example
 
-Suppose the user asks, "What files are in the project root?" The harness exposes a tool named `list_files`, with a description and a schema specifying a required string argument named `path`.
-
-The following is illustrative, not the wire format of a particular API:
-
-```text
-Harness -> Model:
-  User: What files are in the project root?
-  Tool: list_files(path: string) lists entries in a directory.
-
-Model -> Harness:
-  Tool call: id="call-1", name="list_files", arguments={"path":"."}
-
-Harness:
-  Checks the request and runs the tool.
-
-Harness -> Model:
-  Tool result: call_id="call-1", entries=["README.md", "src/"]
-
-Model -> Harness:
-  Assistant message: The root contains README.md and src/.
-
-Harness -> User:
-  Displays the assistant message.
-```
-
-The model does not need the implementation of `list_files` to request it. It needs a description of what the tool does and how to supply valid arguments. A tool-call identifier lets the application associate a result with its request.
+Listing project files illustrates the division: the model requests `list_files(path=".")`, the harness returns the entries, and the model turns the result into an answer. The [complete example exchange](../concepts/tool-call-loop.md#example) shows each message.
 
 ## What goes into a model request?
 
@@ -73,25 +44,17 @@ OpenAI's [agent-loop article](https://openai.com/index/unrolling-the-codex-agent
 
 ## Session history is not the context window
 
-The **session** is the ongoing interaction and its associated state. A harness typically manages the conversation, pending tool calls, and any saved artifacts. It may persist these locally or use remote services; storage location and retention depend on the product and configuration.
+Saving a conversation and supplying context to a model are different operations. The next request may contain only selected history or a summary, even when the harness retains the original exchanges.
 
-The **context window** is the model's limited working context for an inference request. Instructions, tool definitions, messages, and tool results consume space, and the request must leave room for generated output. Limits and input/output accounting vary by model and API.
-
-Saved session history can be much larger than the context supplied on any one request. A harness may select relevant history, truncate large tool results, or replace older conversation details with a summary. This last technique is often called **compaction**. A summary can lose details; the model should not be assumed to have every earlier exchange available verbatim.
-
-For example, Anthropic's [session and context explanation](https://code.claude.com/docs/en/how-claude-code-works#work-with-sessions) distinguishes saved conversation history from the active context window and describes automatic compaction.
+[Session history is not active context](../concepts/session-history-vs-context.md) explains the storage/context distinction, token limits, and compaction. This is why a long-running conversation can continue without every earlier detail remaining visible to the model.
 
 ## Does the model remember the conversation?
 
-It is useful to think of continuity as something the harness and API provide, rather than as the model privately remembering earlier turns.
-
-With a stateless API, the application supplies the history needed for each request. Some APIs instead support provider-managed conversation state or references to previous responses; see OpenAI's [conversation-state guide](https://developers.openai.com/api/docs/guides/conversation-state). These are different ways of supplying context; neither means that ordinary conversation updates the model's learned parameters.
-
-Avoid the absolute claim that every model API is stateless. The practical questions are who stores the history, how it is supplied to inference, and what the next request actually includes.
+Continuity comes from context supplied through the harness and API, not an assumption that ordinary conversation updates the model's learned parameters. APIs may require supplied history or offer stored state; the [continuity explanation](../concepts/session-history-vs-context.md#who-manages-continuity) covers both. Avoid the absolute claim that every API is stateless.
 
 ## Why the distinction matters
 
-Small, indexed documentation and focused tool results help a harness supply relevant information without loading everything. Clear tool descriptions help a model choose an appropriate action.
+Small, indexed documentation and focused tool results support [progressive disclosure](../concepts/progressive-disclosure.md): making the relevant detail available without loading everything. Clear tool descriptions help a model choose an appropriate action.
 
 This architecture also provides a starting point for examining sensitive-data flows: data can exist in repository files, tool results, model requests, and saved session records. Those are distinct locations, with different access and retention properties; permission to read a file does not itself explain where its contents may subsequently go. See [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) for risks and controls.
 

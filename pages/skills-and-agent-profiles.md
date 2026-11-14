@@ -1,19 +1,25 @@
 ---
-type: reference
-summary: Compare reusable skills with agent profiles as complementary, overlapping ways to shape agent capability and behavior.
+type: guide
+summary: Choose between reusable task procedures and role profiles, and combine them with tools for a concrete workflow.
 ---
 
 # Skills and agent profiles
 
-Skills and agent profiles can both influence how an agent works, but they serve different purposes. Their names and implementation vary by harness, so treat this as a portable working distinction rather than a universal specification.
+Start with the problem you want to solve, rather than the configuration file you could add. [Skills, profiles, and tools have different jobs](../concepts/skills-profiles-and-tools.md): a procedure, a role, and an executable capability can complement one another.
 
-|                  | Skill                                                                        | Agent profile                                                    |
-| ---------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| Main purpose     | Add reusable, task-specific knowledge, instructions, examples, or procedures | Shape an agent's broader role, operating behavior, and scope     |
-| Typical question | “What capability or guidance should be available for this kind of task?”     | “What is this agent expected and authorized to do?”              |
-| Reuse            | A skill can be applied where the relevant task arises                        | A profile configures an agent for a broader role or mode of work |
+## Choose the missing piece
 
-They are complementary: an agent working in a particular role may use one or more skills relevant to its task. There can be overlap, and a harness may implement similar behavior through built-in features, profiles, or skills.
+If the same task repeatedly needs a particular approach, package that procedure as a skill. It can be used by any suitable role without duplicating the procedure in each profile.
+
+If work needs distinct responsibilities, limits, or handoffs, define a profile. For example, a reviewer role might assess requirements and report findings while a developer role implements changes. The [role-boundary pattern](agent-role-boundaries.md) develops those contracts.
+
+If the agent needs an action it cannot currently perform, provide or configure a tool. A longer procedure cannot substitute for missing execution access.
+
+## Combine them in a workflow
+
+A reviewer profile could use one skill for requirements review and another for test-quality assessment, while invoking tools to read diffs and run focused checks. The profile supplies the role, the skills supply repeatable methods, and the tools supply actions.
+
+Keep permission enforcement separate from the role description: [instructions are not enforced controls](../concepts/instructions-vs-controls.md). A stated read-only role should have appropriately restricted capabilities when that restriction matters.
 
 When documenting a particular harness, state what its implementation actually supports. Keep the underlying purpose distinct from harness-specific names, formats, and loading behavior.
 

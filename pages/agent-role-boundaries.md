@@ -14,7 +14,7 @@ For each role, make explicit:
 - **Limits:** work it must not perform, decisions it cannot make, and conditions that require a handoff.
 - **Inputs and outputs:** what it needs and what it should return to the next role.
 
-These boundaries are part of the role's profile or instructions. They should be specific enough to guide behavior, not merely implied by the role title.
+These boundaries are part of the role's profile or instructions. They should be specific enough to guide behavior, not merely implied by the role title. They are also [instructions, not automatically enforced controls](../concepts/instructions-vs-controls.md); configure tool permissions separately where enforcement matters.
 
 ## Use RACI to describe workflow relationships
 
@@ -78,7 +78,7 @@ This example shows one possible division of work, not a prescribed role model. I
 | Address review findings                                 | I             | I                | R/A             | C              | I                            |
 | Approve merge/release                                   | C             | I                | I               | C              | R/A                          |
 
-This example keeps the Product agent focused on outcomes rather than implementation, the Business Analyst on requirements and decomposition rather than code review, and the Reviewer on assessment rather than implementation. The human retains prioritization and final approval. Repositories may assign the mechanics of merging or releasing separately according to their policies.
+This example keeps the Product agent focused on outcomes rather than implementation, the Business Analyst on requirements and decomposition rather than code review, and the Reviewer on assessment rather than implementation. Review must check the requirements as well as test output: [passing tests are evidence, not proof](../concepts/tests-are-evidence.md). The human retains prioritization and final approval. Repositories may assign the mechanics of merging or releasing separately according to their policies.
 
 ## Illustrative handoff flow
 

@@ -11,19 +11,11 @@ A root `justfile` is a sensible addition to an agent-facing repository. It gives
 
 Offer a small set of clear recipes for common work, such as setup, focused tests, linting, and routine verification. Recipes should delegate to the repository's existing scripts and tools where practical. Use `just --list` to discover available recipes.
 
-Recipe names are a local contract, not universal standards. Names such as `check` or `verify` are useful only when their actual behavior is clear and consistent for the repository.
+Apply [explicit task contracts](../concepts/task-interface-contracts.md): familiar recipe names such as `check` or `verify` are not universal standards.
 
 ## Make each recipe's contract clear
 
-An agent should be able to tell:
-
-- what the recipe checks or changes;
-- when it is appropriate, including how to run a focused check;
-- whether it is read-only or modifies files;
-- what setup or environment it needs; and
-- whether it is a fast routine check or a broader diagnostic.
-
-Repositories often benefit from distinguishing focused tests, a dependable routine gate, broader diagnostics, and mutating commands such as formatters. These are useful distinctions, not required tiers. Keep noisy scans or checks with known baseline findings out of a clean pass/fail gate unless their results are handled explicitly.
+Use recipe comments and clear names to expose the [scope, prerequisites, side effects, and interpretation](../concepts/task-interface-contracts.md#what-the-contract-should-explain) of each task. For example, give a file-rewriting formatter a different recipe from its read-only check, and keep a noisy diagnostic distinct from the routine gate.
 
 ## Keep instructions and recipes in sync
 

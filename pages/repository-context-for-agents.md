@@ -38,7 +38,7 @@ For diagrams that Mermaid can express clearly and the target tools can render, p
 
 ## Make the context discoverable
 
-Give agents and developers a clear starting point that links to the relevant domain, decision, interface, and architecture material. Keep detail near the subsystem or contract it describes, and link across repositories rather than relying on an agent to infer the connections.
+Use [progressive disclosure](../concepts/progressive-disclosure.md): give agents and developers a clear starting point, with links to the relevant domain, decision, interface, and architecture material. Keep detail near the subsystem or contract it describes, and link across repositories rather than relying on an agent to infer the connections.
 
 An `AGENTS.md` file can serve as a concise repository-level entrypoint to this material. Support is growing across agent harnesses, but discovery and loading behavior differ; see [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) for the documented support and limitations.
 

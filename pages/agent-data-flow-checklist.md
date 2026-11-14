@@ -10,11 +10,11 @@ Use this when configuring an agent, enabling an integration, or preparing to wor
 ## Map the setup
 
 - [ ] Identify the harness, model endpoint, account, execution environment, and enabled tools or MCP servers.
-- [ ] Distinguish local from remote MCP servers; check local file and credential access, remote data handling, and further network requests from either kind. See [local and remote MCP servers](sensitive-data-in-agent-workflows.md#local-and-remote-mcp-servers).
+- [ ] Distinguish [local from remote MCP servers](../concepts/local-and-remote-mcp.md); check local file and credential access, remote data handling, and further network requests from either kind.
 - [ ] Identify sensitive source material: credentials, private code and plans, personal or customer data, and security findings.
 - [ ] Record each relevant flow: **data type -> source -> trigger -> destination -> persistence and visibility -> control**.
-- [ ] Include automatic context selection, indexing, debug output, delegated agents, and generated summaries, not only deliberate uploads.
-- [ ] Distinguish transmission, storage, and training use; record unknowns rather than assuming safe defaults.
+- [ ] Include automatic context selection, indexing, debug output, delegated agents, and generated summaries, not only deliberate uploads. Trace [sensitive tool output](../concepts/secrets-in-tool-output.md) and [saved session history](../concepts/session-history-vs-context.md) separately from active context.
+- [ ] Distinguish [transmission, storage, and training use](../concepts/inference-retention-training.md); record unknowns rather than assuming safe defaults.
 
 ## Check each destination
 
@@ -31,7 +31,8 @@ Use this when configuring an agent, enabling an integration, or preparing to wor
 
 - [ ] Grant only the filesystem, network, and service permissions the task needs; avoid production credentials where possible.
 - [ ] Review the provenance and access of tools, skills, dependencies, and MCP servers before enabling them.
-- [ ] Verify which boundaries cover each tool; do not assume one sandbox covers all integrations.
+- [ ] Verify which boundaries cover each tool; [worktrees are not sandboxes](../concepts/worktrees-not-sandboxes.md), and one sandbox may not cover all integrations.
+- [ ] Check that access restrictions are [enforced controls, not only instructions](../concepts/instructions-vs-controls.md).
 - [ ] Require meaningful approval for destructive, costly, privileged, or externally visible actions.
 - [ ] Review generated changes and run relevant tests and security checks before accepting the result.
 - [ ] Inspect artifacts before sharing, and know how to revoke credentials and respond if data is exposed.

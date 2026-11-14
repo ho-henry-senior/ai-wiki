@@ -7,13 +7,7 @@ summary: Considerations for choosing deterministic tools by purpose, with select
 
 This is a guide to choosing tools for repeatable repository tasks, not an exhaustive catalog or a set of required technologies. The examples come from Node.js/JavaScript and Node.js/TypeScript repositories, plus Python repositories for REST APIs and queue consumers. They illustrate how different stacks can expose similar capabilities through a shared task interface.
 
-When considering a tool, ask whether it:
-
-- performs a bounded, repeatable task that would otherwise cost an agent time or tokens to reconstruct or do manually;
-- gives a reliable, actionable result for the intended purpose;
-- can be scoped for fast feedback when that is useful;
-- has clear prerequisites, runtime cost, and side effects; and
-- should be a routine gate or a separate diagnostic that may need interpretation.
+Prefer tools that replace bounded, repeatable work with reliable, actionable results. Expose them through [explicit task contracts](../concepts/task-interface-contracts.md), including focused execution, runtime cost, side effects, and whether findings are a routine gate or a diagnostic requiring interpretation.
 
 | Purpose                                 | Examples observed                                                                             | Selection considerations                                                                                                                      |
 | --------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |

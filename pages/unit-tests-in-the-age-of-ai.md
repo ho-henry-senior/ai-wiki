@@ -11,26 +11,17 @@ Unit tests can help agents produce changes that match intended behavior. They pr
 
 Agents can produce code and tests quickly, which makes a useful test suite more valuable as an automated feedback loop. But generating tests is not the same as generating confidence. An agent can write many tests that add little coverage, mirror the implementation, or encode the same mistaken assumption as the code.
 
-A passing suite demonstrates that the implementation satisfies the assertions that exist. It does not by itself prove those assertions match the request or the user's intent.
+[Passing tests are evidence, not proof](../concepts/tests-are-evidence.md). Derive expectations from the request or an established contract so the tests provide an independent check rather than confirming the implementation's assumptions.
 
 ## Prefer meaningful tests over more tests
 
-For a change, add the smallest set of tests that covers its distinct behaviors and meaningful risks. There is no fixed number or coverage target that makes a test suite good.
-
-A useful test should:
-
-- be grounded in the request, specification, or an existing behavioral contract;
-- assert an externally observable result, not merely repeat private implementation steps;
-- fail for a plausible regression in the behavior it is meant to protect; and
-- add confidence beyond tests that already cover the same behavior.
-
-For example, asserting that a configured mock returns the value it was given usually tests the mock setup rather than the system behavior. Prefer assertions about what the component under test returns, changes, or causes in response to a meaningful input.
+Choose tests for distinct behaviors and meaningful risks, not volume or an arbitrary coverage target. The [test-evidence concept](../concepts/tests-are-evidence.md#example) explains observable assertions, plausible regressions, and why checking mock configuration adds little confidence.
 
 ## Handle unclear expectations honestly
 
 When expected behavior is materially ambiguous, an agent should ask for clarification rather than invent behavior and write a test that confirms its own choice. For a minor assumption, state it so a reviewer can see what the test treats as expected.
 
-Tests written alongside an implementation can share its blind spots. Deriving expectations from the request or an established contract helps make the test an independent check rather than a restatement of the code.
+Keep those assumptions visible during review; a green suite cannot resolve a requirement the tests guessed incorrectly.
 
 ## Treat unit tests as one signal
 

@@ -32,4 +32,6 @@ Guidance specific to other agent products or harnesses, such as Codex, Claude, o
 
 Use small, focused files for concepts and reusable guidance. Use larger articles to connect and explain multiple concepts. Link related material rather than duplicating it, and keep indexes up to date so readers and agents can find the right level of detail.
 
+Keep reusable explanations in `concepts/`, narrative articles and applied references in `pages/`, and provenance in `sources/`. Concepts can be useful foundations for short slides, but preserve necessary examples and caveats rather than imposing a slide-sized limit.
+
 The topic map is allowed to change as the wiki grows; it is a navigation aid, not a rigid taxonomy.
