@@ -17,3 +17,5 @@ Keep concepts focused and link to their canonical explanations. Label product-sp
 When editing content, review potentially stale claims in the affected pages using [the freshness guidance](pages/README.md#keeping-content-current).
 
 Use `just --list` to discover the task interface. Run `just setup` for initial setup and `just verify` before handoff. Verification checks Markdown formatting and local link targets, including heading anchors; it does not check external websites or raw material in `data/`. The `format` recipe modifies authored Markdown files. Recipes delegate to the canonical npm scripts in `package.json`.
+
+For setup details or scheduled review configuration, see [maintenance and daily reviews](MAINTAINING.md).

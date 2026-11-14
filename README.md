@@ -55,7 +55,3 @@ Protect sensitive information and limit unsafe actions in agent-assisted work.
 - [AI glossary](pages/glossary.md) — shared vocabulary for AI and agents.
 - [Source index and records](sources/README.md) — provenance and research notes.
 - [From CLI agents toward a lightweight software factory](pages/cli-to-software-factory.md) — an exploratory guided path.
-
-## Maintaining the wiki
-
-See [maintenance and daily reviews](MAINTAINING.md) for setup, verification, and scheduled review instructions.
