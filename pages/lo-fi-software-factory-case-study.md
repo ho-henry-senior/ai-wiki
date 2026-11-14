@@ -13,8 +13,9 @@ The team first coordinated specialist agents manually, then used local polling s
 
 1. A Product agent discussed the problem with the team and drafted a specification. The team reviewed and approved it.
 2. A Business Analyst agent proposed a sequence of tickets from the approved specification. People reviewed the breakdown and approved the issues.
-3. A Developer agent implemented each available issue, ran checks, and opened a pull request. A Reviewer agent examined the change and published findings.
-4. A human reviewed the implementation and findings, then decided whether to merge.
+3. A Developer agent implemented each available issue, ran checks, and opened a pull request.
+4. A Reviewer agent examined the change and published findings.
+5. A human reviewed the implementation and findings, then decided whether to merge.
 
 The first issue was started manually. For subsequent work, a human applied a readiness label to each issue; a polling script selected ready issues without open blockers and started the Developer agent. Another script watched for pull requests ready for review and started the Reviewer. A review-complete label signaled that a review comment had been published, not that the change was approved.
 
