@@ -1,0 +1,25 @@
+---
+type: guide
+summary: Core advice for protecting sensitive information and limiting unsafe actions in agent-assisted work.
+---
+
+# Security
+
+Security means protecting sensitive information and limiting unsafe actions while using agents. The right controls depend on the data, permissions, integrations, and environment involved; essential safeguards still matter when they take effort.
+
+## Try this first
+
+Before an agent works on a repository, identify sensitive data and credentials it can access, where data may be sent or stored, and what actions it can perform. Limit access to the task and verify restrictions and approval requirements in the actual environment. Use the [agent data-flow checklist](agent-data-flow-checklist.md) to record known flows and investigate unknowns.
+
+## Core advice
+
+- **Trace data and actions.** Examine the model endpoint, local and remote tools, logs, session storage, and shared artifacts. Distinguish transmission, retention, and training use. [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md).
+- **Limit and enforce access.** Grant only the filesystem, network, and service permissions the task needs. [Instructions are not enforced controls](../concepts/instructions-vs-controls.md), and a [worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md).
+- **Review integrations.** Check the provenance, permissions, and data destinations of tools, skills, dependencies, and MCP servers before enabling them. A local integration can still send data elsewhere. [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md).
+- **Treat retrieved content as untrusted.** Files, issues, and tool results can contain instructions intended to redirect the agent. Combine careful review with enforced limits on access and outbound actions. [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md#controls-across-the-workflow).
+- **Review consequential actions and outputs.** Require appropriate human approval for privileged, destructive, costly, or externally visible actions. Review generated changes and inspect artifacts for sensitive information before sharing or accepting them.
+
+## Explore further
+
+- [Agent data-flow checklist](agent-data-flow-checklist.md) — a practical review of a particular setup.
+- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — accidental exposure and containment.

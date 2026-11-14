@@ -25,7 +25,7 @@ Suggested `type` values:
 - `pattern` — a reusable practice or building block.
 - `guide` — an applied or synthesized discussion; it may be broad or compose other pages.
 
-The README topic map is the navigation layer, not a directory scheme. Link a page from every relevant topic rather than duplicating it.
+The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it.
 
 ## Keeping content current
 
@@ -39,6 +39,10 @@ Keep edit-time review focused on the affected material and directly dependent gu
 
 ## Current pages
 
+- [Alignment](alignment.md) — core advice for matching work to the intended outcome.
+- [Economy](economy.md) — core advice for using time and tokens effectively without sacrificing quality or security.
+- [Traceability](traceability.md) — core advice for recording intent, decisions, and evidence.
+- [Security](security.md) — core advice for limiting data exposure and unsafe actions.
 - [Define and verify a task](define-and-verify-tasks.md) — clarify outcomes, acceptance criteria, verification, and review evidence.
 - [AI glossary](glossary.md) — practical definitions of foundational AI and current generative AI terms.
 - [How models and harnesses interact](model-harness-interaction.md) — the tool-call loop, message structure, session state, and context limits.
