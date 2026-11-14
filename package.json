@@ -6,9 +6,9 @@
   },
   "scripts": {
     "verify": "npm run format:check && npm run links",
-    "format:check": "prettier --check \"**/*.md\" \".agents/skills/**/*.md\"",
-    "format": "prettier --write \"**/*.md\" \".agents/skills/**/*.md\"",
-    "links": "remark . .agents/skills --quiet --frail --no-stdout"
+    "format:check": "prettier --check \"**/*.md\" \".agents/skills/**/*.md\" \".github/workflows/**/*.md\"",
+    "format": "prettier --write \"**/*.md\" \".agents/skills/**/*.md\" \".github/workflows/**/*.md\"",
+    "links": "remark . .agents/skills .github/workflows --quiet --frail --no-stdout"
   },
   "devDependencies": {
     "prettier": "3.10.1",

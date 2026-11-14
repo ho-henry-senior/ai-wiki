@@ -1,0 +1,19 @@
+{
+  "entries": {
+    "actions/setup-node@v4": {
+      "repo": "actions/setup-node",
+      "version": "v4",
+      "sha": "49933ea5288caeca8642d1e84afbd3f7d6820020"
+    },
+    "extractions/setup-just@v3": {
+      "repo": "extractions/setup-just",
+      "version": "v3",
+      "sha": "f8a3cce218d9f83db3a2ecd90e41ac3de6cdfd9b"
+    },
+    "github/gh-aw-actions/setup@v1.0.1": {
+      "repo": "github/gh-aw-actions/setup",
+      "version": "v1.0.1",
+      "sha": "221ba4f4319de6b8e809d1a15528b3ae6a818aa5"
+    }
+  }
+}
