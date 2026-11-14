@@ -1,38 +1,48 @@
 # Making the most of agents
 
-Practical guidance for people using AI agents in software work. Start with a useful change, then follow links to deeper explanations when you need them.
+Practical guidance for people using AI agents in software work. Explore a goal, understand its principles, and choose techniques to apply them.
 
-## Alignment
+## [Alignment](pages/alignment.md)
 
 Get results that match what you intended.
 
-- [Clarify the task and check the result](pages/define-and-verify-tasks.md) against its acceptance criteria.
-- [Give agents repository context](pages/repository-context-for-agents.md) through a short, discoverable entrypoint.
-- [Explore the core advice for alignment](pages/alignment.md).
+- [Define the work](pages/define-and-verify-tasks.md).
+- [Provide relevant context](pages/repository-context-for-agents.md).
+- [Make checks available](pages/agent-tool-delegation.md).
+- [Verify the intended behavior](concepts/tests-are-evidence.md).
+- [Keep responsibilities clear](pages/agent-role-boundaries.md).
 
 Here, alignment means matching a specific task's intended outcome; see the broader [AI alignment definition](pages/glossary.md#alignment).
 
-## Economy
+## [Economy](pages/economy.md)
 
 Get useful results with less time and fewer tokens, without sacrificing quality.
 
-- [Make existing checks easy to discover and run](pages/agent-tool-delegation.md), rather than having agents reconstruct commands.
-- [Use focused tests as feedback](pages/unit-tests-in-the-age-of-ai.md) and broaden checks when the change warrants it.
-- [Explore the core advice for economy](pages/economy.md).
+- [Clarify the work early](pages/define-and-verify-tasks.md).
+- [Reuse deterministic tools](pages/agent-tool-delegation.md).
+- [Use focused feedback](pages/unit-tests-in-the-age-of-ai.md).
+- [Keep context focused](concepts/progressive-disclosure.md).
+- [Reuse skills selectively](pages/skills-as-capabilities.md).
 
-## Traceability
+## [Traceability](pages/traceability.md)
 
 Understand what was requested, what changed, and the evidence behind it.
 
-- [Record the request, decisions, and verification](pages/define-and-verify-tasks.md) in proportion to the task.
-- [Explore the core advice for traceability](pages/traceability.md).
+- [Record the request and decisions](pages/define-and-verify-tasks.md).
+- [Connect related artifacts](pages/traceability.md#core-advice).
+- [Preserve verification evidence](pages/define-and-verify-tasks.md).
+- [Make responsibilities visible](pages/agent-role-boundaries.md).
+- [Keep records proportionate and safe](pages/sensitive-data-in-agent-workflows.md#controls-across-the-workflow).
 
-## Security
+## [Security](pages/security.md)
 
 Protect sensitive information and limit unsafe actions.
 
-- [Review access and data flow before an agent runs](pages/sensitive-data-in-agent-workflows.md), and enforce limits on consequential actions.
-- [Explore the core advice for security](pages/security.md).
+- [Trace data and actions](pages/agent-data-flow-checklist.md).
+- [Limit and enforce access](concepts/instructions-vs-controls.md).
+- [Review integrations](pages/agent-data-flow-checklist.md#check-actions-as-well-as-data).
+- [Treat retrieved content as untrusted](pages/sensitive-data-in-agent-workflows.md#controls-across-the-workflow).
+- [Review consequential actions and outputs](pages/agent-data-flow-checklist.md#check-actions-as-well-as-data).
 
 ## Explore further
 

@@ -18,7 +18,7 @@ For example, “reject expired credentials” needs a check that expired credent
 
 ## Scale the process to the work
 
-For a small change, the outcome, criteria, and checks may fit in an issue or PR description. For larger work, an agreed specification can capture decisions and acceptance intent before it is broken into tasks. Preserve links between artifacts when they exist; a multi-agent role structure is not required.
+For a small change, the outcome, criteria, and checks may fit in an issue or PR description. For larger work, an agreed specification can capture decisions and acceptance intent before it is broken into tasks. Link existing artifacts so a reviewer can follow the work: for example, connect the issue to its PR and record the checks and results in the PR. A multi-agent role structure is not required.
 
 Verification should be independent enough to catch a shared mistaken assumption in the implementation and its tests. [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md); use [unit tests as focused feedback](unit-tests-in-the-age-of-ai.md) alongside other checks suited to the risk.
 

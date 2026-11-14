@@ -45,7 +45,7 @@ Guidance specific to other agent products or harnesses, such as Codex, Claude, o
 
 For each outcome, identify the core advice readers can act on. Use it to decide what the wiki needs to explain, prioritize, and link together, and revisit it as practices and evidence change. Review the wiki against that advice to find gaps and unsupported recommendations.
 
-Organize navigation from the homepage through outcome overviews to practical guidance and deeper explanations. A page may support more than one outcome; link to shared material rather than duplicating it.
+Make the primary reader journey: homepage, outcome overview, principle, then techniques and practical examples. Explain why a principle helps before exploring ways to apply it, including how to try and verify them. A journey may span several pages or remain within one page; retain direct paths to practical guidance for readers who already understand the principle. A page may support more than one outcome; link to shared material rather than duplicating it.
 
 Provide content for these reader needs:
 

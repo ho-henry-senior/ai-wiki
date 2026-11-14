@@ -19,7 +19,12 @@ Small files alone do not achieve this: unclear filenames and disconnected fragme
 
 A link is not a guarantee of automatic loading. Some instruction formats eagerly import referenced files; others leave ordinary links for an agent to follow. Verify the actual harness behavior, and keep essential requirements visible at the appropriate entrypoint.
 
+## Apply it
+
+- Use [AGENTS.md as a shared entrypoint](../pages/agents-md-as-shared-entrypoint.md) to point to task-specific guidance without duplicating it.
+- Place instructions, reference material, and on-demand skills in a [discoverable repository structure](../pages/agent-facing-repository-structure.md).
+
 ## Sources and applications
 
 - [Agent Skills specification: Progressive disclosure](https://agentskills.io/specification#progressive-disclosure) — metadata, on-demand instructions, and supporting resources.
-- Applied in [repository context](../pages/repository-context-for-agents.md), [the repository layout](../pages/agent-facing-repository-structure.md), and [the agent entrypoint](../pages/agents-md-as-shared-entrypoint.md).
+- Applied in [repository context](../pages/repository-context-for-agents.md).

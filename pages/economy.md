@@ -14,7 +14,7 @@ Find an existing focused test and the repository's routine verification command.
 ## Core advice
 
 - **Clarify the work early.** An outcome and acceptance criteria can reduce costly rework. Use a short description for small tasks and a fuller specification when the work needs it. [Define and verify a task](define-and-verify-tasks.md).
-- **Reuse deterministic tools.** Make existing tests, formatters, and other bounded checks easy to discover and invoke. Explain their scope, prerequisites, and side effects. [Delegate repository tasks to tools](agent-tool-delegation.md).
+- **Reuse deterministic tools.** Make existing tests, formatters, and other bounded checks easy to discover and invoke. Explain their [scope, prerequisites, and side effects](../concepts/task-interface-contracts.md). [Delegate repository tasks to tools](agent-tool-delegation.md).
 - **Use focused feedback.** Start with checks that exercise the behavior being changed; broaden verification as appropriate. A fast check is useful only if it tests something that matters. [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md).
 - **Keep context focused.** Give the agent a short entrypoint and make task-specific detail discoverable, rather than loading everything for every task. Confirm how the harness actually loads links. [Load context through focused entrypoints](../concepts/progressive-disclosure.md).
 - **Reuse skills selectively.** Consider a skill when it addresses a recurring need and adds value beyond the harness's current capabilities. [Skills as a changing capability layer](skills-as-capabilities.md).

@@ -21,7 +21,7 @@ For deeper corpus-inventory or terminology methods, consult the optional [candid
 
 ## 2. Identify findings and extraction candidates
 
-For each in-scope goal, trace a reader's path from the homepage to an actionable starting point, how to check the result, and relevant deeper material. For a whole-wiki review, cover all four goals. Record the paths and evidence; distinguish absent guidance from guidance that is hard to discover.
+For each in-scope goal and core-advice point, trace the reader's path from the homepage through the relevant principle to techniques and practical examples, including how to try and verify them. For a whole-wiki review, cover all four goals. Record the paths and evidence; distinguish absent guidance from guidance that is hard to discover. A path may span several pages or remain within one page. Treat thin coverage as a gap to report, not a reason to invent a separate page.
 
 Evaluate the material against:
 
@@ -31,14 +31,14 @@ Evaluate the material against:
 - **Reuse:** find explanations answering one standalone question or used across topics. Distinguish genuine reuse from sections that simply happen to be long.
 - **Canonical ownership:** locate competing explanations, inconsistent definitions, and opportunities to replace duplication with summaries and links.
 - **Composition:** articles should still explain a problem and connect ideas, rather than become lists of concept links.
-- **Discovery:** check reader paths, the [sitemap](../../../pages/sitemap.md), topic and directory indexes, glossary links, incoming references, and orphaned material. For each in-scope goal, assess whether the pages linked from its overview are relevant and cover its core advice; identify missing or misleading relationships. Update the curated overview links rather than editing the generated sitemap. Keep advanced concepts discoverable from relevant practical guidance rather than presenting them as prerequisites.
+- **Discovery:** check reader paths, the [sitemap](../../../pages/sitemap.md), topic and directory indexes, glossary links, incoming references, and orphaned material. For each in-scope goal, assess whether its overview links relevant principles, techniques, and examples for its core advice; identify missing or misleading relationships. Update the curated overview links rather than editing the generated sitemap. Retain direct paths to practical guidance and make advanced concepts discoverable without making them prerequisites.
 - **Terminology:** compare terms and definitions with the glossary and their context; verify apparent inconsistencies in the source before proposing a change.
 - **Slides:** check that summaries retain essential qualifications and link to their canonical concepts.
 - **Freshness:** inspect changing claims, versions, dates, source quality, and whether recommendations are supported by evidence.
 
 For each proposed extraction, name the question or distinction, its current location, and the articles or reference uses that justify it. Keep examples and essential caveats with the explanation. Keep catalogs, checklists, and concrete workflow examples intact when splitting would reduce usefulness.
 
-**Complete when:** in-scope goal paths and gaps have evidence, each finding has a location and reason, and each proposed concept has a clear canonical home and plausible use.
+**Complete when:** every in-scope core-advice point has a traced path or a recorded gap, each finding has a location and reason, and each proposed concept has a clear canonical home and plausible use.
 
 ## 3. Check evidence proportionally
 
