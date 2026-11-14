@@ -21,7 +21,11 @@ The goal of shaping a model's behavior to follow intended instructions and value
 
 ### Agent
 
-An AI system that uses a model to pursue a task, often by selecting actions, using tools, and responding to results. The term is used inconsistently; state how much control the model has over the task's steps. See [Building effective agents](https://www.anthropic.com/research/building-effective-agents).
+An AI system that uses a model to pursue a task, often by selecting actions, using tools, and responding to results. The term is used inconsistently; state how much control the model has over the task's steps. See [Building effective agents](https://www.anthropic.com/research/building-effective-agents) and [how models and harnesses interact](model-harness-interaction.md).
+
+### Agent harness
+
+The software around a model that supplies context and tools, handles tool requests, and manages the interaction loop. It is distinct from the model and from the overall agent system, although usage varies. See [How models and harnesses interact](model-harness-interaction.md).
 
 ### Agentic system
 
@@ -41,7 +45,7 @@ Intermediate reasoning steps produced or elicited while solving a task. A displa
 
 ### Context window
 
-The amount of input and generated output a model can consider in a single interaction. It is not the same as persistent memory or training data, and a larger context window does not guarantee that all included information will be used well. See [context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows).
+The amount of input and generated output a model can consider in a single interaction. It is not the same as persistent memory or training data, and a larger context window does not guarantee that all included information will be used well. See [context windows](https://platform.claude.com/docs/en/build-with-claude/context-windows) and [session history versus the context window](model-harness-interaction.md#session-history-is-not-the-context-window).
 
 ## E
 
@@ -151,7 +155,7 @@ A unit of text processed by a model, often a word or part of a word. Tokenizatio
 
 ### Tool calling
 
-A pattern in which a model returns a request to invoke an application-provided tool; the surrounding application executes it and supplies the result back to the model. The model's request is not the same as the tool action itself.
+A pattern in which a model returns a request to invoke an application-provided tool; the surrounding application executes it and supplies the result back to the model. The model's request is not the same as the tool action itself. See [the interaction loop](model-harness-interaction.md#the-interaction-loop).
 
 ### Training
 

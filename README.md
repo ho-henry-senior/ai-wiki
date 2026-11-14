@@ -28,6 +28,7 @@ Preparing work for implementation, including specifications, domain understandin
 
 Harness features, tools, skills, and agent profiles: what they are, when they help, and how to make them discoverable and usable.
 
+- [How models and harnesses interact](pages/model-harness-interaction.md)
 - [Tool choices by purpose](pages/tools-by-purpose.md)
 - [Skills as a changing capability layer](pages/skills-as-capabilities.md)
 - [Useful skills right now](pages/useful-skills.md)
