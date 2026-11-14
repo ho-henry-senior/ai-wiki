@@ -19,6 +19,16 @@ Suggested `type` values:
 
 The README topic map is the navigation layer, not a directory scheme. Link a page from every relevant topic rather than duplicating it.
 
+## Keeping content current
+
+For substantive edits, review the affected pages for claims that may have become stale, especially tool capabilities, configuration paths, API behavior, model limits, and provider security or data-handling policies. Mechanical formatting fixes do not require a freshness review.
+
+Check those claims against current primary sources. Update outdated guidance and its supporting links; where verification is unavailable or inconclusive, flag the uncertainty rather than presenting it as confirmed. Distinguish durable principles from product-, version-, or account-specific behavior.
+
+For time-sensitive claims or recommendations, record the relevant version or review date where it helps readers judge applicability. A review date should describe what was actually checked, not imply that every claim in the page was reverified. Follow [the source conventions](../sources/README.md) for provenance.
+
+Keep edit-time review focused on the affected material and directly dependent guidance. Treat a whole-wiki freshness review as a separate periodic task, not a prerequisite for every change.
+
 ## Current pages
 
 - [AI glossary](glossary.md) — practical definitions of foundational AI and current generative AI terms.
