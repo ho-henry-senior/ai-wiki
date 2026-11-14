@@ -31,7 +31,7 @@ Suggested `type` values:
 
 Focused reusable concepts live in `concepts/` and use the types described in the [concept conventions](../concepts/README.md#writing-a-concept). An explanatory article may bring several concepts together without replacing them.
 
-The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it.
+The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it. The [sitemap](sitemap.md) derives its goal paths from those overview links and its inventory from page metadata; regenerate it with `just sitemap` rather than editing it directly.
 
 ## Keeping content current
 

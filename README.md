@@ -36,6 +36,7 @@ Protect sensitive information and limit unsafe actions.
 
 ## Explore further
 
+- [Sitemap](pages/sitemap.md) — goal paths and a generated inventory of the wiki.
 - [Short slides](slides/README.md) — concise, standalone ideas.
 - [Reusable concepts](concepts/README.md) — explanations to follow when relevant, including RAG, vector stores, evals, and hill climbing.
 - [Authored pages](pages/README.md) — all articles, patterns, and checklists.

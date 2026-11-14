@@ -31,7 +31,7 @@ Evaluate the material against:
 - **Reuse:** find explanations answering one standalone question or used across topics. Distinguish genuine reuse from sections that simply happen to be long.
 - **Canonical ownership:** locate competing explanations, inconsistent definitions, and opportunities to replace duplication with summaries and links.
 - **Composition:** articles should still explain a problem and connect ideas, rather than become lists of concept links.
-- **Discovery:** check reader paths, topic and directory indexes, glossary links, incoming references, and orphaned material. Keep advanced concepts discoverable from relevant practical guidance rather than presenting them as prerequisites.
+- **Discovery:** check reader paths, the [sitemap](../../../pages/sitemap.md), topic and directory indexes, glossary links, incoming references, and orphaned material. For each in-scope goal, assess whether the pages linked from its overview are relevant and cover its core advice; identify missing or misleading relationships. Update the curated overview links rather than editing the generated sitemap. Keep advanced concepts discoverable from relevant practical guidance rather than presenting them as prerequisites.
 - **Terminology:** compare terms and definitions with the glossary and their context; verify apparent inconsistencies in the source before proposing a change.
 - **Slides:** check that summaries retain essential qualifications and link to their canonical concepts.
 - **Freshness:** inspect changing claims, versions, dates, source quality, and whether recommendations are supported by evidence.
@@ -64,7 +64,7 @@ When extracting concepts:
 
 ## 5. Verify and hand off
 
-Use the repository task interface to format changed Markdown and run `just verify`. Check that new directories and hidden skill Markdown are included. Inspect the diff for accidental rewrites, broken navigation, and lost sources; leave raw archives and unrelated changes intact.
+Use the repository task interface to format changed Markdown, regenerate the sitemap with `just sitemap` when affected, and run `just verify`. Check that new directories and hidden skill Markdown are included. Inspect the diff for accidental rewrites, broken navigation, and lost sources; leave raw archives and unrelated changes intact.
 
 Report the review scope, meaningful changes or findings, checks run, and unresolved freshness or coverage gaps. Keep reports in the conversation unless a persistent report was requested.
 

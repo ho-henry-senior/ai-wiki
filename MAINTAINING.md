@@ -1,6 +1,8 @@
 # Maintaining the wiki
 
-Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just --list` to discover tasks, `just setup` to install the pinned development tools, then `just verify` to check Markdown formatting and internal links, including heading anchors. Checks include `concepts/`, `slides/`, repository skills under `.agents/skills/`, and workflow Markdown. External URLs and raw material under `data/` are excluded.
+Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just --list` to discover tasks, `just setup` to install the pinned development tools, then `just verify` to test and check the sitemap, Markdown formatting, and internal links, including heading anchors. Checks include `concepts/`, `slides/`, repository skills under `.agents/skills/`, and workflow Markdown. External URLs and raw material under `data/` are excluded.
+
+The [sitemap](pages/sitemap.md) lists pages from their metadata and shows the links curated in the four outcome overviews. After adding or removing content, changing its title or metadata, or changing overview links, run `just sitemap`; `just verify` reports stale output without changing it. The sitemap excludes directory indexes and raw material from its generated inventory.
 
 Use `just format` to apply formatting or `just links` to check local links alone. Formatting preserves prose line breaks and leaves embedded code examples unchanged. Recipes delegate to npm scripts, which can also be run directly. See [the agent entrypoint](AGENTS.md) for context pointers and [page conventions](pages/README.md) when adding content.
 

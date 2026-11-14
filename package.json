@@ -5,17 +5,22 @@
     "node": ">=22"
   },
   "scripts": {
-    "verify": "npm run format:check && npm run links",
+    "verify": "npm run test:sitemap && npm run sitemap:check && npm run format:check && npm run links",
     "format:check": "prettier --check \"**/*.md\" \".agents/skills/**/*.md\" \".github/workflows/**/*.md\"",
     "format": "prettier --write \"**/*.md\" \".agents/skills/**/*.md\" \".github/workflows/**/*.md\"",
-    "links": "remark . .agents/skills .github/workflows --quiet --frail --no-stdout"
+    "links": "remark . .agents/skills .github/workflows --quiet --frail --no-stdout",
+    "sitemap": "node scripts/sitemap.mjs --write",
+    "sitemap:check": "node scripts/sitemap.mjs --check",
+    "test:sitemap": "node --test scripts/sitemap.test.mjs"
   },
   "devDependencies": {
     "prettier": "3.10.1",
+    "remark": "15.0.1",
     "remark-cli": "12.0.1",
     "remark-frontmatter": "5.0.0",
     "remark-gfm": "4.0.1",
-    "remark-validate-links": "13.1.0"
+    "remark-validate-links": "13.1.0",
+    "yaml": "2.9.1"
   },
   "overrides": {
     "glob": "14.0.2",
