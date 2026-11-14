@@ -2,6 +2,8 @@
 
 A working knowledge base for people building with agents and people building agent tools. It brings together practical guidance, concepts, examples, and source material. The topic map is provisional: change it as the collection develops.
 
+See [the design goals](DESIGN-GOALS.md) for the wiki's purpose, scope, and intended organization.
+
 ## Topic map
 
 These are starting lenses, not a complete taxonomy. Add links to authored pages as they emerge. A page may appear under more than one topic; keep only one copy of the page.
