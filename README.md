@@ -42,6 +42,10 @@ Working effectively with agents, from CLI use and token efficiency to delegation
 - [Define agent role responsibilities and boundaries](pages/agent-role-boundaries.md)
 - [Unit tests in the age of AI](pages/unit-tests-in-the-age-of-ai.md)
 
+### Shared vocabulary
+
+- [AI glossary](pages/glossary.md) — practical definitions of foundational AI and current generative AI terms.
+
 ## Guided path
 
 - [From CLI agents toward a lightweight software factory](pages/cli-to-software-factory.md) — an exploratory path linking topics as the material develops, not a prescribed maturity model.

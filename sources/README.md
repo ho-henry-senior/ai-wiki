@@ -9,3 +9,4 @@ Add simple links here with a title and, when useful, a short note. Give a resour
 Authored pages can link to sources selectively, especially where a source supports an important, time-sensitive, or contested point.
 
 - [Justfile patterns across Node.js and Python repositories](repository-justfiles.md) — local examples reviewed to inform the task-interface guide, Justfile pattern, and tool reference.
+- [General AI terms: source-backed vocabulary candidates](ai-terms-research.md) — primary-source research for a standalone AI glossary, with definitions, distinctions, and areas of uncertainty.

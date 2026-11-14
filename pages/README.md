@@ -21,6 +21,7 @@ The README topic map is the navigation layer, not a directory scheme. Link a pag
 
 ## Current pages
 
+- [AI glossary](glossary.md) — practical definitions of foundational AI and current generative AI terms.
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — working notes on domain, decisions, architecture, and inter-repository context.
 - [A structure for agent-facing repositories](agent-facing-repository-structure.md) — an illustrative pattern connecting instructions, reference material, skills, task commands, and harness-specific configuration.
 - [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) — current cross-harness support, limits, and guidance for keeping repository instructions concise and discoverable.
