@@ -9,6 +9,26 @@ This is intended to be a curated, changing list—not an exhaustive directory or
 
 The entries below are researched candidates, not skills we have tried or endorsed. Keep that distinction visible as the list develops.
 
+## Specifications and task breakdown
+
+### Matt Pocock — to-spec
+
+- **Problem addressed:** turning an existing discussion and codebase context into a structured specification.
+- **Why it may be useful:** it captures the problem, decisions, testing, and scope without repeating the interview. It asks for agreement on testing seams, then publishes the spec to the configured issue tracker with a `ready-for-agent` label; it does not explicitly require approval of the finished spec before publishing. A local draft or approval-first workflow requires adaptation.
+- **Harness support:** published in an agent-skills repository; check its current installation and compatibility instructions for the target harness. It requires issue-tracker and triage-label configuration.
+- **Built-in equivalent:** not assessed.
+- **Status and review date:** researched candidate; not tried; reviewed 2026-11-14.
+- **Source:** [to-spec skill](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-spec)
+
+### Matt Pocock — to-tickets
+
+- **Problem addressed:** breaking a plan or specification into independently verifiable work with explicit dependencies.
+- **Why it may be useful:** it proposes vertical slices and blocking relationships, then asks the user to approve the breakdown before publishing. It also describes an expand–contract approach for wide refactors that cannot be sliced safely.
+- **Harness support:** published in an agent-skills repository; check its current installation and compatibility instructions for the target harness. It requires tracker and triage-label configuration and supports local ticket files or a real issue tracker.
+- **Built-in equivalent:** not assessed.
+- **Status and review date:** researched candidate; not tried; reviewed 2026-11-14.
+- **Source:** [to-tickets skill](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-tickets)
+
 ## Testing and test quality
 
 ### Matt Pocock — TDD and good/bad tests
