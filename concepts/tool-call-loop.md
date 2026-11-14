@@ -7,6 +7,8 @@ summary: A model requests a tool action; the harness checks and dispatches it, t
 
 A language model does not execute a tool merely by generating a request for it. The harness or connected execution service performs the action and returns its result.
 
+[View the short slide](../slides/tool-call-loop.md).
+
 ## The loop
 
 1. The harness supplies instructions, relevant context, and definitions of available tools.

@@ -10,6 +10,8 @@ State the core idea first. Keep its explanation, a useful example or diagram, es
 
 Extract a concept when it is useful independently or needed in multiple places. Keep its detailed explanation canonical here; articles should summarize it in their own narrative and link to it. A concept may suit a short slide, but neither a fixed word count nor slide-sized formatting is required. Keep brief definitions in the [glossary](../pages/glossary.md), linking here for depth.
 
+[Short slides](../slides/README.md) summarize selected concepts and link back here for the fuller explanation.
+
 Follow [the freshness guidance](../pages/README.md#keeping-content-current) when editing concepts. Add new concepts to this index and the relevant sections of [the topic map](../README.md#topic-map).
 
 ## Models, tools, and context

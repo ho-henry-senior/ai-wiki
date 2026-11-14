@@ -8,6 +8,8 @@ Put a standalone explanation or reusable distinction in `concepts/` when extract
 
 Length alone is not a reason to split. Keep tightly coupled explanations together; catalogs, checklists, and concrete workflow examples can remain complete pages. Concepts may provide the basis for short slides, but slide size is not a required format.
 
+[Short slides](../slides/README.md) are standalone summaries of selected concepts, not replacements for their fuller explanations.
+
 Use lightweight YAML front matter to identify each page's role and summarize it:
 
 ```yaml

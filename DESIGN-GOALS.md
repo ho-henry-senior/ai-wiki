@@ -14,6 +14,17 @@ The wiki is primarily maintained by one contributor with AI assistance. Favor an
 
 ## Goals
 
+Help readers improve these outcomes in AI-assisted work:
+
+- **Alignment:** Get results that match the intended outcome. Clarify intent, provide relevant repository context and tools, and use specifications and verification to reduce misunderstandings. This practical, task-level use complements the broader AI meaning in the [glossary](pages/glossary.md#alignment).
+- **Economy:** Achieve useful results with less time and fewer tokens, without sacrificing quality or security. Reduce rework, delegate repeatable tasks to deterministic tools, and make their interfaces clear.
+- **Traceability:** Understand what was requested, what changed, and the evidence and decisions behind it. Use appropriate specifications, tickets, PRs, reviews, and verification records to support human oversight; an agent's explanation is not necessarily a complete account of its reasoning.
+- **Security:** Protect sensitive information and limit unsafe actions in AI-assisted work. Identify risks, configure enforceable controls, and review integrations and generated changes.
+
+These goals overlap: for example, a clear specification can improve alignment, reduce rework, and support traceability. Organize navigation around reader outcomes without forcing a topic into only one goal.
+
+To support those outcomes:
+
 - **Make guidance practical.** Include workflows, examples, concepts, and explanations that help readers apply AI to real work.
 - **Improve agent work in repositories.** Document ways to make repositories easier for agents to use, including tools, machine-readable instructions, and indexed project documentation that helps agents load only the context they need.
 - **Support spec-driven development.** Explore how agents can help build and refine specifications, turn them into tasks, and align implementation with requirements.
@@ -32,6 +43,6 @@ Guidance specific to other agent products or harnesses, such as Codex, Claude, o
 
 Use small, focused files for concepts and reusable guidance. Use larger articles to connect and explain multiple concepts. Link related material rather than duplicating it, and keep indexes up to date so readers and agents can find the right level of detail.
 
-Keep reusable explanations in `concepts/`, narrative articles and applied references in `pages/`, and provenance in `sources/`. Concepts can be useful foundations for short slides, but preserve necessary examples and caveats rather than imposing a slide-sized limit.
+Keep reusable explanations in `concepts/`, narrative articles and applied references in `pages/`, provenance in `sources/`, and short standalone summaries in `slides/`. Slides link to their canonical concepts; preserve necessary examples and caveats in those concepts rather than imposing a slide-sized limit.
 
 The topic map is allowed to change as the wiki grows; it is a navigation aid, not a rigid taxonomy.

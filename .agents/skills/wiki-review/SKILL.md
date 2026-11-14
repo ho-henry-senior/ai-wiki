@@ -11,7 +11,7 @@ Review the knowledge structure and its evidence, not just Markdown formatting. P
 
 Read [the design goals](../../../DESIGN-GOALS.md), [agent instructions](../../../AGENTS.md), [article conventions](../../../pages/README.md), [concept conventions](../../../concepts/README.md), and [source conventions](../../../sources/README.md). Inspect the worktree and preserve unrelated changes.
 
-For a whole-wiki review, inventory and read every authored article and concept, the glossary, indexes, and source records. Include repository instructions and review tooling when checking navigation and verification coverage. Read raw archives only when needed to resolve a claim; leave them unchanged.
+For a whole-wiki review, inventory and read every authored article, concept, and slide, the glossary, indexes, and source records. Check slides against their canonical concepts. Include repository instructions and review tooling when checking navigation and verification coverage. Read raw archives only when needed to resolve a claim; leave them unchanged.
 
 For a scoped review, identify the requested subset and its directly related material. Record what was read and what remains unchecked in session notes; do not describe a partial review as whole-wiki coverage.
 
@@ -26,6 +26,7 @@ Evaluate the material against:
 - **Canonical ownership:** locate competing explanations, inconsistent definitions, and opportunities to replace duplication with summaries and links.
 - **Composition:** articles should still explain a problem and connect ideas, rather than become lists of concept links.
 - **Discovery:** check topic and directory indexes, glossary links, incoming references, and orphaned material.
+- **Slides:** check that summaries retain essential qualifications and link to their canonical concepts.
 - **Freshness:** inspect changing claims, versions, dates, source quality, and whether recommendations are supported by evidence.
 
 For each proposed extraction, name the question or distinction, its current location, and the articles or reference uses that justify it. Keep examples and essential caveats with the explanation. Keep catalogs, checklists, and concrete workflow examples intact when splitting would reduce usefulness.
@@ -52,7 +53,7 @@ When extracting concepts:
 - Update concept and article indexes, relevant topic-map entries, and glossary links. Keep glossary definitions short and maintain its wider AI scope.
 - Change policies or authoring instructions only where the review has established a repeatable rule.
 
-**Complete when:** extracted concepts have incoming references and index entries, articles still tell a coherent story, and no explanation or important qualification has been silently lost.
+**Complete when:** extracted concepts have incoming references and index entries, affected slides agree with their canonical concepts, articles still tell a coherent story, and no explanation or important qualification has been silently lost.
 
 ## 5. Verify and hand off
 

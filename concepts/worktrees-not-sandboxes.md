@@ -7,6 +7,8 @@ summary: Git branches and worktrees separate changes, while a security sandbox r
 
 A branch or Git worktree helps organize changes. It does not, by itself, restrict the filesystem, network, credentials, or external systems available to an agent or command.
 
+[View the short slide](../slides/worktrees-not-sandboxes.md).
+
 For example, an agent working in a disposable worktree may still use the same operating-system account and accessible credentials as the main checkout. Reverting its Git changes cannot undo an external API action or retrieve data already transmitted.
 
 ## Choose the right isolation

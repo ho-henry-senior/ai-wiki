@@ -7,6 +7,8 @@ summary: A green test suite establishes that assertions passed, not that those a
 
 A passing suite demonstrates that the implementation satisfies the assertions that ran. It does not by itself establish that those assertions match the request or cover every important behavior.
 
+[View the short slide](../slides/tests-are-evidence.md).
+
 Agents can generate code and tests from the same mistaken assumption. Derive expectations from the specification or an established behavioral contract, rather than treating the implementation as its own oracle.
 
 ## Example
