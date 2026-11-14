@@ -23,3 +23,4 @@ Before an agent works on a repository, identify sensitive data and credentials i
 
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — a practical review of a particular setup.
 - [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — accidental exposure and containment.
+- [Lo-fi software factory case study](lo-fi-software-factory-case-study.md) — security limitations of an unattended local workflow.

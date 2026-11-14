@@ -23,3 +23,4 @@ For one task, record the desired outcome and acceptance criteria in the issue or
 
 - [Repository context for agents](repository-context-for-agents.md) — preserving decisions and distinguishing confirmed rationale from inference.
 - [Alignment](alignment.md) — defining and checking the intended outcome.
+- [Lo-fi software factory case study](lo-fi-software-factory-case-study.md) — artifacts and review evidence in a real workflow.

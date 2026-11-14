@@ -25,3 +25,4 @@ Scale the process to the work: a small change may need only a short issue and fo
 
 - [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — focused feedback and its limits.
 - [Evals](../concepts/evals.md) — compare agent behavior on representative tasks when repeatable assessment is useful.
+- [Lo-fi software factory case study](lo-fi-software-factory-case-study.md) — an example of specifications, role handoffs, and human review.

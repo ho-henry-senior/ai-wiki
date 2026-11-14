@@ -8,3 +8,5 @@ summary: An exploratory path from using a coding agent through delegation and to
 This is a working path through the knowledge base, not a prescribed maturity model. It will connect relevant pages as they are written, tracing the questions involved in moving from a single agent in a CLI to multiple agents in distinct roles and, eventually, automation.
 
 As work becomes more distributed across agents, see [Define agent role responsibilities and boundaries](agent-role-boundaries.md) for a way to make each role's expected work and limits explicit.
+
+For an example of a local, human-supervised implementation and its limitations, see the [lo-fi software factory case study](lo-fi-software-factory-case-study.md).

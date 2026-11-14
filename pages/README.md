@@ -66,3 +66,4 @@ Keep edit-time review focused on the affected material and directly dependent gu
 - [Define agent role responsibilities and boundaries](agent-role-boundaries.md) — positive scope, explicit limits, and workflow responsibility mapping.
 - [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — the value and limits of unit tests as feedback for agent-produced changes.
 - [From CLI agents toward a lightweight software factory](cli-to-software-factory.md) — an exploratory progression path.
+- [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.
