@@ -63,20 +63,20 @@ This example shows one possible division of work, not a prescribed role model. I
 
 **R** = Responsible for doing the work; **A** = Accountable for the outcome; **C** = Consulted; **I** = Informed. A blank means “not assigned in this example,” not “prohibited.” State prohibitions in the role profile.
 
-| Activity | Product agent | Business analyst | Developer agent | Reviewer agent | Human product owner/approver |
-| --- | --- | --- | --- | --- | --- |
-| Clarify problem, desired outcome, and acceptance intent | R | C | I | I | A |
-| Elicit requirements and draft the spec | C | R | C | I | A |
-| Approve the spec and scope | C | C | I | I | R/A |
-| Decompose approved scope into tickets/tasks | C | R/A | C | I | I |
-| Prioritize and assign work | C | C | I | I | R/A |
-| Propose technical design or an ADR, when needed | C | C | R | I | A |
-| Implement the task and tests | I | C | R/A | I | I |
-| Run validation and report results | I | I | R/A | I | I |
-| Create or update the PR | I | I | R/A | I | I |
-| Review the PR against requirements and code standards | I | I | C | R/A | I |
-| Address review findings | I | I | R/A | C | I |
-| Approve merge/release | C | I | I | C | R/A |
+| Activity                                                | Product agent | Business analyst | Developer agent | Reviewer agent | Human product owner/approver |
+| ------------------------------------------------------- | ------------- | ---------------- | --------------- | -------------- | ---------------------------- |
+| Clarify problem, desired outcome, and acceptance intent | R             | C                | I               | I              | A                            |
+| Elicit requirements and draft the spec                  | C             | R                | C               | I              | A                            |
+| Approve the spec and scope                              | C             | C                | I               | I              | R/A                          |
+| Decompose approved scope into tickets/tasks             | C             | R/A              | C               | I              | I                            |
+| Prioritize and assign work                              | C             | C                | I               | I              | R/A                          |
+| Propose technical design or an ADR, when needed         | C             | C                | R               | I              | A                            |
+| Implement the task and tests                            | I             | C                | R/A             | I              | I                            |
+| Run validation and report results                       | I             | I                | R/A             | I              | I                            |
+| Create or update the PR                                 | I             | I                | R/A             | I              | I                            |
+| Review the PR against requirements and code standards   | I             | I                | C               | R/A            | I                            |
+| Address review findings                                 | I             | I                | R/A             | C              | I                            |
+| Approve merge/release                                   | C             | I                | I               | C              | R/A                          |
 
 This example keeps the Product agent focused on outcomes rather than implementation, the Business Analyst on requirements and decomposition rather than code review, and the Reviewer on assessment rather than implementation. The human retains prioritization and final approval. Repositories may assign the mechanics of merging or releasing separately according to their policies.
 

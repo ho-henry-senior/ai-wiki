@@ -92,4 +92,3 @@ The pattern reflects the Egar repositories inspected for this discussion: all fi
 - [GitHub Copilot custom instructions](https://docs.github.com/en/copilot/concepts/prompting-and-context/custom-instructions)
 - [GitHub Copilot custom agents](https://docs.github.com/en/copilot/concepts/customizations/custom-agents)
 - [GitHub Copilot prompt files](https://docs.github.com/en/copilot/concepts/prompting-and-context/prompt-files)
-

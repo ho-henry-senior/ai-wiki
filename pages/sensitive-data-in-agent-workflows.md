@@ -11,25 +11,25 @@ This guide covers AI-assisted software work, not the full subject of securing AI
 
 ## The main risks
 
-| Risk | What can go wrong |
-| --- | --- |
-| Data exposure | Secrets, private code, or personal data reach unintended services, logs, or shared artifacts. |
-| Unintended actions | An agent deletes files, changes infrastructure, spends money, or publishes material without appropriate approval. |
-| Prompt injection | Instructions embedded in issues, files, web pages, or tool results steer the agent into misusing its access. |
-| Unsafe changes | Generated code introduces vulnerabilities or weakens tests, access controls, or other safeguards. |
-| Untrusted integrations | Tools, skills, dependencies, or MCP servers execute code or access data beyond what is expected. |
+| Risk                   | What can go wrong                                                                                                 |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Data exposure          | Secrets, private code, or personal data reach unintended services, logs, or shared artifacts.                     |
+| Unintended actions     | An agent deletes files, changes infrastructure, spends money, or publishes material without appropriate approval. |
+| Prompt injection       | Instructions embedded in issues, files, web pages, or tool results steer the agent into misusing its access.      |
+| Unsafe changes         | Generated code introduces vulnerabilities or weakens tests, access controls, or other safeguards.                 |
+| Untrusted integrations | Tools, skills, dependencies, or MCP servers execute code or access data beyond what is expected.                  |
 
 These risks overlap. Prompt injection can cause data exposure or destructive actions; a compromised integration can do both. The impact grows with the agent's accessible data, permissions, and autonomy. OWASP describes this relationship in its guidance on [prompt injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) and [excessive agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/).
 
 ## What data might be sensitive?
 
-| Data | How it may enter the workflow |
-| --- | --- |
-| Credentials: API tokens, private keys, cookies, connection strings, environment variables | Reading configuration; commands that print environment or credential data; test failures and debug output. |
-| Private code and plans: source, internal documentation, unreleased designs | File reads, workspace search or indexing, attached diffs, pasted prompts, or automatically selected editor context. |
-| Personal or customer data: support tickets, application logs, production records, test fixtures | Investigating real cases; querying logs, databases, or issue trackers; copying production data into tests. |
-| Security-sensitive information: vulnerabilities, incident details, architecture, internal endpoints | Security investigations, code scans, tool output, and threat-model discussions. |
-| Derived information: generated summaries, code, test results, and reports | The agent repeats, combines, or transforms sensitive information it has received. A summary is not necessarily anonymized or safe to share. |
+| Data                                                                                                | How it may enter the workflow                                                                                                               |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Credentials: API tokens, private keys, cookies, connection strings, environment variables           | Reading configuration; commands that print environment or credential data; test failures and debug output.                                  |
+| Private code and plans: source, internal documentation, unreleased designs                          | File reads, workspace search or indexing, attached diffs, pasted prompts, or automatically selected editor context.                         |
+| Personal or customer data: support tickets, application logs, production records, test fixtures     | Investigating real cases; querying logs, databases, or issue trackers; copying production data into tests.                                  |
+| Security-sensitive information: vulnerabilities, incident details, architecture, internal endpoints | Security investigations, code scans, tool output, and threat-model discussions.                                                             |
+| Derived information: generated summaries, code, test results, and reports                           | The agent repeats, combines, or transforms sensitive information it has received. A summary is not necessarily anonymized or safe to share. |
 
 Sensitivity depends on context and organizational policy. An internal endpoint may be harmless in one setting and confidential in another.
 
@@ -37,14 +37,14 @@ Sensitivity depends on context and organizational policy. An internal endpoint m
 
 The destinations below are possibilities, not claims that every product sends data to all of them. Trace the actual harness, account, model endpoint, and enabled integrations.
 
-| Destination | How data gets there | Main controls |
-| --- | --- | --- |
-| Model provider | The harness includes prompts, file contents, or tool results in inference requests. | Use an approved provider and account; verify retention, training use, and access policies; exclude or redact sensitive content before transmission. |
-| Local session files, caches, indexes, and logs | The harness, editor, or tools save conversation history, arguments, results, debug output, or indexed content. | Restrict filesystem access; use disk encryption; avoid printing secrets; review logging and indexing; limit retention and remove unneeded records. |
-| Cloud session storage and backups | Session syncing, device backups, or transcript sharing copies history remotely. | Disable unnecessary syncing; restrict sharing and access; verify cloud retention, backup, and deletion policies. |
-| Tools and external services | Tool arguments send content to search engines, APIs, MCP servers, or delegated agents; those services may retain their own records. | Review integrations and their destinations; use narrowly scoped credentials; restrict network access; require approval for sensitive calls. |
-| Repository and shared artifacts | Sensitive information is written into files, commits, PRs, issues, CI output, build artifacts, or exported transcripts. | Review diffs and publication targets; use secret scanning and protected branches; require approval before publishing; inspect generated reports and CI output. |
-| Attacker-controlled systems | Prompt injection or a malicious integration causes an outbound request or upload containing data. | Combine isolation, restricted outbound networking, minimal credentials, and approval for consequential actions; treat retrieved content as untrusted. |
+| Destination                                    | How data gets there                                                                                                                 | Main controls                                                                                                                                                  |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Model provider                                 | The harness includes prompts, file contents, or tool results in inference requests.                                                 | Use an approved provider and account; verify retention, training use, and access policies; exclude or redact sensitive content before transmission.            |
+| Local session files, caches, indexes, and logs | The harness, editor, or tools save conversation history, arguments, results, debug output, or indexed content.                      | Restrict filesystem access; use disk encryption; avoid printing secrets; review logging and indexing; limit retention and remove unneeded records.             |
+| Cloud session storage and backups              | Session syncing, device backups, or transcript sharing copies history remotely.                                                     | Disable unnecessary syncing; restrict sharing and access; verify cloud retention, backup, and deletion policies.                                               |
+| Tools and external services                    | Tool arguments send content to search engines, APIs, MCP servers, or delegated agents; those services may retain their own records. | Review integrations and their destinations; use narrowly scoped credentials; restrict network access; require approval for sensitive calls.                    |
+| Repository and shared artifacts                | Sensitive information is written into files, commits, PRs, issues, CI output, build artifacts, or exported transcripts.             | Review diffs and publication targets; use secret scanning and protected branches; require approval before publishing; inspect generated reports and CI output. |
+| Attacker-controlled systems                    | Prompt injection or a malicious integration causes an outbound request or upload containing data.                                   | Combine isolation, restricted outbound networking, minimal credentials, and approval for consequential actions; treat retrieved content as untrusted.          |
 
 Sending data for inference, retaining it, and using it for training are separate questions. Disabling training use does not establish that data never leaves the machine or is never retained. Likewise, disabling session sync does not disable model requests or external tool calls.
 

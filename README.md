@@ -62,3 +62,11 @@ Sensitive-data exposure, tool permissions, and controls for using agents safely.
 
 - [Authored pages](pages/README.md)
 - [Source index and records](sources/README.md)
+
+## Maintaining the wiki
+
+Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just --list` to discover tasks, `just setup` to install the pinned development tools, then `just verify` to check Markdown formatting and internal links, including heading anchors. External URLs and raw material under `data/` are excluded from these checks.
+
+Use `just format` to apply formatting or `just links` to check local links alone. Formatting preserves prose line breaks and leaves embedded code examples unchanged. Recipes delegate to npm scripts, which can also be run directly. See [the agent entrypoint](AGENTS.md) for context pointers and [page conventions](pages/README.md) when adding content.
+
+The dependency overrides pin patched `glob` and `minimatch` releases while the link-checking toolchain still requests older versions.

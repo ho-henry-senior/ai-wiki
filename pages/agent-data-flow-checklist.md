@@ -18,14 +18,14 @@ Use this when configuring an agent, enabling an integration, or preparing to wor
 
 ## Check each destination
 
-| Destination | Questions to resolve |
-| --- | --- |
-| Model provider | Is this endpoint and account approved for the data? What leaves the machine? What are the retention, access, and training-use policies? Can sensitive content be excluded before transmission? |
-| Local storage | Where are histories, indexes, caches, and logs stored? Who can read them? Are disk encryption and suitable retention in place? Can commands avoid printing secrets? |
-| Cloud history and backups | Is syncing needed? Who can access shared sessions? What is backed up, and what does deletion actually remove? |
-| Tools and services | What arguments and data are sent? Where does each tool execute? What does it log or retain? Are credentials, permissions, and outbound destinations limited? |
-| Repository and artifacts | Could changes, reports, commits, PRs, issues, CI logs, or exports disclose data? Are scanning, review, branch protection, and publication approval in place? |
-| Unintended destinations | Can an agent or integration send data to arbitrary hosts? Are outbound restrictions and isolation enforced independently of model instructions? |
+| Destination               | Questions to resolve                                                                                                                                                                           |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Model provider            | Is this endpoint and account approved for the data? What leaves the machine? What are the retention, access, and training-use policies? Can sensitive content be excluded before transmission? |
+| Local storage             | Where are histories, indexes, caches, and logs stored? Who can read them? Are disk encryption and suitable retention in place? Can commands avoid printing secrets?                            |
+| Cloud history and backups | Is syncing needed? Who can access shared sessions? What is backed up, and what does deletion actually remove?                                                                                  |
+| Tools and services        | What arguments and data are sent? Where does each tool execute? What does it log or retain? Are credentials, permissions, and outbound destinations limited?                                   |
+| Repository and artifacts  | Could changes, reports, commits, PRs, issues, CI logs, or exports disclose data? Are scanning, review, branch protection, and publication approval in place?                                   |
+| Unintended destinations   | Can an agent or integration send data to arbitrary hosts? Are outbound restrictions and isolation enforced independently of model instructions?                                                |
 
 ## Check actions as well as data
 

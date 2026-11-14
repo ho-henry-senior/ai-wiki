@@ -9,13 +9,13 @@ summary: What AGENTS.md can do as a shared repository instruction entrypoint, wh
 
 ## What the documentation says
 
-| Harness | Documented behavior |
-| --- | --- |
-| OpenAI Codex | Uses `AGENTS.md` files for repository instructions, with instructions discoverable in the directory hierarchy. |
-| GitHub Copilot CLI | Supports `AGENTS.md` as a source of custom instructions. |
-| Cursor CLI | Reads `AGENTS.md` alongside its own rules and other supported instruction files. |
-| Claude Code | Documents `AGENTS.md` as an alternative project instruction file to `CLAUDE.md`. |
-| Gemini CLI | Defaults to `GEMINI.md`; its context filename setting can be configured to include `AGENTS.md`. |
+| Harness            | Documented behavior                                                                                            |
+| ------------------ | -------------------------------------------------------------------------------------------------------------- |
+| OpenAI Codex       | Uses `AGENTS.md` files for repository instructions, with instructions discoverable in the directory hierarchy. |
+| GitHub Copilot CLI | Supports `AGENTS.md` as a source of custom instructions.                                                       |
+| Cursor CLI         | Reads `AGENTS.md` alongside its own rules and other supported instruction files.                               |
+| Claude Code        | Documents `AGENTS.md` as an alternative project instruction file to `CLAUDE.md`.                               |
+| Gemini CLI         | Defaults to `GEMINI.md`; its context filename setting can be configured to include `AGENTS.md`.                |
 
 These are not interchangeable loading contracts. A tool may combine files, discover instructions only in certain locations, or require configuration. Check the current documentation and verify what a particular harness loads before relying on an instruction being applied.
 
