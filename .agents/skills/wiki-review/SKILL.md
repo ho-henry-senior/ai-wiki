@@ -1,6 +1,6 @@
 ---
 name: wiki-review
-description: Review this wiki for design-goal alignment, reusable concepts, duplication, navigation, and stale claims. Use when asked for a whole-wiki review or a concept-extraction review.
+description: Review this wiki's information architecture, design-goal alignment, reusable concepts, navigation, and stale claims. Use for whole-wiki, goal-alignment, information-architecture, or concept-extraction reviews.
 ---
 
 # Review the wiki
@@ -15,23 +15,30 @@ For a whole-wiki review, inventory and read every authored article, concept, and
 
 For a scoped review, identify the requested subset and its directly related material. Record what was read and what remains unchecked in session notes; do not describe a partial review as whole-wiki coverage.
 
+For deeper corpus-inventory or terminology methods, consult the optional [candidate-skills research](../../../sources/wiki-information-architecture-skills.md). These external skills are not prerequisites for a review.
+
 **Complete when:** every in-scope file has a recorded disposition, and exclusions are explicit.
 
 ## 2. Identify findings and extraction candidates
 
+For each in-scope goal, trace a reader's path from the homepage to an actionable starting point, how to check the result, and relevant deeper material. For a whole-wiki review, cover all four goals. Record the paths and evidence; distinguish absent guidance from guidance that is hard to discover.
+
 Evaluate the material against:
 
 - **Scope:** practical AI usage, portable conventions, and useful Copilot-specific guidance. Identify other products' setup instructions that drift beyond the design goals.
+- **Goal alignment:** compare the in-scope guidance and navigation with the design goals. Identify goals without a useful starting path and content that does not support the stated audience or scope.
+- **Practical priority:** check that starting points favor changes with clear likely benefit and modest effort, explain how to try and verify them, and preserve necessary security safeguards. Assess effort in context rather than treating every reader's first step as the same.
 - **Reuse:** find explanations answering one standalone question or used across topics. Distinguish genuine reuse from sections that simply happen to be long.
 - **Canonical ownership:** locate competing explanations, inconsistent definitions, and opportunities to replace duplication with summaries and links.
 - **Composition:** articles should still explain a problem and connect ideas, rather than become lists of concept links.
-- **Discovery:** check topic and directory indexes, glossary links, incoming references, and orphaned material.
+- **Discovery:** check reader paths, topic and directory indexes, glossary links, incoming references, and orphaned material. Keep advanced concepts discoverable from relevant practical guidance rather than presenting them as prerequisites.
+- **Terminology:** compare terms and definitions with the glossary and their context; verify apparent inconsistencies in the source before proposing a change.
 - **Slides:** check that summaries retain essential qualifications and link to their canonical concepts.
 - **Freshness:** inspect changing claims, versions, dates, source quality, and whether recommendations are supported by evidence.
 
 For each proposed extraction, name the question or distinction, its current location, and the articles or reference uses that justify it. Keep examples and essential caveats with the explanation. Keep catalogs, checklists, and concrete workflow examples intact when splitting would reduce usefulness.
 
-**Complete when:** each finding has a location and reason, and each proposed concept has a clear canonical home and plausible use.
+**Complete when:** in-scope goal paths and gaps have evidence, each finding has a location and reason, and each proposed concept has a clear canonical home and plausible use.
 
 ## 3. Check evidence proportionally
 
