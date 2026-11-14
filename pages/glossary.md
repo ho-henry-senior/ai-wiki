@@ -17,7 +17,7 @@ A machine-based system that infers outputs from inputs to achieve explicit or im
 
 ### Alignment
 
-The goal of shaping a model's behavior to follow intended instructions and values. Alignment is a broad goal; reinforcement learning from human feedback (RLHF) is one technique that can be used toward it. It is not the same as system-level safety controls.
+How well an AI system's behavior reflects human intentions and values. In this wiki, alignment also describes how well an agent's work matches the intended outcome of a specific task. Reinforcement learning from human feedback (RLHF) is one technique used toward the broader goal; it is not the same as system-level safety controls. See [OpenAI's approach to alignment research](https://openai.com/index/our-approach-to-alignment-research/).
 
 ### Agent
 
