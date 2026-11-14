@@ -1,5 +1,5 @@
 ---
-type: guide
+type: overview
 summary: Core advice for recording requests, decisions, changes, and evidence in agent-assisted work.
 ---
 

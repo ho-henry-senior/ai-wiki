@@ -1,5 +1,5 @@
 ---
-type: guide
+type: exploration
 summary: An exploratory path from using a coding agent through delegation and toward automating repeatable work.
 ---
 

@@ -10,7 +10,7 @@ Length alone is not a reason to split. Keep tightly coupled explanations togethe
 
 [Short slides](../slides/README.md) are standalone summaries of selected concepts, not replacements for their fuller explanations.
 
-Use lightweight YAML front matter to identify each page's role and summarize it:
+Use lightweight YAML front matter to identify each page's primary purpose and summarize it. A page may also serve other purposes:
 
 ```yaml
 ---
@@ -21,9 +21,15 @@ summary: A concise description of what this page explains.
 
 Suggested `type` values:
 
-- `reference` — concise, primarily descriptive information.
+- `overview` — an entrypoint to an outcome or a group of related approaches.
+- `guide` — applied guidance for approaching a task or problem.
 - `pattern` — a reusable practice or building block.
-- `guide` — an applied or synthesized discussion; it may be broad or compose other pages.
+- `explanation` — an article explaining how related ideas fit together and why they matter.
+- `reference` — information or a checklist to consult.
+- `case-study` — an account of an approach applied in practice and what happened.
+- `exploration` — a provisional investigation or path, rather than a case study or established practice.
+
+Focused reusable concepts live in `concepts/` and use the types described in the [concept conventions](../concepts/README.md#writing-a-concept). An explanatory article may bring several concepts together without replacing them.
 
 The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it.
 
@@ -48,10 +54,10 @@ Keep edit-time review focused on the affected material and directly dependent gu
 - [How models and harnesses interact](model-harness-interaction.md) — the tool-call loop, message structure, session state, and context limits.
 - [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — major agent risks, data sources and destinations, and practical controls.
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — questions for reviewing a particular agent setup, integration, or sensitive task.
-- [Furnish repositories with context for agents](repository-context-for-agents.md) — working notes on domain, decisions, architecture, and inter-repository context.
+- [Furnish repositories with context for agents](repository-context-for-agents.md) — an overview of approaches to domain, decisions, architecture, and inter-repository context.
 - [A structure for agent-facing repositories](agent-facing-repository-structure.md) — an illustrative pattern connecting instructions, reference material, skills, task commands, and harness-specific configuration.
 - [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) — current cross-harness support, limits, and guidance for keeping repository instructions concise and discoverable.
-- [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — a guide to exposing deterministic repository tasks through a discoverable interface.
+- [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — a pattern for exposing deterministic repository tasks through a discoverable interface.
 - [A Justfile as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) — a focused pattern for turning existing repository commands into a stable, discoverable task interface.
 - [Tool choices by purpose](tools-by-purpose.md) — selection considerations and examples from several repositories.
 - [Skills as a changing capability layer](skills-as-capabilities.md) — why skills fill gaps and how their value can shift as harnesses evolve.

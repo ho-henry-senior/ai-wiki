@@ -1,5 +1,5 @@
 ---
-type: guide
+type: explanation
 summary: Explore unit tests as fast, deterministic feedback for agents, and the risks of treating test volume or a green suite as proof of correctness.
 ---
 

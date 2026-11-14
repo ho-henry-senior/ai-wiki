@@ -1,5 +1,5 @@
 ---
-type: guide
+type: explanation
 summary: How a harness supplies context and tools to a model, handles tool requests, and manages session history and context limits.
 ---
 

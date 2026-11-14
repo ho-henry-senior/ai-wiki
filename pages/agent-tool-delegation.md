@@ -1,5 +1,5 @@
 ---
-type: guide
+type: pattern
 summary: Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively.
 ---
 

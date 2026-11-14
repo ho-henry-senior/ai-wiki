@@ -25,7 +25,7 @@ An AI system that uses a model to pursue a task, often by selecting actions, usi
 
 ### Agent harness
 
-The software around a model that supplies context and tools, handles tool requests, and manages the interaction loop. It is distinct from the model and from the overall agent system, although usage varies. See [the tool-call loop](../concepts/tool-call-loop.md) and [the broader interaction guide](model-harness-interaction.md).
+The software around a model that supplies context and tools, handles tool requests, and manages the interaction loop. It is distinct from the model and from the overall agent system, although usage varies. See [the tool-call loop](../concepts/tool-call-loop.md) and [the broader interaction explanation](model-harness-interaction.md).
 
 ### Agentic system
 

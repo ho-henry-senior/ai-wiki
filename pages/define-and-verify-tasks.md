@@ -1,5 +1,5 @@
 ---
-type: guide
+type: pattern
 summary: Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them.
 ---
 

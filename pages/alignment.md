@@ -1,5 +1,5 @@
 ---
-type: guide
+type: overview
 summary: Core advice for helping an agent's work match a task's intended outcome.
 ---
 

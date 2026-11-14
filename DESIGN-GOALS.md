@@ -53,10 +53,11 @@ Provide content for these reader needs:
 - **Guide:** How do I approach a task?
 - **Pattern:** What reusable approach could I adopt?
 - **Concept:** What idea or distinction do I need to understand?
+- **Explanatory article:** How do related ideas fit together, and why do they matter?
 - **Reference or checklist:** What details should I look up or check?
 - **Case study:** What happened when someone applied an approach?
 
-These are purposes, not rigid templates: a page may serve more than one need. Distinguish observed results from proposed or illustrative examples.
+These are purposes, not rigid templates: a page may serve more than one need. An overview can also bring together patterns for a topic. Exploratory material can consider a possible approach without presenting it as an established practice or case study. Distinguish observed results from proposed or illustrative examples.
 
 Use small, focused files for concepts and reusable guidance. Use larger articles to connect and explain multiple concepts. Link related material rather than duplicating it, and keep indexes up to date so readers and agents can find the right level of detail.
 

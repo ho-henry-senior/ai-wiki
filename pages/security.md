@@ -1,5 +1,5 @@
 ---
-type: guide
+type: overview
 summary: Core advice for protecting sensitive information and limiting unsafe actions in agent-assisted work.
 ---
 
