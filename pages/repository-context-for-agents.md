@@ -9,6 +9,12 @@ Purpose-built tools tell agents what they can run. Repository context helps them
 
 These are working notes on areas to explore, not a complete prescription.
 
+## Try this first
+
+For one repository, add or update a short agent entrypoint that says what the project does and links to the existing task commands and authoritative documentation. Include any essential constraints the agent needs before acting; keep detailed architecture and decisions in their existing homes. Confirm that the agent tool you use actually loads the entrypoint and that its links lead to current information.
+
+This gives an agent a starting point without requiring a documentation overhaul. See [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) for support and limitations.
+
 ## Record decisions, including the ones that were never written down
 
 Architecture Decision Records (ADRs) can preserve the context behind important choices: the problem, constraints, options considered, decision, and consequences. They are useful both for new decisions and for explaining existing designs.

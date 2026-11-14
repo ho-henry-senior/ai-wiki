@@ -39,6 +39,7 @@ Keep edit-time review focused on the affected material and directly dependent gu
 
 ## Current pages
 
+- [Define and verify a task](define-and-verify-tasks.md) — clarify outcomes, acceptance criteria, verification, and review evidence.
 - [AI glossary](glossary.md) — practical definitions of foundational AI and current generative AI terms.
 - [How models and harnesses interact](model-harness-interaction.md) — the tool-call loop, message structure, session state, and context limits.
 - [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — major agent risks, data sources and destinations, and practical controls.

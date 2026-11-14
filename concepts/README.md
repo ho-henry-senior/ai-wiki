@@ -12,7 +12,7 @@ Extract a concept when it is useful independently or needed in multiple places. 
 
 [Short slides](../slides/README.md) summarize selected concepts and link back here for the fuller explanation.
 
-Follow [the freshness guidance](../pages/README.md#keeping-content-current) when editing concepts. Add new concepts to this index and the relevant sections of [the topic map](../README.md#topic-map).
+Follow [the freshness guidance](../pages/README.md#keeping-content-current) when editing concepts. Add new concepts to this index and the relevant sections of [the homepage](../README.md).
 
 ## Models, tools, and context
 

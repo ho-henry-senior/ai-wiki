@@ -9,6 +9,12 @@ Using an agent safely requires understanding both what it can access and what it
 
 This guide covers AI-assisted software work, not the full subject of securing AI-powered applications. See [How models and harnesses interact](model-harness-interaction.md) for the underlying interaction loop, and use the [data-flow checklist](agent-data-flow-checklist.md) to review a particular setup.
 
+## Try this first
+
+Before using an agent on a repository, identify the sensitive data and credentials it can access, the services that may receive data, and the actions it can perform. Limit access and credentials to the task, and configure approval or enforced restrictions for consequential actions such as publishing or infrastructure changes. Verify these controls in the actual tool and environment; instructions alone are not enforcement.
+
+Use the [data-flow checklist](agent-data-flow-checklist.md) to record what is known and investigate uncertain destinations. The right safeguards depend on the risk; do not defer essential controls solely because they require more effort.
+
 ## The main risks
 
 | Risk                   | What can go wrong                                                                                                 |

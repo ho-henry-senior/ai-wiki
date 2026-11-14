@@ -9,6 +9,12 @@ The goal is to help agents deliver more value—faster, cheaper, more accurately
 
 Agents should spend their reasoning on understanding the task and making changes. For bounded, repeatable work such as running focused tests or checking formatting, a deterministic tool can often do the job more cheaply and consistently than having an agent reverse-engineer the command or approximate the check itself.
 
+## Try this first
+
+Identify the commands the project already uses for focused tests and routine verification. Make them discoverable from the agent entrypoint or existing task interface, with prerequisites, scope, and whether they change files. Run them in the intended environment and check that their results are actionable.
+
+Reuse existing scripts first. If commands are scattered or hard to invoke, a small task interface such as a [Justfile](justfile-as-agent-facing-task-interface.md) can provide consistent names; introducing one is not required when the current interface already works.
+
 ## Expose a stable task interface
 
 Use the repository's existing scripts or task runner to expose a stable, discoverable interface to bounded work. A task runner such as [Just](https://just.systems/) can provide that interface, but is one practical option rather than a universal requirement. See [A Justfile as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) for a focused pattern.

@@ -23,6 +23,8 @@ Help readers improve these outcomes in AI-assisted work:
 
 These goals overlap: for example, a clear specification can improve alignment, reduce rework, and support traceability. Organize navigation around reader outcomes without forcing a topic into only one goal.
 
+Lead readers toward practical changes with a clear likely benefit and modest effort. Explain how to try and verify them, while linking to deeper concepts when they become relevant. Effort and benefit depend on context; essential security controls are not optional simply because they take more work.
+
 To support those outcomes:
 
 - **Make guidance practical.** Include workflows, examples, concepts, and explanations that help readers apply AI to real work.

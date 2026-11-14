@@ -5,7 +5,7 @@ This repository is a Markdown knowledge base, not an application.
 ## Find the relevant context
 
 - Before substantive content, scope, or structural changes, read [the design goals](DESIGN-GOALS.md); mechanical formatting fixes do not require this review.
-- To locate a topic, use [the topic map](README.md#topic-map); read only the pages relevant to the task.
+- To locate a topic, use [the homepage](README.md); read only the pages relevant to the task.
 - When adding or restructuring content, follow [the article conventions](pages/README.md) and [concept conventions](concepts/README.md). Keep reusable explanations canonical in `concepts/`, compose them in `pages/`, and update the relevant indexes and topic map.
 - When adding sources or researching changing claims, follow [the source conventions](sources/README.md). Keep provenance in `sources/` and raw source material in `data/`.
 - For whole-wiki reviews or concept-extraction reviews, use [the wiki-review skill](.agents/skills/wiki-review/SKILL.md).
