@@ -51,7 +51,7 @@ The amount of input and generated output a model can consider in a single intera
 
 ### Embedding
 
-A numerical representation of data, such as text, where relationships between vectors can be used for tasks like semantic search, clustering, or recommendation. Embeddings are produced by models and are not summaries or human-readable descriptions. See [vector embeddings](https://developers.openai.com/api/docs/guides/embeddings).
+A numerical representation of data, such as text, where relationships between vectors can be used for tasks like semantic search, clustering, or recommendation. Embeddings are produced by models and are not summaries or human-readable descriptions. See [vector stores](../concepts/vector-stores.md) and [vector embeddings](https://developers.openai.com/api/docs/guides/embeddings).
 
 ### Evaluation (eval)
 
@@ -143,7 +143,7 @@ Adversarial testing in which people deliberately probe a system to discover weak
 
 ### Retrieval-augmented generation (RAG)
 
-A technique that retrieves external information and includes it in the model's input to inform a generated response. RAG can provide up-to-date or domain-specific context without changing model weights, but answer quality depends on retrieval and interpretation. See the original [RAG paper](https://arxiv.org/abs/2005.11401).
+A technique that retrieves external information and includes it in the model's input to inform a generated response. RAG can provide up-to-date or domain-specific context without changing model weights, but answer quality depends on retrieval and interpretation. See [RAG](../concepts/retrieval-augmented-generation.md) and the original [RAG paper](https://arxiv.org/abs/2005.11401).
 
 ## S
 
@@ -181,7 +181,7 @@ A neural-network architecture based on attention mechanisms, introduced in the 2
 
 ### Vector store
 
-A system that stores and indexes vector representations, often to retrieve items with similar embeddings. Vector stores are commonly used for semantic search and as part of RAG systems.
+A system that stores and indexes vector representations, often to retrieve items with similar embeddings. Vector stores are commonly used for semantic search and as part of RAG systems. See [vector stores](../concepts/vector-stores.md).
 
 ## W
 

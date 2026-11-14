@@ -20,6 +20,8 @@ Follow [the freshness guidance](../pages/README.md#keeping-content-current) when
 - [Session history is not active context](session-history-vs-context.md) — saved conversations, context windows, compaction, and API-managed state.
 - [Skills, profiles, and tools have different jobs](skills-profiles-and-tools.md) — reusable procedures, roles, and executable capabilities.
 - [Load context through focused entrypoints](progressive-disclosure.md) — disclose relevant detail on demand rather than loading everything.
+- [Retrieval-augmented generation](retrieval-augmented-generation.md) — use retrieved information as context, with quality and security limits.
+- [Vector stores](vector-stores.md) — similarity search, embeddings, filtering, and maintenance.
 
 ## Security and data handling
 

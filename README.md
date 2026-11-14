@@ -12,6 +12,7 @@ Get results that match what you intended. Clarify the task, give agents useful c
 
 - [Understand how models and harnesses interact](pages/model-harness-interaction.md)
 - [Give agents repository context](pages/repository-context-for-agents.md)
+- [Ground responses with retrieved context](concepts/retrieval-augmented-generation.md)
 - [Check behavior against requirements](pages/unit-tests-in-the-age-of-ai.md)
 - [Passing tests are evidence, not proof](concepts/tests-are-evidence.md) · [slide](slides/tests-are-evidence.md)
 - [Evaluate agent behavior against a task](concepts/evals.md)
@@ -27,6 +28,7 @@ Get useful results with less time and fewer tokens, including by reducing rework
 - [Expose a discoverable task interface](pages/justfile-as-agent-facing-task-interface.md)
 - [Make task contracts explicit](concepts/task-interface-contracts.md)
 - [Load context through focused entrypoints](concepts/progressive-disclosure.md)
+- [Understand vector similarity search](concepts/vector-stores.md)
 - [Choose tools by purpose](pages/tools-by-purpose.md)
 - [Compare results, time, and token use with evals](concepts/evals.md)
 - [Balance iterative improvement against its cost](concepts/hill-climbing.md)
