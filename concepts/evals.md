@@ -31,4 +31,4 @@ An eval measures the cases and criteria it contains, not every possible use. A m
 
 - [Anthropic: Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents) — agent evals, grading methods, trials, and regression testing.
 - [OpenAI: Evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices) — task-specific objectives, cases, metrics, and comparison.
-- Related: [Unit tests in the age of AI](../pages/unit-tests-in-the-age-of-ai.md) — deterministic feedback and its limits.
+- Related: [Passing tests are evidence, not proof](tests-are-evidence.md) — deterministic feedback and its limits.

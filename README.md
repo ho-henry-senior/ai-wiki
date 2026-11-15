@@ -21,7 +21,7 @@ Get useful results with less time and fewer tokens, without sacrificing quality.
 
 - [Clarify the work early](pages/define-and-verify-tasks.md)
 - [Reuse deterministic tools](pages/agent-tool-delegation.md)
-- [Use focused feedback](pages/unit-tests-in-the-age-of-ai.md)
+- [Use focused feedback](concepts/tests-are-evidence.md)
 - [Keep context focused](concepts/progressive-disclosure.md)
 - [Reuse skills selectively](pages/skills-as-capabilities.md)
 
