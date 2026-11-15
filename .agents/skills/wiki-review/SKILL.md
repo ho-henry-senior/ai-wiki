@@ -9,7 +9,7 @@ Review the knowledge structure and its evidence, not just Markdown formatting. P
 
 ## 1. Establish scope and coverage
 
-Read [the design goals](../../../DESIGN-GOALS.md), [agent instructions](../../../AGENTS.md), [article conventions](../../../pages/README.md), [concept conventions](../../../concepts/README.md), and [source conventions](../../../sources/README.md). Inspect the worktree and preserve unrelated changes.
+Read [the design goals](../../../DESIGN-GOALS.md), [agent instructions](../../../AGENTS.md), [article conventions](../../../MAINTAINING.md#articles-and-concepts), [concept conventions](../../../concepts/README.md), and [source conventions](../../../sources/README.md). Inspect the worktree and preserve unrelated changes.
 
 For a whole-wiki review, inventory and read every authored article, concept, and slide, the glossary, indexes, and source records. Check slides against their canonical concepts. Include repository instructions and review tooling when checking navigation and verification coverage. Read raw archives only when needed to resolve a claim; leave them unchanged.
 
@@ -28,7 +28,7 @@ Evaluate the material against:
 - **Scope:** practical AI usage, portable conventions, and useful Copilot-specific guidance. Identify other products' setup instructions that drift beyond the design goals.
 - **Goal alignment:** compare the in-scope guidance and navigation with the design goals. Identify goals without a useful starting path and content that does not support the stated audience or scope.
 - **Practical priority:** check that starting points favor changes with clear likely benefit and modest effort, explain how to try and verify them, and preserve necessary security safeguards. Assess effort in context rather than treating every reader's first step as the same.
-- **Completeness:** use the [status criteria](../../../pages/README.md#completeness-status) to assess in-scope pages and concepts. Treat missing status as unassessed. Identify incomplete central routes and material gaps, and suggest stronger starting points where available without hiding essential security guidance. Propose status changes with page-specific reasons; do not promote pages automatically.
+- **Completeness:** use the [status criteria](../../../MAINTAINING.md#completeness-status) to assess in-scope pages and concepts. Treat missing status as unassessed. Identify incomplete central routes and material gaps, and suggest stronger starting points where available without hiding essential security guidance. Propose status changes with page-specific reasons; do not promote pages automatically.
 - **Reuse:** find explanations answering one standalone question or used across topics. Distinguish genuine reuse from sections that simply happen to be long.
 - **Canonical ownership:** locate competing explanations, inconsistent definitions, and opportunities to replace duplication with summaries and links.
 - **Composition:** articles should still explain a problem and connect ideas, rather than become lists of concept links.
@@ -43,7 +43,7 @@ For each proposed extraction, name the question or distinction, its current loca
 
 ## 3. Check evidence proportionally
 
-Follow [the freshness guidance](../../../pages/README.md#keeping-content-current). Verify potentially stale claims affected by proposed changes against current primary sources; note exactly which claims were checked. Preserve sources when moving material.
+Follow [the freshness guidance](../../../MAINTAINING.md#keeping-content-current). Verify potentially stale claims affected by proposed changes against current primary sources; note exactly which claims were checked. Preserve sources when moving material.
 
 Separate verified claims, proposals, and unresolved questions. Record inaccessible or inconclusive sources as limitations. Completeness is separate from correctness and freshness; a status or edit date does not establish either. Record review dates only for the claims actually checked. A structural review is not an exhaustive external fact-check, and a passing link checker does not verify external facts.
 

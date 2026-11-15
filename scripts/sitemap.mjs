@@ -183,7 +183,7 @@ export async function buildSitemap(rootDir = root) {
     "",
     "## Goal paths",
     "",
-    "These lists group directly linked pages, concepts, slides, and source records by their place in each overview; follow the overview for the advice and context behind its links. A page or concept without a [completeness status](README.md#completeness-status) is unassessed; status does not establish correctness or freshness.",
+    "These lists group directly linked pages, concepts, slides, and source records by their place in each overview; follow the overview for the advice and context behind its links. A page or concept without a [completeness status](../MAINTAINING.md#completeness-status) is unassessed; status does not establish correctness or freshness.",
   ];
 
   for (const goal of goals) {

@@ -61,6 +61,8 @@ Provide content for these reader needs:
 
 These are purposes, not rigid templates: a page may serve more than one need. An overview can also bring together patterns for a topic. Exploratory material can consider a possible approach without presenting it as an established practice or case study. Distinguish observed results from proposed or illustrative examples.
 
+Make significant content gaps visible. Completeness is distinct from correctness and freshness; a complete page is not necessarily accurate or current.
+
 Use small, focused files for concepts and reusable guidance. Use larger articles to connect and explain multiple concepts. Link related material rather than duplicating it, and keep indexes up to date so readers and agents can find the right level of detail.
 
 Keep reusable explanations in `concepts/`, narrative articles and applied references in `pages/`, provenance in `sources/`, and short standalone summaries in `slides/`. Slides link to their canonical concepts; preserve necessary examples and caveats in those concepts rather than imposing a slide-sized limit.

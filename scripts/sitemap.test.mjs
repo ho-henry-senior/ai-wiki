@@ -186,6 +186,10 @@ test("shows assessed status in goal paths and inventory, and detects changes", a
   );
   assert.equal((sitemap.match(/A guide\. \(developing\)/g) ?? []).length, 2);
   assert.match(sitemap, /without a \[completeness status\].*is unassessed/);
+  assert.match(
+    sitemap,
+    /\[completeness status\]\(\.\.\/MAINTAINING\.md#completeness-status\)/,
+  );
   await syncSitemap(root, "write");
   await writeFile(
     page,
