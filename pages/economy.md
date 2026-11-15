@@ -1,28 +1,28 @@
 ---
 type: overview
-summary: Core advice for getting useful agent results with less time and fewer tokens, without sacrificing quality or security.
+summary: Get good results with less time and fewer tokens, without giving up quality or security; clear tasks, listed commands, focused checks and context.
 status: established
 ---
 
 # Economy
 
-Economy means getting useful results with less time and fewer tokens, without sacrificing quality or security. Reducing rework and making existing capabilities easy to use can help; a cheaper run is not an improvement if it misses the intended outcome.
+Get good results with less time and fewer tokens, without giving up quality or security. Most waste comes from rework and from the agent working out what you could have told it. A cheaper run is no saving if it misses the outcome.
 
 ## Try this first
 
-Find an existing focused test and the repository's routine verification command. Make both discoverable to the agent, including what they check and whether they change files. Try the focused test on a relevant task, then run broader checks when the change warrants them.
+Add your focused test command and your full check command to `AGENTS.md`, saying what each covers and whether it changes files. On the next task, see whether Copilot runs them instead of guessing.
 
 ## Core advice
 
-- **Clarify the work early.** An outcome and acceptance criteria can reduce costly rework. Use a short description for small tasks and a fuller specification when the work needs it. [Define, steer, and verify a task](define-and-verify-tasks.md).
-- **Reuse deterministic tools.** Make existing tests, formatters, and other bounded checks easy to discover and invoke. Explain their [scope, prerequisites, and side effects](../concepts/task-interface-contracts.md). [Let the agent run your repository's commands](agent-tool-delegation.md).
-- **Use focused feedback.** Start with checks that exercise the behavior being changed; broaden verification as appropriate. A fast check is useful only if it tests something that matters. [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
-- **Keep context focused.** Give the agent a short entrypoint and make task-specific detail discoverable, rather than loading everything for every task. Confirm how the harness actually loads links. [Load context through focused entrypoints](../concepts/progressive-disclosure.md).
-- **Reuse skills selectively.** Consider a skill when it addresses a recurring need and adds value beyond the harness's current capabilities. [Choose and add skills](useful-skills.md).
+- **Clarify the work early.** A clear "Done when" list prevents the most expensive rework. [Define, steer, and verify a task](define-and-verify-tasks.md#write-the-task).
+- **Let tools do bounded work.** List the commands the agent should run, so it does not reconstruct them or approximate checks by reading code. [Let the agent run your repository's commands](agent-tool-delegation.md).
+- **Run focused checks first.** Run the test for the behavior being changed, then the full check before handoff. [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
+- **Keep context small.** Keep `AGENTS.md` short and load detail only when a task needs it. [Load context through focused entrypoints](../concepts/progressive-disclosure.md).
+- **Add skills only when they pay off.** Try the task without one first. [Choose and add skills](useful-skills.md).
 
-Do not trade away essential [security](security.md) controls for speed. When comparing approaches, check whether they still meet the task's requirements.
+Do not trade away [security](security.md) controls for speed.
 
 ## Explore further
 
-- [Evals](../concepts/evals.md) — compare outcomes alongside time and token use when repeatable assessment is useful.
-- [Lo-fi software factory case study](lo-fi-software-factory-case-study.md) — an observed workflow without a measured cost or time baseline.
+- [Evals](../concepts/evals.md) — background on comparing time, tokens, and outcomes across setups.
+- [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — an observed workflow, without a measured cost baseline.

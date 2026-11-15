@@ -1,31 +1,31 @@
 ---
 type: overview
-summary: Core advice for helping an agent's work match a task's intended outcome.
+summary: Get results that match what you intended; define the work, give the agent context and checks, steer it, and verify the result.
 status: established
 ---
 
 # Alignment
 
-Alignment here means helping an agent's work match the intended outcome of a specific task. This practical use complements the broader [AI alignment definition](glossary.md#alignment).
+Get results that match what you intended. Write the task down, give the agent the context and checks it needs, correct it while it works, and check the result against what you wrote. Here, alignment means one task's outcome; the [glossary](glossary.md#alignment) has the broader AI meaning.
 
 ## Try this first
 
-Choose one task. Write its desired outcome and one observable acceptance criterion, then identify a check that would reveal if that criterion were missed. Give the agent the relevant project context and review its result against the request.
+For your next task, write one "Done when" line you can observe and the check that would show it was missed. Hand the task to Copilot, then check the result against that line, not against Copilot's summary.
 
 ## Core advice
 
-- **Define the work.** State the outcome, constraints, and out-of-scope work. Agree on observable acceptance criteria and resolve material ambiguities before implementation. [Define, steer, and verify a task](define-and-verify-tasks.md).
-- **Provide relevant context.** Give the agent a discoverable starting point for the domain, decisions, interfaces, and constraints it needs. Keep inferred behavior distinct from confirmed rationale. [Focused entrypoints](../concepts/progressive-disclosure.md) explain the principle; [Write repository instructions in AGENTS.md](repository-instructions.md) shows which file to use.
-- **Make checks available.** Expose existing tests and verification commands so the agent can run suitable checks rather than reconstruct them. Make their [scope and side effects explicit](../concepts/task-interface-contracts.md); [Let the agent run your repository's commands](agent-tool-delegation.md) describes the practice.
-- **Steer the work.** Correct the agent where the work is recorded: in its running session, or with an `@copilot` comment on its pull request rather than on the issue. [Steer it](define-and-verify-tasks.md#steer-it) shows how.
-- **Verify the intended behavior.** Review the result against the acceptance criteria and choose checks appropriate to the risks. [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md); tests and implementation can share a mistaken assumption.
-- **Keep responsibilities clear.** Identify who decides, reviews, and approves consequential work.
+- **Define the work.** Write the outcome, "Done when" lines, checks, and what is out of scope. [Define, steer, and verify a task](define-and-verify-tasks.md#write-the-task).
+- **Give it context.** Put the rules every task needs in `AGENTS.md`. [Write repository instructions in AGENTS.md](repository-instructions.md).
+- **Give it checks.** List the commands it should run and what each does. [Let the agent run your repository's commands](agent-tool-delegation.md).
+- **Steer the work.** Correct the agent in its session or on its pull request, not on the issue. [Steer it](define-and-verify-tasks.md#steer-it).
+- **Verify the result.** Check each "Done when" line against the diff, and read the tests. [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
+- **Keep someone else as approver.** The person who asked should not be the only reviewer. [Verify the result](define-and-verify-tasks.md#verify-the-result).
 
-Scale the process to the work: a small change may need only a short issue and focused check; larger or ambiguous work can justify an agreed specification. Recording the request and results also supports [traceability](traceability.md).
+A small change needs only a short issue. Larger or ambiguous work needs an agreed specification first.
 
 ## Explore further
 
-- [Evals](../concepts/evals.md) — compare agent behavior on representative tasks when repeatable assessment is useful.
-- [Repository context for agents](repository-context-for-agents.md) — developing notes on broader questions about documentation and discoverability.
-- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — a perspective on adapting familiar responsibilities and handoffs.
-- [Lo-fi software factory case study](lo-fi-software-factory-case-study.md) — an example of specifications, role handoffs, and human review.
+- [Furnish repositories with context for agents](repository-context-for-agents.md) — domain, decisions, and ADRs.
+- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — one way to split work between roles.
+- [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — specifications, role handoffs, and human review in practice.
+- [Evals](../concepts/evals.md) — background on comparing agent behavior across tasks.

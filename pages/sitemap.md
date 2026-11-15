@@ -13,19 +13,16 @@ These lists group directly linked pages, concepts, slides, and source records by
 #### Core advice and supporting links
 
 - [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
-- [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
 - [Write repository instructions in AGENTS.md](repository-instructions.md) — Put repository instructions in AGENTS.md, know which Copilot features read it, and fill Copilot's remaining gaps without duplicating rules. (established)
-- [Task names need explicit contracts](../concepts/task-interface-contracts.md) — Describe each command's scope, cost, side effects, and whether failure blocks handoff; its name alone does not tell an agent what it does.
 - [Let the agent run your repository's commands](agent-tool-delegation.md) — List the commands the agent should run, with what each does and whether it changes files, so it runs your checks instead of guessing; give the Copilot cloud agent the dependencies to run them. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
-- [Traceability](traceability.md) — Leave a record someone else can follow later, covering what was asked, who or what made the change, who approved it, and the evidence. (established)
 
 #### Explore further
 
-- [Evals](../concepts/evals.md) — Evals compare AI system behavior against task-specific criteria, using representative cases and appropriate checks to inform improvements.
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing. (developing)
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — A perspective on using familiar agile roles and handoffs to understand a possible agent-assisted software factory.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
+- [Evals](../concepts/evals.md) — Evals compare AI system behavior against task-specific criteria, using representative cases and appropriate checks to inform improvements.
 
 #### Other links
 
@@ -38,7 +35,6 @@ These lists group directly linked pages, concepts, slides, and source records by
 #### Core advice and supporting links
 
 - [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
-- [Task names need explicit contracts](../concepts/task-interface-contracts.md) — Describe each command's scope, cost, side effects, and whether failure blocks handoff; its name alone does not tell an agent what it does.
 - [Let the agent run your repository's commands](agent-tool-delegation.md) — List the commands the agent should run, with what each does and whether it changes files, so it runs your checks instead of guessing; give the Copilot cloud agent the dependencies to run them. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
@@ -109,11 +105,11 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 #### overview
 
-- [Alignment](alignment.md) — Core advice for helping an agent's work match a task's intended outcome. (established)
-- [Economy](economy.md) — Core advice for getting useful agent results with less time and fewer tokens, without sacrificing quality or security. (established)
+- [Alignment](alignment.md) — Get results that match what you intended; define the work, give the agent context and checks, steer it, and verify the result. (established)
+- [Economy](economy.md) — Get good results with less time and fewer tokens, without giving up quality or security; clear tasks, listed commands, focused checks and context. (established)
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing. (developing)
 - [Security](security.md) — Limit what an agent can reach and do, so a mistake or a malicious instruction cannot expose data or cause harm; start from where the agent's tools run. (developing)
-- [Traceability](traceability.md) — Leave a record someone else can follow later, covering what was asked, who or what made the change, who approved it, and the evidence. (established)
+- [Traceability](traceability.md) — Leave a record someone else can follow later, covering what was asked, who or what made the change, how it was corrected, who approved it, and the evidence. (established)
 
 #### pattern
 
