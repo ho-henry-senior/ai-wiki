@@ -17,6 +17,26 @@ Apply [explicit task contracts](../concepts/task-interface-contracts.md): famili
 
 Use recipe comments and clear names to expose the [scope, prerequisites, side effects, and interpretation](../concepts/task-interface-contracts.md#what-the-contract-should-explain) of each task. For example, give a file-rewriting formatter a different recipe from its read-only check, and keep a noisy diagnostic distinct from the routine gate.
 
+## Example: this wiki's Justfile
+
+These recipes are an excerpt from this wiki's [Justfile](../justfile):
+
+```just
+# Test and check the sitemap, Markdown formatting, and local links without modifying files.
+verify:
+    npm run verify
+
+# Check Markdown formatting without modifying files.
+format-check:
+    npm run format:check
+
+# Apply Markdown formatting (modifies files).
+format:
+    npm run format
+```
+
+`just --list` exposes the recipe names and comments. The checks are separate from the mutating formatter, and the recipes delegate to the wiki's npm scripts. These commands depend on this repository's tooling; they are an example rather than a universal set of recipes. See the Justfile and `package.json` for the current definitions.
+
 ## Keep instructions and recipes in sync
 
 Keep executable commands in the `justfile` or in their canonical project scripts. `AGENTS.md` should point to the task interface, explain how to list recipes, and identify the routine check; it should not duplicate the full recipe catalog or shell commands.

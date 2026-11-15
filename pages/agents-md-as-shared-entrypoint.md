@@ -28,6 +28,28 @@ Use [progressive disclosure](../concepts/progressive-disclosure.md): keep starti
 
 Avoid turning the file into a duplicate of the README, a complete architecture manual, or a list of rules already enforced by tools. If different harnesses need different native files, keep one canonical source where practical and make any adapters or imports explicit. Do not assume that nested files, imports, or precedence behave the same across tools.
 
+## Example: this wiki's entrypoint
+
+This shortened illustration is adapted from this wiki's [AGENTS.md](../AGENTS.md):
+
+```markdown
+# Working in this wiki
+
+This repository is a Markdown knowledge base, not an application.
+
+## Find the relevant context
+
+- Before substantive content or structural changes, read [the design goals](DESIGN-GOALS.md).
+- To locate a topic, use [the homepage](README.md).
+
+## Make and verify changes
+
+Use `just --list` to discover tasks and `just verify` before handoff.
+See [maintenance](MAINTAINING.md) for setup details.
+```
+
+The entrypoint identifies the kind of project, tells an agent when to load relevant context, and points to the task interface. It does not reproduce the full design goals or command implementations. The linked file is the current, fuller version; other repositories will need different context and checks.
+
 For a complete illustrative layout that places `AGENTS.md` alongside agent documentation, skills, and task commands, see [A structure for agent-facing repositories](agent-facing-repository-structure.md).
 
 ## Findings and limitations

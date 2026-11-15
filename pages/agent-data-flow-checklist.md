@@ -17,6 +17,19 @@ Use this when configuring an agent, enabling an integration, or preparing to wor
 - [ ] Include automatic context selection, indexing, debug output, delegated agents, and generated summaries, not only deliberate uploads. Trace [sensitive tool output](../concepts/secrets-in-tool-output.md) and [saved session history](../concepts/session-history-vs-context.md) separately from active context.
 - [ ] Distinguish [transmission, storage, and training use](../concepts/inference-retention-training.md); record unknowns rather than assuming safe defaults.
 
+## Example: one data flow
+
+This fictional entry shows how to record a flow, including unknowns; it does not describe a particular product or demonstrate that its controls work.
+
+| Field                      | Example                                                                                                                 |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Data and source            | Synthetic application log from a local test fixture; no real user data is intended to be included.                      |
+| Trigger and destination    | An agent reads the file; the tool result may be included in a request to a remote model endpoint.                       |
+| Persistence and visibility | Provider retention, training use, and local session-log retention are unknown.                                          |
+| Controls                   | Planned: limit the task to the synthetic fixture and an approved endpoint; verify restrictions and policies before use. |
+
+Before using sensitive data, investigate the unknowns and verify the actual controls for the harness, endpoint, and tools. One mapped flow does not cover every destination or action.
+
 ## Check each destination
 
 | Destination               | Questions to resolve                                                                                                                                                                           |

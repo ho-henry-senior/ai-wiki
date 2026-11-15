@@ -30,6 +30,18 @@ flowchart TD
 
 For example, “reject expired credentials” needs a check that expired credentials are actually rejected, not only a successful-login test. Record the expected rejection behavior and use a focused test where appropriate; review the change and any remaining security implications before approval.
 
+## Example: from request to review
+
+These fictional issue and PR notes illustrate a small task; they are not results from an actual test run.
+
+**Issue:** Reject expired credentials without changing successful authentication for valid credentials.
+
+- **Acceptance:** Expired credentials are rejected and do not create an authenticated session.
+- **Acceptance:** Valid credentials continue to authenticate.
+- **Verification:** Run focused tests for both behaviors; review the rejection path and any checks that could not be run.
+
+**PR notes:** Links to the issue and summarizes the change to reject expired credentials. In this example, focused tests for both acceptance criteria passed, but the integration check was not run because its test service was unavailable. The reviewer needs that missing evidence before deciding whether the change is ready.
+
 ## Scale the process to the work
 
 For a small change, the outcome, criteria, and checks may fit in an issue or PR description. For larger work, an agreed specification can capture decisions and acceptance intent before it is broken into tasks. Link existing artifacts so a reviewer can follow the work: for example, connect the issue to its PR and record the checks and results in the PR. A multi-agent role structure is not required.

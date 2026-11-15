@@ -6,25 +6,41 @@ status: developing
 
 # Furnish repositories with context for agents
 
-Purpose-built tools tell agents what they can run. Repository context helps them understand what the system is, why it is shaped as it is, and what constraints apply to a change. The goal is not to maximize documentation volume, but to make relevant context findable when an agent needs it.
+These working notes explore ways to give agents relevant repository context.
 
-These are working notes on areas to explore, not a complete prescription.
+<a id="try-this-first"></a>
 
-## Try this first
+## Use AGENTS.md
 
-For one repository, add or update a short agent entrypoint that says what the project does and links to the existing task commands and authoritative documentation. Include any essential constraints the agent needs before acting; keep detailed architecture and decisions in their existing homes. Confirm that the agent tool you use actually loads the entrypoint and that its links lead to current information.
+Start with an [AGENTS.md](agents-md-as-shared-entrypoint.md) that tells agents what the repository does, its essential constraints, and where to find relevant documentation. This gives agents a starting point instead of leaving them to infer context. Check that your agent actually loads the file.
 
-This gives an agent a starting point without requiring a documentation overhaul. See [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) for support and limitations.
+<a id="record-decisions-including-the-ones-that-were-never-written-down"></a>
 
-## Record decisions, including the ones that were never written down
+## Use ADRs
 
-Architecture Decision Records (ADRs) can preserve the context behind important choices: the problem, constraints, options considered, decision, and consequences. They are useful both for new decisions and for explaining existing designs.
+Architecture Decision Records (ADRs) capture why an important choice was made: its context, alternatives, decision, and consequences. They can document new decisions or explain existing designs.
 
-Agents can help recover that context by examining code, configuration, tests, and existing documentation, then proposing a draft decision record. When the rationale is not evident from those sources, an agent can ask focused questions to elicit it from people who know the system. Keep inferred behavior separate from confirmed rationale, and make unknowns explicit rather than presenting guesses as historical fact.
+An agent can draft a record from code, tests, and documentation, then ask people to confirm the rationale. Keep observed behavior separate from confirmed reasoning, and state what remains unknown.
+
+<a id="example-a-decision-record-draft"></a>
+
+### Sample ADR
+
+This is a fictional sample ADR record:
+
+> **Status:** Proposed.
+>
+> **Decision:** Continue rejecting credentials at expiry.
+>
+> **Evidence:** An existing test checks the behavior; a maintainer confirms the requirement.
+>
+> **Open question:** Were clock differences between systems considered?
+>
+> **Consequence:** The test captures the current boundary, but the team still needs to assess the open question.
 
 ## Describe boundaries between repositories
 
-In a system spread across repositories, important contracts can be implicit: schemas, API shapes, message formats, shared identifiers, or assumptions about ownership and versioning. Making these boundaries visible helps an agent reason about the impact of a change beyond the repository it is editing.
+In systems spread across repositories, contracts such as schemas, APIs, message formats, and ownership can be implicit. Making them visible helps agents assess changes beyond one repository.
 
 Useful context may include:
 
@@ -37,21 +53,15 @@ The aim is to expose the relationship and its source of truth, not to copy every
 
 ## Use diagrams close to the system they explain
 
-Localized system or architecture diagrams can show how a repository, subsystem, or service participates in a larger system. Depending on the question, a useful diagram might explain component boundaries, data flow, deployment relationships, or cross-repository interactions.
+Use a diagram to answer a specific question about component boundaries, data flow, deployment, or cross-repository interactions. Keep it close to the system it explains and link to it from the related documentation.
 
-Prefer diagrams that answer a specific question and can be found from the related documentation. A single diagram of the entire organization is unlikely to provide the right level of context for every task.
-
-For diagrams that Mermaid can express clearly and the target tools can render, prefer it as a default. Its text source makes nodes and relationships explicit, is straightforward to author and maintain, and is easier for agents to inspect, generate, and revise than a binary image. Keep the rendered view available to people, and validate it in the target environment. Use another format when Mermaid cannot express the visual structure clearly or rendering support is unsuitable.
+Prefer Mermaid when it can express the structure clearly and the target tools can render it: its text source is easier for agents to inspect and maintain than a binary image. Validate the rendered view; use another format when Mermaid or the target tools are unsuitable.
 
 ## Make the context discoverable
 
-Use [progressive disclosure](../concepts/progressive-disclosure.md): give agents and developers a clear starting point, with links to the relevant domain, decision, interface, and architecture material. Keep detail near the subsystem or contract it describes, and link across repositories rather than relying on an agent to infer the connections.
+Use [progressive disclosure](../concepts/progressive-disclosure.md): keep entrypoints concise and link to detail near the subsystem or contract it describes. Agents can then find and load relevant context when needed. Link across repositories rather than relying on an agent to infer the connections.
 
 For larger collections, [retrieval-augmented generation](../concepts/retrieval-augmented-generation.md) can supply relevant passages on demand. It adds retrieval and maintenance costs, so compare it with focused entrypoints and ordinary search for the task.
-
-An `AGENTS.md` file can serve as a concise repository-level entrypoint to this material. Support is growing across agent harnesses, but discovery and loading behavior differ; see [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) for the documented support and limitations.
-
-This complements a repository task interface: the interface answers **what can I run?**; contextual documentation helps answer **what does this system mean, and what should I change?**
 
 ## Questions to develop
 
