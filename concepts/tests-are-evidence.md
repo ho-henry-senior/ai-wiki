@@ -1,6 +1,7 @@
 ---
 type: reference
 summary: A green test suite establishes that assertions passed, not that those assertions completely capture the intended behavior.
+status: established
 ---
 
 # Passing tests are evidence, not proof

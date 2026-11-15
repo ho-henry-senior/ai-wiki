@@ -1,6 +1,7 @@
 ---
 type: pattern
 summary: Define agent roles by both their expected responsibilities and explicit off-limits work, using RACI to clarify workflow handoffs.
+status: established
 ---
 
 # Define agent role responsibilities and boundaries

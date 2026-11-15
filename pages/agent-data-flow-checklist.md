@@ -1,6 +1,7 @@
 ---
 type: reference
 summary: A reusable checklist for tracing sensitive data through an agent setup and checking controls at each destination.
+status: established
 ---
 
 # Agent data-flow checklist

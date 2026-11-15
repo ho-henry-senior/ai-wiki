@@ -1,6 +1,7 @@
 ---
 type: pattern
 summary: Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources.
+status: established
 ---
 
 # Load context through focused entrypoints

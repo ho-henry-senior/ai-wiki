@@ -11,6 +11,7 @@ const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const sitemapPath = "pages/sitemap.md";
 const goals = ["alignment", "economy", "traceability", "security"];
 const directories = ["pages", "concepts", "slides", "sources"];
+const statuses = new Set(["stub", "developing", "established"]);
 const parser = remark().use(remarkFrontmatter).use(remarkGfm);
 
 function visit(node, callback) {
@@ -72,11 +73,19 @@ async function readPage(rootDir, relativePath) {
       `${relativePath}: expected type and summary in YAML front matter`,
     );
   }
+  if (
+    (directory === "pages" || directory === "concepts") &&
+    metadata?.status !== undefined &&
+    !statuses.has(metadata.status)
+  ) {
+    throw new Error(`${relativePath}: invalid completeness status`);
+  }
   return {
     path: relativePath,
     title,
     type: metadata?.type,
     summary: metadata?.summary,
+    status: metadata?.status,
     tree,
   };
 }
@@ -117,7 +126,8 @@ function entry(page) {
   const summary = page.summary
     ? ` — ${page.summary.replace(/\s+/g, " ").trim()}`
     : "";
-  return `- [${linkText(page.title)}](${target})${summary}`;
+  const status = page.status ? ` (${page.status})` : "";
+  return `- [${linkText(page.title)}](${target})${summary}${status}`;
 }
 
 function sortPages(pages) {
@@ -153,13 +163,14 @@ export async function buildSitemap(rootDir = root) {
     "",
     "## Goal paths",
     "",
-    "These lists show directly linked pages, concepts, slides, and source records; follow each overview for the advice and context behind its links.",
+    "These lists show directly linked pages, concepts, slides, and source records; follow each overview for the advice and context behind its links. A page or concept without a [completeness status](README.md#completeness-status) is unassessed; status does not establish correctness or freshness.",
   ];
 
   for (const goal of goals) {
     const page = pages.get(`pages/${goal}.md`);
     if (!page) throw new Error(`Missing goal overview: pages/${goal}.md`);
     lines.push("", `### [${linkText(page.title)}](${goal}.md)`, "");
+    if (page.status) lines.push(`**Status:** ${page.status}`, "");
     lines.push(...goalLinks(page, pages).map(entry));
   }
 

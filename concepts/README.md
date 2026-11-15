@@ -6,6 +6,8 @@ This directory holds focused explanations that articles can reuse. Each concept 
 
 Use descriptive, lowercase, hyphenated filenames and the same `type` and `summary` front matter as [authored pages](../pages/README.md). Concepts normally use `type: reference` or `type: pattern`.
 
+Use the shared [completeness status conventions](../pages/README.md#completeness-status) when a concept has been assessed.
+
 State the core idea first. Keep its explanation, a useful example or diagram, essential caveats, and supporting sources together. Link to articles that apply it and to related concepts where that helps navigation.
 
 Extract a concept when it is useful independently or needed in multiple places. Keep its detailed explanation canonical here; articles should summarize it in their own narrative and link to it. A concept may suit a short slide, but neither a fixed word count nor slide-sized formatting is required. Keep brief definitions in the [glossary](../pages/glossary.md), linking here for depth.

@@ -97,3 +97,57 @@ test("reports missing required page metadata", async (t) => {
     /missing\.md: expected type and summary/,
   );
 });
+
+test("shows assessed status in goal paths and inventory, and detects changes", async (t) => {
+  const root = await fixture(t);
+  const page = path.join(root, "pages", "new-page.md");
+  await writeFile(
+    page,
+    "---\ntype: guide\nsummary: A guide.\nstatus: developing\n---\n\n# New page\n",
+  );
+  await writeFile(
+    path.join(root, "pages", "alignment.md"),
+    "---\ntype: overview\nsummary: Overview of alignment.\nstatus: established\n---\n\n# alignment\n\n[New page](new-page.md)\n",
+  );
+  const sitemap = await buildSitemap(root);
+  assert.match(
+    sitemap,
+    /### \[alignment\]\(alignment\.md\)\n\n\*\*Status:\*\* established/,
+  );
+  assert.equal((sitemap.match(/A guide\. \(developing\)/g) ?? []).length, 2);
+  assert.match(sitemap, /without a \[completeness status\].*is unassessed/);
+  await syncSitemap(root, "write");
+  await writeFile(
+    page,
+    "---\ntype: guide\nsummary: A guide.\nstatus: stub\n---\n\n# New page\n",
+  );
+  assert.equal(await syncSitemap(root, "check"), false);
+});
+
+test("rejects invalid completeness status while allowing an absent status", async (t) => {
+  const root = await fixture(t);
+  await buildSitemap(root);
+  const page = path.join(root, "concepts", "example.md");
+  for (const status of ["unknown", "exploratory", "", "false"]) {
+    await writeFile(
+      page,
+      `---\ntype: reference\nsummary: A concept.\nstatus: ${status}\n---\n\n# Example\n`,
+    );
+    await assert.rejects(
+      buildSitemap(root),
+      /concepts\/example\.md: invalid completeness status/,
+    );
+  }
+});
+
+test("accepts established status for exploration pages", async (t) => {
+  const root = await fixture(t);
+  await writeFile(
+    path.join(root, "pages", "exploration.md"),
+    "---\ntype: exploration\nsummary: An investigation.\nstatus: established\n---\n\n# Investigation\n",
+  );
+  assert.match(
+    await buildSitemap(root),
+    /#### exploration[\s\S]*An investigation\. \(established\)/,
+  );
+});

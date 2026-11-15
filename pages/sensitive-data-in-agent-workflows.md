@@ -1,9 +1,12 @@
 ---
 type: guide
 summary: The main risks of running coding agents, how sensitive data can move through their workflows, and controls for each destination.
+status: developing
 ---
 
 # Sensitive data in agent workflows
+
+**Developing:** The guide outlines controls, but practical techniques and examples for handling untrusted content need more development.
 
 Using an agent safely requires understanding both what it can access and what it can do. Through [the tool-call loop](../concepts/tool-call-loop.md), file contents and tool results can become model input or further actions. A locally installed harness may use remote inference and services; local inference does not by itself prevent exposure through other routes.
 

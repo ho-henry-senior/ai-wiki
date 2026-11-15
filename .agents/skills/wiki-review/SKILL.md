@@ -28,6 +28,7 @@ Evaluate the material against:
 - **Scope:** practical AI usage, portable conventions, and useful Copilot-specific guidance. Identify other products' setup instructions that drift beyond the design goals.
 - **Goal alignment:** compare the in-scope guidance and navigation with the design goals. Identify goals without a useful starting path and content that does not support the stated audience or scope.
 - **Practical priority:** check that starting points favor changes with clear likely benefit and modest effort, explain how to try and verify them, and preserve necessary security safeguards. Assess effort in context rather than treating every reader's first step as the same.
+- **Completeness:** use the [status criteria](../../../pages/README.md#completeness-status) to assess in-scope pages and concepts. Treat missing status as unassessed. Identify incomplete central routes and material gaps, and suggest stronger starting points where available without hiding essential security guidance. Propose status changes with page-specific reasons; do not promote pages automatically.
 - **Reuse:** find explanations answering one standalone question or used across topics. Distinguish genuine reuse from sections that simply happen to be long.
 - **Canonical ownership:** locate competing explanations, inconsistent definitions, and opportunities to replace duplication with summaries and links.
 - **Composition:** articles should still explain a problem and connect ideas, rather than become lists of concept links.
@@ -44,7 +45,7 @@ For each proposed extraction, name the question or distinction, its current loca
 
 Follow [the freshness guidance](../../../pages/README.md#keeping-content-current). Verify potentially stale claims affected by proposed changes against current primary sources; note exactly which claims were checked. Preserve sources when moving material.
 
-Separate verified claims, proposals, and unresolved questions. Record inaccessible or inconclusive sources as limitations. A structural review is not an exhaustive external fact-check, and a passing link checker does not verify external facts.
+Separate verified claims, proposals, and unresolved questions. Record inaccessible or inconclusive sources as limitations. Completeness is separate from correctness and freshness; a status or edit date does not establish either. Record review dates only for the claims actually checked. A structural review is not an exhaustive external fact-check, and a passing link checker does not verify external facts.
 
 **Complete when:** changing claims used in edits have current evidence or an explicit uncertainty, and unverified areas are named.
 

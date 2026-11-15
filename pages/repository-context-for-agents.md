@@ -1,6 +1,7 @@
 ---
 type: overview
 summary: Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing.
+status: developing
 ---
 
 # Furnish repositories with context for agents

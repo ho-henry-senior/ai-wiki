@@ -1,6 +1,7 @@
 ---
 type: pattern
 summary: Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them.
+status: established
 ---
 
 # Define and verify a task

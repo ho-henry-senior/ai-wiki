@@ -1,6 +1,7 @@
 ---
 type: overview
 summary: Core advice for getting useful agent results with less time and fewer tokens, without sacrificing quality or security.
+status: established
 ---
 
 # Economy

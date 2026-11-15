@@ -7,7 +7,7 @@ Practical guidance for people using AI agents in software work. Explore a goal, 
 Get results that match what you intended.
 
 - [Define the work](pages/define-and-verify-tasks.md)
-- [Provide relevant context](pages/repository-context-for-agents.md)
+- [Provide relevant context](pages/agents-md-as-shared-entrypoint.md)
 - [Make checks available](pages/agent-tool-delegation.md)
 - [Verify the intended behavior](concepts/tests-are-evidence.md)
 - [Keep responsibilities clear](pages/agent-role-boundaries.md)
@@ -26,7 +26,7 @@ Get useful results with less time and fewer tokens, without sacrificing quality.
 
 ## [Traceability](pages/traceability.md)
 
-Understand what was requested, what changed, and the evidence behind it.
+Understand what was requested, what changed, and the evidence behind it. **Status: developing.**
 
 - [Record the request and decisions](pages/define-and-verify-tasks.md)
 - [Connect related artifacts](pages/traceability.md#core-advice)
@@ -36,7 +36,7 @@ Understand what was requested, what changed, and the evidence behind it.
 
 ## [Security](pages/security.md)
 
-Protect sensitive information and limit unsafe actions.
+Protect sensitive information and limit unsafe actions. **Status: stub.**
 
 - [Trace data and actions](pages/agent-data-flow-checklist.md)
 - [Limit and enforce access](concepts/instructions-vs-controls.md)
@@ -52,4 +52,4 @@ Protect sensitive information and limit unsafe actions.
 - [Authored pages](pages/README.md) — all articles, patterns, and checklists
 - [AI glossary](pages/glossary.md) — shared vocabulary for AI and agents
 - [Source index and records](sources/README.md) — provenance and research notes
-- [From CLI agents toward a lightweight software factory](pages/cli-to-software-factory.md) — an exploratory guided path
+- [From CLI agents toward a lightweight software factory](pages/cli-to-software-factory.md) — a stub for an exploratory guided path

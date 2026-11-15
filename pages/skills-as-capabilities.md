@@ -1,6 +1,7 @@
 ---
 type: explanation
 summary: Explain skills as reusable capabilities that can fill current harness gaps, while their value changes as harnesses evolve.
+status: established
 ---
 
 # Skills as a changing capability layer

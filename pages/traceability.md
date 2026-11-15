@@ -1,9 +1,12 @@
 ---
 type: overview
 summary: Core advice for recording requests, decisions, changes, and evidence in agent-assisted work.
+status: developing
 ---
 
 # Traceability
+
+**Developing:** This overview gives a starting point, but detailed examples of linking specifications to tasks and changes are limited.
 
 Traceability means being able to understand what was requested, what changed, and the evidence and decisions behind the result. It supports human review; an agent's explanation is not necessarily a complete account of its reasoning.
 
@@ -21,6 +24,6 @@ For one task, record the desired outcome and acceptance criteria in the issue or
 
 ## Explore further
 
-- [Repository context for agents](repository-context-for-agents.md) — preserving decisions and distinguishing confirmed rationale from inference.
+- [Repository context for agents](repository-context-for-agents.md) — developing notes on preserving decisions and distinguishing confirmed rationale from inference.
 - [Alignment](alignment.md) — defining and checking the intended outcome.
 - [Lo-fi software factory case study](lo-fi-software-factory-case-study.md) — artifacts and review evidence in a real workflow.

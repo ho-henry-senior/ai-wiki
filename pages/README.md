@@ -33,6 +33,16 @@ Focused reusable concepts live in `concepts/` and use the types described in the
 
 The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it. The [sitemap](sitemap.md) derives its goal paths from those overview links and its inventory from page metadata; regenerate it with `just sitemap` rather than editing it directly.
 
+## Completeness status
+
+An assessed page or concept may include `status` in its front matter. This is an editorial judgment about completeness for the page's stated purpose, not a guarantee of correctness, safety, or freshness. A missing status means **unassessed**, not established.
+
+- `stub` — an early outline, placeholder, or starting point with too little coverage to fulfill its stated purpose on its own. It may still link to useful material.
+- `developing` — useful content with significant gaps in fulfilling its stated purpose.
+- `established` — fulfills its stated purpose with useful content and important limitations explained; it can still improve.
+
+Choose a status based on the content, not its age, length, or `type`. For example, an exploration can have any completeness status: an established exploration fulfills its purpose without implying that its ideas are settled. Explain material gaps in the page or its navigation context. Prefer usable guidance on central routes; keep incomplete material discoverable and make important gaps visible rather than hiding them. Reassess status when the content changes or a review finds evidence for a change; promotion is a judgment, not an automatic consequence of editing.
+
 ## Keeping content current
 
 For substantive edits, review the affected pages for claims that may have become stale, especially tool capabilities, configuration paths, API behavior, model limits, and provider security or data-handling policies. Mechanical formatting fixes do not require a freshness review.
@@ -47,14 +57,14 @@ Keep edit-time review focused on the affected material and directly dependent gu
 
 - [Alignment](alignment.md) — core advice for matching work to the intended outcome.
 - [Economy](economy.md) — core advice for using time and tokens effectively without sacrificing quality or security.
-- [Traceability](traceability.md) — core advice for recording intent, decisions, and evidence.
-- [Security](security.md) — core advice for limiting data exposure and unsafe actions.
+- [Traceability](traceability.md) — developing core advice for recording intent, decisions, and evidence.
+- [Security](security.md) — an early stub on limiting data exposure and unsafe actions.
 - [Define and verify a task](define-and-verify-tasks.md) — clarify outcomes, acceptance criteria, verification, and review evidence.
 - [AI glossary](glossary.md) — practical definitions of foundational AI and current generative AI terms.
 - [How models and harnesses interact](model-harness-interaction.md) — the tool-call loop, message structure, session state, and context limits.
-- [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — major agent risks, data sources and destinations, and practical controls.
+- [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — developing guidance on agent risks, data sources and destinations, and practical controls.
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — questions for reviewing a particular agent setup, integration, or sensitive task.
-- [Furnish repositories with context for agents](repository-context-for-agents.md) — an overview of approaches to domain, decisions, architecture, and inter-repository context.
+- [Furnish repositories with context for agents](repository-context-for-agents.md) — developing notes on domain, decisions, architecture, and inter-repository context.
 - [A structure for agent-facing repositories](agent-facing-repository-structure.md) — an illustrative pattern connecting instructions, reference material, skills, task commands, and harness-specific configuration.
 - [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) — current cross-harness support, limits, and guidance for keeping repository instructions concise and discoverable.
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — a pattern for exposing deterministic repository tasks through a discoverable interface.
@@ -65,5 +75,5 @@ Keep edit-time review focused on the affected material and directly dependent gu
 - [Skills and agent profiles](skills-and-agent-profiles.md) — choosing procedures, roles, and executable capabilities for a workflow.
 - [Define agent role responsibilities and boundaries](agent-role-boundaries.md) — positive scope, explicit limits, and workflow responsibility mapping.
 - [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — the value and limits of unit tests as feedback for agent-produced changes.
-- [From CLI agents toward a lightweight software factory](cli-to-software-factory.md) — an exploratory progression path.
+- [From CLI agents toward a lightweight software factory](cli-to-software-factory.md) — a stub for an exploratory progression path.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.

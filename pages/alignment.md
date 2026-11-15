@@ -1,6 +1,7 @@
 ---
 type: overview
 summary: Core advice for helping an agent's work match a task's intended outcome.
+status: established
 ---
 
 # Alignment
@@ -14,7 +15,7 @@ Choose one task. Write its desired outcome and one observable acceptance criteri
 ## Core advice
 
 - **Define the work.** State the outcome, constraints, and out-of-scope work. Agree on observable acceptance criteria and resolve material ambiguities before implementation. [Define and verify a task](define-and-verify-tasks.md).
-- **Provide relevant context.** Give the agent a discoverable starting point for the domain, decisions, interfaces, and constraints it needs. Keep inferred behavior distinct from confirmed rationale. [Focused entrypoints](../concepts/progressive-disclosure.md) explain the principle; [repository context](repository-context-for-agents.md) explores how to apply it.
+- **Provide relevant context.** Give the agent a discoverable starting point for the domain, decisions, interfaces, and constraints it needs. Keep inferred behavior distinct from confirmed rationale. [Focused entrypoints](../concepts/progressive-disclosure.md) explain the principle; [AGENTS.md as a shared entrypoint](agents-md-as-shared-entrypoint.md) provides a starting technique. The [repository context working notes](repository-context-for-agents.md) explore broader questions and are still developing.
 - **Make checks available.** Expose existing tests and verification commands so the agent can run suitable checks rather than reconstruct them. Make their [scope and side effects explicit](../concepts/task-interface-contracts.md); [delegate repository tasks to tools](agent-tool-delegation.md) describes the practice.
 - **Verify the intended behavior.** Review the result against the acceptance criteria and choose checks appropriate to the risks. [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md); tests and implementation can share a mistaken assumption.
 - **Keep responsibilities clear.** Identify who decides, reviews, and approves consequential work. For a more structured workflow, see [agent role responsibilities and boundaries](agent-role-boundaries.md).

@@ -1,6 +1,7 @@
 ---
 type: reference
 summary: Use AGENTS.md as a concise repository entrypoint, with Copilot CLI support and explicit limits on portability.
+status: established
 ---
 
 # AGENTS.md as a shared agent entrypoint

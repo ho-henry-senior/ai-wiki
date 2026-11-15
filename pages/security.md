@@ -1,9 +1,12 @@
 ---
 type: overview
 summary: Core advice for protecting sensitive information and limiting unsafe actions in agent-assisted work.
+status: stub
 ---
 
 # Security
+
+**Stub:** Security guidance is at an early stage. This overview and its links provide a starting point, not comprehensive protection; practical techniques and examples for handling untrusted content need more development.
 
 Security means protecting sensitive information and limiting unsafe actions while using agents. The right controls depend on the data, permissions, integrations, and environment involved; essential safeguards still matter when they take effort.
 

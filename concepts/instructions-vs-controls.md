@@ -1,6 +1,7 @@
 ---
 type: reference
 summary: Instructions guide model behavior; independently enforced permissions restrict actions even when the model chooses incorrectly.
+status: established
 ---
 
 # Instructions are not enforced controls
