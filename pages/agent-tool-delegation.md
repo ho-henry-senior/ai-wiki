@@ -1,41 +1,61 @@
 ---
 type: pattern
-summary: Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively.
+summary: List the commands the agent should run, with what each does and whether it changes files, so it runs your checks instead of guessing; give the Copilot cloud agent the dependencies to run them.
 status: established
 ---
 
-# Get more from agents by delegating repo tasks to tools
+# Let the agent run your repository's commands
 
-The goal is to help agents deliver more value—faster, cheaper, more accurately, and repeatably. A repository can support this by making its purpose-built tools easy for agents to discover and invoke.
+List the commands the agent should run in `AGENTS.md`, with what each one checks and whether it changes files. The agent then runs your tests and checks instead of guessing commands or approximating a check by reading code, which is slower, costs more tokens, and is less reliable.
 
-Agents should spend their reasoning on understanding the task and making changes. For bounded, repeatable work such as running focused tests or checking formatting, a deterministic tool can often do the job more cheaply and consistently than having an agent reverse-engineer the command or approximate the check itself.
+## Start with this
 
-## Try this first
+Add a section like this to `AGENTS.md`, using your repository's real commands:
 
-Identify the commands the project already uses for focused tests and routine verification. Make them discoverable from the agent entrypoint or existing task interface, with prerequisites, scope, and whether they change files. Run them in the intended environment and check that their results are actionable. Add a wrapper only when it solves a real discovery or consistency problem.
+```markdown
+## Commands
 
-If commands are scattered or hard to invoke, a task interface such as a [Justfile](justfile-as-agent-facing-task-interface.md) can provide consistent names; introducing one is not required when the current interface already works.
+- `npm test -- path/to/file.test.ts` runs one test file. Use it while you work.
+- `npm run verify` runs all tests, type checks, lint, and link checks. It does not change files. Run it before you finish.
+- `npm run format` rewrites files to fix formatting.
+- `npm audit` reports dependency issues. Existing findings are expected: report new ones, don't fix them.
+```
 
-Make the command's [task contract](../concepts/task-interface-contracts.md) explicit: an agent needs to know its scope, prerequisites, cost, side effects, and how to interpret the result. Keep execution details in canonical scripts or recipes so documentation does not become a competing source of commands.
+Each line says what the command covers, whether it changes files, and whether a failure blocks handoff or needs judgment. Those are the parts of a [task contract](../concepts/task-interface-contracts.md); the command's name alone does not tell an agent what `verify` or `check` does.
 
-## Offer useful choices without prescribing rigid tiers
+Point to commands; do not copy their implementation into instructions, where it goes stale.
 
-Focused checks, a routine handoff gate, broader diagnostics, and mutating commands serve different needs. Use the [gate-versus-diagnostic and side-effect distinctions](../concepts/task-interface-contracts.md#what-the-contract-should-explain) to expose choices appropriate to the repository, rather than prescribing mandatory tiers.
+## Use what the repository already has
 
-## Make the interface discoverable to agents
+If package scripts or a Makefile already work, list those. Add a task runner only when commands are scattered or hard to invoke. This wiki uses [Just](https://just.systems/), and `just --list` shows each recipe with its comment:
 
-A short repository instruction can point the agent to the task interface and explain how to use it. It should identify the repository's routine check and explain how to run a narrower check such as a targeted test. Link to fuller documentation for diagnostics or unusual prerequisites; avoid copying the full task catalog into the instruction.
+```just
+# Test and check the sitemap, Markdown formatting, and local links without modifying files.
+verify:
+    npm run verify
 
-An agent should choose commands by their documented contract, not infer behavior from familiar names such as `verify`.
+# Apply Markdown formatting (modifies files).
+format:
+    npm run format
+```
 
-## What the repository examples show
+## Give the Copilot cloud agent what it needs to run them
 
-The [repository examples](../sources/repository-justfiles.md) show how focused tests and broader checks can coexist. Recipe composition and the exact meaning of `check` or `verify` vary; document each task's actual contract.
+The cloud agent works in a fresh GitHub Actions environment, so it can only run your commands if their dependencies are installed. Add `.github/workflows/copilot-setup-steps.yml` with a single job named `copilot-setup-steps` that installs them, for example with `npm ci`. Copilot runs it before the agent starts, and code review reuses it by default. It only takes effect once it is on the default branch. If a setup step fails, the agent starts anyway with whatever was installed.
 
-## The boundary with repository context
+Checked 15 November 2026 against GitHub's documentation on [customizing the cloud agent's environment](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/customize-the-agent-environment).
 
-A task interface tells an agent **what it can run**. It does not explain the repository's domain, architecture, design constraints, or how to interpret every result. That context is a complementary part of making repositories agent-ready and is covered separately.
+## Commands worth listing
 
-For observed examples of tools grouped by purpose, see [Observed tools by purpose](tools-by-purpose.md).
+| Purpose                               | Examples seen in Node.js and Python repositories |
+| ------------------------------------- | ------------------------------------------------ |
+| Run one test or all tests             | Jest, Mocha, Python `unittest`                   |
+| Check types and lint                  | TypeScript, ESLint, Ruff, mypy                   |
+| Check or fix formatting               | Prettier, Ruff                                   |
+| Validate templates and images         | Template lint, Dockerfile lint                   |
+| Find unused code                      | Unused-code checks                               |
+| Report dependency and security issues | Dependency audit, Trivy, Semgrep                 |
 
-For a full repository layout showing how a task interface fits alongside `AGENTS.md`, agent documentation, and skills, see [A structure for agent-facing repositories](agent-facing-repository-structure.md).
+List diagnostics such as audits and scans separately from the check that must pass, because they often report findings that already exist. More examples are in the [repository Justfile notes](../sources/repository-justfiles.md).
+
+A command list tells the agent what it can run, not how the system works. For that, see [repository context for agents](repository-context-for-agents.md).

@@ -12,9 +12,7 @@ These working notes explore ways to give agents relevant repository context. Tre
 
 ## Start with the shared entrypoint
 
-Use [repository instructions in `AGENTS.md`](repository-instructions.md) to explain what the repository does, its essential constraints, and where to find relevant documentation. That guide covers the focused starting technique; add deeper context only when a specific need justifies maintaining it. Check that your agent actually loads the file.
-
-To choose what to add, note an incorrect assumption or repeated question, identify the smallest source-of-truth detail that would resolve it, and link that detail from the entrypoint. A brief explanation near the relevant code or command may be enough.
+Start from [repository instructions in `AGENTS.md`](repository-instructions.md). To choose what to add beyond it, note an incorrect assumption or repeated question, identify the smallest source-of-truth detail that would resolve it, and link that detail from the entrypoint. A brief explanation near the relevant code or command may be enough.
 
 <a id="record-decisions-including-the-ones-that-were-never-written-down"></a>
 
@@ -32,13 +30,13 @@ This is a fictional sample ADR record:
 
 > **Status:** Proposed.
 >
-> **Decision:** Continue rejecting credentials at expiry.
+> **Decision:** Keep storing money as integer pence.
 >
-> **Evidence:** An existing test checks the behavior; a maintainer confirms the requirement.
+> **Evidence:** Every amount column is an integer, and a maintainer confirms that floats caused rounding errors in an earlier system.
 >
-> **Open question:** Were clock differences between systems considered?
+> **Open question:** How should currencies without minor units be stored?
 >
-> **Consequence:** The test captures the current boundary, but the team still needs to assess the open question.
+> **Consequence:** New code must not introduce floating-point amounts, but the team still needs to answer the open question.
 
 ## Describe boundaries between repositories
 

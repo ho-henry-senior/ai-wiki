@@ -23,7 +23,7 @@ Get useful results with less time and fewer tokens, without sacrificing quality.
 - [Reuse deterministic tools](pages/agent-tool-delegation.md)
 - [Use focused feedback](concepts/tests-are-evidence.md)
 - [Keep context focused](concepts/progressive-disclosure.md)
-- [Reuse skills selectively](pages/skills-as-capabilities.md)
+- [Reuse skills selectively](pages/useful-skills.md)
 
 ## [Traceability](pages/traceability.md)
 
@@ -33,16 +33,16 @@ Leave a record someone else can follow later.
 - [Copy the evidence onto the pull request](pages/traceability.md#core-advice)
 - [Steer in the open](pages/define-and-verify-tasks.md#steer-it)
 - [Separate who asked from who approved](pages/traceability.md#core-advice)
-- [Keep records safe](pages/sensitive-data-in-agent-workflows.md)
+- [Keep records safe](pages/traceability.md#core-advice)
 
 ## [Security](pages/security.md)
 
-Protect sensitive information and limit unsafe actions. **Status: developing.**
+Limit what an agent can reach and do. **Status: developing.**
 
 - [Secure a local coding agent](pages/local-agent-security.md)
-- [Secure a cloud coding agent](pages/cloud-agent-security.md)
-- [Sandbox local agent tools](pages/local-agent-sandboxing.md)
-- [Understand prompt injection](pages/prompt-injection-coding-agents.md)
+- [Secure the Copilot cloud agent](pages/cloud-agent-security.md)
+- [Keep work data out of model training](concepts/inference-retention-training.md)
+- [Treat repository content as untrusted](pages/prompt-injection-coding-agents.md)
 - [Trace data and actions](pages/agent-data-flow-checklist.md)
 
 ## Explore further

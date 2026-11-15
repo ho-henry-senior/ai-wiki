@@ -1,51 +1,39 @@
 ---
 type: guide
-summary: Practical controls for coding agents executing in hosted workspaces, CI, or other cloud environments.
+summary: Know what GitHub already enforces for the Copilot cloud agent, and set the rest yourself; secrets, firewall, MCP servers, workflow approval, and who can start it.
 status: developing
 ---
 
-# Secure a cloud coding agent
+# Secure the Copilot cloud agent
 
-**Cloud** means the agent's tools execute in a hosted environment rather than on your computer. A remote model used by a local CLI does not make that CLI a cloud-executing agent. A cloud workspace may isolate the developer's laptop, but it can still reach repositories, secrets, external services, or infrastructure granted to it.
+The Copilot cloud agent runs in a fresh GitHub Actions environment, not on your computer. GitHub enforces some limits for you. Set the rest yourself, because a cloud run often has no one watching it.
 
-## Try this first
+## What GitHub enforces
 
-1. **Identify the execution environment.** Is it a disposable workspace, a persistent machine, or a CI runner? What files, network destinations, and services are reachable?
-2. **Scope repository and service permissions.** Prefer access only to the necessary repository and branch. Use short-lived, narrowly scoped tokens; avoid production or organisation-wide credentials where possible.
-3. **Separate proposing changes from applying them.** Let the agent produce a branch or pull request, with independent checks and human review before merge, deployment, publishing, or infrastructure changes.
-4. **Restrict triggers and external input.** Determine who can start a run and what issues, PRs, comments, or web content the agent consumes. Treat that content as untrusted; see [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md).
-5. **Check logs and cleanup.** Know what the environment retains, who can read transcripts and artifacts, when workspaces are destroyed, and how to revoke credentials.
+| Limit            | What it means                                                                                                                           |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Secrets          | The agent cannot read your repository or organization Actions secrets. It sees only secrets and variables in the `copilot` environment. |
+| Branch           | It can push only to its own branch, and cannot approve or merge its pull request.                                                       |
+| Workflows        | Actions workflows do not run on its pull request until someone with write access clicks **Approve and run workflows**.                  |
+| Who can start it | Only people with write access can assign it work or steer it.                                                                           |
+| Firewall         | Internet access is limited to an allowlist by default.                                                                                  |
+| Hidden text      | HTML comments and hidden characters in issues and comments are removed before the agent reads them.                                     |
 
-## A concrete failure mode
+## What you need to set
 
-An agent triggered by a repository issue receives a malicious instruction inside the issue text. If the agent also has a token that can change repository settings or deploy software, a prompt-injection attempt may have consequences far beyond the issue itself. A disposable VM does not reduce the authority of a powerful external token.
+1. **Keep the `copilot` environment minimal.** Add only the secrets the task needs, scoped and short-lived. Never add deployment or organization-wide credentials.
+2. **Keep the firewall on**, and add hosts to the allowlist one at a time. The firewall only covers processes the agent starts through its shell. It does **not** cover MCP servers or your `copilot-setup-steps.yml` steps, so check what those can reach.
+3. **Review MCP servers you configure for the agent** as carefully as code that runs with its permissions.
+4. **Leave Require approval for workflow runs on** in the cloud agent's settings. Turning it off lets unreviewed code from the agent run workflows that may have write access or secrets. [Verify the result](define-and-verify-tasks.md#verify-the-result) says what to check before approving.
+5. **Keep branch protection and required reviews.** The agent's pull request then needs approval from someone other than the person who asked for it.
+6. **Decide what it may read.** Issues and comments from people outside your team are untrusted input. See [prompt injection](prompt-injection-coding-agents.md).
 
-## Interactive and unattended runs
+**A pull request gate does not limit what happens during the run.** A run with broad credentials can still do damage before anyone reviews its pull request, so limit the run itself.
 
-For an interactive cloud task, a person may inspect proposed tool calls and approve significant actions. For unattended tasks, that approval may be absent. **The less human oversight a run has, the more important independently enforced limits become.**
+Checked 15 November 2026 against GitHub's documentation on [risks and mitigations](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/risks-and-mitigations), [responsible use](https://docs.github.com/en/copilot/responsible-use/copilot-cloud-agent), and [the agent firewall](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/customize-the-agent-firewall).
 
-Before enabling unattended execution, decide:
+## Other hosted agents
 
-- Which events and users are allowed to trigger it?
-- Which repository contents and third-party material can influence it?
-- Which credentials, tools, outbound destinations, and spending limits apply?
-- Which actions must stop at a PR or another human approval boundary?
-- Where are logs, artifacts, and alerts available if something goes wrong?
+Ask the same questions of any hosted agent: which secrets it can see, what it can push, what network it can reach, who can start it, and which integrations sit outside its limits. Do not assume "cloud" means sandboxed or short-lived.
 
-Do not confuse a PR approval gate with a restriction on what the agent can do _during_ its run. The [lo-fi software factory case study](lo-fi-software-factory-case-study.md) illustrates that distinction.
-
-## Check the boundaries
-
-| Boundary    | What to verify                                                                                       |
-| ----------- | ---------------------------------------------------------------------------------------------------- |
-| Workspace   | Isolation between runs, filesystem mounts, persistence, and cleanup                                  |
-| Repository  | Read/write scope, branch protection, and whether the agent can alter its own workflow or permissions |
-| Credentials | Token scope, lifetime, exposure to tools, and revocation                                             |
-| Network     | Whether executed code and integrations can send data to arbitrary destinations                       |
-| Outputs     | Access to logs, artifacts, transcripts, PRs, and deployment results                                  |
-
-See [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) and the [agent data-flow checklist](agent-data-flow-checklist.md) for destinations and retention questions. [Instructions are not enforced controls](../concepts/instructions-vs-controls.md) applies here too.
-
-## Limitations
-
-Hosted agents differ substantially in sandboxing, credential handling, network access, and approval features. Check the provider's current documentation and the actual configuration; do not assume "cloud" means sandboxed, ephemeral, or unable to access production.
+For where its logs and records go, see [traceability](traceability.md) and the [agent data-flow checklist](agent-data-flow-checklist.md).

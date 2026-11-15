@@ -6,9 +6,11 @@ status: established
 
 # Instructions are not enforced controls
 
-Asking an agent to avoid an action differs from preventing that action. Instructions are useful behavioral guidance; access restrictions must be enforced by the harness, tool, operating system, or connected service.
+Asking an agent to avoid an action differs from preventing that action. Instructions guide behavior; access restrictions must be enforced by the harness, tool, operating system, or connected service.
 
 For example, "use the database read-only" asks the model to behave. A database identity without write privileges prevents writes through that identity even if the agent requests one.
+
+In Copilot, writing "never push to `main`" in `AGENTS.md` is an instruction. Starting Copilot CLI with `--deny-tool='shell(git push)'`, protecting the branch, or leaving `git` out of a custom agent's `tools` list is a control.
 
 ## Use layers
 
@@ -22,4 +24,4 @@ No single layer guarantees safety. Scanning and redaction may miss sensitive con
 
 - [OWASP: Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) — enforce minimal permissions and independent approval.
 - [OWASP: Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) — untrusted inputs and layered mitigations.
-- Applied in [Sensitive data in agent workflows](../pages/sensitive-data-in-agent-workflows.md) and [repository instructions](../pages/repository-instructions.md); illustrated in the [agent-workflow perspective](../pages/agent-role-boundaries.md).
+- Applied in [secure a local coding agent](../pages/local-agent-security.md), [the data-flow checklist](../pages/agent-data-flow-checklist.md), and [repository instructions](../pages/repository-instructions.md); illustrated in the [agent-workflow perspective](../pages/agent-role-boundaries.md).

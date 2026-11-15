@@ -124,4 +124,4 @@ The flow is illustrative: task selection, merge execution, and release mechanics
 
 The example separates doing the work from having authority to approve it. A role may prepare an analysis or recommendation without being the final decision-maker; the human remains accountable for the decisions shown.
 
-See [Skills and agent profiles](skills-and-agent-profiles.md) for how role profiles relate to reusable skills.
+See [skills, profiles, and tools have different jobs](../concepts/skills-profiles-and-tools.md) for how role profiles relate to reusable skills.

@@ -78,4 +78,4 @@ One user turn can involve many model requests. Tools may execute locally or remo
 
 - [OpenAI: Unrolling the Codex agent loop](https://openai.com/index/unrolling-the-codex-agent-loop/) — the request/action/result loop and concrete tool definitions.
 - [MCP architecture](https://modelcontextprotocol.io/docs/learn/architecture) — the host, client, and server relationship.
-- Applied in [How models and harnesses interact](../pages/model-harness-interaction.md) and [Sensitive data in agent workflows](../pages/sensitive-data-in-agent-workflows.md).
+- Applied in [How models and harnesses interact](../pages/model-harness-interaction.md) and [the data-flow checklist](../pages/agent-data-flow-checklist.md).

@@ -1,43 +1,35 @@
 ---
 type: guide
-summary: Practical starting controls for coding agents that execute tools on a developer's own machine.
+summary: Turn on the sandbox, restrict which tools, paths, and URLs Copilot can use without asking, and keep credentials out of reach when an agent runs on your computer.
 status: developing
 ---
 
 # Secure a local coding agent
 
-**Local** means the agent's tools execute on your computer, even if the model itself runs remotely. A local agent may be able to read files, run commands, access credentials, and reach services available to your user account. Do not assume it is confined to the open repository.
+When Copilot CLI, the Copilot app, or agent mode in your editor runs a command, it runs on your computer with your account's access, even though the model runs remotely. Limit that access with settings Copilot enforces, not with instructions.
 
 ## Try this first
 
-1. **Check the execution boundary.** Find out which directories, commands, network destinations, and integrations the agent can actually access. Do not infer restrictions from its instructions or from a Git worktree.
-2. **Keep approval for consequential actions.** Inspect unfamiliar commands, dependency installation, changes outside the project, and actions affecting remote services. Avoid broad automatic approval merely to save prompts.
-3. **Use enforced isolation where available.** Prefer a supported sandbox that limits filesystem and network access; see [Sandbox a local coding agent](local-agent-sandboxing.md). Check what it covers, including subprocesses and integrations.
-4. **Reduce exposed credentials.** Avoid running with production credentials or access to unrelated accounts. Use task-scoped credentials and remove unnecessary integrations.
-5. **Review the result.** Inspect diffs and shared artifacts for unwanted changes and leaked information; keep a recoverable working state.
+1. **Turn on the sandbox.** In Copilot CLI, run `/sandbox enable`. It is off by default. See [sandbox a local coding agent](local-agent-sandboxing.md).
+2. **Deny the commands you never want run without you.** For example: `copilot --deny-tool='shell(git push)' --deny-tool='shell(rm)'`. Deny rules win over allow rules.
+3. **Do not approve everything.** Avoid `--allow-all` (also called `--yolo`) and `--allow-all-tools` outside a disposable environment. Allow specific tools instead, such as `--allow-tool='write'` to allow file edits without asking.
+4. **Limit network destinations.** Use `--allow-url` and `--deny-url` to control which domains Copilot may reach.
+5. **Keep credentials out of reach.** Do not run with production credentials or cloud CLI sessions logged in. The sandbox can block access to your Git and GitHub CLI credentials.
 
-## A concrete failure mode
+## What to check
 
-You ask an agent to diagnose a failing test. It runs a command that prints environment variables into its output. That output may be saved in a session or included in a later model request. No explicit request to upload secrets was necessary. See [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) and [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md).
+| Boundary     | Question                                                                                                                                                                           |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Files        | Can commands read your home directory, SSH keys, or other repositories? By default, Copilot CLI can access the current directory, its subdirectories, and the temporary directory. |
+| Commands     | Which commands run without asking, and do child processes inherit that?                                                                                                            |
+| Network      | Can commands, or code they run, reach any host?                                                                                                                                    |
+| Credentials  | Which tokens, SSH agents, credential helpers, and cloud CLI sessions are available?                                                                                                |
+| Integrations | Do MCP servers run outside the sandbox?                                                                                                                                            |
 
-## What to check before trusting a setup
+**Approval is not isolation.** An approval prompt asks you whether to run an action; a sandbox limits what the action can do. Use both.
 
-| Boundary     | Question                                                                                        |
-| ------------ | ----------------------------------------------------------------------------------------------- |
-| Files        | Can tools read your home directory, SSH keys, other repositories, or files outside the project? |
-| Commands     | Which commands require approval, and can subprocesses run without further prompts?              |
-| Network      | Can the agent or executed code contact arbitrary hosts?                                         |
-| Credentials  | Which tokens, SSH agents, credential helpers, and cloud CLI sessions are available?             |
-| Integrations | Do MCP servers or other tools run outside the shell sandbox?                                    |
+For unfamiliar repositories, third-party scripts, sensitive data, or unattended runs, use stronger isolation: a disposable container or virtual machine with only the files it needs, limited credentials, and explicit network rules.
 
-**Approval is not isolation.** An approval prompt asks a person to authorise an action; a sandbox restricts what the action can do. Both may be useful. An agent's promise to stay inside the repository is not an enforced boundary; see [Instructions are not enforced controls](../concepts/instructions-vs-controls.md).
+Checked 15 November 2026 against GitHub's documentation on [configuring Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/configure-copilot-cli). Other local agents offer similar controls under different names; look for the equivalent of each step above.
 
-## When to go further
-
-Use stronger isolation for unfamiliar repositories, third-party scripts, sensitive material, or unattended work. Consider a disposable container or VM with only the required files mounted, limited credentials, and explicit network rules. Containers are not automatically safe: mounting your home directory or exposing host credentials can defeat much of the benefit.
-
-For suspicious instructions embedded in issues, source files, or tool responses, see [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md). For a fuller review of data destinations, use the [agent data-flow checklist](agent-data-flow-checklist.md).
-
-## Limitations
-
-Sandbox features and defaults vary by operating system, harness, version, and integration. Confirm the actual enforcement rather than assuming that a product's "safe" or "workspace" mode provides a particular boundary. Even well-isolated tools may send task content to an approved model endpoint; [inference, retention, and training](../concepts/inference-retention-training.md) are separate questions.
+For data destinations, use the [agent data-flow checklist](agent-data-flow-checklist.md).

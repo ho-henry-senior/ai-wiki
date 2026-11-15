@@ -50,13 +50,13 @@ Do not put requirements in HTML comments (`<!-- -->`): Copilot filters them out 
 - **Do not add corrections to the issue.** The cloud agent does not see issue comments made after it starts. Put them on the pull request.
 - **In Copilot CLI:** type a new prompt at any time. Copilot treats it as steering for the current task. Press Esc twice to cancel; press Esc twice while idle to roll back to an earlier point.
 
-Put corrections that change what you asked for in a pull request comment. It stays with the change for reviewers; a CLI prompt stays only in your session. See [traceability](traceability.md).
+For why corrections belong on the pull request, see [traceability](traceability.md#core-advice).
 
 ## Verify the result
 
-- **Check each "Done when" line against the diff.** The pull request description is the agent's account, not evidence.
-- **Approve the workflows, then confirm the checks ran.** By default, GitHub Actions workflows do not run on the cloud agent's pull request until someone with write access clicks **Approve and run workflows**. Review the diff first, especially changes under `.github/workflows/`. Record any check that did not run.
-- **Read the tests the agent wrote.** Code and tests written together can share the same wrong assumption. See [passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
+- **Check each "Done when" line against the diff,** not against the pull request description.
+- **Approve the workflows, then confirm the checks ran.** Workflows do not run on the cloud agent's pull request until you click **Approve and run workflows**. Read the diff first, especially changes under `.github/workflows/`. Record any check that did not run.
+- **Read the tests the agent wrote.** See [passing tests are evidence, not proof](../concepts/tests-are-evidence.md#ask-for-tests-that-can-fail).
 - **Have someone else approve it.** If branch protection requires approvals, your approval of a pull request you asked Copilot to create does not count.
 
 ## Scale it to the work

@@ -21,4 +21,4 @@ The actual restrictions matter more than the environment's label. A container wi
 
 - [Git: git-worktree](https://git-scm.com/docs/git-worktree) — linked working trees share a repository and most repository metadata.
 - [OWASP: Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) — independently limit permissions and high-impact actions.
-- Applied in [Sensitive data in agent workflows](../pages/sensitive-data-in-agent-workflows.md) and [the data-flow checklist](../pages/agent-data-flow-checklist.md).
+- Applied in [the security overview](../pages/security.md) and [the data-flow checklist](../pages/agent-data-flow-checklist.md).

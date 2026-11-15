@@ -1,28 +1,34 @@
 ---
 type: reference
-summary: Skills provide reusable procedures, profiles describe roles, and tools expose executable actions.
+summary: Add a skill for a repeatable procedure, a profile for a role with limits, and a tool for an action the agent cannot perform; in Copilot these are skills, custom agents, and tools or MCP servers.
 ---
 
 # Skills, profiles, and tools have different jobs
 
-Skills, agent profiles, and tools can all influence an agent's work, but they serve different purposes. This is a portable working distinction, not a guarantee of identical naming or behavior across harnesses.
+Before you add configuration, name what is missing. Add a **skill** when a task keeps needing the same procedure, a **profile** when work needs a distinct role with its own limits, and a **tool** when the agent needs an action it cannot perform. A longer procedure cannot make up for a missing tool.
 
-|                  | Skill                                                  | Agent profile                                          | Tool                                      |
-| ---------------- | ------------------------------------------------------ | ------------------------------------------------------ | ----------------------------------------- |
-| Main purpose     | Supply reusable, task-specific knowledge or procedures | Describe a role, operating behavior, and scope         | Perform an executable action              |
-| Typical question | How should this kind of task be approached?            | What work is this agent expected and authorized to do? | What action can the system perform?       |
-| Example          | A review procedure and reporting template              | A reviewer with explicit responsibilities and handoffs | A command that reads a diff or runs tests |
+|               | Skill                                  | Profile                                                 | Tool                               |
+| ------------- | -------------------------------------- | ------------------------------------------------------- | ---------------------------------- |
+| Answers       | How should this kind of task be done?  | What is this agent for, and what may it do?             | What action can the agent perform? |
+| Example       | A review procedure and report template | A reviewer that reports findings but does not edit code | A command that runs the tests      |
+| In Copilot    | `.agents/skills/NAME/SKILL.md`         | A custom agent in `.github/agents/NAME.agent.md`        | Built-in tools and MCP servers     |
+| Shared format | Yes: the open Agent Skills standard    | No: each agent product has its own format               | MCP is shared across agents        |
 
-A reviewer profile may use a review skill and invoke several tools. A skill can package scripts, but the harness still needs an execution capability to run them.
+They combine: a reviewer custom agent can use a review skill and a test-quality skill, and call tools to read the diff and run checks.
 
 ## Limits
 
-The mechanisms overlap, and a harness may provide equivalent behavior as a built-in feature. Check its actual formats, discovery rules, and capabilities.
+A profile's description does not restrict what it can do. In Copilot, a custom agent's `tools` list controls which tools it can use; if you omit the list, it can use all of them. Set the list when the restriction matters. See [instructions are not enforced controls](instructions-vs-controls.md).
 
-A profile's stated limits are not automatically enforced tool permissions. See [Instructions are not enforced controls](instructions-vs-controls.md).
+Agents also build features in over time, so check whether Copilot already does what a skill would add. See [choose and add skills](../pages/useful-skills.md).
 
-## Sources and applications
+## Sources
 
-- [Agent Skills specification](https://agentskills.io/specification) — skills as instructions and optional supporting resources.
-- [GitHub: Agent skills](https://docs.github.com/en/copilot/concepts/customizations/agent-skills) — Copilot's on-demand procedures.
-- Applied in [Skills and agent profiles](../pages/skills-and-agent-profiles.md), [the changing capability layer](../pages/skills-as-capabilities.md), and [the repository layout](../pages/agent-facing-repository-structure.md).
+Checked 15 November 2026.
+
+- [Agent Skills specification](https://agentskills.io/specification)
+- [GitHub Docs: About agent skills](https://docs.github.com/en/copilot/concepts/customizations/agent-skills)
+- [GitHub Docs: About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
+- [GitHub Docs: Custom agents configuration](https://docs.github.com/en/copilot/reference/custom-agents-configuration)
+
+Illustrated in the [agent-workflow perspective](../pages/agent-role-boundaries.md) and the [repository layout](../pages/agent-facing-repository-structure.md).

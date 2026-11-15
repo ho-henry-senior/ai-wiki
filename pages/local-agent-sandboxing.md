@@ -1,45 +1,44 @@
 ---
 type: guide
-summary: How to evaluate and verify sandbox restrictions for a coding agent running on your computer.
+summary: Turn on Copilot's local sandbox, restrict files, network, and credentials, and prove the limits are enforced with harmless test files.
 status: developing
 ---
 
 # Sandbox a local coding agent
 
-A sandbox places **enforced limits** on what the agent's tools can read, change, or contact. It reduces the damage from mistakes and malicious instructions. It is different from an approval prompt, a Git branch, or a worktree: [a worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md).
+Turn on Copilot's local sandbox so that commands Copilot runs can only reach the files, network, and credentials you allow. It limits the damage from a mistake or a malicious instruction, whatever the model decides.
 
-## Try this first
+## Turn it on
 
-1. Check whether your coding-agent harness offers a supported sandbox mode on your operating system.
-2. Read what that mode actually restricts: filesystem writes, filesystem reads, network access, subprocesses, and integrations may be treated differently.
-3. Start with only the project and the tools the task requires. Do not expose unrelated home directories or credentials for convenience.
-4. Verify the restrictions using harmless, disposable test files before relying on them for sensitive work.
+- **Copilot CLI:** run `/sandbox enable` in a session. Use `/sandbox` to set filesystem paths, network access, and credentials. Settings are stored under the `sandbox` key in your Copilot CLI `settings.json`.
+- **Copilot app:** enable it per session with `/sandbox`, or per project in the project's settings. The app's settings are separate from the CLI's.
+- **VS Code:** sandboxing applies to sessions using Agent Host.
 
-If the built-in sandbox cannot provide the boundary you need, consider a dedicated OS account, a container, or a VM. Each has different setup costs and limitations; none is automatically sufficient without checking mounts, credentials, and networking.
+Local sandboxing is generally available at no extra cost, but it is off by default. Organizations can enforce it through managed settings.
 
-## A small verification exercise
+Checked 15 November 2026 against GitHub's documentation on [local sandboxing](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes).
 
-Use **synthetic data only**. Create a temporary test directory outside the agent's authorised workspace and put a file containing a harmless marker in it. Create a second marker file inside the workspace.
+## Prove it works
 
-1. Configure the intended sandbox restrictions.
-2. Ask the agent to read both marker files, without asking it to bypass any controls.
-3. Confirm that reading the inside file works and that the outside file is denied **by the tool or operating system**, not just declined by the model.
-4. Where supported, similarly check whether a harmless write outside the workspace and an outbound connection to a controlled test destination are blocked.
-5. Delete the test files and record what was and was not enforced.
+Use harmless, made-up files only.
 
-**Important:** An agent saying "I cannot access that file" is not proof of a sandbox boundary. Look for an actual permission error or other independent evidence. Avoid probing real secrets or sending data to an unknown test endpoint.
+1. Create a marker file inside the project and another in a temporary folder outside it.
+2. Ask Copilot to read both. Do not ask it to bypass anything.
+3. Confirm that reading the outside file fails with a **permission error from the system**, not because Copilot chose not to. A model saying "I cannot access that file" is not evidence.
+4. Repeat for a harmless write outside the project, and for a connection to a host you control.
+5. Delete the files and note what was and was not blocked.
 
-## What can escape the sandbox?
+## What the sandbox may not cover
 
-- A container may mount host directories, expose a credential helper, or allow unrestricted network access.
-- A shell sandbox may not apply to an MCP server, browser tool, or remote integration.
-- A sandbox that restricts writes may still permit reading files or sending data over the network.
-- A local agent may still send approved task context to a remote model provider.
+- MCP servers and other integrations may run outside it.
+- Restricting writes may still allow reads or network access.
+- Approved task context still goes to the model provider.
+- A container is only as isolated as its mounts, credentials, and network rules.
 
-See [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) and [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md).
+See [local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md). Return to [secure a local coding agent](local-agent-security.md) for the other settings.
 
-## Choosing a level of isolation
+## Sources
 
-For routine work in a trusted repository, a verified built-in sandbox plus meaningful approval may be a low-friction starting point. For unknown code, sensitive data, or unattended runs, stronger isolation and restricted credentials may be necessary. Prefer the simplest option that **actually enforces** the boundaries required for the task, not the one with the strongest-sounding label.
-
-Return to [Secure a local coding agent](local-agent-security.md) for the broader checklist.
+- [GitHub Changelog: Local sandboxing for GitHub Copilot now generally available (7 October 2026)](https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available)
+- [GitHub Docs: Configuring local sandbox settings](https://docs.github.com/en/copilot/how-tos/cloud-and-local-sandboxes/configuring-local-sandbox-settings)
+- [GitHub Docs: Configure local sandboxing in the Copilot app](https://docs.github.com/en/copilot/how-tos/github-copilot-app/configure-local-sandboxing)
