@@ -25,7 +25,7 @@ format:
     npm run format
 ```
 
-`just --list` exposes the recipe names and comments. These checks are separate from the mutating formatter, and the recipes delegate to the wiki's npm scripts. See the Justfile and `package.json` for current definitions; this is an example, not a universal recipe set.
+`just --list` exposes the recipe names and comments. These checks are separate from the mutating formatter, and the recipes delegate to the wiki's npm scripts. Point the agent's entrypoint (such as `AGENTS.md`) to the existing task interface rather than copying executable commands into instructions that may go stale. See the Justfile and `package.json` for current definitions; this is an example, not a universal recipe set.
 
 ## When not to add one
 
