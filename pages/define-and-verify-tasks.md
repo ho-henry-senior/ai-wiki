@@ -55,7 +55,7 @@ For why corrections belong on the pull request, see [traceability](traceability.
 ## Verify the result
 
 - **Check each "Done when" line against the diff,** not against the pull request description.
-- **Approve the workflows, then confirm the checks ran.** By default, GitHub Actions workflows do not run on the cloud agent's pull request until someone with write access clicks **Approve and run workflows**. Review the diff first, especially changes under `.github/workflows/`. Record any check that did not run.
+- **Approve the workflows, then confirm the checks ran.** Workflows do not run on the cloud agent's pull request until you click **Approve and run workflows**. Read the diff first, especially changes under `.github/workflows/`. Record any check that did not run.
 - **Read the tests the agent wrote.** See [passing tests are evidence, not proof](../concepts/tests-are-evidence.md#ask-for-tests-that-can-fail).
 - **Have someone else approve it.** If branch protection requires approvals, your approval of a pull request you asked Copilot to create does not count.
 

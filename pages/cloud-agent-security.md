@@ -24,7 +24,7 @@ The Copilot cloud agent runs in a fresh GitHub Actions environment, not on your 
 1. **Keep the `copilot` environment minimal.** Add only the secrets the task needs, scoped and short-lived. Never add deployment or organization-wide credentials.
 2. **Keep the firewall on**, and add hosts to the allowlist one at a time. The firewall only covers processes the agent starts through its shell. It does **not** cover MCP servers or your `copilot-setup-steps.yml` steps, so check what those can reach.
 3. **Review MCP servers you configure for the agent** as carefully as code that runs with its permissions.
-4. **Keep workflow approval on.** Turning it off lets unreviewed code from the agent run workflows that may have write access or secrets. Read the diff, especially `.github/workflows/`, before you approve.
+4. **Leave Require approval for workflow runs on** in the cloud agent's settings. Turning it off lets unreviewed code from the agent run workflows that may have write access or secrets. [Verify the result](define-and-verify-tasks.md#verify-the-result) says what to check before approving.
 5. **Keep branch protection and required reviews.** The agent's pull request then needs approval from someone other than the person who asked for it.
 6. **Decide what it may read.** Issues and comments from people outside your team are untrusted input. See [prompt injection](prompt-injection-coding-agents.md).
 
