@@ -36,13 +36,13 @@ Understand what was requested, what changed, and the evidence behind it. **Statu
 
 ## [Security](pages/security.md)
 
-Protect sensitive information and limit unsafe actions. **Status: stub.**
+Protect sensitive information and limit unsafe actions. **Status: developing.**
 
+- [Secure a local coding agent](pages/local-agent-security.md)
+- [Secure a cloud coding agent](pages/cloud-agent-security.md)
+- [Sandbox local agent tools](pages/local-agent-sandboxing.md)
+- [Understand prompt injection](pages/prompt-injection-coding-agents.md)
 - [Trace data and actions](pages/agent-data-flow-checklist.md)
-- [Limit and enforce access](concepts/instructions-vs-controls.md)
-- [Review integrations](pages/agent-data-flow-checklist.md#check-actions-as-well-as-data)
-- [Treat retrieved content as untrusted](pages/sensitive-data-in-agent-workflows.md#controls-across-the-workflow)
-- [Review consequential actions and outputs](pages/agent-data-flow-checklist.md#check-actions-as-well-as-data)
 
 ## Explore further
 

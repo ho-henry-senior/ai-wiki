@@ -5,7 +5,11 @@ Articles, applied patterns, reference catalogs, and checklists for AI-assisted s
 - [Alignment](alignment.md) — core advice for matching work to the intended outcome.
 - [Economy](economy.md) — core advice for using time and tokens effectively without sacrificing quality or security.
 - [Traceability](traceability.md) — developing core advice for recording intent, decisions, and evidence.
-- [Security](security.md) — an early stub on limiting data exposure and unsafe actions.
+- [Security](security.md) — start with local or cloud execution and follow the relevant controls.
+- [Secure a local coding agent](local-agent-security.md) — protect local files, credentials, commands, and integrations.
+- [Secure a cloud coding agent](cloud-agent-security.md) — scope remote execution, credentials, triggers, and review gates.
+- [Sandbox a local coding agent](local-agent-sandboxing.md) — understand and verify enforced access restrictions.
+- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — treat untrusted content as data rather than authority.
 - [Define and verify a task](define-and-verify-tasks.md) — clarify outcomes, acceptance criteria, verification, and review evidence.
 - [AI glossary](glossary.md) — practical definitions of foundational AI and current generative AI terms.
 - [How models and harnesses interact](model-harness-interaction.md) — the tool-call loop, message structure, session state, and context limits.
