@@ -41,6 +41,36 @@ Focused reusable concepts live in `concepts/` and use the types described in the
 
 The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it. The [sitemap](pages/sitemap.md) groups goal links from each overview's `Try this first` and `Core advice` sections separately from `Explore further`; links elsewhere appear as other links. Its inventory comes from page metadata. Regenerate it with `just sitemap` rather than editing it directly.
 
+## Who owns what
+
+Each idea below is explained in full on one page. Anywhere else, give a one-line summary and link to the owner. Overviews and the homepage summarize; they do not own detail. When you add a new core idea, add it here.
+
+| Idea                                                                                                                             | Owner                                                                                       |
+| -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Write the task, hand it to Copilot, steer it, verify it, second approver                                                         | [Define, steer, and verify a task](pages/define-and-verify-tasks.md)                        |
+| The record: authorship, evidence on the PR, where records live, why corrections go on the PR, the agent's explanation is a claim | [Traceability](pages/traceability.md)                                                       |
+| Judging tests: one per requirement, see it fail, read them                                                                       | [Passing tests are evidence, not proof](concepts/tests-are-evidence.md)                     |
+| Repository instructions: `AGENTS.md`, which Copilot features read which file, path-specific files, other agents' support         | [Write repository instructions in AGENTS.md](pages/repository-instructions.md)              |
+| Loading context on demand                                                                                                        | [Load context through focused entrypoints](concepts/progressive-disclosure.md)              |
+| Listing commands for the agent, task runners, `copilot-setup-steps.yml`                                                          | [Let the agent run your repository's commands](pages/agent-tool-delegation.md)              |
+| What to say about each command                                                                                                   | [Task names need explicit contracts](concepts/task-interface-contracts.md)                  |
+| Where files go in a repository                                                                                                   | [A structure for agent-facing repositories](pages/agent-facing-repository-structure.md)     |
+| Skills versus profiles (custom agents) versus tools                                                                              | [Skills, profiles, and tools have different jobs](concepts/skills-profiles-and-tools.md)    |
+| When to add a skill, where Copilot finds skills, candidates                                                                      | [Choose and add skills](pages/useful-skills.md)                                             |
+| Domain, decisions, and ADRs                                                                                                      | [Furnish repositories with context for agents](pages/repository-context-for-agents.md)      |
+| The full security checklist, sensitive data, and destinations                                                                    | [Agent data-flow checklist](pages/agent-data-flow-checklist.md)                             |
+| Local agent settings: Copilot CLI permissions, credentials, boundaries                                                           | [Secure a local coding agent](pages/local-agent-security.md)                                |
+| Copilot's local sandbox and how to verify it                                                                                     | [Sandbox a local coding agent](pages/local-agent-sandboxing.md)                             |
+| Copilot cloud agent protections and settings                                                                                     | [Secure the Copilot cloud agent](pages/cloud-agent-security.md)                             |
+| Prompt injection                                                                                                                 | [Prompt injection in coding-agent workflows](pages/prompt-injection-coding-agents.md)       |
+| What Copilot sends, keeps, and trains on                                                                                         | [Inference, retention, and training are separate](concepts/inference-retention-training.md) |
+| Instructions versus enforced controls                                                                                            | [Instructions are not enforced controls](concepts/instructions-vs-controls.md)              |
+| Worktrees versus sandboxes                                                                                                       | [A worktree is not a sandbox](concepts/worktrees-not-sandboxes.md)                          |
+| Where MCP servers run and send data                                                                                              | [Local MCP does not mean local-only data](concepts/local-and-remote-mcp.md)                 |
+| Secrets in tool output                                                                                                           | [Secrets can leak through tool output](concepts/secrets-in-tool-output.md)                  |
+| The model requests; the harness acts                                                                                             | [The model requests; the harness acts](concepts/tool-call-loop.md)                          |
+| Session history versus context                                                                                                   | [Session history is not active context](concepts/session-history-vs-context.md)             |
+
 ## Writing a slide
 
 Keep the takeaway and a small visual or example understandable on their own. Link to the canonical concept rather than duplicating its full explanation. Keep essential qualifications, and check a slide against its concept when either changes; follow the [freshness guidance](#keeping-content-current). Add it to the [slide index](slides/README.md) and the relevant [goal navigation](README.md).
