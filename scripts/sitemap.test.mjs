@@ -57,6 +57,76 @@ test("maps curated Markdown links and inventories pages by purpose", async (t) =
   assert.match(sitemap, /#### overview/);
 });
 
+test("groups goal links by their curated overview sections", async (t) => {
+  const root = await fixture(t);
+  for (const name of ["start", "context", "shared", "other"]) {
+    await writeFile(
+      path.join(root, "pages", `${name}.md`),
+      `---\ntype: guide\nsummary: ${name} summary.\n---\n\n# ${name}\n`,
+    );
+  }
+  const overview = path.join(root, "pages", "alignment.md");
+  const content = [
+    "---",
+    "type: overview",
+    "summary: Overview of alignment.",
+    "---",
+    "",
+    "# alignment",
+    "",
+    "[Other](other.md)",
+    "",
+    "## Try this first",
+    "",
+    "[Start](start.md)",
+    "",
+    "## Core advice",
+    "",
+    "[Shared][shared] and [again](shared.md#detail)",
+    "",
+    "## Explore further",
+    "",
+    "[Context](context.md) and [Shared](shared.md)",
+    "",
+    "[shared]: shared.md",
+    "",
+  ].join("\n");
+  await writeFile(overview, content);
+  const sitemap = await buildSitemap(root);
+  const alignment = sitemap
+    .split("### [alignment]")[1]
+    .split("### [economy]")[0];
+  const core = alignment.split("#### Core advice and supporting links")[1].split(
+    "#### Explore further",
+  )[0];
+  const further = alignment.split("#### Explore further")[1].split(
+    "#### Other links",
+  )[0];
+  const other = alignment.split("#### Other links")[1];
+  assert.match(core, /\[start\]\(start\.md\)/);
+  assert.equal((core.match(/\[shared\]/g) ?? []).length, 1);
+  assert.doesNotMatch(core, /\[context\]/);
+  assert.match(further, /\[context\]\(context\.md\)/);
+  assert.match(further, /\[shared\]\(shared\.md\)/);
+  assert.match(other, /\[other\]\(other\.md\)/);
+
+  await syncSitemap(root, "write");
+  await writeFile(
+    overview,
+    content.replace("## Explore further", "## Other reading"),
+  );
+  assert.equal(await syncSitemap(root, "check"), false);
+  const updated = await buildSitemap(root);
+  const updatedAlignment = updated
+    .split("### [alignment]")[1]
+    .split("### [economy]")[0];
+  assert.doesNotMatch(updatedAlignment, /#### Explore further/);
+  assert.match(
+    updatedAlignment.split("#### Other links")[1],
+    /\[context\]\(context\.md\)/,
+  );
+});
+
 test("detects inventory, metadata, and curated relationship changes", async (t) => {
   const root = await fixture(t);
   assert.equal(await syncSitemap(root, "check"), false);

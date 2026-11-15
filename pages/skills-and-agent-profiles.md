@@ -11,7 +11,7 @@ Start with the problem you want to solve, rather than the configuration file you
 
 If the same task repeatedly needs a particular approach, package that procedure as a skill. It can be used by any suitable role without duplicating the procedure in each profile.
 
-If work needs distinct responsibilities, limits, or handoffs, define a profile. For example, a reviewer role might assess requirements and report findings while a developer role implements changes. The [role-boundary pattern](agent-role-boundaries.md) develops those contracts.
+If work needs distinct responsibilities, limits, or handoffs, define a profile. For example, a reviewer role might assess requirements and report findings while a developer role implements changes. [From agile roles to agent-assisted workflows](agent-role-boundaries.md) illustrates one possible allocation.
 
 If the agent needs an action it cannot currently perform, provide or configure a tool. A longer procedure cannot substitute for missing execution access.
 
@@ -23,4 +23,4 @@ Keep permission enforcement separate from the role description: [instructions ar
 
 When documenting a particular harness, state what its implementation actually supports. Keep the underlying purpose distinct from harness-specific names, formats, and loading behavior.
 
-For explicit role responsibilities and limits, see [Define agent role responsibilities and boundaries](agent-role-boundaries.md).
+For a perspective on how roles and handoffs might fit together, see [From agile roles to agent-assisted workflows](agent-role-boundaries.md).

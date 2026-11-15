@@ -10,7 +10,7 @@ Get results that match what you intended.
 - [Provide relevant context](pages/agents-md-as-shared-entrypoint.md)
 - [Make checks available](pages/agent-tool-delegation.md)
 - [Verify the intended behavior](concepts/tests-are-evidence.md)
-- [Keep responsibilities clear](pages/agent-role-boundaries.md)
+- [Keep responsibilities clear](pages/alignment.md#core-advice)
 
 Here, alignment means matching a specific task's intended outcome; see the broader [AI alignment definition](pages/glossary.md#alignment).
 
@@ -31,7 +31,7 @@ Understand what was requested, what changed, and the evidence behind it. **Statu
 - [Record the request and decisions](pages/define-and-verify-tasks.md)
 - [Connect related artifacts](pages/traceability.md#core-advice)
 - [Preserve verification evidence](pages/define-and-verify-tasks.md)
-- [Make responsibilities visible](pages/agent-role-boundaries.md)
+- [Make responsibilities visible](pages/traceability.md#core-advice)
 - [Keep records proportionate and safe](pages/sensitive-data-in-agent-workflows.md#controls-across-the-workflow)
 
 ## [Security](pages/security.md)
@@ -52,4 +52,3 @@ Protect sensitive information and limit unsafe actions. **Status: stub.**
 - [Authored pages](pages/README.md) — all articles, patterns, and checklists
 - [AI glossary](pages/glossary.md) — shared vocabulary for AI and agents
 - [Source index and records](sources/README.md) — provenance and research notes
-- [From CLI agents toward a lightweight software factory](pages/cli-to-software-factory.md) — a stub for an exploratory guided path

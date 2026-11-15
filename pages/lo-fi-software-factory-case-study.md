@@ -52,6 +52,6 @@ The agents ran unattended with broad tool access and were not independently sand
 
 This account is based on a participant's retrospective and inspection of the workflow documentation and issue and pull-request records. Project names, links, dates, and distinctive implementation details are omitted to preserve anonymity. The account is not an independently measured comparison.
 
-- [Agent role responsibilities and boundaries](agent-role-boundaries.md) — a way to define responsibilities and human handoffs.
+- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — an illustrative perspective on familiar responsibilities and human handoffs, not an account of this exercise.
 - [Define and verify a task](define-and-verify-tasks.md) — clarify intent and preserve proportionate evidence.
 - [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — review permissions, data flows, and controls before running agents.

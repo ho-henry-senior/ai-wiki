@@ -4,29 +4,39 @@ This map is generated from page metadata and the links curated in each outcome o
 
 ## Goal paths
 
-These lists show directly linked pages, concepts, slides, and source records; follow each overview for the advice and context behind its links. A page or concept without a [completeness status](README.md#completeness-status) is unassessed; status does not establish correctness or freshness.
+These lists group directly linked pages, concepts, slides, and source records by their place in each overview; follow the overview for the advice and context behind its links. A page or concept without a [completeness status](README.md#completeness-status) is unassessed; status does not establish correctness or freshness.
 
 ### [Alignment](alignment.md)
 
 **Status:** established
 
-- [AI glossary](glossary.md) — A practical glossary of foundational AI and current generative AI terminology.
+#### Core advice and supporting links
+
 - [Define and verify a task](define-and-verify-tasks.md) — Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
 - [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) — Use AGENTS.md as a concise repository entrypoint, with Copilot CLI support and explicit limits on portability. (established)
-- [Furnish repositories with context for agents](repository-context-for-agents.md) — Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing. (developing)
 - [Task names need explicit contracts](../concepts/task-interface-contracts.md) — A discoverable task needs an explicit scope, side effects, prerequisites, and interpretation; its name alone is not a contract.
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — A green test suite establishes that assertions passed, not that those assertions completely capture the intended behavior. (established)
-- [Define agent role responsibilities and boundaries](agent-role-boundaries.md) — Define agent roles by both their expected responsibilities and explicit off-limits work, using RACI to clarify workflow handoffs. (established)
 - [Traceability](traceability.md) — Core advice for recording requests, decisions, changes, and evidence in agent-assisted work. (developing)
+
+#### Explore further
+
 - [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — Explore unit tests as fast, deterministic feedback for agents, and the risks of treating test volume or a green suite as proof of correctness. (established)
 - [Evals](../concepts/evals.md) — Evals compare AI system behavior against task-specific criteria, using representative cases and appropriate checks to inform improvements.
+- [Furnish repositories with context for agents](repository-context-for-agents.md) — Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing. (developing)
+- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — A perspective on using familiar agile roles and handoffs to understand a possible agent-assisted software factory.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
+
+#### Other links
+
+- [AI glossary](glossary.md) — A practical glossary of foundational AI and current generative AI terminology.
 
 ### [Economy](economy.md)
 
 **Status:** established
+
+#### Core advice and supporting links
 
 - [Define and verify a task](define-and-verify-tasks.md) — Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them. (established)
 - [Task names need explicit contracts](../concepts/task-interface-contracts.md) — A discoverable task needs an explicit scope, side effects, prerequisites, and interpretation; its name alone is not a contract.
@@ -35,6 +45,9 @@ These lists show directly linked pages, concepts, slides, and source records; fo
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
 - [Skills as a changing capability layer](skills-as-capabilities.md) — Explain skills as reusable capabilities that can fill current harness gaps, while their value changes as harnesses evolve. (established)
 - [Security](security.md) — Core advice for protecting sensitive information and limiting unsafe actions in agent-assisted work. (stub)
+
+#### Explore further
+
 - [Tool choices by purpose](tools-by-purpose.md) — Considerations for choosing deterministic tools by purpose, with selected examples from Node.js and Python repositories.
 - [Evals](../concepts/evals.md) — Evals compare AI system behavior against task-specific criteria, using representative cases and appropriate checks to inform improvements.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
@@ -43,17 +56,24 @@ These lists show directly linked pages, concepts, slides, and source records; fo
 
 **Status:** developing
 
+#### Core advice and supporting links
+
 - [Define and verify a task](define-and-verify-tasks.md) — Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — A green test suite establishes that assertions passed, not that those assertions completely capture the intended behavior. (established)
-- [Define agent role responsibilities and boundaries](agent-role-boundaries.md) — Define agent roles by both their expected responsibilities and explicit off-limits work, using RACI to clarify workflow handoffs. (established)
 - [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — The main risks of running coding agents, how sensitive data can move through their workflows, and controls for each destination. (developing)
+
+#### Explore further
+
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing. (developing)
 - [Alignment](alignment.md) — Core advice for helping an agent's work match a task's intended outcome. (established)
+- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — A perspective on using familiar agile roles and handoffs to understand a possible agent-assisted software factory.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
 
 ### [Security](security.md)
 
 **Status:** stub
+
+#### Core advice and supporting links
 
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — A reusable checklist for tracing sensitive data through an agent setup and checking controls at each destination. (established)
 - [Inference, retention, and training are separate](../concepts/inference-retention-training.md) — Sending data for a model response, retaining it, and using it to train models are separate policy and data-flow questions.
@@ -61,6 +81,10 @@ These lists show directly linked pages, concepts, slides, and source records; fo
 - [A worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md) — Git branches and worktrees separate changes, while a security sandbox restricts what executing code can access or do.
 - [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) — An MCP server's location determines where code runs, but does not guarantee where the data it handles stays.
 - [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — The main risks of running coding agents, how sensitive data can move through their workflows, and controls for each destination. (developing)
+
+#### Explore further
+
+- [Agent data-flow checklist](agent-data-flow-checklist.md) — A reusable checklist for tracing sensitive data through an agent setup and checking controls at each destination. (established)
 - [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — A diagnostic command can expose a secret through its result, saved history, and subsequent model requests without an explicit upload.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
 
@@ -76,6 +100,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 #### explanation
 
+- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — A perspective on using familiar agile roles and handoffs to understand a possible agent-assisted software factory.
 - [How models and harnesses interact](model-harness-interaction.md) — How a harness supplies context and tools to a model, handles tool requests, and manages session history and context limits.
 - [Skills as a changing capability layer](skills-as-capabilities.md) — Explain skills as reusable capabilities that can fill current harness gaps, while their value changes as harnesses evolve. (established)
 - [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — Explore unit tests as fast, deterministic feedback for agents, and the risks of treating test volume or a green suite as proof of correctness. (established)
@@ -101,7 +126,6 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 - [A Justfile as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) — Use a Justfile to give people and agents a stable, discoverable interface to the repository's existing commands and checks.
 - [A structure for agent-facing repositories](agent-facing-repository-structure.md) — An illustrative repository layout that connects shared agent instructions, reference context, skills, task commands, and harness-specific files.
-- [Define agent role responsibilities and boundaries](agent-role-boundaries.md) — Define agent roles by both their expected responsibilities and explicit off-limits work, using RACI to clarify workflow handoffs. (established)
 - [Define and verify a task](define-and-verify-tasks.md) — Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them. (established)
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
 

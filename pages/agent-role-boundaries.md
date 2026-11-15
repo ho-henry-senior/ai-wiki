@@ -1,33 +1,40 @@
 ---
-type: pattern
-summary: Define agent roles by both their expected responsibilities and explicit off-limits work, using RACI to clarify workflow handoffs.
-status: established
+type: explanation
+summary: A perspective on using familiar agile roles and handoffs to understand a possible agent-assisted software factory.
 ---
 
-# Define agent role responsibilities and boundaries
+# From agile roles to agent-assisted workflows
 
-An agent role should say both what the agent is expected to do and what is out of bounds. Positive responsibilities alone can leave an agent guessing about adjacent work; prohibitions alone do not give it a useful mandate.
+This page offers one perspective on how familiar agile activities might be organized in an agent-assisted software factory. It illustrates how roles, smaller work loops, explicit outputs, and human intervention could support the transition—not a prescribed workflow or a prediction of how teams will work in future.
 
-For each role, make explicit:
+In a familiar agile process, people may clarify requirements, plan and implement work, review results, and decide whether to release. This example assigns some of those activities to agents with distinct roles, while people retain decisions and approval. The intended benefit is to avoid asking one agent to carry out a large, open-ended undertaking: smaller loops produce outputs that can be reviewed and provide points for human intervention.
+
+The mapping is a way to reason about a transition, not evidence that these exact roles are necessary or that the approach improves outcomes. Teams and agile practices vary; the activities and their assignment may change as agent capabilities evolve. For an account of one actual exercise, see the [lo-fi software factory case study](lo-fi-software-factory-case-study.md).
+
+## Roles and boundaries in this example
+
+The example distinguishes what each role is expected to do from what is out of bounds. Its role contracts describe:
 
 - **Purpose:** the outcome the role exists to produce.
 - **Expected responsibilities:** the work and decisions it owns or contributes to.
 - **Limits:** work it must not perform, decisions it cannot make, and conditions that require a handoff.
 - **Inputs and outputs:** what it needs and what it should return to the next role.
 
-These boundaries are part of the role's profile or instructions. They should be specific enough to guide behavior, not merely implied by the role title. They are also [instructions, not automatically enforced controls](../concepts/instructions-vs-controls.md); configure tool permissions separately where enforcement matters.
+These boundaries are part of a role's profile or instructions, rather than being implied by the title. They are also [instructions, not automatically enforced controls](../concepts/instructions-vs-controls.md); enforcement depends on actual permissions and other controls.
 
-## Use RACI to describe workflow relationships
+<a id="use-raci-to-describe-workflow-relationships"></a>
+
+## RACI and workflow relationships
 
 RACI can map who is **Responsible**, **Accountable**, **Consulted**, and **Informed** for activities across a multi-agent workflow. It helps show ownership and handoffs between roles.
 
-RACI does not, by itself, define every prohibition. An empty cell or an “Informed” assignment does not necessarily mean a role is forbidden to act. State off-limits work directly in the role definition, and use RACI as a complementary workflow view.
+RACI does not, by itself, define every prohibition. An empty cell or an “Informed” assignment does not necessarily mean a role is forbidden to act. In this example, the role contracts state off-limits work and RACI supplies a complementary workflow view.
 
-For example, a team might define that a product role does not implement code, a reviewer evaluates changes but does not implement them, and a business analyst does not perform code review. These are illustrative boundaries to make explicit, not universal definitions of those roles.
+For example, a product role might not implement code, a reviewer might evaluate changes without implementing them, and a business analyst might not perform code review. These are illustrative boundaries, not universal definitions of those roles.
 
 ## Example role contracts
 
-These short contracts make the example roles' responsibilities and limits explicit. Adapt them to the work and authority model; they are not canonical definitions.
+These short contracts illustrate the example roles' responsibilities and limits; they are not canonical definitions.
 
 ### Product agent
 
@@ -56,13 +63,13 @@ These short contracts make the example roles' responsibilities and limits explic
 ### Human product owner/approver
 
 - **Expected:** set or confirm priorities, approve product scope, and make the final merge or release approval decision.
-- **Out of scope:** none prescribed here; the human's responsibilities and any delegated authority should be explicit for each workflow.
+- **Out of scope:** none prescribed in this example; actual human responsibilities and delegated authority vary by workflow.
 
 ## Illustrative delivery-workflow RACI
 
-This example shows one possible division of work, not a prescribed role model. It includes a human product owner/approver because prioritization and final merge/release approval remain human-led here. Adapt the assignments to the actual workflow and authority model.
+This example shows one possible division of work, not a prescribed role model. It includes a human product owner/approver because prioritization and final merge/release approval remain human-led in this example.
 
-**R** = Responsible for doing the work; **A** = Accountable for the outcome; **C** = Consulted; **I** = Informed. A blank means “not assigned in this example,” not “prohibited.” State prohibitions in the role profile.
+**R** = Responsible for doing the work; **A** = Accountable for the outcome; **C** = Consulted; **I** = Informed. A blank means “not assigned in this example,” not “prohibited.” The role contracts state prohibitions separately.
 
 | Activity                                                | Product agent | Business analyst | Developer agent | Reviewer agent | Human product owner/approver |
 | ------------------------------------------------------- | ------------- | ---------------- | --------------- | -------------- | ---------------------------- |
@@ -79,7 +86,7 @@ This example shows one possible division of work, not a prescribed role model. I
 | Address review findings                                 | I             | I                | R/A             | C              | I                            |
 | Approve merge/release                                   | C             | I                | I               | C              | R/A                          |
 
-This example keeps the Product agent focused on outcomes rather than implementation, the Business Analyst on requirements and decomposition rather than code review, and the Reviewer on assessment rather than implementation. Review must check the requirements as well as test output: [passing tests are evidence, not proof](../concepts/tests-are-evidence.md). The human retains prioritization and final approval. Repositories may assign the mechanics of merging or releasing separately according to their policies.
+This example keeps the Product agent focused on outcomes rather than implementation, the Business Analyst on requirements and decomposition rather than code review, and the Reviewer on assessment rather than implementation. The review considers requirements as well as test output: [passing tests are evidence, not proof](../concepts/tests-are-evidence.md). The human retains prioritization and final approval. Repositories may assign the mechanics of merging or releasing separately according to their policies.
 
 ## Illustrative handoff flow
 
@@ -109,10 +116,12 @@ sequenceDiagram
     Human->>Dev: Final merge/release approval
 ```
 
-The flow is illustrative: task selection, merge execution, and release mechanics may differ by repository. The explicit role limits still apply even where the diagram omits a role from a handoff.
+The flow is illustrative: task selection, merge execution, and release mechanics may differ by repository. In this example, the role limits still apply even where the diagram omits a role from a handoff.
 
-## Keep responsibility and authority clear
+<a id="keep-responsibility-and-authority-clear"></a>
 
-For consequential decisions, distinguish doing the work from having authority to approve it. A role may prepare an analysis or recommendation without being the final decision-maker. Make the accountable person or role and any required human handoff explicit.
+## Responsibility and authority
+
+The example separates doing the work from having authority to approve it. A role may prepare an analysis or recommendation without being the final decision-maker; the human remains accountable for the decisions shown.
 
 See [Skills and agent profiles](skills-and-agent-profiles.md) for how role profiles relate to reusable skills.

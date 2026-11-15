@@ -19,11 +19,12 @@ For one task, record the desired outcome and acceptance criteria in the issue or
 - **Record the request and decisions.** Keep the outcome, acceptance criteria, constraints, and meaningful decisions where reviewers can find them. [Define and verify a task](define-and-verify-tasks.md).
 - **Connect related artifacts.** Link specifications, tickets, changes, and reviews when they exist so a reader can follow the work from intent to result. A small task does not need every artifact. [Define and verify a task](define-and-verify-tasks.md#scale-the-process-to-the-work) shows a proportionate starting point.
 - **Preserve verification evidence.** Record what was checked, the outcome, and relevant checks not run. [Define and verify a task](define-and-verify-tasks.md) describes what to record. Review the change against the request, rather than treating a passing suite as complete proof: [passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
-- **Make responsibilities visible.** Clarify who performs the work, who reviews it, and who has approval authority. [Agent role responsibilities and boundaries](agent-role-boundaries.md) illustrates one possible workflow.
+- **Make responsibilities visible.** Clarify who performs the work, who reviews it, and who has approval authority.
 - **Keep records proportionate and safe.** Choose enough detail for the task's risk and review needs; avoid collecting secrets or sensitive data unnecessarily. Review artifacts before sharing them. [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md).
 
 ## Explore further
 
 - [Repository context for agents](repository-context-for-agents.md) — developing notes on preserving decisions and distinguishing confirmed rationale from inference.
 - [Alignment](alignment.md) — defining and checking the intended outcome.
+- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — a perspective on familiar roles, outputs, and human handoffs.
 - [Lo-fi software factory case study](lo-fi-software-factory-case-study.md) — artifacts and review evidence in a real workflow.

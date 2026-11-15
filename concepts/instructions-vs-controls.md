@@ -22,4 +22,4 @@ No single layer guarantees safety. Scanning and redaction may miss sensitive con
 
 - [OWASP: Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) — enforce minimal permissions and independent approval.
 - [OWASP: Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) — untrusted inputs and layered mitigations.
-- Applied in [Sensitive data in agent workflows](../pages/sensitive-data-in-agent-workflows.md), [role responsibilities and boundaries](../pages/agent-role-boundaries.md), and [repository instructions](../pages/agents-md-as-shared-entrypoint.md).
+- Applied in [Sensitive data in agent workflows](../pages/sensitive-data-in-agent-workflows.md) and [repository instructions](../pages/agents-md-as-shared-entrypoint.md); illustrated in the [agent-workflow perspective](../pages/agent-role-boundaries.md).

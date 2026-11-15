@@ -26,5 +26,5 @@ Verification should be independent enough to catch a shared mistaken assumption 
 ## Explore further
 
 - [Evals](../concepts/evals.md) compare agent behavior across representative tasks when repeatable assessment is useful.
-- [Agent role responsibilities and boundaries](agent-role-boundaries.md) illustrates handoffs and approvals for a more structured workflow.
+- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) offers a perspective on handoffs and approvals in an illustrative workflow.
 - [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) covers access, data flow, and safeguards before and during a task.

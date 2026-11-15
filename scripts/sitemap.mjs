@@ -96,29 +96,49 @@ function goalLinks(page, pages) {
     if (node.type === "definition")
       definitions.set(node.identifier.toLowerCase(), node.url);
   });
-  const links = new Set();
-  visit(page.tree, (node) => {
-    const url =
-      node.type === "link"
-        ? node.url
-        : node.type === "linkReference"
-          ? definitions.get(node.identifier.toLowerCase())
-          : null;
-    if (!url || /^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(url)) return;
-    const target = url.split(/[?#]/, 1)[0];
-    if (!target) return;
-    let decoded;
-    try {
-      decoded = decodeURIComponent(target);
-    } catch {
-      throw new Error(`${page.path}: invalid URL encoding in ${url}`);
+  const groups = new Map([
+    ["Core advice and supporting links", new Set()],
+    ["Explore further", new Set()],
+    ["Other links", new Set()],
+  ]);
+  let group = "Other links";
+  for (const section of page.tree.children) {
+    if (section.type === "heading" && section.depth === 2) {
+      const heading = textContent(section).trim().toLowerCase();
+      group =
+        heading === "try this first" || heading === "core advice"
+          ? "Core advice and supporting links"
+          : heading === "explore further"
+            ? "Explore further"
+            : "Other links";
     }
-    const resolved = path.posix.normalize(
-      path.posix.join(path.posix.dirname(page.path), decoded),
-    );
-    if (pages.has(resolved) && resolved !== page.path) links.add(resolved);
-  });
-  return [...links].map((file) => pages.get(file));
+    visit(section, (node) => {
+      const url =
+        node.type === "link"
+          ? node.url
+          : node.type === "linkReference"
+            ? definitions.get(node.identifier.toLowerCase())
+            : null;
+      if (!url || /^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(url)) return;
+      const target = url.split(/[?#]/, 1)[0];
+      if (!target) return;
+      let decoded;
+      try {
+        decoded = decodeURIComponent(target);
+      } catch {
+        throw new Error(`${page.path}: invalid URL encoding in ${url}`);
+      }
+      const resolved = path.posix.normalize(
+        path.posix.join(path.posix.dirname(page.path), decoded),
+      );
+      if (pages.has(resolved) && resolved !== page.path)
+        groups.get(group).add(resolved);
+    });
+  }
+  return [...groups].map(([title, files]) => [
+    title,
+    [...files].map((file) => pages.get(file)),
+  ]);
 }
 
 function entry(page) {
@@ -163,7 +183,7 @@ export async function buildSitemap(rootDir = root) {
     "",
     "## Goal paths",
     "",
-    "These lists show directly linked pages, concepts, slides, and source records; follow each overview for the advice and context behind its links. A page or concept without a [completeness status](README.md#completeness-status) is unassessed; status does not establish correctness or freshness.",
+    "These lists group directly linked pages, concepts, slides, and source records by their place in each overview; follow the overview for the advice and context behind its links. A page or concept without a [completeness status](README.md#completeness-status) is unassessed; status does not establish correctness or freshness.",
   ];
 
   for (const goal of goals) {
@@ -171,7 +191,9 @@ export async function buildSitemap(rootDir = root) {
     if (!page) throw new Error(`Missing goal overview: pages/${goal}.md`);
     lines.push("", `### [${linkText(page.title)}](${goal}.md)`, "");
     if (page.status) lines.push(`**Status:** ${page.status}`, "");
-    lines.push(...goalLinks(page, pages).map(entry));
+    for (const [title, links] of goalLinks(page, pages)) {
+      if (links.length) lines.push(`#### ${title}`, "", ...links.map(entry), "");
+    }
   }
 
   lines.push(

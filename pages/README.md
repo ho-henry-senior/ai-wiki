@@ -31,7 +31,7 @@ Suggested `type` values:
 
 Focused reusable concepts live in `concepts/` and use the types described in the [concept conventions](../concepts/README.md#writing-a-concept). An explanatory article may bring several concepts together without replacing them.
 
-The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it. The [sitemap](sitemap.md) derives its goal paths from those overview links and its inventory from page metadata; regenerate it with `just sitemap` rather than editing it directly.
+The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it. The [sitemap](sitemap.md) groups goal links from each overview's `Try this first` and `Core advice` sections separately from `Explore further`; links elsewhere appear as other links. Its inventory comes from page metadata. Regenerate it with `just sitemap` rather than editing it directly.
 
 ## Completeness status
 
@@ -73,7 +73,7 @@ Keep edit-time review focused on the affected material and directly dependent gu
 - [Skills as a changing capability layer](skills-as-capabilities.md) — why skills fill gaps and how their value can shift as harnesses evolve.
 - [Useful skills right now](useful-skills.md) — a living, problem-oriented list, with harness support and review status.
 - [Skills and agent profiles](skills-and-agent-profiles.md) — choosing procedures, roles, and executable capabilities for a workflow.
-- [Define agent role responsibilities and boundaries](agent-role-boundaries.md) — positive scope, explicit limits, and workflow responsibility mapping.
+- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — a perspective on familiar responsibilities and handoffs in an agent-assisted workflow.
 - [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — the value and limits of unit tests as feedback for agent-produced changes.
 - [From CLI agents toward a lightweight software factory](cli-to-software-factory.md) — a stub for an exploratory progression path.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.

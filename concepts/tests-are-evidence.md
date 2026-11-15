@@ -26,4 +26,4 @@ When expected behavior is materially ambiguous, clarify it before encoding a gue
 
 - [Matt Pocock: Good and Bad Tests](https://github.com/mattpocock/skills/blob/main/skills/engineering/tdd/tests.md) — behavior-focused assertions and weak test patterns.
 - [pstack: Test Behavior, Not Implementation](https://github.com/backnotprop/pstack/blob/main/skills/principle-test-behavior-not-implementation/SKILL.md) — regression detection and refactor tolerance.
-- Applied in [Unit tests in the age of AI](../pages/unit-tests-in-the-age-of-ai.md) and [the delivery review workflow](../pages/agent-role-boundaries.md).
+- Applied in [Unit tests in the age of AI](../pages/unit-tests-in-the-age-of-ai.md); illustrated in the [agent-workflow perspective](../pages/agent-role-boundaries.md).
