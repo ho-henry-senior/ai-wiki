@@ -63,6 +63,8 @@ For why corrections belong on the pull request, see [traceability](traceability.
 
 A small change needs only the four headings above. For larger or ambiguous work, agree a specification before you break it into tasks, and link each task to it.
 
+**Next:** [limit what the agent can do](security.md), step 3 of [start here](../README.md#start-here).
+
 ## Sources
 
 Checked 15 November 2026.

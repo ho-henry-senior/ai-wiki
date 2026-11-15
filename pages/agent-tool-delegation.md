@@ -59,3 +59,5 @@ Checked 15 November 2026 against GitHub's documentation on [customizing the clou
 List diagnostics such as audits and scans separately from the check that must pass, because they often report findings that already exist. More examples are in the [repository Justfile notes](../sources/repository-justfiles.md).
 
 A command list tells the agent what it can run, not how the system works. For that, see [repository context for agents](repository-context-for-agents.md).
+
+**Next:** [write your next task down](define-and-verify-tasks.md), step 2 of [start here](../README.md#start-here).

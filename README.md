@@ -1,53 +1,26 @@
 # Making the most of agents
 
-Practical guidance for developers using AI agents, mostly GitHub Copilot. Pick a goal and try its first step; each link goes to the page that explains it.
+Practical guidance for developers using AI agents, mostly GitHub Copilot.
 
-## [Alignment](pages/alignment.md)
+## Start here
 
-Get results that match what you intended.
+Three changes worth making first, in this order. Each is small enough to try today.
 
-- [Define the work](pages/define-and-verify-tasks.md#write-the-task)
-- [Give it context](pages/repository-instructions.md)
-- [Give it checks](pages/agent-tool-delegation.md)
-- [Steer the work](pages/define-and-verify-tasks.md#steer-it)
-- [Verify the result](concepts/tests-are-evidence.md)
-- [Keep someone else as approver](pages/define-and-verify-tasks.md#verify-the-result)
+1. **Tell the agent about your repository.** Add an `AGENTS.md` with your rules and the commands it should run. See [write repository instructions in AGENTS.md](pages/repository-instructions.md), then [let the agent run your repository's commands](pages/agent-tool-delegation.md).
+2. **Write your next task down.** State the outcome, how you will know it is done, the checks, and what is out of scope; then steer the agent and check its work. See [define, steer, and verify a task](pages/define-and-verify-tasks.md).
+3. **Limit what the agent can do.** Turn on the sandbox on your computer, or check the cloud agent's settings. See [security](pages/security.md).
 
-## [Economy](pages/economy.md)
+## By goal
 
-Get good results with less time and fewer tokens, without giving up quality or security.
+| Goal                                  | It helps you                         | First step                                                   |
+| ------------------------------------- | ------------------------------------ | ------------------------------------------------------------ |
+| [Alignment](pages/alignment.md)       | get what you asked for               | Write one "Done when" line, then check the result against it |
+| [Economy](pages/economy.md)           | spend less time and fewer tokens     | List your test commands in `AGENTS.md`                       |
+| [Traceability](pages/traceability.md) | leave a record others can follow     | Check your last agent pull request answers five questions    |
+| [Security](pages/security.md)         | limit what an agent can reach and do | Find out where the agent's tools run, then lock that down    |
 
-- [Clarify the work early](pages/define-and-verify-tasks.md#write-the-task)
-- [Let tools do bounded work](pages/agent-tool-delegation.md)
-- [Run focused checks first](concepts/tests-are-evidence.md)
-- [Keep context small](concepts/progressive-disclosure.md)
-- [Add skills only when they pay off](pages/useful-skills.md)
+## Look something up
 
-## [Traceability](pages/traceability.md)
-
-Leave a record someone else can follow later.
-
-- [Record who did the work](pages/traceability.md#core-advice)
-- [Copy the evidence onto the pull request](pages/traceability.md#core-advice)
-- [Steer in the open](pages/define-and-verify-tasks.md#steer-it)
-- [Separate who asked from who approved](pages/traceability.md#core-advice)
-- [Keep records safe](pages/traceability.md#core-advice)
-
-## [Security](pages/security.md)
-
-Limit what an agent can reach and do. **Status: developing.**
-
-- [Secure a local coding agent](pages/local-agent-security.md)
-- [Secure the Copilot cloud agent](pages/cloud-agent-security.md)
-- [Keep work data out of model training](concepts/inference-retention-training.md)
-- [Treat repository content as untrusted](pages/prompt-injection-coding-agents.md)
-- [Trace data and actions](pages/agent-data-flow-checklist.md)
-
-## Explore further
-
-- [Sitemap](pages/sitemap.md) — goal paths and a generated inventory of the wiki
-- [Short slides](slides/README.md) — concise, standalone ideas
-- [Reusable concepts](concepts/README.md) — focused explanations, plus background on evals, RAG, and vector stores
-- [Authored pages](pages/README.md) — all articles, patterns, and checklists
-- [AI glossary](pages/glossary.md) — shared vocabulary for AI and agents
-- [Source index and records](sources/README.md) — provenance and research notes
+- [Agent data-flow checklist](pages/agent-data-flow-checklist.md) — review an agent setup before sensitive work.
+- [Glossary](pages/glossary.md) — terms used across the wiki.
+- [Sitemap](pages/sitemap.md) — every page, grouped by goal and by type, with links to the concept, slide, and source indexes.
