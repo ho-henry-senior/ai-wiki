@@ -25,7 +25,6 @@ Scale the process to the work: a small change may need only a short issue and fo
 
 ## Explore further
 
-- [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — focused feedback and its limits.
 - [Evals](../concepts/evals.md) — compare agent behavior on representative tasks when repeatable assessment is useful.
 - [Repository context for agents](repository-context-for-agents.md) — developing notes on broader questions about documentation and discoverability.
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — a perspective on adapting familiar responsibilities and handoffs.

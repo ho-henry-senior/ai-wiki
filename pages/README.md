@@ -25,5 +25,4 @@ Articles, applied patterns, reference catalogs, and checklists for AI-assisted s
 - [Skill candidates to evaluate](useful-skills.md) — researched candidates that are not recommendations without practical evidence.
 - [Skills and agent profiles](skills-and-agent-profiles.md) — choosing procedures, roles, and executable capabilities for a workflow.
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — a perspective on familiar responsibilities and handoffs in an agent-assisted workflow.
-- [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — the value and limits of unit tests as feedback for agent-produced changes.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.

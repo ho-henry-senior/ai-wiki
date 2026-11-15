@@ -27,4 +27,4 @@ A search can reach a **local optimum**: no nearby change improves the score, alt
 ## Sources and applications
 
 - [Artificial Intelligence: Foundations of Computational Agents, section 4.6](https://artint.info/3e/html/ArtInt3e.Ch4.S6.html) — local search, iterative improvement, local optima, and randomized alternatives.
-- Related: [Unit tests in the age of AI](../pages/unit-tests-in-the-age-of-ai.md) — fast feedback and the limits of a green test suite.
+- Related: [Passing tests are evidence, not proof](tests-are-evidence.md) — fast feedback and the limits of a green test suite.

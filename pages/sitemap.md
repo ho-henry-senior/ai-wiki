@@ -17,12 +17,11 @@ These lists group directly linked pages, concepts, slides, and source records by
 - [Write repository instructions in AGENTS.md](repository-instructions.md) — Put repository instructions in AGENTS.md, know which Copilot features read it, and fill Copilot's remaining gaps without duplicating rules. (established)
 - [Task names need explicit contracts](../concepts/task-interface-contracts.md) — A discoverable task needs an explicit scope, side effects, prerequisites, and interpretation; its name alone is not a contract.
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
-- [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — A green test suite establishes that assertions passed, not that those assertions completely capture the intended behavior. (established)
+- [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Traceability](traceability.md) — Leave a record someone else can follow later, covering what was asked, who or what made the change, who approved it, and the evidence. (established)
 
 #### Explore further
 
-- [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — Explore unit tests as fast, deterministic feedback for agents, and the risks of treating test volume or a green suite as proof of correctness. (established)
 - [Evals](../concepts/evals.md) — Evals compare AI system behavior against task-specific criteria, using representative cases and appropriate checks to inform improvements.
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing. (developing)
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — A perspective on using familiar agile roles and handoffs to understand a possible agent-assisted software factory.
@@ -41,7 +40,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 - [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
 - [Task names need explicit contracts](../concepts/task-interface-contracts.md) — A discoverable task needs an explicit scope, side effects, prerequisites, and interpretation; its name alone is not a contract.
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
-- [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — Explore unit tests as fast, deterministic feedback for agents, and the risks of treating test volume or a green suite as proof of correctness. (established)
+- [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
 - [Skills as a changing capability layer](skills-as-capabilities.md) — Explain skills as reusable capabilities that can fill current harness gaps, while their value changes as harnesses evolve. (established)
 - [Security](security.md) — Core advice for protecting sensitive information and limiting unsafe actions in agent-assisted work. (developing)
@@ -104,7 +103,6 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — A perspective on using familiar agile roles and handoffs to understand a possible agent-assisted software factory.
 - [How models and harnesses interact](model-harness-interaction.md) — How a harness supplies context and tools to a model, handles tool requests, and manages session history and context limits.
 - [Skills as a changing capability layer](skills-as-capabilities.md) — Explain skills as reusable capabilities that can fill current harness gaps, while their value changes as harnesses evolve. (established)
-- [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — Explore unit tests as fast, deterministic feedback for agents, and the risks of treating test volume or a green suite as proof of correctness. (established)
 
 #### guide
 
@@ -147,7 +145,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 - [Instructions are not enforced controls](../concepts/instructions-vs-controls.md) — Instructions guide model behavior; independently enforced permissions restrict actions even when the model chooses incorrectly. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
 - [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) — An MCP server's location determines where code runs, but does not guarantee where the data it handles stays.
-- [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — A green test suite establishes that assertions passed, not that those assertions completely capture the intended behavior. (established)
+- [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Retrieval-augmented generation](../concepts/retrieval-augmented-generation.md) — Retrieval-augmented generation supplies selected external information to a model at response time, with quality and security dependent on the retrieval pipeline.
 - [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — A diagnostic command can expose a secret through its result, saved history, and subsequent model requests without an explicit upload.
 - [Session history is not active context](../concepts/session-history-vs-context.md) — A saved session can contain more history than a model receives in any single request.
