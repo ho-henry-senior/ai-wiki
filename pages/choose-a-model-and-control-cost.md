@@ -44,13 +44,13 @@ A stronger model often needs fewer turns, so the gap per task is smaller than pe
 
 ## Keep the cache
 
-These lose the cache, so the next request pays full rate for the whole context:
+The next request pays full rate for the whole context if you:
 
-- switching model during a session;
-- changing reasoning effort, context size, or the enabled tools or MCP servers;
-- returning to a session after the cache has expired.
+- switch model during a session;
+- change reasoning effort, context size, or the enabled tools or MCP servers;
+- return to a session after the cache has expired.
 
-Set them before you start. For new work, start a new session (`/new` in the CLI) or run `/compact` rather than resume an old one.
+Choose the model and settings before you start. For new work, start a new session (`/new` in the CLI) or run `/compact` rather than resume an old one.
 
 ## Cut tokens
 
