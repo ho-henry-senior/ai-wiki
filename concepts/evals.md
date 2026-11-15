@@ -1,34 +1,29 @@
 ---
 type: reference
-summary: Evals compare AI system behavior against task-specific criteria, using representative cases and appropriate checks to inform improvements.
+summary: Background. An eval runs an agent on a fixed set of tasks and checks the results, so you can tell whether a change to your setup made things better or worse.
 ---
 
 # Evals
 
-An evaluation, or **eval**, checks an AI system against defined tasks and success criteria. A set of cases can help compare approaches, detect regressions, and make progress visible. For an agent, evaluate the outcome and, when relevant, its tool use and effects—not just its final explanation.
+**Background:** not a step you need for everyday work with Copilot.
 
-## Design a useful eval
+An evaluation, or **eval**, runs an agent on a fixed set of tasks and checks the results against agreed criteria. Use one when you want to know whether a change, such as a new line in `AGENTS.md` or a different model, actually helps.
 
-1. **Define the objective.** State the behavior that matters and how success will be judged.
-2. **Choose cases.** Include representative tasks, important edge cases, and relevant failure or security scenarios. Reserve some cases for a final check rather than tuning against all of them.
-3. **Choose checks.** Use deterministic tests for observable requirements; use human review or a model grader for judgments that need nuance. Model graders can be inconsistent or biased, so compare their judgments with human review.
-4. **Compare runs.** Establish a baseline, use the same cases and conditions for comparisons, and repeat trials when results vary. Record relevant settings, outcomes, time, and token use.
-5. **Interpret and improve.** Investigate failures and trade-offs, update cases as needs change, and check for regressions as well as improvements.
+## Build a small one
 
-An eval can provide feedback for [hill climbing](hill-climbing.md), but improving a score is useful only when the cases and checks reflect the real goal.
+1. **Pick the behavior that matters** and how you will judge it.
+2. **Choose 5 to 10 real tasks,** including edge cases and a security case. Hold a few back for a final check.
+3. **Check each result** with a test where the requirement is observable, and with a person where it needs judgment. A model can grade too, but compare its verdicts with a person's.
+4. **Run the same tasks before and after the change,** more than once if results vary. Record outcomes, time, and tokens.
+5. **Read the failures,** and a sample of successes, before trusting the score.
 
-## Example: a bug-fixing agent
-
-Give the agent several known issues in isolated copies of a repository. For each issue, check an independently specified regression test, relevant existing tests, and whether the change meets the request. Record time and token usage separately; a cheaper run is not an improvement if it breaks required behavior.
-
-Compare a proposed instruction change with the baseline across the same issues, using repeated trials where practical. Review failures and a sample of successes, then check held-out issues. Use test data and environments appropriate to the task, avoiding unnecessary exposure of private code or credentials.
+For example, give Copilot five known bugs in disposable copies of a repository, check each fix with an independently written test, and compare the results before and after an instructions change. A cheaper run is no improvement if it breaks required behavior.
 
 ## Limits
 
-An eval measures the cases and criteria it contains, not every possible use. A model grader or a test can miss an important failure; [passing tests are evidence, not proof](tests-are-evidence.md). Small samples and variable results can make apparent differences uncertain. More trials, human review, and broader cases can improve confidence, but also cost time and tokens.
+An eval measures only the cases it contains. Small samples make differences uncertain, and a score can rise while the real goal does not. See [passing tests are evidence, not proof](tests-are-evidence.md).
 
-## Sources and applications
+## Sources
 
-- [Anthropic: Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents) — agent evals, grading methods, trials, and regression testing.
-- [OpenAI: Evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices) — task-specific objectives, cases, metrics, and comparison.
-- Related: [Passing tests are evidence, not proof](tests-are-evidence.md) — deterministic feedback and its limits.
+- [Anthropic: Demystifying evals for AI agents](https://www.anthropic.com/research/demystifying-evals-for-ai-agents)
+- [OpenAI: Evaluation best practices](https://developers.openai.com/api/docs/guides/evaluation-best-practices)

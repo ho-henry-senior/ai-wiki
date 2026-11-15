@@ -1,31 +1,35 @@
 ---
 type: pattern
-summary: Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources.
+summary: Keep what the agent loads for every task small, and let detail load only when a task needs it; in Copilot, through a short AGENTS.md, path-specific instructions, and skills.
 status: established
 ---
 
 # Load context through focused entrypoints
 
-Give an agent enough context to find what it needs, rather than loading every instruction and reference for every task. This practice is often called **progressive disclosure**.
+Keep what the agent loads for every task small, and let detail load only when a task needs it. This is often called **progressive disclosure**. It saves tokens and keeps the agent's attention on what matters.
 
-For example, a repository entrypoint can identify the project, point to its task interface, and explain when to read its architecture or release guidance. A release task loads release detail; an unrelated documentation edit need not.
+## In Copilot
 
-## Keep navigation useful
+| Loads                                    | When                                            |
+| ---------------------------------------- | ----------------------------------------------- |
+| `AGENTS.md`                              | Every task                                      |
+| `.github/instructions/*.instructions.md` | Only when working on files that match `applyTo` |
+| Skills in `.agents/skills/`              | Only when the task calls for one                |
+| A linked document                        | Only if the agent decides to open it            |
 
-Use descriptive links with enough context to show when their targets matter. Keep each detailed explanation in a canonical location, near the concern it describes, and update incoming links when it moves. Indexes should help readers and agents choose a path, not require them to open every file.
+So keep `AGENTS.md` to what every task needs, and move the rest into path-specific files, skills, or linked documents. A release procedure belongs in a skill or a linked page, not in `AGENTS.md`.
 
-Small files alone do not achieve this: unclear filenames and disconnected fragments merely move the search burden. Keep the example and caveats needed to understand a concept together.
+## Make the links worth following
+
+Write each link so the agent can tell when it matters, for example "Before changing the export format, read `docs/export.md`." Keep each explanation in one place and update links when it moves. Small files alone do not help if their names are unclear.
 
 ## Limits
 
-A link is not a guarantee of automatic loading. Some instruction formats eagerly import referenced files; others leave ordinary links for an agent to follow. Verify the actual harness behavior, and keep essential requirements visible at the appropriate entrypoint.
+Copilot CLI loads a file referenced as `@path` from `AGENTS.md` immediately, so an `@` reference is not on demand. An ordinary link is followed only if the agent chooses to. Keep rules that every task needs in `AGENTS.md` itself.
 
-## Apply it
+Checked 15 November 2026. See [write repository instructions in AGENTS.md](../pages/repository-instructions.md) and [choose and add skills](../pages/useful-skills.md).
 
-- [Write repository instructions in AGENTS.md](../pages/repository-instructions.md): keep the main file short, and add path-specific files that load only for matching code.
-- Place instructions, reference material, and on-demand skills in a [discoverable repository structure](../pages/agent-facing-repository-structure.md).
+## Sources
 
-## Sources and applications
-
-- [Agent Skills specification: Progressive disclosure](https://agentskills.io/specification#progressive-disclosure) — metadata, on-demand instructions, and supporting resources.
-- Applied in [repository context](../pages/repository-context-for-agents.md).
+- [Agent Skills specification: Progressive disclosure](https://agentskills.io/specification#progressive-disclosure)
+- [GitHub Docs: Add custom instructions for Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions)

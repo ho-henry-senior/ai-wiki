@@ -1,32 +1,25 @@
 ---
-type: overview
-summary: Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing.
+type: guide
+summary: When an agent gets something wrong because it lacked a fact about your system, write that fact down once, near the code it concerns, and link it from AGENTS.md.
 status: developing
 ---
 
 # Furnish repositories with context for agents
 
-These working notes explore ways to give agents relevant repository context. Treat the ideas below as selective follow-ups, not a setup checklist: begin with one missing fact that causes a recurring or consequential misunderstanding and document that first.
+When an agent gets something wrong because it did not know a fact about your system, write that fact down once, near the code it concerns, and link it from `AGENTS.md`. Do not try to document everything first.
 
-<a id="try-this-first"></a>
+## Start with one missing fact
 
-## Start with the shared entrypoint
+1. **Note the wrong assumption or repeated question.** For example, Copilot used floating-point numbers for money.
+2. **Find the smallest source of truth** that would have prevented it: a rule, a decision, or a contract.
+3. **Put it where it belongs.** A one-line rule goes in `AGENTS.md` or a [path-specific instructions file](repository-instructions.md#add-rules-for-one-part-of-the-codebase); a decision goes in an ADR; a contract stays where it is defined.
+4. **Link it** from `AGENTS.md`, saying when to read it.
 
-Start from [repository instructions in `AGENTS.md`](repository-instructions.md). To choose what to add beyond it, note an incorrect assumption or repeated question, identify the smallest source-of-truth detail that would resolve it, and link that detail from the entrypoint. A brief explanation near the relevant code or command may be enough.
+## Record decisions in ADRs
 
-<a id="record-decisions-including-the-ones-that-were-never-written-down"></a>
+An Architecture Decision Record captures why a choice was made: context, alternatives, decision, and consequences. Write one when a decision is costly to reverse or keeps being questioned.
 
-## Use ADRs
-
-Architecture Decision Records (ADRs) capture why an important choice was made: its context, alternatives, decision, and consequences. Use one when a consequential decision or repeated ambiguity makes that history valuable; an ADR is not a prerequisite for agent use.
-
-An agent can draft a record from code, tests, and documentation, then ask people to confirm the rationale. Keep observed behavior separate from confirmed reasoning, and state what remains unknown.
-
-<a id="example-a-decision-record-draft"></a>
-
-### Sample ADR
-
-This is a fictional sample ADR record:
+An agent can draft an ADR from the code, tests, and documentation, then ask people to confirm the reasons. Keep what the code shows separate from what a person confirmed, and say what is still unknown. A fictional example:
 
 > **Status:** Proposed.
 >
@@ -40,32 +33,27 @@ This is a fictional sample ADR record:
 
 ## Describe boundaries between repositories
 
-In systems spread across repositories, contracts such as schemas, APIs, message formats, and ownership can be implicit. Make these relationships visible when cross-repository changes or recurring misunderstandings make them relevant; a map of every repository is not a starting requirement.
+The Copilot cloud agent works in the repository it is opening a pull request for and cannot read your other repositories. So when a change can break another repository, say so in this one:
 
-Useful context may include:
+- which repositories produce and consume each schema, API, or message format;
+- where the authoritative definition lives;
+- what compatibility each consumer expects; and
+- which changes need coordinating with another team.
 
-- which repositories or components produce and consume a contract;
-- where the authoritative schema or interface is defined;
-- compatibility expectations and versioning assumptions; and
-- where a proposed change needs coordination across repository boundaries.
+Point to the source of truth rather than copying every contract.
 
-The aim is to expose the relationship and its source of truth, not to copy every contract into multiple places.
+## Use diagrams close to the system
 
-## Use diagrams close to the system they explain
+Add a diagram only when it answers a question about components, data flow, or deployment better than a sentence does. Prefer Mermaid: agents can read its text, and GitHub renders it. Keep it next to the code it describes.
 
-Use a diagram only when it answers a specific question about component boundaries, data flow, deployment, or cross-repository interactions better than a short description. Keep it close to the system it explains and link to it from the related documentation.
+For very large documentation sets, [retrieval-augmented generation](../concepts/retrieval-augmented-generation.md) is background reading on how agents can search them.
 
-Prefer Mermaid when it can express the structure clearly and the target tools can render it: its text source is easier for agents to inspect and maintain than a binary image. Validate the rendered view; use another format when Mermaid or the target tools are unsuitable.
+## Open questions
 
-## Make the context discoverable
+- Which kinds of missing context cause the most wrong assumptions?
+- How should consumers in other repositories find a shared contract?
+- How can diagrams and ADRs be kept in step with the code?
 
-Use [progressive disclosure](../concepts/progressive-disclosure.md): keep entrypoints concise and link to detail near the subsystem or contract it describes. Agents can then find and load relevant context when needed. Link across repositories rather than relying on an agent to infer the connections.
+## Sources
 
-For larger collections, [retrieval-augmented generation](../concepts/retrieval-augmented-generation.md) can supply relevant passages on demand. It adds retrieval and maintenance costs, so compare it with focused entrypoints and ordinary search for the task.
-
-## Questions to develop
-
-- Which kinds of missing context most often cause agents to make incorrect assumptions?
-- How should reverse-engineered behavior and human-confirmed rationale be distinguished?
-- Which cross-repository contracts need a shared source of truth, and how should consumers discover it?
-- How can diagrams and decision records be kept aligned with changes to the system?
+- [Microsoft Learn: Responsible use of the Copilot coding agent](https://learn.microsoft.com/en-us/training/modules/github-copilot-code-agent/5-responsible-use-github-copilot-code-agent-github) — the agent can access only the repository where it is creating a pull request. Checked 15 November 2026.
