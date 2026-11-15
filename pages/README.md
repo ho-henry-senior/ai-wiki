@@ -10,7 +10,7 @@ Articles, applied patterns, reference catalogs, and checklists for AI-assisted s
 - [Secure a cloud coding agent](cloud-agent-security.md) — scope remote execution, credentials, triggers, and review gates.
 - [Sandbox a local coding agent](local-agent-sandboxing.md) — understand and verify enforced access restrictions.
 - [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — treat untrusted content as data rather than authority.
-- [Define and verify a task](define-and-verify-tasks.md) — clarify outcomes, acceptance criteria, verification, and review evidence.
+- [Define, steer, and verify a task](define-and-verify-tasks.md) — write the task, hand it to Copilot, steer it, and check the result.
 - [AI glossary](glossary.md) — practical definitions of foundational AI and current generative AI terms.
 - [How models and harnesses interact](model-harness-interaction.md) — the tool-call loop, message structure, session state, and context limits.
 - [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — developing guidance on agent risks, data sources and destinations, and practical controls.

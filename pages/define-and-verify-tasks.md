@@ -1,55 +1,76 @@
 ---
 type: pattern
-summary: Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them.
+summary: Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote.
 status: established
 ---
 
-# Define and verify a task
+# Define, steer, and verify a task
 
-A clear request gives an agent a better chance of producing the intended result. Recording the request and its verification also makes the work easier to review. Start small: a short task description may be enough, while ambiguous or consequential work can justify a fuller specification.
+Write the task down before the agent starts. Correct the agent where the work is recorded. Review the result against what you wrote, not against the agent's summary.
 
-## Try this first
+## Write the task
 
-1. **Write the outcome.** State the problem, who or what is affected, and any important constraints or out-of-scope work.
-2. **Agree on acceptance criteria.** Describe observable behaviors, including important failure cases. Resolve material ambiguity before implementation.
-3. **Choose verification.** Identify the relevant existing checks and any focused test, manual check, or review needed to assess the criteria.
-4. **Review and record the result.** Compare the change with the request; record what was checked, the outcome, and any assumptions or unchecked risks in the issue, PR, or another durable artifact appropriate to the task.
+Use four headings. This works as a GitHub issue for the Copilot cloud agent and as a prompt for any agent:
 
-One possible loop is to clarify the work, choose checks, make the change, then review and record the result. Revisit earlier decisions when the work exposes a problem or ambiguity.
+```markdown
+## Outcome
 
-```mermaid
-flowchart TD
-    Outcome["Define outcome and constraints"] --> Criteria["Agree on acceptance criteria"]
-    Criteria --> Checks["Choose verification"]
-    Checks --> Change["Make the change"]
-    Change --> Review["Run checks and review against the request"]
-    Review --> Decision{"Issue or ambiguity found?"}
-    Decision -- Yes --> Outcome
-    Decision -- No --> Evidence["Record results and remaining risks"]
+Users can export the orders table as a CSV file from the Orders page.
+
+## Done when
+
+- The file has a header row that matches the table's columns.
+- Values containing commas or quotes are quoted correctly.
+- An export of 10,000 rows finishes without timing out.
+
+## Checks
+
+- Add a test with a value that contains both a comma and a quote.
+- Run `make test-unit` for the exporter tests, then `make check`.
+
+## Out of scope
+
+- Excel (.xlsx) export.
+- Changing the table's columns.
 ```
 
-For example, “reject expired credentials” needs a check that expired credentials are actually rejected, not only a successful-login test. Record the expected rejection behavior and use a focused test where appropriate; review the change and any remaining security implications before approval.
+Make each "Done when" line observable, so a check fails if it is missed. If you cannot write these lines, settle the open questions first.
 
-## Example: from request to review
+## Hand it to Copilot
 
-These fictional issue and PR notes illustrate a small task; they are not results from an actual test run.
+- **Cloud agent:** assign the issue to Copilot under **Assignees**, with extra instructions in the optional prompt field. Copilot works in GitHub Actions, opens a draft pull request linked to the issue, and requests your review when it finishes.
+- **Copilot CLI or chat in your editor:** paste the same text as your first prompt.
 
-**Issue:** Reject expired credentials without changing successful authentication for valid credentials.
+Do not put requirements in HTML comments (`<!-- -->`): Copilot filters them out of issues and comments before it reads them.
 
-- **Acceptance:** Expired credentials are rejected and do not create an authenticated session.
-- **Acceptance:** Valid credentials continue to authenticate.
-- **Verification:** Run focused tests for both behaviors; review the rejection path and any checks that could not be run.
+## Steer it
 
-**PR notes:** Links to the issue and summarizes the change to reject expired credentials. In this example, focused tests for both acceptance criteria passed, but the integration check was not run because its test service was unavailable. The reviewer needs that missing evidence before deciding whether the change is ready.
+- **While the cloud agent is working:** open **View session** on its pull request and type in the prompt box below the log. Use **Stop session** if it is heading the wrong way.
+- **After the cloud agent finishes:** mention `@copilot` in a comment on its pull request. Copilot reacts with 👀 when it picks the comment up. It responds only to people with write access, and not after the pull request is merged or closed.
+- **Do not add corrections to the issue.** The cloud agent does not see issue comments made after it starts. Put them on the pull request.
+- **In Copilot CLI:** type a new prompt at any time. Copilot treats it as steering for the current task. Press Esc twice to cancel; press Esc twice while idle to roll back to an earlier point.
 
-## Scale the process to the work
+Put corrections that change what you asked for in a pull request comment. It stays with the change for reviewers; a CLI prompt stays only in your session. See [traceability](traceability.md).
 
-For a small change, the outcome, criteria, and checks may fit in an issue or PR description. For larger work, an agreed specification can capture decisions and acceptance intent before it is broken into tasks. Link existing artifacts so a reviewer can follow the work: for example, connect the issue to its PR and record the checks and results in the PR. A multi-agent role structure is not required.
+## Verify the result
 
-Verification should be independent enough to catch a shared mistaken assumption in the implementation and its tests. [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md); use [unit tests as focused feedback](unit-tests-in-the-age-of-ai.md) alongside other checks suited to the risk.
+- **Check each "Done when" line against the diff.** The pull request description is the agent's account, not evidence.
+- **Approve the workflows, then confirm the checks ran.** By default, GitHub Actions workflows do not run on the cloud agent's pull request until someone with write access clicks **Approve and run workflows**. Review the diff first, especially changes under `.github/workflows/`. Record any check that did not run.
+- **Read the tests the agent wrote.** Code and tests written together can share the same wrong assumption. See [passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
+- **Have someone else approve it.** If branch protection requires approvals, your approval of a pull request you asked Copilot to create does not count.
 
-## Explore further
+## Scale it to the work
 
-- [Evals](../concepts/evals.md) compare agent behavior across representative tasks when repeatable assessment is useful.
-- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) offers a perspective on handoffs and approvals in an illustrative workflow.
-- [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) covers access, data flow, and safeguards before and during a task.
+A small change needs only the four headings above. For larger or ambiguous work, agree a specification before you break it into tasks, and link each task to it.
+
+## Sources
+
+Checked 15 November 2026.
+
+- [GitHub Docs: Get started with Copilot agents on GitHub](https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/overview)
+- [GitHub Docs: Troubleshooting Copilot cloud agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/troubleshoot-cloud-agent)
+- [GitHub Docs: Review output from Copilot](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/review-copilot-prs)
+- [GitHub Docs: Risks and mitigations for Copilot cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/risks-and-mitigations)
+- [GitHub Docs: Steering agents in Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/steer-agents)
+- [GitHub Docs: Cancel and roll back in Copilot CLI](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/cancel-and-roll-back)
+- [Microsoft Learn: Assigning, tracking, and troubleshooting Copilot cloud agent tasks](https://learn.microsoft.com/en-gb/training/modules/github-copilot-code-agent/3-assign-track-troubleshoot-copilot-code-agent-tasks)
