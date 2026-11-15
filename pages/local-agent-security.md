@@ -1,7 +1,7 @@
 ---
 type: guide
 summary: Turn on the sandbox, restrict which tools, paths, and URLs Copilot can use without asking, and keep credentials out of reach when an agent runs on your computer.
-status: developing
+status: established
 ---
 
 # Secure a local coding agent

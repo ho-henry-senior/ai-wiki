@@ -1,7 +1,7 @@
 ---
 type: overview
 summary: Limit what an agent can reach and do, so a mistake or a malicious instruction cannot expose data or cause harm; start from where the agent's tools run.
-status: developing
+status: established
 ---
 
 # Security

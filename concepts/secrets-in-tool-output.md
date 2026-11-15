@@ -1,6 +1,7 @@
 ---
 type: reference
 summary: Anything a command prints goes to the model and into session history, so keep secrets out of output and out of reach; if one leaks, rotate it.
+status: established
 ---
 
 # Secrets can leak through tool output

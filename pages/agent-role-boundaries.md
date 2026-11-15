@@ -1,6 +1,7 @@
 ---
 type: explanation
 summary: One way to split agile work between agent roles and people, with role contracts, a RACI table, and Copilot custom agents that enforce each role's limits.
+status: developing
 ---
 
 # From agile roles to agent-assisted workflows

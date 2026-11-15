@@ -1,6 +1,7 @@
 ---
 type: reference
 summary: An MCP server's location determines where code runs, but does not guarantee where the data it handles stays.
+status: established
 ---
 
 # Local MCP does not mean local-only data

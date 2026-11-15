@@ -1,7 +1,7 @@
 ---
 type: guide
 summary: Treat instructions in issues, files, web pages, and tool output as data, not orders, and limit what the agent can do if it follows them anyway.
-status: developing
+status: established
 ---
 
 # Prompt injection in coding-agent workflows
