@@ -3,7 +3,8 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 // Checks authored pages against STYLE.md: length targets, hedge words, and
-// sentences repeated across pages. Rules are read from STYLE.md itself, so
+// sentences repeated across pages. Also checks that pages marked `recheck`
+// list sources the daily review can fetch. Rules are read from STYLE.md itself, so
 // they live in one place. Reports warnings; `--strict` makes them fail.
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
@@ -16,6 +17,7 @@ const excluded = new Set([
 // Types that STYLE.md lets run longer when every line earns its place.
 const unlimited = new Set(["reference", "case-study"]);
 const tolerance = 1.2;
+const workflow = ".github/workflows/daily-wiki-review.md";
 const stopwords = new Set(
   "a an and are as at be by can do does for from if in is it its not of on or that the their them they this to when which with you your".split(
     " ",
@@ -51,15 +53,78 @@ export function parseRules(styleText) {
   };
 }
 
+// Reads simple front matter: `key: value` lines, and `key:` followed by
+// `  - item` lines as a list.
 export function frontMatter(text) {
   const match = text.match(/^---\n([\s\S]*?)\n---\n/);
   const meta = {};
+  let last;
   if (match)
     for (const line of match[1].split("\n")) {
+      const item = line.match(/^\s+-\s+(.*)$/);
+      if (item) {
+        if (Array.isArray(meta[last])) meta[last].push(item[1].trim());
+        continue;
+      }
       const [key, ...rest] = line.split(":");
-      if (key && rest.length) meta[key.trim()] = rest.join(":").trim();
+      if (!key || !rest.length) continue;
+      last = key.trim();
+      const value = rest.join(":").trim();
+      meta[last] = value === "" ? [] : value;
     }
   return { meta, body: match ? text.slice(match[0].length) : text };
+}
+
+// Domains the daily review may fetch, from the workflow's network allowlist.
+export function allowedDomains(workflowText) {
+  const domains = [];
+  let inside = false;
+  let indent = 0;
+  for (const line of workflowText.split("\n")) {
+    const allowed = line.match(/^(\s*)allowed:\s*$/);
+    if (allowed) {
+      inside = true;
+      indent = allowed[1].length;
+      continue;
+    }
+    if (!inside) continue;
+    const item = line.match(/^(\s*)-\s+(\S+)/);
+    if (item && item[1].length > indent)
+      domains.push(item[2].replace(/^["']|["']$/g, ""));
+    else if (line.trim()) inside = false;
+  }
+  return domains;
+}
+
+function domainAllowed(host, domains) {
+  return domains.some((domain) =>
+    domain.startsWith("*.") ? host.endsWith(domain.slice(1)) : host === domain,
+  );
+}
+
+// A page marked `recheck` must list https sources the daily review can reach.
+export function checkRecheck(file, meta, domains) {
+  if (meta.recheck === undefined) return [];
+  const sources = meta["check-against"];
+  if (!Array.isArray(sources) || !sources.length)
+    return [`${file}: recheck is set but check-against lists no sources`];
+  const warnings = [];
+  for (const source of sources) {
+    let url;
+    try {
+      url = new URL(source);
+    } catch {
+      warnings.push(`${file}: check-against source is not a URL: ${source}`);
+      continue;
+    }
+    if (url.protocol !== "https:")
+      warnings.push(`${file}: check-against source is not https: ${source}`);
+    else if (domains && !domainAllowed(url.hostname, domains))
+      warnings.push(
+        `${file}: the daily review cannot fetch ${url.hostname}; add it to the workflow's network allowlist`,
+      );
+  }
+  return warnings;
 }
 
 // The text a reader reads as prose: no front matter, code, tables, HTML
@@ -173,14 +238,23 @@ export async function checkStyle(rootDir = root) {
     ...(await markdownFiles(rootDir, "pages")),
     ...(await markdownFiles(rootDir, "concepts")),
   ];
+  let domains;
+  try {
+    domains = allowedDomains(
+      await readFile(path.join(rootDir, workflow), "utf8"),
+    );
+  } catch {
+    domains = undefined;
+  }
   const pages = [];
+  const warnings = [];
   for (const file of files) {
     const text = await readFile(path.join(rootDir, file), "utf8");
     const { meta } = frontMatter(text);
     const kind = file.startsWith("concepts/") ? "concept" : meta.type;
     pages.push({ path: file, kind, prose: prose(text) });
+    warnings.push(...checkRecheck(file, meta, domains));
   }
-  const warnings = [];
   for (const page of pages) {
     const words = countWords(page.prose);
     const target = unlimited.has(page.kind)

@@ -4,10 +4,13 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import {
+  allowedDomains,
+  checkRecheck,
   checkStyle,
   countWords,
   findDuplicates,
   findHedges,
+  frontMatter,
   parseRules,
   prose,
 } from "./style.mjs";
@@ -106,4 +109,57 @@ test("reports long pages, hedges, and duplicates; exempts references", async (t)
   assert.ok(!warnings.some((w) => w.startsWith("pages/long-reference.md")));
   assert.ok(warnings.includes("pages/hedgy.md: hedge words: useful"));
   assert.ok(!warnings.some((w) => w.startsWith("concepts/README.md")));
+});
+
+test("reads lists in front matter and the workflow's allowed domains", () => {
+  const { meta } = frontMatter(
+    "---\ntype: guide\nrecheck: every-run\ncheck-against:\n  - https://docs.github.com/a\n  - https://github.blog/b\n---\n",
+  );
+  assert.equal(meta.type, "guide");
+  assert.deepEqual(meta["check-against"], [
+    "https://docs.github.com/a",
+    "https://github.blog/b",
+  ]);
+  const workflow = [
+    "network:",
+    "  allowed:",
+    "    - defaults",
+    "    - docs.github.com",
+    '    - "*.example.com"',
+    "tools:",
+    "  bash:",
+    "    - cat",
+  ].join("\n");
+  assert.deepEqual(allowedDomains(workflow), [
+    "defaults",
+    "docs.github.com",
+    "*.example.com",
+  ]);
+});
+
+test("a page marked recheck needs reachable https sources", () => {
+  const domains = ["docs.github.com", "*.example.com"];
+  assert.deepEqual(checkRecheck("p.md", { type: "guide" }, domains), []);
+  assert.match(
+    checkRecheck("p.md", { recheck: "every-run" }, domains)[0],
+    /lists no sources/,
+  );
+  const ok = {
+    recheck: "every-run",
+    "check-against": ["https://docs.github.com/x", "https://a.example.com/y"],
+  };
+  assert.deepEqual(checkRecheck("p.md", ok, domains), []);
+  const bad = {
+    recheck: "every-run",
+    "check-against": [
+      "http://docs.github.com/x",
+      "https://other.org/y",
+      "nope",
+    ],
+  };
+  const warnings = checkRecheck("p.md", bad, domains);
+  assert.equal(warnings.length, 3);
+  assert.ok(warnings.some((w) => /not https/.test(w)));
+  assert.ok(warnings.some((w) => /cannot fetch other\.org/.test(w)));
+  assert.ok(warnings.some((w) => /not a URL/.test(w)));
 });
