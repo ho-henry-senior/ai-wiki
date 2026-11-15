@@ -20,6 +20,8 @@ For a small change, one issue and its pull request may be enough: link the PR to
 | Pull request      | The change is linked to the request; the summary identifies what changed and any assumptions or unchecked risks. |
 | Checks and review | Check results are recorded, and a named human reviewer records approval or requested changes.                    |
 
+**Example (fictional):** Issue #12 asks to reject expired credentials. PR #15 links to #12, describes the change, and records that focused tests passed but an integration check was not run. A named human reviewer requests that missing check, then records approval after reviewing its result. The links and review history show how the request, evidence, and decision connect; the individual artifacts carry the details.
+
 For larger work, add artifacts only when they help explain a decision or connect work that cannot be followed from the issue and PR alone. [Define and verify a task](define-and-verify-tasks.md) covers the shared outcome, criteria, and verification workflow.
 
 ## Core advice
