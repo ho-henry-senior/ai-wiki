@@ -192,7 +192,8 @@ export async function buildSitemap(rootDir = root) {
     lines.push("", `### [${linkText(page.title)}](${goal}.md)`, "");
     if (page.status) lines.push(`**Status:** ${page.status}`, "");
     for (const [title, links] of goalLinks(page, pages)) {
-      if (links.length) lines.push(`#### ${title}`, "", ...links.map(entry), "");
+      if (links.length)
+        lines.push(`#### ${title}`, "", ...links.map(entry), "");
     }
   }
 

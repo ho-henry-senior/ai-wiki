@@ -96,12 +96,12 @@ test("groups goal links by their curated overview sections", async (t) => {
   const alignment = sitemap
     .split("### [alignment]")[1]
     .split("### [economy]")[0];
-  const core = alignment.split("#### Core advice and supporting links")[1].split(
-    "#### Explore further",
-  )[0];
-  const further = alignment.split("#### Explore further")[1].split(
-    "#### Other links",
-  )[0];
+  const core = alignment
+    .split("#### Core advice and supporting links")[1]
+    .split("#### Explore further")[0];
+  const further = alignment
+    .split("#### Explore further")[1]
+    .split("#### Other links")[0];
   const other = alignment.split("#### Other links")[1];
   assert.match(core, /\[start\]\(start\.md\)/);
   assert.equal((core.match(/\[shared\]/g) ?? []).length, 1);
