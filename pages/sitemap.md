@@ -43,7 +43,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
 - [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate.
-- [Security](security.md) — Core advice for protecting sensitive information and limiting unsafe actions in agent-assisted work. (developing)
+- [Security](security.md) — Limit what an agent can reach and do, so a mistake or a malicious instruction cannot expose data or cause harm; start from where the agent's tools run. (developing)
 
 #### Explore further
 
@@ -57,7 +57,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 #### Core advice and supporting links
 
 - [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
-- [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — The main risks of running coding agents, how sensitive data can move through their workflows, and controls for each destination. (developing)
+- [Agent data-flow checklist](agent-data-flow-checklist.md) — The full checklist for tracing sensitive data through an agent setup and checking the controls at each destination and action, with Copilot detail. (established)
 
 #### Explore further
 
@@ -70,21 +70,19 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 #### Core advice and supporting links
 
-- [Secure a local coding agent](local-agent-security.md) — Practical starting controls for coding agents that execute tools on a developer's own machine. (developing)
-- [Sandbox a local coding agent](local-agent-sandboxing.md) — How to evaluate and verify sandbox restrictions for a coding agent running on your computer. (developing)
-- [Secure a cloud coding agent](cloud-agent-security.md) — Practical controls for coding agents executing in hosted workspaces, CI, or other cloud environments. (developing)
-- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Recognize instructions embedded in untrusted material and limit what they can make a coding agent do. (developing)
-- [Agent data-flow checklist](agent-data-flow-checklist.md) — A reusable checklist for tracing sensitive data through an agent setup and checking controls at each destination. (established)
-- [Inference, retention, and training are separate](../concepts/inference-retention-training.md) — Sending data for a model response, retaining it, and using it to train models are separate policy and data-flow questions.
+- [Secure a local coding agent](local-agent-security.md) — Turn on the sandbox, restrict which tools, paths, and URLs Copilot can use without asking, and keep credentials out of reach when an agent runs on your computer. (developing)
+- [Sandbox a local coding agent](local-agent-sandboxing.md) — Turn on Copilot's local sandbox, restrict files, network, and credentials, and prove the limits are enforced with harmless test files. (developing)
+- [Secure the Copilot cloud agent](cloud-agent-security.md) — Know what GitHub already enforces for the Copilot cloud agent, and set the rest yourself; secrets, firewall, MCP servers, workflow approval, and who can start it. (developing)
+- [Agent data-flow checklist](agent-data-flow-checklist.md) — The full checklist for tracing sensitive data through an agent setup and checking the controls at each destination and action, with Copilot detail. (established)
+- [Inference, retention, and training are separate](../concepts/inference-retention-training.md) — Sending data for a response, keeping it, and training on it are separate questions; for Copilot, the answers depend on your plan and which feature you use.
 - [Instructions are not enforced controls](../concepts/instructions-vs-controls.md) — Instructions guide model behavior; independently enforced permissions restrict actions even when the model chooses incorrectly. (established)
 - [A worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md) — Git branches and worktrees separate changes, while a security sandbox restricts what executing code can access or do.
 - [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) — An MCP server's location determines where code runs, but does not guarantee where the data it handles stays.
+- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Treat instructions in issues, files, web pages, and tool output as data, not orders, and limit what the agent can do if it follows them anyway. (developing)
+- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — A diagnostic command can expose a secret through its result, saved history, and subsequent model requests without an explicit upload.
 
 #### Explore further
 
-- [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — The main risks of running coding agents, how sensitive data can move through their workflows, and controls for each destination. (developing)
-- [Agent data-flow checklist](agent-data-flow-checklist.md) — A reusable checklist for tracing sensitive data through an agent setup and checking controls at each destination. (established)
-- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — A diagnostic command can expose a secret through its result, saved history, and subsequent model requests without an explicit upload.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
 
 ## Page inventory
@@ -104,18 +102,17 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 #### guide
 
-- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Recognize instructions embedded in untrusted material and limit what they can make a coding agent do. (developing)
-- [Sandbox a local coding agent](local-agent-sandboxing.md) — How to evaluate and verify sandbox restrictions for a coding agent running on your computer. (developing)
-- [Secure a cloud coding agent](cloud-agent-security.md) — Practical controls for coding agents executing in hosted workspaces, CI, or other cloud environments. (developing)
-- [Secure a local coding agent](local-agent-security.md) — Practical starting controls for coding agents that execute tools on a developer's own machine. (developing)
-- [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — The main risks of running coding agents, how sensitive data can move through their workflows, and controls for each destination. (developing)
+- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Treat instructions in issues, files, web pages, and tool output as data, not orders, and limit what the agent can do if it follows them anyway. (developing)
+- [Sandbox a local coding agent](local-agent-sandboxing.md) — Turn on Copilot's local sandbox, restrict files, network, and credentials, and prove the limits are enforced with harmless test files. (developing)
+- [Secure a local coding agent](local-agent-security.md) — Turn on the sandbox, restrict which tools, paths, and URLs Copilot can use without asking, and keep credentials out of reach when an agent runs on your computer. (developing)
+- [Secure the Copilot cloud agent](cloud-agent-security.md) — Know what GitHub already enforces for the Copilot cloud agent, and set the rest yourself; secrets, firewall, MCP servers, workflow approval, and who can start it. (developing)
 
 #### overview
 
 - [Alignment](alignment.md) — Core advice for helping an agent's work match a task's intended outcome. (established)
 - [Economy](economy.md) — Core advice for getting useful agent results with less time and fewer tokens, without sacrificing quality or security. (established)
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing. (developing)
-- [Security](security.md) — Core advice for protecting sensitive information and limiting unsafe actions in agent-assisted work. (developing)
+- [Security](security.md) — Limit what an agent can reach and do, so a mistake or a malicious instruction cannot expose data or cause harm; start from where the agent's tools run. (developing)
 - [Traceability](traceability.md) — Leave a record someone else can follow later, covering what was asked, who or what made the change, who approved it, and the evidence. (established)
 
 #### pattern
@@ -126,7 +123,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 #### reference
 
-- [Agent data-flow checklist](agent-data-flow-checklist.md) — A reusable checklist for tracing sensitive data through an agent setup and checking controls at each destination. (established)
+- [Agent data-flow checklist](agent-data-flow-checklist.md) — The full checklist for tracing sensitive data through an agent setup and checking the controls at each destination and action, with Copilot detail. (established)
 - [AI glossary](glossary.md) — A practical glossary of foundational AI and current generative AI terminology.
 - [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate.
 - [Write repository instructions in AGENTS.md](repository-instructions.md) — Put repository instructions in AGENTS.md, know which Copilot features read it, and fill Copilot's remaining gaps without duplicating rules. (established)
@@ -136,7 +133,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 - [A worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md) — Git branches and worktrees separate changes, while a security sandbox restricts what executing code can access or do.
 - [Evals](../concepts/evals.md) — Evals compare AI system behavior against task-specific criteria, using representative cases and appropriate checks to inform improvements.
 - [Hill climbing](../concepts/hill-climbing.md) — Hill climbing improves a candidate through local changes evaluated against an objective, with trade-offs between repeatability, exploration, and cost.
-- [Inference, retention, and training are separate](../concepts/inference-retention-training.md) — Sending data for a model response, retaining it, and using it to train models are separate policy and data-flow questions.
+- [Inference, retention, and training are separate](../concepts/inference-retention-training.md) — Sending data for a response, keeping it, and training on it are separate questions; for Copilot, the answers depend on your plan and which feature you use.
 - [Instructions are not enforced controls](../concepts/instructions-vs-controls.md) — Instructions guide model behavior; independently enforced permissions restrict actions even when the model chooses incorrectly. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
 - [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) — An MCP server's location determines where code runs, but does not guarantee where the data it handles stays.

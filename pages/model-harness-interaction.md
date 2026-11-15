@@ -56,7 +56,7 @@ Continuity comes from context supplied through the harness and API, not an assum
 
 Small, indexed documentation and focused tool results support [progressive disclosure](../concepts/progressive-disclosure.md): making the relevant detail available without loading everything. Clear tool descriptions help a model choose an appropriate action.
 
-This architecture also provides a starting point for examining sensitive-data flows: data can exist in repository files, tool results, model requests, and saved session records. Those are distinct locations, with different access and retention properties; permission to read a file does not itself explain where its contents may subsequently go. See [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) for risks and controls.
+This architecture also provides a starting point for examining sensitive-data flows: data can exist in repository files, tool results, model requests, and saved session records. Those are distinct locations, with different access and retention properties; permission to read a file does not itself explain where its contents may subsequently go. See the [agent data-flow checklist](agent-data-flow-checklist.md).
 
 ## References
 

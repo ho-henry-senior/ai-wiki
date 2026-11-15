@@ -17,7 +17,7 @@ For example, a local documentation-search server might read project files and se
 
 ## What to check
 
-Review the immediate server, the data and credentials it can access, its downstream destinations, and its retention behavior. Verify which filesystem, credential, and network restrictions actually cover that process or service. A harness's shell sandbox does not necessarily cover its MCP integrations.
+Review the immediate server, the data and credentials it can access, its downstream destinations, and its retention behavior. Verify which filesystem, credential, and network restrictions actually cover that process or service. A harness's shell sandbox does not necessarily cover its MCP integrations. For example, the Copilot cloud agent's firewall applies only to processes started through its shell, not to MCP servers (checked 15 November 2026).
 
 Transport is not a complete security classification: stdio is commonly used for local processes, while HTTP can be used for remote servers or a local service.
 
@@ -25,4 +25,4 @@ Transport is not a complete security classification: stdio is commonly used for 
 
 - [MCP architecture](https://modelcontextprotocol.io/docs/learn/architecture) — local and remote servers and their transports.
 - [OWASP: Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/) — limiting tool functionality, permissions, and autonomy.
-- Applied in [Sensitive data in agent workflows](../pages/sensitive-data-in-agent-workflows.md) and [the data-flow checklist](../pages/agent-data-flow-checklist.md).
+- Applied in [the security overview](../pages/security.md) and [the data-flow checklist](../pages/agent-data-flow-checklist.md).

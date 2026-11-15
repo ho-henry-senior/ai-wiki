@@ -28,7 +28,7 @@ Open your last agent pull request and check that a reader could answer these que
 - **Steer in the open.** Put corrections in pull request comments, not private chat, so a reviewer can see why the result differs from the request. [How to steer](define-and-verify-tasks.md#steer-it).
 - **Separate who asked from who approved.** The pull request review should name a human approver other than the requester. See [verify the result](define-and-verify-tasks.md#verify-the-result).
 - **Treat the agent's explanation as a claim.** A pull request description or session narrative is the agent's account, not evidence. Check it against the diff and the checks.
-- **Keep records safe.** Summarize logs rather than pasting them, and never record secrets. See [sensitive data in agent workflows](sensitive-data-in-agent-workflows.md).
+- **Keep records safe.** Summarize logs rather than pasting them, and never record secrets. See the [agent data-flow checklist](agent-data-flow-checklist.md).
 
 If your organization must keep records for longer, check its records policy. GitHub Enterprise Cloud can stream audit-log events for agents to long-term storage.
 

@@ -54,4 +54,4 @@ This account is based on a participant's retrospective and inspection of the wor
 
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — an illustrative perspective on familiar responsibilities and human handoffs, not an account of this exercise.
 - [Define, steer, and verify a task](define-and-verify-tasks.md) — clarify intent and preserve proportionate evidence.
-- [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — review permissions, data flows, and controls before running agents.
+- [Agent data-flow checklist](agent-data-flow-checklist.md) — review permissions, data flows, and controls before running agents.
