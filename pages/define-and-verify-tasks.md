@@ -15,6 +15,19 @@ A clear request gives an agent a better chance of producing the intended result.
 3. **Choose verification.** Identify the relevant existing checks and any focused test, manual check, or review needed to assess the criteria.
 4. **Review and record the result.** Compare the change with the request; record what was checked, the outcome, and any assumptions or unchecked risks in the issue, PR, or another durable artifact appropriate to the task.
 
+One possible loop is to clarify the work, choose checks, make the change, then review and record the result. Revisit earlier decisions when the work exposes a problem or ambiguity.
+
+```mermaid
+flowchart TD
+    Outcome["Define outcome and constraints"] --> Criteria["Agree on acceptance criteria"]
+    Criteria --> Checks["Choose verification"]
+    Checks --> Change["Make the change"]
+    Change --> Review["Run checks and review against the request"]
+    Review --> Decision{"Issue or ambiguity found?"}
+    Decision -- Yes --> Outcome
+    Decision -- No --> Evidence["Record results and remaining risks"]
+```
+
 For example, “reject expired credentials” needs a check that expired credentials are actually rejected, not only a successful-login test. Record the expected rejection behavior and use a focused test where appropriate; review the change and any remaining security implications before approval.
 
 ## Scale the process to the work

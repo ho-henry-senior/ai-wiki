@@ -19,6 +19,17 @@ The context window has a finite token budget, with room needed for generated out
 
 For example, a saved session may contain a long debugging log while the next model request includes only a summary of the failure. The original log and its summary can have different detail, but both may still contain sensitive information.
 
+This illustrates one possible way a harness builds a request. The stored history can remain even when only a selection or summary is sent.
+
+```mermaid
+flowchart TD
+    History["Saved session history"] --> Selection["Select or summarize history"]
+    Selection --> Context["Active context for one request"]
+    Instructions["Applicable instructions and tool definitions"] --> Context
+    Material["Other relevant material"] --> Context
+    Context --> Model["Model inference"]
+```
+
 ## Who manages continuity?
 
 A harness typically manages the conversation, pending tool calls, and saved artifacts, locally or through remote services. With a stateless API, the application supplies the needed history on each request. Some APIs also offer stored conversation state or references to previous responses.

@@ -46,6 +46,26 @@ Sensitivity depends on context and organizational policy. An internal endpoint m
 
 The destinations below are possibilities, not claims that every product sends data to all of them. Trace the actual harness, account, model endpoint, and enabled integrations.
 
+This example shows a local harness crossing into separate services and destinations. Other setups may run the model or tools locally, and local tools can also send data elsewhere. Check each destination and its actual access or network boundary.
+
+```mermaid
+flowchart TD
+    subgraph Local["Example local execution environment"]
+        Inputs["Files, credentials, and tool output"] --> Harness["Agent harness"]
+        Harness -. "may save" .-> Storage["Local session storage and logs"]
+    end
+    subgraph Remote["Separate services and destinations"]
+        Model["Remote model endpoint"]
+        Tools["Remote tool or service"]
+        External["Downstream destination"]
+        Artifacts["Shared PR or report"]
+    end
+    Harness -. "may send context" .-> Model
+    Harness -. "may invoke" .-> Tools
+    Tools -. "may send data" .-> External
+    Harness -. "may produce" .-> Artifacts
+```
+
 | Destination                                    | How data gets there                                                                                                                 | Main controls                                                                                                                                                  |
 | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Model provider                                 | The harness includes prompts, file contents, or tool results in inference requests.                                                 | Use an approved provider and account; verify retention, training use, and access policies; exclude or redact sensitive content before transmission.            |

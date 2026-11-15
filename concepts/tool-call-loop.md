@@ -19,6 +19,34 @@ A language model does not execute a tool merely by generating a request for it. 
 
 A tool definition typically describes a name, purpose, and argument schema, often using JSON Schema. The model needs this interface, not the tool's implementation. Tool-call identifiers associate results with requests.
 
+The following illustrates one possible request and response; permission handling varies by harness.
+
+```mermaid
+sequenceDiagram
+    participant Harness
+    participant Model
+    participant Tool
+
+    Harness->>Model: Context and tool definitions
+    Model-->>Harness: Tool request
+    alt Request permitted
+        Harness->>Tool: Execute action
+        Tool-->>Harness: Result
+    else Approval required
+        Harness->>Harness: Ask for approval
+        alt Approved
+            Harness->>Tool: Execute action
+            Tool-->>Harness: Result
+        else Not approved
+            Harness->>Harness: Record denial
+        end
+    else Request rejected
+        Harness->>Harness: Record error or denial
+    end
+    Harness->>Model: Result, error, or denial
+    Model-->>Harness: Continue or answer
+```
+
 ## Example
 
 This is an illustrative exchange, not a particular provider's wire format:
