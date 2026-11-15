@@ -1,29 +1,35 @@
 ---
 type: overview
 summary: Core advice for protecting sensitive information and limiting unsafe actions in agent-assisted work.
-status: stub
+status: developing
 ---
 
 # Security
 
-**Stub:** Security guidance is at an early stage. This overview and its links provide a starting point, not comprehensive protection; practical techniques and examples for handling untrusted content need more development.
+An agent can read information, run tools, and act using permissions available to its execution environment. Security means limiting sensitive-data exposure and unsafe actions **even if the agent makes a mistake or follows malicious instructions**.
 
-Security means protecting sensitive information and limiting unsafe actions while using agents. The right controls depend on the data, permissions, integrations, and environment involved; essential safeguards still matter when they take effort.
+**First choose where its tools execute.** A local CLI using a remote model is still a *local-execution* agent. Hosted workspaces and CI runners are *cloud-execution* environments. Both may use external models and integrations.
 
-## Try this first
+## Choose your starting path
 
-Before an agent works on a repository, identify sensitive data and credentials it can access, where data may be sent or stored, and what actions it can perform. Limit access to the task and verify restrictions and approval requirements in the actual environment. Use the [agent data-flow checklist](agent-data-flow-checklist.md) to record known flows and investigate unknowns.
+- **[Secure a local coding agent](local-agent-security.md)** — protect files and credentials on your own machine, manage command approvals, and understand local tool access.
+  - [Sandbox a local coding agent](local-agent-sandboxing.md) — configure and verify enforced filesystem and network restrictions.
+- **[Secure a cloud coding agent](cloud-agent-security.md)** — scope repository and service credentials, restrict triggers, and keep independent review before high-impact actions.
+- **[Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md)** — recognise instructions hidden in issues, files, web pages, and tool output. Applies to both environments.
 
 ## Core advice
 
-- **Trace data and actions.** Examine the model endpoint, local and remote tools, logs, session storage, and shared artifacts. Distinguish [transmission, retention, and training use](../concepts/inference-retention-training.md); use the [data-flow checklist](agent-data-flow-checklist.md) to trace a particular setup.
-- **Limit and enforce access.** Grant only the filesystem, network, and service permissions the task needs. [Instructions are not enforced controls](../concepts/instructions-vs-controls.md), and a [worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md).
-- **Review integrations.** Check the provenance, permissions, and data destinations of tools, skills, dependencies, and MCP servers before enabling them. A local integration can still send data elsewhere. [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md); use the [data-flow checklist](agent-data-flow-checklist.md#check-actions-as-well-as-data) to check integrations and their boundaries.
-- **Treat retrieved content as untrusted.** Files, issues, and tool results can contain instructions intended to redirect the agent. Combine careful review with enforced limits on access and outbound actions. [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md#controls-across-the-workflow).
-- **Review consequential actions and outputs.** Require appropriate human approval for privileged, destructive, costly, or externally visible actions. Review generated changes and inspect artifacts for sensitive information before sharing or accepting them. The [data-flow checklist](agent-data-flow-checklist.md#check-actions-as-well-as-data) includes these checks.
+- **Map access and data destinations.** Identify the model endpoint, accessible files, credentials, enabled integrations, logs, and shared artifacts. Use the [agent data-flow checklist](agent-data-flow-checklist.md); [inference, retention, and training](../concepts/inference-retention-training.md) are separate questions.
+- **Enforce boundaries rather than relying on instructions.** Restrict filesystem, network, and service permissions to the task. [Instructions are not enforced controls](../concepts/instructions-vs-controls.md); [worktrees are not sandboxes](../concepts/worktrees-not-sandboxes.md).
+- **Review integrations.** Check tools, skills, dependencies, and MCP servers for permissions and downstream destinations. [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md).
+- **Treat external content as untrusted.** Files, issues, and tool results may try to redirect the agent. Limit the damage possible if it follows them; see [prompt injection](prompt-injection-coding-agents.md).
+- **Keep meaningful oversight.** Require review for destructive, privileged, costly, or externally visible actions. Inspect generated changes and artifacts before sharing or accepting them.
 
 ## Explore further
 
-- [Agent data-flow checklist](agent-data-flow-checklist.md) — a practical review of a particular setup.
-- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — accidental exposure and containment.
-- [Lo-fi software factory case study](lo-fi-software-factory-case-study.md) — security limitations of an unattended local workflow.
+- [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — a detailed explanation of data sources, destinations, and controls.
+- [Agent data-flow checklist](agent-data-flow-checklist.md) — review a particular agent setup.
+- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — a common accidental exposure path.
+- [Lo-fi software factory case study](lo-fi-software-factory-case-study.md) — observed security limitations of unattended local agents.
+
+**Scope:** These are practical starting points, not proof of security. Verify product-specific controls against the actual harness, account, operating system, and environment.
