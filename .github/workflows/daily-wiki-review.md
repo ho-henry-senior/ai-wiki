@@ -67,6 +67,7 @@ tools:
     - git commit
     - gh pr list
     - gh pr view
+    - just
     - just sitemap
     - just verify
     - npm exec
