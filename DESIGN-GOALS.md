@@ -8,7 +8,7 @@ The wiki is expected to evolve as AI capabilities and conventions change. Its st
 
 ## Audience and authorship
 
-The primary audience is people building with AI agents, especially in software repositories. The initial practical focus is GitHub Copilot.
+The primary audience is experienced software developers who use GitHub Copilot as their main agent. It includes public-sector teams, who must often show evidence and keep audit trails for their work.
 
 The wiki is primarily maintained by one contributor with AI assistance. Favor an organization and writing approach that are easy for a single person to maintain and for an agent to navigate and extend. Keep the material useful to other contributors without making multi-author collaboration a design constraint.
 
@@ -16,9 +16,9 @@ The wiki is primarily maintained by one contributor with AI assistance. Favor an
 
 Help readers improve these outcomes in AI-assisted work:
 
-- **Alignment:** Get results that match the intended outcome. Clarify intent, provide relevant repository context and tools, and use specifications and verification to reduce misunderstandings. This practical, task-level use complements the broader AI meaning in the [glossary](pages/glossary.md#alignment).
+- **Alignment:** Get results that match what you intended. Define the work, give Copilot the context and checks it needs, steer it while it works, and verify the result. This task-level meaning complements the broader AI meaning in the [glossary](pages/glossary.md#alignment).
 - **Economy:** Achieve useful results with less time and fewer tokens, without sacrificing quality or security. Reduce rework, delegate repeatable tasks to deterministic tools, and make their interfaces clear.
-- **Traceability:** Understand what was requested, what changed, and the evidence and decisions behind it. Use appropriate specifications, tickets, PRs, reviews, and verification records to support human oversight; an agent's explanation is not necessarily a complete account of its reasoning.
+- **Traceability:** Leave a record someone else can follow later: what was asked, what the agent did, who directed and approved it, and the evidence behind the result. Record agent authorship honestly and keep corrections visible, for example by steering through issue and PR comments rather than private chat. An agent's explanation of its work is not a complete account of its reasoning. For public-sector work, this record is often an obligation, not just good practice. Alignment owns defining, steering, and verifying the work; Traceability owns the record of it.
 - **Security:** Protect sensitive information and limit unsafe actions in AI-assisted work. Identify risks, configure enforceable controls, and review integrations and generated changes.
 
 These goals overlap: for example, a clear specification can improve alignment, reduce rework, and support traceability. Organize navigation around reader outcomes without forcing a topic into only one goal.
@@ -37,7 +37,7 @@ To support those outcomes:
 
 ## Scope
 
-Prefer agent-agnostic practices and emerging conventions where they apply. Copilot is the current primary use case, so Copilot-specific capabilities and guidance are in scope when they add practical value.
+Write for Copilot first. Name the Copilot file, setting, or command that puts advice into practice, and state what Copilot does, with the date that behavior was checked. Say which Copilot surface a statement applies to (chat, CLI, cloud agent, or code review) when behavior differs. Add a portability note only where it matters, such as when a convention like `AGENTS.md` is shared with other tools.
 
 Guidance specific to other agent products or harnesses, such as Codex, Claude, or Cursor, is out of scope. Broad concepts and standards that apply across tools remain in scope.
 
@@ -45,7 +45,7 @@ Guidance specific to other agent products or harnesses, such as Codex, Claude, o
 
 For each outcome, identify the core advice readers can act on. Use it to decide what the wiki needs to explain, prioritize, and link together, and revisit it as practices and evidence change. Review the wiki against that advice to find gaps and unsupported recommendations.
 
-Make the primary reader journey: homepage, outcome overview, principle, then techniques and practical examples. Explain why a principle helps before exploring ways to apply it, including how to try and verify them. A journey may span several pages or remain within one page; retain direct paths to practical guidance for readers who already understand the principle. A page may support more than one outcome; link to shared material rather than duplicating it.
+Make the primary reader journey: homepage, outcome overview, then actions with practical examples. Lead with the action and follow it with why it helps and how to verify it; link to the underlying principle for depth. A journey may span several pages or remain within one page; retain direct paths to practical guidance for readers who already understand the principle. A page may support more than one outcome; link to shared material rather than duplicating it.
 
 Make navigation and the sitemap reflect the goals and their priorities, not just the directory layout. Give prominence to actions with clear likely benefit and proportionate effort, while keeping essential safeguards visible even when they take more work. Connect guidance to its principles, supporting evidence, and limitations. Label case studies, illustrative approaches, and subjective perspectives so readers can distinguish context from advice; make optional context discoverable without presenting it as a required step. Keep the full inventory available alongside curated paths.
 
@@ -63,7 +63,9 @@ These are purposes, not rigid templates: a page may serve more than one need. An
 
 Make significant content gaps visible. Completeness is distinct from correctness and freshness; a complete page is not necessarily accurate or current.
 
-Use small, focused files for concepts and reusable guidance. Use larger articles to connect and explain multiple concepts. Link related material rather than duplicating it, and keep indexes up to date so readers and agents can find the right level of detail.
+Use small, focused files for concepts and reusable guidance. Use larger articles to connect and explain multiple concepts. Link related material rather than duplicating it, but state each section's action in full: a link adds depth and never replaces the advice. Keep indexes up to date so readers and agents can find the right level of detail.
+
+Write every page to [the writing standard](STYLE.md).
 
 Keep reusable explanations in `concepts/`, narrative articles and applied references in `pages/`, provenance in `sources/`, and short standalone summaries in `slides/`. Slides link to their canonical concepts; preserve necessary examples and caveats in those concepts rather than imposing a slide-sized limit.
 
