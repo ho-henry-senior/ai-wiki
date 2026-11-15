@@ -25,8 +25,8 @@ Open your last agent pull request and check that a reader could answer these que
 - **Record who did the work.** Commits from the Copilot cloud agent are authored by Copilot, list the person who started the task as co-author, are signed, and link to the session log. For any tool that commits under your name, add a `Co-authored-by:` line that names the agent.
 - **Copy the evidence onto the pull request.** Actions keeps checks, workflow runs, and logs for 90 days by default, and public repositories cannot keep them longer. Add a comment that says which checks ran, their results, and which did not run.
 - **Keep the record where reviewers look.** Cloud agent session logs stay on GitHub, are visible to anyone with access to the repository, and can be archived but not deleted. Copilot CLI and editor sessions belong to you and can be deleted, so put anything a reviewer needs on the pull request.
-- **Steer in the open.** Put corrections in pull request comments, not private chat. See [steer it](define-and-verify-tasks.md#steer-it).
-- **Separate who asked from who approved.** Name a human reviewer. On GitHub, your approval of a pull request you asked Copilot to create does not count toward required approvals.
+- **Steer in the open.** Put corrections in pull request comments, not private chat, so a reviewer can see why the result differs from the request. [How to steer](define-and-verify-tasks.md#steer-it).
+- **Separate who asked from who approved.** The pull request review should name a human approver other than the requester. See [verify the result](define-and-verify-tasks.md#verify-the-result).
 - **Treat the agent's explanation as a claim.** A pull request description or session narrative is the agent's account, not evidence. Check it against the diff and the checks.
 - **Keep records safe.** Summarize logs rather than pasting them, and never record secrets. See [sensitive data in agent workflows](sensitive-data-in-agent-workflows.md).
 
