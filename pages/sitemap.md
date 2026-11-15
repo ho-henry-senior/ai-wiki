@@ -75,7 +75,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 - [A worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md) — Git branches and worktrees separate changes, while a security sandbox restricts what executing code can access or do.
 - [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) — An MCP server's location determines where code runs, but does not guarantee where the data it handles stays.
 - [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Treat instructions in issues, files, web pages, and tool output as data, not orders, and limit what the agent can do if it follows them anyway. (developing)
-- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — A diagnostic command can expose a secret through its result, saved history, and subsequent model requests without an explicit upload.
+- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — Anything a command prints goes to the model and into session history, so keep secrets out of output and out of reach; if one leaks, rotate it.
 
 #### Explore further
 
@@ -134,7 +134,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 - [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) — An MCP server's location determines where code runs, but does not guarantee where the data it handles stays.
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Retrieval-augmented generation](../concepts/retrieval-augmented-generation.md) — Background. Retrieval-augmented generation finds passages that match a request and gives them to the model as context; it changes what the model sees, not what it knows.
-- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — A diagnostic command can expose a secret through its result, saved history, and subsequent model requests without an explicit upload.
+- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — Anything a command prints goes to the model and into session history, so keep secrets out of output and out of reach; if one leaks, rotate it.
 - [Session history is not active context](../concepts/session-history-vs-context.md) — What a session has saved is not what the model sees in its next request; in Copilot CLI, check with /context and summarize with /compact.
 - [Skills, profiles, and tools have different jobs](../concepts/skills-profiles-and-tools.md) — Add a skill for a repeatable procedure, a profile for a role with limits, and a tool for an action the agent cannot perform; in Copilot these are skills, custom agents, and tools or MCP servers.
 - [Task names need explicit contracts](../concepts/task-interface-contracts.md) — Describe each command's scope, cost, side effects, and whether failure blocks handoff; its name alone does not tell an agent what it does.

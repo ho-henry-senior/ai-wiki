@@ -27,6 +27,10 @@ An AI system that uses a model to pursue a task, often by selecting actions, usi
 
 The software around a model that supplies context and tools, handles tool requests, and manages the interaction loop. It is distinct from the model and from the overall agent system, although usage varies. See [the tool-call loop](../concepts/tool-call-loop.md) and [the broader interaction explanation](model-harness-interaction.md).
 
+### AGENTS.md
+
+A Markdown file of instructions for coding agents, placed at the root of a repository. It is a shared convention: Copilot's agent features, Codex, Cursor, and Claude Code (when there is no `CLAUDE.md`) read it. See [write repository instructions in AGENTS.md](repository-instructions.md).
+
 ### Agentic system
 
 A system organized to let a model take multiple steps toward a goal, possibly using tools. This term may include both predefined workflows and agents that choose their own next actions; distinguish the two when the control flow matters.
@@ -43,9 +47,17 @@ A shared evaluation dataset or task used to compare systems under specified cond
 
 Intermediate reasoning steps produced or elicited while solving a task. A displayed reasoning trace should not automatically be treated as a complete or faithful account of how a model arrived at its answer.
 
+### Compaction
+
+Summarizing older parts of a long conversation so it fits the context window. It can lose detail and does not delete the saved history. Copilot CLI compacts automatically, or on request with `/compact`. See [session history versus active context](../concepts/session-history-vs-context.md).
+
 ### Context window
 
 The amount of input and generated output a model can consider in a single interaction. It is not the same as persistent memory or training data, and a larger context window does not guarantee that all included information will be used well. See [session history versus active context](../concepts/session-history-vs-context.md).
+
+### Custom agent
+
+In Copilot, a named role defined in `.github/agents/NAME.agent.md`, with its own instructions and an optional `tools` list that limits what it can do. See [skills, profiles, and tools](../concepts/skills-profiles-and-tools.md).
 
 ## E
 
@@ -55,7 +67,7 @@ A numerical representation of data, such as text, where relationships between ve
 
 ### Evaluation (eval)
 
-A test of a model or AI application against criteria relevant to a task, such as correctness, quality, or safety. Evals help detect regressions and compare approaches; results depend on the test data and criteria. See [evals](../concepts/evals.md).
+A test of a model or AI application against criteria for a task, such as correctness, quality, or safety. Evals help detect regressions and compare approaches; results depend on the test data and criteria. See [evals](../concepts/evals.md).
 
 ## F
 
@@ -147,9 +159,13 @@ A technique that retrieves external information and includes it in the model's i
 
 ## S
 
+### Sandbox
+
+An enforced limit on what an agent's commands can read, change, or contact, applied by the operating system or platform rather than by instructions. Copilot's local sandbox is turned on with `/sandbox enable`. See [sandbox a local coding agent](local-agent-sandboxing.md).
+
 ### Skill
 
-A reusable package of task-specific instructions and optional supporting resources, loaded when relevant. See [skills, profiles, and tools](../concepts/skills-profiles-and-tools.md) for how their purposes differ.
+A reusable package of task-specific instructions and optional supporting resources, in a `SKILL.md` file, loaded only when a task needs it. See [skills, profiles, and tools](../concepts/skills-profiles-and-tools.md) for how their purposes differ.
 
 ### Stochastic
 
