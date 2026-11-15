@@ -6,19 +6,21 @@ status: developing
 
 # Furnish repositories with context for agents
 
-These working notes explore ways to give agents relevant repository context.
+These working notes explore ways to give agents relevant repository context. Treat the ideas below as selective follow-ups, not a setup checklist: begin with one missing fact that causes a recurring or consequential misunderstanding and document that first.
 
 <a id="try-this-first"></a>
 
-## Use AGENTS.md
+## Start with the shared entrypoint
 
-Start with an [AGENTS.md](agents-md-as-shared-entrypoint.md) that tells agents what the repository does, its essential constraints, and where to find relevant documentation. This gives agents a starting point instead of leaving them to infer context. Check that your agent actually loads the file.
+Use [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) to explain what the repository does, its essential constraints, and where to find relevant documentation. That guide covers the focused starting technique; add deeper context only when a specific need justifies maintaining it. Check that your agent actually loads the file.
+
+To choose what to add, note an incorrect assumption or repeated question, identify the smallest source-of-truth detail that would resolve it, and link that detail from the entrypoint. A brief explanation near the relevant code or command may be enough.
 
 <a id="record-decisions-including-the-ones-that-were-never-written-down"></a>
 
 ## Use ADRs
 
-Architecture Decision Records (ADRs) capture why an important choice was made: its context, alternatives, decision, and consequences. They can document new decisions or explain existing designs.
+Architecture Decision Records (ADRs) capture why an important choice was made: its context, alternatives, decision, and consequences. Use one when a consequential decision or repeated ambiguity makes that history valuable; an ADR is not a prerequisite for agent use.
 
 An agent can draft a record from code, tests, and documentation, then ask people to confirm the rationale. Keep observed behavior separate from confirmed reasoning, and state what remains unknown.
 
@@ -40,7 +42,7 @@ This is a fictional sample ADR record:
 
 ## Describe boundaries between repositories
 
-In systems spread across repositories, contracts such as schemas, APIs, message formats, and ownership can be implicit. Making them visible helps agents assess changes beyond one repository.
+In systems spread across repositories, contracts such as schemas, APIs, message formats, and ownership can be implicit. Make these relationships visible when cross-repository changes or recurring misunderstandings make them relevant; a map of every repository is not a starting requirement.
 
 Useful context may include:
 
@@ -53,7 +55,7 @@ The aim is to expose the relationship and its source of truth, not to copy every
 
 ## Use diagrams close to the system they explain
 
-Use a diagram to answer a specific question about component boundaries, data flow, deployment, or cross-repository interactions. Keep it close to the system it explains and link to it from the related documentation.
+Use a diagram only when it answers a specific question about component boundaries, data flow, deployment, or cross-repository interactions better than a short description. Keep it close to the system it explains and link to it from the related documentation.
 
 Prefer Mermaid when it can express the structure clearly and the target tools can render it: its text source is easier for agents to inspect and maintain than a binary image. Validate the rendered view; use another format when Mermaid or the target tools are unsuitable.
 

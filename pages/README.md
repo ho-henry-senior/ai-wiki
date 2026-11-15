@@ -15,16 +15,15 @@ Articles, applied patterns, reference catalogs, and checklists for AI-assisted s
 - [How models and harnesses interact](model-harness-interaction.md) — the tool-call loop, message structure, session state, and context limits.
 - [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — developing guidance on agent risks, data sources and destinations, and practical controls.
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — questions for reviewing a particular agent setup, integration, or sensitive task.
-- [Furnish repositories with context for agents](repository-context-for-agents.md) — developing notes on domain, decisions, architecture, and inter-repository context.
-- [A structure for agent-facing repositories](agent-facing-repository-structure.md) — an illustrative pattern connecting instructions, reference material, skills, task commands, and harness-specific configuration.
+- [Furnish repositories with context for agents](repository-context-for-agents.md) — developing guidance for prioritizing useful repository context without taking on unnecessary documentation.
+- [A structure for agent-facing repositories](agent-facing-repository-structure.md) — an optional menu of instructions, reference material, skills, task commands, and harness-specific configuration.
 - [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) — current cross-harness support, limits, and guidance for keeping repository instructions concise and discoverable.
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — a pattern for exposing deterministic repository tasks through a discoverable interface.
-- [A Justfile as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) — a focused pattern for turning existing repository commands into a stable, discoverable task interface.
-- [Tool choices by purpose](tools-by-purpose.md) — selection considerations and examples from several repositories.
-- [Skills as a changing capability layer](skills-as-capabilities.md) — why skills fill gaps and how their value can shift as harnesses evolve.
-- [Useful skills right now](useful-skills.md) — a living, problem-oriented list, with harness support and review status.
+- [Just as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) — a Just-specific example and when a wrapper may be useful.
+- [Observed tools by purpose](tools-by-purpose.md) — selected tool examples from several repositories.
+- [Skills as a changing capability layer](skills-as-capabilities.md) — how to decide whether a skill fills a current harness gap.
+- [Skill candidates to evaluate](useful-skills.md) — researched candidates that are not recommendations without practical evidence.
 - [Skills and agent profiles](skills-and-agent-profiles.md) — choosing procedures, roles, and executable capabilities for a workflow.
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — a perspective on familiar responsibilities and handoffs in an agent-assisted workflow.
 - [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — the value and limits of unit tests as feedback for agent-produced changes.
-- [From CLI agents toward a lightweight software factory](cli-to-software-factory.md) — a stub for an exploratory progression path.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.

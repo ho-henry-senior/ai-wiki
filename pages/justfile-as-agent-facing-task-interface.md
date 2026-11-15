@@ -1,21 +1,11 @@
 ---
 type: pattern
-summary: Use a Justfile to give people and agents a stable, discoverable interface to the repository's existing commands and checks.
+summary: A Just-specific example and guidance on when a wrapper may help expose existing repository commands.
 ---
 
-# A Justfile as an agent-facing task interface
+# Just as an agent-facing task interface
 
-A root `justfile` is a sensible addition to an agent-facing repository. It gives people and agents a stable, discoverable way to find and invoke the commands the project already uses. Treat it as an interface over existing tools, not a replacement build system.
-
-## Expose useful tasks, not every command
-
-Offer a small set of clear recipes for common work, such as setup, focused tests, linting, and routine verification. Recipes should delegate to the repository's existing scripts and tools where practical. Use `just --list` to discover available recipes.
-
-Apply [explicit task contracts](../concepts/task-interface-contracts.md): familiar recipe names such as `check` or `verify` are not universal standards.
-
-## Make each recipe's contract clear
-
-Use recipe comments and clear names to expose the [scope, prerequisites, side effects, and interpretation](../concepts/task-interface-contracts.md#what-the-contract-should-explain) of each task. For example, give a file-rewriting formatter a different recipe from its read-only check, and keep a noisy diagnostic distinct from the routine gate.
+A root `justfile` can provide a stable interface over existing tools when commands are otherwise hard to discover or invoke. It is one option, not a required wrapper or replacement build system. For the general guidance on choosing tasks and documenting their contracts, see [delegating repository tasks to tools](agent-tool-delegation.md) and the [task-interface contract](../concepts/task-interface-contracts.md).
 
 ## Example: this wiki's Justfile
 
@@ -35,18 +25,12 @@ format:
     npm run format
 ```
 
-`just --list` exposes the recipe names and comments. The checks are separate from the mutating formatter, and the recipes delegate to the wiki's npm scripts. These commands depend on this repository's tooling; they are an example rather than a universal set of recipes. See the Justfile and `package.json` for the current definitions.
-
-## Keep instructions and recipes in sync
-
-Keep executable commands in the `justfile` or in their canonical project scripts. `AGENTS.md` should point to the task interface, explain how to list recipes, and identify the routine check; it should not duplicate the full recipe catalog or shell commands.
+`just --list` exposes the recipe names and comments. These checks are separate from the mutating formatter, and the recipes delegate to the wiki's npm scripts. See the Justfile and `package.json` for current definitions; this is an example, not a universal recipe set.
 
 ## When not to add one
 
 Just is one practical choice, not a requirement. If existing package scripts or another task runner already provide an equally discoverable and dependable interface, use that rather than adding a wrapper layer for its own sake.
 
-## Examples and related guidance
+## Examples
 
-The [Justfile patterns across Node.js and Python repositories](../sources/repository-justfiles.md) show how different projects compose focused tests, routine checks, diagnostics, and mutating recipes. Treat them as examples, not normative recipe names.
-
-For the broader principle of delegating bounded work to deterministic tools, see [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md). For how a task interface fits alongside `AGENTS.md`, skills, and agent documentation, see [A structure for agent-facing repositories](agent-facing-repository-structure.md).
+The [Justfile patterns across Node.js and Python repositories](../sources/repository-justfiles.md) show different ways to compose focused tests, routine checks, diagnostics, and mutating recipes. Treat them as observed examples, not normative names.

@@ -32,7 +32,7 @@ Understand what was requested, what changed, and the evidence behind it. **Statu
 - [Connect related artifacts](pages/traceability.md#core-advice)
 - [Preserve verification evidence](pages/define-and-verify-tasks.md)
 - [Make responsibilities visible](pages/traceability.md#core-advice)
-- [Keep records proportionate and safe](pages/sensitive-data-in-agent-workflows.md#controls-across-the-workflow)
+- [Keep records proportionate and safe](pages/sensitive-data-in-agent-workflows.md#choose-controls-for-the-execution-environment)
 
 ## [Security](pages/security.md)
 

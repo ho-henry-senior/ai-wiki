@@ -10,13 +10,11 @@ status: developing
 
 Using an agent safely requires understanding both what it can access and what it can do. Through [the tool-call loop](../concepts/tool-call-loop.md), file contents and tool results can become model input or further actions. A locally installed harness may use remote inference and services; local inference does not by itself prevent exposure through other routes.
 
-This guide covers AI-assisted software work, not the full subject of securing AI-powered applications. See [How models and harnesses interact](model-harness-interaction.md) for the underlying interaction loop, and use the [data-flow checklist](agent-data-flow-checklist.md) to review a particular setup.
+This guide explains the common data-flow model for AI-assisted software work, not the full subject of securing AI-powered applications. See [How models and harnesses interact](model-harness-interaction.md) for the underlying interaction loop; use the [data-flow checklist](agent-data-flow-checklist.md) for an operational review of a particular setup.
 
-## Try this first
+## Start with the actual data flow
 
-Before using an agent on a repository, identify the sensitive data and credentials it can access, the services that may receive data, and the actions it can perform. Limit access and credentials to the task, and configure approval or enforced restrictions for consequential actions such as publishing or infrastructure changes. Verify these controls in the actual tool and environment; instructions alone are not enforcement.
-
-Use the [data-flow checklist](agent-data-flow-checklist.md) to record what is known and investigate uncertain destinations. The right safeguards depend on the risk; do not defer essential controls solely because they require more effort.
+Before using sensitive material, identify what the agent can access and where its context or tool results may go. Use the [data-flow checklist](agent-data-flow-checklist.md) to record flows, resolve unknowns, and verify controls in the actual harness and environment. The right safeguards depend on risk; do not defer essential controls because they require more effort.
 
 ## The main risks
 
@@ -66,16 +64,7 @@ flowchart TD
     Harness -. "may produce" .-> Artifacts
 ```
 
-| Destination                                    | How data gets there                                                                                                                 | Main controls                                                                                                                                                  |
-| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Model provider                                 | The harness includes prompts, file contents, or tool results in inference requests.                                                 | Use an approved provider and account; verify retention, training use, and access policies; exclude or redact sensitive content before transmission.            |
-| Local session files, caches, indexes, and logs | The harness, editor, or tools save conversation history, arguments, results, debug output, or indexed content.                      | Restrict filesystem access; use disk encryption; avoid printing secrets; review logging and indexing; limit retention and remove unneeded records.             |
-| Cloud session storage and backups              | Session syncing, device backups, or transcript sharing copies history remotely.                                                     | Disable unnecessary syncing; restrict sharing and access; verify cloud retention, backup, and deletion policies.                                               |
-| Tools and external services                    | Tool arguments send content to search engines, APIs, MCP servers, or delegated agents; those services may retain their own records. | Review integrations and their destinations; use narrowly scoped credentials; restrict network access; require approval for sensitive calls.                    |
-| Repository and shared artifacts                | Sensitive information is written into files, commits, PRs, issues, CI output, build artifacts, or exported transcripts.             | Review diffs and publication targets; use secret scanning and protected branches; require approval before publishing; inspect generated reports and CI output. |
-| Attacker-controlled systems                    | Prompt injection or a malicious integration causes an outbound request or upload containing data.                                   | Combine isolation, restricted outbound networking, minimal credentials, and approval for consequential actions; treat retrieved content as untrusted.          |
-
-Assess [inference, retention, and training separately](../concepts/inference-retention-training.md). A no-training policy is not a no-transmission or no-retention guarantee, and disabling session sync does not disable model requests or external tool calls. [Saved history also differs from active model context](../concepts/session-history-vs-context.md), so reducing context is not evidence that stored data has been deleted.
+The [data-flow checklist](agent-data-flow-checklist.md#check-each-destination) gives destination-specific questions for model providers, local storage, cloud history, tools, artifacts, and unintended destinations. Assess [inference, retention, and training separately](../concepts/inference-retention-training.md): a no-training policy is not a no-transmission or no-retention guarantee. [Saved history also differs from active model context](../concepts/session-history-vs-context.md), so reducing context is not evidence that stored data has been deleted.
 
 ### Local and remote MCP servers
 
@@ -85,17 +74,13 @@ Local servers execute on your machine; remote servers receive supplied data on a
 
 An ordinary diagnostic can print a credential, which may then enter history, a later model request, and a shared transcript. [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) traces this accidental flow and explains why redacting after transmission is too late.
 
-## Controls across the workflow
+## Choose controls for the execution environment
 
-Before a task, minimize accessible data and credentials. Prefer synthetic or sanitized fixtures, read-only access where sufficient, and an isolated environment with only the required filesystem and network access. [A worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md): separating changes does not restrict execution or credentials.
+Use the [local-agent guide](local-agent-security.md) or [cloud-agent guide](cloud-agent-security.md) for environment-specific permissions, credentials, and approval boundaries. The [data-flow checklist](agent-data-flow-checklist.md) is the reusable operational review; [prompt-injection guidance](prompt-injection-coding-agents.md) explains how untrusted content can misuse access.
 
-During work, treat retrieved material as data, not authority to change permissions or send information elsewhere. Check consequential tool requests against the intended action and destination. A local shell restriction does not necessarily constrain a remote MCP service; evaluate each integration's actual execution boundary.
+Controls should be enforced where possible, not just described in instructions: [a worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md), and local shell restrictions may not cover remote integrations. If a secret is exposed, follow [the tool-output containment guidance](../concepts/secrets-in-tool-output.md#reduce-exposure-at-the-source) and account for copies beyond visible text.
 
-Before handoff, review generated changes, run relevant tests and security checks, and inspect outputs for sensitive information. Keep human approval for high-impact actions such as publishing, infrastructure changes, and use of privileged credentials. Preserve an appropriate audit trail without collecting secrets unnecessarily.
-
-Use [enforced controls as well as instructions](../concepts/instructions-vs-controls.md). Guidance, scanning, redaction, and approval can all miss problems; combine them with independently enforced access and network restrictions.
-
-Disk encryption protects data at rest, not against an agent or process already permitted to read it. If exposure occurs, follow [the tool-output containment guidance](../concepts/secrets-in-tool-output.md#reduce-exposure-at-the-source): rotate exposed credentials and consider all copies, not just visible text.
+Keep enough of a record to support review without reproducing sensitive inputs; inspect outputs before sharing them.
 
 ## References
 

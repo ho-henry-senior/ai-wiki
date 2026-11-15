@@ -20,13 +20,17 @@ For this collection, a skill is a candidate for recommendation when it:
 
 These are curation criteria, not a universal definition of skill quality. A skill's usefulness can also depend on its scope, maintenance, compatibility, and the task at hand.
 
+## A low-friction way to decide
+
+Do not start by installing a skill. First identify a recurring task, check whether the harness already supports it, and try the procedure on a representative case. Consider adopting a skill only if it improves the result enough to justify its setup and maintenance; record compatibility, effort, and evidence. Treat untried candidates as ideas to evaluate, not recommendations.
+
 ## Keep recommendations current
 
 A useful list should be organized around the problem or capability a skill addresses, with harness-specific support noted for each entry. Record when an entry was last reviewed and whether an equivalent capability is now built into a harness.
 
 If a harness absorbs a capability, retain that information with a clear status rather than silently treating an external skill as still necessary. This preserves the useful pattern and makes the changing boundary visible.
 
-See the [current useful-skills list](useful-skills.md), the [skills/profile guide](skills-and-agent-profiles.md), and the [skills, profiles, and tools distinction](../concepts/skills-profiles-and-tools.md).
+See the [skill candidates to evaluate](useful-skills.md), the [skills/profile guide](skills-and-agent-profiles.md), and the [skills, profiles, and tools distinction](../concepts/skills-profiles-and-tools.md).
 
 ## Keep concepts portable
 

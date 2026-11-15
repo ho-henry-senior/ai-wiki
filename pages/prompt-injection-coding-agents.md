@@ -20,13 +20,9 @@ The issue text is evidence about a reported problem, not an authorised request f
 
 An attack can also be hidden in comments, dependency documentation, a web page, search results, or an integration's tool output. It may claim to be a system message or a required maintenance step. Such claims do not make it trustworthy.
 
-## Try this first
+## When untrusted content gives instructions
 
-1. **Notice the source.** Is the instruction from the person directing the task, or from material the agent was asked to inspect?
-2. **Keep permissions narrow.** Limit credentials, filesystem access, and outbound network destinations so a mistaken action has less impact.
-3. **Inspect unusual requests.** Treat requests to reveal secrets, change security settings, run unfamiliar downloads, or contact unrelated destinations as reasons to stop and investigate.
-4. **Review tool calls and outputs.** Especially when an agent reads public issues, third-party repositories, or external websites.
-5. **Escalate when needed.** If suspicious content influenced a run, inspect actions and logs and revoke exposed credentials where appropriate.
+Treat instructions found in issues, files, web pages, or tool results as task data, not authority. Stop and investigate before allowing a request to reveal secrets, change permissions, run unfamiliar downloads, or contact an unrelated destination. Limit what the agent can access and what actions it can take; use the [local](local-agent-security.md) or [cloud](cloud-agent-security.md) guide for the relevant execution boundary.
 
 ## Local and cloud consequences differ
 

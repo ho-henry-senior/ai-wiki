@@ -6,20 +6,28 @@ status: developing
 
 # Traceability
 
-**Developing:** This overview gives a starting point, but detailed examples of linking specifications to tasks and changes are limited.
+**Developing:** This overview gives a starting point; more examples of tracing intent across artifacts would help.
 
 Traceability means being able to understand what was requested, what changed, and the evidence and decisions behind the result. It supports human review; an agent's explanation is not necessarily a complete account of its reasoning.
 
 ## Try this first
 
-For one task, record the desired outcome and acceptance criteria in the issue or PR. When the work is ready for review, record what changed, the checks run and their results, and any important assumptions or unchecked risks.
+For a small change, one issue and its pull request may be enough: link the PR to the issue, summarize the change and check results, and record the reviewer’s decision there. A reader should be able to follow that link and compare the result with the original request.
+
+| Artifact          | What a reviewer should be able to verify                                                                         |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Issue or request  | The intended outcome and any acceptance criteria.                                                                |
+| Pull request      | The change is linked to the request; the summary identifies what changed and any assumptions or unchecked risks. |
+| Checks and review | Check results are recorded, and a named human reviewer records approval or requested changes.                    |
+
+For larger work, add artifacts only when they help explain a decision or connect work that cannot be followed from the issue and PR alone. [Define and verify a task](define-and-verify-tasks.md) covers the shared outcome, criteria, and verification workflow.
 
 ## Core advice
 
-- **Record the request and decisions.** Keep the outcome, acceptance criteria, constraints, and meaningful decisions where reviewers can find them. [Define and verify a task](define-and-verify-tasks.md).
-- **Connect related artifacts.** Link specifications, tickets, changes, and reviews when they exist so a reader can follow the work from intent to result. A small task does not need every artifact. [Define and verify a task](define-and-verify-tasks.md#scale-the-process-to-the-work) shows a proportionate starting point.
-- **Preserve verification evidence.** Record what was checked, the outcome, and relevant checks not run. [Define and verify a task](define-and-verify-tasks.md) describes what to record. Review the change against the request, rather than treating a passing suite as complete proof: [passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
-- **Make responsibilities visible.** Clarify who performs the work, who reviews it, and who has approval authority.
+- **Record the request and decisions.** Keep the outcome, acceptance criteria, constraints, and meaningful decisions where reviewers can find them. [Define and verify a task](define-and-verify-tasks.md) covers the task workflow.
+- **Connect related artifacts.** Link the request to its change and review when those live separately; add more records only when they clarify intent or decisions.
+- **Preserve verification evidence.** Record check results and relevant checks not run. Review the change against the request, rather than treating a passing suite as complete proof: [passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
+- **Make responsibilities visible.** For a small PR, name the human reviewer and record whether they approved it or requested changes; separate approval authority from implementation when the repository requires it.
 - **Keep records proportionate and safe.** Choose enough detail for the task's risk and review needs; avoid collecting secrets or sensitive data unnecessarily. Review artifacts before sharing them. [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md).
 
 ## Explore further
