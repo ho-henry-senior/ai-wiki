@@ -18,7 +18,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 - [Task names need explicit contracts](../concepts/task-interface-contracts.md) — A discoverable task needs an explicit scope, side effects, prerequisites, and interpretation; its name alone is not a contract.
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — A green test suite establishes that assertions passed, not that those assertions completely capture the intended behavior. (established)
-- [Traceability](traceability.md) — Core advice for recording requests, decisions, changes, and evidence in agent-assisted work. (developing)
+- [Traceability](traceability.md) — Leave a record someone else can follow later, covering what was asked, who or what made the change, who approved it, and the evidence. (established)
 
 #### Explore further
 
@@ -54,19 +54,16 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 ### [Traceability](traceability.md)
 
-**Status:** developing
+**Status:** established
 
 #### Core advice and supporting links
 
 - [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
-- [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — A green test suite establishes that assertions passed, not that those assertions completely capture the intended behavior. (established)
 - [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — The main risks of running coding agents, how sensitive data can move through their workflows, and controls for each destination. (developing)
 
 #### Explore further
 
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing. (developing)
-- [Alignment](alignment.md) — Core advice for helping an agent's work match a task's intended outcome. (established)
-- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — A perspective on using familiar agile roles and handoffs to understand a possible agent-assisted software factory.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
 
 ### [Security](security.md)
@@ -124,7 +121,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 - [Economy](economy.md) — Core advice for getting useful agent results with less time and fewer tokens, without sacrificing quality or security. (established)
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing. (developing)
 - [Security](security.md) — Core advice for protecting sensitive information and limiting unsafe actions in agent-assisted work. (developing)
-- [Traceability](traceability.md) — Core advice for recording requests, decisions, changes, and evidence in agent-assisted work. (developing)
+- [Traceability](traceability.md) — Leave a record someone else can follow later, covering what was asked, who or what made the change, who approved it, and the evidence. (established)
 
 #### pattern
 

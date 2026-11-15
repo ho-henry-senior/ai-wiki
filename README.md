@@ -27,13 +27,13 @@ Get useful results with less time and fewer tokens, without sacrificing quality.
 
 ## [Traceability](pages/traceability.md)
 
-Understand what was requested, what changed, and the evidence behind it. **Status: developing.**
+Leave a record someone else can follow later.
 
-- [Record the request and decisions](pages/define-and-verify-tasks.md)
-- [Connect related artifacts](pages/traceability.md#core-advice)
-- [Preserve verification evidence](pages/define-and-verify-tasks.md)
-- [Make responsibilities visible](pages/traceability.md#core-advice)
-- [Keep records proportionate and safe](pages/sensitive-data-in-agent-workflows.md#choose-controls-for-the-execution-environment)
+- [Record who did the work](pages/traceability.md#core-advice)
+- [Copy the evidence onto the pull request](pages/traceability.md#core-advice)
+- [Steer in the open](pages/define-and-verify-tasks.md#steer-it)
+- [Separate who asked from who approved](pages/traceability.md#core-advice)
+- [Keep records safe](pages/sensitive-data-in-agent-workflows.md)
 
 ## [Security](pages/security.md)
 
