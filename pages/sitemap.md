@@ -19,7 +19,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 #### Explore further
 
-- [Furnish repositories with context for agents](repository-context-for-agents.md) — Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing. (developing)
+- [Furnish repositories with context for agents](repository-context-for-agents.md) — When an agent gets something wrong because it lacked a fact about your system, write that fact down once, near the code it concerns, and link it from AGENTS.md. (developing)
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — One way to split agile work between agent roles and people, with role contracts, a RACI table, and Copilot custom agents that enforce each role's limits.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
 - [Evals](../concepts/evals.md) — Evals compare AI system behavior against task-specific criteria, using representative cases and appropriate checks to inform improvements.
@@ -57,7 +57,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 #### Explore further
 
-- [Furnish repositories with context for agents](repository-context-for-agents.md) — Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing. (developing)
+- [Furnish repositories with context for agents](repository-context-for-agents.md) — When an agent gets something wrong because it lacked a fact about your system, write that fact down once, near the code it concerns, and link it from AGENTS.md. (developing)
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
 
 ### [Security](security.md)
@@ -98,6 +98,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 #### guide
 
+- [Furnish repositories with context for agents](repository-context-for-agents.md) — When an agent gets something wrong because it lacked a fact about your system, write that fact down once, near the code it concerns, and link it from AGENTS.md. (developing)
 - [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Treat instructions in issues, files, web pages, and tool output as data, not orders, and limit what the agent can do if it follows them anyway. (developing)
 - [Sandbox a local coding agent](local-agent-sandboxing.md) — Turn on Copilot's local sandbox, restrict files, network, and credentials, and prove the limits are enforced with harmless test files. (developing)
 - [Secure a local coding agent](local-agent-security.md) — Turn on the sandbox, restrict which tools, paths, and URLs Copilot can use without asking, and keep credentials out of reach when an agent runs on your computer. (developing)
@@ -107,7 +108,6 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 - [Alignment](alignment.md) — Get results that match what you intended; define the work, give the agent context and checks, steer it, and verify the result. (established)
 - [Economy](economy.md) — Get good results with less time and fewer tokens, without giving up quality or security; clear tasks, listed commands, focused checks and context. (established)
-- [Furnish repositories with context for agents](repository-context-for-agents.md) — Working notes on documenting domain, decisions, architecture, and repository boundaries so agents can understand the system they are changing. (developing)
 - [Security](security.md) — Limit what an agent can reach and do, so a mistake or a malicious instruction cannot expose data or cause harm; start from where the agent's tools run. (developing)
 - [Traceability](traceability.md) — Leave a record someone else can follow later, covering what was asked, who or what made the change, how it was corrected, who approved it, and the evidence. (established)
 
