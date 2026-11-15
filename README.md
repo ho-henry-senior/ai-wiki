@@ -7,7 +7,7 @@ Practical guidance for people using AI agents in software work. Explore a goal, 
 Get results that match what you intended.
 
 - [Define the work](pages/define-and-verify-tasks.md)
-- [Provide relevant context](pages/agents-md-as-shared-entrypoint.md)
+- [Provide relevant context](pages/repository-instructions.md)
 - [Make checks available](pages/agent-tool-delegation.md)
 - [Verify the intended behavior](concepts/tests-are-evidence.md)
 - [Keep responsibilities clear](pages/alignment.md#core-advice)

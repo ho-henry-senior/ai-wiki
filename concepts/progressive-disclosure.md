@@ -22,7 +22,7 @@ A link is not a guarantee of automatic loading. Some instruction formats eagerly
 
 ## Apply it
 
-- Use [AGENTS.md as a shared entrypoint](../pages/agents-md-as-shared-entrypoint.md) to point to task-specific guidance without duplicating it.
+- [Write repository instructions in AGENTS.md](../pages/repository-instructions.md): keep the main file short, and add path-specific files that load only for matching code.
 - Place instructions, reference material, and on-demand skills in a [discoverable repository structure](../pages/agent-facing-repository-structure.md).
 
 ## Sources and applications

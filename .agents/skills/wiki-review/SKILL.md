@@ -25,7 +25,7 @@ For each in-scope goal and core-advice point, trace the reader's path from the h
 
 Evaluate the material against:
 
-- **Scope:** practical guidance for developers using Copilot, written Copilot-first with portability notes only where they matter. Identify generic advice that names no Copilot file, setting, or command, and other products' setup instructions that drift beyond the design goals.
+- **Scope:** practical guidance that is agent-agnostic by default, with detailed Copilot and GitHub examples. Identify tool-specific files recommended where a shared convention would work, advice that names no Copilot or GitHub file, setting, or command, and other products' setup instructions that drift beyond the design goals.
 - **Goal alignment:** compare the in-scope guidance and navigation with the design goals. Identify goals without a useful starting path and content that does not support the stated audience or scope.
 - **Practical priority:** check that starting points favor changes with clear likely benefit and modest effort, explain how to try and verify them, and preserve necessary security safeguards. Assess effort in context rather than treating every reader's first step as the same.
 - **Completeness:** use the [status criteria](../../../MAINTAINING.md#completeness-status) to assess in-scope pages and concepts. Treat missing status as unassessed. Identify incomplete central routes and material gaps, and suggest stronger starting points where available without hiding essential security guidance. Propose status changes with page-specific reasons; do not promote pages automatically.

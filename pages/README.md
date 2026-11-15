@@ -17,7 +17,7 @@ Articles, applied patterns, reference catalogs, and checklists for AI-assisted s
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — questions for reviewing a particular agent setup, integration, or sensitive task.
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — developing guidance for prioritizing useful repository context without taking on unnecessary documentation.
 - [A structure for agent-facing repositories](agent-facing-repository-structure.md) — an optional menu of instructions, reference material, skills, task commands, and harness-specific configuration.
-- [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) — current cross-harness support, limits, and guidance for keeping repository instructions concise and discoverable.
+- [Write repository instructions in AGENTS.md](repository-instructions.md) — what to put in it, which Copilot features and other agents read it, and how to fill Copilot's gaps.
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — a pattern for exposing deterministic repository tasks through a discoverable interface.
 - [Just as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) — a Just-specific example and when a wrapper may be useful.
 - [Observed tools by purpose](tools-by-purpose.md) — selected tool examples from several repositories.
