@@ -9,7 +9,7 @@ Review the knowledge structure and its evidence, not just Markdown formatting. P
 
 ## 1. Establish scope and coverage
 
-Read [the design goals](../../../DESIGN-GOALS.md), [agent instructions](../../../AGENTS.md), [article conventions](../../../MAINTAINING.md#articles-and-concepts), [concept conventions](../../../concepts/README.md), and [source conventions](../../../sources/README.md). Inspect the worktree and preserve unrelated changes.
+Read [the design goals](../../../DESIGN-GOALS.md), [the writing standard](../../../STYLE.md), [agent instructions](../../../AGENTS.md), [article conventions](../../../MAINTAINING.md#articles-and-concepts), [concept conventions](../../../concepts/README.md), and [source conventions](../../../sources/README.md). Inspect the worktree and preserve unrelated changes.
 
 For a whole-wiki review, inventory and read every authored article, concept, and slide, the glossary, indexes, and source records. Check slides against their canonical concepts. Include repository instructions and review tooling when checking navigation and verification coverage. Read raw archives only when needed to resolve a claim; leave them unchanged.
 
@@ -25,7 +25,7 @@ For each in-scope goal and core-advice point, trace the reader's path from the h
 
 Evaluate the material against:
 
-- **Scope:** practical AI usage, portable conventions, and useful Copilot-specific guidance. Identify other products' setup instructions that drift beyond the design goals.
+- **Scope:** practical guidance for developers using Copilot, written Copilot-first with portability notes only where they matter. Identify generic advice that names no Copilot file, setting, or command, and other products' setup instructions that drift beyond the design goals.
 - **Goal alignment:** compare the in-scope guidance and navigation with the design goals. Identify goals without a useful starting path and content that does not support the stated audience or scope.
 - **Practical priority:** check that starting points favor changes with clear likely benefit and modest effort, explain how to try and verify them, and preserve necessary security safeguards. Assess effort in context rather than treating every reader's first step as the same.
 - **Completeness:** use the [status criteria](../../../MAINTAINING.md#completeness-status) to assess in-scope pages and concepts. Treat missing status as unassessed. Identify incomplete central routes and material gaps, and suggest stronger starting points where available without hiding essential security guidance. Propose status changes with page-specific reasons; do not promote pages automatically.
@@ -36,6 +36,7 @@ Evaluate the material against:
 - **Terminology:** compare terms and definitions with the glossary and their context; verify apparent inconsistencies in the source before proposing a change.
 - **Slides:** check that summaries retain essential qualifications and link to their canonical concepts.
 - **Freshness:** inspect changing claims, versions, dates, source quality, and whether recommendations are supported by evidence.
+- **Writing:** check pages against [the writing standard](../../../STYLE.md): the action comes first, each piece of advice has a Copilot example, sections do not depend on a link for their main point, and hedges are cut.
 
 For each proposed extraction, name the question or distinction, its current location, and the articles or reference uses that justify it. Keep examples and essential caveats with the explanation. Keep catalogs, checklists, and concrete workflow examples intact when splitting would reduce usefulness.
 
