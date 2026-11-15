@@ -24,6 +24,6 @@ Do not trade away essential [security](security.md) controls for speed. When com
 
 ## Explore further
 
-- [Tool choices by purpose](tools-by-purpose.md) — examples and selection considerations.
+- [Observed tools by purpose](tools-by-purpose.md) — examples of repository tools grouped by purpose.
 - [Evals](../concepts/evals.md) — compare outcomes alongside time and token use when repeatable assessment is useful.
 - [Lo-fi software factory case study](lo-fi-software-factory-case-study.md) — an observed workflow without a measured cost or time baseline.

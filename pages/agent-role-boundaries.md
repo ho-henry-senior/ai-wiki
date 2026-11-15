@@ -5,7 +5,7 @@ summary: A perspective on using familiar agile roles and handoffs to understand 
 
 # From agile roles to agent-assisted workflows
 
-This page offers one perspective on how familiar agile activities might be organized in an agent-assisted software factory. It illustrates how roles, smaller work loops, explicit outputs, and human intervention could support the transition—not a prescribed workflow or a prediction of how teams will work in future.
+This page offers an optional, higher-cost perspective on how familiar agile activities might be organized in an agent-assisted software factory. It is not a first-step setup guide: begin with one agent and a human reviewer, and consider separate roles only when recurring work has distinct, reviewable handoffs. The examples below illustrate one possible arrangement, not a prescribed workflow or a prediction of how teams will work in future.
 
 In a familiar agile process, people may clarify requirements, plan and implement work, review results, and decide whether to release. This example assigns some of those activities to agents with distinct roles, while people retain decisions and approval. The intended benefit is to avoid asking one agent to carry out a large, open-ended undertaking: smaller loops produce outputs that can be reviewed and provide points for human intervention.
 

@@ -48,7 +48,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 #### Explore further
 
-- [Tool choices by purpose](tools-by-purpose.md) — Considerations for choosing deterministic tools by purpose, with selected examples from Node.js and Python repositories.
+- [Observed tools by purpose](tools-by-purpose.md) — Selected examples of deterministic repository tools, grouped by purpose.
 - [Evals](../concepts/evals.md) — Evals compare AI system behavior against task-specific criteria, using representative cases and appropriate checks to inform improvements.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
 
@@ -109,10 +109,6 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 - [Skills as a changing capability layer](skills-as-capabilities.md) — Explain skills as reusable capabilities that can fill current harness gaps, while their value changes as harnesses evolve. (established)
 - [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — Explore unit tests as fast, deterministic feedback for agents, and the risks of treating test volume or a green suite as proof of correctness. (established)
 
-#### exploration
-
-- [From CLI agents toward a lightweight software factory](cli-to-software-factory.md) — An exploratory path from using a coding agent through delegation and toward automating repeatable work. (stub)
-
 #### guide
 
 - [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Recognize instructions embedded in untrusted material and limit what they can make a coding agent do. (developing)
@@ -132,18 +128,18 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 #### pattern
 
-- [A Justfile as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) — Use a Justfile to give people and agents a stable, discoverable interface to the repository's existing commands and checks.
 - [A structure for agent-facing repositories](agent-facing-repository-structure.md) — An illustrative repository layout that connects shared agent instructions, reference context, skills, task commands, and harness-specific files.
 - [Define and verify a task](define-and-verify-tasks.md) — Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them. (established)
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
+- [Just as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) — A Just-specific example and guidance on when a wrapper may help expose existing repository commands.
 
 #### reference
 
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — A reusable checklist for tracing sensitive data through an agent setup and checking controls at each destination. (established)
 - [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) — Use AGENTS.md as a concise repository entrypoint, with Copilot CLI support and explicit limits on portability. (established)
 - [AI glossary](glossary.md) — A practical glossary of foundational AI and current generative AI terminology.
-- [Tool choices by purpose](tools-by-purpose.md) — Considerations for choosing deterministic tools by purpose, with selected examples from Node.js and Python repositories.
-- [Useful skills right now](useful-skills.md) — A living, problem-oriented shortlist of skills with practical value, including harness compatibility and built-in equivalents.
+- [Observed tools by purpose](tools-by-purpose.md) — Selected examples of deterministic repository tools, grouped by purpose.
+- [Skill candidates to evaluate](useful-skills.md) — Researched skill candidates to evaluate; none are endorsed without evidence of practical value and compatibility.
 
 ### Concepts
 

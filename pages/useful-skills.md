@@ -1,13 +1,13 @@
 ---
 type: reference
-summary: A living, problem-oriented shortlist of skills with practical value, including harness compatibility and built-in equivalents.
+summary: Researched skill candidates to evaluate; none are endorsed without evidence of practical value and compatibility.
 ---
 
-# Useful skills right now
+# Skill candidates to evaluate
 
-This is intended to be a curated, changing list—not an exhaustive directory or a permanent ranking. A skill belongs here when it addresses a recurring need, adds value beyond current built-in harness capabilities, and has practical evidence behind it.
+This is a research queue, not a recommendation list. The entries have not been tried, built-in equivalents have not been assessed, and compatibility has not been independently tested. Do not treat them as useful or ready to adopt until setup effort, compatibility, and practical benefit have been evaluated.
 
-The entries below are researched candidates, not skills we have tried or endorsed. Keep that distinction visible as the list develops.
+Use [the selection guidance](skills-as-capabilities.md#a-low-friction-way-to-decide) before adopting a skill. Remove candidates that cannot meet that evidence bar rather than presenting them as a beginner-facing shortlist.
 
 ## Specifications and task breakdown
 
@@ -49,9 +49,9 @@ The entries below are researched candidates, not skills we have tried or endorse
 - **Status and review date:** researched candidate; not tried; reviewed 2026-11-13.
 - **Sources:** [pstack TDD skill](https://github.com/backnotprop/pstack/blob/main/skills/tdd/SKILL.md) · [Test Behavior, Not Implementation](https://github.com/backnotprop/pstack/blob/main/skills/principle-test-behavior-not-implementation/SKILL.md)
 
-## Suggested entry format
+## Evidence needed before recommending a candidate
 
-For each candidate, record:
+For each candidate that is tested, record:
 
 - **Skill and source:** name and a link to its canonical location.
 - **Problem addressed:** the recurring task or pain point it helps with.
@@ -60,4 +60,4 @@ For each candidate, record:
 - **Built-in equivalent:** whether a harness now provides similar support.
 - **Status and review date:** current recommendation state and when it was last checked.
 
-Organize entries by the problem or capability they address, not by harness. Keep implementation details and compatibility notes with each entry so readers can judge whether it applies to their setup.
+Organize retained candidates by the problem or capability they address, not by harness. Keep implementation details and compatibility notes with each entry so readers can judge whether it applies to their setup.

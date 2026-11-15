@@ -5,12 +5,12 @@ summary: An illustrative repository layout that connects shared agent instructio
 
 # A structure for agent-facing repositories
 
-This pattern brings the repository conventions discussed across the wiki into one place. It is an illustrative default, not a universal standard: use the pieces that make sense for the repository and the agent harnesses it supports.
+This pattern brings repository conventions discussed across the wiki into one place. It is an illustrative menu, not a recommended starting layout: begin with a concise entrypoint and existing task commands, then add only the pieces that solve a demonstrated need.
 
 ```text
 repo/
 ├── AGENTS.md
-├── justfile                   # Recommended task interface for test, lint, and verification
+├── justfile                   # Optional wrapper when existing task commands need one
 ├── .agents/
 │   └── skills/
 │       └── <skill-name>/
@@ -37,7 +37,7 @@ repo/
     └── workflows/                # CI and other repository automation
 ```
 
-Create directories only when they have useful contents. In particular, `.github/` entries are optional and specific to the GitHub features the repository uses. A `.copilot/` directory is not part of this default. GitHub documents `.copilot/skills/` in a dotfiles repository for personal skills in some Copilot cloud sessions; that is distinct from the project-level `.agents/skills/` location.
+Do not treat this full tree as a setup checklist. Start with an `AGENTS.md` or equivalent entrypoint and the repository's existing commands; add reference directories, skills, task wrappers, and harness-specific files only when they address a recurring need. Create directories only when they have useful contents. In particular, `.github/` entries are optional and specific to the GitHub features the repository uses. A `.copilot/` directory is not part of this default. GitHub documents `.copilot/skills/` in a dotfiles repository for personal skills in some Copilot cloud sessions; that is distinct from the project-level `.agents/skills/` location.
 
 ## What goes where
 
@@ -65,7 +65,7 @@ See [Skills as a changing capability layer](skills-as-capabilities.md) for when 
 
 ### `justfile`: stable task interface
 
-A root `justfile` is a sensible task interface for an agent-facing repository. Keep its recipes clear and grounded in the tools the repository already uses. See [A Justfile as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) for the focused pattern, or [delegating repo tasks to tools](agent-tool-delegation.md) for the broader principle.
+A root `justfile` can be a task interface when existing commands are hard to discover or invoke. See [Just as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) for a focused example, or [delegating repo tasks to tools](agent-tool-delegation.md) for the broader principle.
 
 ### `.github/`: GitHub-specific configuration and automation
 
