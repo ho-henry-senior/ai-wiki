@@ -5,7 +5,7 @@ default:
 setup:
     npm ci
 
-# Test and check the sitemap, Markdown formatting, and local links without modifying files.
+# Test and check the sitemap, Markdown formatting, local links, and style without modifying files.
 verify:
     npm run verify
 
@@ -16,6 +16,10 @@ sitemap:
 # Check Markdown formatting without modifying files.
 format-check:
     npm run format:check
+
+# Report pages over STYLE.md length targets, hedge words, and sentences repeated across pages (warnings only).
+style:
+    npm run style
 
 # Check local files and heading anchors; excludes external URLs.
 links:

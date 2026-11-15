@@ -25,7 +25,7 @@ Write so a developer can find the action, try it, and check it worked, on one re
 
 ## Checking a page
 
-Before handoff, read the page once as a new reader and confirm:
+Run `just style` to find pages over their length target, hedge words, and sentences repeated across pages. Then read the page once as a new reader and confirm:
 
 - the first sentence of each section says what to do;
 - every piece of advice has a Copilot example;

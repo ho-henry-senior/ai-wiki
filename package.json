@@ -5,13 +5,15 @@
     "node": ">=22"
   },
   "scripts": {
-    "verify": "npm run test:sitemap && npm run sitemap:check && npm run format:check && npm run links",
+    "verify": "npm run test:sitemap && npm run test:style && npm run sitemap:check && npm run format:check && npm run links && npm run style",
     "format:check": "prettier --check \"**/*.md\" \".agents/skills/**/*.md\" \".github/workflows/**/*.md\"",
     "format": "prettier --write \"**/*.md\" \".agents/skills/**/*.md\" \".github/workflows/**/*.md\"",
     "links": "remark . .agents/skills .github/workflows --quiet --frail --no-stdout",
     "sitemap": "node scripts/sitemap.mjs --write",
     "sitemap:check": "node scripts/sitemap.mjs --check",
-    "test:sitemap": "node --test scripts/sitemap.test.mjs"
+    "test:sitemap": "node --test scripts/sitemap.test.mjs",
+    "style": "node scripts/style.mjs",
+    "test:style": "node --test scripts/style.test.mjs"
   },
   "devDependencies": {
     "prettier": "3.10.1",
