@@ -31,7 +31,7 @@ Agents and people ran unit tests and static checks. A participant also manually 
 
 The Reviewer agents often reported no actionable defects, but some reviews raised concerns. The team considered certain error-handling concerns outside the initial refactor scope and did not address them during the exercise. A published review and passing checks are evidence for a human decision, not proof that all important risks have been resolved.
 
-Occasional agent failures required manual recovery: the operator inspected the state, reset workflow labels, cleared the working state as appropriate, and restarted the polling process. There was no automatic retry or automatic merge.
+Occasional agent failures required manual recovery: the operator inspected the state, reset workflow labels, cleared the working state where needed, and restarted the polling process. There was no automatic retry or automatic merge.
 
 ## Assessment against the goals
 
@@ -46,12 +46,12 @@ The participant considered the exercise particularly successful for three of the
 
 The exercise showed that a local dispatcher could coordinate specialist agents around issues, pull requests, and review artifacts, while people retained approval points. It does not demonstrate a fully autonomous or production-ready factory. The work was technically well bounded, the scripts depended on one local machine, and concurrency was deliberately limited. Scaling would require further decisions about remote execution, tooling, concurrent work, conflicts, issue readiness, review findings, and merge authority.
 
-The agents ran unattended with broad tool access and were not independently sandboxed. Approval gates controlled workflow handoffs, not every action an agent could take. Separate worktrees isolated changes, but [a worktree is not a security sandbox](../concepts/worktrees-not-sandboxes.md). A similar workflow needs independently enforced access controls appropriate to its data and risks.
+The agents ran unattended with broad tool access and were not independently sandboxed. Approval gates controlled workflow handoffs, not every action an agent could take. Separate worktrees isolated changes, but [a worktree is not a security sandbox](../concepts/worktrees-not-sandboxes.md). A similar workflow needs enforced access controls, such as a sandbox and scoped credentials, matched to its data and risks.
 
 ## Evidence and related guidance
 
 This account is based on a participant's retrospective and inspection of the workflow documentation and issue and pull-request records. Project names, links, dates, and distinctive implementation details are omitted to preserve anonymity. The account is not an independently measured comparison.
 
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — an illustrative perspective on familiar responsibilities and human handoffs, not an account of this exercise.
-- [Define, steer, and verify a task](define-and-verify-tasks.md) — clarify intent and preserve proportionate evidence.
+- [Define, steer, and verify a task](define-and-verify-tasks.md) — write the task, steer it, and record the evidence.
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — review permissions, data flows, and controls before running agents.
