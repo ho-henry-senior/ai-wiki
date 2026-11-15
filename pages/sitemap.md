@@ -15,8 +15,8 @@ These lists group directly linked pages, concepts, slides, and source records by
 - [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
 - [Write repository instructions in AGENTS.md](repository-instructions.md) — Put repository instructions in AGENTS.md, know which Copilot features read it, and fill Copilot's remaining gaps without duplicating rules. (established)
-- [Task names need explicit contracts](../concepts/task-interface-contracts.md) — A discoverable task needs an explicit scope, side effects, prerequisites, and interpretation; its name alone is not a contract.
-- [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
+- [Task names need explicit contracts](../concepts/task-interface-contracts.md) — Describe each command's scope, cost, side effects, and whether failure blocks handoff; its name alone does not tell an agent what it does.
+- [Let the agent run your repository's commands](agent-tool-delegation.md) — List the commands the agent should run, with what each does and whether it changes files, so it runs your checks instead of guessing; give the Copilot cloud agent the dependencies to run them. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Traceability](traceability.md) — Leave a record someone else can follow later, covering what was asked, who or what made the change, who approved it, and the evidence. (established)
 
@@ -38,8 +38,8 @@ These lists group directly linked pages, concepts, slides, and source records by
 #### Core advice and supporting links
 
 - [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
-- [Task names need explicit contracts](../concepts/task-interface-contracts.md) — A discoverable task needs an explicit scope, side effects, prerequisites, and interpretation; its name alone is not a contract.
-- [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
+- [Task names need explicit contracts](../concepts/task-interface-contracts.md) — Describe each command's scope, cost, side effects, and whether failure blocks handoff; its name alone does not tell an agent what it does.
+- [Let the agent run your repository's commands](agent-tool-delegation.md) — List the commands the agent should run, with what each does and whether it changes files, so it runs your checks instead of guessing; give the Copilot cloud agent the dependencies to run them. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
 - [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate.
@@ -47,7 +47,6 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 #### Explore further
 
-- [Observed tools by purpose](tools-by-purpose.md) — Selected examples of deterministic repository tools, grouped by purpose.
 - [Evals](../concepts/evals.md) — Evals compare AI system behavior against task-specific criteria, using representative cases and appropriate checks to inform improvements.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
 
@@ -121,17 +120,15 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 #### pattern
 
-- [A structure for agent-facing repositories](agent-facing-repository-structure.md) — An illustrative repository layout that connects shared agent instructions, reference context, skills, task commands, and harness-specific files.
+- [A structure for agent-facing repositories](agent-facing-repository-structure.md) — A map of where agent instructions, reference material, skills, commands, and Copilot files go in a repository, linking to the page that explains each.
 - [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
-- [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
-- [Just as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) — A Just-specific example and guidance on when a wrapper may help expose existing repository commands.
+- [Let the agent run your repository's commands](agent-tool-delegation.md) — List the commands the agent should run, with what each does and whether it changes files, so it runs your checks instead of guessing; give the Copilot cloud agent the dependencies to run them. (established)
 
 #### reference
 
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — A reusable checklist for tracing sensitive data through an agent setup and checking controls at each destination. (established)
 - [AI glossary](glossary.md) — A practical glossary of foundational AI and current generative AI terminology.
 - [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate.
-- [Observed tools by purpose](tools-by-purpose.md) — Selected examples of deterministic repository tools, grouped by purpose.
 - [Write repository instructions in AGENTS.md](repository-instructions.md) — Put repository instructions in AGENTS.md, know which Copilot features read it, and fill Copilot's remaining gaps without duplicating rules. (established)
 
 ### Concepts
@@ -148,7 +145,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 - [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — A diagnostic command can expose a secret through its result, saved history, and subsequent model requests without an explicit upload.
 - [Session history is not active context](../concepts/session-history-vs-context.md) — A saved session can contain more history than a model receives in any single request.
 - [Skills, profiles, and tools have different jobs](../concepts/skills-profiles-and-tools.md) — Add a skill for a repeatable procedure, a profile for a role with limits, and a tool for an action the agent cannot perform; in Copilot these are skills, custom agents, and tools or MCP servers.
-- [Task names need explicit contracts](../concepts/task-interface-contracts.md) — A discoverable task needs an explicit scope, side effects, prerequisites, and interpretation; its name alone is not a contract.
+- [Task names need explicit contracts](../concepts/task-interface-contracts.md) — Describe each command's scope, cost, side effects, and whether failure blocks handoff; its name alone does not tell an agent what it does.
 - [The model requests; the harness acts](../concepts/tool-call-loop.md) — A model requests a tool action; the harness checks and dispatches it, then supplies the result for further inference.
 - [Vector stores](../concepts/vector-stores.md) — Vector stores index numerical representations for similarity search, with trade-offs in retrieval quality, filtering, maintenance, and data handling.
 
