@@ -1,40 +1,72 @@
 ---
 type: overview
-summary: Core advice for recording requests, decisions, changes, and evidence in agent-assisted work.
-status: developing
+summary: Leave a record someone else can follow later, covering what was asked, who or what made the change, who approved it, and the evidence.
+status: established
 ---
 
 # Traceability
 
-**Developing:** This overview gives a starting point; more examples of tracing intent across artifacts would help.
-
-Traceability means being able to understand what was requested, what changed, and the evidence and decisions behind the result. It supports human review; an agent's explanation is not necessarily a complete account of its reasoning.
+Leave a record that someone else can follow later: what was asked, who or what made the change, how it was corrected, who approved it, and the evidence. Keep that record on the issue and pull request, where reviewers and auditors look. For public-sector work, this record is often an obligation.
 
 ## Try this first
 
-For a small change, one issue and its pull request may be enough: link the PR to the issue, summarize the change and check results, and record the reviewer’s decision there. A reader should be able to follow that link and compare the result with the original request.
+Open your last agent pull request and check that a reader could answer these questions from GitHub alone:
 
-| Artifact          | What a reviewer should be able to verify                                                                         |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Issue or request  | The intended outcome and any acceptance criteria.                                                                |
-| Pull request      | The change is linked to the request; the summary identifies what changed and any assumptions or unchecked risks. |
-| Checks and review | Check results are recorded, and a named human reviewer records approval or requested changes.                    |
-
-**Example (fictional):** Issue #12 asks to reject expired credentials. PR #15 links to #12, describes the change, and records that focused tests passed but an integration check was not run. A named human reviewer requests that missing check, then records approval after reviewing its result. The links and review history show how the request, evidence, and decision connect; the individual artifacts carry the details.
-
-For larger work, add artifacts only when they help explain a decision or connect work that cannot be followed from the issue and PR alone. [Define, steer, and verify a task](define-and-verify-tasks.md) covers the shared outcome, criteria, and verification workflow.
+| Question                            | Where the answer should be                    |
+| ----------------------------------- | --------------------------------------------- |
+| What was asked?                     | The linked issue                              |
+| Who or what made the change?        | Commit authors and `Co-authored-by:` lines    |
+| What changed course, and why?       | Pull request comments                         |
+| What was checked, and what was not? | A pull request comment summarizing the checks |
+| Who approved it?                    | The pull request review                       |
 
 ## Core advice
 
-- **Record the request and decisions.** Keep the outcome, acceptance criteria, constraints, and meaningful decisions where reviewers can find them. [Define, steer, and verify a task](define-and-verify-tasks.md) covers the task workflow.
-- **Connect related artifacts.** Link the request to its change and review when those live separately; add more records only when they clarify intent or decisions.
-- **Preserve verification evidence.** Record check results and relevant checks not run. Review the change against the request, rather than treating a passing suite as complete proof: [passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
-- **Make responsibilities visible.** For a small PR, name the human reviewer and record whether they approved it or requested changes; separate approval authority from implementation when the repository requires it.
-- **Keep records proportionate and safe.** Choose enough detail for the task's risk and review needs; avoid collecting secrets or sensitive data unnecessarily. Review artifacts before sharing them. [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md).
+- **Record who did the work.** Commits from the Copilot cloud agent are authored by Copilot, list the person who started the task as co-author, are signed, and link to the session log. For any tool that commits under your name, add a `Co-authored-by:` line that names the agent.
+- **Copy the evidence onto the pull request.** Actions keeps checks, workflow runs, and logs for 90 days by default, and public repositories cannot keep them longer. Add a comment that says which checks ran, their results, and which did not run.
+- **Keep the record where reviewers look.** Cloud agent session logs stay on GitHub, are visible to anyone with access to the repository, and can be archived but not deleted. Copilot CLI and editor sessions belong to you and can be deleted, so put anything a reviewer needs on the pull request.
+- **Steer in the open.** Put corrections in pull request comments, not private chat. See [steer it](define-and-verify-tasks.md#steer-it).
+- **Separate who asked from who approved.** Name a human reviewer. On GitHub, your approval of a pull request you asked Copilot to create does not count toward required approvals.
+- **Treat the agent's explanation as a claim.** A pull request description or session narrative is the agent's account, not evidence. Check it against the diff and the checks.
+- **Keep records safe.** Summarize logs rather than pasting them, and never record secrets. See [sensitive data in agent workflows](sensitive-data-in-agent-workflows.md).
+
+If your organization must keep records for longer, check its records policy. GitHub Enterprise Cloud can stream audit-log events for agents to long-term storage.
+
+## Example
+
+A fictional pull request timeline that answers every question above:
+
+```text
+Issue #41   Add CSV export to the Orders page. Done when: header row; quoted values; 10,000 rows.
+PR #42      Opened by Copilot, linked to #41. Commits authored by Copilot, co-authored by A. Patel.
+Comment     A. Patel: @copilot keep the existing column order; finance imports this file.
+Comment     A. Patel: Unit tests passed. The 10,000-row test did not run: no test data.
+Comment     A. Patel: @copilot add a generated 10,000-row fixture and run the test.
+Comment     A. Patel: 10,000-row test passed (run 1187).
+Review      B. Jones approved.
+```
+
+A commit that another tool made under your name records the agent like this:
+
+```text
+Add CSV export for orders
+
+Co-authored-by: Example Agent <agent@example.com>
+```
 
 ## Explore further
 
-- [Repository context for agents](repository-context-for-agents.md) — developing notes on preserving decisions and distinguishing confirmed rationale from inference.
-- [Alignment](alignment.md) — defining and checking the intended outcome.
-- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — a perspective on familiar roles, outputs, and human handoffs.
-- [Lo-fi software factory case study](lo-fi-software-factory-case-study.md) — artifacts and review evidence in a real workflow.
+- [Furnish repositories with context for agents](repository-context-for-agents.md) — record decisions in ADRs, separating confirmed rationale from inference.
+- [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — artifacts and review evidence in a real workflow.
+
+## Sources
+
+Checked 15 November 2026.
+
+- [GitHub Docs: Managing agent sessions](https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/manage-and-track-agents)
+- [GitHub Docs: Tracking Copilot's sessions](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/track-copilot-sessions)
+- [GitHub Docs: Copilot session data](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/session-data)
+- [GitHub Changelog: Actions retention will cover checks, workflow runs, and statuses](https://github.blog/changelog/2026-08-27-actions-retention-will-cover-checks-workflow-runs-and-statuses)
+- [GitHub Docs: Review output from Copilot](https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/review-copilot-output)
+- [GitHub Docs: Creating a commit with multiple authors](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors)
+- [GitHub Docs: Agent management for enterprises](https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/enterprise/agent-management)
