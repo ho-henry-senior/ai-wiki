@@ -45,7 +45,7 @@ Do not treat this full tree as a setup checklist. Start with an `AGENTS.md` or e
 
 Use [progressive disclosure](../concepts/progressive-disclosure.md): keep the entrypoint concise and repository-wide, linking to detailed context and the task interface. It should orient an agent, not duplicate every reference page or workflow.
 
-Support for `AGENTS.md` is growing, but harnesses differ in how they discover, scope, and combine instruction files. Keep any harness-specific instructions explicit, and verify that the tools used by the team actually load them. See [Give Copilot repository instructions](copilot-repository-instructions.md) for which Copilot features read which file.
+Support for `AGENTS.md` is growing, but harnesses differ in how they discover, scope, and combine instruction files. Keep any harness-specific instructions explicit, and verify that the tools used by the team actually load them. See [Write repository instructions in AGENTS.md](repository-instructions.md) for which Copilot features and other agents read which file.
 
 ### `docs/agents/`: agent-oriented reference material
 

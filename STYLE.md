@@ -1,11 +1,11 @@
 # Writing standard
 
-Write so a developer using Copilot can find the action, try it, and check it worked, on one read.
+Write so a developer can find the action, try it, and check it worked, on one read. Most readers use Copilot.
 
 ## Rules
 
 1. **Lead with the action.** Start each page and section with what to do. Put the reason after it.
-2. **Show it in Copilot.** Give each piece of advice one concrete example: a file, a command, a setting, or a short snippet the reader can copy. If you cannot give one, the advice may not belong.
+2. **Prefer shared conventions, and show them in Copilot.** Recommend files and formats that agents share, such as `AGENTS.md`, over tool-specific ones. Give each piece of advice one concrete Copilot or GitHub example: a file, a command, a setting, or a short snippet the reader can copy. If you cannot give one, the advice may not belong.
 3. **State the behavior, not "verify it".** Say what Copilot does, which surface it applies to (chat, CLI, cloud agent, or code review), and the date you checked. Do not tell readers to "verify in your harness" without telling them how.
 4. **State the action in full.** A link adds depth; it never replaces the advice. A section that is one sentence and a link is not finished.
 5. **Say it once.** If the advice lives on another page, summarize it in one line and link to it. Do not restate it.
@@ -21,7 +21,7 @@ Write so a developer using Copilot can find the action, try it, and check it wor
 
 **After:**
 
-> Put rules Copilot must always follow in `.github/copilot-instructions.md` itself. Copilot CLI reads a file referenced as `@path` immediately, but an ordinary Markdown link is only followed if the agent decides to. (Checked 15 November 2026.)
+> Put rules the agent must always follow in `AGENTS.md` itself, not in a linked file. Copilot CLI loads a file referenced as `@path` immediately, but other Copilot features may not, and an ordinary Markdown link is only followed if the agent decides to. (Checked 15 November 2026.)
 
 ## Checking a page
 

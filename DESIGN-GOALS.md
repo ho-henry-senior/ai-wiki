@@ -8,7 +8,7 @@ The wiki is expected to evolve as AI capabilities and conventions change. Its st
 
 ## Audience and authorship
 
-The primary audience is experienced software developers who use GitHub Copilot as their main agent. It includes public-sector teams, who must often show evidence and keep audit trails for their work.
+The primary audience is experienced software developers. Most use GitHub Copilot as their main agent; some also use other agents, such as Claude Code. The audience includes public-sector teams, who must often show evidence and keep audit trails for their work.
 
 The wiki is primarily maintained by one contributor with AI assistance. Favor an organization and writing approach that are easy for a single person to maintain and for an agent to navigate and extend. Keep the material useful to other contributors without making multi-author collaboration a design constraint.
 
@@ -16,7 +16,7 @@ The wiki is primarily maintained by one contributor with AI assistance. Favor an
 
 Help readers improve these outcomes in AI-assisted work:
 
-- **Alignment:** Get results that match what you intended. Define the work, give Copilot the context and checks it needs, steer it while it works, and verify the result. This task-level meaning complements the broader AI meaning in the [glossary](pages/glossary.md#alignment).
+- **Alignment:** Get results that match what you intended. Define the work, give the agent the context and checks it needs, steer it while it works, and verify the result. This task-level meaning complements the broader AI meaning in the [glossary](pages/glossary.md#alignment).
 - **Economy:** Achieve useful results with less time and fewer tokens, without sacrificing quality or security. Reduce rework, delegate repeatable tasks to deterministic tools, and make their interfaces clear.
 - **Traceability:** Leave a record someone else can follow later: what was asked, what the agent did, who directed and approved it, and the evidence behind the result. Record agent authorship honestly and keep corrections visible, for example by steering through issue and PR comments rather than private chat. An agent's explanation of its work is not a complete account of its reasoning. For public-sector work, this record is often an obligation, not just good practice. Alignment owns defining, steering, and verifying the work; Traceability owns the record of it.
 - **Security:** Protect sensitive information and limit unsafe actions in AI-assisted work. Identify risks, configure enforceable controls, and review integrations and generated changes.
@@ -37,9 +37,11 @@ To support those outcomes:
 
 ## Scope
 
-Write for Copilot first. Name the Copilot file, setting, or command that puts advice into practice, and state what Copilot does, with the date that behavior was checked. Say which Copilot surface a statement applies to (chat, CLI, cloud agent, or code review) when behavior differs. Add a portability note only where it matters, such as when a convention like `AGENTS.md` is shared with other tools.
+Be agent-agnostic by default, with detailed Copilot and GitHub guidance. Prefer conventions shared across agents, such as `AGENTS.md` and Agent Skills in `.agents/skills/`, over tool-specific files. Agent tools are converging on these conventions, so treat a tool that does not yet support one as a dated exception: say so, and give the workaround.
 
-Guidance specific to other agent products or harnesses, such as Codex, Claude, or Cursor, is out of scope. Broad concepts and standards that apply across tools remain in scope.
+Then show how to put each practice into effect with Copilot and GitHub. Name the file, setting, or command, and state what Copilot does, with the date that behavior was checked. Say which Copilot surface a statement applies to (chat, CLI, cloud agent, or code review) when behavior differs.
+
+Which features other agents support, such as Codex, Claude Code, Cursor, or Gemini CLI, is in scope: support tables help readers who use more than one agent. Step-by-step setup for those products is out of scope. Where no shared convention exists, give the Copilot-specific detail.
 
 ## Organization
 

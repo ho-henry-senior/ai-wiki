@@ -15,7 +15,7 @@ Choose one task. Write its desired outcome and one observable acceptance criteri
 ## Core advice
 
 - **Define the work.** State the outcome, constraints, and out-of-scope work. Agree on observable acceptance criteria and resolve material ambiguities before implementation. [Define and verify a task](define-and-verify-tasks.md).
-- **Provide relevant context.** Give the agent a discoverable starting point for the domain, decisions, interfaces, and constraints it needs. Keep inferred behavior distinct from confirmed rationale. [Focused entrypoints](../concepts/progressive-disclosure.md) explain the principle; [Give Copilot repository instructions](copilot-repository-instructions.md) shows which file to use.
+- **Provide relevant context.** Give the agent a discoverable starting point for the domain, decisions, interfaces, and constraints it needs. Keep inferred behavior distinct from confirmed rationale. [Focused entrypoints](../concepts/progressive-disclosure.md) explain the principle; [Write repository instructions in AGENTS.md](repository-instructions.md) shows which file to use.
 - **Make checks available.** Expose existing tests and verification commands so the agent can run suitable checks rather than reconstruct them. Make their [scope and side effects explicit](../concepts/task-interface-contracts.md); [delegate repository tasks to tools](agent-tool-delegation.md) describes the practice.
 - **Verify the intended behavior.** Review the result against the acceptance criteria and choose checks appropriate to the risks. [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md); tests and implementation can share a mistaken assumption.
 - **Keep responsibilities clear.** Identify who decides, reviews, and approves consequential work.
