@@ -113,9 +113,9 @@ safe-outputs:
     max-patch-size: 128
     allowed-files:
       - README.md
-      - pages/**/*.md
-      - concepts/**/*.md
-      - sources/**/*.md
+      - pages/**.md
+      - concepts/**.md
+      - sources/**.md
 jobs:
   safe_outputs:
     if: needs.agent.result == 'success'
