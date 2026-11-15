@@ -25,7 +25,7 @@ A request says expired credentials must be rejected. A test that confirms a vali
 
 ## Limits
 
-Unit tests check local behavior, not whether components work together, so keep integration checks and review against the request. Iterating until tests pass resembles [hill climbing](hill-climbing.md): it is only as good as the tests.
+Unit tests check local behavior, not whether components work together, so keep integration checks and review against the request. Iterating until tests pass is only as good as the tests.
 
 ## Sources and related skills
 

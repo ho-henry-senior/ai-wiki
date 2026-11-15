@@ -22,8 +22,6 @@ Follow [the freshness guidance](../MAINTAINING.md#keeping-content-current) when 
 - [Session history is not active context](session-history-vs-context.md) — saved conversations, context windows, compaction, and API-managed state.
 - [Skills, profiles, and tools have different jobs](skills-profiles-and-tools.md) — reusable procedures, roles, and executable capabilities.
 - [Load context through focused entrypoints](progressive-disclosure.md) — disclose relevant detail on demand rather than loading everything.
-- [Retrieval-augmented generation](retrieval-augmented-generation.md) — use retrieved information as context, with quality and security limits.
-- [Vector stores](vector-stores.md) — similarity search, embeddings, filtering, and maintenance.
 
 ## Security and data handling
 
@@ -35,7 +33,13 @@ Follow [the freshness guidance](../MAINTAINING.md#keeping-content-current) when 
 
 ## Repository feedback
 
-- [Evals](evals.md) — task-specific cases, checks, comparisons, and limitations.
-- [Hill climbing](hill-climbing.md) — iterative local improvement, deterministic and stochastic search, and evaluation limits.
 - [Task names need explicit contracts](task-interface-contracts.md) — scope, side effects, prerequisites, and gates versus diagnostics.
 - [Passing tests are evidence, not proof](tests-are-evidence.md) — assertions, intended behavior, and independent expectations.
+
+## Background
+
+These explain general AI ideas behind the guidance. They are not steps in the goal paths.
+
+- [Evals](evals.md) — run an agent on fixed tasks to tell whether a change helped.
+- [Retrieval-augmented generation](retrieval-augmented-generation.md) — giving the model passages found by search.
+- [Vector stores](vector-stores.md) — search by meaning using embeddings.

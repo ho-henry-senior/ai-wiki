@@ -47,7 +47,7 @@ Limit what an agent can reach and do. **Status: developing.**
 
 - [Sitemap](pages/sitemap.md) — goal paths and a generated inventory of the wiki
 - [Short slides](slides/README.md) — concise, standalone ideas
-- [Reusable concepts](concepts/README.md) — explanations to follow when relevant, including RAG, vector stores, evals, and hill climbing
+- [Reusable concepts](concepts/README.md) — focused explanations, plus background on evals, RAG, and vector stores
 - [Authored pages](pages/README.md) — all articles, patterns, and checklists
 - [AI glossary](pages/glossary.md) — shared vocabulary for AI and agents
 - [Source index and records](sources/README.md) — provenance and research notes

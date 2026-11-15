@@ -85,7 +85,7 @@ Generated content that is false, unsupported, or inconsistent with a provided so
 
 ### Hill climbing
 
-A local search approach that repeatedly moves from a candidate to a better nearby alternative according to an evaluation. It can stop at a local optimum even when a better result exists elsewhere. See [hill climbing](../concepts/hill-climbing.md).
+A local search approach that repeatedly moves from a candidate to a better nearby alternative according to an evaluation. It can stop at a local optimum even when a better result exists elsewhere. Iterating with an agent until tests pass works like this, so it is only as good as the tests; see [passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
 
 ## I
 
@@ -153,7 +153,7 @@ A reusable package of task-specific instructions and optional supporting resourc
 
 ### Stochastic
 
-Involving randomness or probability. A stochastic search uses randomness in its choices; that is separate from variability in the evaluation itself. See [hill climbing](../concepts/hill-climbing.md#deterministic-and-stochastic-approaches).
+Involving randomness or probability. A stochastic search uses randomness in its choices; that is separate from variability in the evaluation itself. See [hill climbing](#hill-climbing).
 
 ### Structured output
 
