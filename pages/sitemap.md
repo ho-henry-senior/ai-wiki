@@ -14,7 +14,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 - [Define and verify a task](define-and-verify-tasks.md) — Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
-- [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) — Use AGENTS.md as a concise repository entrypoint, with Copilot CLI support and explicit limits on portability. (established)
+- [Give Copilot repository instructions](copilot-repository-instructions.md) — Put repository rules in .github/copilot-instructions.md, add path-specific files for parts of the codebase, and know which Copilot features read which file. (established)
 - [Task names need explicit contracts](../concepts/task-interface-contracts.md) — A discoverable task needs an explicit scope, side effects, prerequisites, and interpretation; its name alone is not a contract.
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — A green test suite establishes that assertions passed, not that those assertions completely capture the intended behavior. (established)
@@ -136,8 +136,8 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 #### reference
 
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — A reusable checklist for tracing sensitive data through an agent setup and checking controls at each destination. (established)
-- [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) — Use AGENTS.md as a concise repository entrypoint, with Copilot CLI support and explicit limits on portability. (established)
 - [AI glossary](glossary.md) — A practical glossary of foundational AI and current generative AI terminology.
+- [Give Copilot repository instructions](copilot-repository-instructions.md) — Put repository rules in .github/copilot-instructions.md, add path-specific files for parts of the codebase, and know which Copilot features read which file. (established)
 - [Observed tools by purpose](tools-by-purpose.md) — Selected examples of deterministic repository tools, grouped by purpose.
 - [Skill candidates to evaluate](useful-skills.md) — Researched skill candidates to evaluate; none are endorsed without evidence of practical value and compatibility.
 

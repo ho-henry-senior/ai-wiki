@@ -12,7 +12,7 @@ These working notes explore ways to give agents relevant repository context. Tre
 
 ## Start with the shared entrypoint
 
-Use [AGENTS.md as a shared agent entrypoint](agents-md-as-shared-entrypoint.md) to explain what the repository does, its essential constraints, and where to find relevant documentation. That guide covers the focused starting technique; add deeper context only when a specific need justifies maintaining it. Check that your agent actually loads the file.
+Use [Copilot repository instructions](copilot-repository-instructions.md) to explain what the repository does, its essential constraints, and where to find relevant documentation. That guide covers the focused starting technique; add deeper context only when a specific need justifies maintaining it. Check that your agent actually loads the file.
 
 To choose what to add, note an incorrect assumption or repeated question, identify the smallest source-of-truth detail that would resolve it, and link that detail from the entrypoint. A brief explanation near the relevant code or command may be enough.
 
