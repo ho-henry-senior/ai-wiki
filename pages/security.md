@@ -8,7 +8,7 @@ status: developing
 
 An agent can read information, run tools, and act using permissions available to its execution environment. Security means limiting sensitive-data exposure and unsafe actions **even if the agent makes a mistake or follows malicious instructions**.
 
-**First choose where its tools execute.** A local CLI using a remote model is still a *local-execution* agent. Hosted workspaces and CI runners are *cloud-execution* environments. Both may use external models and integrations.
+**First choose where its tools execute.** A local CLI using a remote model is still a _local-execution_ agent. Hosted workspaces and CI runners are _cloud-execution_ environments. Both may use external models and integrations.
 
 ## Try this first
 

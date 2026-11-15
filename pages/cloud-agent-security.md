@@ -32,17 +32,17 @@ Before enabling unattended execution, decide:
 - Which actions must stop at a PR or another human approval boundary?
 - Where are logs, artifacts, and alerts available if something goes wrong?
 
-Do not confuse a PR approval gate with a restriction on what the agent can do *during* its run. The [lo-fi software factory case study](lo-fi-software-factory-case-study.md) illustrates that distinction.
+Do not confuse a PR approval gate with a restriction on what the agent can do _during_ its run. The [lo-fi software factory case study](lo-fi-software-factory-case-study.md) illustrates that distinction.
 
 ## Check the boundaries
 
-| Boundary | What to verify |
-| --- | --- |
-| Workspace | Isolation between runs, filesystem mounts, persistence, and cleanup |
-| Repository | Read/write scope, branch protection, and whether the agent can alter its own workflow or permissions |
-| Credentials | Token scope, lifetime, exposure to tools, and revocation |
-| Network | Whether executed code and integrations can send data to arbitrary destinations |
-| Outputs | Access to logs, artifacts, transcripts, PRs, and deployment results |
+| Boundary    | What to verify                                                                                       |
+| ----------- | ---------------------------------------------------------------------------------------------------- |
+| Workspace   | Isolation between runs, filesystem mounts, persistence, and cleanup                                  |
+| Repository  | Read/write scope, branch protection, and whether the agent can alter its own workflow or permissions |
+| Credentials | Token scope, lifetime, exposure to tools, and revocation                                             |
+| Network     | Whether executed code and integrations can send data to arbitrary destinations                       |
+| Outputs     | Access to logs, artifacts, transcripts, PRs, and deployment results                                  |
 
 See [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) and the [agent data-flow checklist](agent-data-flow-checklist.md) for destinations and retention questions. [Instructions are not enforced controls](../concepts/instructions-vs-controls.md) applies here too.
 

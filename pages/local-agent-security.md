@@ -22,13 +22,13 @@ You ask an agent to diagnose a failing test. It runs a command that prints envir
 
 ## What to check before trusting a setup
 
-| Boundary | Question |
-| --- | --- |
-| Files | Can tools read your home directory, SSH keys, other repositories, or files outside the project? |
-| Commands | Which commands require approval, and can subprocesses run without further prompts? |
-| Network | Can the agent or executed code contact arbitrary hosts? |
-| Credentials | Which tokens, SSH agents, credential helpers, and cloud CLI sessions are available? |
-| Integrations | Do MCP servers or other tools run outside the shell sandbox? |
+| Boundary     | Question                                                                                        |
+| ------------ | ----------------------------------------------------------------------------------------------- |
+| Files        | Can tools read your home directory, SSH keys, other repositories, or files outside the project? |
+| Commands     | Which commands require approval, and can subprocesses run without further prompts?              |
+| Network      | Can the agent or executed code contact arbitrary hosts?                                         |
+| Credentials  | Which tokens, SSH agents, credential helpers, and cloud CLI sessions are available?             |
+| Integrations | Do MCP servers or other tools run outside the shell sandbox?                                    |
 
 **Approval is not isolation.** An approval prompt asks a person to authorise an action; a sandbox restricts what the action can do. Both may be useful. An agent's promise to stay inside the repository is not an enforced boundary; see [Instructions are not enforced controls](../concepts/instructions-vs-controls.md).
 

@@ -66,11 +66,11 @@ flowchart TD
 
 Three examples show why the destination matters:
 
-| Route | How exposure can happen | Control to consider |
-| --- | --- | --- |
-| Tool output to model or session history | A diagnostic prints a token, and the harness includes the output in context or saves it. | Avoid printing secrets; limit accessible credentials and verify logging and retention. |
-| Agent to external tool or service | A tool call sends private source or log data to an unexpected endpoint. | Review enabled integrations, their data destinations, and enforced network or permission limits. |
-| Agent to shared artifact | A generated report, commit, or PR contains confidential data. | Inspect diffs and outputs before sharing; use appropriate scanning and publication review. |
+| Route                                   | How exposure can happen                                                                  | Control to consider                                                                              |
+| --------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Tool output to model or session history | A diagnostic prints a token, and the harness includes the output in context or saves it. | Avoid printing secrets; limit accessible credentials and verify logging and retention.           |
+| Agent to external tool or service       | A tool call sends private source or log data to an unexpected endpoint.                  | Review enabled integrations, their data destinations, and enforced network or permission limits. |
+| Agent to shared artifact                | A generated report, commit, or PR contains confidential data.                            | Inspect diffs and outputs before sharing; use appropriate scanning and publication review.       |
 
 The [data-flow checklist](agent-data-flow-checklist.md#check-each-destination) gives the fuller destination-specific questions for model providers, local storage, cloud history, tools, artifacts, and unintended destinations. Assess [inference, retention, and training separately](../concepts/inference-retention-training.md): a no-training policy is not a no-transmission or no-retention guarantee. [Saved history also differs from active model context](../concepts/session-history-vs-context.md), so reducing context is not evidence that stored data has been deleted.
 
