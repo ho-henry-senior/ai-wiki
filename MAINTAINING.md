@@ -78,6 +78,7 @@ Each idea below is explained in full on one page. Anywhere else, give a one-line
 | Secrets in tool output                                                                                                           | [Secrets can leak through tool output](concepts/secrets-in-tool-output.md)                  |
 | The model requests; the harness acts                                                                                             | [The model requests; the harness acts](concepts/tool-call-loop.md)                          |
 | Session history versus context                                                                                                   | [Session history is not active context](concepts/session-history-vs-context.md)             |
+| How Copilot charges, model tiers, the cache, session limits                                                                      | [Choose a model and control cost](pages/choose-a-model-and-control-cost.md)                 |
 
 ## Writing a slide
 
@@ -100,6 +101,16 @@ For substantive edits, review the affected pages for claims that may have become
 Check those claims against current primary sources. Update outdated guidance and its supporting links; where verification is unavailable or inconclusive, flag the uncertainty rather than presenting it as confirmed. Distinguish durable principles from product-, version-, or account-specific behavior.
 
 For time-sensitive claims or recommendations, record the relevant version or review date where it helps readers judge applicability. A review date should describe what was actually checked, not imply that every claim in the page was reverified. Follow [the source conventions](sources/README.md) for provenance.
+
+Some pages hold figures that change month to month, such as prices, allowances, and model names. Mark such a page in its front matter, and list the primary sources its figures come from:
+
+```yaml
+recheck: every-run
+check-against:
+  - https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing
+```
+
+The [daily review](#daily-reviews) checks marked pages against their sources before anything else. Each source's domain must be on the workflow's network allowlist; `just style` fails if it is not, or if `recheck` has no sources. Keep the changing figures in one dated section, so checking them is a comparison rather than new research, and leave the rest of the page general enough not to date.
 
 Keep edit-time review focused on the affected material and directly dependent guidance, including concepts. Treat a whole-wiki review as a separate periodic task, using [the wiki-review skill](.agents/skills/wiki-review/SKILL.md), not a prerequisite for every change.
 
