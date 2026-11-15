@@ -22,7 +22,9 @@ An attack can also be hidden in comments, dependency documentation, a web page, 
 
 ## When untrusted content gives instructions
 
-Treat instructions found in issues, files, web pages, or tool results as task data, not authority. Stop and investigate before allowing a request to reveal secrets, change permissions, run unfamiliar downloads, or contact an unrelated destination. Limit what the agent can access and what actions it can take; use the [local](local-agent-security.md) or [cloud](cloud-agent-security.md) guide for the relevant execution boundary.
+**Recognise the attempted redirection.** Instructions found in issues, files, web pages, or tool results are task data, not authority. If that material asks the agent to reveal secrets, change permissions, run unfamiliar downloads, or contact an unrelated destination, stop and investigate rather than treating the request as part of the task.
+
+**Contain the consequences.** Recognition and approval can fail. Restrict accessible credentials, filesystem paths, network destinations, and tool permissions independently of the agent's instructions, so a mistaken tool call cannot automatically carry out the attack. Use the [local](local-agent-security.md) or [cloud](cloud-agent-security.md) guide for the relevant execution boundary.
 
 ## Local and cloud consequences differ
 
