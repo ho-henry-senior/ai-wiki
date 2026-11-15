@@ -1,7 +1,7 @@
 ---
 type: guide
 summary: Know what GitHub already enforces for the Copilot cloud agent, and set the rest yourself; secrets, firewall, MCP servers, workflow approval, and who can start it.
-status: developing
+status: established
 ---
 
 # Secure the Copilot cloud agent

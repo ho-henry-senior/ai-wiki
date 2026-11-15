@@ -1,6 +1,7 @@
 ---
 type: pattern
 summary: A map of where agent instructions, reference material, skills, commands, and Copilot files go in a repository, linking to the page that explains each.
+status: established
 ---
 
 # A structure for agent-facing repositories

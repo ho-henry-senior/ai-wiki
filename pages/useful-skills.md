@@ -1,6 +1,7 @@
 ---
 type: reference
 summary: Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate.
+status: developing
 ---
 
 # Choose and add skills

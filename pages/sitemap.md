@@ -20,7 +20,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 #### Explore further
 
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — When an agent gets something wrong because it lacked a fact about your system, write that fact down once, near the code it concerns, and link it from AGENTS.md. (developing)
-- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — One way to split agile work between agent roles and people, with role contracts, a RACI table, and Copilot custom agents that enforce each role's limits.
+- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — One way to split agile work between agent roles and people, with role contracts, a RACI table, and Copilot custom agents that enforce each role's limits. (developing)
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
 - [Evals](../concepts/evals.md) — Background. An eval runs an agent on a fixed set of tasks and checks the results, so you can tell whether a change to your setup made things better or worse.
 
@@ -38,8 +38,8 @@ These lists group directly linked pages, concepts, slides, and source records by
 - [Let the agent run your repository's commands](agent-tool-delegation.md) — List the commands the agent should run, with what each does and whether it changes files, so it runs your checks instead of guessing; give the Copilot cloud agent the dependencies to run them. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep what the agent loads for every task small, and let detail load only when a task needs it; in Copilot, through a short AGENTS.md, path-specific instructions, and skills. (established)
-- [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate.
-- [Security](security.md) — Limit what an agent can reach and do, so a mistake or a malicious instruction cannot expose data or cause harm; start from where the agent's tools run. (developing)
+- [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate. (developing)
+- [Security](security.md) — Limit what an agent can reach and do, so a mistake or a malicious instruction cannot expose data or cause harm; start from where the agent's tools run. (established)
 
 #### Explore further
 
@@ -62,20 +62,20 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 ### [Security](security.md)
 
-**Status:** developing
+**Status:** established
 
 #### Core advice and supporting links
 
-- [Secure a local coding agent](local-agent-security.md) — Turn on the sandbox, restrict which tools, paths, and URLs Copilot can use without asking, and keep credentials out of reach when an agent runs on your computer. (developing)
+- [Secure a local coding agent](local-agent-security.md) — Turn on the sandbox, restrict which tools, paths, and URLs Copilot can use without asking, and keep credentials out of reach when an agent runs on your computer. (established)
 - [Sandbox a local coding agent](local-agent-sandboxing.md) — Turn on Copilot's local sandbox, restrict files, network, and credentials, and prove the limits are enforced with harmless test files. (developing)
-- [Secure the Copilot cloud agent](cloud-agent-security.md) — Know what GitHub already enforces for the Copilot cloud agent, and set the rest yourself; secrets, firewall, MCP servers, workflow approval, and who can start it. (developing)
+- [Secure the Copilot cloud agent](cloud-agent-security.md) — Know what GitHub already enforces for the Copilot cloud agent, and set the rest yourself; secrets, firewall, MCP servers, workflow approval, and who can start it. (established)
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — The full checklist for tracing sensitive data through an agent setup and checking the controls at each destination and action, with Copilot detail. (established)
-- [Inference, retention, and training are separate](../concepts/inference-retention-training.md) — Sending data for a response, keeping it, and training on it are separate questions; for Copilot, the answers depend on your plan and which feature you use.
+- [Inference, retention, and training are separate](../concepts/inference-retention-training.md) — Sending data for a response, keeping it, and training on it are separate questions; for Copilot, the answers depend on your plan and which feature you use. (developing)
 - [Instructions are not enforced controls](../concepts/instructions-vs-controls.md) — Instructions guide model behavior; independently enforced permissions restrict actions even when the model chooses incorrectly. (established)
-- [A worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md) — Git branches and worktrees separate changes, while a security sandbox restricts what executing code can access or do.
-- [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) — An MCP server's location determines where code runs, but does not guarantee where the data it handles stays.
-- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Treat instructions in issues, files, web pages, and tool output as data, not orders, and limit what the agent can do if it follows them anyway. (developing)
-- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — Anything a command prints goes to the model and into session history, so keep secrets out of output and out of reach; if one leaks, rotate it.
+- [A worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md) — Git branches and worktrees separate changes, while a security sandbox restricts what executing code can access or do. (established)
+- [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) — An MCP server's location determines where code runs, but does not guarantee where the data it handles stays. (established)
+- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Treat instructions in issues, files, web pages, and tool output as data, not orders, and limit what the agent can do if it follows them anyway. (established)
+- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — Anything a command prints goes to the model and into session history, so keep secrets out of output and out of reach; if one leaks, rotate it. (established)
 
 #### Explore further
 
@@ -93,27 +93,27 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 #### explanation
 
-- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — One way to split agile work between agent roles and people, with role contracts, a RACI table, and Copilot custom agents that enforce each role's limits.
-- [How models and harnesses interact](model-harness-interaction.md) — How Copilot's harness gives the model context and tools, runs its tool requests, and manages session history, and why that decides where limits and data controls belong.
+- [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — One way to split agile work between agent roles and people, with role contracts, a RACI table, and Copilot custom agents that enforce each role's limits. (developing)
+- [How models and harnesses interact](model-harness-interaction.md) — How Copilot's harness gives the model context and tools, runs its tool requests, and manages session history, and why that decides where limits and data controls belong. (established)
 
 #### guide
 
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — When an agent gets something wrong because it lacked a fact about your system, write that fact down once, near the code it concerns, and link it from AGENTS.md. (developing)
-- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Treat instructions in issues, files, web pages, and tool output as data, not orders, and limit what the agent can do if it follows them anyway. (developing)
+- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Treat instructions in issues, files, web pages, and tool output as data, not orders, and limit what the agent can do if it follows them anyway. (established)
 - [Sandbox a local coding agent](local-agent-sandboxing.md) — Turn on Copilot's local sandbox, restrict files, network, and credentials, and prove the limits are enforced with harmless test files. (developing)
-- [Secure a local coding agent](local-agent-security.md) — Turn on the sandbox, restrict which tools, paths, and URLs Copilot can use without asking, and keep credentials out of reach when an agent runs on your computer. (developing)
-- [Secure the Copilot cloud agent](cloud-agent-security.md) — Know what GitHub already enforces for the Copilot cloud agent, and set the rest yourself; secrets, firewall, MCP servers, workflow approval, and who can start it. (developing)
+- [Secure a local coding agent](local-agent-security.md) — Turn on the sandbox, restrict which tools, paths, and URLs Copilot can use without asking, and keep credentials out of reach when an agent runs on your computer. (established)
+- [Secure the Copilot cloud agent](cloud-agent-security.md) — Know what GitHub already enforces for the Copilot cloud agent, and set the rest yourself; secrets, firewall, MCP servers, workflow approval, and who can start it. (established)
 
 #### overview
 
 - [Alignment](alignment.md) — Get results that match what you intended; define the work, give the agent context and checks, steer it, and verify the result. (established)
 - [Economy](economy.md) — Get good results with less time and fewer tokens, without giving up quality or security; clear tasks, listed commands, focused checks and context. (established)
-- [Security](security.md) — Limit what an agent can reach and do, so a mistake or a malicious instruction cannot expose data or cause harm; start from where the agent's tools run. (developing)
+- [Security](security.md) — Limit what an agent can reach and do, so a mistake or a malicious instruction cannot expose data or cause harm; start from where the agent's tools run. (established)
 - [Traceability](traceability.md) — Leave a record someone else can follow later, covering what was asked, who or what made the change, how it was corrected, who approved it, and the evidence. (established)
 
 #### pattern
 
-- [A structure for agent-facing repositories](agent-facing-repository-structure.md) — A map of where agent instructions, reference material, skills, commands, and Copilot files go in a repository, linking to the page that explains each.
+- [A structure for agent-facing repositories](agent-facing-repository-structure.md) — A map of where agent instructions, reference material, skills, commands, and Copilot files go in a repository, linking to the page that explains each. (established)
 - [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
 - [Let the agent run your repository's commands](agent-tool-delegation.md) — List the commands the agent should run, with what each does and whether it changes files, so it runs your checks instead of guessing; give the Copilot cloud agent the dependencies to run them. (established)
 
@@ -121,24 +121,24 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — The full checklist for tracing sensitive data through an agent setup and checking the controls at each destination and action, with Copilot detail. (established)
 - [AI glossary](glossary.md) — A practical glossary of foundational AI and current generative AI terminology.
-- [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate.
+- [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate. (developing)
 - [Write repository instructions in AGENTS.md](repository-instructions.md) — Put repository instructions in AGENTS.md, know which Copilot features read it, and fill Copilot's remaining gaps without duplicating rules. (established)
 
 ### Concepts
 
-- [A worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md) — Git branches and worktrees separate changes, while a security sandbox restricts what executing code can access or do.
+- [A worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md) — Git branches and worktrees separate changes, while a security sandbox restricts what executing code can access or do. (established)
 - [Evals](../concepts/evals.md) — Background. An eval runs an agent on a fixed set of tasks and checks the results, so you can tell whether a change to your setup made things better or worse.
-- [Inference, retention, and training are separate](../concepts/inference-retention-training.md) — Sending data for a response, keeping it, and training on it are separate questions; for Copilot, the answers depend on your plan and which feature you use.
+- [Inference, retention, and training are separate](../concepts/inference-retention-training.md) — Sending data for a response, keeping it, and training on it are separate questions; for Copilot, the answers depend on your plan and which feature you use. (developing)
 - [Instructions are not enforced controls](../concepts/instructions-vs-controls.md) — Instructions guide model behavior; independently enforced permissions restrict actions even when the model chooses incorrectly. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep what the agent loads for every task small, and let detail load only when a task needs it; in Copilot, through a short AGENTS.md, path-specific instructions, and skills. (established)
-- [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) — An MCP server's location determines where code runs, but does not guarantee where the data it handles stays.
+- [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) — An MCP server's location determines where code runs, but does not guarantee where the data it handles stays. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Retrieval-augmented generation](../concepts/retrieval-augmented-generation.md) — Background. Retrieval-augmented generation finds passages that match a request and gives them to the model as context; it changes what the model sees, not what it knows.
-- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — Anything a command prints goes to the model and into session history, so keep secrets out of output and out of reach; if one leaks, rotate it.
-- [Session history is not active context](../concepts/session-history-vs-context.md) — What a session has saved is not what the model sees in its next request; in Copilot CLI, check with /context and summarize with /compact.
-- [Skills, profiles, and tools have different jobs](../concepts/skills-profiles-and-tools.md) — Add a skill for a repeatable procedure, a profile for a role with limits, and a tool for an action the agent cannot perform; in Copilot these are skills, custom agents, and tools or MCP servers.
-- [Task names need explicit contracts](../concepts/task-interface-contracts.md) — Describe each command's scope, cost, side effects, and whether failure blocks handoff; its name alone does not tell an agent what it does.
-- [The model requests; the harness acts](../concepts/tool-call-loop.md) — The model only asks to use a tool; the harness, such as Copilot CLI, decides whether it runs, asks you, or refuses, so put limits in the harness, not the prompt.
+- [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — Anything a command prints goes to the model and into session history, so keep secrets out of output and out of reach; if one leaks, rotate it. (established)
+- [Session history is not active context](../concepts/session-history-vs-context.md) — What a session has saved is not what the model sees in its next request; in Copilot CLI, check with /context and summarize with /compact. (established)
+- [Skills, profiles, and tools have different jobs](../concepts/skills-profiles-and-tools.md) — Add a skill for a repeatable procedure, a profile for a role with limits, and a tool for an action the agent cannot perform; in Copilot these are skills, custom agents, and tools or MCP servers. (established)
+- [Task names need explicit contracts](../concepts/task-interface-contracts.md) — Describe each command's scope, cost, side effects, and whether failure blocks handoff; its name alone does not tell an agent what it does. (established)
+- [The model requests; the harness acts](../concepts/tool-call-loop.md) — The model only asks to use a tool; the harness, such as Copilot CLI, decides whether it runs, asks you, or refuses, so put limits in the harness, not the prompt. (established)
 - [Vector stores](../concepts/vector-stores.md) — Background. A vector store finds items by meaning rather than exact words, using embeddings; useful for search and RAG, with trade-offs in quality, upkeep, and data handling.
 
 ### Slides
@@ -149,6 +149,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 ### Source records
 
+- [Code Review Bottleneck: notes on a Warp talk](../sources/warp-code-review-bottleneck.md)
 - [General AI terms: source-backed vocabulary candidates](../sources/ai-terms-research.md)
 - [Justfile patterns across Node.js and Python repositories](../sources/repository-justfiles.md)
 - [Public agent skills for wiki information architecture](../sources/wiki-information-architecture-skills.md)
