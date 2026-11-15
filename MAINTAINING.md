@@ -2,6 +2,14 @@
 
 Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just --list` to discover tasks, `just setup` to install the pinned development tools, then `just verify` to test and check the sitemap, Markdown formatting, and internal links, including heading anchors. Checks include `concepts/`, `slides/`, repository skills under `.agents/skills/`, and workflow Markdown. External URLs and raw material under `data/` are excluded.
 
+`just style` checks pages in `pages/` and `concepts/` against [the writing standard](STYLE.md). It reads the hedge words and length targets from `STYLE.md` itself, so change the rules there. It reports:
+
+- pages more than 20% over their length target, counting prose only (not code, tables, or source lists). References and case studies have no target;
+- hedge words from rule 6; and
+- sentences that closely repeat a sentence on another page, which usually means advice should move to its [owner](#who-owns-what). Overviews, headings, "See …" pointers, and "Checked …" notes are skipped.
+
+`just verify` runs it and its tests, but it only reports warnings for now, because pages not yet rewritten to `STYLE.md` would fail it. Run `node scripts/style.mjs --strict` to make warnings fail. Once the style pass is complete, change the `style` script in `package.json` to use `--strict` so it becomes a gate.
+
 The [sitemap](pages/sitemap.md) lists pages from their metadata and shows the links curated in the four outcome overviews. After adding or removing content, changing its title or metadata, or changing overview links, run `just sitemap`; `just verify` reports stale output without changing it. The sitemap excludes directory indexes and raw material from its generated inventory.
 
 Use `just format` to apply formatting or `just links` to check local links alone. Formatting preserves prose line breaks and leaves embedded code examples unchanged. Recipes delegate to npm scripts, which can also be run directly. See [the agent entrypoint](AGENTS.md) for context pointers.

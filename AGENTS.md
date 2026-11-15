@@ -18,6 +18,6 @@ Keep concepts focused and link to their canonical explanations. Label product-sp
 
 When editing content, review potentially stale claims in the affected pages using [the freshness guidance](MAINTAINING.md#keeping-content-current).
 
-Use `just --list` to discover the task interface. Run `just setup` for initial setup, `just sitemap` after edits affecting the generated sitemap, and `just verify` before handoff. Verification tests and checks sitemap freshness, Markdown formatting, and local link targets, including heading anchors; it does not check external websites or raw material in `data/`. The `format` recipe modifies authored Markdown files. Recipes delegate to the canonical npm scripts in `package.json`.
+Use `just --list` to discover the task interface. Run `just setup` for initial setup, `just sitemap` after edits affecting the generated sitemap, and `just verify` before handoff. Verification tests and checks sitemap freshness, Markdown formatting, and local link targets, including heading anchors, and reports style warnings; it does not check external websites or raw material in `data/`. Run `just style` on its own to see the warnings, and fix any you introduce. The `format` recipe modifies authored Markdown files. Recipes delegate to the canonical npm scripts in `package.json`.
 
 For setup details or scheduled review configuration, see [maintenance and daily reviews](MAINTAINING.md).
