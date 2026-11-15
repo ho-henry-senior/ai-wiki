@@ -10,7 +10,7 @@ An agent can read information, run tools, and act using permissions available to
 
 **First choose where its tools execute.** A local CLI using a remote model is still a *local-execution* agent. Hosted workspaces and CI runners are *cloud-execution* environments. Both may use external models and integrations.
 
-## Choose your starting path
+## Try this first
 
 - **[Secure a local coding agent](local-agent-security.md)** — protect files and credentials on your own machine, manage command approvals, and understand local tool access.
   - [Sandbox a local coding agent](local-agent-sandboxing.md) — configure and verify enforced filesystem and network restrictions.
