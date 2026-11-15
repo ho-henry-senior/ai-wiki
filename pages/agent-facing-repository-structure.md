@@ -61,7 +61,7 @@ The Agent Skills format is an open standard, but discovery paths are not univers
 
 Keep [skills, profiles, and tools distinct](../concepts/skills-profiles-and-tools.md): a skill provides a procedure, a profile describes a role, and a tool performs an action.
 
-See [Skills as a changing capability layer](skills-as-capabilities.md) for when a skill is useful and how to keep recommendations current.
+See [choose and add skills](useful-skills.md) for when a skill is worth adding and where Copilot finds it.
 
 ### `justfile`: stable task interface
 

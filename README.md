@@ -23,7 +23,7 @@ Get useful results with less time and fewer tokens, without sacrificing quality.
 - [Reuse deterministic tools](pages/agent-tool-delegation.md)
 - [Use focused feedback](concepts/tests-are-evidence.md)
 - [Keep context focused](concepts/progressive-disclosure.md)
-- [Reuse skills selectively](pages/skills-as-capabilities.md)
+- [Reuse skills selectively](pages/useful-skills.md)
 
 ## [Traceability](pages/traceability.md)
 

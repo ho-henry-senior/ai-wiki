@@ -21,8 +21,6 @@ Articles, applied patterns, reference catalogs, and checklists for AI-assisted s
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — a pattern for exposing deterministic repository tasks through a discoverable interface.
 - [Just as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) — a Just-specific example and when a wrapper may be useful.
 - [Observed tools by purpose](tools-by-purpose.md) — selected tool examples from several repositories.
-- [Skills as a changing capability layer](skills-as-capabilities.md) — how to decide whether a skill fills a current harness gap.
-- [Skill candidates to evaluate](useful-skills.md) — researched candidates that are not recommendations without practical evidence.
-- [Skills and agent profiles](skills-and-agent-profiles.md) — choosing procedures, roles, and executable capabilities for a workflow.
+- [Choose and add skills](useful-skills.md) — when a skill is worth adding, where Copilot finds skills, and candidates to evaluate.
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — a perspective on familiar responsibilities and handoffs in an agent-assisted workflow.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.

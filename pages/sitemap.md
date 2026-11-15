@@ -42,7 +42,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
-- [Skills as a changing capability layer](skills-as-capabilities.md) — Explain skills as reusable capabilities that can fill current harness gaps, while their value changes as harnesses evolve. (established)
+- [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate.
 - [Security](security.md) — Core advice for protecting sensitive information and limiting unsafe actions in agent-assisted work. (developing)
 
 #### Explore further
@@ -102,7 +102,6 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — A perspective on using familiar agile roles and handoffs to understand a possible agent-assisted software factory.
 - [How models and harnesses interact](model-harness-interaction.md) — How a harness supplies context and tools to a model, handles tool requests, and manages session history and context limits.
-- [Skills as a changing capability layer](skills-as-capabilities.md) — Explain skills as reusable capabilities that can fill current harness gaps, while their value changes as harnesses evolve. (established)
 
 #### guide
 
@@ -111,7 +110,6 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 - [Secure a cloud coding agent](cloud-agent-security.md) — Practical controls for coding agents executing in hosted workspaces, CI, or other cloud environments. (developing)
 - [Secure a local coding agent](local-agent-security.md) — Practical starting controls for coding agents that execute tools on a developer's own machine. (developing)
 - [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — The main risks of running coding agents, how sensitive data can move through their workflows, and controls for each destination. (developing)
-- [Skills and agent profiles](skills-and-agent-profiles.md) — Choose between reusable task procedures and role profiles, and combine them with tools for a concrete workflow.
 
 #### overview
 
@@ -132,8 +130,8 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — A reusable checklist for tracing sensitive data through an agent setup and checking controls at each destination. (established)
 - [AI glossary](glossary.md) — A practical glossary of foundational AI and current generative AI terminology.
+- [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate.
 - [Observed tools by purpose](tools-by-purpose.md) — Selected examples of deterministic repository tools, grouped by purpose.
-- [Skill candidates to evaluate](useful-skills.md) — Researched skill candidates to evaluate; none are endorsed without evidence of practical value and compatibility.
 - [Write repository instructions in AGENTS.md](repository-instructions.md) — Put repository instructions in AGENTS.md, know which Copilot features read it, and fill Copilot's remaining gaps without duplicating rules. (established)
 
 ### Concepts
@@ -149,7 +147,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 - [Retrieval-augmented generation](../concepts/retrieval-augmented-generation.md) — Retrieval-augmented generation supplies selected external information to a model at response time, with quality and security dependent on the retrieval pipeline.
 - [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — A diagnostic command can expose a secret through its result, saved history, and subsequent model requests without an explicit upload.
 - [Session history is not active context](../concepts/session-history-vs-context.md) — A saved session can contain more history than a model receives in any single request.
-- [Skills, profiles, and tools have different jobs](../concepts/skills-profiles-and-tools.md) — Skills provide reusable procedures, profiles describe roles, and tools expose executable actions.
+- [Skills, profiles, and tools have different jobs](../concepts/skills-profiles-and-tools.md) — Add a skill for a repeatable procedure, a profile for a role with limits, and a tool for an action the agent cannot perform; in Copilot these are skills, custom agents, and tools or MCP servers.
 - [Task names need explicit contracts](../concepts/task-interface-contracts.md) — A discoverable task needs an explicit scope, side effects, prerequisites, and interpretation; its name alone is not a contract.
 - [The model requests; the harness acts](../concepts/tool-call-loop.md) — A model requests a tool action; the harness checks and dispatches it, then supplies the result for further inference.
 - [Vector stores](../concepts/vector-stores.md) — Vector stores index numerical representations for similarity search, with trade-offs in retrieval quality, filtering, maintenance, and data handling.
