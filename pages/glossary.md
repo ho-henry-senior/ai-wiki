@@ -15,6 +15,10 @@ The [source research note](../sources/ai-terms-research.md) records supporting s
 
 A machine-based system that infers outputs from inputs to achieve explicit or implicit objectives, with varying degrees of autonomy. A deployed AI system includes more than its model: it also includes the surrounding software, data, and interface. See the [OECD's AI system definition](https://oecd.ai/en/wonk/ai-system-definition-update).
 
+### AI Credit
+
+Copilot's billing unit, worth one US cent. Copilot prices each request's input, cached input, and output tokens at the model's rate and converts the total into AI Credits. See [choose a model and control cost](choose-a-model-and-control-cost.md).
+
 ### Alignment
 
 How well an AI system's behavior reflects human intentions and values. In this wiki, alignment also describes how well an agent's work matches the intended outcome of a specific task. Reinforcement learning from human feedback (RLHF) is one technique used toward the broader goal; it is not the same as system-level safety controls. See [OpenAI's approach to alignment research](https://openai.com/index/our-approach-to-alignment-research/).
@@ -139,6 +143,10 @@ A model that can process or generate more than one type of data, such as text, i
 
 The input provided to a model, including the request and any instructions, examples, or context. A prompt may be assembled from multiple sources, not just a user's latest message.
 
+### Prompt caching
+
+Reusing input that a provider has stored from a recent request, so it is processed and charged at a lower rate. Changing the model, tools, or settings mid-session, or a pause long enough for the cache to expire, means the next request pays the full rate. See [choose a model and control cost](choose-a-model-and-control-cost.md#keep-the-cache).
+
 ### Prompt injection
 
 An attack in which untrusted input—directly from a user or indirectly from content the model reads—tries to alter the model's behavior or override intended instructions. The risk depends in part on what tools and permissions the system gives the model. See [OWASP's LLM Prompt Injection guidance](https://genai.owasp.org/llmrisk/llm01-prompt-injection/).
@@ -179,7 +187,7 @@ Model output constrained to follow a format, such as a JSON schema. Valid struct
 
 ### Token
 
-A unit of text processed by a model, often a word or part of a word. Tokenization varies by model, so a token is not the same as a word or a fixed number of characters. Tokens are commonly used to measure input and output limits.
+A unit of text processed by a model, often a word or part of a word. Tokenization varies by model, so a token is not the same as a word or a fixed number of characters. Tokens are commonly used to measure input and output limits, and to charge for use; see [choose a model and control cost](choose-a-model-and-control-cost.md).
 
 ### Tool calling
 

@@ -38,6 +38,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 - [Let the agent run your repository's commands](agent-tool-delegation.md) — List the commands the agent should run, with what each does and whether it changes files, so it runs your checks instead of guessing; give the Copilot cloud agent the dependencies to run them. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep what the agent loads for every task small, and let detail load only when a task needs it; in Copilot, through a short AGENTS.md, path-specific instructions, and skills. (established)
+- [Choose a model and control cost](choose-a-model-and-control-cost.md) — How Copilot charges for tokens, which model tier to use for which task, and how to keep a session's cost down and capped. (developing)
 - [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate. (developing)
 - [Security](security.md) — Limit what an agent can reach and do, so a mistake or a malicious instruction cannot expose data or cause harm; start from where the agent's tools run. (established)
 
@@ -98,6 +99,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 #### guide
 
+- [Choose a model and control cost](choose-a-model-and-control-cost.md) — How Copilot charges for tokens, which model tier to use for which task, and how to keep a session's cost down and capped. (developing)
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — When an agent gets something wrong because it lacked a fact about your system, write that fact down once, near the code it concerns, and link it from AGENTS.md. (developing)
 - [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Treat instructions in issues, files, web pages, and tool output as data, not orders, and limit what the agent can do if it follows them anyway. (established)
 - [Sandbox a local coding agent](local-agent-sandboxing.md) — Turn on Copilot's local sandbox, restrict files, network, and credentials, and prove the limits are enforced with harmless test files. (developing)

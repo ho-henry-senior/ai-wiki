@@ -10,6 +10,7 @@ Articles, applied patterns, reference catalogs, and checklists for AI-assisted s
 - [Secure the Copilot cloud agent](cloud-agent-security.md) — what GitHub enforces, and the secrets, firewall, MCP, and approval settings you set.
 - [Sandbox a local coding agent](local-agent-sandboxing.md) — turn on Copilot's local sandbox and prove the limits are enforced.
 - [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — treat untrusted content as data rather than authority.
+- [Choose a model and control cost](choose-a-model-and-control-cost.md) — how Copilot charges for tokens, which model tier to use, and how to cap a session.
 - [Define, steer, and verify a task](define-and-verify-tasks.md) — write the task, hand it to Copilot, steer it, and check the result.
 - [AI glossary](glossary.md) — practical definitions of foundational AI and current generative AI terms.
 - [How models and harnesses interact](model-harness-interaction.md) — the tool-call loop, message structure, session state, and context limits.
