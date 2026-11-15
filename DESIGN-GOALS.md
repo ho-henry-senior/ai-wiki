@@ -47,6 +47,8 @@ For each outcome, identify the core advice readers can act on. Use it to decide 
 
 Make the primary reader journey: homepage, outcome overview, principle, then techniques and practical examples. Explain why a principle helps before exploring ways to apply it, including how to try and verify them. A journey may span several pages or remain within one page; retain direct paths to practical guidance for readers who already understand the principle. A page may support more than one outcome; link to shared material rather than duplicating it.
 
+Make navigation and the sitemap reflect the goals and their priorities, not just the directory layout. Give prominence to actions with clear likely benefit and proportionate effort, while keeping essential safeguards visible even when they take more work. Connect guidance to its principles, supporting evidence, and limitations. Label case studies, illustrative approaches, and subjective perspectives so readers can distinguish context from advice; make optional context discoverable without presenting it as a required step. Keep the full inventory available alongside curated paths.
+
 Provide content for these reader needs:
 
 - **Outcome overview:** What advice helps me achieve this goal?
