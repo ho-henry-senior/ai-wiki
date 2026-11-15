@@ -12,7 +12,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 #### Core advice and supporting links
 
-- [Define and verify a task](define-and-verify-tasks.md) — Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them. (established)
+- [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep starting context small and make task-specific detail discoverable through focused links and on-demand resources. (established)
 - [Write repository instructions in AGENTS.md](repository-instructions.md) — Put repository instructions in AGENTS.md, know which Copilot features read it, and fill Copilot's remaining gaps without duplicating rules. (established)
 - [Task names need explicit contracts](../concepts/task-interface-contracts.md) — A discoverable task needs an explicit scope, side effects, prerequisites, and interpretation; its name alone is not a contract.
@@ -38,7 +38,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 #### Core advice and supporting links
 
-- [Define and verify a task](define-and-verify-tasks.md) — Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them. (established)
+- [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
 - [Task names need explicit contracts](../concepts/task-interface-contracts.md) — A discoverable task needs an explicit scope, side effects, prerequisites, and interpretation; its name alone is not a contract.
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
 - [Unit tests in the age of AI](unit-tests-in-the-age-of-ai.md) — Explore unit tests as fast, deterministic feedback for agents, and the risks of treating test volume or a green suite as proof of correctness. (established)
@@ -58,7 +58,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 #### Core advice and supporting links
 
-- [Define and verify a task](define-and-verify-tasks.md) — Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them. (established)
+- [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — A green test suite establishes that assertions passed, not that those assertions completely capture the intended behavior. (established)
 - [Sensitive data in agent workflows](sensitive-data-in-agent-workflows.md) — The main risks of running coding agents, how sensitive data can move through their workflows, and controls for each destination. (developing)
 
@@ -129,7 +129,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 #### pattern
 
 - [A structure for agent-facing repositories](agent-facing-repository-structure.md) — An illustrative repository layout that connects shared agent instructions, reference context, skills, task commands, and harness-specific files.
-- [Define and verify a task](define-and-verify-tasks.md) — Clarify a task's outcome and acceptance criteria, then preserve proportionate evidence that the result meets them. (established)
+- [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
 - [Get more from agents by delegating repo tasks to tools](agent-tool-delegation.md) — Expose deterministic repository tasks so agents can delegate work instead of reverse-engineering commands or performing checks expensively. (established)
 - [Just as an agent-facing task interface](justfile-as-agent-facing-task-interface.md) — A Just-specific example and guidance on when a wrapper may help expose existing repository commands.
 

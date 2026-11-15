@@ -9,6 +9,7 @@ Get results that match what you intended.
 - [Define the work](pages/define-and-verify-tasks.md)
 - [Provide relevant context](pages/repository-instructions.md)
 - [Make checks available](pages/agent-tool-delegation.md)
+- [Steer the work](pages/define-and-verify-tasks.md#steer-it)
 - [Verify the intended behavior](concepts/tests-are-evidence.md)
 - [Keep responsibilities clear](pages/alignment.md#core-advice)
 

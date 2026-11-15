@@ -22,11 +22,11 @@ For a small change, one issue and its pull request may be enough: link the PR to
 
 **Example (fictional):** Issue #12 asks to reject expired credentials. PR #15 links to #12, describes the change, and records that focused tests passed but an integration check was not run. A named human reviewer requests that missing check, then records approval after reviewing its result. The links and review history show how the request, evidence, and decision connect; the individual artifacts carry the details.
 
-For larger work, add artifacts only when they help explain a decision or connect work that cannot be followed from the issue and PR alone. [Define and verify a task](define-and-verify-tasks.md) covers the shared outcome, criteria, and verification workflow.
+For larger work, add artifacts only when they help explain a decision or connect work that cannot be followed from the issue and PR alone. [Define, steer, and verify a task](define-and-verify-tasks.md) covers the shared outcome, criteria, and verification workflow.
 
 ## Core advice
 
-- **Record the request and decisions.** Keep the outcome, acceptance criteria, constraints, and meaningful decisions where reviewers can find them. [Define and verify a task](define-and-verify-tasks.md) covers the task workflow.
+- **Record the request and decisions.** Keep the outcome, acceptance criteria, constraints, and meaningful decisions where reviewers can find them. [Define, steer, and verify a task](define-and-verify-tasks.md) covers the task workflow.
 - **Connect related artifacts.** Link the request to its change and review when those live separately; add more records only when they clarify intent or decisions.
 - **Preserve verification evidence.** Record check results and relevant checks not run. Review the change against the request, rather than treating a passing suite as complete proof: [passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
 - **Make responsibilities visible.** For a small PR, name the human reviewer and record whether they approved it or requested changes; separate approval authority from implementation when the repository requires it.
