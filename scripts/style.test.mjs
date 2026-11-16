@@ -26,7 +26,8 @@ async function fixture(t, files) {
   t.after(() => rm(root, { recursive: true, force: true }));
   await mkdir(path.join(root, "pages"));
   await mkdir(path.join(root, "concepts"));
-  await writeFile(path.join(root, "STYLE.md"), style);
+  await mkdir(path.join(root, "maintainers"));
+  await writeFile(path.join(root, "maintainers/STYLE.md"), style);
   for (const [file, text] of Object.entries(files))
     await writeFile(path.join(root, file), text);
   return root;
