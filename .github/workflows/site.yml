@@ -70,6 +70,11 @@ jobs:
         run: |
           grep -oE "<(h1|h2)[^>]*>[^<]*|href=\"/ai-wiki/[^\"]*\"" _site/pages/security/index.html | head -40
           head -c 800 _site/search-index.json
+      - name: Check the search ranking script is included
+        run: |
+          test -f _site/assets/search.js && test -f _site/assets/search-ranking.js
+          grep -q 'src="../../assets/search.js"' _site/pages/security/index.html
+          grep -q 'src="assets/search.js"' _site/index.html
       - name: Check search results have a dark text colour
         run: |
           if ! grep -qE '\.app-search__menu\{--govuk-text-colour: ?#0b0c0c' _site/assets/application.css; then

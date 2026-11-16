@@ -46,6 +46,22 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addGlobalData("layout", "page");
 
+  // Better search ranking (assets/search-ranking.js). The plugin stops
+  // building its own script if given a scripts list, so add ours to each page
+  // with a relative link, which works locally and under the path prefix.
+  eleventyConfig.addPassthroughCopy("assets/search.js");
+  eleventyConfig.addPassthroughCopy("assets/search-ranking.js");
+  eleventyConfig.addTransform("search-ranking", function (content) {
+    if (!this.page.outputPath?.endsWith(".html")) return content;
+    const folder = this.page.url.replace(/[^/]*$/, "");
+    const depth = folder.split("/").filter(Boolean).length;
+    const src = `${"../".repeat(depth)}assets/search.js`;
+    return content.replace(
+      "</head>",
+      `<script type="module" src="${src}"></script></head>`,
+    );
+  });
+
   // The layout shows the title, so drop the page's own first heading.
   eleventyConfig.addPreprocessor("first-heading", "md", (data, content) =>
     content.replace(/^#\s+.+\n?/m, ""),
