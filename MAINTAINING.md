@@ -111,7 +111,7 @@ check-against:
   - https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing
 ```
 
-The [daily review](#daily-reviews) checks marked pages against their sources before anything else. Each source's domain must be on the workflow's network allowlist; `just style` fails if it is not, or if `recheck` has no sources. Keep the changing figures in one dated section, so checking them is a comparison rather than new research, and leave the rest of the page general enough not to date.
+The [daily review](#daily-reviews) checks marked pages against their sources before anything else. When it updates a page, the new "Checked" date covers only the sources it fetched; the others keep their earlier date. Each source's domain must be on the workflow's network allowlist; `just style` fails if it is not, or if `recheck` has no sources. Keep the changing figures in one dated section, so checking them is a comparison rather than new research, and leave the rest of the page general enough not to date.
 
 Keep edit-time review focused on the affected material and directly dependent guidance, including concepts. Treat a whole-wiki review as a separate periodic task, using [the wiki-review skill](.agents/skills/wiki-review/SKILL.md), not a prerequisite for every change.
 
