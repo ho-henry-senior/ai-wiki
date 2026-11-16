@@ -30,6 +30,8 @@ export default async function (eleventyConfig) {
     titleSuffix: "Making the most of agents",
     // No crown icons or GOV.UK sharing image.
     icons: { mask: false, shortcut: false, touch: false },
+    // No footer crown, copyright statement, or Open Government Licence.
+    footer: { logo: false, copyright: false, contentLicence: false },
     opengraphImageUrl: false,
     // Our stylesheet replaces the GDS Transport typeface, which only
     // GOV.UK may use. See assets/application.scss.

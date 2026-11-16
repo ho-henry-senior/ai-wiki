@@ -47,8 +47,12 @@ jobs:
             echo "The security page has $headings h1 headings; expected 1." >&2
             exit 1
           fi
-          if grep -rlE "govuk-crest|govuk-icon|rebrand/images" _site --include=*.html; then
-            echo "Pages reference GOV.UK icons, which only GOV.UK may use." >&2
+          if grep -rlE "govuk-crest|govuk-icon|rebrand/images|govuk-footer__crown|govuk-logo" _site --include=*.html; then
+            echo "Pages use the crown or GOV.UK icons, which only GOV.UK may use." >&2
+            exit 1
+          fi
+          if grep -rliE "Crown copyright|open-government-licence" _site --include=*.html; then
+            echo "Pages show a copyright or licence statement; the footer should have none." >&2
             exit 1
           fi
           if grep -rl 'href="/ai-wiki/ai-wiki/' _site --include=*.html; then
