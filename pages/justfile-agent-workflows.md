@@ -13,7 +13,7 @@ An agent can inspect a repository to discover how to test and check it, but that
 
 ## Start with focused tests
 
-Make the cheap, relevant check easy to run while the agent is changing code. Reserve the full suite for the final gate. For a Python project using pytest:
+Make the cheap, focused check easy to run while the agent is changing code. Reserve the full suite for the final gate. For a Python project using pytest:
 
 ```just
 # Show the available commands.
@@ -73,7 +73,7 @@ Describe the effect of each command, whether it changes files, and whether failu
 
 ## Use the runner you already have
 
-Just is useful when a repository has commands across multiple tools, or when composition and `just --list` make them easier to find. Don't add it if existing package scripts or a Makefile already provide a clear interface. See [let the agent run your repository's commands](agent-tool-delegation.md) for the general principle and [a structure for agent-facing repositories](agent-facing-repository-structure.md) for where these files belong.
+Just helps when a repository has commands across multiple tools, or when composition and `just --list` make them easier to find. Don't add it if existing package scripts or a Makefile already provide a clear interface. See [let the agent run your repository's commands](agent-tool-delegation.md) for the general principle and [a structure for agent-facing repositories](agent-facing-repository-structure.md) for where these files belong.
 
 For options beyond the example's pytest and Ruff commands, see the [local development tools reference](local-development-tools.md).
 
