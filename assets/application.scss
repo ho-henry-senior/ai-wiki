@@ -3,8 +3,15 @@
 // The GDS Transport typeface may only be used on GOV.UK, so configure
 // GOV.UK Frontend to use the system font before loading the plugin's styles.
 // CI fails the build if "GDS Transport" appears in the compiled CSS.
-@use "pkg:govuk-frontend/dist/govuk" with (
+@use "pkg:govuk-frontend/dist/govuk" as govuk with (
   $govuk-font-family: (system-ui, sans-serif),
   $govuk-assets-path: "/ai-wiki/assets/"
 );
 @forward "pkg:@x-govuk/govuk-eleventy-plugin";
+
+// The header sets --govuk-text-colour to white for everything inside it, and
+// the search results list sits inside the header, so results showed white
+// text on a white background. Restore the normal text colour in the list.
+.app-search__menu {
+  --govuk-text-colour: #{govuk.govuk-colour("black")};
+}

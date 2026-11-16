@@ -70,6 +70,13 @@ jobs:
         run: |
           grep -oE "<(h1|h2)[^>]*>[^<]*|href=\"/ai-wiki/[^\"]*\"" _site/pages/security/index.html | head -40
           head -c 800 _site/search-index.json
+      - name: Check search results have a dark text colour
+        run: |
+          if ! grep -qE '\.app-search__menu\{--govuk-text-colour: ?#0b0c0c' _site/assets/application.css; then
+            echo "Search results would inherit the header's white text colour." >&2
+            grep -oE '\.app-search__menu\{[^}]*\}' _site/assets/application.css >&2 || true
+            exit 1
+          fi
       - name: Check the GDS Transport typeface is not used
         run: |
           if grep -rl "GDS Transport" _site --include=*.css; then
