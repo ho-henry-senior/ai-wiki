@@ -25,12 +25,14 @@ jobs:
         with:
           node-version: "22"
           cache: npm
+          cache-dependency-path: site/package-lock.json
+      # Only the website's own packages, without running install scripts.
       - name: Install tools
-        run: npm ci
-      - name: Test link rewriting
-        run: npm run test:site
+        run: npm ci --prefix site --ignore-scripts
+      - name: Test link rewriting and search ranking
+        run: node --test scripts/site-links.test.mjs scripts/search-ranking.test.mjs
       - name: Build the site
-        run: npm run site
+        run: npm run build --prefix site
       - name: Check the built site
         run: |
           for file in index.html pages/index.html pages/security/index.html 404.html search-index.json sitemap/index.html; do

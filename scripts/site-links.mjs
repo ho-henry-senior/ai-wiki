@@ -38,6 +38,11 @@ export function pageUrl(file) {
   return "/" + (name === "README" ? folder : `${folder}${name}/`);
 }
 
+// A page's path relative to the repository root. Eleventy runs from site/,
+// so it reports paths such as ../pages/security.md.
+export const repoPath = (inputPath) =>
+  path.posix.normalize(inputPath).replace(/^(\.\.\/)+|^\.\//, "");
+
 // Rewrites a link in a page for the site. External links and same-page
 // anchors are unchanged; links to other pages point to their site URL; links
 // to files that are not on the site point to the file on GitHub.
@@ -46,9 +51,7 @@ export function rewriteLink(href, inputPath) {
   const hashAt = href.indexOf("#");
   const target = hashAt === -1 ? href : href.slice(0, hashAt);
   const anchor = hashAt === -1 ? "" : href.slice(hashAt);
-  const from = path.posix.dirname(
-    path.posix.normalize(inputPath.replace(/^\.\//, "")),
-  );
+  const from = path.posix.dirname(repoPath(inputPath));
   const file = path.posix.normalize(path.posix.join(from, target));
   if (file.startsWith("..")) return href;
   if (file.endsWith(".md") && !isExcluded(file)) return pageUrl(file) + anchor;

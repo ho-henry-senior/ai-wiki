@@ -1,3 +1,17 @@
 {
-  "type": "module"
+  "name": "ai-wiki-site",
+  "private": true,
+  "type": "module",
+  "description": "Builds the wiki as a website. Kept separate so these packages are installed only for the website. See MAINTAINING.md#website.",
+  "engines": {
+    "node": ">=22.16"
+  },
+  "scripts": {
+    "build": "eleventy --config=eleventy.config.mjs",
+    "serve": "eleventy --config=eleventy.config.mjs --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8",
+    "@x-govuk/govuk-eleventy-plugin": "^9.0.2"
+  }
 }

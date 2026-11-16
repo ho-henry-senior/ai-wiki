@@ -7,11 +7,14 @@ import {
   pathPrefix,
   rewriteLink,
   siteUrl,
-} from "./scripts/site-links.mjs";
+} from "../scripts/site-links.mjs";
 
 // Builds the wiki as a website. The Markdown stays the source: pages keep
 // relative .md links that work on GitHub and in editors, and this config
 // rewrites them for the site at build time. See MAINTAINING.md#website.
+//
+// Runs from site/, so the build uses only site/'s own packages
+// (site/package.json); the repository root is the input.
 
 // Copied from GOV.UK Frontend by the plugin, but only for GOV.UK: the GDS
 // Transport font files and the crown icons. Removed after each build.
@@ -41,16 +44,21 @@ export default async function (eleventyConfig) {
     templates: { error404: true, searchIndex: true, sitemap: true },
   });
 
-  for (const entry of excluded)
-    eleventyConfig.ignores.add(entry.endsWith("/") ? `${entry}**` : entry);
+  for (const entry of [...excluded, "site/"]) {
+    const glob = entry.endsWith("/") ? `${entry}**` : entry;
+    eleventyConfig.ignores.add(glob);
+    eleventyConfig.ignores.add(`../${glob}`);
+  }
 
   eleventyConfig.addGlobalData("layout", "page");
 
   // Better search ranking (assets/search-ranking.js). The plugin stops
   // building its own script if given a scripts list, so add ours to each page
   // with a relative link, which works locally and under the path prefix.
-  eleventyConfig.addPassthroughCopy("assets/search.js");
-  eleventyConfig.addPassthroughCopy("assets/search-ranking.js");
+  eleventyConfig.addPassthroughCopy({
+    "../assets/search.js": "assets/search.js",
+    "../assets/search-ranking.js": "assets/search-ranking.js",
+  });
   eleventyConfig.addTransform("search-ranking", function (content) {
     if (!this.page.outputPath?.endsWith(".html")) return content;
     const folder = this.page.url.replace(/[^/]*$/, "");
@@ -106,6 +114,6 @@ export default async function (eleventyConfig) {
     // never processed as a template.
     markdownTemplateEngine: false,
     pathPrefix,
-    dir: { input: ".", output: "_site", data: "site/_data" },
+    dir: { input: "..", output: "../_site", data: "site/_data" },
   };
 }

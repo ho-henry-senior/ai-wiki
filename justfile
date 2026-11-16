@@ -29,10 +29,14 @@ links:
 format:
     npm run format
 
+# Install the website's build tools into site/node_modules, without running install scripts.
+site-setup:
+    npm ci --prefix site --ignore-scripts
+
 # Build the website into _site/.
 site:
-    npm run site
+    npm run build --prefix site
 
 # Serve the website locally at http://localhost:8080/ai-wiki/, rebuilding on changes.
 serve:
-    npm run serve
+    npm run serve --prefix site

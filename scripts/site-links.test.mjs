@@ -29,6 +29,17 @@ test("rewrites links between pages, keeping anchors", () => {
   );
 });
 
+test("accepts page paths as Eleventy reports them from site/", () => {
+  assert.equal(
+    rewriteLink("../concepts/tool-call-loop.md", "../pages/security.md"),
+    "/concepts/tool-call-loop/",
+  );
+  assert.equal(
+    rewriteLink("pages/security.md", "../README.md"),
+    "/pages/security/",
+  );
+});
+
 test("leaves external links and same-page anchors alone", () => {
   for (const href of [
     "https://docs.github.com/en/copilot",
