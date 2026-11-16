@@ -12,9 +12,9 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 #### Core advice and supporting links
 
-- [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
-- [Write repository instructions in AGENTS.md](repository-instructions.md) — Put repository instructions in AGENTS.md, know which Copilot features read it, and fill Copilot's remaining gaps without duplicating rules. (established)
-- [Let the agent run your repository's commands](agent-tool-delegation.md) — List the commands the agent should run, with what each does and whether it changes files, so it runs your checks instead of guessing; give the Copilot cloud agent the dependencies to run them. (established)
+- [Define, steer, and verify a task](define-and-verify-tasks.md) — Why a written task is the agent's target and your yardstick, and how to write one for Copilot, steer it where the work is recorded, and review the result against what you wrote. (established)
+- [Write repository instructions in AGENTS.md](repository-instructions.md) — Why repository rules belong in one short AGENTS.md, which Copilot features read it, and how to fill Copilot's remaining gaps without duplicating rules. (established)
+- [Let the agent run your repository's commands](agent-tool-delegation.md) — Why an agent that can run your checks does better than one that guesses, how to list the commands with what each does, and how to give the Copilot cloud agent the dependencies to run them. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 
 #### Explore further
@@ -34,8 +34,8 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 #### Core advice and supporting links
 
-- [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
-- [Let the agent run your repository's commands](agent-tool-delegation.md) — List the commands the agent should run, with what each does and whether it changes files, so it runs your checks instead of guessing; give the Copilot cloud agent the dependencies to run them. (established)
+- [Define, steer, and verify a task](define-and-verify-tasks.md) — Why a written task is the agent's target and your yardstick, and how to write one for Copilot, steer it where the work is recorded, and review the result against what you wrote. (established)
+- [Let the agent run your repository's commands](agent-tool-delegation.md) — Why an agent that can run your checks does better than one that guesses, how to list the commands with what each does, and how to give the Copilot cloud agent the dependencies to run them. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Load context through focused entrypoints](../concepts/progressive-disclosure.md) — Keep what the agent loads for every task small, and let detail load only when a task needs it; in Copilot, through a short AGENTS.md, path-specific instructions, and skills. (established)
 - [Choose a model and control cost](choose-a-model-and-control-cost.md) — How Copilot charges for tokens, which model tier to use for which task, and how to keep a session's cost down and capped. (developing)
@@ -57,7 +57,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 
 #### Core advice and supporting links
 
-- [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
+- [Define, steer, and verify a task](define-and-verify-tasks.md) — Why a written task is the agent's target and your yardstick, and how to write one for Copilot, steer it where the work is recorded, and review the result against what you wrote. (established)
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — The full checklist for tracing sensitive data through an agent setup and checking the controls at each destination and action, with Copilot detail. (established)
 
 #### Explore further
@@ -123,15 +123,15 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 #### pattern
 
 - [A structure for agent-facing repositories](agent-facing-repository-structure.md) — A map of where agent instructions, reference material, skills, commands, and Copilot files go in a repository, linking to the page that explains each. (established)
-- [Define, steer, and verify a task](define-and-verify-tasks.md) — Write the task down before the agent starts, steer it where the work is recorded, and review the result against what you wrote. (established)
-- [Let the agent run your repository's commands](agent-tool-delegation.md) — List the commands the agent should run, with what each does and whether it changes files, so it runs your checks instead of guessing; give the Copilot cloud agent the dependencies to run them. (established)
+- [Define, steer, and verify a task](define-and-verify-tasks.md) — Why a written task is the agent's target and your yardstick, and how to write one for Copilot, steer it where the work is recorded, and review the result against what you wrote. (established)
+- [Let the agent run your repository's commands](agent-tool-delegation.md) — Why an agent that can run your checks does better than one that guesses, how to list the commands with what each does, and how to give the Copilot cloud agent the dependencies to run them. (established)
 
 #### reference
 
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — The full checklist for tracing sensitive data through an agent setup and checking the controls at each destination and action, with Copilot detail. (established)
 - [AI glossary](glossary.md) — A practical glossary of foundational AI and current generative AI terminology.
 - [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate. (developing)
-- [Write repository instructions in AGENTS.md](repository-instructions.md) — Put repository instructions in AGENTS.md, know which Copilot features read it, and fill Copilot's remaining gaps without duplicating rules. (established)
+- [Write repository instructions in AGENTS.md](repository-instructions.md) — Why repository rules belong in one short AGENTS.md, which Copilot features read it, and how to fill Copilot's remaining gaps without duplicating rules. (established)
 
 ### Concepts
 

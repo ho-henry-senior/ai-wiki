@@ -1,12 +1,12 @@
 ---
 type: reference
-summary: Put repository instructions in AGENTS.md, know which Copilot features read it, and fill Copilot's remaining gaps without duplicating rules.
+summary: Why repository rules belong in one short AGENTS.md, which Copilot features read it, and how to fill Copilot's remaining gaps without duplicating rules.
 status: established
 ---
 
 # Write repository instructions in AGENTS.md
 
-Put the rules every agent needs in an `AGENTS.md` file at the root of your repository. It is the shared convention: Copilot's agents read it, and so do other agents such as Claude Code and Codex. Keep it to what an agent cannot work out from the code, and point to other files for detail.
+An agent can read your code, but not the rules that exist only in your team's heads: which command to run, which folder never to edit, why money is stored in pence. Put those in an `AGENTS.md` file at the root of your repository. It is the shared convention: Copilot's agents read it, and so do other agents such as Claude Code and Codex, so one file serves them all and there are no copies to drift apart. It loads with every task, so every line costs on every request. Keep it to what an agent cannot work out from the code, and point to other files for detail.
 
 ## Start with this
 
@@ -21,7 +21,7 @@ Create `AGENTS.md` with a few lines like these:
 - Architecture and past decisions: `docs/architecture.md` and `docs/adr/`.
 ```
 
-Each line is a command to run, a rule that isn't obvious from the code, or a pointer to where detail lives. Leave out anything a linter or test already enforces, and anything the README already says.
+Each line is a command to run, a rule that isn't obvious from the code, or a pointer to where detail lives. Leave out anything a linter or test already enforces, because the check will catch it anyway, and anything the README already says, because the agent can read that when it needs it.
 
 ## Which Copilot features read which file
 
@@ -55,7 +55,7 @@ applyTo: "app/models/**/*.rb"
 Every model change needs a migration and a model test in `spec/models/`.
 ```
 
-Copilot loads it only when it works on a matching file. Separate several patterns with commas, such as `"**/*.ts,**/*.tsx"`. To keep a file from the cloud agent or code review, add `excludeAgent: "cloud-agent"` or `excludeAgent: "code-review"` to its front matter.
+Copilot loads it only when it works on a matching file, so the rule costs nothing on tasks elsewhere. Separate several patterns with commas, such as `"**/*.ts,**/*.tsx"`. To keep a file from the cloud agent or code review, add `excludeAgent: "cloud-agent"` or `excludeAgent: "code-review"` to its front matter.
 
 ## Other agents
 
