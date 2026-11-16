@@ -5,13 +5,9 @@ default:
 setup:
     npm ci
 
-# Test and check the sitemap, Markdown formatting, local links, and style without modifying files.
+# Test and check Markdown formatting, local links, and style without modifying files.
 verify:
     npm run verify
-
-# Regenerate the reader-facing sitemap.
-sitemap:
-    npm run sitemap
 
 # Check Markdown formatting without modifying files.
 format-check:

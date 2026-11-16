@@ -10,7 +10,6 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const excluded = new Set([
   "pages/README.md",
-  "pages/sitemap.md",
   "pages/glossary.md",
   "concepts/README.md",
 ]);

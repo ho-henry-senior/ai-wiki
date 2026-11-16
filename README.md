@@ -23,6 +23,6 @@ Three changes worth making first, in this order. Each is small enough to try tod
 
 - [Agent data-flow checklist](pages/agent-data-flow-checklist.md) — review an agent setup before sensitive work.
 - [Glossary](pages/glossary.md) — terms used across the wiki.
-- [Sitemap](pages/sitemap.md) — every page, grouped by goal and by type, with links to the concept, slide, and source indexes.
+- Indexes of every [page](pages/README.md), [concept](concepts/README.md), [slide](slides/README.md), and [source](sources/README.md).
 
 For this repository's design and editorial rules, see [maintainer documentation](maintainers/README.md). This material is kept on GitHub, not the public wiki.
