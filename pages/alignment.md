@@ -1,6 +1,6 @@
 ---
 type: overview
-summary: Why an agent's result can differ from what you meant, and how to close the gap; define the work, give the agent context and checks, steer it, and verify the result.
+summary: Agree on the problem before delegating the solution; use an agent to challenge requirements, review a specification, then verify implementation against it.
 status: established
 lane: guidance
 goal: alignment
@@ -9,22 +9,22 @@ order: 1
 
 # Alignment
 
-An agent does what it can work out from what it was given. Where you leave a gap, it may fill it with a plausible guess, and it judges "done" by what it can check, such as tests passing, not by what you meant. Its summary then describes what it set out to do, which may not be what it did. So the result can be confident, tidy, and wrong in a way only you would notice. Each piece of advice below closes one of those gaps. Here, alignment means one task's outcome; the [glossary](glossary.md#alignment) has the broader AI meaning.
+An agent can produce a convincing solution to the wrong problem. It may fill missing requirements with plausible assumptions and then judge success by its own interpretation. **Agree on the problem before delegating the solution.** Use the agent to question what you want, expose decisions and draft a specification; review that specification before implementation. Here, alignment means agreeing what this work should achieve; the [glossary](glossary.md#alignment) has the broader AI meaning.
 
 ## Core advice
 
-- **Define the work.** The agent may guess at whatever you leave out, so write the outcome, "Done when" lines you can observe, and what is out of scope. That gives you and the agent the same target. [Define, steer, and verify a task](define-and-verify-tasks.md#write-the-task).
+- **Question the request before coding.** Ask the agent to grill you about unclear requirements, challenge assumptions and identify decisions that have not been made. A precise implementation of a misunderstood request is still the wrong result. [Define, steer, and verify a task](define-and-verify-tasks.md#agree-on-the-problem).\n- **Approve the specification before delegating.** Have the agent draft the intended behavior, observable acceptance criteria, constraints and open questions. Review and agree it yourself; only then ask the agent to turn it into issues and implement them. [Define, steer, and verify a task](define-and-verify-tasks.md#turn-the-specification-into-issues).
 - **Give it context.** Some rules cannot be read from the code, such as why a column order matters to another team. Put the ones every task needs in `AGENTS.md`, which Copilot's agents load for every task. [Write repository instructions in AGENTS.md](repository-instructions.md).
 - **Give it checks.** An agent that can run your tests checks its work against them; one that cannot will judge it by reading the code. List the commands and what each does. [Let the agent run your repository's commands](agent-tool-delegation.md).
 - **Steer the work.** A wrong turn costs more the longer it runs, so correct it early, in the session or on the pull request. The cloud agent does not see issue comments made after it starts. [Steer it](define-and-verify-tasks.md#steer-it).
 - **Verify the result.** Tests the agent wrote share its understanding of the task, so they can pass while missing what you meant. Check each "Done when" line against the diff, and read the tests. [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
 - **Keep someone else as approver.** The person who asked may share the agent's assumptions; an independent reviewer brings another view and may catch what both missed. [Verify the result](define-and-verify-tasks.md#verify-the-result).
 
-The cost of a wrong guess grows with the size of the work. A small change needs only a short issue; larger or ambiguous work needs an agreed specification first.
+Scale the formality to the risk: a small change may need only a brief agreed description, while larger or ambiguous work needs a reviewed specification before issues are created. In either case, do not let unanswered product decisions silently become implementation choices.
 
 ## Try this first
 
-For your next task, write one "Done when" line you can observe and the check that would show it was missed. Hand the task to Copilot, then check the result against that line, not against Copilot's summary.
+Before your next non-trivial task, ask Copilot to question your request rather than implement it. Have it identify one assumption you had not stated, then draft acceptance criteria for you to review before coding.
 
 ## Explore further
 
