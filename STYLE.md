@@ -18,7 +18,7 @@ Write so a developer understands what matters and why, and can act on it, on one
 Each [page type](MAINTAINING.md#articles-and-concepts) has a job. Write to it:
 
 - **Overview:** what matters for one goal and why, then where to go next. It summarizes; other pages own the detail.
-- **Concept** (any page in `concepts/`, whatever its `type`): one mechanism or distinction, explained well enough to reason with. It needs no action.
+- **Concept:** a reusable mechanism or distinction, usually in `concepts/`, explained well enough to reason with. It may include practical implications, but explanation is its main purpose, and it needs no action.
 - **Guide or pattern:** why the change is worth making, what to do, and how to check it worked.
 - **Explanation:** how related ideas fit together, built up step by step.
 - **Reference or checklist:** something to scan or consult. Each line still says why it matters.

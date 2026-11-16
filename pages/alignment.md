@@ -15,7 +15,7 @@ An agent does what it can work out from what it was given. Wherever you leave a 
 - **Give it checks.** An agent that can run your tests checks its work against them; one that cannot will judge it by reading the code. List the commands and what each does. [Let the agent run your repository's commands](agent-tool-delegation.md).
 - **Steer the work.** A wrong turn costs more the longer it runs, so correct it early, in the session or on the pull request. The cloud agent does not see issue comments made after it starts. [Steer it](define-and-verify-tasks.md#steer-it).
 - **Verify the result.** Tests the agent wrote share its understanding of the task, so they can pass while missing what you meant. Check each "Done when" line against the diff, and read the tests. [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
-- **Keep someone else as approver.** The person who asked shares the agent's picture of the task, so a second reader catches what both missed. [Verify the result](define-and-verify-tasks.md#verify-the-result).
+- **Keep someone else as approver.** The person who asked may share the agent's assumptions; an independent reviewer brings another view and may catch what both missed. [Verify the result](define-and-verify-tasks.md#verify-the-result).
 
 The cost of a wrong guess grows with the size of the work. A small change needs only a short issue; larger or ambiguous work needs an agreed specification first.
 

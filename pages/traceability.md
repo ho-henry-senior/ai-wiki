@@ -6,7 +6,7 @@ status: established
 
 # Traceability
 
-With an agent, the work is split: a model writes the code, a person directs it, and someone else approves it. The decisions that shaped the result often happen in a session that only one person saw, and some of those sessions can be deleted. The evidence that it worked, such as check runs and logs, expires. So unless the record is copied to where reviewers and auditors look, nobody later can tell who decided what, or why. For public-sector work, being able to answer that is often an obligation.
+With an agent, the work is split: a model writes the code, a person directs it, and someone else approves it. The decisions that shaped the result often happen in a session that only one person saw, and some of those sessions can be deleted. The evidence that it worked, such as check runs and logs, expires. So unless the record is copied to where reviewers and auditors look, later readers may be unable to reconstruct who decided what, or why. For public-sector work, being able to answer that is often an obligation.
 
 ## Core advice
 
