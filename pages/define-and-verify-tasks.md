@@ -6,7 +6,7 @@ status: established
 
 # Define, steer, and verify a task
 
-An agent works only from what it is given, and it fills every gap with a plausible guess. A written task closes the gaps that matter before it starts, and it gives you something fixed to check the result against later, instead of the agent's summary, which is its own account of what it did. Corrections belong where the work is recorded, so a reviewer can see why the result differs from the request.
+An agent works from the task and the context it can reach. Where an important requirement is missing, it may fill the gap with a plausible guess. A written task closes the gaps that matter before it starts, and it gives you something fixed to check the result against later, instead of the agent's summary, which is its own account of what it did. Corrections belong where the work is recorded, so a reviewer can see why the result differs from the request.
 
 ## Write the task
 
@@ -39,7 +39,7 @@ Users can export the orders table as a CSV file from the Orders page.
 - **Checks** names the commands, so the agent runs your tests rather than inventing its own or judging by reading the code.
 - **Out of scope** stops nearby work the agent might think helps, which costs time and makes the diff harder to review.
 
-If you cannot write the "Done when" lines, the task is not ready: settle the open questions first, because the agent will settle them for you.
+If you cannot write the "Done when" lines, the task is not ready: settle the open questions first, or the agent may decide them without you.
 
 ## Hand it to Copilot
 
@@ -60,7 +60,7 @@ For why corrections belong on the pull request, see [traceability](traceability.
 ## Verify the result
 
 - **Check each "Done when" line against the diff,** not against the pull request description, which is the agent's account and can be wrong.
-- **Approve the workflows, then confirm the checks ran.** Workflows do not run on the cloud agent's pull request until you click **Approve and run workflows**. Approving runs the agent's code with the workflows' permissions, so read the diff first, especially changes under `.github/workflows/`. Record any check that did not run, so the reviewer knows what was not tested.
+- **Review the diff before approving workflows, then confirm the checks ran.** Workflows do not run on the cloud agent's pull request until you click **Approve and run workflows**. Approving runs the agent's code with the workflows' permissions, so read the diff first, especially changes under `.github/workflows/`. Record any check that did not run, so the reviewer knows what was not tested.
 - **Read the tests the agent wrote.** They share its understanding of the task, so they can pass while missing what you meant. See [passing tests are evidence, not proof](../concepts/tests-are-evidence.md#ask-for-tests-that-can-fail).
 - **Have someone else approve it.** You may share the agent's assumptions about the task; another reviewer may catch what you both missed. GitHub stops the person who asked Copilot for a pull request from approving it, so with required approvals on, someone else has to.
 
