@@ -3,11 +3,40 @@
     which provides the macros used here. -#}
 {% extends "layouts/base.njk" %}
 
+{#- Under the title: the page's completeness status and when its facts were
+    checked, then a contents list for longer pages. A missing status means
+    unassessed, so it shows nothing. -#}
+{%- macro pageDetails() %}
+  {%- set statusColours = { established: "green", developing: "yellow", stub: "grey" } %}
+  {%- if status in statusColours or checked %}
+  <p class="govuk-body-s app-page-details">
+    {%- if status in statusColours %}
+    <strong class="govuk-tag govuk-tag--{{ statusColours[status] }} app-status">{{ status | capitalize }}</strong>
+    {%- endif %}
+    {%- if checked %}
+    <span class="app-checked">Facts checked {{ checked | govukDate }}</span>
+    {%- endif %}
+  </p>
+  {%- endif %}
+  {%- set sections = content | contents %}
+  {%- if sections | length %}
+  <nav class="app-contents-list" aria-labelledby="contents-title">
+    <h2 class="app-contents-list__title" id="contents-title">Contents</h2>
+    <ol>
+      {%- for section in sections %}
+      <li><a href="#{{ section.id }}">{{ section.text | safe }}</a></li>
+      {%- endfor %}
+    </ol>
+  </nav>
+  {%- endif %}
+{%- endmacro %}
+
 {% block content %}
   {% if lane == "articles" %}
     {{ appDocumentHeader({ title: title, description: description, date: date }) }}
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
+        {{ pageDetails() }}
         {{ appProseScope(content) if content }}
       </div>
     </div>
@@ -20,17 +49,13 @@
       </div>
       <div class="govuk-grid-column-three-quarters-from-desktop">
         {{ appDocumentHeader({ title: title, description: description }) }}
-        {%- if checked %}
-        <p class="govuk-body-s app-checked">Facts checked {{ checked | govukDate }}</p>
-        {%- endif %}
+        {{ pageDetails() }}
         {{ appProseScope(content) if content }}
       </div>
     </div>
   {% else %}
     {{ appDocumentHeader({ title: title, description: description }) }}
-    {%- if checked %}
-    <p class="govuk-body-s app-checked">Facts checked {{ checked | govukDate }}</p>
-    {%- endif %}
+    {{ pageDetails() }}
     {{ appProseScope(content) if content }}
   {% endif %}
 {% endblock %}

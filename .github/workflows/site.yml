@@ -30,7 +30,7 @@ jobs:
       - name: Install tools
         run: npm ci --prefix site --ignore-scripts
       - name: Test link rewriting and search ranking
-        run: node --test scripts/site-links.test.mjs scripts/search-ranking.test.mjs
+        run: node --test scripts/site-links.test.mjs scripts/search-ranking.test.mjs scripts/site-contents.test.mjs
       - name: Build the site
         run: npm run build --prefix site
       - name: Check the built site
@@ -94,6 +94,26 @@ jobs:
           grep -q "Facts checked 15 November 2026" _site/pages/cloud-agent-security/index.html || {
             echo "The cloud agent page does not show its checked date." >&2
             grep -o "app-checked[^<]*" _site/pages/cloud-agent-security/index.html >&2 || true
+            exit 1
+          }
+      - name: Check pages show their status and a contents list
+        run: |
+          page=_site/pages/cloud-agent-security/index.html
+          grep -q 'govuk-tag--green app-status">Established<' "$page" || {
+            echo "The cloud agent page does not show its Established status." >&2
+            grep -o 'app-page-details.\{0,300\}' "$page" >&2 || true
+            exit 1
+          }
+          grep -q 'govuk-tag--yellow app-status">Developing<' _site/pages/choose-a-model-and-control-cost/index.html || {
+            echo "The cost guide does not show its Developing status." >&2
+            exit 1
+          }
+          if grep -q 'app-status' _site/pages/glossary/index.html; then
+            echo "The glossary has no status, but shows one." >&2
+            exit 1
+          fi
+          grep -q 'class="app-contents-list"' "$page" && grep -q 'href="#what-github-enforces"' "$page" || {
+            echo "The cloud agent page has no contents list linking to its sections." >&2
             exit 1
           }
       - name: Check diagrams are set up to render

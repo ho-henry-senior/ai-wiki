@@ -8,6 +8,7 @@ import {
   rewriteLink,
   siteUrl,
 } from "../scripts/site-links.mjs";
+import { contents } from "../scripts/site-contents.mjs";
 import { eleventyNavigation, laneItems, lanes } from "./lanes.mjs";
 
 // Builds the wiki as a website. The Markdown stays the source: pages keep
@@ -79,6 +80,7 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addGlobalData("layout", "wiki");
   eleventyConfig.addFilter("laneItems", laneItems);
+  eleventyConfig.addFilter("contents", contents);
   // Eleventy runs plugins after this function, so the GOV.UK plugin's
   // computed navigation data would replace ours. Adding ours from a plugin
   // registered after it makes ours run last. Our other computed data is in
