@@ -6,7 +6,7 @@ status: established
 
 # Task names need explicit contracts
 
-Describe what each command does; do not rely on its name. A command called `verify` or `check` means something different in every repository, and an agent will guess.
+Describe what each command does; do not rely on its name. A command called `verify` or `check` means something different in every repository, and an agent that has to guess may get it wrong in either direction: skipping a check it should have run, or running one that rewrites files when it only meant to look.
 
 ## What to say about each command
 

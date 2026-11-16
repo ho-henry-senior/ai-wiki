@@ -6,7 +6,7 @@ status: established
 
 # Session history is not active context
 
-What a session has saved is not the same as what the model sees next. Each request to the model carries a selection of the conversation, and long sessions get summarized. In Copilot CLI, run `/context` to see what the current context holds.
+What a session has saved is not the same as what the model sees next. Each request to the model carries a selection of the conversation, and long sessions get summarized. The difference matters in both directions: the model may have lost detail you think it still has, and data you think has gone may still be saved. In Copilot CLI, run `/context` to see what the current context holds.
 
 |            | Session history                                      | Active context                                                    |
 | ---------- | ---------------------------------------------------- | ----------------------------------------------------------------- |
