@@ -6,10 +6,10 @@ lane: guidance
 goal: security
 order: 1
 checked: 2026-11-16
-applies-to:
-  - editor
-  - cli
-  - app
+tags:
+  - Copilot in the editor
+  - Copilot CLI
+  - Copilot app
 ---
 
 # Secure a local coding agent

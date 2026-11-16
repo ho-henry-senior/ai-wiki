@@ -6,11 +6,11 @@ lane: guidance
 goal: alignment
 order: 2
 checked: 2026-11-15
-applies-to:
-  - editor
-  - cli
-  - cloud-agent
-  - code-review
+tags:
+  - Copilot in the editor
+  - Copilot CLI
+  - Copilot cloud agent
+  - Copilot code review
 ---
 
 # Write repository instructions in AGENTS.md

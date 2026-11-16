@@ -13,11 +13,11 @@ lane: guidance
 goal: economy
 order: 1
 checked: 2026-11-15
-applies-to:
-  - editor
-  - cli
-  - app
-  - cloud-agent
+tags:
+  - Copilot in the editor
+  - Copilot CLI
+  - Copilot app
+  - Copilot cloud agent
 ---
 
 # Choose a model and control cost

@@ -6,8 +6,8 @@ lane: guidance
 goal: security
 order: 3
 checked: 2026-11-15
-applies-to:
-  - cloud-agent
+tags:
+  - Copilot cloud agent
 ---
 
 # Secure the Copilot cloud agent

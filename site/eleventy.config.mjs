@@ -74,6 +74,7 @@ export default async function (eleventyConfig) {
       meta: {
         items: [
           { href: "/pages/glossary/", text: "Glossary" },
+          { href: "/tags/", text: "Tags" },
           { href: "/sitemap/", text: "Sitemap" },
           {
             href: `${repository}/blob/main/maintainers/README.md`,
@@ -87,7 +88,14 @@ export default async function (eleventyConfig) {
     // Our stylesheet replaces the GDS Transport typeface, which only
     // GOV.UK may use. See assets/application.scss.
     stylesheets: ["/assets/application.css"],
-    templates: { error404: true, searchIndex: true, sitemap: true },
+    templates: {
+      error404: true,
+      searchIndex: true,
+      sitemap: true,
+      // Tag pages: /tags/ lists every tag, /tags/<tag>/ its pages. Tags
+      // are allowed in site/tags.mjs.
+      tags: { tagTitle: "Pages tagged ‘{{ tag }}’" },
+    },
   });
 
   for (const entry of [...excluded, "site/"]) {

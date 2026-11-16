@@ -1,7 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { copilotParts } from "../site/applies-to.mjs";
+import { allowedTags } from "../site/tags.mjs";
 
 // Checks authored pages against maintainers/STYLE.md: length ceilings, hedge words, and
 // sentences repeated across pages. Also checks that pages marked `recheck`
@@ -153,17 +153,17 @@ export function checkRecheck(file, meta, domains) {
   return warnings;
 }
 
-// A page's `applies-to` must list parts of Copilot from site/applies-to.mjs.
-export function checkAppliesTo(file, meta, known = Object.keys(copilotParts)) {
-  const parts = meta["applies-to"];
-  if (parts === undefined) return [];
-  if (!Array.isArray(parts) || !parts.length)
-    return [`${file}: applies-to must be a list, one part of Copilot per line`];
-  return parts
-    .filter((part) => !known.includes(part))
+// A page's `tags` must be a list of tags from site/tags.mjs.
+export function checkTags(file, meta, known = allowedTags) {
+  const tags = meta.tags;
+  if (tags === undefined) return [];
+  if (!Array.isArray(tags) || !tags.length)
+    return [`${file}: tags must be a list, one tag per line`];
+  return tags
+    .filter((tag) => !known.includes(tag))
     .map(
-      (part) =>
-        `${file}: applies-to has unknown "${part}"; use one of ${known.join(", ")}, or add it to site/applies-to.mjs`,
+      (tag) =>
+        `${file}: unknown tag "${tag}"; use one listed in site/tags.mjs, or add it there`,
     );
 }
 
@@ -301,7 +301,7 @@ export async function checkStyle(rootDir = root) {
     });
     warnings.push(...checkRecheck(file, meta, domains));
     warnings.push(...checkChecked(file, meta, prose(text)));
-    warnings.push(...checkAppliesTo(file, meta));
+    warnings.push(...checkTags(file, meta));
   }
   for (const page of pages) {
     const words = countWords(page.prose);

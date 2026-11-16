@@ -3,8 +3,8 @@ type: pattern
 summary: Why an agent that can run your checks does better than one that guesses, how to list the commands with what each does, and how to give the Copilot cloud agent the dependencies to run them.
 status: established
 checked: 2026-11-15
-applies-to:
-  - cloud-agent
+tags:
+  - Copilot cloud agent
 ---
 
 # Let the agent run your repository's commands
