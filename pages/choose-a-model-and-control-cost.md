@@ -65,7 +65,7 @@ In Copilot CLI, `/limits set max-ai-credits NUMBER` caps a session and `/limits 
 
 ## Current figures
 
-Checked 15 November 2026 against GitHub's [pricing](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing), [individual](https://docs.github.com/en/copilot/concepts/billing-and-usage/individuals/billing) and [organization](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises) billing, [optimization](https://docs.github.com/en/copilot/tutorials/optimize-ai-usage), and [session-limit](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/set-session-limit) pages.
+Checked 16 November 2026 against GitHub's [pricing](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing), [individual](https://docs.github.com/en/copilot/concepts/billing-and-usage/individuals/billing) and [organization](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises) billing, [optimization](https://docs.github.com/en/copilot/tutorials/optimize-ai-usage), and [session-limit](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/set-session-limit) pages.
 
 | Plan       | Price per month | AI Credits per month   |
 | ---------- | --------------- | ---------------------- |
@@ -77,15 +77,15 @@ Checked 15 November 2026 against GitHub's [pricing](https://docs.github.com/en/c
 
 Prices per million tokens:
 
-| Tier  | Examples                       | Input  | Cached input | Output |
-| ----- | ------------------------------ | ------ | ------------ | ------ |
-| Small | Claude Haiku 5.5, GPT-6 Luna   | $0.10  | $0.01        | $0.50  |
-| Mid   | Claude Sonnet 5.5, GPT-6.1 Sol | $2.00  | $0.10        | $10.00 |
-| Large | Claude Opus 5.5                | $4.00  | $0.20        | $20.00 |
-| Top   | Claude Fable 5.1, GPT-6 Astra  | $10.00 | $0.25–$1.00  | $50.00 |
+| Tier  | Examples                       | Input  | Cached input | Output  |
+| ----- | ------------------------------ | ------ | ------------ | ------- |
+| Small | Claude Haiku 5.5, GPT-6 Luna   | $0.10  | $0.01        | $0.50   |
+| Mid   | Claude Sonnet 5.5, GPT-6.1 Sol | $2.00  | $0.10        | $10.00  |
+| Large | Claude Opus 5.5                | $4.00  | $0.20        | $20.00  |
+| Top   | Claude Fable 5.2, GPT-6 Astra  | $8–$10 | $0.20–$1.00  | $40–$50 |
 
 - **Long context:** many models charge about double above a threshold, such as 100,000 tokens for Claude Haiku 5.5 and 272,000 for GPT-6 models.
 - **Cache writes:** Anthropic and newer OpenAI models also charge for writing to the cache.
 - **Cache lifetime:** 1 hour of inactivity for most models; 24 hours for OpenAI models.
 - **Auto discount:** 10% off model costs on paid plans.
-- **Worked example:** 40 requests averaging 60,000 tokens of context, 90% cached, with 1,000 output tokens each, cost about 7 credits on small, 110 on mid, 220 on large, and 500 to 650 on top, before cache writes.
+- **Worked example:** 40 requests averaging 60,000 tokens of context, 90% cached, with 1,000 output tokens each, cost about 7 credits on small, 110 on mid, 220 on large, and 400 to 660 on top, before cache writes.
