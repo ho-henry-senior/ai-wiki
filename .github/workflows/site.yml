@@ -93,7 +93,7 @@ jobs:
         run: |
           grep -oE "<(h1|h2)[^>]*>[^<]*|href=\"/ai-wiki/[^\"]*\"" _site/pages/security/index.html | head -60
           echo "--- articles"
-          grep -oE 'app-document-list__item-title">[^<]*<a[^>]*>[^<]*' _site/articles/index.html
+          tr -d '\n' < _site/articles/index.html | grep -oE 'item-title">[[:space:]]*<a[^>]*>[^<]*' || true
           head -c 800 _site/search-index.json
       - name: Check the search ranking script is included
         run: |
