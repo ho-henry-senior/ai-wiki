@@ -25,4 +25,3 @@ Three changes worth making first, in this order. Each is small enough to try tod
 - [Glossary](pages/glossary.md) — terms used across the wiki.
 - Indexes of every [page](pages/README.md), [concept](concepts/README.md), [slide](slides/README.md), and [source](sources/README.md).
 
-For this repository's design and editorial rules, see [maintainer documentation](maintainers/README.md). This material is kept on GitHub, not the public wiki.

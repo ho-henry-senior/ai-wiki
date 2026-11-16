@@ -74,7 +74,14 @@ export default async function (eleventyConfig) {
     // No crown icons or GOV.UK sharing image.
     icons: { mask: false, shortcut: false, touch: false },
     // No footer crown, copyright statement, or Open Government Licence.
-    footer: { logo: false, copyright: false, contentLicence: false },
+    footer: {
+      logo: false,
+      copyright: false,
+      contentLicence: false,
+      meta: {
+        html: `For this repository's design and editorial rules, see <a class="govuk-footer__link" href="https://github.com/ho-henry-senior/ai-wiki/blob/main/maintainers/README.md">maintainer documentation</a>. This material is kept on GitHub, not the public wiki.`,
+      },
+    },
     opengraphImageUrl: false,
     // Our stylesheet replaces the GDS Transport typeface, which only
     // GOV.UK may use. See assets/application.scss.
