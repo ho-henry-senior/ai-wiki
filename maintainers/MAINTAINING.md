@@ -9,19 +9,19 @@ Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just 
 - `checked` dates that are not real past dates written YYYY-MM-DD, and dates of checking written in the text instead;
 - sentences that closely repeat a sentence on another page, which usually means advice should move to its [owner](#who-owns-what). Overviews, headings, "See …" pointers, and "Checked …" notes are skipped.
 
-`just verify` runs it and its tests, and fails on any warning. To see warnings without failing, run `node scripts/style.mjs`. If a warning is wrong, improve the check or the rule in `STYLE.md` rather than working around it.
+`just verify` runs it and its tests, and fails on any warning. To see warnings without failing, run `node scripts/style.mjs`. If a warning is wrong, improve the check or the rule in `maintainers/STYLE.md` rather than working around it.
 
-The [sitemap](pages/sitemap.md) lists pages from their metadata and shows the links curated in the four outcome overviews. After adding or removing content, changing its title or metadata, or changing overview links, run `just sitemap`; `just verify` reports stale output without changing it. The sitemap excludes directory indexes and raw material from its generated inventory.
+The [sitemap](../pages/sitemap.md) lists pages from their metadata and shows the links curated in the four outcome overviews. After adding or removing content, changing its title or metadata, or changing overview links, run `just sitemap`; `just verify` reports stale output without changing it. The sitemap excludes directory indexes and raw material from its generated inventory.
 
-Use `just format` to apply formatting or `just links` to check local links alone. Formatting preserves prose line breaks and leaves embedded code examples unchanged. Recipes delegate to npm scripts, which can also be run directly. See [the agent entrypoint](AGENTS.md) for context pointers.
+Use `just format` to apply formatting or `just links` to check local links alone. Formatting preserves prose line breaks and leaves embedded code examples unchanged. Recipes delegate to npm scripts, which can also be run directly. See [the agent entrypoint](../AGENTS.md) for context pointers.
 
-For a periodic structural or freshness review, use [the wiki-review skill](.agents/skills/wiki-review/SKILL.md). Reviews report their coverage and evidence; a structural review does not imply that every external claim has been reverified.
+For a periodic structural or freshness review, use [the wiki-review skill](../.agents/skills/wiki-review/SKILL.md). Reviews report their coverage and evidence; a structural review does not imply that every external claim has been reverified.
 
 The dependency overrides pin patched `glob` and `minimatch` releases while the link-checking toolchain still requests older versions.
 
 ## Website
 
-The wiki is also built as a website with [Eleventy](https://www.11ty.dev/) and the [GOV.UK Eleventy Plugin](https://github.com/x-govuk/govuk-eleventy-plugin), and published to GitHub Pages from `main` by the [website workflow](.github/workflows/site.yml). Every pull request builds the site, so a change that breaks the build fails its checks. The Markdown stays the source, and must keep working on GitHub and in editors:
+Project instructions in `maintainers/` are for this wiki's contributors and agents; the published `pages/`, `concepts/`, and `sources/` are for readers. Do not put project-maintenance instructions in published indexes. The wiki is also built as a website with [Eleventy](https://www.11ty.dev/) and the [GOV.UK Eleventy Plugin](https://github.com/x-govuk/govuk-eleventy-plugin), and published to GitHub Pages from `main` by the [website workflow](../.github/workflows/site.yml). Every pull request builds the site, so a change that breaks the build fails its checks. The Markdown stays the source, and must keep working on GitHub and in editors:
 
 - **Keep links as relative `.md` paths.** The build rewrites them for the site; links to files that are not on the site, such as `AGENTS.md`, go to GitHub. The rules are in `scripts/site-links.mjs`, with tests.
 - **Do not put template syntax in pages.** Markdown is never processed as a template, so code examples such as `${{ github.ref }}` appear as written.
@@ -37,7 +37,7 @@ The website's build tools have their own `site/package.json` and lock file, so `
 
 Put a standalone explanation or reusable distinction in `concepts/` when extracting it helps readers reuse or find it. Follow the [concept conventions](#writing-a-concept). Keep articles coherent: summarize the idea where it supports the narrative, then link to the canonical explanation rather than duplicate its example and caveats.
 
-Length alone is not a reason to split. Keep tightly coupled explanations together; catalogs, checklists, and concrete workflow examples can remain complete pages. Concepts may provide the basis for [short slides](slides/README.md), but slide size is not a required format.
+Length alone is not a reason to split. Keep tightly coupled explanations together; catalogs, checklists, and concrete workflow examples can remain complete pages. Concepts may provide the basis for [short slides](../slides/README.md), but slide size is not a required format.
 
 Short slides are standalone summaries of selected concepts, not replacements for their fuller explanations.
 
@@ -62,7 +62,7 @@ Suggested `type` values:
 
 Focused reusable concepts live in `concepts/` and use the types described in the [concept conventions](#writing-a-concept). An explanatory article may bring several concepts together without replacing them.
 
-The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it. The [sitemap](pages/sitemap.md) groups goal links from each overview's `Try this first` and `Core advice` sections separately from `Explore further`; links elsewhere appear as other links. Its inventory comes from page metadata. Regenerate it with `just sitemap` rather than editing it directly.
+The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it. The [sitemap](../pages/sitemap.md) groups goal links from each overview's `Try this first` and `Core advice` sections separately from `Explore further`; links elsewhere appear as other links. Its inventory comes from page metadata. Regenerate it with `just sitemap` rather than editing it directly.
 
 ## Writing a concept
 
@@ -72,15 +72,15 @@ Use the shared [completeness status conventions](#completeness-status) when a co
 
 State the core idea first. Keep its explanation, a useful example or diagram, essential caveats, and supporting sources together. Link to articles that apply it and to related concepts where that helps navigation.
 
-Extract a concept when it is useful independently or needed in multiple places. Keep its detailed explanation canonical in `concepts/`; articles should summarize it in their own narrative and link to it. A concept may suit a short slide, but neither a fixed word count nor slide-sized formatting is required. Keep brief definitions in the [glossary](pages/glossary.md), linking to the concept for depth.
+Extract a concept when it is useful independently or needed in multiple places. Keep its detailed explanation canonical in `concepts/`; articles should summarize it in their own narrative and link to it. A concept may suit a short slide, but neither a fixed word count nor slide-sized formatting is required. Keep brief definitions in the [glossary](../pages/glossary.md), linking to the concept for depth.
 
-[Short slides](slides/README.md) summarize selected concepts and link back to their fuller explanation.
+[Short slides](../slides/README.md) summarize selected concepts and link back to their fuller explanation.
 
-Follow the [freshness guidance](#keeping-content-current) when editing concepts. Add new concepts to the [concept index](concepts/README.md) and the relevant outcome overviews linked from the [homepage](README.md).
+Follow the [freshness guidance](#keeping-content-current) when editing concepts. Add new concepts to the [concept index](../concepts/README.md) and the relevant outcome overviews linked from the [homepage](../README.md).
 
 ## Maintaining sources
 
-Keep provenance lightweight: enough to find a resource again and judge whether it may have changed. Add simple links to the [source index](sources/README.md) with a title and, when useful, a short note. Give a resource its own Markdown file when it needs substantive notes, relevant sections or timestamps, or a more durable record. Prefer linking to the original over copying it.
+Keep provenance lightweight: enough to find a resource again and judge whether it may have changed. Add simple links to the [source index](../sources/README.md) with a title and, when useful, a short note. Give a resource its own Markdown file when it needs substantive notes, relevant sections or timestamps, or a more durable record. Prefer linking to the original over copying it.
 
 Authored pages can link to sources selectively, especially where a source supports an important, time-sensitive, or contested point.
 
@@ -90,35 +90,35 @@ Each idea below is explained in full on one page. Anywhere else, give a one-line
 
 | Idea                                                                                                                             | Owner                                                                                       |
 | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| Write the task, hand it to Copilot, steer it, verify it, second approver                                                         | [Define, steer, and verify a task](pages/define-and-verify-tasks.md)                        |
-| The record: authorship, evidence on the PR, where records live, why corrections go on the PR, the agent's explanation is a claim | [Traceability](pages/traceability.md)                                                       |
-| Judging tests: one per requirement, see it fail, read them                                                                       | [Passing tests are evidence, not proof](concepts/tests-are-evidence.md)                     |
-| Repository instructions: `AGENTS.md`, which Copilot features read which file, path-specific files, other agents' support         | [Write repository instructions in AGENTS.md](pages/repository-instructions.md)              |
-| Loading context on demand                                                                                                        | [Load context through focused entrypoints](concepts/progressive-disclosure.md)              |
-| Listing commands for the agent, task runners, `copilot-setup-steps.yml`                                                          | [Let the agent run your repository's commands](pages/agent-tool-delegation.md)              |
-| What to say about each command                                                                                                   | [Task names need explicit contracts](concepts/task-interface-contracts.md)                  |
-| Where files go in a repository                                                                                                   | [A structure for agent-facing repositories](pages/agent-facing-repository-structure.md)     |
-| Skills versus profiles (custom agents) versus tools                                                                              | [Skills, profiles, and tools have different jobs](concepts/skills-profiles-and-tools.md)    |
-| When to add a skill, where Copilot finds skills, candidates                                                                      | [Choose and add skills](pages/useful-skills.md)                                             |
-| Domain, decisions, and ADRs                                                                                                      | [Furnish repositories with context for agents](pages/repository-context-for-agents.md)      |
-| The full security checklist, sensitive data, and destinations                                                                    | [Agent data-flow checklist](pages/agent-data-flow-checklist.md)                             |
-| Local agent settings: Copilot CLI permissions, credentials, boundaries                                                           | [Secure a local coding agent](pages/local-agent-security.md)                                |
-| Copilot's local sandbox and how to verify it                                                                                     | [Sandbox a local coding agent](pages/local-agent-sandboxing.md)                             |
-| Copilot cloud agent protections and settings                                                                                     | [Secure the Copilot cloud agent](pages/cloud-agent-security.md)                             |
-| Prompt injection                                                                                                                 | [Prompt injection in coding-agent workflows](pages/prompt-injection-coding-agents.md)       |
-| What Copilot sends, keeps, and trains on                                                                                         | [Inference, retention, and training are separate](concepts/inference-retention-training.md) |
-| Instructions versus enforced controls                                                                                            | [Instructions are not enforced controls](concepts/instructions-vs-controls.md)              |
-| Worktrees versus sandboxes                                                                                                       | [A worktree is not a sandbox](concepts/worktrees-not-sandboxes.md)                          |
-| Where MCP servers run and send data                                                                                              | [Local MCP does not mean local-only data](concepts/local-and-remote-mcp.md)                 |
-| Secrets in tool output                                                                                                           | [Secrets can leak through tool output](concepts/secrets-in-tool-output.md)                  |
-| Hallucinated and malicious dependencies                                                                                          | [Invented package names can be real attacks](concepts/hallucinated-dependencies.md)         |
-| The model requests; the harness acts                                                                                             | [The model requests; the harness acts](concepts/tool-call-loop.md)                          |
-| Session history versus context                                                                                                   | [Session history is not active context](concepts/session-history-vs-context.md)             |
-| How Copilot charges, model tiers, the cache, session limits                                                                      | [Choose a model and control cost](pages/choose-a-model-and-control-cost.md)                 |
+| Write the task, hand it to Copilot, steer it, verify it, second approver                                                         | [Define, steer, and verify a task](../pages/define-and-verify-tasks.md)                        |
+| The record: authorship, evidence on the PR, where records live, why corrections go on the PR, the agent's explanation is a claim | [Traceability](../pages/traceability.md)                                                       |
+| Judging tests: one per requirement, see it fail, read them                                                                       | [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md)                     |
+| Repository instructions: `AGENTS.md`, which Copilot features read which file, path-specific files, other agents' support         | [Write repository instructions in AGENTS.md](../pages/repository-instructions.md)              |
+| Loading context on demand                                                                                                        | [Load context through focused entrypoints](../concepts/progressive-disclosure.md)              |
+| Listing commands for the agent, task runners, `copilot-setup-steps.yml`                                                          | [Let the agent run your repository's commands](../pages/agent-tool-delegation.md)              |
+| What to say about each command                                                                                                   | [Task names need explicit contracts](../concepts/task-interface-contracts.md)                  |
+| Where files go in a repository                                                                                                   | [A structure for agent-facing repositories](../pages/agent-facing-repository-structure.md)     |
+| Skills versus profiles (custom agents) versus tools                                                                              | [Skills, profiles, and tools have different jobs](../concepts/skills-profiles-and-tools.md)    |
+| When to add a skill, where Copilot finds skills, candidates                                                                      | [Choose and add skills](../pages/useful-skills.md)                                             |
+| Domain, decisions, and ADRs                                                                                                      | [Furnish repositories with context for agents](../pages/repository-context-for-agents.md)      |
+| The full security checklist, sensitive data, and destinations                                                                    | [Agent data-flow checklist](../pages/agent-data-flow-checklist.md)                             |
+| Local agent settings: Copilot CLI permissions, credentials, boundaries                                                           | [Secure a local coding agent](../pages/local-agent-security.md)                                |
+| Copilot's local sandbox and how to verify it                                                                                     | [Sandbox a local coding agent](../pages/local-agent-sandboxing.md)                             |
+| Copilot cloud agent protections and settings                                                                                     | [Secure the Copilot cloud agent](../pages/cloud-agent-security.md)                             |
+| Prompt injection                                                                                                                 | [Prompt injection in coding-agent workflows](../pages/prompt-injection-coding-agents.md)       |
+| What Copilot sends, keeps, and trains on                                                                                         | [Inference, retention, and training are separate](../concepts/inference-retention-training.md) |
+| Instructions versus enforced controls                                                                                            | [Instructions are not enforced controls](../concepts/instructions-vs-controls.md)              |
+| Worktrees versus sandboxes                                                                                                       | [A worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md)                          |
+| Where MCP servers run and send data                                                                                              | [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md)                 |
+| Secrets in tool output                                                                                                           | [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md)                  |
+| Hallucinated and malicious dependencies                                                                                          | [Invented package names can be real attacks](../concepts/hallucinated-dependencies.md)         |
+| The model requests; the harness acts                                                                                             | [The model requests; the harness acts](../concepts/tool-call-loop.md)                          |
+| Session history versus context                                                                                                   | [Session history is not active context](../concepts/session-history-vs-context.md)             |
+| How Copilot charges, model tiers, the cache, session limits                                                                      | [Choose a model and control cost](../pages/choose-a-model-and-control-cost.md)                 |
 
 ## Writing a slide
 
-Keep the takeaway and a small visual or example understandable on their own. Link to the canonical concept rather than duplicating its full explanation. Keep essential qualifications, and check a slide against its concept when either changes; follow the [freshness guidance](#keeping-content-current). Add it to the [slide index](slides/README.md) and the relevant [goal navigation](README.md).
+Keep the takeaway and a small visual or example understandable on their own. Link to the canonical concept rather than duplicating its full explanation. Keep essential qualifications, and check a slide against its concept when either changes; follow the [freshness guidance](#keeping-content-current). Add it to the [slide index](../slides/README.md) and the relevant [goal navigation](../README.md).
 
 ## Completeness status
 
@@ -142,7 +142,7 @@ For time-sensitive claims, such as what a Copilot feature does or what it costs,
 checked: 2026-11-15
 ```
 
-`checked` is the oldest date on which the page's dated facts were verified, in a change to the page. If you re-verify only some of them, leave it unchanged. Do not write "Checked …" dates in the text; `just style` flags them, and the website shows the field under each page's title. List the sources you checked in the page's Sources section. Record a version where it helps readers judge whether advice applies. Git history already shows when a page last changed, so pages carry no separate "updated" date. Follow [the source conventions](sources/README.md) for provenance.
+`checked` is the oldest date on which the page's dated facts were verified, in a change to the page. If you re-verify only some of them, leave it unchanged. Do not write "Checked …" dates in the text; `just style` flags them, and the website shows the field under each page's title. List the sources you checked in the page's Sources section. Record a version where it helps readers judge whether advice applies. Git history already shows when a page last changed, so pages carry no separate "updated" date. Follow [the source conventions](../sources/README.md) for provenance.
 
 Some pages hold figures that change month to month, such as prices, allowances, and model names. Mark such a page in its front matter, and list the primary sources its figures come from:
 
@@ -154,11 +154,11 @@ check-against:
 
 The [daily review](#daily-reviews) checks marked pages against their sources before anything else, then re-checks one other dated page, in rotation, so every page with a `checked` date is re-verified about every three weeks. It moves the page's `checked` date only when it has compared every listed source and updated the page. A run that finds nothing changed records that in its findings and leaves the page alone, so a page may have been checked more recently than its date says. Each source's domain must be on the workflow's network allowlist; `just style` fails if it is not, or if `recheck` has no sources. Keep the changing figures in one dated section, so checking them is a comparison rather than new research, and leave the rest of the page general enough not to date.
 
-Keep edit-time review focused on the affected material and directly dependent guidance, including concepts. Treat a whole-wiki review as a separate periodic task, using [the wiki-review skill](.agents/skills/wiki-review/SKILL.md), not a prerequisite for every change.
+Keep edit-time review focused on the affected material and directly dependent guidance, including concepts. Treat a whole-wiki review as a separate periodic task, using [the wiki-review skill](../.agents/skills/wiki-review/SKILL.md), not a prerequisite for every change.
 
 ## Daily reviews
 
-The [daily wiki review](.github/workflows/daily-wiki-review.md) uses [GitHub Agentic Workflows](https://github.github.com/gh-aw/) and Copilot to propose small content improvements. It runs daily at a compiler-selected UTC time or manually from Actions, only on the default branch. An open PR with the `[wiki-review]` title prefix pauses further reviews until it is merged or closed. The agent also checks prior review PRs; duplicate detection is best-effort, not an exactly-once guarantee.
+The [daily wiki review](../.github/workflows/daily-wiki-review.md) uses [GitHub Agentic Workflows](https://github.github.com/gh-aw/) and Copilot to propose small content improvements. It runs daily at a compiler-selected UTC time or manually from Actions, only on the default branch. An open PR with the `[wiki-review]` title prefix pauses further reviews until it is merged or closed. The agent also checks prior review PRs; duplicate detection is best-effort, not an exactly-once guarantee.
 
 Each run re-checks the dated page checked longest ago, and remembers what it checked in [gh-aw cache-memory](https://github.github.com/gh-aw/reference/cache-memory/), at `/tmp/gh-aw/cache-memory/rotation.json`. The file holds only page paths, dates, source URLs, and results. A run that finds nothing new updates only that file, so it opens no pull request. Cache-memory lasts 7 days without a run; if it expires, the rotation restarts from the pages' `checked` dates. A source on a domain outside the workflow's network allowlist is recorded as unavailable.
 

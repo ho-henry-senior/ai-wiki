@@ -56,12 +56,19 @@ test("sends links to files outside the site to GitHub", () => {
     "https://github.com/ho-henry-senior/ai-wiki/blob/main/AGENTS.md",
   );
   assert.equal(
-    rewriteLink("../../../STYLE.md", "./.agents/skills/wiki-review/SKILL.md"),
-    "https://github.com/ho-henry-senior/ai-wiki/blob/main/STYLE.md",
+    rewriteLink("../../../maintainers/STYLE.md", "./.agents/skills/wiki-review/SKILL.md"),
+    "https://github.com/ho-henry-senior/ai-wiki/blob/main/maintainers/STYLE.md",
   );
   assert.equal(
-    rewriteLink("../MAINTAINING.md#who-owns-what", "./pages/security.md"),
-    "https://github.com/ho-henry-senior/ai-wiki/blob/main/MAINTAINING.md#who-owns-what",
+    rewriteLink("../maintainers/MAINTAINING.md#who-owns-what", "./pages/security.md"),
+    "https://github.com/ho-henry-senior/ai-wiki/blob/main/maintainers/MAINTAINING.md#who-owns-what",
+  );
+});
+
+test("excludes maintainer documentation from website links", () => {
+  assert.equal(
+    rewriteLink("../maintainers/README.md", "./pages/security.md"),
+    "https://github.com/ho-henry-senior/ai-wiki/blob/main/maintainers/README.md",
   );
 });
 

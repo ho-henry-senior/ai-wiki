@@ -2,7 +2,7 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-// Checks authored pages against STYLE.md: length ceilings, hedge words, and
+// Checks authored pages against maintainers/STYLE.md: length ceilings, hedge words, and
 // sentences repeated across pages. Also checks that pages marked `recheck`
 // list sources the daily review can fetch. Rules are read from STYLE.md itself, so
 // they live in one place. Reports warnings; `--strict` makes them fail.
@@ -258,7 +258,7 @@ async function markdownFiles(rootDir, directory) {
 
 export async function checkStyle(rootDir = root) {
   const rules = parseRules(
-    await readFile(path.join(rootDir, "STYLE.md"), "utf8"),
+    await readFile(path.join(rootDir, "maintainers/STYLE.md"), "utf8"),
   );
   const files = [
     ...(await markdownFiles(rootDir, "pages")),
@@ -321,7 +321,7 @@ if (
     for (const warning of warnings) console.log(`warning: ${warning}`);
     console.log(
       warnings.length
-        ? `Style: ${warnings.length} warning(s). See STYLE.md and MAINTAINING.md#who-owns-what.`
+        ? `Style: ${warnings.length} warning(s). See maintainers/STYLE.md and maintainers/MAINTAINING.md#who-owns-what.`
         : "Style: no warnings.",
     );
     if (strict && warnings.length) process.exitCode = 1;
