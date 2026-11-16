@@ -70,15 +70,15 @@ These lists group directly linked pages, concepts, slides, and source records by
 - [Inference, retention, and training are separate](../concepts/inference-retention-training.md) — Sending data for a response, keeping it, and training on it are separate questions; for Copilot, the answers depend on your plan and which feature you use. (developing)
 - [Secrets can leak through tool output](../concepts/secrets-in-tool-output.md) — Anything a command prints goes to the model and into session history, so keep secrets out of output and out of reach; if one leaks, rotate it. (established)
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — The full checklist for tracing sensitive data through an agent setup and checking the controls at each destination and action, with Copilot detail. (established)
-- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Treat instructions in issues, files, web pages, and tool output as data, not orders, and limit what the agent can do if it follows them anyway. (established)
+- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Why a model can follow instructions hidden in issues, files, web pages, and tool output, and how to limit what a Copilot agent can do if it does. (established)
 - [Instructions are not enforced controls](../concepts/instructions-vs-controls.md) — Instructions guide model behavior; independently enforced permissions restrict actions even when the model chooses incorrectly. (established)
 - [A worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md) — Git branches and worktrees separate changes, while a security sandbox restricts what executing code can access or do. (established)
-- [Secure a local coding agent](local-agent-security.md) — Turn on the sandbox, restrict which tools, paths, and URLs Copilot can use without asking, and keep credentials out of reach when an agent runs on your computer. (established)
+- [Secure a local coding agent](local-agent-security.md) — Why a local agent's commands are as powerful as you are, and how to limit them in Copilot with the sandbox, tool and URL rules, and credentials kept out of reach. (established)
 - [Secure the Copilot cloud agent](cloud-agent-security.md) — Know what GitHub already enforces for the Copilot cloud agent, and set the rest yourself; secrets, firewall, MCP servers, workflow approval, and who can start it. (established)
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) — An MCP server's location determines where code runs, but does not guarantee where the data it handles stays. (established)
 - [Alignment](alignment.md) — Get results that match what you intended; define the work, give the agent context and checks, steer it, and verify the result. (established)
-- [Sandbox a local coding agent](local-agent-sandboxing.md) — Turn on Copilot's local sandbox, restrict files, network, and credentials, and prove the limits are enforced with harmless test files. (developing)
+- [Sandbox a local coding agent](local-agent-sandboxing.md) — Turn on Copilot's local sandbox so the operating system, not the model, limits what commands can reach; then prove the limits hold with harmless test files. (developing)
 
 #### Explore further
 
@@ -103,9 +103,9 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 - [Choose a model and control cost](choose-a-model-and-control-cost.md) — How Copilot charges for tokens, which model tier to use for which task, and how to keep a session's cost down and capped. (developing)
 - [Furnish repositories with context for agents](repository-context-for-agents.md) — When an agent gets something wrong because it lacked a fact about your system, write that fact down once, near the code it concerns, and link it from AGENTS.md. (developing)
-- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Treat instructions in issues, files, web pages, and tool output as data, not orders, and limit what the agent can do if it follows them anyway. (established)
-- [Sandbox a local coding agent](local-agent-sandboxing.md) — Turn on Copilot's local sandbox, restrict files, network, and credentials, and prove the limits are enforced with harmless test files. (developing)
-- [Secure a local coding agent](local-agent-security.md) — Turn on the sandbox, restrict which tools, paths, and URLs Copilot can use without asking, and keep credentials out of reach when an agent runs on your computer. (established)
+- [Prompt injection in coding-agent workflows](prompt-injection-coding-agents.md) — Why a model can follow instructions hidden in issues, files, web pages, and tool output, and how to limit what a Copilot agent can do if it does. (established)
+- [Sandbox a local coding agent](local-agent-sandboxing.md) — Turn on Copilot's local sandbox so the operating system, not the model, limits what commands can reach; then prove the limits hold with harmless test files. (developing)
+- [Secure a local coding agent](local-agent-security.md) — Why a local agent's commands are as powerful as you are, and how to limit them in Copilot with the sandbox, tool and URL rules, and credentials kept out of reach. (established)
 - [Secure the Copilot cloud agent](cloud-agent-security.md) — Know what GitHub already enforces for the Copilot cloud agent, and set the rest yourself; secrets, firewall, MCP servers, workflow approval, and who can start it. (established)
 
 #### overview
