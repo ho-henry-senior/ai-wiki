@@ -10,8 +10,8 @@ Write so a developer understands what matters and why, and can act on it, on one
 4. **State the advice in full.** A link adds depth; it never replaces the advice. A section that is one sentence and a link is not finished.
 5. **Say it once.** Each core idea has one owner page, listed in [who owns what](MAINTAINING.md#who-owns-what). Elsewhere, summarize it in one line and link to the owner. Do not restate it.
 6. **Cut hedges.** Avoid "appropriate", "relevant", "useful", "consider", "where practical", "materially", and "proportionate" unless the sentence is wrong without them. Give one specific caveat instead of several vague ones.
-7. **Use plain words and short sentences.** Prefer the active voice and "you". One idea per sentence.
-8. **Decide what to do with long pages.** A page over about 500 words for an overview or concept, or about 900 for a guide or pattern, needs one decision, taken in this order: replace restated material with a link to its owner; split the page if it answers two separate questions; otherwise shorten it, or keep it whole and give the reason as `long-because` in its front matter. Shortening never cuts a reason or an important caveat. Checklists, references, and case studies have no ceiling.
+7. **Use plain words and short sentences without sacrificing precision.** Prefer the active voice and "you". One idea per sentence. State when a claim depends on the agent, permissions, settings, or environment. Never turn conditional behavior into a universal claim to save words.
+8. **Decide what to do with long pages.** A page over about 500 words for an overview or concept, or about 900 for a guide or pattern, needs one decision, taken in this order: replace restated material with a link to its owner; split the page if it answers two separate questions; otherwise shorten it, or keep it whole and give the reason as `long-because` in its front matter. Shortening never cuts a reason, an important caveat, or a qualification needed for accuracy. Checklists, references, and case studies have no ceiling.
 
 ## What each page does
 
@@ -49,6 +49,7 @@ After:
 Run `just style` to find pages over their ceiling, hedge words, and sentences repeated across pages. Then read the page once as a new reader and confirm:
 
 - you could say why each recommendation matters, from the page alone;
+- claims about model or agent behavior state their scope and retain qualifications that change their meaning;
 - every action has a Copilot or GitHub example;
 - no section depends on a link for its main point;
 - nothing on the page repeats another page; and

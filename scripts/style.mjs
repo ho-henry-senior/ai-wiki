@@ -16,6 +16,8 @@ const excluded = new Set([
 ]);
 // Types that STYLE.md gives no ceiling.
 const unlimited = new Set(["reference", "case-study"]);
+// STYLE.md gives ceilings as "about N"; allow that much leeway.
+const about = 1.1;
 const workflow = ".github/workflows/daily-wiki-review.md";
 const stopwords = new Set(
   "a an and are as at be by can do does for from if in is it its not of on or that the their them they this to when which with you your".split(
@@ -266,7 +268,7 @@ export async function checkStyle(rootDir = root) {
       unlimited.has(page.kind) || page.longBecause
         ? undefined
         : rules.targets[page.kind];
-    if (ceiling && words > ceiling)
+    if (ceiling && words > ceiling * about)
       warnings.push(
         `${page.path}: ${words} words, over the ceiling of about ${ceiling} for ${page.kind}; link restated material, split it, shorten it, or give a long-because reason`,
       );
