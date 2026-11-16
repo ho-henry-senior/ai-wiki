@@ -17,7 +17,7 @@ import {
 
 const style = [
   '6. **Cut hedges.** Avoid "appropriate", "where practical", and "useful" unless needed.',
-  "8. **Keep pages short.** Aim for about 20 words for an overview or concept and about 40 for a guide or pattern.",
+  "8. **Decide what to do with long pages.** A page over about 20 words for an overview or concept, or about 40 for a guide or pattern, needs one decision.",
 ].join("\n");
 
 async function fixture(t, files) {
@@ -34,7 +34,7 @@ async function fixture(t, files) {
 const page = (type, body) =>
   `---\ntype: ${type}\nsummary: S.\n---\n\n# Title\n\n${body}\n`;
 
-test("reads hedge words and length targets from STYLE.md", () => {
+test("reads hedge words and length ceilings from STYLE.md", () => {
   const rules = parseRules(style);
   assert.deepEqual(rules.hedges, ["appropriate", "where practical", "useful"]);
   assert.equal(rules.targets.overview, 20);
@@ -101,12 +101,17 @@ test("reports long pages, hedges, and duplicates; exempts references", async (t)
   const root = await fixture(t, {
     "pages/long-guide.md": page("guide", `${long}.`),
     "pages/long-reference.md": page("reference", `${long}.`),
+    "pages/long-because.md": `---\ntype: guide\nsummary: S.\nlong-because: one setup procedure\n---\n\n# Title\n\n${long}.\n`,
+    "pages/long-no-reason.md": `---\ntype: guide\nsummary: S.\nlong-because:\n---\n\n# Title\n\n${long}.\n`,
     "pages/hedgy.md": page("guide", "Use useful checks."),
     "concepts/README.md": page("reference", "Use useful checks."),
   });
   const warnings = await checkStyle(root);
   assert.ok(warnings.some((w) => w.startsWith("pages/long-guide.md: 6")));
   assert.ok(!warnings.some((w) => w.startsWith("pages/long-reference.md")));
+  // These pages share text with long-guide, so check the length warning only.
+  assert.ok(!warnings.some((w) => w.startsWith("pages/long-because.md: 6")));
+  assert.ok(warnings.some((w) => w.startsWith("pages/long-no-reason.md: 6")));
   assert.ok(warnings.includes("pages/hedgy.md: hedge words: useful"));
   assert.ok(!warnings.some((w) => w.startsWith("concepts/README.md")));
 });

@@ -2,7 +2,7 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-// Checks authored pages against STYLE.md: length targets, hedge words, and
+// Checks authored pages against STYLE.md: length ceilings, hedge words, and
 // sentences repeated across pages. Also checks that pages marked `recheck`
 // list sources the daily review can fetch. Rules are read from STYLE.md itself, so
 // they live in one place. Reports warnings; `--strict` makes them fail.
@@ -14,9 +14,8 @@ const excluded = new Set([
   "pages/glossary.md",
   "concepts/README.md",
 ]);
-// Types that STYLE.md lets run longer when every line earns its place.
+// Types that STYLE.md gives no ceiling.
 const unlimited = new Set(["reference", "case-study"]);
-const tolerance = 1.2;
 const workflow = ".github/workflows/daily-wiki-review.md";
 const stopwords = new Set(
   "a an and are as at be by can do does for from if in is it its not of on or that the their them they this to when which with you your".split(
@@ -30,7 +29,7 @@ export function parseRules(styleText) {
     .find((line) => /Cut hedges/.test(line));
   const lengthLine = styleText
     .split("\n")
-    .find((line) => /Keep pages short/.test(line));
+    .find((line) => /long pages/.test(line));
   if (!hedgeLine || !lengthLine)
     throw new Error("STYLE.md: could not find the hedge or length rule");
   const hedges = [...hedgeLine.matchAll(/"([^"]+)"/g)].map((m) => m[1]);
@@ -38,7 +37,7 @@ export function parseRules(styleText) {
     Number(m[1]),
   );
   if (!hedges.length || numbers.length < 2)
-    throw new Error("STYLE.md: could not read hedge words or length targets");
+    throw new Error("STYLE.md: could not read hedge words or length ceilings");
   const [short, long] = numbers;
   return {
     hedges,
@@ -252,17 +251,24 @@ export async function checkStyle(rootDir = root) {
     const text = await readFile(path.join(rootDir, file), "utf8");
     const { meta } = frontMatter(text);
     const kind = file.startsWith("concepts/") ? "concept" : meta.type;
-    pages.push({ path: file, kind, prose: prose(text) });
+    pages.push({
+      path: file,
+      kind,
+      prose: prose(text),
+      longBecause:
+        typeof meta["long-because"] === "string" && meta["long-because"],
+    });
     warnings.push(...checkRecheck(file, meta, domains));
   }
   for (const page of pages) {
     const words = countWords(page.prose);
-    const target = unlimited.has(page.kind)
-      ? undefined
-      : rules.targets[page.kind];
-    if (target && words > target * tolerance)
+    const ceiling =
+      unlimited.has(page.kind) || page.longBecause
+        ? undefined
+        : rules.targets[page.kind];
+    if (ceiling && words > ceiling)
       warnings.push(
-        `${page.path}: ${words} words; target for ${page.kind} is about ${target}`,
+        `${page.path}: ${words} words, over the ceiling of about ${ceiling} for ${page.kind}; link restated material, split it, shorten it, or give a long-because reason`,
       );
     const hedges = findHedges(page.prose, rules.hedges);
     if (hedges.length)

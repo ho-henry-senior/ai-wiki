@@ -2,9 +2,9 @@
 
 Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just --list` to discover tasks, `just setup` to install the pinned development tools, then `just verify` to test and check the sitemap, Markdown formatting, and internal links, including heading anchors. Checks include `concepts/`, `slides/`, repository skills under `.agents/skills/`, and workflow Markdown. External URLs and raw material under `data/` are excluded.
 
-`just style` fails when pages in `pages/` and `concepts/` don't meet [the writing standard](STYLE.md). It reads the hedge words and length targets from `STYLE.md` itself, so change the rules there. It reports:
+`just style` fails when pages in `pages/` and `concepts/` don't meet [the writing standard](STYLE.md). It reads the hedge words and length ceilings from `STYLE.md` itself, so change the rules there. It reports:
 
-- pages more than 20% over their length target, counting prose only (not code, tables, or source lists). References and case studies have no target;
+- pages over their length ceiling, counting prose only (not code, tables, or source lists). References, case studies, and pages that give a `long-because` reason have no ceiling;
 - hedge words from rule 6; and
 - sentences that closely repeat a sentence on another page, which usually means advice should move to its [owner](#who-owns-what). Overviews, headings, "See …" pointers, and "Checked …" notes are skipped.
 
