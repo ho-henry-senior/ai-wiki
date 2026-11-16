@@ -2,7 +2,7 @@
   "name": "ai-wiki-site",
   "private": true,
   "type": "module",
-  "description": "Builds the wiki as a website. Kept separate so these packages are installed only for the website. See MAINTAINING.md#website.",
+  "description": "Builds the wiki as a website. Kept separate so these packages are installed only for the website. See maintainers/MAINTAINING.md#website.",
   "engines": {
     "node": ">=22.16"
   },
