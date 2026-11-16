@@ -6,6 +6,10 @@ lane: guidance
 goal: security
 order: 2
 checked: 2026-11-15
+surfaces:
+  - editor
+  - cli
+  - app
 ---
 
 # Sandbox a local coding agent

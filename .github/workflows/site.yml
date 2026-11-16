@@ -116,6 +116,21 @@ jobs:
             echo "The cloud agent page has no contents list linking to its sections." >&2
             exit 1
           }
+      - name: Check pages link to their Copilot surfaces
+        run: |
+          grep -q 'href="/ai-wiki/surfaces/cloud-agent/"' _site/pages/cloud-agent-security/index.html || {
+            echo "The cloud agent page does not link to its surface." >&2
+            grep -o 'app-surfaces.\{0,300\}' _site/pages/cloud-agent-security/index.html >&2 || true
+            exit 1
+          }
+          grep -q 'Secure the Copilot cloud agent' _site/surfaces/cloud-agent/index.html || {
+            echo "The cloud agent surface page does not list the cloud agent page." >&2
+            exit 1
+          }
+          grep -q 'href="/ai-wiki/surfaces/cli/"' _site/surfaces/index.html || {
+            echo "The surfaces index does not link to the CLI surface." >&2
+            exit 1
+          }
       - name: Check diagrams are set up to render
         run: |
           page=_site/pages/agent-role-boundaries/index.html

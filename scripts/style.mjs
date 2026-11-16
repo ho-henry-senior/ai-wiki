@@ -1,6 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { surfaces } from "../site/surfaces.mjs";
 
 // Checks authored pages against maintainers/STYLE.md: length ceilings, hedge words, and
 // sentences repeated across pages. Also checks that pages marked `recheck`
@@ -153,6 +154,19 @@ export function checkRecheck(file, meta, domains) {
   return warnings;
 }
 
+// A page's `surfaces` tags must be a list of the surfaces in site/surfaces.mjs.
+export function checkSurfaces(file, meta, known = Object.keys(surfaces)) {
+  if (meta.surfaces === undefined) return [];
+  if (!Array.isArray(meta.surfaces) || !meta.surfaces.length)
+    return [`${file}: surfaces must be a list, one surface per line`];
+  return meta.surfaces
+    .filter((surface) => !known.includes(surface))
+    .map(
+      (surface) =>
+        `${file}: unknown surface "${surface}"; use one of ${known.join(", ")}, or add it to site/surfaces.mjs`,
+    );
+}
+
 // The text a reader reads as prose: no front matter, code, tables, HTML
 // comments, link targets, or source lists.
 export function prose(text) {
@@ -287,6 +301,7 @@ export async function checkStyle(rootDir = root) {
     });
     warnings.push(...checkRecheck(file, meta, domains));
     warnings.push(...checkChecked(file, meta, prose(text)));
+    warnings.push(...checkSurfaces(file, meta));
   }
   for (const page of pages) {
     const words = countWords(page.prose);

@@ -3,8 +3,9 @@
     which provides the macros used here. -#}
 {% extends "layouts/base.njk" %}
 
-{#- Under the title: the page's completeness status and when its facts were
-    checked, then a contents list for longer pages. A missing status means
+{#- Under the title: the page's completeness status, when its facts were
+    checked, and the Copilot surfaces it covers, then a contents list for
+    longer pages. A missing status means
     unassessed, so it shows nothing. -#}
 {%- macro pageDetails() %}
   {%- set statusColours = { established: "green", developing: "yellow", stub: "grey" } %}
@@ -16,6 +17,13 @@
     {%- if checked %}
     <span class="app-checked">Facts checked {{ checked | govukDate }}</span>
     {%- endif %}
+  </p>
+  {%- endif %}
+  {%- if surfaces | length %}
+  <p class="govuk-body-s app-surfaces">Applies to:
+    {%- for key in surfaces %}
+    <a class="govuk-link" href="{{ key | surfaceUrl }}">{{ surfaceInfo[key].title if surfaceInfo[key] else key }}</a>{{ "," if not loop.last }}
+    {%- endfor %}
   </p>
   {%- endif %}
   {%- set sections = content | contents %}
