@@ -100,6 +100,10 @@ test("reports long pages, hedges, and duplicates; exempts references", async (t)
   const long = Array.from({ length: 60 }, (_, i) => `word${i}`).join(" ");
   const root = await fixture(t, {
     "pages/long-guide.md": page("guide", `${long}.`),
+    "pages/about-guide.md": page(
+      "guide",
+      Array.from({ length: 41 }, (_, i) => `term${i}`).join(" ") + ".",
+    ),
     "pages/long-reference.md": page("reference", `${long}.`),
     "pages/long-because.md": `---\ntype: guide\nsummary: S.\nlong-because: one setup procedure\n---\n\n# Title\n\n${long}.\n`,
     "pages/long-no-reason.md": `---\ntype: guide\nsummary: S.\nlong-because:\n---\n\n# Title\n\n${long}.\n`,
@@ -108,6 +112,8 @@ test("reports long pages, hedges, and duplicates; exempts references", async (t)
   });
   const warnings = await checkStyle(root);
   assert.ok(warnings.some((w) => w.startsWith("pages/long-guide.md: 6")));
+  // "About 40" allows 10% leeway: 42 words (with the title) is not over.
+  assert.ok(!warnings.some((w) => w.startsWith("pages/about-guide.md")));
   assert.ok(!warnings.some((w) => w.startsWith("pages/long-reference.md")));
   // These pages share text with long-guide, so check the length warning only.
   assert.ok(!warnings.some((w) => w.startsWith("pages/long-because.md: 6")));

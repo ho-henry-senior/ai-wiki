@@ -4,7 +4,7 @@ Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just 
 
 `just style` fails when pages in `pages/` and `concepts/` don't meet [the writing standard](STYLE.md). It reads the hedge words and length ceilings from `STYLE.md` itself, so change the rules there. It reports:
 
-- pages over their length ceiling, counting prose only (not code, tables, or source lists). References, case studies, and pages that give a `long-because` reason have no ceiling;
+- pages more than 10% over their length ceiling (the rule says "about"), counting prose only (not code, tables, or source lists). References, case studies, and pages that give a `long-because` reason have no ceiling;
 - hedge words from rule 6; and
 - sentences that closely repeat a sentence on another page, which usually means advice should move to its [owner](#who-owns-what). Overviews, headings, "See …" pointers, and "Checked …" notes are skipped.
 
