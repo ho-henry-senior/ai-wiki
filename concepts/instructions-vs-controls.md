@@ -10,7 +10,7 @@ Asking an agent to avoid an action differs from preventing that action. Instruct
 
 For example, "use the database read-only" asks the model to behave. A database identity without write privileges prevents writes through that identity even if the agent requests one.
 
-In Copilot, writing "never push to `main`" in `AGENTS.md` is an instruction. Starting Copilot CLI with `--deny-tool='shell(git push)'`, protecting the branch, or leaving `git` out of a custom agent's `tools` list is a control.
+In Copilot, writing "never push to `main`" in `AGENTS.md` is an instruction. Starting Copilot CLI with `--deny-tool='shell(git push)'`, protecting the branch, or leaving `execute` out of a custom agent's `tools` list, so it cannot run shell commands at all, is a control.
 
 ## Use layers
 
