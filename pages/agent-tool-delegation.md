@@ -27,7 +27,7 @@ Point to commands; do not copy their implementation into instructions, where it 
 
 ## Use what the repository already has
 
-If package scripts or a Makefile already work, list those. Add a task runner only when commands are scattered or hard to invoke. This wiki uses [Just](https://just.systems/), and `just --list` shows each recipe with its comment:
+If package scripts or a Makefile already work, list those. Add a task runner only when commands are scattered or hard to invoke. This wiki uses [Just](https://just.systems/), and `just --list` shows each recipe with its comment. For a worked example of **single-test execution, composition, and final gates**, see [give agents a command interface with Just](justfile-agent-workflows.md):
 
 ```just
 # Test and check the sitemap, Markdown formatting, and local links without modifying files.
