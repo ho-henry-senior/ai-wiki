@@ -19,6 +19,7 @@ Articles, applied patterns, reference catalogs, and checklists for AI-assisted s
 - [A structure for agent-facing repositories](agent-facing-repository-structure.md) — a map of where instructions, skills, commands, and Copilot files go, linking to each page.
 - [Write repository instructions in AGENTS.md](repository-instructions.md) — what to put in it, which Copilot features and other agents read it, and how to fill Copilot's gaps.
 - [Let the agent run your repository's commands](agent-tool-delegation.md) — list commands in `AGENTS.md`, examples of what to list, and setting up the Copilot cloud agent to run them.
+- [Give agents a command interface with Just](justfile-agent-workflows.md) — advertise recipes, run single tests, compose checks, and define handoff gates.
 - [Choose and add skills](useful-skills.md) — when a skill is worth adding, where Copilot finds skills, and candidates to evaluate.
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — a perspective on familiar responsibilities and handoffs in an agent-assisted workflow.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.

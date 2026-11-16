@@ -6,7 +6,7 @@ Practical guidance for developers using AI agents, mostly GitHub Copilot.
 
 Three changes worth making first, in this order. Each is small enough to try today.
 
-1. **Tell the agent about your repository.** It can read your code but not your team's rules, so add an `AGENTS.md` with those rules and the commands it should run. See [write repository instructions in AGENTS.md](pages/repository-instructions.md), then [let the agent run your repository's commands](pages/agent-tool-delegation.md).
+1. **Show the agent how to work in your repository.** Give it named commands for focused tests and final checks (for example, in a `justfile`), then tell it when to use them in `AGENTS.md`. That saves time and tokens otherwise spent discovering the workflow. See [give agents a command interface with Just](pages/justfile-agent-workflows.md) and [write repository instructions in AGENTS.md](pages/repository-instructions.md).
 2. **Write your next task down.** Where you leave a gap, the agent may guess. State the outcome, how you will know it is done, the checks, and what is out of scope; then steer the agent and check its work against what you wrote. See [define, steer, and verify a task](pages/define-and-verify-tasks.md).
 3. **Limit what the agent can do.** A mistake or an injected instruction does harm through the tools and access the agent has, and through changes it leaves for CI or other people to run, so limit those. Turn on the sandbox on your computer, or check the cloud agent's settings. See [security](pages/security.md).
 

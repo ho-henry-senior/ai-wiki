@@ -14,7 +14,7 @@ The model keeps nothing between requests, so each one resends the session's curr
 ## Core advice
 
 - **Clarify the work early.** A clear "Done when" list prevents the most expensive waste, a whole run spent on the wrong thing. [Define, steer, and verify a task](define-and-verify-tasks.md#write-the-task).
-- **Let tools do bounded work.** List the commands the agent should run, so it does not spend turns reconstructing them or approximate a check by reading code. [Let the agent run your repository's commands](agent-tool-delegation.md).
+- **Advertise commands and run focused checks.** Give the agent a discoverable interface for individual tests and a composed final gate, so it does not spend turns reconstructing commands or run the whole suite after every edit. [Give agents a command interface with Just](justfile-agent-workflows.md).
 - **Run focused checks first.** The test for the behavior being changed gives an answer in seconds and keeps output short; run the full check once, before handoff. [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
 - **Keep context small.** Instructions load with every request, so a long `AGENTS.md` costs on every turn. Keep it short and load detail only when a task needs it. [Load context through focused entrypoints](../concepts/progressive-disclosure.md).
 - **Match the model to the task.** Prices per token vary widely between models. Switching model mid-session means the next request cannot reuse the cache, so switch when a harder step is worth it, not by habit. Use Auto or a mid-tier model by default. [Choose a model and control cost](choose-a-model-and-control-cost.md).
@@ -24,7 +24,7 @@ Do not trade away [security](security.md) controls for speed. A faster run that 
 
 ## Try this first
 
-Add your focused test command and your full check command to `AGENTS.md`, saying what each covers and whether it changes files. On the next task, see whether Copilot runs them instead of guessing.
+Expose a command for one test file or case, plus a full verification gate, and list both in `AGENTS.md`. On the next task, see whether Copilot runs the focused command while editing and the full gate before handoff.
 
 ## Explore further
 
