@@ -3,8 +3,8 @@ type: reference
 summary: Instructions guide model behavior; independently enforced permissions restrict actions even when the model chooses incorrectly.
 status: established
 lane: guidance
-goal: concepts
-order: 8
+goal: security
+order: 21
 ---
 
 # Instructions are not enforced controls

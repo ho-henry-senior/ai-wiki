@@ -85,6 +85,15 @@ jobs:
             grep -oE '<nav[^>]*>|href="[^"]*"' _site/guidance/index.html | head -25 >&2
             exit 1
           }
+          # Concepts sit under the goal they serve, not in a group of their own.
+          if grep -q 'href="/ai-wiki/concepts/"' _site/guidance/index.html; then
+            echo "The Guidance sidebar still has a Concepts group." >&2
+            exit 1
+          fi
+          grep -q 'sub-navigation' _site/concepts/tests-are-evidence/index.html || {
+            echo "A concept page has no Guidance sidebar." >&2
+            exit 1
+          }
           grep -q 'href="/ai-wiki/guidance/"' _site/index.html || {
             echo "The top bar does not link to the Guidance lane." >&2
             exit 1

@@ -3,8 +3,8 @@ type: pattern
 summary: Describe each command's scope, cost, side effects, and whether failure blocks handoff; its name alone does not tell an agent what it does.
 status: established
 lane: guidance
-goal: concepts
-order: 5
+goal: economy
+order: 23
 ---
 
 # Task names need explicit contracts

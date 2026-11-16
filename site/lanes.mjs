@@ -1,4 +1,3 @@
-import { repoPath } from "../scripts/site-links.mjs";
 
 // The site's three lanes and the goals that group the Guidance lane. Each
 // page says where it belongs with front matter: `lane`, and for guidance,
@@ -9,7 +8,7 @@ export const lanes = {
     title: "Guidance",
     url: "/guidance/",
     description:
-      "What to do and why, grouped by goal. Each goal starts with an overview of what matters, then the guides that act on it.",
+      "What to do and why, grouped by goal. Each goal starts with an overview of what matters, then the guides that act on it and the ideas behind them.",
   },
   reference: {
     title: "Reference",
@@ -30,22 +29,19 @@ export const goals = {
   economy: "Economy",
   traceability: "Traceability",
   security: "Security",
-  concepts: "Concepts",
 };
 
 const homeKey = "Home";
 
-// Where a page sits in the navigation tree: guidance pages under their goal's
-// overview, overviews and the concepts index under Guidance, and other lanes'
-// pages directly under their lane. Pages with no lane keep the plugin's
+// Where a page sits in the navigation tree: guidance pages, including
+// concepts, under their goal's overview, overviews under Guidance, and other
+// lanes' pages directly under their lane. Pages with no lane keep the plugin's
 // defaults and appear in no lane's navigation.
 //
 // This replaces the plugin's computed navigation data, keeping its defaults
 // for pages with no lane.
 export const eleventyNavigation = {
   key: (data) => {
-    if (repoPath(data.page.inputPath) === "concepts/README.md")
-      return goals.concepts;
     if (data.homepage) return data.eleventyNavigation?.key || homeKey;
     return data.eleventyNavigation?.key || data.title;
   },
@@ -53,9 +49,7 @@ export const eleventyNavigation = {
     if (data.homepage) return false;
     if (!data.lane) return data.eleventyNavigation?.parent || homeKey;
     if (data.lane !== "guidance") return lanes[data.lane]?.title;
-    const input = repoPath(data.page.inputPath);
-    if (data.type === "overview" || input === "concepts/README.md")
-      return lanes.guidance.title;
+    if (data.type === "overview") return lanes.guidance.title;
     return goals[data.goal] || lanes.guidance.title;
   },
   order: (data) => data.order ?? data.eleventyNavigation?.order,
