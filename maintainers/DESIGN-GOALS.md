@@ -16,7 +16,7 @@ The wiki is primarily maintained by one contributor with AI assistance. Favor an
 
 Help readers improve these outcomes in AI-assisted work:
 
-- **Alignment:** Get results that match what you intended. Define the work, give the agent the context and checks it needs, steer it while it works, and verify the result. This task-level meaning complements the broader AI meaning in the [glossary](../pages/glossary.md#alignment).
+- **Alignment:** Agree on the problem before delegating the solution. Use agents to question requirements, expose assumptions and draft specifications for human review. Turn agreed requirements into tasks, give agents the context and checks they need, steer implementation and verify results against the agreement. This task-level meaning complements the broader AI meaning in the [glossary](../pages/glossary.md#alignment).
 - **Economy:** Achieve useful results with less time and fewer tokens, without sacrificing quality or security. Reduce rework, delegate repeatable tasks to deterministic tools, and make their interfaces clear.
 - **Traceability:** Leave a record someone else can follow later: what was asked, what the agent did, who directed and approved it, and the evidence behind the result. Record agent authorship honestly and keep corrections visible, for example by steering through issue and PR comments rather than private chat. An agent's explanation of its work is not a complete account of its reasoning. For public-sector work, this record is often an obligation, not just good practice. Alignment owns defining, steering, and verifying the work; Traceability owns the record of it.
 - **Security:** Protect sensitive information and limit unsafe actions in AI-assisted work. Identify risks, configure enforceable controls, and review integrations and generated changes.
@@ -29,7 +29,7 @@ To support those outcomes:
 
 - **Make guidance practical.** Include workflows, examples, concepts, and explanations that help readers apply AI to real work.
 - **Improve agent work in repositories.** Document ways to make repositories easier for agents to use, including tools, machine-readable instructions, and indexed project documentation that helps agents load only the context they need.
-- **Support spec-driven development.** Explore how agents can help build and refine specifications, turn them into tasks, and align implementation with requirements.
+- **Support spec-driven development.** Show how agents can challenge initial requests, surface unresolved decisions and draft specifications that humans review before agents turn agreed requirements into tasks and implement them.
 - **Cover security best practices.** Develop practical guidance for using agents and AI-enabled development tools securely.
 - **Make knowledge easy to navigate and reuse.** Keep focused concepts in small files, then use broader articles to synthesize and link related concepts. Maintain indexes and links as the primary discovery mechanism.
 - **Keep the wiki useful as the field changes.** Revise guidance as tools and practices evolve, and distinguish durable principles from details that depend on a particular tool or version.
