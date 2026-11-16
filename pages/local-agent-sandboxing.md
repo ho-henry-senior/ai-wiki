@@ -6,7 +6,7 @@ status: developing
 
 # Sandbox a local coding agent
 
-Every other limit on a local agent depends on something going right: the model following instructions, or you reading an approval prompt. The sandbox does not. It has the operating system restrict which files, network destinations, and credentials the commands Copilot runs can reach, so a command that reaches beyond what you allow fails, even when a mistake or an [injected instruction](prompt-injection-coding-agents.md) leads the model to run it.
+Instructions depend on the model following them, and approval prompts depend on you reading them. Copilot's tool, path, and URL rules are enforced whatever the model decides, but they match the commands Copilot is asked to run, not everything those commands go on to do. The sandbox works at a lower level: the operating system restricts which files, network destinations, and credentials those commands and the programs they start can reach. So an action beyond what you allow fails, even when a mistake or an [injected instruction](prompt-injection-coding-agents.md) leads the model to attempt it.
 
 ## Turn it on
 
@@ -20,13 +20,13 @@ Checked 15 November 2026 against GitHub's documentation on [local sandboxing](ht
 
 ## Prove it works
 
-A model that cannot do something and a model that chooses not to look the same in the conversation. Only an error from the system shows the sandbox is doing its job, so test it before you rely on it. Use harmless, made-up files only.
+A model that cannot do something and a model that chooses not to look the same in the conversation. An error from the system shows that the action you tested was blocked by an enforced limit; it says nothing about paths, hosts, or tools you did not test. So test each boundary you rely on, using harmless, made-up files only.
 
 1. Create a marker file inside the project and another in a temporary folder outside it.
 2. Ask Copilot to read both. Do not ask it to bypass anything, because you are testing the limit, not the model's willingness.
 3. Confirm that reading the outside file fails with a **permission error from the system**. A reply such as "I cannot access that file" is the model's choice, not evidence.
 4. Repeat for a harmless write outside the project, and for a connection to a host you control.
-5. Delete the files and note what was and was not blocked, so you know which settings to tighten.
+5. Delete the files and note what was and was not blocked. Anything you did not test is still unproven.
 
 ## What the sandbox may not cover
 
