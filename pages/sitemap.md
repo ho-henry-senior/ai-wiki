@@ -4,7 +4,7 @@ This map is generated from page metadata and the links curated in each outcome o
 
 ## Goal paths
 
-These lists group directly linked pages, concepts, slides, and source records by their place in each overview; follow the overview for the advice and context behind its links. A page or concept without a [completeness status](../MAINTAINING.md#completeness-status) is unassessed; status does not establish correctness or freshness.
+These lists group directly linked pages, concepts, slides, and source records by their place in each overview; follow the overview for the advice and context behind its links. A page or concept without a [completeness status](../maintainers/MAINTAINING.md#completeness-status) is unassessed; status does not establish correctness or freshness.
 
 ### [Alignment](alignment.md)
 
@@ -169,8 +169,8 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 ## Other entrypoints
 
 - [Homepage](../README.md)
-- [Design goals](../DESIGN-GOALS.md)
-- [Maintaining the wiki](../MAINTAINING.md)
+- [Design goals](../maintainers/DESIGN-GOALS.md)
+- [Maintaining the wiki](../maintainers/MAINTAINING.md)
 - [Authored pages index](README.md)
 - [Concept index](../concepts/README.md)
 - [Slides index](../slides/README.md)
