@@ -32,7 +32,7 @@ Evaluate the material against:
 - **Reuse:** find explanations answering one standalone question or used across topics. Distinguish genuine reuse from sections that simply happen to be long.
 - **Canonical ownership:** check pages against [who owns what](../../../maintainers/MAINTAINING.md#who-owns-what). Flag any page that restates an owned idea beyond a one-line summary and link, competing explanations, and inconsistent definitions. Propose an owner for any repeated idea not yet in the table.
 - **Composition:** articles should still explain a problem and connect ideas, rather than become lists of concept links.
-- **Discovery:** check reader paths, the [sitemap](../../../pages/sitemap.md), topic and directory indexes, glossary links, incoming references, and orphaned material. Judge prominence and link wording against the goals and each target's role: distinguish actionable advice, observed experience, illustrative approaches, and subjective perspectives. For each in-scope goal, assess whether its overview links relevant principles, techniques, and examples for its core advice; identify missing or misleading relationships. Update the curated overview links rather than editing the generated sitemap. Retain direct paths to practical guidance and safeguards; make optional context discoverable without presenting it as a prerequisite.
+- **Discovery:** check reader paths, the site navigation set by front matter (`lane`, `goal`, `order`), topic and directory indexes, glossary links, incoming references, and orphaned material. Judge prominence and link wording against the goals and each target's role: distinguish actionable advice, observed experience, illustrative approaches, and subjective perspectives. For each in-scope goal, assess whether its overview links relevant principles, techniques, and examples for its core advice; identify missing or misleading relationships. Retain direct paths to practical guidance and safeguards; make optional context discoverable without presenting it as a prerequisite.
 - **Terminology:** compare terms and definitions with the glossary and their context; verify apparent inconsistencies in the source before proposing a change.
 - **Slides:** check that summaries retain essential qualifications and link to their canonical concepts.
 - **Freshness:** inspect changing claims, versions, dates, source quality, and whether recommendations are supported by evidence. Check pages marked `recheck: every-run` against their `check-against` sources first, then the dated page the rotation selects; see [fast-changing pages](../../../maintainers/MAINTAINING.md#keeping-content-current).
@@ -66,7 +66,7 @@ When extracting concepts:
 
 ## 5. Verify and hand off
 
-Use the repository task interface to format changed Markdown, regenerate the sitemap with `just sitemap` when affected, and run `just verify`. Check that new directories and hidden skill Markdown are included. Inspect the diff for accidental rewrites, broken navigation, and lost sources; leave raw archives and unrelated changes intact.
+Use the repository task interface to format changed Markdown, update the affected folder indexes, and run `just verify`. Check that new directories and hidden skill Markdown are included. Inspect the diff for accidental rewrites, broken navigation, and lost sources; leave raw archives and unrelated changes intact.
 
 Report the review scope, meaningful changes or findings, checks run, and unresolved freshness or coverage gaps. Keep reports in the conversation unless a persistent report was requested.
 

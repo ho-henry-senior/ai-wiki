@@ -1,6 +1,6 @@
 # Maintaining the wiki
 
-Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just --list` to discover tasks, `just setup` to install the pinned development tools, then `just verify` to test and check the sitemap, Markdown formatting, and internal links, including heading anchors. Checks include `concepts/`, `slides/`, repository skills under `.agents/skills/`, and workflow Markdown. External URLs and raw material under `data/` are excluded.
+Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just --list` to discover tasks, `just setup` to install the pinned development tools, then `just verify` to test and check Markdown formatting, and internal links, including heading anchors. Checks include `concepts/`, `slides/`, repository skills under `.agents/skills/`, and workflow Markdown. External URLs and raw material under `data/` are excluded.
 
 `just style` fails when pages in `pages/` and `concepts/` don't meet [the writing standard](STYLE.md). It reads the hedge words and length ceilings from `STYLE.md` itself, so change the rules there. It reports:
 
@@ -11,7 +11,7 @@ Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just 
 
 `just verify` runs it and its tests, and fails on any warning. To see warnings without failing, run `node scripts/style.mjs`. If a warning is wrong, improve the check or the rule in `maintainers/STYLE.md` rather than working around it.
 
-The [sitemap](../pages/sitemap.md) lists pages from their metadata and shows the links curated in the four outcome overviews. After adding or removing content, changing its title or metadata, or changing overview links, run `just sitemap`; `just verify` reports stale output without changing it. The sitemap excludes directory indexes and raw material from its generated inventory.
+When you add or remove a page, update its folder's index (`pages/README.md`, `concepts/README.md`, and so on), which is how readers browse on GitHub. The website builds its navigation and its own sitemap from front matter, so it needs no index edits.
 
 Use `just format` to apply formatting or `just links` to check local links alone. Formatting preserves prose line breaks and leaves embedded code examples unchanged. Recipes delegate to npm scripts, which can also be run directly. See [the agent entrypoint](../AGENTS.md) for context pointers.
 
@@ -62,7 +62,7 @@ Suggested `type` values:
 
 Focused reusable concepts live in `concepts/` and use the types described in the [concept conventions](#writing-a-concept). An explanatory article may bring several concepts together without replacing them.
 
-The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it. The [sitemap](../pages/sitemap.md) groups goal links from each overview's `Try this first` and `Core advice` sections separately from `Explore further`; links elsewhere appear as other links. Its inventory comes from page metadata. Regenerate it with `just sitemap` rather than editing it directly.
+The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it.
 
 ## Writing a concept
 
