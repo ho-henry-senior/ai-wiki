@@ -173,7 +173,7 @@ An enforced limit on what an agent's commands can read, change, or contact, appl
 
 ### Skill
 
-A reusable package of task-specific instructions and optional supporting resources, in a `SKILL.md` file. The agent sees its name and description, and loads the rest only when a task needs it. See [skills, profiles, and tools](../concepts/skills-profiles-and-tools.md) for how their purposes differ.
+A reusable package of task-specific instructions and optional supporting resources, in a `SKILL.md` file. In agents that support skills, the name and description help the agent choose one, and the instructions load when needed. See [skills, profiles, and tools](../concepts/skills-profiles-and-tools.md) for how their purposes differ.
 
 ### Stochastic
 

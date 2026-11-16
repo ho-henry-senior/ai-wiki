@@ -27,7 +27,7 @@ Copilot prices each request's tokens at the model's rate and converts the total 
 - **Cached input:** input stored from a recent request, at a tenth of the input rate or less.
 - **Output:** what the model writes, including reasoning, at several times the input rate.
 
-The context is resent with every request, so input usually dominates an agent session's bill: a long log read early is included in every later request until compaction removes it, at the cached rate while the cache holds. See [the tool-call loop](../concepts/tool-call-loop.md) and [session history versus context](../concepts/session-history-vs-context.md).
+The context is resent with every request, so repeated input can become a large part of an agent session's cost: a long log read early may be included in later requests until compaction removes it, at the cached rate while the cache holds. See [the tool-call loop](../concepts/tool-call-loop.md) and [session history versus context](../concepts/session-history-vs-context.md).
 
 ## Choose a tier
 
