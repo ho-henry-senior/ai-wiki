@@ -68,6 +68,8 @@ jobs:
             echo "The GDS Transport font files were published." >&2
             exit 1
           fi
+      - name: Debug navigation (temporary)
+        run: cat _site/nav-debug.txt | head -70
       - name: Check the navigation
         run: |
           for lane in guidance reference articles; do

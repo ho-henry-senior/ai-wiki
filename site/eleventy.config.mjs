@@ -78,6 +78,13 @@ export default async function (eleventyConfig) {
   }
 
   eleventyConfig.addGlobalData("layout", "wiki");
+
+  // TEMPORARY: debug output for the navigation tree.
+  eleventyConfig.addTemplate(
+    "nav-debug.njk",
+    "{% for item in collections.navigation %}{{ item.inputPath }} | key={{ item.data.eleventyNavigation.key }} | parent={{ item.data.eleventyNavigation.parent }} | lane={{ item.data.lane }}\n{% endfor %}\nTREE: {{ collections.navigation | eleventyNavigation('Guidance') | dump }}\n",
+    { permalink: "/nav-debug.txt", layout: false, eleventyExcludeFromCollections: true },
+  );
   // After the plugin, so this replaces its navigation data. Our other
   // computed data is in site/_data/eleventyComputed.js and merges with this.
   eleventyConfig.addGlobalData("eleventyComputed", { eleventyNavigation });
