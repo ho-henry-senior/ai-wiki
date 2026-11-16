@@ -2,6 +2,9 @@
 type: pattern
 summary: Why a written task is the agent's target and your yardstick, and how to write one for Copilot, steer it where the work is recorded, and review the result against what you wrote.
 status: established
+lane: guidance
+goal: alignment
+order: 1
 ---
 
 # Define, steer, and verify a task

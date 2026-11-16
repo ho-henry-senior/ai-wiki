@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { repoPath } from "../../scripts/site-links.mjs";
+import { lanes } from "../lanes.mjs";
 
 // Computed data for every page. Eleventy merges this with the plugin's own
 // computed data (its navigation defaults), so neither replaces the other.
@@ -19,6 +20,11 @@ function firstHeading(inputPath) {
 }
 
 export default {
+  // Guidance and Reference pages show their lane's navigation.
+  sectionKey: (data) =>
+    ["guidance", "reference"].includes(data.lane)
+      ? lanes[data.lane].title
+      : data.sectionKey,
   title: (data) =>
     data.title ||
     (data.page.inputPath.endsWith(".md")

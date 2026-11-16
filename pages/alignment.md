@@ -2,6 +2,9 @@
 type: overview
 summary: Why an agent's result can differ from what you meant, and how to close the gap; define the work, give the agent context and checks, steer it, and verify the result.
 status: established
+lane: guidance
+goal: alignment
+order: 1
 ---
 
 # Alignment

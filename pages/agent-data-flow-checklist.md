@@ -2,6 +2,8 @@
 type: reference
 summary: The full checklist for tracing sensitive data through an agent setup and checking the controls at each destination and action, with Copilot detail.
 status: established
+lane: reference
+order: 2
 ---
 
 # Agent data-flow checklist

@@ -2,6 +2,9 @@
 type: pattern
 summary: Keep what the agent loads for every task small, and let detail load only when a task needs it; in Copilot, through a short AGENTS.md, path-specific instructions, and skills.
 status: established
+lane: guidance
+goal: concepts
+order: 4
 ---
 
 # Load context through focused entrypoints

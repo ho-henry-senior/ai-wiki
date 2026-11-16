@@ -2,6 +2,9 @@
 type: explanation
 summary: How Copilot's harness gives the model context and tools, runs its tool requests, and manages session history, and why that decides where limits and data controls belong.
 status: established
+lane: guidance
+goal: concepts
+order: 1
 ---
 
 # How models and harnesses interact

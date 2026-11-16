@@ -1,6 +1,8 @@
 ---
 type: reference
 summary: Background. An eval runs an agent on a fixed set of tasks and checks the results, so you can tell whether a change to your setup made things better or worse.
+lane: articles
+date: 2026-11-14
 ---
 
 # Evals

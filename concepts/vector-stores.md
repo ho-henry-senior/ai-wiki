@@ -1,6 +1,8 @@
 ---
 type: reference
 summary: Background. A vector store finds items by meaning rather than exact words, using embeddings; useful for search and RAG, with trade-offs in quality, upkeep, and data handling.
+lane: articles
+date: 2026-11-14
 ---
 
 # Vector stores

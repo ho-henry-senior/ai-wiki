@@ -2,6 +2,9 @@
 type: reference
 summary: What a session has saved is not what the model sees in its next request; in Copilot CLI, check with /context and summarize with /compact.
 status: established
+lane: guidance
+goal: concepts
+order: 3
 ---
 
 # Session history is not active context

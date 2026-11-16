@@ -2,6 +2,9 @@
 type: guide
 summary: Why a model can follow instructions hidden in issues, files, web pages, and tool output, and how to limit what a Copilot agent can do if it does.
 status: established
+lane: guidance
+goal: security
+order: 4
 ---
 
 # Prompt injection in coding-agent workflows

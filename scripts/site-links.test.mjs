@@ -45,6 +45,7 @@ test("leaves external links and same-page anchors alone", () => {
     "https://docs.github.com/en/copilot",
     "mailto:someone@example.com",
     "#core-advice",
+    "/pages/security/",
   ])
     assert.equal(rewriteLink(href, "./pages/security.md"), href);
 });

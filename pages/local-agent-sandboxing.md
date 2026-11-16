@@ -2,6 +2,9 @@
 type: guide
 summary: Turn on Copilot's local sandbox so the operating system, not the model, limits what commands can reach; then prove the limits hold with harmless test files.
 status: developing
+lane: guidance
+goal: security
+order: 2
 ---
 
 # Sandbox a local coding agent

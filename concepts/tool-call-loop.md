@@ -2,6 +2,9 @@
 type: reference
 summary: The model only asks to use a tool; the harness, such as Copilot CLI, decides whether it runs, asks you, or refuses, so put limits in the harness, not the prompt.
 status: established
+lane: guidance
+goal: concepts
+order: 2
 ---
 
 # The model requests; the harness acts

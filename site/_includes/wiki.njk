@@ -1,0 +1,30 @@
+{#- The wiki's layout. Guidance and Reference pages get a sidebar for their
+    lane; Articles show their date. Built on the GOV.UK plugin's base layout,
+    which provides the macros used here. -#}
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+  {% if lane == "articles" %}
+    {{ appDocumentHeader({ title: title, description: description, date: date }) }}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        {{ appProseScope(content) if content }}
+      </div>
+    </div>
+  {% elif sectionKey %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter-from-desktop">
+        {{ xGovukSubNavigation({
+          items: collections.navigation | eleventyNavigation(sectionKey) | laneItems(page.url)
+        }) }}
+      </div>
+      <div class="govuk-grid-column-three-quarters-from-desktop">
+        {{ appDocumentHeader({ title: title, description: description }) }}
+        {{ appProseScope(content) if content }}
+      </div>
+    </div>
+  {% else %}
+    {{ appDocumentHeader({ title: title, description: description }) }}
+    {{ appProseScope(content) if content }}
+  {% endif %}
+{% endblock %}

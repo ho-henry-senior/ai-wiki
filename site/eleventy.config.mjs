@@ -8,6 +8,7 @@ import {
   rewriteLink,
   siteUrl,
 } from "../scripts/site-links.mjs";
+import { eleventyNavigation, laneItems, lanes } from "./lanes.mjs";
 
 // Builds the wiki as a website. The Markdown stays the source: pages keep
 // relative .md links that work on GitHub and in editors, and this config
@@ -26,10 +27,36 @@ const govukOnlyAssets = [
 ];
 
 export default async function (eleventyConfig) {
+  // Collections, defined before the plugin so it uses ours. The plugin's own
+  // navigation collection matches files by glob, which misses pages when the
+  // input folder is "..".
+  eleventyConfig.addCollection("navigation", (api) =>
+    api
+      .getAll()
+      .filter(
+        (item) =>
+          /\.(md|njk)$/.test(item.inputPath) && !/^tag/.test(item.data.layout),
+      ),
+  );
+  eleventyConfig.addCollection("articles", (api) =>
+    api
+      .getAll()
+      .filter((item) => item.data.lane === "articles")
+      .sort(
+        (a, b) => b.date - a.date || a.data.title.localeCompare(b.data.title),
+      ),
+  );
+
   await eleventyConfig.addPlugin(govukEleventyPlugin, {
     header: {
       logotype: { text: "Making the most of agents" },
       search: { indexPath: "/search-index.json", sitemapPath: "/sitemap" },
+    },
+    serviceNavigation: {
+      navigation: Object.values(lanes).map(({ title, url }) => ({
+        text: title,
+        href: url,
+      })),
     },
     titleSuffix: "Making the most of agents",
     url: siteUrl,
@@ -50,7 +77,34 @@ export default async function (eleventyConfig) {
     eleventyConfig.ignores.add(`../${glob}`);
   }
 
-  eleventyConfig.addGlobalData("layout", "page");
+  eleventyConfig.addGlobalData("layout", "wiki");
+  eleventyConfig.addFilter("laneItems", laneItems);
+  // Eleventy runs plugins after this function, so the GOV.UK plugin's
+  // computed navigation data would replace ours. Adding ours from a plugin
+  // registered after it makes ours run last. Our other computed data is in
+  // site/_data/eleventyComputed.js and merges with this.
+  eleventyConfig.addPlugin((config) => {
+    config.addGlobalData("eleventyComputed", { eleventyNavigation });
+  });
+
+  // A landing page for each lane, generated here so the lanes need no
+  // Markdown files of their own. Articles list newest first.
+  for (const [lane, { title, url, description }] of Object.entries(lanes)) {
+    const listing =
+      lane === "articles"
+        ? {
+            layout: "collection",
+            pagination: { data: "collections.articles", size: 50 },
+          }
+        : { sectionKey: title };
+    eleventyConfig.addTemplate(`lanes/${lane}.md`, "", {
+      title,
+      description,
+      permalink: url,
+      eleventyNavigation: { key: title, order: 0 },
+      ...listing,
+    });
+  }
 
   // Better search ranking (assets/search-ranking.js). The plugin stops
   // building its own script if given a scripts list, so add ours to each page
@@ -114,6 +168,11 @@ export default async function (eleventyConfig) {
     // never processed as a template.
     markdownTemplateEngine: false,
     pathPrefix,
-    dir: { input: "..", output: "../_site", data: "site/_data" },
+    dir: {
+      input: "..",
+      output: "../_site",
+      data: "site/_data",
+      includes: "site/_includes",
+    },
   };
 }
