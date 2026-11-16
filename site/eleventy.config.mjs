@@ -78,17 +78,6 @@ export default async function (eleventyConfig) {
   }
 
   eleventyConfig.addGlobalData("layout", "wiki");
-
-  // TEMPORARY: debug output for the navigation tree.
-  eleventyConfig.addTemplate(
-    "nav-debug.njk",
-    "{% for item in collections.navigation %}{{ item.inputPath }} | key={{ item.data.eleventyNavigation.key }} | parent={{ item.data.eleventyNavigation.parent }} | lane={{ item.data.lane }}\n{% endfor %}\nTREE: {{ collections.navigation | eleventyNavigation('Guidance') | dump }}\n",
-    {
-      permalink: "/nav-debug.txt",
-      layout: false,
-      eleventyExcludeFromCollections: true,
-    },
-  );
   // Eleventy runs plugins after this function, so the GOV.UK plugin's
   // computed navigation data would replace ours. Adding ours from a plugin
   // registered after it makes ours run last. Our other computed data is in
