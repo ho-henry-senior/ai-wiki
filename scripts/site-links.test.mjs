@@ -3,12 +3,12 @@ import test from "node:test";
 import { githubSlug, pageUrl, rewriteLink } from "./site-links.mjs";
 
 test("maps Markdown files to site URLs, with README as the folder index", () => {
-  assert.equal(pageUrl("README.md"), "/ai-wiki/");
-  assert.equal(pageUrl("pages/README.md"), "/ai-wiki/pages/");
-  assert.equal(pageUrl("pages/security.md"), "/ai-wiki/pages/security/");
+  assert.equal(pageUrl("README.md"), "/");
+  assert.equal(pageUrl("pages/README.md"), "/pages/");
+  assert.equal(pageUrl("pages/security.md"), "/pages/security/");
   assert.equal(
     pageUrl("concepts/tool-call-loop.md"),
-    "/ai-wiki/concepts/tool-call-loop/",
+    "/concepts/tool-call-loop/",
   );
 });
 
@@ -16,19 +16,16 @@ test("rewrites links between pages, keeping anchors", () => {
   const from = "./pages/security.md";
   assert.equal(
     rewriteLink("local-agent-security.md", from),
-    "/ai-wiki/pages/local-agent-security/",
+    "/pages/local-agent-security/",
   );
   assert.equal(
     rewriteLink("../concepts/tool-call-loop.md#the-loop", from),
-    "/ai-wiki/concepts/tool-call-loop/#the-loop",
+    "/concepts/tool-call-loop/#the-loop",
   );
-  assert.equal(
-    rewriteLink("../README.md#start-here", from),
-    "/ai-wiki/#start-here",
-  );
+  assert.equal(rewriteLink("../README.md#start-here", from), "/#start-here");
   assert.equal(
     rewriteLink("pages/security.md", "./README.md"),
-    "/ai-wiki/pages/security/",
+    "/pages/security/",
   );
 });
 

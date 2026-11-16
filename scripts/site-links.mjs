@@ -25,12 +25,14 @@ export const isExcluded = (file) =>
   );
 
 // The site URL for a Markdown file, relative to the repository root.
-// README.md becomes its folder's index page.
+// README.md becomes its folder's index page. URLs start at the site root;
+// Eleventy's HTML base plugin, which the GOV.UK plugin adds, puts the path
+// prefix in front when it writes the page.
 export function pageUrl(file) {
   const dir = path.posix.dirname(file);
   const name = path.posix.basename(file, ".md");
   const folder = dir === "." ? "" : `${dir}/`;
-  return pathPrefix + (name === "README" ? folder : `${folder}${name}/`);
+  return "/" + (name === "README" ? folder : `${folder}${name}/`);
 }
 
 // Rewrites a link in a page for the site. External links and same-page

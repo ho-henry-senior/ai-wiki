@@ -51,6 +51,10 @@ jobs:
             echo "Pages reference GOV.UK icons, which only GOV.UK may use." >&2
             exit 1
           fi
+          if grep -rl 'href="/ai-wiki/ai-wiki/' _site --include=*.html; then
+            echo "Links have the path prefix twice." >&2
+            exit 1
+          fi
           if [ -d _site/assets/fonts ]; then
             echo "The GDS Transport font files were published." >&2
             exit 1
