@@ -28,3 +28,11 @@ links:
 # Apply Markdown formatting (modifies files).
 format:
     npm run format
+
+# Build the website into _site/.
+site:
+    npm run site
+
+# Serve the website locally at http://localhost:8080/ai-wiki/, rebuilding on changes.
+serve:
+    npm run serve

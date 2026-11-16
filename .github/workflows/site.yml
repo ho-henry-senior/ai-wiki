@@ -1,0 +1,90 @@
+name: Website
+
+# Builds the wiki as a website on every pull request, and publishes it to
+# GitHub Pages from main. See MAINTAINING.md#website.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install tools
+        run: npm ci
+      - name: Test link rewriting
+        run: npm run test:site
+      - name: Build the site
+        run: npm run site
+      - name: Check the built site
+        run: |
+          for file in index.html pages/index.html pages/security/index.html 404.html search-index.json sitemap/index.html; do
+            test -f "_site/$file" || { echo "Missing _site/$file" >&2; exit 1; }
+          done
+          if find _site -type d -name README | grep -q .; then
+            echo "A README.md was not turned into its folder's index page." >&2
+            exit 1
+          fi
+          headings=$(grep -o "<h1" _site/pages/security/index.html | wc -l)
+          if [ "$headings" -ne 1 ]; then
+            echo "The security page has $headings h1 headings; expected 1." >&2
+            exit 1
+          fi
+          if grep -rlE "govuk-crest|govuk-icon|rebrand/images|govuk-footer__crown|govuk-logo" _site --include=*.html; then
+            echo "Pages use the crown or GOV.UK icons, which only GOV.UK may use." >&2
+            exit 1
+          fi
+          if grep -rliE "Crown copyright|open-government-licence" _site --include=*.html; then
+            echo "Pages show a copyright or licence statement; the footer should have none." >&2
+            exit 1
+          fi
+          if grep -rl 'href="/ai-wiki/ai-wiki/' _site --include=*.html; then
+            echo "Links have the path prefix twice." >&2
+            exit 1
+          fi
+          if [ -d _site/assets/fonts ]; then
+            echo "The GDS Transport font files were published." >&2
+            exit 1
+          fi
+      - name: Show a sample of the output
+        run: |
+          grep -oE "<(h1|h2)[^>]*>[^<]*|href=\"/ai-wiki/[^\"]*\"" _site/pages/security/index.html | head -40
+          head -c 800 _site/search-index.json
+      - name: Check the GDS Transport typeface is not used
+        run: |
+          if grep -rl "GDS Transport" _site --include=*.css; then
+            echo "The compiled CSS uses GDS Transport, which only GOV.UK may use." >&2
+            exit 1
+          fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
