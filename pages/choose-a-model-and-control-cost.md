@@ -65,7 +65,7 @@ In Copilot CLI, `/limits set max-ai-credits NUMBER` caps a session and `/limits 
 
 ## Current figures
 
-Checked against GitHub's documentation: [pricing](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing) and [individual billing](https://docs.github.com/en/copilot/concepts/billing-and-usage/individuals/billing) on 16 November 2026; [organization billing](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises), [optimization](https://docs.github.com/en/copilot/tutorials/optimize-ai-usage), and [session limits](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/set-session-limit) on 15 November 2026.
+Checked against GitHub's documentation: [pricing](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing) and [individual billing](https://docs.github.com/en/copilot/concepts/billing-and-usage/individuals/billing) on 16 November 2026; [organization billing](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises), [optimization](https://docs.github.com/en/copilot/tutorials/optimize-ai-usage), and [session limits](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/set-session-limit) on 15 November 2026. The daily wiki review compares these figures with GitHub's pages and updates them when they change, so they may have been checked more recently than these dates.
 
 | Plan       | Price per month | AI Credits per month   |
 | ---------- | --------------- | ---------------------- |
