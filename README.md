@@ -12,12 +12,10 @@ Three changes worth making first, in this order. Each is small enough to try tod
 
 ## By goal
 
-| Goal                                  | It helps you                         | First step                                                   |
-| ------------------------------------- | ------------------------------------ | ------------------------------------------------------------ |
-| [Alignment](pages/alignment.md)       | solve the problem you intended        | Ask an agent to question your requirements before coding     |
-| [Economy](pages/economy.md)           | spend less time and fewer tokens     | List your test commands in `AGENTS.md`                       |
-| [Traceability](pages/traceability.md) | leave a record others can follow     | Check your last agent pull request answers five questions    |
-| [Security](pages/security.md)         | limit what an agent can reach and do | Find out where the agent's tools run, then lock that down    |
+- **[Alignment](pages/alignment.md)** — Solve the problem you intended.
+- **[Economy](pages/economy.md)** — Spend less time and fewer tokens.
+- **[Traceability](pages/traceability.md)** — Leave a record others can follow.
+- **[Security](pages/security.md)** — Limit what an agent can reach and do.
 
 ## Look something up
 
