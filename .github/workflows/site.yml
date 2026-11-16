@@ -89,6 +89,16 @@ jobs:
             echo "The top bar does not link to the Guidance lane." >&2
             exit 1
           }
+      - name: Check diagrams are set up to render
+        run: |
+          page=_site/pages/agent-role-boundaries/index.html
+          grep -q '<pre class="mermaid">' "$page" || { echo "The Mermaid diagram was not marked for drawing." >&2; exit 1; }
+          grep -q 'assets/mermaid.min.js' "$page" || { echo "The diagram page does not load Mermaid." >&2; exit 1; }
+          test -s _site/assets/mermaid.min.js || { echo "mermaid.min.js was not published." >&2; exit 1; }
+          if grep -q 'mermaid.min.js' _site/pages/security/index.html; then
+            echo "A page without a diagram loads Mermaid." >&2
+            exit 1
+          fi
       - name: Show a sample of the output
         run: |
           grep -oE "<(h1|h2)[^>]*>[^<]*|href=\"/ai-wiki/[^\"]*\"" _site/pages/security/index.html | head -60

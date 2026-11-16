@@ -112,16 +112,20 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "../assets/search.js": "assets/search.js",
     "../assets/search-ranking.js": "assets/search-ranking.js",
+    "../assets/diagrams.js": "assets/diagrams.js",
+    // Mermaid's single prebuilt file, from site/'s own packages. Only this
+    // file is published, and only pages with a diagram load it.
+    "node_modules/mermaid/dist/mermaid.min.js": "assets/mermaid.min.js",
   });
   eleventyConfig.addTransform("search-ranking", function (content) {
     if (!this.page.outputPath?.endsWith(".html")) return content;
     const folder = this.page.url.replace(/[^/]*$/, "");
     const depth = folder.split("/").filter(Boolean).length;
-    const src = `${"../".repeat(depth)}assets/search.js`;
-    return content.replace(
-      "</head>",
-      `<script type="module" src="${src}"></script></head>`,
-    );
+    const assets = `${"../".repeat(depth)}assets/`;
+    let scripts = `<script type="module" src="${assets}search.js"></script>`;
+    if (content.includes('<pre class="mermaid">'))
+      scripts += `<script src="${assets}mermaid.min.js"></script><script type="module" src="${assets}diagrams.js"></script>`;
+    return content.replace("</head>", `${scripts}</head>`);
   });
 
   // The layout shows the title, so drop the page's own first heading.
@@ -140,6 +144,16 @@ export default async function (eleventyConfig) {
       if (href && env?.page?.inputPath)
         tokens[idx].attrSet("href", rewriteLink(href, env.page.inputPath));
       return render(tokens, idx, options, env, self);
+    };
+
+    // Diagrams: write ```mermaid blocks as <pre class="mermaid">, which
+    // Mermaid's script draws in the browser, as GitHub does.
+    const fence = md.renderer.rules.fence;
+    md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+      const token = tokens[idx];
+      if (token.info.trim() === "mermaid")
+        return `<pre class="mermaid">${md.utils.escapeHtml(token.content)}</pre>\n`;
+      return fence(tokens, idx, options, env, self);
     };
 
     // Headings: use GitHub's IDs, so anchors match on both.
