@@ -83,11 +83,19 @@ export default async function (eleventyConfig) {
   eleventyConfig.addTemplate(
     "nav-debug.njk",
     "{% for item in collections.navigation %}{{ item.inputPath }} | key={{ item.data.eleventyNavigation.key }} | parent={{ item.data.eleventyNavigation.parent }} | lane={{ item.data.lane }}\n{% endfor %}\nTREE: {{ collections.navigation | eleventyNavigation('Guidance') | dump }}\n",
-    { permalink: "/nav-debug.txt", layout: false, eleventyExcludeFromCollections: true },
+    {
+      permalink: "/nav-debug.txt",
+      layout: false,
+      eleventyExcludeFromCollections: true,
+    },
   );
-  // After the plugin, so this replaces its navigation data. Our other
-  // computed data is in site/_data/eleventyComputed.js and merges with this.
-  eleventyConfig.addGlobalData("eleventyComputed", { eleventyNavigation });
+  // Eleventy runs plugins after this function, so the GOV.UK plugin's
+  // computed navigation data would replace ours. Adding ours from a plugin
+  // registered after it makes ours run last. Our other computed data is in
+  // site/_data/eleventyComputed.js and merges with this.
+  eleventyConfig.addPlugin((config) => {
+    config.addGlobalData("eleventyComputed", { eleventyNavigation });
+  });
 
   // A landing page for each lane, generated here so the lanes need no
   // Markdown files of their own. Articles list newest first.

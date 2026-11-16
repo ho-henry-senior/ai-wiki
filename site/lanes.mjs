@@ -40,9 +40,8 @@ const homeKey = "Home";
 // pages directly under their lane. Pages with no lane keep the plugin's
 // defaults and appear in no lane's navigation.
 //
-// This replaces the plugin's computed navigation data rather than adding to
-// it, because Eleventy keeps the plugin's nested values over ours; it keeps
-// the plugin's defaults for pages with no lane.
+// This replaces the plugin's computed navigation data, keeping its defaults
+// for pages with no lane.
 export const eleventyNavigation = {
   key: (data) => {
     if (repoPath(data.page.inputPath) === "concepts/README.md")
