@@ -24,9 +24,9 @@ The wiki is also built as a website with [Eleventy](https://www.11ty.dev/) and t
 
 - **Keep links as relative `.md` paths.** The build rewrites them for the site; links to files that are not on the site, such as `AGENTS.md`, go to GitHub. The rules are in `scripts/site-links.mjs`, with tests.
 - **Do not put template syntax in pages.** Markdown is never processed as a template, so code examples such as `${{ github.ref }}` appear as written.
-- **Do not use the GDS Transport typeface.** It is only for GOV.UK, so `assets/application.scss` replaces it, and the build fails if it appears. The site must also not use the crown or GOV.UK logotype, or suggest it is part of GOV.UK.
+- **Do not use GOV.UK's typeface or crown.** Only GOV.UK may use the GDS Transport typeface, the crown, or the GOV.UK logotype, and the site must not suggest it is part of GOV.UK. `assets/application.scss` replaces the typeface, the build removes the font files and crown icons the plugin copies in, and CI fails if either appears.
 
-Each page's title comes from its first `#` heading and its description from `summary`. `README.md` files become their folder's index page.
+Each page's title comes from its first `#` heading and its description from `summary`; `README.md` files become their folder's index page. These are set in `site/_data/eleventyComputed.js`. Heading IDs follow GitHub's rules, so `page.md#section` links work on both.
 
 To preview the site, run `just site-setup` once, then `just serve`. The site's build tools are not yet pinned in `package-lock.json`, so `just setup` does not install them.
 

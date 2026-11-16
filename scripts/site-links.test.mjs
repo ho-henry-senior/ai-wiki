@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { pageUrl, rewriteLink } from "./site-links.mjs";
+import { githubSlug, pageUrl, rewriteLink } from "./site-links.mjs";
 
 test("maps Markdown files to site URLs, with README as the folder index", () => {
   assert.equal(pageUrl("README.md"), "/ai-wiki/");
@@ -54,4 +54,21 @@ test("sends links to files outside the site to GitHub", () => {
     rewriteLink("../MAINTAINING.md#who-owns-what", "./pages/security.md"),
     "https://github.com/ho-henry-senior/ai-wiki/blob/main/MAINTAINING.md#who-owns-what",
   );
+});
+
+test("makes heading IDs the way GitHub does", () => {
+  assert.equal(githubSlug("Core advice"), "core-advice");
+  assert.equal(githubSlug("Fill Copilot's gaps"), "fill-copilots-gaps");
+  assert.equal(
+    githubSlug("Write repository instructions in AGENTS.md"),
+    "write-repository-instructions-in-agentsmd",
+  );
+  assert.equal(
+    githubSlug("Define, steer, and verify a task"),
+    "define-steer-and-verify-a-task",
+  );
+  assert.equal(githubSlug("`docs/agents/`"), "docsagents");
+  const seen = new Map();
+  assert.equal(githubSlug("Sources", seen), "sources");
+  assert.equal(githubSlug("Sources", seen), "sources-1");
 });

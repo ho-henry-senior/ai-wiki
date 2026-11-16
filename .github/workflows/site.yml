@@ -33,6 +33,32 @@ jobs:
         run: npm run test:site
       - name: Build the site
         run: npm run site
+      - name: Check the built site
+        run: |
+          for file in index.html pages/index.html pages/security/index.html 404.html search-index.json sitemap/index.html; do
+            test -f "_site/$file" || { echo "Missing _site/$file" >&2; exit 1; }
+          done
+          if find _site -type d -name README | grep -q .; then
+            echo "A README.md was not turned into its folder's index page." >&2
+            exit 1
+          fi
+          headings=$(grep -o "<h1" _site/pages/security/index.html | wc -l)
+          if [ "$headings" -ne 1 ]; then
+            echo "The security page has $headings h1 headings; expected 1." >&2
+            exit 1
+          fi
+          if grep -rlE "govuk-crest|govuk-icon|rebrand/images" _site --include=*.html; then
+            echo "Pages reference GOV.UK icons, which only GOV.UK may use." >&2
+            exit 1
+          fi
+          if [ -d _site/assets/fonts ]; then
+            echo "The GDS Transport font files were published." >&2
+            exit 1
+          fi
+      - name: Show a sample of the output
+        run: |
+          grep -oE "<(h1|h2)[^>]*>[^<]*|href=\"/ai-wiki/[^\"]*\"" _site/pages/security/index.html | head -40
+          head -c 800 _site/search-index.json
       - name: Check the GDS Transport typeface is not used
         run: |
           if grep -rl "GDS Transport" _site --include=*.css; then

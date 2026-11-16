@@ -49,3 +49,17 @@ export function rewriteLink(href, inputPath) {
   if (file.endsWith(".md") && !isExcluded(file)) return pageUrl(file) + anchor;
   return `${repository}/blob/main/${file}${anchor}`;
 }
+
+// GitHub's heading IDs, so that links such as page.md#core-advice work the
+// same on the site as on GitHub: lower case, punctuation removed, spaces
+// become hyphens, and repeated headings get -1, -2, and so on.
+export function githubSlug(text, seen = new Map()) {
+  const base = text
+    .trim()
+    .toLowerCase()
+    .replace(/[^\p{L}\p{M}\p{N}\p{Pc}\- ]/gu, "")
+    .replace(/ /g, "-");
+  const count = seen.get(base) ?? 0;
+  seen.set(base, count + 1);
+  return count === 0 ? base : `${base}-${count}`;
+}

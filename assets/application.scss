@@ -4,6 +4,7 @@
 // GOV.UK Frontend to use the system font before loading the plugin's styles.
 // CI fails the build if "GDS Transport" appears in the compiled CSS.
 @use "pkg:govuk-frontend/dist/govuk" with (
-  $govuk-font-family: (system-ui, sans-serif)
+  $govuk-font-family: (system-ui, sans-serif),
+  $govuk-assets-path: "/ai-wiki/assets/"
 );
 @forward "pkg:@x-govuk/govuk-eleventy-plugin";

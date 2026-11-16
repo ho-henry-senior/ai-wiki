@@ -15,7 +15,7 @@
     "style": "node scripts/style.mjs --strict",
     "test:style": "node --test scripts/style.test.mjs",
     "test:site": "node --test scripts/site-links.test.mjs",
-    "site:setup": "npm install --no-save @11ty/eleventy@3 @x-govuk/govuk-eleventy-plugin@7",
+    "site:setup": "npm install --no-save @11ty/eleventy@3 @x-govuk/govuk-eleventy-plugin@9",
     "site": "eleventy --config=eleventy.config.mjs",
     "serve": "eleventy --config=eleventy.config.mjs --serve"
   },
