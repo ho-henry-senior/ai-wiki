@@ -27,7 +27,7 @@ Copilot prices each request's tokens at the model's rate and converts the total 
 - **Cached input:** input stored from a recent request, at a tenth of the input rate or less.
 - **Output:** what the model writes, including reasoning, at several times the input rate.
 
-The context is resent with every request, so input dominates an agent session's bill: a long log read early is paid for on every later turn until compaction. See [the tool-call loop](../concepts/tool-call-loop.md) and [session history versus context](../concepts/session-history-vs-context.md).
+The context is resent with every request, so repeated input can become a large part of an agent session's cost: a long log read early may be included in later requests until compaction removes it, at the cached rate while the cache holds. See [the tool-call loop](../concepts/tool-call-loop.md) and [session history versus context](../concepts/session-history-vs-context.md).
 
 ## Choose a tier
 
@@ -55,7 +55,7 @@ Choose the model and settings before you start. For new work, start a new sessio
 ## Cut tokens
 
 - **Write a clear task** with a "Done when" list: [define, steer, and verify a task](define-and-verify-tasks.md#write-the-task).
-- **Keep instructions short;** they load with every request: [load context through focused entrypoints](../concepts/progressive-disclosure.md).
+- **Keep instructions short;** they load with every task in the features that read them: [load context through focused entrypoints](../concepts/progressive-disclosure.md).
 - **List focused commands,** so the agent does not read whole logs: [let the agent run your repository's commands](agent-tool-delegation.md).
 - **Enable only the MCP toolsets** the task needs, and raise reasoning effort only for hard tasks.
 

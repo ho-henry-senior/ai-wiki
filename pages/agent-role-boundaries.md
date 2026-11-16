@@ -12,7 +12,7 @@ The idea is to avoid giving one agent a large, open-ended task. Smaller loops pr
 
 ## Write each role as a contract
 
-For each role, state:
+A role without stated limits drifts into neighboring work, and its output becomes hard to review against anything. For each role, state:
 
 - **Purpose:** what the role exists to produce.
 - **Expected:** the work and decisions it owns.
