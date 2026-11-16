@@ -61,3 +61,27 @@ export const eleventyNavigation = {
   order: (data) => data.order ?? data.eleventyNavigation?.order,
   excerpt: (data) => data.eleventyNavigation?.excerpt || data.description,
 };
+
+// Sidebar items for a lane, in the shape the GOV.UK sub-navigation expects.
+// The plugin expands a group only when the page's URL sits inside the
+// group's folder, but our page URLs are flat (/pages/...), so expand the
+// group that contains the current page instead.
+export function laneItems(tree = [], pageUrl) {
+  return tree.map((item) => {
+    const children = item.children ?? [];
+    const contains = children.some((child) => child.url === pageUrl);
+    return {
+      href: item.url,
+      text: item.title,
+      current: item.url === pageUrl,
+      parent: item.url === pageUrl || contains,
+      children: children.length
+        ? children.map((child) => ({
+            href: child.url,
+            text: child.title,
+            current: child.url === pageUrl,
+          }))
+        : false,
+    };
+  });
+}
