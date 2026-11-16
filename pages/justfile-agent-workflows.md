@@ -75,4 +75,6 @@ Describe the effect of each command, whether it changes files, and whether failu
 
 Just is useful when a repository has commands across multiple tools, or when composition and `just --list` make them easier to find. Don't add it if existing package scripts or a Makefile already provide a clear interface. See [let the agent run your repository's commands](agent-tool-delegation.md) for the general principle and [a structure for agent-facing repositories](agent-facing-repository-structure.md) for where these files belong.
 
+For options beyond the example's pytest and Ruff commands, see the [local development tools reference](local-development-tools.md).
+
 The wiki's own [justfile](../justfile) is a working example of named build and verification commands. [Repository Justfile patterns](../sources/repository-justfiles.md) records examples from Node.js and Python projects.
