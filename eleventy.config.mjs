@@ -6,6 +6,7 @@ import {
   githubSlug,
   pathPrefix,
   rewriteLink,
+  siteUrl,
 } from "./scripts/site-links.mjs";
 
 // Builds the wiki as a website. The Markdown stays the source: pages keep
@@ -28,6 +29,7 @@ export default async function (eleventyConfig) {
       search: { indexPath: "/search-index.json", sitemapPath: "/sitemap" },
     },
     titleSuffix: "Making the most of agents",
+    url: siteUrl,
     // No crown icons or GOV.UK sharing image.
     icons: { mask: false, shortcut: false, touch: false },
     // No footer crown, copyright statement, or Open Government Licence.

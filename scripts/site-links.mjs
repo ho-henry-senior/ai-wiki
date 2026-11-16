@@ -5,6 +5,9 @@ import path from "node:path";
 
 export const repository = "https://github.com/ho-henry-senior/ai-wiki";
 export const pathPrefix = "/ai-wiki/";
+// Where the site is published. The plugin uses it for addresses that the
+// HTML base plugin does not rewrite, such as the search index.
+export const siteUrl = "https://ho-henry-senior.github.io/ai-wiki/";
 
 // In the repository, but not part of the site. Links to them go to GitHub.
 export const excluded = [

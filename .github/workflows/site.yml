@@ -36,6 +36,11 @@ jobs:
           for file in index.html pages/index.html pages/security/index.html 404.html search-index.json sitemap/index.html; do
             test -f "_site/$file" || { echo "Missing _site/$file" >&2; exit 1; }
           done
+          if ! grep -q 'index="https://ho-henry-senior.github.io/ai-wiki/search-index.json"' _site/index.html; then
+            echo "The search box does not point to the published search index." >&2
+            grep -o '<app-search[^>]*>' _site/index.html >&2
+            exit 1
+          fi
           if find _site -type d -name README | grep -q .; then
             echo "A README.md was not turned into its folder's index page." >&2
             exit 1
@@ -53,7 +58,7 @@ jobs:
             echo "Pages show a copyright or licence statement; the footer should have none." >&2
             exit 1
           fi
-          if grep -rl 'href="/ai-wiki/ai-wiki/' _site --include=*.html; then
+          if grep -rl 'href="/ai-wiki/ai-wiki/' _site --include=*.html || grep -q '/ai-wiki/ai-wiki/' _site/search-index.json; then
             echo "Links have the path prefix twice." >&2
             exit 1
           fi
