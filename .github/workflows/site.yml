@@ -80,6 +80,9 @@ jobs:
           fi
           grep -q 'href="/ai-wiki/pages/local-agent-security/"' _site/pages/cloud-agent-security/index.html || {
             echo "The cloud agent page has no sidebar link to its sibling guide." >&2
+            grep -c "sub-navigation" _site/pages/cloud-agent-security/index.html >&2 || true
+            grep -oE '<nav[^>]*>|href="[^"]*"' _site/pages/cloud-agent-security/index.html | head -25 >&2
+            grep -oE '<nav[^>]*>|href="[^"]*"' _site/guidance/index.html | head -25 >&2
             exit 1
           }
           grep -q 'href="/ai-wiki/guidance/"' _site/index.html || {
