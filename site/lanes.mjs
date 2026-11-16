@@ -2,7 +2,7 @@ import { repoPath } from "../scripts/site-links.mjs";
 
 // The site's three lanes and the goals that group the Guidance lane. Each
 // page says where it belongs with front matter: `lane`, and for guidance,
-// `goal`, plus `order` within its group. See MAINTAINING.md#website.
+// `goal`, plus `order` within its group. See maintainers/MAINTAINING.md#website.
 
 export const lanes = {
   guidance: {
