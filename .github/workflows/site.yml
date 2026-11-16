@@ -72,7 +72,7 @@ jobs:
           head -c 800 _site/search-index.json
       - name: Check search results have a dark text colour
         run: |
-          if ! grep -qE '\.app-search__menu\{--govuk-text-colour:#0b0c0c' _site/assets/application.css; then
+          if ! grep -qE '\.app-search__menu\{--govuk-text-colour: ?#0b0c0c' _site/assets/application.css; then
             echo "Search results would inherit the header's white text colour." >&2
             grep -oE '\.app-search__menu\{[^}]*\}' _site/assets/application.css >&2 || true
             exit 1
