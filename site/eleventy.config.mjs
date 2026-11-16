@@ -40,6 +40,15 @@ export default async function (eleventyConfig) {
           /\.(md|njk)$/.test(item.inputPath) && !/^tag/.test(item.data.layout),
       ),
   );
+  // The four goal overviews, which the Goals lane page lists.
+  eleventyConfig.addCollection("goalOverviews", (api) =>
+    api
+      .getAll()
+      .filter(
+        (item) => item.data.lane === "goals" && item.data.type === "overview",
+      )
+      .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)),
+  );
   eleventyConfig.addCollection("articles", (api) =>
     api
       .getAll()
@@ -117,15 +126,17 @@ export default async function (eleventyConfig) {
   });
 
   // A landing page for each lane, generated here so the lanes need no
-  // Markdown files of their own. Articles list newest first.
+  // Markdown files of their own. Goals lists the four goal overviews in
+  // order, Articles lists articles newest first, and Reference shows its
+  // sidebar.
+  const lists = { goals: "goalOverviews", articles: "articles" };
   for (const [lane, { title, url, description }] of Object.entries(lanes)) {
-    const listing =
-      lane === "articles"
-        ? {
-            layout: "collection",
-            pagination: { data: "collections.articles", size: 50 },
-          }
-        : { sectionKey: title };
+    const listing = lists[lane]
+      ? {
+          layout: "collection",
+          pagination: { data: `collections.${lists[lane]}`, size: 50 },
+        }
+      : { sectionKey: title };
     eleventyConfig.addTemplate(`lanes/${lane}.md`, "", {
       title,
       description,

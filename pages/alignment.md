@@ -2,7 +2,7 @@
 type: overview
 summary: Agree on the problem before delegating the solution; use an agent to challenge requirements, review a specification, then verify implementation against it.
 status: established
-lane: guidance
+lane: goals
 goal: alignment
 order: 1
 ---
