@@ -28,7 +28,7 @@
   {%- endif %}
   {%- set sections = content | contents %}
   {%- if sections | length %}
-  <nav class="app-contents-list" aria-labelledby="contents-title">
+  <nav class="app-contents-list{{ " app-contents-list--letters" if sections | isLetterIndex }}" aria-labelledby="contents-title">
     <h2 class="app-contents-list__title" id="contents-title">Contents</h2>
     <ol>
       {%- for section in sections %}
