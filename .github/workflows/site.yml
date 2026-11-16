@@ -116,6 +116,20 @@ jobs:
             echo "The cloud agent page has no contents list linking to its sections." >&2
             exit 1
           }
+      - name: Check the glossary's letters are one line of links
+        run: |
+          grep -q 'app-contents-list app-contents-list--letters' _site/pages/glossary/index.html || {
+            echo "The glossary's letter list is not marked to show on one line." >&2
+            exit 1
+          }
+          if grep -q 'app-contents-list--letters' _site/pages/cloud-agent-security/index.html; then
+            echo "The cloud agent page's contents list is shown as letters." >&2
+            exit 1
+          fi
+          grep -q 'app-contents-list--letters' _site/assets/application.css || {
+            echo "The stylesheet has no style for letter lists." >&2
+            exit 1
+          }
       - name: Check pages link to their Copilot surfaces
         run: |
           grep -q 'href="/ai-wiki/surfaces/cloud-agent/"' _site/pages/cloud-agent-security/index.html || {

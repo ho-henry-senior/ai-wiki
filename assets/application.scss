@@ -15,3 +15,11 @@
 .app-search__menu {
   --govuk-text-colour: #{govuk.govuk-colour("black")};
 }
+
+// A contents list of single letters, such as the glossary's A to Z, as one
+// wrapping line of links rather than a tall list. See site/_includes/wiki.njk.
+.app-contents-list--letters ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 govuk.govuk-spacing(3);
+}

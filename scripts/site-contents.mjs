@@ -17,3 +17,9 @@ export function contents(html) {
   }
   return sections.length >= minimumSections ? sections : [];
 }
+
+// Sections named by a letter or two, such as a glossary's A to Z, read better
+// as one line of links than as a long list.
+export function isLetterIndex(sections) {
+  return sections.length > 0 && sections.every(({ text }) => text.length <= 2);
+}

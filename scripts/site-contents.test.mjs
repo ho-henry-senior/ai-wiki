@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { contents } from "./site-contents.mjs";
+import { contents, isLetterIndex } from "./site-contents.mjs";
 
 const section = (id, text) =>
   `<h2 class="govuk-heading-l" id="${id}">${text}</h2><p>Text.</p>`;
@@ -26,4 +26,12 @@ test("skips headings without an ID", () => {
   const html =
     section("a", "A") + section("b", "B") + "<h2>No ID</h2>" + section("c", "C");
   assert.equal(contents(html).length, 3);
+});
+
+test("treats sections named by letters as a letter index", () => {
+  const letters = contents(section("a", "A") + section("b", "B") + section("c", "C"));
+  assert.equal(isLetterIndex(letters), true);
+  const words = contents(section("a", "A") + section("b", "B") + section("why", "Why"));
+  assert.equal(isLetterIndex(words), false);
+  assert.equal(isLetterIndex([]), false);
 });
