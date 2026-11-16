@@ -2,7 +2,7 @@
 
 Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just --list` to discover tasks, `just setup` to install the pinned development tools, then `just verify` to test and check the sitemap, Markdown formatting, and internal links, including heading anchors. Checks include `concepts/`, `slides/`, repository skills under `.agents/skills/`, and workflow Markdown. External URLs and raw material under `data/` are excluded.
 
-`just style` fails when pages in `pages/` and `concepts/` don't meet [the writing standard](STYLE.md). It reads the hedge words and length ceilings from `maintainers/STYLE.md` itself, so change the rules there. It reports:
+`just style` fails when pages in `pages/` and `concepts/` don't meet [the writing standard](STYLE.md). It reads the hedge words and length ceilings from `STYLE.md` itself, so change the rules there. It reports:
 
 - pages more than 10% over their length ceiling (the rule says "about"), counting prose only (not code, tables, or source lists). References, case studies, and pages that give a `long-because` reason have no ceiling;
 - hedge words from rule 6; and
@@ -21,7 +21,7 @@ The dependency overrides pin patched `glob` and `minimatch` releases while the l
 
 ## Website
 
-Project instructions in `maintainers/` are for this wiki's contributors and agents; the published `pages/`, `concepts/`, and `sources/` are for readers. Do not put project-maintenance instructions in published indexes. The wiki is also built as a website with [Eleventy](https://www.11ty.dev/) and the [GOV.UK Eleventy Plugin](https://github.com/x-govuk/govuk-eleventy-plugin), and published to GitHub Pages from `main` by the [website workflow](.github/workflows/site.yml). Every pull request builds the site, so a change that breaks the build fails its checks. The Markdown stays the source, and must keep working on GitHub and in editors:
+Project instructions in `maintainers/` are for this wiki's contributors and agents; the published `pages/`, `concepts/`, and `sources/` are for readers. Do not put project-maintenance instructions in published indexes. The wiki is also built as a website with [Eleventy](https://www.11ty.dev/) and the [GOV.UK Eleventy Plugin](https://github.com/x-govuk/govuk-eleventy-plugin), and published to GitHub Pages from `main` by the [website workflow](../.github/workflows/site.yml). Every pull request builds the site, so a change that breaks the build fails its checks. The Markdown stays the source, and must keep working on GitHub and in editors:
 
 - **Keep links as relative `.md` paths.** The build rewrites them for the site; links to files that are not on the site, such as `AGENTS.md`, go to GitHub. The rules are in `scripts/site-links.mjs`, with tests.
 - **Do not put template syntax in pages.** Markdown is never processed as a template, so code examples such as `${{ github.ref }}` appear as written.
