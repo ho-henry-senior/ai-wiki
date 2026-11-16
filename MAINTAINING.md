@@ -26,9 +26,9 @@ The wiki is also built as a website with [Eleventy](https://www.11ty.dev/) and t
 - **Do not put template syntax in pages.** Markdown is never processed as a template, so code examples such as `${{ github.ref }}` appear as written.
 - **Do not use GOV.UK's typeface or crown.** Only GOV.UK may use the GDS Transport typeface, the crown, or the GOV.UK logotype, and the site must not suggest it is part of GOV.UK. `assets/application.scss` replaces the typeface, the build removes the font files and crown icons the plugin copies in, and CI fails if either appears.
 
-Each page's title comes from its first `#` heading and its description from `summary`; `README.md` files become their folder's index page. These are set in `site/_data/eleventyComputed.js`. Heading IDs follow GitHub's rules, so `page.md#section` links work on both. Search uses the plugin's search box with our own ranking, in `assets/search-ranking.js`: whole-word matches, with title matches first, then descriptions, then page text.
+Each page's title comes from its first `#` heading and its description from `summary`; `README.md` files become their folder's index page. These are set in `site/_data/eleventyComputed.js`, and the build configuration is `site/eleventy.config.mjs`. Heading IDs follow GitHub's rules, so `page.md#section` links work on both. Search uses the plugin's search box with our own ranking, in `assets/search-ranking.js`: whole-word matches, with title matches first, then descriptions, then page text.
 
-To preview the site, run `just setup`, then `just serve`.
+The website's build tools have their own `site/package.json` and lock file, so `just setup` and the daily review do not install them; they need only the checks' tools. Install them with `just site-setup`, which skips install scripts, then preview with `just serve`. Update them deliberately, in their own pull request, rather than on the day a new version appears.
 
 ## Articles and concepts
 

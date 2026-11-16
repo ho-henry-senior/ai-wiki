@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { repoPath } from "../../scripts/site-links.mjs";
 
 // Computed data for every page. Eleventy merges this with the plugin's own
 // computed data (its navigation defaults), so neither replaces the other.
@@ -27,7 +28,7 @@ export default {
   // README.md becomes its folder's index page. Other pages keep their own
   // permalink, including the plugin's 404 page, sitemap, and search index.
   permalink: (data) => {
-    const input = data.page.inputPath.replace(/^\.\//, "");
+    const input = repoPath(data.page.inputPath);
     if (path.posix.basename(input) !== "README.md") return data.permalink;
     const dir = path.posix.dirname(input);
     return dir === "." ? "/index.html" : `/${dir}/index.html`;
