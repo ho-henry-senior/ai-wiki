@@ -65,7 +65,7 @@ Choose the model and settings before you start. For new work, start a new sessio
 
 ## Cap a session
 
-In Copilot CLI, `/limits set max-ai-credits NUMBER` caps a session and `/limits unset` removes the cap; scripted runs take `--max-ai-credits NUMBER`. The cap is soft: a response in progress finishes. GitHub recommends a cap above 30. For a monthly ceiling, set a budget in billing settings.
+In Copilot CLI, `/limits set max-ai-credits NUMBER` caps a session and `/limits unset` removes the cap; scripted runs take `--max-ai-credits NUMBER`. The cap is soft: a response in progress finishes. The lowest cap Copilot accepts is 30 AI Credits. For a monthly ceiling, set a budget in billing settings.
 
 ## Current figures
 
