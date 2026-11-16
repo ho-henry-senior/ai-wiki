@@ -8,7 +8,7 @@ import {
   rewriteLink,
   siteUrl,
 } from "../scripts/site-links.mjs";
-import { lanes } from "./lanes.mjs";
+import { eleventyNavigation, lanes } from "./lanes.mjs";
 
 // Builds the wiki as a website. The Markdown stays the source: pages keep
 // relative .md links that work on GitHub and in editors, and this config
@@ -78,6 +78,9 @@ export default async function (eleventyConfig) {
   }
 
   eleventyConfig.addGlobalData("layout", "wiki");
+  // After the plugin, so this replaces its navigation data. Our other
+  // computed data is in site/_data/eleventyComputed.js and merges with this.
+  eleventyConfig.addGlobalData("eleventyComputed", { eleventyNavigation });
 
   // A landing page for each lane, generated here so the lanes need no
   // Markdown files of their own. Articles list newest first.

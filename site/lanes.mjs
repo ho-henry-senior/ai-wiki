@@ -1,3 +1,5 @@
+import { repoPath } from "../scripts/site-links.mjs";
+
 // The site's three lanes and the goals that group the Guidance lane. Each
 // page says where it belongs with front matter: `lane`, and for guidance,
 // `goal`, plus `order` within its group. See MAINTAINING.md#website.
@@ -29,4 +31,34 @@ export const goals = {
   traceability: "Traceability",
   security: "Security",
   concepts: "Concepts",
+};
+
+const homeKey = "Home";
+
+// Where a page sits in the navigation tree: guidance pages under their goal's
+// overview, overviews and the concepts index under Guidance, and other lanes'
+// pages directly under their lane. Pages with no lane keep the plugin's
+// defaults and appear in no lane's navigation.
+//
+// This replaces the plugin's computed navigation data rather than adding to
+// it, because Eleventy keeps the plugin's nested values over ours; it keeps
+// the plugin's defaults for pages with no lane.
+export const eleventyNavigation = {
+  key: (data) => {
+    if (repoPath(data.page.inputPath) === "concepts/README.md")
+      return goals.concepts;
+    if (data.homepage) return data.eleventyNavigation?.key || homeKey;
+    return data.eleventyNavigation?.key || data.title;
+  },
+  parent: (data) => {
+    if (data.homepage) return false;
+    if (!data.lane) return data.eleventyNavigation?.parent || homeKey;
+    if (data.lane !== "guidance") return lanes[data.lane]?.title;
+    const input = repoPath(data.page.inputPath);
+    if (data.type === "overview" || input === "concepts/README.md")
+      return lanes.guidance.title;
+    return goals[data.goal] || lanes.guidance.title;
+  },
+  order: (data) => data.order ?? data.eleventyNavigation?.order,
+  excerpt: (data) => data.eleventyNavigation?.excerpt || data.description,
 };
