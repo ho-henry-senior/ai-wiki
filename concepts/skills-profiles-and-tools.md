@@ -2,7 +2,7 @@
 type: reference
 summary: Add a skill for a repeatable procedure, a profile for a role with limits, and a tool for an action the agent cannot perform; in Copilot these are skills, custom agents, and tools or MCP servers.
 status: established
-lane: guidance
+lane: goals
 goal: economy
 order: 24
 checked: 2026-11-15

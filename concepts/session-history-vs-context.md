@@ -2,7 +2,7 @@
 type: reference
 summary: What a session has saved is not what the model sees in its next request; in Copilot CLI, check with /context and summarize with /compact.
 status: established
-lane: guidance
+lane: goals
 goal: economy
 order: 21
 checked: 2026-11-15

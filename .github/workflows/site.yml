@@ -70,7 +70,7 @@ jobs:
           fi
       - name: Check the navigation
         run: |
-          for lane in guidance reference articles; do
+          for lane in goals reference articles; do
             test -f "_site/$lane/index.html" || { echo "Missing the $lane lane page" >&2; exit 1; }
           done
           articles=$(grep -c 'app-document-list__item"' _site/articles/index.html || true)
@@ -82,20 +82,31 @@ jobs:
             echo "The cloud agent page has no sidebar link to its sibling guide." >&2
             grep -c "sub-navigation" _site/pages/cloud-agent-security/index.html >&2 || true
             grep -oE '<nav[^>]*>|href="[^"]*"' _site/pages/cloud-agent-security/index.html | head -25 >&2
-            grep -oE '<nav[^>]*>|href="[^"]*"' _site/guidance/index.html | head -25 >&2
+            grep -oE '<nav[^>]*>|href="[^"]*"' _site/goals/index.html | head -25 >&2
             exit 1
           }
           # Concepts sit under the goal they serve, not in a group of their own.
-          if grep -q 'href="/ai-wiki/concepts/"' _site/guidance/index.html; then
-            echo "The Guidance sidebar still has a Concepts group." >&2
+          goals=$(grep -c 'app-document-list__item"' _site/goals/index.html || true)
+          if [ "$goals" -ne 4 ]; then
+            echo "The Goals page lists $goals items; expected the 4 goal overviews." >&2
+            exit 1
+          fi
+          for goal in alignment economy traceability security; do
+            grep -q "href=\"/ai-wiki/pages/$goal/\"" _site/goals/index.html || {
+              echo "The Goals page does not link to $goal." >&2
+              exit 1
+            }
+          done
+          if grep -q 'href="/ai-wiki/concepts/"' _site/goals/index.html; then
+            echo "The Goals page still links a Concepts group." >&2
             exit 1
           fi
           grep -q 'sub-navigation' _site/concepts/tests-are-evidence/index.html || {
-            echo "A concept page has no Guidance sidebar." >&2
+            echo "A concept page has no Goals sidebar." >&2
             exit 1
           }
-          grep -q 'href="/ai-wiki/guidance/"' _site/index.html || {
-            echo "The top bar does not link to the Guidance lane." >&2
+          grep -q 'href="/ai-wiki/goals/"' _site/index.html || {
+            echo "The top bar does not link to the Goals lane." >&2
             exit 1
           }
       - name: Check pages show when their facts were checked

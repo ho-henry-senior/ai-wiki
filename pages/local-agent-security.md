@@ -2,7 +2,7 @@
 type: guide
 summary: Why a local agent's commands are as powerful as you are, and how to limit them in Copilot with the sandbox, tool and URL rules, and credentials kept out of reach.
 status: established
-lane: guidance
+lane: goals
 goal: security
 order: 1
 checked: 2026-11-16

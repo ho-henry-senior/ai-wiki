@@ -1,14 +1,14 @@
 
-// The site's three lanes and the goals that group the Guidance lane. Each
-// page says where it belongs with front matter: `lane`, and for guidance,
+// The site's three lanes and the goals that group the Goals lane. Each
+// page says where it belongs with front matter: `lane`, and for goals pages,
 // `goal`, plus `order` within its group. See maintainers/MAINTAINING.md#website.
 
 export const lanes = {
-  guidance: {
-    title: "Guidance",
-    url: "/guidance/",
+  goals: {
+    title: "Goals",
+    url: "/goals/",
     description:
-      "What to do and why, grouped by goal. Each goal starts with an overview of what matters, then the guides that act on it and the ideas behind them.",
+      "Four outcomes to improve in AI-assisted work. Each goal starts with an overview of what matters, then the guides that act on it and the ideas behind them.",
   },
   reference: {
     title: "Reference",
@@ -33,8 +33,8 @@ export const goals = {
 
 const homeKey = "Home";
 
-// Where a page sits in the navigation tree: guidance pages, including
-// concepts, under their goal's overview, overviews under Guidance, and other
+// Where a page sits in the navigation tree: goals pages, including
+// concepts, under their goal's overview, overviews under Goals, and other
 // lanes' pages directly under their lane. Pages with no lane keep the plugin's
 // defaults and appear in no lane's navigation.
 //
@@ -48,9 +48,9 @@ export const eleventyNavigation = {
   parent: (data) => {
     if (data.homepage) return false;
     if (!data.lane) return data.eleventyNavigation?.parent || homeKey;
-    if (data.lane !== "guidance") return lanes[data.lane]?.title;
-    if (data.type === "overview") return lanes.guidance.title;
-    return goals[data.goal] || lanes.guidance.title;
+    if (data.lane !== "goals") return lanes[data.lane]?.title;
+    if (data.type === "overview") return lanes.goals.title;
+    return goals[data.goal] || lanes.goals.title;
   },
   order: (data) => data.order ?? data.eleventyNavigation?.order,
   excerpt: (data) => data.eleventyNavigation?.excerpt || data.description,

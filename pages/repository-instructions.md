@@ -2,7 +2,7 @@
 type: reference
 summary: Why repository rules belong in one short AGENTS.md, which Copilot features read it, and how to fill Copilot's remaining gaps without duplicating rules.
 status: established
-lane: guidance
+lane: goals
 goal: alignment
 order: 2
 checked: 2026-11-15
