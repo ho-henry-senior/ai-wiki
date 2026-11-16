@@ -18,7 +18,7 @@ A chat model's risks are mostly about what goes in and what comes out. An agent 
 
 **4. Unsafe changes get merged.** Generated code can weaken a test or loosen an access rule to make a task pass, and the agent's summary may not reveal the change. Read the diff, especially tests and configuration, and require approval from someone other than the person who asked for the change. See [passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
 
-**5. Untrusted code runs.** An agent can install compromised dependencies, run repository scripts, or load untrusted skills and MCP servers. Models also invent package names, often the same ones, so attackers can register them in advance and a mistaken install becomes a malware infection. Check new dependencies in the diff and the source and permissions of skills and MCP servers before enabling them: [local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md).
+**5. Untrusted code runs.** An agent can install compromised dependencies, run repository scripts, or load untrusted skills and MCP servers. Models also invent package names, often the same ones, so attackers can register them in advance and a mistaken install becomes a malware infection. Check [new dependencies](../concepts/hallucinated-dependencies.md) in the diff and the source and permissions of skills and MCP servers before enabling them: [local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md).
 
 A wrong answer alone is a reliability problem, covered under [Alignment](alignment.md). It becomes a security problem when the agent acts on it, so risk 3 matters even without an attacker.
 

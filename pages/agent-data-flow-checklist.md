@@ -6,14 +6,14 @@ status: established
 
 # Agent data-flow checklist
 
-Work through this once for each agent setup, and again when you enable an integration or start work with sensitive data. It is the full list; the [security overview](security.md) summarizes it.
+Data reaches more places than anyone chose to send it: the model provider, saved sessions, logs, pull requests, and the services behind each integration. This checklist traces each flow so you can see where it goes and what limits it. Work through it once for each agent setup, and again when you enable an integration or start work with sensitive data. It is the full list; the [security overview](security.md) explains the risks behind it.
 
 ## Map the setup
 
-- [ ] Identify the agent, the Copilot plan or account, where its tools run, and the enabled tools and MCP servers.
+- [ ] Identify the agent, the Copilot plan or account, where its tools run, and the enabled tools and MCP servers. Each of these decides where data goes and which limits apply.
 - [ ] List the sensitive data it could reach (see the table below).
-- [ ] For each flow, record: **data → source → trigger → destination → how long it is kept and who can see it → control**.
-- [ ] Include context the agent picks up on its own, debug output, generated summaries, and delegated agents, not only files you hand it. Trace [tool output](../concepts/secrets-in-tool-output.md) and [saved session history](../concepts/session-history-vs-context.md) separately from what the model sees.
+- [ ] For each flow, record: **data → source → trigger → destination → how long it is kept and who can see it → control**. A flow with no control in the last column is the gap to fix.
+- [ ] Include context the agent picks up on its own, debug output, generated summaries, and delegated agents, not only files you hand it, because an agent can expose data you never chose to share. Trace [tool output](../concepts/secrets-in-tool-output.md) and [saved session history](../concepts/session-history-vs-context.md) separately from what the model sees.
 - [ ] Answer the [inference, retention, and training](../concepts/inference-retention-training.md) questions, and write down what is unknown rather than assuming a safe default.
 
 | Data                                                                                       | How it can reach the agent                                                                                |
@@ -48,12 +48,12 @@ This fictional entry shows how to record a flow, including unknowns.
 
 ## Check actions as well as data
 
-- [ ] Grant only the file, network, and service access the task needs, and keep production credentials out.
-- [ ] Check where each tool, skill, dependency, and MCP server comes from and what it can reach before enabling it.
+- [ ] Grant only the file, network, and service access the task needs, and keep production credentials out. A mistake or an injected instruction can use whatever the agent can reach.
+- [ ] Check where each tool, skill, dependency, and MCP server comes from and what it can reach before enabling it, because each runs code with the agent's access. Models can also [invent package names that attackers register](../concepts/hallucinated-dependencies.md).
 - [ ] Check which limits cover each tool; [a worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md), and a sandbox may not cover MCP servers.
-- [ ] Make sure limits are [enforced, not just instructions](../concepts/instructions-vs-controls.md).
+- [ ] Make sure limits are [enforced, not just instructions](../concepts/instructions-vs-controls.md), because the text that misleads the agent can override an instruction.
 - [ ] Require approval for destructive, costly, privileged, or public actions.
-- [ ] Review generated changes and run tests and security checks before accepting them.
-- [ ] Inspect reports and logs before sharing, and know how to revoke credentials if data leaks.
+- [ ] Review generated changes and run tests and security checks before accepting them, because the agent's summary may not mention a weakened test or check.
+- [ ] Inspect reports and logs before sharing, and know how to revoke credentials if data leaks, since a leaked secret stays valid until you rotate it.
 
-A completed checklist is a review, not proof of security. Controls and defaults vary by product, version, account, and organization policy. Copilot details checked 15 November 2026.
+A completed checklist is a review, not proof of security. Controls and defaults vary by product, version, account, and organization policy. Copilot details checked 15 November 2026; firewall and package-registry details checked 16 November 2026.
