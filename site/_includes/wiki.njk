@@ -20,11 +20,17 @@
       </div>
       <div class="govuk-grid-column-three-quarters-from-desktop">
         {{ appDocumentHeader({ title: title, description: description }) }}
+        {%- if checked %}
+        <p class="govuk-body-s app-checked">Facts checked {{ checked | govukDate }}</p>
+        {%- endif %}
         {{ appProseScope(content) if content }}
       </div>
     </div>
   {% else %}
     {{ appDocumentHeader({ title: title, description: description }) }}
+    {%- if checked %}
+    <p class="govuk-body-s app-checked">Facts checked {{ checked | govukDate }}</p>
+    {%- endif %}
     {{ appProseScope(content) if content }}
   {% endif %}
 {% endblock %}

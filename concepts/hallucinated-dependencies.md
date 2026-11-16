@@ -5,6 +5,7 @@ status: developing
 lane: guidance
 goal: concepts
 order: 13
+checked: 2026-11-16
 ---
 
 # Invented package names can be real attacks
@@ -35,4 +36,4 @@ Asking the agent in `AGENTS.md` to check before adding a dependency helps, but i
 - [CSO Online: Top AIs invent the same fake PyPI and npm package names](https://www.csoonline.com/article/4201164) — reports the 2026 study of recurring names.
 - [GitHub Docs: Customizing the agent firewall](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/customize-the-agent-firewall)
 
-Checked 16 November 2026. Applied in [the security overview](../pages/security.md), [the cloud agent guide](../pages/cloud-agent-security.md), and [the data-flow checklist](../pages/agent-data-flow-checklist.md).
+Applied in [the security overview](../pages/security.md), [the cloud agent guide](../pages/cloud-agent-security.md), and [the data-flow checklist](../pages/agent-data-flow-checklist.md).

@@ -5,6 +5,7 @@ status: established
 lane: guidance
 goal: concepts
 order: 3
+checked: 2026-11-15
 ---
 
 # Session history is not active context
@@ -25,7 +26,7 @@ Compaction does not delete the saved history. A long debugging log can stay in t
 
 The model does not learn from the conversation. Continuity comes from what the harness sends with each request.
 
-Checked 15 November 2026. Other agents work the same way under different commands.
+Other agents work the same way under different commands.
 
 ## Sources
 

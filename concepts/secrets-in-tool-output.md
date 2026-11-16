@@ -5,6 +5,7 @@ status: established
 lane: guidance
 goal: concepts
 order: 11
+checked: 2026-11-15
 ---
 
 # Secrets can leak through tool output
@@ -28,8 +29,6 @@ The same applies to private code, customer data in application logs, and summari
 ## If a secret leaks
 
 Rotate or revoke it; do not rely on deleting text. Copies may exist in synced sessions and in cloud agent session logs, which cannot be deleted; see [traceability](../pages/traceability.md#core-advice). Deleting a local copy does not remove the others.
-
-Checked 15 November 2026.
 
 ## Sources
 

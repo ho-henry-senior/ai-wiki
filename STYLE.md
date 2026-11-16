@@ -6,7 +6,7 @@ Write so a developer understands what matters and why, and can act on it, on one
 
 1. **Give every recommendation its reason.** A reader should never meet an action without knowing what it prevents or achieves. Put the reason where it reads best; one sentence often carries both. When the reader needs the mechanism to apply the advice to a case the page does not cover, explain the mechanism.
 2. **Prefer shared conventions, and show actions in Copilot.** Recommend files and formats that agents share, such as `AGENTS.md`, over tool-specific ones. Give each action one concrete Copilot or GitHub example: a file, a command, a setting, or a short snippet the reader can copy. Explanations of how something works do not need one.
-3. **State the behavior, not "verify it".** Say what Copilot does, which surface it applies to (chat, CLI, cloud agent, or code review), and the date you checked. Do not tell readers to "verify in your harness" without telling them how.
+3. **State the behavior, not "verify it".** Say what Copilot does, which surface it applies to (chat, CLI, cloud agent, or code review), and record the date you checked in the page's `checked` front matter. Do not tell readers to "verify in your harness" without telling them how.
 4. **State the advice in full.** A link adds depth; it never replaces the advice. A section that is one sentence and a link is not finished.
 5. **Say it once.** Each core idea has one owner page, listed in [who owns what](MAINTAINING.md#who-owns-what). Elsewhere, summarize it in one line and link to the owner. Do not restate it.
 6. **Cut hedges.** Avoid "appropriate", "relevant", "useful", "consider", "where practical", "materially", and "proportionate" unless the sentence is wrong without them. Give one specific caveat instead of several vague ones.
@@ -42,11 +42,13 @@ After:
 
 After:
 
-> Put rules the agent must always follow in `AGENTS.md` itself, not in a linked file. Copilot CLI loads a file referenced as `@path` immediately, but other Copilot features may not, and an ordinary Markdown link is only followed if the agent decides to. (Checked 15 November 2026.)
+> Put rules the agent must always follow in `AGENTS.md` itself, not in a linked file. Copilot CLI loads a file referenced as `@path` immediately, but other Copilot features may not, and an ordinary Markdown link is only followed if the agent decides to.
+
+The page then records `checked: 2026-11-15` in its front matter.
 
 ## Checking a page
 
-Run `just style` to find pages over their ceiling, hedge words, and sentences repeated across pages. Then read the page once as a new reader and confirm:
+Run `just style` to find pages over their ceiling, hedge words, sentences repeated across pages, and dates of checking written in the text instead of the `checked` field. Then read the page once as a new reader and confirm:
 
 - you could say why each recommendation matters, from the page alone;
 - claims about model or agent behavior state their scope and retain qualifications that change their meaning;

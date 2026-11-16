@@ -5,6 +5,7 @@ status: established
 lane: guidance
 goal: traceability
 order: 3
+checked: 2026-11-15
 ---
 
 # Traceability
@@ -63,8 +64,6 @@ Co-authored-by: Example Agent <agent@example.com>
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — review evidence in practice.
 
 ## Sources
-
-Checked 15 November 2026.
 
 - [GitHub Docs: Managing agent sessions](https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/manage-and-track-agents)
 - [GitHub Docs: Tracking Copilot's sessions](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/track-copilot-sessions)

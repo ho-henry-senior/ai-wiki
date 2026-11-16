@@ -132,6 +132,7 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 - [Agent data-flow checklist](agent-data-flow-checklist.md) — The full checklist for tracing sensitive data through an agent setup and checking the controls at each destination and action, with Copilot detail. (established)
 - [AI glossary](glossary.md) — A practical glossary of foundational AI and current generative AI terminology.
 - [Choose and add skills](useful-skills.md) — Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate. (developing)
+- [Local checks and tools for coding agents](local-development-tools.md) — Local development tools agents can run for focused tests, linting, type checks, unused code, dependency issues, containers and security scans. (established)
 - [Write repository instructions in AGENTS.md](repository-instructions.md) — Why repository rules belong in one short AGENTS.md, which Copilot features read it, and how to fill Copilot's remaining gaps without duplicating rules. (established)
 
 ### Concepts

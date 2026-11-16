@@ -5,6 +5,7 @@ status: established
 lane: guidance
 goal: concepts
 order: 6
+checked: 2026-11-15
 ---
 
 # Skills, profiles, and tools have different jobs
@@ -27,8 +28,6 @@ A profile's description does not restrict what it can do. In Copilot, a custom a
 Agents also build features in over time, so check whether Copilot already does what a skill would add. See [choose and add skills](../pages/useful-skills.md).
 
 ## Sources
-
-Checked 15 November 2026.
 
 - [Agent Skills specification](https://agentskills.io/specification)
 - [GitHub Docs: About agent skills](https://docs.github.com/en/copilot/concepts/customizations/agent-skills)

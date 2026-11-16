@@ -5,6 +5,7 @@ import path from "node:path";
 import test from "node:test";
 import {
   allowedDomains,
+  checkChecked,
   checkRecheck,
   checkStyle,
   countWords,
@@ -173,4 +174,34 @@ test("a page marked recheck needs reachable https sources", () => {
   assert.ok(warnings.some((w) => /not https/.test(w)));
   assert.ok(warnings.some((w) => /cannot fetch other\.org/.test(w)));
   assert.ok(warnings.some((w) => /not a URL/.test(w)));
+});
+
+test("checked must be a real, past date, kept out of the text", () => {
+  const today = new Date("2026-11-16T12:00:00Z");
+  assert.deepEqual(
+    checkChecked("p.md", { checked: "2026-11-15" }, "", today),
+    [],
+  );
+  assert.deepEqual(checkChecked("p.md", {}, "No dates here.", today), []);
+  assert.match(
+    checkChecked("p.md", { checked: "15 November 2026" }, "", today)[0],
+    /YYYY-MM-DD/,
+  );
+  assert.match(
+    checkChecked("p.md", { checked: "2026-02-30" }, "", today)[0],
+    /YYYY-MM-DD/,
+  );
+  assert.match(
+    checkChecked("p.md", { checked: "2026-12-01" }, "", today)[0],
+    /future/,
+  );
+  assert.match(
+    checkChecked(
+      "p.md",
+      {},
+      "Checked 15 November 2026 against the docs.",
+      today,
+    )[0],
+    /checked field/,
+  );
 });

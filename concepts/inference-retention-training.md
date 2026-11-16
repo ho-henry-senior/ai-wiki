@@ -5,6 +5,7 @@ status: developing
 lane: guidance
 goal: concepts
 order: 12
+checked: 2026-11-15
 ---
 
 # Inference, retention, and training are separate
@@ -21,7 +22,7 @@ Ask three questions about any agent that handles sensitive data: what is sent, w
 
 **For work code, use a Business or Enterprise seat**, or check that model training is turned off in your personal Copilot settings. An organization seat also lets administrators set policies such as content exclusion.
 
-Checked 15 November 2026. The retention figures are from GitHub's Copilot Trust Center FAQ.
+The retention figures are from GitHub's Copilot Trust Center FAQ.
 
 ## Other agents and tools
 

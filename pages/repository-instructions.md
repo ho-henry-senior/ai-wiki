@@ -5,6 +5,7 @@ status: established
 lane: guidance
 goal: alignment
 order: 2
+checked: 2026-11-15
 ---
 
 # Write repository instructions in AGENTS.md
@@ -38,8 +39,6 @@ Each line is a command to run, a rule that isn't obvious from the code, or a poi
 | Chat in Visual Studio or JetBrains      |     No      |                Yes                |               Yes                |
 | Code review in VS Code or Visual Studio |     No      |                Yes                |                No                |
 
-Checked 15 November 2026 against GitHub's support reference.
-
 ## Fill Copilot's gaps
 
 If your team uses the features in the last three rows, add a short `.github/copilot-instructions.md` with only what those features need, such as the one-line project summary and key conventions. Do not copy `AGENTS.md` into it: features that read both files combine them, so a repeated rule wastes context and two rules that disagree give unpredictable results. Copilot support for `AGENTS.md` has grown through 2026, so check the support table before adding the second file.
@@ -69,7 +68,7 @@ Copilot loads it only when it works on a matching file, which keeps that detail 
 | Claude Code | Yes, from version 2.1.277 | Only in a folder that has no `CLAUDE.md`.     |
 | Gemini CLI  | Only when configured      | Reads `GEMINI.md` by default.                 |
 
-Checked 15 November 2026. You don't need a tool-specific file for these agents unless you have rules only that tool should follow.
+You don't need a tool-specific file for these agents unless you have rules only that tool should follow.
 
 ## Things to know
 
@@ -83,8 +82,6 @@ This wiki's own [AGENTS.md](../AGENTS.md) is a working example. For where instru
 **Next:** [let the agent run your repository's commands](agent-tool-delegation.md), step 1 of [start here](../README.md#start-here).
 
 ## Sources
-
-Checked 15 November 2026.
 
 - [GitHub Docs: Support for different types of custom instructions](https://docs.github.com/en/copilot/reference/custom-instructions-support)
 - [GitHub Docs: About custom instructions](https://docs.github.com/en/copilot/concepts/prompting-and-context/custom-instructions)

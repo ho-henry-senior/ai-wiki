@@ -4,6 +4,7 @@ summary: One way to split agile work between agent roles and people, with role c
 status: developing
 lane: articles
 date: 2026-11-14
+checked: 2026-11-15
 ---
 
 # From agile roles to agent-assisted workflows
@@ -89,8 +90,6 @@ sequenceDiagram
 Roles prepare work and recommend; the human decides and stays accountable. On GitHub, keep branch protection so the person who asked for a change cannot be its only approver; see [verify the result](define-and-verify-tasks.md#verify-the-result).
 
 ## Sources
-
-Checked 15 November 2026.
 
 - [GitHub Docs: About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
 - [GitHub Docs: Custom agents configuration](https://docs.github.com/en/copilot/reference/custom-agents-configuration)
