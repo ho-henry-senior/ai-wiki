@@ -1,6 +1,6 @@
 ---
 type: pattern
-summary: Why a written task is the agent's target and your yardstick, and how to write one for Copilot, steer it where the work is recorded, and review the result against what you wrote.
+summary: Use an agent to question requirements, agree a specification before creating issues, then steer and verify implementation against that agreement.
 status: established
 lane: guidance
 goal: alignment
@@ -10,11 +10,19 @@ checked: 2026-11-15
 
 # Define, steer, and verify a task
 
-An agent works from the task and the context it can reach. Where an important requirement is missing, it may fill the gap with a plausible guess. A written task closes the gaps that matter before it starts, and it gives you something fixed to check the result against later, instead of the agent's summary, which is its own account of what it did. Corrections belong where the work is recorded, so a reviewer can see why the result differs from the request.
+An agent can complete the task you described and still solve the wrong problem. Before implementation, use it to question your request, surface assumptions and draft a specification for human review. Once you agree what success means, let it create issues and implement them. Check the result against that agreement, not the agent's summary of its own work. Corrections belong where the work is recorded, so reviewers can see why the result differs from the request.
 
-## Write the task
+## Agree on the problem
 
-Use four headings. Each answers a question the agent would otherwise answer for itself. This works as a GitHub issue for the Copilot cloud agent and as a prompt for any agent:
+Ask the agent to question your request before proposing a solution. Have it challenge assumptions, ask about missing behavior and edge cases, and identify choices that only you can make. For example:
+
+> Before writing code, question me about the CSV export I want. Ask about ambiguous behavior, edge cases and constraints. Challenge vague answers. Draft a specification with acceptance criteria, non-goals and unresolved questions. Do not create issues or implement anything until I have reviewed it.
+
+Review the draft specification, settle or explicitly defer open decisions, and agree what should be built. The agent may propose answers, but it should not silently turn its guesses into requirements.
+
+## Turn the specification into issues
+
+Once the specification is agreed, ask the agent to split it into small, verifiable GitHub issues, each linked to the specification. Check that the issues collectively cover the agreed outcome and do not introduce new requirements. For each issue, use four headings. Each answers a question the implementing agent would otherwise answer for itself:
 
 ```markdown
 ## Outcome
@@ -43,9 +51,9 @@ Users can export the orders table as a CSV file from the Orders page.
 - **Checks** names the commands, so the agent runs your tests rather than inventing its own or judging by reading the code.
 - **Out of scope** stops nearby work the agent might think helps, which costs time and makes the diff harder to review.
 
-If you cannot write the "Done when" lines, the task is not ready: settle the open questions first, or the agent may decide them without you.
+If you cannot write the "Done when" lines, the issue is not ready: return to the specification or settle the open questions first. For a small, clear change, a short agreed task may be enough without a separate specification document.
 
-## Hand it to Copilot
+## Hand an issue to Copilot
 
 - **Cloud agent:** assign the issue to Copilot under **Assignees**, with extra instructions in the optional prompt field. Copilot works in GitHub Actions, opens a draft pull request linked to the issue, and requests your review when it finishes.
 - **Copilot CLI or chat in your editor:** paste the same text as your first prompt.
@@ -70,7 +78,7 @@ For why corrections belong on the pull request, see [traceability](traceability.
 
 ## Scale it to the work
 
-A small change needs only the four headings above. The cost of a wrong guess grows with the work, so for larger or ambiguous work, agree a specification before you break it into tasks, and link each task to it.
+A small, clear change may need only a brief agreement and one issue. Larger or ambiguous work warrants a reviewed specification and linked issues. The principle stays the same: establish what success means before delegating implementation.
 
 **Next:** [limit what the agent can do](security.md), step 3 of [start here](../README.md#start-here).
 
