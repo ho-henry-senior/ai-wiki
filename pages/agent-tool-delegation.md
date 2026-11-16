@@ -2,9 +2,6 @@
 type: pattern
 summary: Why an agent that can run your checks does better than one that guesses, how to list the commands with what each does, and how to give the Copilot cloud agent the dependencies to run them.
 status: established
-lane: guidance
-goal: alignment
-order: 3
 ---
 
 # Let the agent run your repository's commands
@@ -59,7 +56,7 @@ Checked 15 November 2026 against GitHub's documentation on [customizing the clou
 | Find unused code                      | Unused-code checks                               |
 | Report dependency and security issues | Dependency audit, Trivy, Semgrep                 |
 
-List diagnostics such as audits and scans separately from the check that must pass, because they often report findings that already exist. More examples are in the [repository Justfile notes](../sources/repository-justfiles.md).
+List diagnostics such as audits and scans separately from the check that must pass, because they often report findings that already exist. For a broader catalogue covering Semgrep, Hadolint, unused-code tools and more, see [local checks and tools for coding agents](local-development-tools.md). Examples from actual repositories are in the [repository Justfile notes](../sources/repository-justfiles.md).
 
 A command list tells the agent what it can run, not how the system works. For that, see [repository context for agents](repository-context-for-agents.md).
 
