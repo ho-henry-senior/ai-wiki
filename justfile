@@ -17,7 +17,7 @@ sitemap:
 format-check:
     npm run format:check
 
-# Fail on pages over STYLE.md length targets, hedge words, or sentences repeated across pages.
+# Fail on pages over maintainers/STYLE.md length targets, hedge words, or sentences repeated across pages.
 style:
     npm run style
 
