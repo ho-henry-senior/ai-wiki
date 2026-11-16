@@ -7,6 +7,7 @@ import {
   allowedDomains,
   checkChecked,
   checkRecheck,
+  checkSurfaces,
   checkStyle,
   countWords,
   findDuplicates,
@@ -204,5 +205,22 @@ test("checked must be a real, past date, kept out of the text", () => {
       today,
     )[0],
     /checked field/,
+  );
+});
+
+test("surfaces must be a list of known surfaces", () => {
+  const known = ["cli", "cloud-agent"];
+  assert.deepEqual(checkSurfaces("a.md", {}, known), []);
+  assert.deepEqual(
+    checkSurfaces("a.md", { surfaces: ["cli", "cloud-agent"] }, known),
+    [],
+  );
+  assert.match(
+    checkSurfaces("a.md", { surfaces: ["cli", "chat"] }, known)[0],
+    /unknown surface "chat"/,
+  );
+  assert.match(
+    checkSurfaces("a.md", { surfaces: "cli" }, known)[0],
+    /must be a list/,
   );
 });

@@ -10,6 +10,7 @@ import {
 } from "../scripts/site-links.mjs";
 import { contents } from "../scripts/site-contents.mjs";
 import { eleventyNavigation, laneItems, lanes } from "./lanes.mjs";
+import { surfaces, surfaceUrl } from "./surfaces.mjs";
 
 // Builds the wiki as a website. The Markdown stays the source: pages keep
 // relative .md links that work on GitHub and in editors, and this config
@@ -47,6 +48,15 @@ export default async function (eleventyConfig) {
         (a, b) => b.date - a.date || a.data.title.localeCompare(b.data.title),
       ),
   );
+
+  // One collection per Copilot surface, of the pages tagged with it.
+  for (const key of Object.keys(surfaces))
+    eleventyConfig.addCollection(`surface-${key}`, (api) =>
+      api
+        .getAll()
+        .filter((item) => item.data.surfaces?.includes(key))
+        .sort((a, b) => a.data.title.localeCompare(b.data.title)),
+    );
 
   await eleventyConfig.addPlugin(govukEleventyPlugin, {
     header: {
@@ -107,6 +117,36 @@ export default async function (eleventyConfig) {
       ...listing,
     });
   }
+
+  // A page for each Copilot surface, listing the pages tagged with it, and
+  // an index of the surfaces. Pages link to their surfaces under the title.
+  eleventyConfig.addGlobalData("surfaceInfo", surfaces);
+  for (const [key, { title, description }] of Object.entries(surfaces))
+    eleventyConfig.addTemplate(`surfaces/${key}.md`, "", {
+      title,
+      description,
+      permalink: surfaceUrl(key),
+      layout: "collection",
+      pagination: {
+        data: `collections.surface-${key}`,
+        size: 50,
+        generatePageOnEmptyData: true,
+      },
+    });
+  eleventyConfig.addTemplate(
+    "surfaces/index.njk",
+    `<ul class="govuk-list">
+{%- for key, surface in surfaceInfo %}
+  <li><a class="govuk-link" href="{{ key | surfaceUrl }}">{{ surface.title }}</a> ({{ collections["surface-" + key] | length }} pages): {{ surface.description }}</li>
+{%- endfor %}
+</ul>`,
+    {
+      title: "Pages by Copilot surface",
+      description: "Pages that give instructions or behavior for a particular part of Copilot.",
+      permalink: "/surfaces/",
+    },
+  );
+  eleventyConfig.addFilter("surfaceUrl", surfaceUrl);
 
   // Better search ranking (assets/search-ranking.js). The plugin stops
   // building its own script if given a scripts list, so add ours to each page

@@ -13,6 +13,11 @@ lane: guidance
 goal: economy
 order: 1
 checked: 2026-11-15
+surfaces:
+  - editor
+  - cli
+  - app
+  - cloud-agent
 ---
 
 # Choose a model and control cost
