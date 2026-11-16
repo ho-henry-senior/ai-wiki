@@ -15,7 +15,7 @@ export const lanes = {
     title: "Reference",
     url: "/reference/",
     description:
-      "Things to look up: the glossary, the data-flow checklist, research notes, and pages by Copilot surface.",
+      "Things to look up: the glossary, the data-flow checklist, and research notes.",
   },
   articles: {
     title: "Articles",

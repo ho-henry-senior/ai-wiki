@@ -72,3 +72,5 @@ Write every page to [the writing standard](STYLE.md).
 Keep reusable explanations in `concepts/`, narrative articles and applied references in `pages/`, provenance in `sources/`, and short standalone summaries in `slides/`. Slides link to their canonical concepts; preserve necessary examples and caveats in those concepts rather than imposing a slide-sized limit.
 
 The topic map is allowed to change as the wiki grows; it is a navigation aid, not a rigid taxonomy.
+
+Tags are a second way in, across the goals: one flat list covering parts of Copilot and, when they are worth it, topics. Keep the list short, and add a tag only when it groups pages that a reader would otherwise have to find one by one. Navigation stays organized by goal; tags do not replace it.

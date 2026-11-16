@@ -6,10 +6,10 @@ lane: guidance
 goal: alignment
 order: 1
 checked: 2026-11-15
-surfaces:
-  - editor
-  - cli
-  - cloud-agent
+tags:
+  - Copilot in the editor
+  - Copilot CLI
+  - Copilot cloud agent
 ---
 
 # Define, steer, and verify a task

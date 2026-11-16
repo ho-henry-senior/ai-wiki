@@ -7,7 +7,7 @@ import {
   allowedDomains,
   checkChecked,
   checkRecheck,
-  checkSurfaces,
+  checkTags,
   checkStyle,
   countWords,
   findDuplicates,
@@ -208,19 +208,16 @@ test("checked must be a real, past date, kept out of the text", () => {
   );
 });
 
-test("surfaces must be a list of known surfaces", () => {
-  const known = ["cli", "cloud-agent"];
-  assert.deepEqual(checkSurfaces("a.md", {}, known), []);
+test("tags must be a list of known tags", () => {
+  const known = ["Copilot CLI", "Copilot cloud agent"];
+  assert.deepEqual(checkTags("a.md", {}, known), []);
   assert.deepEqual(
-    checkSurfaces("a.md", { surfaces: ["cli", "cloud-agent"] }, known),
+    checkTags("a.md", { tags: ["Copilot CLI", "Copilot cloud agent"] }, known),
     [],
   );
   assert.match(
-    checkSurfaces("a.md", { surfaces: ["cli", "chat"] }, known)[0],
-    /unknown surface "chat"/,
+    checkTags("a.md", { tags: ["Copilot CLI", "copilot cli"] }, known)[0],
+    /unknown tag "copilot cli"/,
   );
-  assert.match(
-    checkSurfaces("a.md", { surfaces: "cli" }, known)[0],
-    /must be a list/,
-  );
+  assert.match(checkTags("a.md", { tags: "Copilot CLI" }, known)[0], /must be a list/);
 });

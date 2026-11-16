@@ -4,9 +4,9 @@
 {% extends "layouts/base.njk" %}
 
 {#- Under the title: the page's completeness status, when its facts were
-    checked, and the Copilot surfaces it covers, then a contents list for
-    longer pages. A missing status means
-    unassessed, so it shows nothing. -#}
+    checked, and its tags, then a contents list
+    for longer pages. A missing status means unassessed, so it shows
+    nothing. -#}
 {%- macro pageDetails() %}
   {%- set statusColours = { established: "green", developing: "yellow", stub: "grey" } %}
   {%- if status in statusColours or checked %}
@@ -19,10 +19,10 @@
     {%- endif %}
   </p>
   {%- endif %}
-  {%- if surfaces | length %}
-  <p class="govuk-body-s app-surfaces">Applies to:
-    {%- for key in surfaces %}
-    <a class="govuk-link" href="{{ key | surfaceUrl }}">{{ surfaceInfo[key].title if surfaceInfo[key] else key }}</a>{{ "," if not loop.last }}
+  {%- if tags | length %}
+  <p class="govuk-body-s app-tags">Tags:
+    {%- for tag in tags %}
+    <a class="govuk-link" href="/tags/{{ tag | slugify }}/">{{ tag }}</a>{{ "," if not loop.last }}
     {%- endfor %}
   </p>
   {%- endif %}
