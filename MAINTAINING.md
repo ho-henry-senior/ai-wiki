@@ -35,7 +35,7 @@ The website's build tools have their own `site/package.json` and lock file, so `
 
 ## Articles and concepts
 
-Put a standalone explanation or reusable distinction in `concepts/` when extracting it helps readers reuse or find it. Follow the [concept conventions](concepts/README.md#writing-a-concept). Keep articles coherent: summarize the idea where it supports the narrative, then link to the canonical explanation rather than duplicate its example and caveats.
+Put a standalone explanation or reusable distinction in `concepts/` when extracting it helps readers reuse or find it. Follow the [concept conventions](#writing-a-concept). Keep articles coherent: summarize the idea where it supports the narrative, then link to the canonical explanation rather than duplicate its example and caveats.
 
 Length alone is not a reason to split. Keep tightly coupled explanations together; catalogs, checklists, and concrete workflow examples can remain complete pages. Concepts may provide the basis for [short slides](slides/README.md), but slide size is not a required format.
 
@@ -60,9 +60,29 @@ Suggested `type` values:
 - `case-study` — an account of an approach applied in practice and what happened.
 - `exploration` — a provisional investigation or path, rather than a case study or established practice.
 
-Focused reusable concepts live in `concepts/` and use the types described in the [concept conventions](concepts/README.md#writing-a-concept). An explanatory article may bring several concepts together without replacing them.
+Focused reusable concepts live in `concepts/` and use the types described in the [concept conventions](#writing-a-concept). An explanatory article may bring several concepts together without replacing them.
 
 The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it. The [sitemap](pages/sitemap.md) groups goal links from each overview's `Try this first` and `Core advice` sections separately from `Explore further`; links elsewhere appear as other links. Its inventory comes from page metadata. Regenerate it with `just sitemap` rather than editing it directly.
+
+## Writing a concept
+
+Use descriptive, lowercase, hyphenated filenames and the same `type` and `summary` front matter as authored pages. Concepts normally use `type: reference` or `type: pattern`.
+
+Use the shared [completeness status conventions](#completeness-status) when a concept has been assessed.
+
+State the core idea first. Keep its explanation, a useful example or diagram, essential caveats, and supporting sources together. Link to articles that apply it and to related concepts where that helps navigation.
+
+Extract a concept when it is useful independently or needed in multiple places. Keep its detailed explanation canonical in `concepts/`; articles should summarize it in their own narrative and link to it. A concept may suit a short slide, but neither a fixed word count nor slide-sized formatting is required. Keep brief definitions in the [glossary](pages/glossary.md), linking to the concept for depth.
+
+[Short slides](slides/README.md) summarize selected concepts and link back to their fuller explanation.
+
+Follow the [freshness guidance](#keeping-content-current) when editing concepts. Add new concepts to the [concept index](concepts/README.md) and the relevant outcome overviews linked from the [homepage](README.md).
+
+## Maintaining sources
+
+Keep provenance lightweight: enough to find a resource again and judge whether it may have changed. Add simple links to the [source index](sources/README.md) with a title and, when useful, a short note. Give a resource its own Markdown file when it needs substantive notes, relevant sections or timestamps, or a more durable record. Prefer linking to the original over copying it.
+
+Authored pages can link to sources selectively, especially where a source supports an important, time-sensitive, or contested point.
 
 ## Who owns what
 
