@@ -1,6 +1,8 @@
 ---
 type: reference
 summary: Background. Retrieval-augmented generation finds passages that match a request and gives them to the model as context; it changes what the model sees, not what it knows.
+lane: articles
+date: 2026-11-14
 ---
 
 # Retrieval-augmented generation

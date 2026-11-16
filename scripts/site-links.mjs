@@ -43,11 +43,11 @@ export function pageUrl(file) {
 export const repoPath = (inputPath) =>
   path.posix.normalize(inputPath).replace(/^(\.\.\/)+|^\.\//, "");
 
-// Rewrites a link in a page for the site. External links and same-page
-// anchors are unchanged; links to other pages point to their site URL; links
+// Rewrites a link in a page for the site. External links, same-page anchors,
+// and site-absolute paths such as /pages/security/ are unchanged; links to other pages point to their site URL; links
 // to files that are not on the site point to the file on GitHub.
 export function rewriteLink(href, inputPath) {
-  if (!href || /^([a-z][a-z\d+.-]*:|\/\/|#)/i.test(href)) return href;
+  if (!href || /^([a-z][a-z\d+.-]*:|\/|#)/i.test(href)) return href;
   const hashAt = href.indexOf("#");
   const target = hashAt === -1 ? href : href.slice(0, hashAt);
   const anchor = hashAt === -1 ? "" : href.slice(hashAt);

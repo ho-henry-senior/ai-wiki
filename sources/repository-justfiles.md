@@ -1,3 +1,8 @@
+---
+lane: reference
+order: 5
+---
+
 # Justfile patterns across Node.js and Python repositories
 
 These local examples informed the guide on agent tool delegation and the purpose-based tool reference. They were reviewed on 2026-11-13. Repository names are intentionally omitted; the examples span Node.js/JavaScript, Node.js/TypeScript, Python REST APIs, and Python queue consumers. Recipe names and composition can change, so consult the relevant current Justfile before relying on a detail.

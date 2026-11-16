@@ -1,3 +1,8 @@
+---
+lane: reference
+order: 3
+---
+
 # Sources
 
 This directory records resources that inform the knowledge base. Keep provenance lightweight: enough to find a resource again and judge whether it may have changed.

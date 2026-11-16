@@ -2,6 +2,9 @@
 type: guide
 summary: What GitHub enforces for the Copilot cloud agent and why, what each setting you control protects against, and where its limits stop; secrets, firewall, MCP servers, workflow approval, and who can start it.
 status: established
+lane: guidance
+goal: security
+order: 3
 ---
 
 # Secure the Copilot cloud agent

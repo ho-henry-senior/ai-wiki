@@ -2,6 +2,9 @@
 type: reference
 summary: Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed.
 status: established
+lane: guidance
+goal: concepts
+order: 7
 ---
 
 # Passing tests are evidence, not proof

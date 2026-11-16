@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { repoPath } from "../../scripts/site-links.mjs";
+import { goals, lanes } from "../lanes.mjs";
 
 // Computed data for every page. Eleventy merges this with the plugin's own
 // computed data (its navigation defaults), so neither replaces the other.
@@ -18,7 +19,33 @@ function firstHeading(inputPath) {
   }
 }
 
+// Where a page sits in the navigation tree: guidance pages under their goal's
+// overview, overviews and the concepts index under Guidance, and other lanes'
+// pages directly under their lane. Pages with no lane keep the plugin's
+// default and do not appear in any lane's navigation.
+function parent(data) {
+  if (!data.lane) return data.eleventyNavigation?.parent;
+  if (data.lane !== "guidance") return lanes[data.lane]?.title;
+  const input = repoPath(data.page.inputPath);
+  if (data.type === "overview" || input === "concepts/README.md")
+    return lanes.guidance.title;
+  return goals[data.goal] || lanes.guidance.title;
+}
+
 export default {
+  // Guidance and Reference pages show their lane's navigation.
+  sectionKey: (data) =>
+    ["guidance", "reference"].includes(data.lane)
+      ? lanes[data.lane].title
+      : data.sectionKey,
+  eleventyNavigation: {
+    key: (data) =>
+      repoPath(data.page.inputPath) === "concepts/README.md"
+        ? goals.concepts
+        : data.eleventyNavigation?.key || data.title,
+    parent: (data) => parent(data) ?? "Home",
+    order: (data) => data.order,
+  },
   title: (data) =>
     data.title ||
     (data.page.inputPath.endsWith(".md")

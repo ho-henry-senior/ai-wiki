@@ -2,6 +2,9 @@
 type: overview
 summary: Why agent work needs a record someone else can follow, and how to leave one on the issue and pull request; what was asked, who or what made the change, how it was corrected, who approved it, and the evidence.
 status: established
+lane: guidance
+goal: traceability
+order: 3
 ---
 
 # Traceability

@@ -68,9 +68,29 @@ jobs:
             echo "The GDS Transport font files were published." >&2
             exit 1
           fi
+      - name: Check the navigation
+        run: |
+          for lane in guidance reference articles; do
+            test -f "_site/$lane/index.html" || { echo "Missing the $lane lane page" >&2; exit 1; }
+          done
+          articles=$(grep -c 'app-document-list__item"' _site/articles/index.html || true)
+          if [ "$articles" -ne 5 ]; then
+            echo "The Articles page lists $articles articles; expected 5." >&2
+            exit 1
+          fi
+          grep -q 'href="/ai-wiki/pages/local-agent-security/"' _site/pages/cloud-agent-security/index.html || {
+            echo "The cloud agent page has no sidebar link to its sibling guide." >&2
+            exit 1
+          }
+          grep -q 'href="/ai-wiki/guidance/"' _site/index.html || {
+            echo "The top bar does not link to the Guidance lane." >&2
+            exit 1
+          }
       - name: Show a sample of the output
         run: |
-          grep -oE "<(h1|h2)[^>]*>[^<]*|href=\"/ai-wiki/[^\"]*\"" _site/pages/security/index.html | head -40
+          grep -oE "<(h1|h2)[^>]*>[^<]*|href=\"/ai-wiki/[^\"]*\"" _site/pages/security/index.html | head -60
+          echo "--- articles"
+          grep -oE 'app-document-list__item-title">[^<]*<a[^>]*>[^<]*' _site/articles/index.html
           head -c 800 _site/search-index.json
       - name: Check the search ranking script is included
         run: |

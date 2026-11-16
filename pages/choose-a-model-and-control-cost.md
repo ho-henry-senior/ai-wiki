@@ -9,6 +9,9 @@ check-against:
   - https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises
   - https://docs.github.com/en/copilot/tutorials/optimize-ai-usage
   - https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/set-session-limit
+lane: guidance
+goal: economy
+order: 1
 ---
 
 # Choose a model and control cost

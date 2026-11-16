@@ -2,6 +2,9 @@
 type: overview
 summary: Where an agent's time and tokens go, and how to spend less of both without giving up quality or security; clear tasks, listed commands, focused checks, small context, and the right model.
 status: established
+lane: guidance
+goal: economy
+order: 2
 ---
 
 # Economy

@@ -1,6 +1,8 @@
 ---
 type: reference
 summary: A practical glossary of foundational AI and current generative AI terminology.
+lane: reference
+order: 1
 ---
 
 # AI glossary

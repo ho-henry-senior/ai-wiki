@@ -2,6 +2,9 @@
 type: overview
 summary: The five ways a coding agent can cause harm, how each happens, and what stops it in Copilot; start from where the agent's tools run.
 status: established
+lane: guidance
+goal: security
+order: 4
 ---
 
 # Security

@@ -1,3 +1,9 @@
+---
+lane: guidance
+goal: concepts
+order: 5
+---
+
 # Reusable concepts
 
 This directory holds focused explanations that articles can reuse. Each concept answers one standalone question or explains one useful distinction; it is more than a glossary definition and smaller in scope than a guided article.
