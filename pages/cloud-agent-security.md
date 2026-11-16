@@ -5,6 +5,7 @@ status: established
 lane: guidance
 goal: security
 order: 3
+checked: 2026-11-15
 ---
 
 # Secure the Copilot cloud agent
@@ -33,7 +34,7 @@ The Copilot cloud agent runs in a fresh GitHub Actions environment, not on your 
 
 Organization owners can set the firewall for every repository and stop repositories adding their own allowlist rules. Repository administrators can change it only where the organization lets them.
 
-Checked 16 November 2026 against GitHub's documentation on [the agent firewall](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/customize-the-agent-firewall). Other rows checked 15 November 2026 against [risks and mitigations](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/risks-and-mitigations) and [responsible use](https://docs.github.com/en/copilot/responsible-use/copilot-cloud-agent).
+Sources: GitHub's documentation on [the agent firewall](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/customize-the-agent-firewall), [risks and mitigations](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/risks-and-mitigations), and [responsible use](https://docs.github.com/en/copilot/responsible-use/copilot-cloud-agent).
 
 ## Other hosted agents
 

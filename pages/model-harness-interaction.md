@@ -5,6 +5,7 @@ status: established
 lane: guidance
 goal: concepts
 order: 1
+checked: 2026-11-15
 ---
 
 # How models and harnesses interact
@@ -36,8 +37,6 @@ Access to the repository does not mean every file is sent. The harness, and the 
 Other agents use the same split. Claude Code and Codex both publish explanations of their loops: [How Claude Code works](https://code.claude.com/docs/en/how-claude-code-works) and [Unrolling the Codex agent loop](https://openai.com/index/unrolling-the-codex-agent-loop/).
 
 ## Sources
-
-Checked 15 November 2026.
 
 - [GitHub Docs: Managing context in Copilot CLI](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/context-management)
 - [GitHub Docs: Configuring Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/configure-copilot-cli)

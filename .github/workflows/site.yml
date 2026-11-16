@@ -89,6 +89,13 @@ jobs:
             echo "The top bar does not link to the Guidance lane." >&2
             exit 1
           }
+      - name: Check pages show when their facts were checked
+        run: |
+          grep -q "Facts checked 15 November 2026" _site/pages/cloud-agent-security/index.html || {
+            echo "The cloud agent page does not show its checked date." >&2
+            grep -o "app-checked[^<]*" _site/pages/cloud-agent-security/index.html >&2 || true
+            exit 1
+          }
       - name: Check diagrams are set up to render
         run: |
           page=_site/pages/agent-role-boundaries/index.html

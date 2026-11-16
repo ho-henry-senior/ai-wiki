@@ -5,6 +5,7 @@ status: established
 lane: guidance
 goal: alignment
 order: 1
+checked: 2026-11-15
 ---
 
 # Define, steer, and verify a task
@@ -74,8 +75,6 @@ A small change needs only the four headings above. The cost of a wrong guess gro
 **Next:** [limit what the agent can do](security.md), step 3 of [start here](../README.md#start-here).
 
 ## Sources
-
-Checked 15 November 2026.
 
 - [GitHub Docs: Get started with Copilot agents on GitHub](https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/overview)
 - [GitHub Docs: Troubleshooting Copilot cloud agent](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/troubleshoot-cloud-agent)

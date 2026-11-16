@@ -4,6 +4,7 @@ summary: The full checklist for tracing sensitive data through an agent setup an
 status: established
 lane: reference
 order: 2
+checked: 2026-11-15
 ---
 
 # Agent data-flow checklist
@@ -58,4 +59,4 @@ This fictional entry shows how to record a flow, including unknowns.
 - [ ] Review generated changes and run tests and security checks before accepting them, because the agent's summary may not mention a weakened test or check.
 - [ ] Inspect reports and logs before sharing, and know how to revoke credentials if data leaks, since a leaked secret stays valid until you rotate it.
 
-A completed checklist is a review, not proof of security. Controls and defaults vary by product, version, account, and organization policy. Copilot details checked 15 November 2026; firewall and package-registry details checked 16 November 2026.
+A completed checklist is a review, not proof of security. Controls and defaults vary by product, version, account, and organization policy.

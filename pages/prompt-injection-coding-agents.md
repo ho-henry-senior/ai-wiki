@@ -5,6 +5,7 @@ status: established
 lane: guidance
 goal: security
 order: 4
+checked: 2026-11-15
 ---
 
 # Prompt injection in coding-agent workflows
@@ -37,8 +38,6 @@ Telling the agent to ignore injected instructions helps, but the injected text c
 In a disposable test repository, add a harmless instruction to a made-up issue, such as asking the agent to write a marker to a test file, and see whether the agent acts on it. This tests one behavior in one setup with one model, not general resistance, so a pass does not mean you can relax the limits.
 
 ## Sources
-
-Checked 15 November 2026.
 
 - [GitHub Docs: Risks and mitigations for Copilot cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/risks-and-mitigations)
 - [OWASP: Prompt injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)

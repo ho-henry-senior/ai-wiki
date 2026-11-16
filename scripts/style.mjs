@@ -103,6 +103,31 @@ function domainAllowed(host, domains) {
   );
 }
 
+// A page's `checked` date must be a real date, not in the future, and dates
+// belong in that field rather than in the text.
+export function checkChecked(file, meta, prose, today = new Date()) {
+  const warnings = [];
+  if (meta.checked !== undefined) {
+    const value = String(meta.checked);
+    const date = new Date(`${value}T00:00:00Z`);
+    // A date such as 2026-02-30 parses, but as 2 March; compare it back.
+    const real =
+      !Number.isNaN(date.getTime()) &&
+      date.toISOString().slice(0, 10) === value;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || !real)
+      warnings.push(
+        `${file}: checked must be a date written YYYY-MM-DD: ${value}`,
+      );
+    else if (date > today)
+      warnings.push(`${file}: checked is in the future: ${value}`);
+  }
+  if (/\bchecked (on )?\d{1,2} [A-Z][a-z]+ \d{4}/i.test(prose))
+    warnings.push(
+      `${file}: put the date facts were checked in the checked field, not in the text`,
+    );
+  return warnings;
+}
+
 // A page marked `recheck` must list https sources the daily review can reach.
 export function checkRecheck(file, meta, domains) {
   if (meta.recheck === undefined) return [];
@@ -261,6 +286,7 @@ export async function checkStyle(rootDir = root) {
         typeof meta["long-because"] === "string" && meta["long-because"],
     });
     warnings.push(...checkRecheck(file, meta, domains));
+    warnings.push(...checkChecked(file, meta, prose(text)));
   }
   for (const page of pages) {
     const words = countWords(page.prose);

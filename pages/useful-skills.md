@@ -5,6 +5,7 @@ status: developing
 lane: guidance
 goal: economy
 order: 2
+checked: 2026-11-15
 ---
 
 # Choose and add skills
@@ -32,7 +33,7 @@ Put project skills in `.agents/skills/NAME/SKILL.md`. Copilot reads it, and the 
 
 In the Copilot features that support skills, the agent uses each skill's name and description to choose one, then loads its instructions when the task calls for it. Personal skills go in `~/.copilot/skills/` or `~/.agents/skills/`, but cloud sessions do not see them; put any skill the cloud agent needs in the repository. `gh skill` in the GitHub CLI can find and install skills from GitHub repositories.
 
-Checked 15 November 2026 against GitHub's [agent skills documentation](https://docs.github.com/en/copilot/concepts/customizations/agent-skills).
+Source: GitHub's [agent skills documentation](https://docs.github.com/en/copilot/concepts/customizations/agent-skills).
 
 ## Candidates to evaluate
 

@@ -5,6 +5,7 @@ status: developing
 lane: guidance
 goal: security
 order: 2
+checked: 2026-11-15
 ---
 
 # Sandbox a local coding agent
@@ -19,7 +20,7 @@ Instructions depend on the model following them, and approval prompts depend on 
 
 Local sandboxing is generally available at no extra cost, but it is off by default, so an agent you have not configured runs without it. Organizations can enforce it through managed settings, which is the way to make sure every developer has it on.
 
-Checked 15 November 2026 against GitHub's documentation on [local sandboxing](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes).
+Source: GitHub's documentation on [local sandboxing](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes).
 
 ## Prove it works
 

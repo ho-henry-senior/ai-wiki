@@ -8,20 +8,20 @@ order: 4
 
 # Local checks and tools for coding agents
 
-Give an agent commands that run the project's existing checks rather than asking it to discover or reinvent them. This is a **menu of examples**, not a recommendation to install every tool. Choose tools for your language and repository, expose the useful commands through package scripts, Make, or a [Justfile](../pages/justfile-agent-workflows.md), and describe when to run them in `AGENTS.md`.
+Give an agent commands that run the project's existing checks rather than asking it to discover or reinvent them. This is a **menu of examples**, not a recommendation to install every tool. Choose tools for your language and repository, expose the commands you use through package scripts, Make, or a [Justfile](../pages/justfile-agent-workflows.md), and describe when to run them in `AGENTS.md`.
 
-| Purpose | Example tools | What the agent can learn |
-| --- | --- | --- |
-| Run one test or the full suite | pytest, Python `unittest`, Jest, Vitest, Mocha | Whether the relevant behaviour passes; focused runs reduce feedback time and output |
-| Lint code | Ruff, ESLint, Pylint | Rule violations and likely mistakes |
-| Check types | mypy, pyright, TypeScript `tsc` | Type inconsistencies before runtime |
-| Check formatting | Ruff formatter, Prettier, Black | Whether code follows the repository's formatting rules |
-| Find unused or redundant code | Knip (JS/TS), Vulture (Python), ESLint unused-variable rules | Candidates for unused files, exports, imports or code; investigate before deleting |
-| Scan for security patterns | Semgrep, Bandit (Python) | Potential security problems; findings require review |
-| Audit dependencies | `npm audit`, `pip-audit`, OSV-Scanner | Known vulnerabilities in dependencies |
-| Scan files and container images | Trivy | Vulnerabilities, misconfiguration or secrets, depending on the scan mode |
-| Lint Dockerfiles | Hadolint | Dockerfile mistakes and maintainability issues |
-| Validate other project files | Template linters, YAML linters, Markdown/link checkers | Errors in non-code artifacts |
+| Purpose                         | Example tools                                                | What the agent can learn                                                            |
+| ------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
+| Run one test or the full suite  | pytest, Python `unittest`, Jest, Vitest, Mocha               | Whether the relevant behaviour passes; focused runs reduce feedback time and output |
+| Lint code                       | Ruff, ESLint, Pylint                                         | Rule violations and likely mistakes                                                 |
+| Check types                     | mypy, pyright, TypeScript `tsc`                              | Type inconsistencies before runtime                                                 |
+| Check formatting                | Ruff formatter, Prettier, Black                              | Whether code follows the repository's formatting rules                              |
+| Find unused or redundant code   | Knip (JS/TS), Vulture (Python), ESLint unused-variable rules | Candidates for unused files, exports, imports or code; investigate before deleting  |
+| Scan for security patterns      | Semgrep, Bandit (Python)                                     | Potential security problems; findings require review                                |
+| Audit dependencies              | `npm audit`, `pip-audit`, OSV-Scanner                        | Known vulnerabilities in dependencies                                               |
+| Scan files and container images | Trivy                                                        | Vulnerabilities, misconfiguration or secrets, depending on the scan mode            |
+| Lint Dockerfiles                | Hadolint                                                     | Dockerfile mistakes and maintainability issues                                      |
+| Validate other project files    | Template linters, YAML linters, Markdown/link checkers       | Errors in non-code artifacts                                                        |
 
 ## Give agents focused commands
 
@@ -33,7 +33,7 @@ python -m pytest tests/test_orders.py::test_total -q
 npx vitest run src/orders.test.ts
 ```
 
-These are examples, not universal commands: flags and test selectors depend on the project's runner. The agent should run the smallest relevant check during editing, then the required full gate before handoff. See [the Justfile guide](../pages/justfile-agent-workflows.md) for an executable example with parameterised recipes and composition.
+These are examples, not universal commands: flags and test selectors depend on the project's runner. The agent should run the smallest check that covers the change during editing, then the required full gate before handoff. See [the Justfile guide](../pages/justfile-agent-workflows.md) for an executable example with parameterised recipes and composition.
 
 ## Decide which results block handoff
 

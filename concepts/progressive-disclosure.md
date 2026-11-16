@@ -5,6 +5,7 @@ status: established
 lane: guidance
 goal: concepts
 order: 4
+checked: 2026-11-15
 ---
 
 # Load context through focused entrypoints
@@ -30,7 +31,7 @@ Write each link so the agent can tell when it matters, for example "Before chang
 
 Copilot CLI loads a file referenced as `@path` from `AGENTS.md` immediately, so an `@` reference is not on demand. An ordinary link is followed only if the agent chooses to. Keep rules that every task needs in `AGENTS.md` itself.
 
-Checked 15 November 2026. See [write repository instructions in AGENTS.md](../pages/repository-instructions.md) and [choose and add skills](../pages/useful-skills.md).
+See [write repository instructions in AGENTS.md](../pages/repository-instructions.md) and [choose and add skills](../pages/useful-skills.md).
 
 ## Sources
 

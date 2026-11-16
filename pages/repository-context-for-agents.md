@@ -5,6 +5,7 @@ status: developing
 lane: guidance
 goal: alignment
 order: 4
+checked: 2026-11-15
 ---
 
 # Furnish repositories with context for agents
@@ -59,4 +60,4 @@ For very large documentation sets, [retrieval-augmented generation](../concepts/
 
 ## Sources
 
-- [Microsoft Learn: Responsible use of the Copilot coding agent](https://learn.microsoft.com/en-us/training/modules/github-copilot-code-agent/5-responsible-use-github-copilot-code-agent-github) — the agent can access only the repository where it is creating a pull request. Checked 15 November 2026.
+- [Microsoft Learn: Responsible use of the Copilot coding agent](https://learn.microsoft.com/en-us/training/modules/github-copilot-code-agent/5-responsible-use-github-copilot-code-agent-github) — the agent can access only the repository where it is creating a pull request.

@@ -5,6 +5,7 @@ status: established
 lane: guidance
 goal: security
 order: 1
+checked: 2026-11-16
 ---
 
 # Secure a local coding agent
@@ -33,4 +34,4 @@ When Copilot CLI, the Copilot app, or agent mode in your editor runs a command, 
 
 **Use a container or virtual machine when you trust the work less.** An unfamiliar repository can run its own code the moment the agent installs dependencies or runs tests, and an unattended run has nobody reading the prompts. Give the container only the files it needs, limited credentials, and explicit network rules.
 
-Checked 16 November 2026 against GitHub's documentation on [configuring Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/configure-copilot-cli). Other local agents offer similar controls under different names; look for the equivalent of each step above. For where data goes, use the [agent data-flow checklist](agent-data-flow-checklist.md).
+Source: GitHub's documentation on [configuring Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/configure-copilot-cli). Other local agents offer similar controls under different names; look for the equivalent of each step above. For where data goes, use the [agent data-flow checklist](agent-data-flow-checklist.md).
