@@ -12,9 +12,7 @@ export const siteUrl = "https://ho-henry-senior.github.io/ai-wiki/";
 // In the repository, but not part of the site. Links to them go to GitHub.
 export const excluded = [
   "AGENTS.md",
-  "DESIGN-GOALS.md",
-  "MAINTAINING.md",
-  "STYLE.md",
+  "maintainers/",
   ".agents/",
   ".github/",
   "_site/",
