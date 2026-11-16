@@ -5,12 +5,12 @@ import {
   excluded,
   githubSlug,
   pathPrefix,
+  repository,
   rewriteLink,
   siteUrl,
 } from "../scripts/site-links.mjs";
 import { contents, isLetterIndex } from "../scripts/site-contents.mjs";
 import { eleventyNavigation, laneItems, lanes } from "./lanes.mjs";
-import { surfaces, surfaceUrl } from "./surfaces.mjs";
 
 // Builds the wiki as a website. The Markdown stays the source: pages keep
 // relative .md links that work on GitHub and in editors, and this config
@@ -49,15 +49,6 @@ export default async function (eleventyConfig) {
       ),
   );
 
-  // One collection per Copilot surface, of the pages tagged with it.
-  for (const key of Object.keys(surfaces))
-    eleventyConfig.addCollection(`surface-${key}`, (api) =>
-      api
-        .getAll()
-        .filter((item) => item.data.surfaces?.includes(key))
-        .sort((a, b) => a.data.title.localeCompare(b.data.title)),
-    );
-
   await eleventyConfig.addPlugin(govukEleventyPlugin, {
     header: {
       logotype: { text: "Making the most of agents" },
@@ -74,12 +65,22 @@ export default async function (eleventyConfig) {
     // No crown icons or GOV.UK sharing image.
     icons: { mask: false, shortcut: false, touch: false },
     // No footer crown, copyright statement, or Open Government Licence.
+    // Instead, a row of site-wide links: ways in that are not pages of a
+    // lane, and where the wiki is maintained.
     footer: {
       logo: false,
       copyright: false,
       contentLicence: false,
       meta: {
-        html: `<a class="govuk-footer__link" href="https://github.com/ho-henry-senior/ai-wiki/blob/main/maintainers/README.md">Maintainer documentation</a>`,
+        items: [
+          { href: "/pages/glossary/", text: "Glossary" },
+          { href: "/sitemap/", text: "Sitemap" },
+          {
+            href: `${repository}/blob/main/maintainers/README.md`,
+            text: "How this wiki is maintained",
+          },
+          { href: repository, text: "Source on GitHub" },
+        ],
       },
     },
     opengraphImageUrl: false,
@@ -125,39 +126,6 @@ export default async function (eleventyConfig) {
       ...listing,
     });
   }
-
-  // A page for each Copilot surface, listing the pages tagged with it, and
-  // an index of the surfaces. Pages link to their surfaces under the title.
-  eleventyConfig.addGlobalData("surfaceInfo", surfaces);
-  for (const [key, { title, description }] of Object.entries(surfaces))
-    eleventyConfig.addTemplate(`surfaces/${key}.md`, "", {
-      title,
-      description,
-      permalink: surfaceUrl(key),
-      layout: "collection",
-      pagination: {
-        data: `collections.surface-${key}`,
-        size: 50,
-        generatePageOnEmptyData: true,
-      },
-    });
-  eleventyConfig.addTemplate(
-    "surfaces/index.njk",
-    `<ul class="govuk-list">
-{%- for key, surface in surfaceInfo %}
-  <li><a class="govuk-link" href="{{ key | surfaceUrl }}">{{ surface.title }}</a> ({{ collections["surface-" + key] | length }} pages): {{ surface.description }}</li>
-{%- endfor %}
-</ul>`,
-    {
-      title: "Pages by Copilot surface",
-      description: "Pages that give instructions or behavior for a particular part of Copilot.",
-      permalink: "/surfaces/",
-      // Listed last in the Reference lane.
-      lane: "reference",
-      order: 99,
-    },
-  );
-  eleventyConfig.addFilter("surfaceUrl", surfaceUrl);
 
   // Better search ranking (assets/search-ranking.js). The plugin stops
   // building its own script if given a scripts list, so add ours to each page

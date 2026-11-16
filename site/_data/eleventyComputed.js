@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { repoPath } from "../../scripts/site-links.mjs";
+import { appliesToNames } from "../applies-to.mjs";
 import { lanes } from "../lanes.mjs";
 
 // Computed data for every page. Eleventy merges this with the plugin's own
@@ -31,6 +32,8 @@ export default {
       ? firstHeading(data.page.inputPath)
       : undefined),
   description: (data) => data.description || data.summary,
+  // Names of the parts of Copilot the page applies to, from `applies-to`.
+  appliesTo: (data) => appliesToNames(data["applies-to"]),
   // README.md becomes its folder's index page. Other pages keep their own
   // permalink, including the plugin's 404 page, sitemap, and search index.
   permalink: (data) => {

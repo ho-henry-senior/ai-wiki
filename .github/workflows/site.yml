@@ -130,25 +130,30 @@ jobs:
             echo "The stylesheet has no style for letter lists." >&2
             exit 1
           }
-      - name: Check pages link to their Copilot surfaces
+      - name: Check pages say which parts of Copilot they apply to
         run: |
-          grep -q 'href="/ai-wiki/surfaces/cloud-agent/"' _site/pages/cloud-agent-security/index.html || {
-            echo "The cloud agent page does not link to its surface." >&2
-            grep -o 'app-surfaces.\{0,300\}' _site/pages/cloud-agent-security/index.html >&2 || true
+          grep -q 'app-applies-to">Applies to: Copilot cloud agent<' _site/pages/cloud-agent-security/index.html || {
+            echo "The cloud agent page does not say it applies to the cloud agent." >&2
+            grep -o 'app-applies-to.\{0,200\}' _site/pages/cloud-agent-security/index.html >&2 || true
             exit 1
           }
-          grep -q 'Secure the Copilot cloud agent' _site/surfaces/cloud-agent/index.html || {
-            echo "The cloud agent surface page does not list the cloud agent page." >&2
+          grep -q 'Applies to: Copilot in the editor, Copilot CLI, Copilot cloud agent, Copilot code review<' _site/pages/repository-instructions/index.html || {
+            echo "The repository instructions page does not list the parts of Copilot it applies to." >&2
             exit 1
           }
-          grep -q 'href="/ai-wiki/surfaces/"' _site/reference/index.html || {
-            echo "The Reference lane does not list the surfaces index." >&2
+          if [ -e _site/surfaces ]; then
+            echo "Surface pages are still published; they were removed in #76." >&2
             exit 1
-          }
-          grep -q 'href="/ai-wiki/surfaces/cli/"' _site/surfaces/index.html || {
-            echo "The surfaces index does not link to the CLI surface." >&2
-            exit 1
-          }
+          fi
+      - name: Check the footer links
+        run: |
+          for href in /ai-wiki/pages/glossary/ /ai-wiki/sitemap/ https://github.com/ho-henry-senior/ai-wiki/blob/main/maintainers/README.md https://github.com/ho-henry-senior/ai-wiki; do
+            grep -q "govuk-footer__link\" href=\"$href\"" _site/index.html || {
+              echo "The footer has no link to $href." >&2
+              grep -o 'govuk-footer__meta.\{0,1200\}' _site/index.html >&2 || true
+              exit 1
+            }
+          done
       - name: Check diagrams are set up to render
         run: |
           page=_site/pages/agent-role-boundaries/index.html

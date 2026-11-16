@@ -6,7 +6,7 @@ lane: guidance
 goal: security
 order: 3
 checked: 2026-11-15
-surfaces:
+applies-to:
   - cloud-agent
 ---
 

@@ -6,7 +6,7 @@ lane: guidance
 goal: alignment
 order: 2
 checked: 2026-11-15
-surfaces:
+applies-to:
   - editor
   - cli
   - cloud-agent

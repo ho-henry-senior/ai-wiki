@@ -1,7 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { surfaces } from "../site/surfaces.mjs";
+import { copilotParts } from "../site/applies-to.mjs";
 
 // Checks authored pages against maintainers/STYLE.md: length ceilings, hedge words, and
 // sentences repeated across pages. Also checks that pages marked `recheck`
@@ -153,16 +153,17 @@ export function checkRecheck(file, meta, domains) {
   return warnings;
 }
 
-// A page's `surfaces` tags must be a list of the surfaces in site/surfaces.mjs.
-export function checkSurfaces(file, meta, known = Object.keys(surfaces)) {
-  if (meta.surfaces === undefined) return [];
-  if (!Array.isArray(meta.surfaces) || !meta.surfaces.length)
-    return [`${file}: surfaces must be a list, one surface per line`];
-  return meta.surfaces
-    .filter((surface) => !known.includes(surface))
+// A page's `applies-to` must list parts of Copilot from site/applies-to.mjs.
+export function checkAppliesTo(file, meta, known = Object.keys(copilotParts)) {
+  const parts = meta["applies-to"];
+  if (parts === undefined) return [];
+  if (!Array.isArray(parts) || !parts.length)
+    return [`${file}: applies-to must be a list, one part of Copilot per line`];
+  return parts
+    .filter((part) => !known.includes(part))
     .map(
-      (surface) =>
-        `${file}: unknown surface "${surface}"; use one of ${known.join(", ")}, or add it to site/surfaces.mjs`,
+      (part) =>
+        `${file}: applies-to has unknown "${part}"; use one of ${known.join(", ")}, or add it to site/applies-to.mjs`,
     );
 }
 
@@ -300,7 +301,7 @@ export async function checkStyle(rootDir = root) {
     });
     warnings.push(...checkRecheck(file, meta, domains));
     warnings.push(...checkChecked(file, meta, prose(text)));
-    warnings.push(...checkSurfaces(file, meta));
+    warnings.push(...checkAppliesTo(file, meta));
   }
   for (const page of pages) {
     const words = countWords(page.prose);

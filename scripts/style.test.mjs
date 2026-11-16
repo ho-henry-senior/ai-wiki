@@ -7,7 +7,7 @@ import {
   allowedDomains,
   checkChecked,
   checkRecheck,
-  checkSurfaces,
+  checkAppliesTo,
   checkStyle,
   countWords,
   findDuplicates,
@@ -208,19 +208,19 @@ test("checked must be a real, past date, kept out of the text", () => {
   );
 });
 
-test("surfaces must be a list of known surfaces", () => {
+test("applies-to must list known parts of Copilot", () => {
   const known = ["cli", "cloud-agent"];
-  assert.deepEqual(checkSurfaces("a.md", {}, known), []);
+  assert.deepEqual(checkAppliesTo("a.md", {}, known), []);
   assert.deepEqual(
-    checkSurfaces("a.md", { surfaces: ["cli", "cloud-agent"] }, known),
+    checkAppliesTo("a.md", { "applies-to": ["cli", "cloud-agent"] }, known),
     [],
   );
   assert.match(
-    checkSurfaces("a.md", { surfaces: ["cli", "chat"] }, known)[0],
-    /unknown surface "chat"/,
+    checkAppliesTo("a.md", { "applies-to": ["cli", "chat"] }, known)[0],
+    /unknown "chat"/,
   );
   assert.match(
-    checkSurfaces("a.md", { surfaces: "cli" }, known)[0],
+    checkAppliesTo("a.md", { "applies-to": "cli" }, known)[0],
     /must be a list/,
   );
 });

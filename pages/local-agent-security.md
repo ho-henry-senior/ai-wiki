@@ -6,7 +6,7 @@ lane: guidance
 goal: security
 order: 1
 checked: 2026-11-16
-surfaces:
+applies-to:
   - editor
   - cli
   - app
