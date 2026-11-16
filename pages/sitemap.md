@@ -47,6 +47,10 @@ These lists group directly linked pages, concepts, slides, and source records by
 - [Evals](../concepts/evals.md) — Background. An eval runs an agent on a fixed set of tasks and checks the results, so you can tell whether a change to your setup made things better or worse.
 - [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — An anonymized account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
 
+#### Other links
+
+- [Session history is not active context](../concepts/session-history-vs-context.md) — What a session has saved is not what the model sees in its next request; in Copilot CLI, check with /context and summarize with /compact. (established)
+
 ### [Traceability](traceability.md)
 
 **Status:** established
@@ -78,7 +82,7 @@ These lists group directly linked pages, concepts, slides, and source records by
 - [Passing tests are evidence, not proof](../concepts/tests-are-evidence.md) — Write the expected behavior down before the agent writes tests, ask for tests that can fail, and read them; a green suite shows only that the assertions that ran passed. (established)
 - [Invented package names can be real attacks](../concepts/hallucinated-dependencies.md) — Models sometimes name packages that do not exist, often the same ones; attackers register those names, and an agent that installs dependencies itself can run their code before anyone reviews it. (developing)
 - [Local MCP does not mean local-only data](../concepts/local-and-remote-mcp.md) — An MCP server's location determines where code runs, but does not guarantee where the data it handles stays. (established)
-- [Alignment](alignment.md) — Get results that match what you intended; define the work, give the agent context and checks, steer it, and verify the result. (established)
+- [Alignment](alignment.md) — Why an agent's result can differ from what you meant, and how to close the gap; define the work, give the agent context and checks, steer it, and verify the result. (established)
 - [Sandbox a local coding agent](local-agent-sandboxing.md) — Turn on Copilot's local sandbox so the operating system, not the model, limits what commands can reach; then prove the limits hold with harmless test files. (developing)
 
 #### Explore further
@@ -111,10 +115,10 @@ Pages are grouped by their primary purpose; a page can serve more than one purpo
 
 #### overview
 
-- [Alignment](alignment.md) — Get results that match what you intended; define the work, give the agent context and checks, steer it, and verify the result. (established)
-- [Economy](economy.md) — Get good results with less time and fewer tokens, without giving up quality or security; clear tasks, listed commands, focused checks and context. (established)
+- [Alignment](alignment.md) — Why an agent's result can differ from what you meant, and how to close the gap; define the work, give the agent context and checks, steer it, and verify the result. (established)
+- [Economy](economy.md) — Where an agent's time and tokens go, and how to spend less of both without giving up quality or security; clear tasks, listed commands, focused checks, small context, and the right model. (established)
 - [Security](security.md) — The five ways a coding agent can cause harm, how each happens, and what stops it in Copilot; start from where the agent's tools run. (established)
-- [Traceability](traceability.md) — Leave a record someone else can follow later, covering what was asked, who or what made the change, how it was corrected, who approved it, and the evidence. (established)
+- [Traceability](traceability.md) — Why agent work needs a record someone else can follow, and how to leave one on the issue and pull request; what was asked, who or what made the change, how it was corrected, who approved it, and the evidence. (established)
 
 #### pattern
 
