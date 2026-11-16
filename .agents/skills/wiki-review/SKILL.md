@@ -36,7 +36,7 @@ Evaluate the material against:
 - **Terminology:** compare terms and definitions with the glossary and their context; verify apparent inconsistencies in the source before proposing a change.
 - **Slides:** check that summaries retain essential qualifications and link to their canonical concepts.
 - **Freshness:** inspect changing claims, versions, dates, source quality, and whether recommendations are supported by evidence. Check pages marked `recheck: every-run` against their `check-against` sources first; see [fast-changing pages](../../../MAINTAINING.md#keeping-content-current).
-- **Writing:** check pages against [the writing standard](../../../STYLE.md): the action comes first, each piece of advice has a Copilot example, sections do not depend on a link for their main point, and hedges are cut.
+- **Writing:** check pages against [the writing standard](../../../STYLE.md): each page does its type's job, each action has a Copilot example, sections do not depend on a link for their main point, and hedges are cut. Flag a recommendation whose reason a reader could not work out from the page; do not ask for a justification on instructions whose reason is already clear, which pads pages.
 
 For each proposed extraction, name the question or distinction, its current location, and the articles or reference uses that justify it. Keep examples and essential caveats with the explanation. Keep catalogs, checklists, and concrete workflow examples intact when splitting would reduce usefulness.
 
