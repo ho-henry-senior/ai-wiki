@@ -13,8 +13,8 @@ Data reaches more places than anyone chose to send it: the model provider, saved
 - [ ] Identify the agent, the Copilot plan or account, where its tools run, and the enabled tools and MCP servers. Each of these decides where data goes and which limits apply.
 - [ ] List the sensitive data it could reach (see the table below).
 - [ ] For each flow, record: **data → source → trigger → destination → how long it is kept and who can see it → control**. A flow with no control in the last column is the gap to fix.
-- [ ] Include context the agent picks up on its own, debug output, generated summaries, and delegated agents, not only files you hand it, because most leaks come from data nobody chose to share. Trace [tool output](../concepts/secrets-in-tool-output.md) and [saved session history](../concepts/session-history-vs-context.md) separately from what the model sees.
-- [ ] Answer the [inference, retention, and training](../concepts/inference-retention-training.md) questions, and write down what is unknown rather than assuming a safe default. An unknown on paper gets resolved; an assumed default does not.
+- [ ] Include context the agent picks up on its own, debug output, generated summaries, and delegated agents, not only files you hand it, because an agent can expose data you never chose to share. Trace [tool output](../concepts/secrets-in-tool-output.md) and [saved session history](../concepts/session-history-vs-context.md) separately from what the model sees.
+- [ ] Answer the [inference, retention, and training](../concepts/inference-retention-training.md) questions, and write down what is unknown rather than assuming a safe default.
 
 | Data                                                                                       | How it can reach the agent                                                                                |
 | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
@@ -52,7 +52,7 @@ This fictional entry shows how to record a flow, including unknowns.
 - [ ] Check where each tool, skill, dependency, and MCP server comes from and what it can reach before enabling it, because each runs code with the agent's access. Models can also [invent package names that attackers register](../concepts/hallucinated-dependencies.md).
 - [ ] Check which limits cover each tool; [a worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md), and a sandbox may not cover MCP servers.
 - [ ] Make sure limits are [enforced, not just instructions](../concepts/instructions-vs-controls.md), because the text that misleads the agent can override an instruction.
-- [ ] Require approval for destructive, costly, privileged, or public actions, which are the ones you cannot undo.
+- [ ] Require approval for destructive, costly, privileged, or public actions.
 - [ ] Review generated changes and run tests and security checks before accepting them, because the agent's summary may not mention a weakened test or check.
 - [ ] Inspect reports and logs before sharing, and know how to revoke credentials if data leaks, since a leaked secret stays valid until you rotate it.
 
