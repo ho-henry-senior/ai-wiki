@@ -6,7 +6,7 @@ status: established
 
 # A structure for agent-facing repositories
 
-Start with `AGENTS.md` and your existing commands. Add the other pieces below only when a recurring problem calls for them; this is a map, not a setup checklist.
+Start with `AGENTS.md` and your existing commands. Add the other pieces below only when a recurring problem calls for them, because each file is one more thing to keep in step with the code; this is a map, not a setup checklist.
 
 ```text
 repo/
@@ -44,6 +44,6 @@ repo/
 
 ## `docs/agents/`
 
-Use `docs/agents/` only for material written for agents, such as issue-tracker conventions, tooling notes, or findings from recurring investigations. Keep ordinary project documentation where it already lives under `docs/`, and link to it from `AGENTS.md`. A document does not belong here just because an agent reads it.
+Use `docs/agents/` only for material written for agents, such as issue-tracker conventions, tooling notes, or findings from recurring investigations. Keep ordinary project documentation where it already lives under `docs/`, and link to it from `AGENTS.md`. A document does not belong here just because an agent reads it; two homes for the same information drift apart.
 
 Keep `.github/workflows/` for automation, not as a second home for agent instructions.

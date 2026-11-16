@@ -6,9 +6,9 @@ Practical guidance for developers using AI agents, mostly GitHub Copilot.
 
 Three changes worth making first, in this order. Each is small enough to try today.
 
-1. **Tell the agent about your repository.** Add an `AGENTS.md` with your rules and the commands it should run. See [write repository instructions in AGENTS.md](pages/repository-instructions.md), then [let the agent run your repository's commands](pages/agent-tool-delegation.md).
-2. **Write your next task down.** State the outcome, how you will know it is done, the checks, and what is out of scope; then steer the agent and check its work. See [define, steer, and verify a task](pages/define-and-verify-tasks.md).
-3. **Limit what the agent can do.** Turn on the sandbox on your computer, or check the cloud agent's settings. See [security](pages/security.md).
+1. **Tell the agent about your repository.** It can read your code but not your team's rules, so add an `AGENTS.md` with those rules and the commands it should run. See [write repository instructions in AGENTS.md](pages/repository-instructions.md), then [let the agent run your repository's commands](pages/agent-tool-delegation.md).
+2. **Write your next task down.** Where you leave a gap, the agent may guess. State the outcome, how you will know it is done, the checks, and what is out of scope; then steer the agent and check its work against what you wrote. See [define, steer, and verify a task](pages/define-and-verify-tasks.md).
+3. **Limit what the agent can do.** A mistake or an injected instruction can only do what the agent can reach. Turn on the sandbox on your computer, or check the cloud agent's settings. See [security](pages/security.md).
 
 ## By goal
 
