@@ -12,7 +12,7 @@ import { eleventyNavigation, laneItems, lanes } from "./lanes.mjs";
 
 // Builds the wiki as a website. The Markdown stays the source: pages keep
 // relative .md links that work on GitHub and in editors, and this config
-// rewrites them for the site at build time. See MAINTAINING.md#website.
+// rewrites them for the site at build time. See maintainers/MAINTAINING.md#website.
 //
 // Runs from site/, so the build uses only site/'s own packages
 // (site/package.json); the repository root is the input.
