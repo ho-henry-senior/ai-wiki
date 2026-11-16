@@ -26,9 +26,7 @@ jobs:
           node-version: "22"
           cache: npm
       - name: Install tools
-        run: |
-          npm ci
-          npm run site:setup
+        run: npm ci
       - name: Test link rewriting
         run: npm run test:site
       - name: Build the site

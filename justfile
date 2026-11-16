@@ -29,10 +29,6 @@ links:
 format:
     npm run format
 
-# Install the website's build tools (not yet pinned in package-lock.json).
-site-setup:
-    npm run site:setup
-
 # Build the website into _site/.
 site:
     npm run site

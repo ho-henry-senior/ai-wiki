@@ -28,7 +28,7 @@ The wiki is also built as a website with [Eleventy](https://www.11ty.dev/) and t
 
 Each page's title comes from its first `#` heading and its description from `summary`; `README.md` files become their folder's index page. These are set in `site/_data/eleventyComputed.js`. Heading IDs follow GitHub's rules, so `page.md#section` links work on both.
 
-To preview the site, run `just site-setup` once, then `just serve`. The site's build tools are not yet pinned in `package-lock.json`, so `just setup` does not install them.
+To preview the site, run `just setup`, then `just serve`.
 
 ## Articles and concepts
 
