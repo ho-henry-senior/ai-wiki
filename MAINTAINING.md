@@ -101,7 +101,7 @@ For substantive edits, review the affected pages for claims that may have become
 
 Check those claims against current primary sources. Update outdated guidance and its supporting links; where verification is unavailable or inconclusive, flag the uncertainty rather than presenting it as confirmed. Distinguish durable principles from product-, version-, or account-specific behavior.
 
-For time-sensitive claims or recommendations, record the relevant version or review date where it helps readers judge applicability. A review date should describe what was actually checked, not imply that every claim in the page was reverified. Follow [the source conventions](sources/README.md) for provenance.
+For time-sensitive claims or recommendations, record the relevant version or review date where it helps readers judge applicability. A review date should describe what was actually checked, not imply that every claim in the page was reverified. Across the wiki, a "Checked" date means when the facts it covers were last verified in a change to the page. Git history already shows when a page last changed, so pages carry no separate "updated" date. Follow [the source conventions](sources/README.md) for provenance.
 
 Some pages hold figures that change month to month, such as prices, allowances, and model names. Mark such a page in its front matter, and list the primary sources its figures come from:
 
