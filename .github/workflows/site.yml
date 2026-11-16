@@ -141,6 +141,10 @@ jobs:
             echo "The cloud agent surface page does not list the cloud agent page." >&2
             exit 1
           }
+          grep -q 'href="/ai-wiki/surfaces/"' _site/reference/index.html || {
+            echo "The Reference lane does not list the surfaces index." >&2
+            exit 1
+          }
           grep -q 'href="/ai-wiki/surfaces/cli/"' _site/surfaces/index.html || {
             echo "The surfaces index does not link to the CLI surface." >&2
             exit 1

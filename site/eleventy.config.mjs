@@ -152,6 +152,9 @@ export default async function (eleventyConfig) {
       title: "Pages by Copilot surface",
       description: "Pages that give instructions or behavior for a particular part of Copilot.",
       permalink: "/surfaces/",
+      // Listed last in the Reference lane.
+      lane: "reference",
+      order: 99,
     },
   );
   eleventyConfig.addFilter("surfaceUrl", surfaceUrl);
