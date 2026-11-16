@@ -3,8 +3,8 @@ type: reference
 summary: Sending data for a response, keeping it, and training on it are separate questions; for Copilot, the answers depend on your plan and which feature you use.
 status: developing
 lane: guidance
-goal: concepts
-order: 12
+goal: security
+order: 25
 checked: 2026-11-15
 ---
 

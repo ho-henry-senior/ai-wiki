@@ -3,8 +3,8 @@ type: reference
 summary: Anything a command prints goes to the model and into session history, so keep secrets out of output and out of reach; if one leaks, rotate it.
 status: established
 lane: guidance
-goal: concepts
-order: 11
+goal: security
+order: 24
 checked: 2026-11-15
 ---
 
