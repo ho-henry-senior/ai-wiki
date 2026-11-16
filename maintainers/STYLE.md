@@ -4,7 +4,7 @@ Write so a developer understands what matters and why, and can act on it, on one
 
 ## Rules
 
-1. **Give every recommendation its reason.** A reader should never meet an action without knowing what it prevents or achieves. Put the reason where it reads best; one sentence often carries both. When the reader needs the mechanism to apply the advice to a case the page does not cover, explain the mechanism.
+1. **Give every recommendation its reason and underlying principle.** A reader should never meet an action without knowing what problem it addresses or what it prevents or achieves. Explain the principle when it helps readers apply the advice beyond the example; a procedure alone may miss the point. Put the reason where it reads best, before or alongside the action. Do not force every recommendation into the same order.
 2. **Prefer shared conventions, and show actions in Copilot.** Recommend files and formats that agents share, such as `AGENTS.md`, over tool-specific ones. Give each action one concrete Copilot or GitHub example: a file, a command, a setting, or a short snippet the reader can copy. Explanations of how something works do not need one.
 3. **State the behavior, not "verify it".** Say what Copilot does, which surface it applies to (chat, CLI, cloud agent, or code review), and record the date you checked in the page's `checked` front matter. Do not tell readers to "verify in your harness" without telling them how.
 4. **State the advice in full.** A link adds depth; it never replaces the advice. A section that is one sentence and a link is not finished.
@@ -28,13 +28,21 @@ A long page needs a summary at the top and sections that make sense on their own
 
 ## Examples
 
-**Give the reason.** Before:
+**Give the reason and principle.** Before:
 
 > Deny the commands you never want run without you: `copilot --deny-tool='shell(git push)'`. Deny rules win over allow rules.
 
 After:
 
 > Text the agent reads in an issue or file can tell it to run commands, and the model cannot reliably tell that text from your instructions. So deny the commands that would do most damage if it obeyed, such as publishing your work: `copilot --deny-tool='shell(git push)'`. Copilot enforces deny rules whatever the model decides, and they win over allow rules.
+
+**Distinguish a procedure from its purpose.** Before:
+
+> Write your next task down. State the outcome, checks and what is out of scope.
+
+After:
+
+> Agree on the problem before delegating the solution. An agent can build a convincing solution to the wrong problem, so ask it to challenge assumptions and draft requirements for your review before implementation.
 
 **State the behavior.** Before:
 
@@ -50,7 +58,7 @@ The page then records `checked: 2026-11-15` in its front matter.
 
 Run `just style` to find pages over their ceiling, hedge words, sentences repeated across pages, and dates of checking written in the text instead of the `checked` field. Then read the page once as a new reader and confirm:
 
-- you could say why each recommendation matters, from the page alone;
+- you could say what problem each recommendation addresses and why it matters, from the page alone;
 - claims about model or agent behavior state their scope and retain qualifications that change their meaning;
 - every action has a Copilot or GitHub example;
 - no section depends on a link for its main point;
