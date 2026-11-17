@@ -1,8 +1,8 @@
 # Maintaining the wiki
 
-Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just --list` to discover tasks, `just setup` to install the pinned development tools, then `just verify` to test and check Markdown formatting, and internal links, including heading anchors. Checks include `concepts/`, `slides/`, repository skills under `.agents/skills/`, and workflow Markdown. External URLs and raw material under `data/` are excluded.
+Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just --list` to discover tasks, `just setup` to install the pinned development tools, then `just verify` to test and check Markdown formatting, and internal links, including heading anchors. Checks include `content/concepts/`, `content/slides/`, repository skills under `.agents/skills/`, and workflow Markdown. External URLs and raw material under `data/` are excluded.
 
-`just style` fails when pages in `pages/` and `concepts/` don't meet [the writing standard](STYLE.md). It reads the hedge words and length ceilings from `STYLE.md` itself, so change the rules there. It reports:
+`just style` fails when pages in `content/goals/`, `content/concepts/`, `content/articles/` and `content/reference/` don't meet [the writing standard](STYLE.md). It reads the hedge words and length ceilings from `STYLE.md` itself, so change the rules there. It reports:
 
 - pages more than 10% over their length ceiling (the rule says "about"), counting prose only (not code, tables, or source lists). References, case studies, and pages that give a `long-because` reason have no ceiling;
 - hedge words from rule 6; and
@@ -11,7 +11,7 @@ Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just 
 
 `just verify` runs it and its tests, and fails on any warning. To see warnings without failing, run `node scripts/style.mjs`. If a warning is wrong, improve the check or the rule in `maintainers/STYLE.md` rather than working around it.
 
-When you add or remove a page, update its folder's index (`content/README.md`, `content/concepts/README.md`, and so on), which is how readers browse on GitHub. The website builds its navigation and its own sitemap from front matter, so it needs no index edits.
+When you add or remove a page, update `content/README.md` and the relevant concept, slide or source index if applicable, which is how readers browse on GitHub. The website builds its navigation and its own sitemap from front matter, so it needs no index edits.
 
 Use `just format` to apply formatting or `just links` to check local links alone. Formatting preserves prose line breaks and leaves embedded code examples unchanged. Recipes delegate to npm scripts, which can also be run directly. See [the agent entrypoint](../AGENTS.md) for context pointers.
 
@@ -35,13 +35,13 @@ Pages in a lane show breadcrumbs above the title, worked out from the same navig
 
 The site's footer links to the glossary, the tags index, the plugin's generated sitemap, this maintainer documentation, and the repository. Put links there that are useful from any page but are not pages of a lane.
 
-Each page's title comes from its first `#` heading and its description from `summary`; `README.md` files become their folder's index page. These are set in `site/_data/eleventyComputed.js`, and the build configuration is `site/eleventy.config.mjs`. Under the title, each page shows a subdued metadata line with its `checked` date and completeness `status` when present, and pages with three or more `##` sections get a contents list of them; the layout is `site/_includes/wiki.njk`. Heading IDs follow GitHub's rules, so `page.md#section` links work on both. Mermaid diagrams (` ```mermaid ` blocks) render on GitHub and on the site; the site loads Mermaid's script only on pages that have a diagram. Search uses the plugin's search box with our own ranking, in `assets/search-ranking.js`: whole-word matches, with title matches first, then descriptions, then page text.
+Each page's title comes from its first `#` heading and its description from `summary`; Published Markdown under `content/` retains its existing public URL; indexes have explicit paths. These are set in `site/_data/eleventyComputed.js`, and the build configuration is `site/eleventy.config.mjs`. Under the title, each page shows a subdued metadata line with its `checked` date and completeness `status` when present, and pages with three or more `##` sections get a contents list of them; the layout is `site/_includes/wiki.njk`. Heading IDs follow GitHub's rules, so `page.md#section` links work on both. Mermaid diagrams (` ```mermaid ` blocks) render on GitHub and on the site; the site loads Mermaid's script only on pages that have a diagram. Search uses the plugin's search box with our own ranking, in `assets/search-ranking.js`: whole-word matches, with title matches first, then descriptions, then page text.
 
 The website's build tools have their own `site/package.json` and lock file, so `just setup` and the daily review do not install them; they need only the checks' tools. Install them with `just site-setup`, which skips install scripts, then preview with `just serve`. Update them deliberately, in their own pull request, rather than on the day a new version appears.
 
 ## Articles and concepts
 
-Put a standalone explanation or reusable distinction in `concepts/` when extracting it helps readers reuse or find it. Follow the [concept conventions](#writing-a-concept). Keep articles coherent: summarize the idea where it supports the narrative, then link to the canonical explanation rather than duplicate its example and caveats.
+Put a standalone explanation or reusable distinction in `content/concepts/` when extracting it helps readers reuse or find it. Follow the [concept conventions](#writing-a-concept). Keep articles coherent: summarize the idea where it supports the narrative, then link to the canonical explanation rather than duplicate its example and caveats.
 
 Length alone is not a reason to split. Keep tightly coupled explanations together; catalogs, checklists, and concrete workflow examples can remain complete pages. Concepts may provide the basis for [short slides](../content/slides/README.md), but slide size is not a required format.
 
@@ -66,7 +66,7 @@ Suggested `type` values:
 - `case-study` — an account of an approach applied in practice and what happened.
 - `exploration` — a provisional investigation or path, rather than a case study or established practice.
 
-Focused reusable concepts live in `concepts/` and use the types described in the [concept conventions](#writing-a-concept). An explanatory article may bring several concepts together without replacing them.
+Focused reusable concepts live in `content/concepts/` and use the types described in the [concept conventions](#writing-a-concept). An explanatory article may bring several concepts together without replacing them.
 
 The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it.
 
@@ -78,7 +78,7 @@ Use the shared [completeness status conventions](#completeness-status) when a co
 
 State the core idea first. Keep its explanation, a useful example or diagram, essential caveats, and supporting sources together. Link to articles that apply it and to related concepts where that helps navigation.
 
-Extract a concept when it is useful independently or needed in multiple places. Keep its detailed explanation canonical in `concepts/`; articles should summarize it in their own narrative and link to it. A concept may suit a short slide, but neither a fixed word count nor slide-sized formatting is required. Keep brief definitions in the [glossary](../content/reference/glossary.md), linking to the concept for depth.
+Extract a concept when it is useful independently or needed in multiple places. Keep its detailed explanation canonical in `content/concepts/`; articles should summarize it in their own narrative and link to it. A concept may suit a short slide, but neither a fixed word count nor slide-sized formatting is required. Keep brief definitions in the [glossary](../content/reference/glossary.md), linking to the concept for depth.
 
 [Short slides](../content/slides/README.md) summarize selected concepts and link back to their fuller explanation.
 
