@@ -102,27 +102,27 @@ test("finds repeated sentences across pages but not pointers or overviews", () =
 test("reports long pages, hedges, and duplicates; exempts references", async (t) => {
   const long = Array.from({ length: 60 }, (_, i) => `word${i}`).join(" ");
   const root = await fixture(t, {
-    "pages/long-guide.md": page("guide", `${long}.`),
-    "pages/about-guide.md": page(
+    "content/goals/alignment/long-guide.md": page("guide", `${long}.`),
+    "content/goals/alignment/about-guide.md": page(
       "guide",
       Array.from({ length: 41 }, (_, i) => `term${i}`).join(" ") + ".",
     ),
-    "pages/long-reference.md": page("reference", `${long}.`),
-    "pages/long-because.md": `---\ntype: guide\nsummary: S.\nlong-because: one setup procedure\n---\n\n# Title\n\n${long}.\n`,
-    "pages/long-no-reason.md": `---\ntype: guide\nsummary: S.\nlong-because:\n---\n\n# Title\n\n${long}.\n`,
-    "pages/hedgy.md": page("guide", "Use useful checks."),
-    "concepts/README.md": page("reference", "Use useful checks."),
+    "content/goals/alignment/long-reference.md": page("reference", `${long}.`),
+    "content/goals/alignment/long-because.md": `---\ntype: guide\nsummary: S.\nlong-because: one setup procedure\n---\n\n# Title\n\n${long}.\n`,
+    "content/goals/alignment/long-no-reason.md": `---\ntype: guide\nsummary: S.\nlong-because:\n---\n\n# Title\n\n${long}.\n`,
+    "content/goals/alignment/hedgy.md": page("guide", "Use useful checks."),
+    "content/concepts/README.md": page("reference", "Use useful checks."),
   });
   const warnings = await checkStyle(root);
-  assert.ok(warnings.some((w) => w.startsWith("pages/long-guide.md: 6")));
+  assert.ok(warnings.some((w) => w.startsWith("content/goals/alignment/long-guide.md: 6")));
   // "About 40" allows 10% leeway: 42 words (with the title) is not over.
-  assert.ok(!warnings.some((w) => w.startsWith("pages/about-guide.md")));
-  assert.ok(!warnings.some((w) => w.startsWith("pages/long-reference.md")));
+  assert.ok(!warnings.some((w) => w.startsWith("content/goals/alignment/about-guide.md")));
+  assert.ok(!warnings.some((w) => w.startsWith("content/goals/alignment/long-reference.md")));
   // These pages share text with long-guide, so check the length warning only.
-  assert.ok(!warnings.some((w) => w.startsWith("pages/long-because.md: 6")));
-  assert.ok(warnings.some((w) => w.startsWith("pages/long-no-reason.md: 6")));
-  assert.ok(warnings.includes("pages/hedgy.md: hedge words: useful"));
-  assert.ok(!warnings.some((w) => w.startsWith("concepts/README.md")));
+  assert.ok(!warnings.some((w) => w.startsWith("content/goals/alignment/long-because.md: 6")));
+  assert.ok(warnings.some((w) => w.startsWith("content/goals/alignment/long-no-reason.md: 6")));
+  assert.ok(warnings.includes("content/goals/alignment/hedgy.md: hedge words: useful"));
+  assert.ok(!warnings.some((w) => w.startsWith("content/concepts/README.md")));
 });
 
 test("reads lists in front matter and the workflow's allowed domains", () => {
