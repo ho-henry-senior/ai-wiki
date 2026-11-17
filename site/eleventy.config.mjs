@@ -11,11 +11,11 @@ import {
 } from "../scripts/site-links.mjs";
 import { contents, isLetterIndex } from "../scripts/site-contents.mjs";
 import {
-  breadcrumbs,
   eleventyNavigation,
   laneItems,
   lanes,
   metadataParts,
+  sectionNavigation,
   tagItems,
 } from "./lanes.mjs";
 
@@ -80,6 +80,7 @@ export default async function (eleventyConfig) {
       logotype: { text: "Making the most of agents" },
       search: { indexPath: "/search-index.json", sitemapPath: "/sitemap" },
     },
+    showBreadcrumbs: false,
     serviceNavigation: {
       navigation: Object.values(lanes).map(({ title, url }) => ({
         text: title,
@@ -138,7 +139,7 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addGlobalData("layout", "wiki");
   eleventyConfig.addFilter("laneItems", laneItems);
-  eleventyConfig.addFilter("breadcrumbs", breadcrumbs);
+  eleventyConfig.addFilter("sectionNavigation", sectionNavigation);
   // govukDate comes from the GOV.UK plugin, which registers it after this
   // function runs, so look it up when the filter is used.
   eleventyConfig.addFilter("metadataParts", (page) =>
