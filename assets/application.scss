@@ -33,3 +33,10 @@
 .app-document-header:has(.app-page-details) .govuk-heading-xl {
   margin-bottom: govuk.govuk-spacing(2);
 }
+
+// Visually separate emerging Trust guidance from established Traceability advice.
+.app-developing-card {
+  border: 1px solid govuk.govuk-colour("mid-grey");
+  padding: govuk.govuk-spacing(4);
+  margin-bottom: govuk.govuk-spacing(6);
+}
