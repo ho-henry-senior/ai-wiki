@@ -11,9 +11,9 @@ tags:
   - Context and tokens
 ---
 
-# Load context through focused entrypoints
+# Progressive disclosure
 
-Keep what the agent loads for every task small, and let detail load only when a task needs it. This is often called **progressive disclosure**. Material loaded routinely takes up context and can add to token costs across requests, and detail that does not apply to the task can crowd out detail that does.
+Keep what the agent loads for every task small, and let detail load only when a task needs it. Material loaded routinely takes up context and can add to token costs across requests, and detail that does not apply to the task can crowd out detail that does.
 
 ## In Copilot
 
