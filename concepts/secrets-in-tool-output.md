@@ -30,7 +30,7 @@ The same applies to private code, customer data in application logs, and summari
 
 ## If a secret leaks
 
-Rotate or revoke it; do not rely on deleting text. Copies may exist in synced sessions and in cloud agent session logs, which cannot be deleted; see [traceability](../pages/traceability.md#core-advice). Deleting a local copy does not remove the others.
+Rotate or revoke it; do not rely on deleting text. Copies may exist in synced sessions and in cloud agent session logs, which cannot be deleted; see [Traceability & Trust](../pages/traceability.md#core-advice). Deleting a local copy does not remove the others.
 
 ## Sources
 

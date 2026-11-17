@@ -1,26 +1,23 @@
 ---
 type: overview
-summary: Why agent work needs a record someone else can follow, and how to leave one on the issue and pull request; what was asked, who or what made the change, how it was corrected, who approved it, and the evidence.
+summary: Why agent work needs a record someone else can follow, and a review you can rely on; let the record make itself, put the check results on the pull request, read the risky parts first, and direct human attention by risk.
 status: established
 lane: goals
 goal: traceability
-order: 3
+order: 4
 checked: 2026-11-15
 ---
 
-# Traceability
+# Traceability & Trust
 
-With an agent, the work is split: a model writes the code, a person directs it, and someone else approves it. The decisions that shaped the result often happen in a session that only one person saw, and some of those sessions can be deleted. The evidence that it worked, such as check runs and logs, expires. So unless the record is copied to where reviewers and auditors look, later readers may be unable to reconstruct who decided what, or why. For public-sector work, being able to answer that is often an obligation.
+With an agent, the work is split: a model writes the code, a person directs it, and someone else approves it. The decisions that shaped the result often happen in a session only one person saw, and the evidence that it worked, such as check runs and logs, expires. Unless the record is copied to where reviewers look, later readers cannot reconstruct who decided what, or why; for public-sector work, being able to answer that is often an obligation. The same record lets a reviewer trust a change without redoing the work.
 
 ## Core advice
 
-- **Record who did the work.** A reader needs to know which changes a person wrote and which an agent did. Copilot cloud agent commits are authored by Copilot, signed, and link to the session log. For a tool that commits under your name, add a `Co-authored-by:` line naming it.
-- **Copy the evidence onto the pull request.** Actions keeps checks, runs, and logs for 90 days by default, and public repositories cannot keep them longer. Add a comment listing which checks ran, their results, and which did not.
-- **Keep the record where reviewers look.** Cloud agent session logs stay on GitHub and cannot be deleted. CLI and editor sessions are yours and can be, so put what a reviewer needs on the pull request.
-- **Steer in the open.** A correction made in a private session leaves a result that differs from the request with no explanation. Put corrections in pull request comments. [How to steer](define-and-verify-tasks.md#steer-it).
-- **Separate who asked from who approved,** so the approval is a second judgment rather than the requester agreeing with themselves. [Verify the result](define-and-verify-tasks.md#verify-the-result).
-- **Treat the agent's explanation as a claim.** Its pull request description is its own account of what it did; check it against the diff and the checks before relying on it.
-- **Keep records safe.** A record is shared more widely than the session it came from, so summarize logs rather than pasting them, and never record secrets. [Agent data-flow checklist](agent-data-flow-checklist.md).
+- **Let the record make itself.** A reader needs to know which changes a person wrote and which an agent did. Copilot cloud agent commits are authored by Copilot, signed, and link to the session log, which stays on GitHub and cannot be deleted. For a tool that commits under your name, add a `Co-authored-by:` line naming it.
+- **Put the check results on the pull request.** Actions keeps checks, runs, and logs for 90 days by default, and public repositories cannot keep them longer, while CLI and editor sessions are yours to delete. So add one comment saying which checks ran, what they showed, and which did not, and make corrections in pull request comments, [as when steering](define-and-verify-tasks.md#steer-it). Summarize logs rather than pasting them, and never record secrets: a record is shared more widely than the session it came from.
+- **Read the risky parts first.** The agent's pull request description is its own account of what it did, so check it against the diff. Read tests, configuration, workflows, and new dependencies closely: a change that weakens a test or loosens an access rule can make a task pass without anyone noticing. If the checks pass, the rest can take a lighter read.
+- **Direct human attention by risk and evidence.** Who looks, and how closely, should depend on what a change touches and what the checks showed, not the agent's confidence. Have someone other than the requester approve, because the person who asked may share the agent's assumptions. Add a `CODEOWNERS` file naming who owns sensitive paths, such as `.github/workflows/`; GitHub then requests their review on any pull request that changes those files, and a repository admin can make their approval required.
 
 If you must keep records longer, check your organization's records policy; GitHub Enterprise Cloud can stream agent audit-log events to long-term storage.
 
@@ -68,8 +65,7 @@ Co-authored-by: Example Agent <agent@example.com>
 
 ## Explore further
 
-- [Furnish repositories with context for agents](repository-context-for-agents.md) — decisions in ADRs.
-- [Case study: a lo-fi software factory](lo-fi-software-factory-case-study.md) — review evidence in practice.
+For more depth, see [furnish repositories with context for agents](repository-context-for-agents.md) for decisions in ADRs, and the [lo-fi software factory case study](lo-fi-software-factory-case-study.md) for review evidence in practice.
 
 ## Sources
 
@@ -79,4 +75,5 @@ Co-authored-by: Example Agent <agent@example.com>
 - [GitHub Changelog: Actions retention will cover checks, workflow runs, and statuses](https://github.blog/changelog/2026-08-27-actions-retention-will-cover-checks-workflow-runs-and-statuses)
 - [GitHub Docs: Review output from Copilot](https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/review-copilot-output)
 - [GitHub Docs: Creating a commit with multiple authors](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors)
+- [GitHub Docs: About code owners](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
 - [GitHub Docs: Agent management for enterprises](https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/enterprise/agent-management)

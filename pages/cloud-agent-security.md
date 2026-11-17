@@ -44,4 +44,4 @@ Sources: GitHub's documentation on [the agent firewall](https://docs.github.com/
 
 Ask the same questions of any hosted agent: which secrets it can see, what it can push, what network it can reach, who can start it, and which integrations sit outside its limits. "Cloud" does not mean sandboxed or short-lived; it means the run happens where you are not watching.
 
-For where its logs and records go, see [traceability](traceability.md) and the [agent data-flow checklist](agent-data-flow-checklist.md).
+For where its logs and records go, see [Traceability & Trust](traceability.md) and the [agent data-flow checklist](agent-data-flow-checklist.md).

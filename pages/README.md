@@ -4,8 +4,8 @@ Articles, applied patterns, reference catalogs, and checklists for AI-assisted s
 
 - [Alignment](alignment.md) — core advice for matching work to the intended outcome.
 - [Economy](economy.md) — core advice for using time and tokens effectively without sacrificing quality or security.
-- [Traceability](traceability.md) — developing core advice for recording intent, decisions, and evidence.
 - [Security](security.md) — limit what an agent can reach and do, starting from where its tools run.
+- [Traceability & Trust](traceability.md) — developing core advice for keeping a record of agent work and reviewing changes you can rely on.
 - [Secure a local coding agent](local-agent-security.md) — Copilot CLI, app, and editor: sandbox, tool and URL permissions, credentials.
 - [Secure the Copilot cloud agent](cloud-agent-security.md) — what GitHub enforces, and the secrets, firewall, MCP, and approval settings you set.
 - [Sandbox a local coding agent](local-agent-sandboxing.md) — turn on Copilot's local sandbox and prove the limits are enforced.

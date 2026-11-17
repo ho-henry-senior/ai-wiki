@@ -72,7 +72,7 @@ Do not put requirements in HTML comments (`<!-- -->`): Copilot filters them out 
 - **Do not add corrections to the issue.** The cloud agent does not see issue comments made after it starts. Put them on the pull request.
 - **In Copilot CLI:** type a new prompt at any time. Copilot treats it as steering for the current task. Press Esc twice to cancel; press Esc twice while idle to roll back to an earlier point.
 
-For why corrections belong on the pull request, see [traceability](traceability.md#core-advice).
+For why corrections belong on the pull request, see [Traceability & Trust](traceability.md#core-advice).
 
 ## Verify the result
 

@@ -91,6 +91,17 @@ jobs:
             echo "The Goals page lists $goals items; expected the 4 goal overviews." >&2
             exit 1
           fi
+          # The goals are listed alphabetically, ending with Traceability & Trust.
+          order=$(grep -oE 'href="/ai-wiki/pages/(alignment|economy|security|traceability)/"' _site/goals/index.html | sed -E 's#.*/pages/([a-z]+)/"#\1#' | awk '!seen[$0]++' | tr '\n' ' ')
+          if [ "$order" != "alignment economy security traceability " ]; then
+            echo "The Goals page lists the goals as: $order" >&2
+            exit 1
+          fi
+          grep -qE 'Traceability (&amp;|&#38;|&) Trust' _site/goals/index.html || {
+            echo "The Goals page does not name Traceability & Trust." >&2
+            grep -o 'Traceability.\{0,30\}' _site/goals/index.html | head -3 >&2 || true
+            exit 1
+          }
           for goal in alignment economy traceability security; do
             grep -q "href=\"/ai-wiki/pages/$goal/\"" _site/goals/index.html || {
               echo "The Goals page does not link to $goal." >&2
