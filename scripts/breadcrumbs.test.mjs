@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { breadcrumbs, tagItems } from "../site/lanes.mjs";
+import { breadcrumbs, laneItems, metadataParts, tagItems } from "../site/lanes.mjs";
 
 const item = (key, parent, url) => ({
   url,
@@ -32,4 +32,35 @@ test("tag sidebar lists all tags, then each tag, marking the current one", () =>
     { href: "/tags/mcp/", text: "MCP", current: true },
     { href: "/tags/copilot-cli/", text: "Copilot CLI", current: false },
   ]);
+});
+
+test("metadata shows an article's type and goal, then dates and status", () => {
+  const date = (d) => `D(${d})`;
+  assert.deepEqual(
+    metadataParts(
+      { lane: "articles", type: "guide", goal: "economy", checked: "2026-11-15", status: "developing" },
+      date,
+    ),
+    [
+      { text: "Guide" },
+      { text: "Goal: Economy", href: "/pages/economy/" },
+      { text: "Checked: D(2026-11-15)" },
+      { text: "Status: Developing" },
+    ],
+  );
+  // Goal pages and pages with no clear goal show no type or goal.
+  assert.deepEqual(metadataParts({ lane: "goals", type: "overview", goal: "economy" }), []);
+  assert.deepEqual(metadataParts({ lane: "articles", type: "pattern" }), [{ text: "Pattern" }]);
+});
+
+test("the Articles sidebar can be sorted by title", () => {
+  const tree = [
+    { url: "/b/", title: "Beta" },
+    { url: "/a/", title: "Alpha" },
+  ];
+  assert.deepEqual(
+    laneItems(tree, "/a/", true).map((item) => item.text),
+    ["Alpha", "Beta"],
+  );
+  assert.deepEqual(laneItems(tree, "/a/").map((item) => item.text), ["Beta", "Alpha"]);
 });

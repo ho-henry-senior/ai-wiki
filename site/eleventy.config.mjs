@@ -15,6 +15,7 @@ import {
   eleventyNavigation,
   laneItems,
   lanes,
+  metadataParts,
   tagItems,
 } from "./lanes.mjs";
 
@@ -57,10 +58,18 @@ export default async function (eleventyConfig) {
       )
       .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0)),
   );
+  // Articles: every supporting page, by title. The feed takes only those
+  // with a date, newest first.
   eleventyConfig.addCollection("articles", (api) =>
     api
       .getAll()
       .filter((item) => item.data.lane === "articles")
+      .sort((a, b) => a.data.title.localeCompare(b.data.title)),
+  );
+  eleventyConfig.addCollection("datedArticles", (api) =>
+    api
+      .getAll()
+      .filter((item) => item.data.lane === "articles" && item.data.date)
       .sort(
         (a, b) => b.date - a.date || a.data.title.localeCompare(b.data.title),
       ),
@@ -115,7 +124,7 @@ export default async function (eleventyConfig) {
       // An Atom feed of the Articles lane, linked from every page's head.
       feed: {
         title: "Articles: Making the most of agents",
-        collection: "articles",
+        collection: "datedArticles",
         permalink: "/articles/feed.xml",
       },
     },
@@ -130,6 +139,11 @@ export default async function (eleventyConfig) {
   eleventyConfig.addGlobalData("layout", "wiki");
   eleventyConfig.addFilter("laneItems", laneItems);
   eleventyConfig.addFilter("breadcrumbs", breadcrumbs);
+  // govukDate comes from the GOV.UK plugin, which registers it after this
+  // function runs, so look it up when the filter is used.
+  eleventyConfig.addFilter("metadataParts", (page) =>
+    metadataParts(page, eleventyConfig.getFilter("govukDate")),
+  );
   const slugify = eleventyConfig.getFilter("slugify");
   eleventyConfig.addFilter("tagItems", (tags, pageUrl) =>
     tagItems(tags, pageUrl, slugify),
@@ -146,8 +160,8 @@ export default async function (eleventyConfig) {
 
   // A landing page for each lane, generated here so the lanes need no
   // Markdown files of their own. Each has its lane's sidebar; Goals lists
-  // the four goal overviews in order, and Articles lists articles newest
-  // first.
+  // the four goal overviews in order, and Articles lists every article by
+  // title, with its type and main goal.
   const lists = { goals: "goalOverviews", articles: "articles" };
   for (const [lane, { title, url, description }] of Object.entries(lanes)) {
     const listing = { sectionKey: title, listCollection: lists[lane] };

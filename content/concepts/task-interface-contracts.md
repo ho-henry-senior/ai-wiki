@@ -2,7 +2,7 @@
 type: pattern
 summary: Describe each command's scope, cost, side effects, and whether failure blocks handoff; its name alone does not tell an agent what it does.
 status: established
-lane: goals
+lane: articles
 goal: economy
 order: 23
 tags:

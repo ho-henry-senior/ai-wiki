@@ -16,16 +16,15 @@
   </header>
 {%- endmacro %}
 
+{#- The metadata line: an article's type and main goal, then dates and
+    status (metadataParts in site/lanes.mjs). -#}
 {%- macro pageMetadata() %}
-  {%- set knownStatuses = ["established", "developing", "stub"] %}
-  {%- set published = lane == "articles" and date %}
-  {%- if published or checked or status in knownStatuses %}
+  {%- set parts = { lane: lane, type: type, goal: goal, published: page.date if date, checked: checked, status: status } | metadataParts %}
+  {%- if parts | length %}
   <p class="govuk-body-s app-page-details">
-    {%- if published %}Published: {{ page.date | govukDate }}{% endif %}
-    {%- if published and (checked or status in knownStatuses) %} · {% endif %}
-    {%- if checked %}Checked: {{ checked | govukDate }}{% endif %}
-    {%- if checked and status in knownStatuses %} · {% endif %}
-    {%- if status in knownStatuses %}Status: {{ status | capitalize }}{% endif %}
+    {%- for part in parts %}
+    {%- if part.href %}<a class="govuk-link" href="{{ part.href }}">{{ part.text }}</a>{% else %}{{ part.text }}{% endif %}{{ " · " if not loop.last }}
+    {%- endfor %}
   </p>
   {%- endif %}
 {%- endmacro %}
@@ -68,7 +67,7 @@
 {% block content %}
   {%- set sidebar = false %}
   {%- if sectionKey %}
-    {%- set sidebar = collections.navigation | eleventyNavigation(sectionKey) | laneItems(page.url) %}
+    {%- set sidebar = collections.navigation | eleventyNavigation(sectionKey) | laneItems(page.url, sectionKey == "Articles") %}
   {%- elif tag or tagIndex %}
     {%- set sidebar = collections.tags | tagItems(page.url) %}
   {%- endif %}
@@ -77,7 +76,24 @@
     {{ pageHeader() }}
     {{ pageDetails() }}
     {{ appProseScope(content) if content }}
-    {%- if listCollection %}
+    {%- if listCollection == "articles" %}
+    <ol class="app-document-list app-document-list--large">
+      {%- for item in collections.articles %}
+      {%- set parts = { lane: "articles", type: item.data.type, goal: item.data.goal } | metadataParts %}
+      <li class="app-document-list__item">
+        <h2 class="app-document-list__item-title"><a class="govuk-link" href="{{ item.url }}">{{ item.data.title }}</a></h2>
+        {%- if item.data.description %}
+        <p class="app-document-list__item-description">{{ item.data.description | markdown("inline") | safe }}</p>
+        {%- endif %}
+        {%- if parts | length %}
+        <ul class="app-document-list__item-metadata">
+          <li class="app-document-list__attribute">{% for part in parts %}{{ part.text }}{{ " · " if not loop.last }}{% endfor %}</li>
+        </ul>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ol>
+    {%- elif listCollection %}
     {{ appDocumentList({ classes: "app-document-list--large", items: collections[listCollection] }) }}
     {%- elif tag %}
     {{ appDocumentList({ classes: "app-document-list--large", items: collections[tag] }) }}

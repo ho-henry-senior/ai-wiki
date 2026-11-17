@@ -2,7 +2,7 @@
 type: reference
 summary: Git branches and worktrees separate changes, while a security sandbox restricts what executing code can access or do.
 status: established
-lane: goals
+lane: articles
 goal: security
 order: 22
 tags:

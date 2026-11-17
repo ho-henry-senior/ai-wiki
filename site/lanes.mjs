@@ -1,6 +1,6 @@
-// The site's three lanes and the goals that group the Goals lane. Each
-// page says where it belongs with front matter: `lane`, and for goals pages,
-// `goal`, plus `order` within its group. See maintainers/MAINTAINING.md#website.
+// The site's three lanes and the four goals. Each page says where it
+// belongs with front matter: `lane`, and `goal` for a goal overview or an
+// article with a clear main goal. See maintainers/MAINTAINING.md#website.
 
 export const lanes = {
   goals: {
@@ -56,9 +56,13 @@ export const eleventyNavigation = {
 // Sidebar items for a lane, in the shape the GOV.UK sub-navigation expects.
 // The plugin expands a group only when the page's URL sits inside the
 // group's folder, but our page URLs are flat (/pages/...), so expand the
-// group that contains the current page instead.
-export function laneItems(tree = [], pageUrl) {
-  return tree.map((item) => {
+// group that contains the current page instead. The Articles lane is a
+// flat list, so it is sorted by title.
+export function laneItems(tree = [], pageUrl, alphabetical = false) {
+  const items = alphabetical
+    ? [...tree].sort((a, b) => a.title.localeCompare(b.title))
+    : tree;
+  return items.map((item) => {
     const children = item.children ?? [];
     const contains = children.some((child) => child.url === pageUrl);
     return {
@@ -107,4 +111,38 @@ export function tagItems(tags = [], pageUrl, slugify) {
     item("/tags/", "All tags"),
     ...tags.map((tag) => item(`/tags/${slugify(tag)}/`, tag)),
   ];
+}
+
+// Labels for the existing `type` values, shown on articles.
+export const typeLabels = {
+  guide: "Guide",
+  pattern: "Pattern",
+  explanation: "Explanation",
+  reference: "Reference",
+  "case-study": "Case study",
+  exploration: "Exploration",
+};
+
+// A goal's overview page, at its published address.
+export const goalUrl = (goal) => (goals[goal] ? `/pages/${goal}/` : undefined);
+
+const statuses = ["established", "developing", "stub"];
+
+// The parts of a page's metadata line, in order. Articles show their type
+// and main goal, if they have one; any page can show its published date,
+// checked date and status. `formatDate` is the GOV.UK plugin's govukDate.
+export function metadataParts(page = {}, formatDate = String) {
+  const parts = [];
+  const article = page.lane === "articles";
+  if (article && typeLabels[page.type]) parts.push({ text: typeLabels[page.type] });
+  if (article && goals[page.goal])
+    parts.push({ text: `Goal: ${goals[page.goal]}`, href: goalUrl(page.goal) });
+  if (article && page.published)
+    parts.push({ text: `Published: ${formatDate(page.published)}` });
+  if (page.checked) parts.push({ text: `Checked: ${formatDate(page.checked)}` });
+  if (statuses.includes(page.status)) {
+    const status = page.status[0].toUpperCase() + page.status.slice(1);
+    parts.push({ text: `Status: ${status}` });
+  }
+  return parts;
 }

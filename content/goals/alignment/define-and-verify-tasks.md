@@ -2,7 +2,7 @@
 type: pattern
 summary: Use an agent to question requirements, agree a specification before creating issues, then steer and verify implementation against that agreement.
 status: established
-lane: goals
+lane: articles
 goal: alignment
 order: 1
 checked: 2026-11-15

@@ -2,7 +2,7 @@
 type: explanation
 summary: How Copilot's harness gives the model context and tools, runs its tool requests, and manages session history, and why that decides where limits and data controls belong.
 status: established
-lane: goals
+lane: articles
 goal: economy
 order: 20
 checked: 2026-11-15
