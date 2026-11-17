@@ -9,7 +9,7 @@ Review the knowledge structure and its evidence, not just Markdown formatting. P
 
 ## 1. Establish scope and coverage
 
-Read [the design goals](../../../maintainers/DESIGN-GOALS.md), [the writing standard](../../../maintainers/STYLE.md), [agent instructions](../../../AGENTS.md), [article conventions](../../../maintainers/MAINTAINING.md#articles-and-concepts), [concept conventions](../../../concepts/README.md), and [source conventions](../../../content/sources/README.md). Inspect the worktree and preserve unrelated changes.
+Read [the design goals](../../../maintainers/DESIGN-GOALS.md), [the writing standard](../../../maintainers/STYLE.md), [agent instructions](../../../AGENTS.md), [article conventions](../../../maintainers/MAINTAINING.md#articles-and-concepts), [concept conventions](../../../content/concepts/README.md), and [source conventions](../../../content/sources/README.md). Inspect the worktree and preserve unrelated changes.
 
 For a whole-wiki review, inventory and read every authored article, concept, and slide, the glossary, indexes, and source records. Check slides against their canonical concepts. Include repository instructions and review tooling when checking navigation and verification coverage. Read raw archives only when needed to resolve a claim; leave them unchanged.
 
