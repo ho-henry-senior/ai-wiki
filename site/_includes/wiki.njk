@@ -1,6 +1,6 @@
-{#- The wiki's layout. Goals and Reference pages get a sidebar for their
-    lane; Articles show their date. Built on the GOV.UK plugin's base layout,
-    which provides the macros used here. -#}
+{#- The wiki's layout, used by every content page, including the lane and
+    tag pages. Built on the GOV.UK plugin's base layout, which provides the
+    macros used here. -#}
 {% extends "layouts/base.njk" %}
 
 {#- Put metadata immediately after the h1, before the description. The
@@ -8,7 +8,7 @@
     render the title alone and preserve the plugin's description markup. -#}
 {%- macro pageHeader() %}
   <header class="app-document-header">
-    {{ appHeading({ title: title }) }}
+    {{ appHeading({ caption: caption, title: title or ("Pages tagged ‘" + tag + "’") }) }}
     {{ pageMetadata() }}
     {%- if description %}
     <p class="govuk-body-l">{{ description | markdown("inline") | noOrphans | safe }}</p>
@@ -18,8 +18,11 @@
 
 {%- macro pageMetadata() %}
   {%- set knownStatuses = ["established", "developing", "stub"] %}
-  {%- if checked or status in knownStatuses %}
+  {%- set published = lane == "articles" and date %}
+  {%- if published or checked or status in knownStatuses %}
   <p class="govuk-body-s app-page-details">
+    {%- if published %}Published: {{ page.date | govukDate }}{% endif %}
+    {%- if published and (checked or status in knownStatuses) %} · {% endif %}
     {%- if checked %}Checked: {{ checked | govukDate }}{% endif %}
     {%- if checked and status in knownStatuses %} · {% endif %}
     {%- if status in knownStatuses %}Status: {{ status | capitalize }}{% endif %}
@@ -58,31 +61,45 @@
   }) if trail | length }}
 {% endblock %}
 
+{#- One layout for every page. Pages in a lane, the lane pages and the tag
+    pages have a sidebar; pages outside a lane have none. Lane pages list
+    their collection (listCollection), and the tag pages list their pages
+    or tags. -#}
 {% block content %}
-  {% if lane == "articles" %}
-    {{ pageHeader() }}
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds-from-desktop">
-        {{ pageDetails() }}
-        {{ appProseScope(content) if content }}
-      </div>
-    </div>
-  {% elif sectionKey %}
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-quarter-from-desktop">
-        {{ xGovukSubNavigation({
-          items: collections.navigation | eleventyNavigation(sectionKey) | laneItems(page.url)
-        }) }}
-      </div>
-      <div class="govuk-grid-column-three-quarters-from-desktop">
-        {{ pageHeader() }}
-        {{ pageDetails() }}
-        {{ appProseScope(content) if content }}
-      </div>
-    </div>
-  {% else %}
+  {%- set sidebar = false %}
+  {%- if sectionKey %}
+    {%- set sidebar = collections.navigation | eleventyNavigation(sectionKey) | laneItems(page.url) %}
+  {%- elif tag or tagIndex %}
+    {%- set sidebar = collections.tags | tagItems(page.url) %}
+  {%- endif %}
+
+  {%- set mainColumn %}
     {{ pageHeader() }}
     {{ pageDetails() }}
     {{ appProseScope(content) if content }}
+    {%- if listCollection %}
+    {{ appDocumentList({ classes: "app-document-list--large", items: collections[listCollection] }) }}
+    {%- elif tag %}
+    {{ appDocumentList({ classes: "app-document-list--large", items: collections[tag] }) }}
+    {%- elif tagIndex %}
+    <ul class="govuk-list">
+      {%- for name in collections.tags %}
+      <li><a class="govuk-link" href="/tags/{{ name | slugify }}/">{{ name }}</a> ({{ collections[name] | length }})</li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+  {%- endset %}
+
+  {% if sidebar %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-quarter-from-desktop">
+        {{ xGovukSubNavigation({ items: sidebar }) }}
+      </div>
+      <div class="govuk-grid-column-three-quarters-from-desktop">
+        {{ mainColumn | safe }}
+      </div>
+    </div>
+  {% else %}
+    {{ mainColumn | safe }}
   {% endif %}
 {% endblock %}

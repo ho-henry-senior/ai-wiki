@@ -100,3 +100,14 @@ export function breadcrumbs(items = [], key) {
   }
   return trail;
 }
+
+// Sidebar items for the tag pages: all tags, then each tag, in the shape the
+// GOV.UK sub-navigation expects. `slugify` is Eleventy's, so the links match
+// the tag pages' addresses.
+export function tagItems(tags = [], pageUrl, slugify) {
+  const item = (href, text) => ({ href, text, current: href === pageUrl });
+  return [
+    item("/tags/", "All tags"),
+    ...tags.map((tag) => item(`/tags/${slugify(tag)}/`, tag)),
+  ];
+}
