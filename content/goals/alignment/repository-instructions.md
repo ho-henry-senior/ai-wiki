@@ -83,9 +83,9 @@ You don't need a tool-specific file for these agents unless you have rules only 
 - **Keep must-have rules in the file itself.** Copilot CLI loads `@docs/testing.md` from `AGENTS.md` immediately, but other features may not expand these references.
 - **Instructions guide; they don't enforce.** "Never push to `main`" asks the agent to behave. Branch protection or a denied tool stops it. See [instructions are not enforced controls](../../concepts/instructions-vs-controls.md).
 
-This wiki's own [AGENTS.md](../../AGENTS.md) is a working example. For where instruction files sit alongside skills and task commands, see [a structure for agent-facing repositories](agent-facing-repository-structure.md).
+This wiki's own [AGENTS.md](../../../AGENTS.md) is a working example. For where instruction files sit alongside skills and task commands, see [a structure for agent-facing repositories](agent-facing-repository-structure.md).
 
-**Next:** [let the agent run your repository's commands](agent-tool-delegation.md), step 1 of [start here](../../README.md#start-here).
+**Next:** [let the agent run your repository's commands](agent-tool-delegation.md), step 1 of [start here](../../../README.md#start-here).
 
 ## Sources
 
