@@ -3,10 +3,18 @@
     which provides the macros used here. -#}
 {% extends "layouts/base.njk" %}
 
-{#- Under the title: a quiet metadata line with the checked date and
-    completeness status, followed by tags and the contents list. Omit
-    unknown fields and their separator. -#}
-{%- macro pageDetails() %}
+{#- Put metadata immediately after the h1, before the description. The
+    header component normally renders title and description together, so
+    render the title alone and preserve the plugin's description markup. -#}
+{%- macro pageHeader() %}
+  {{ appDocumentHeader({ title: title }) }}
+  {{ pageMetadata() }}
+  {%- if description %}
+  <p class="govuk-body-l">{{ description | markdown("inline") | noOrphans | safe }}</p>
+  {%- endif %}
+{%- endmacro %}
+
+{%- macro pageMetadata() %}
   {%- set knownStatuses = ["established", "developing", "stub"] %}
   {%- if checked or status in knownStatuses %}
   <p class="govuk-body-s app-page-details">
@@ -15,6 +23,9 @@
     {%- if status in knownStatuses %}Status: {{ status | capitalize }}{% endif %}
   </p>
   {%- endif %}
+{%- endmacro %}
+
+{%- macro pageDetails() %}
   {%- if tags | length %}
   <p class="govuk-body-s app-tags">Tags:
     {%- for tag in tags %}
@@ -47,7 +58,7 @@
 
 {% block content %}
   {% if lane == "articles" %}
-    {{ appDocumentHeader({ title: title, description: description, date: date }) }}
+    {{ pageHeader() }}
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
         {{ pageDetails() }}
@@ -62,13 +73,13 @@
         }) }}
       </div>
       <div class="govuk-grid-column-three-quarters-from-desktop">
-        {{ appDocumentHeader({ title: title, description: description }) }}
+        {{ pageHeader() }}
         {{ pageDetails() }}
         {{ appProseScope(content) if content }}
       </div>
     </div>
   {% else %}
-    {{ appDocumentHeader({ title: title, description: description }) }}
+    {{ pageHeader() }}
     {{ pageDetails() }}
     {{ appProseScope(content) if content }}
   {% endif %}
