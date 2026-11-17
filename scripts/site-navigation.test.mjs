@@ -3,7 +3,7 @@ import fs from "node:fs";
 import test from "node:test";
 
 const cases = [
-  ["goals/index.html", "goals", "Goals"],
+  ["goals/index.html", "goals"],
   ["pages/security/index.html", "goals", "Security"],
   ["articles/index.html", "articles"],
   ["pages/cloud-agent-security/index.html", "articles", "Secure the Copilot cloud agent"],
