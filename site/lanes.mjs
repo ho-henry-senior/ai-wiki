@@ -20,7 +20,7 @@ export const lanes = {
     title: "Articles",
     url: "/articles/",
     description:
-      "Current thinking, background, and case studies, newest first. These are perspectives and context, not recommendations.",
+      "Current thinking, background, and case studies, newest first. These are perspectives and context, not recommendations. [Subscribe to the Atom feed](/articles/feed.xml) to hear of new ones.",
   },
 };
 
@@ -78,4 +78,25 @@ export function laneItems(tree = [], pageUrl) {
         : false,
     };
   });
+}
+
+// Breadcrumbs for a page: the pages above it in the navigation tree, from
+// the top down, in the shape GOV.UK breadcrumbs expect. Built from the same
+// navigation data as the sidebar.
+export function breadcrumbs(items = [], key) {
+  const byKey = new Map();
+  for (const item of items) {
+    const nav = item.data?.eleventyNavigation;
+    if (nav?.key && !byKey.has(nav.key)) byKey.set(nav.key, { item, nav });
+  }
+  const trail = [];
+  const seen = new Set([key]);
+  let parent = byKey.get(key)?.nav.parent;
+  while (parent && byKey.has(parent) && !seen.has(parent)) {
+    seen.add(parent);
+    const { item, nav } = byKey.get(parent);
+    trail.unshift({ text: item.data.title || nav.key, href: item.url });
+    parent = nav.parent;
+  }
+  return trail;
 }
