@@ -24,6 +24,5 @@ Practical guidance for developers using AI agents, focusing on GitHub Copilot.
 ## Look something up
 
 - [Agent data-flow checklist](content/reference/agent-data-flow-checklist.md) — review an agent setup before sensitive work.
-- [Glossary](content/reference/glossary.md) — terms used across the wiki.
 - Indexes of every [page](content/README.md), [concept](content/concepts/README.md), [slide](content/slides/README.md), and [source](content/sources/README.md).
 
