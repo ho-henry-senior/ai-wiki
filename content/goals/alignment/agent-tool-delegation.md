@@ -55,14 +55,14 @@ Source: GitHub's documentation on [customizing the cloud agent's environment](ht
 
 ## Commands worth listing
 
-| Purpose                               | Examples seen in Node.js and Python repositories |
-| ------------------------------------- | ------------------------------------------------ |
-| Run one test or all tests             | Jest, Mocha, Python `unittest`                   |
-| Check types and lint                  | TypeScript, ESLint, Ruff, mypy                   |
-| Check or fix formatting               | Prettier, Ruff                                   |
-| Validate templates and images         | Template lint, Dockerfile lint                   |
+| Purpose                               | Examples seen in Node.js and Python repositories                                               |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Run one test or all tests             | Jest, Mocha, Python `unittest`                                                                 |
+| Check types and lint                  | TypeScript, ESLint, Ruff, mypy                                                                 |
+| Check or fix formatting               | Prettier, Ruff                                                                                 |
+| Validate templates and images         | Template lint, Dockerfile lint                                                                 |
 | Find unused code                      | [Knip](https://knip.dev/) (JS/TS), [Vulture](https://github.com/jendrikseipp/vulture) (Python) |
-| Report dependency and security issues | Dependency audit, Trivy, Semgrep                 |
+| Report dependency and security issues | Dependency audit, Trivy, Semgrep                                                               |
 
 List diagnostics such as audits and scans separately from the check that must pass, because they often report findings that already exist. For a broader catalogue covering Semgrep, Hadolint, unused-code tools and more, see [local checks and tools for coding agents](../../reference/local-development-tools.md). Examples from actual repositories are in the [repository Justfile notes](../../sources/repository-justfiles.md).
 

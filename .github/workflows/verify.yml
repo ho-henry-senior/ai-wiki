@@ -37,7 +37,5 @@ jobs:
         run: npm ci --ignore-scripts
       # The same checks as `just verify`, which only calls this npm script,
       # so Just itself does not need installing.
-      - name: Temporary - show Prettier's changes
-        run: npx prettier --write "**/*.md" ".agents/skills/**/*.md" ".github/workflows/**/*.md" > /dev/null && git diff
       - name: Run the checks
         run: npm run verify
