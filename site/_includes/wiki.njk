@@ -50,14 +50,15 @@
   {%- endif %}
 {%- endmacro %}
 
-{#- Where the page sits: for example Home, Goals, Security, from the same
-    navigation data as the sidebar (breadcrumbs in site/lanes.mjs). -#}
-{% block beforeContent %}
-  {%- set trail = collections.navigation | breadcrumbs(eleventyNavigation.key) %}
-  {{ govukBreadcrumbs({
-    classes: "govuk-!-display-none-print",
-    items: trail
-  }) if trail | length }}
+{#- Use the GOV.UK service-navigation component directly so its active section
+    follows the page's lane, not a URL prefix or an article's main goal. -#}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% block govukHeader %}
+  {{ appHeader(options.header) }}
+  {{ govukServiceNavigation({
+    classes: "app-service-navigation",
+    navigation: options.serviceNavigation.navigation | sectionNavigation(lane, page.url)
+  }) }}
 {% endblock %}
 
 {#- One layout for every page. Pages in a lane, the lane pages and the tag
