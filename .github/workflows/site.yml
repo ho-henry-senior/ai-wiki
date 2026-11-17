@@ -217,8 +217,8 @@ jobs:
             console.error("Glossary letter index should remain a compact ordered list.");
             process.exit(1);
           }
-          const tags = article.indexOf('class="govuk-body-s app-tags"');
-          const finalSection = article.indexOf('id="sources"');
+          const tags = harness.indexOf('class="govuk-body-s app-tags"');
+          const finalSection = harness.indexOf('id="sources"');
           if (tags < 0 || finalSection < 0 || tags < finalSection) {
             console.error("Tags should follow the article body.");
             process.exit(1);
