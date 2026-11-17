@@ -58,15 +58,11 @@ export const eleventyNavigation = {
 // group's folder, but our page URLs are flat (/pages/...), so expand the
 // group that contains the current page instead. The Articles lane is a
 // flat list, so it is sorted by title.
-export function laneItems(tree = [], pageUrl, alphabetical = false, landing) {
+export function laneItems(tree = [], pageUrl, alphabetical = false) {
   const items = alphabetical
     ? [...tree].sort((a, b) => a.title.localeCompare(b.title))
     : tree;
-  // The lane's own page comes first, so it is marked current there too.
-  const first = landing?.url
-    ? [{ href: landing.url, text: "Overview", current: landing.url === pageUrl }]
-    : [];
-  return first.concat(items.map((item) => {
+  return items.map((item) => {
     const children = item.children ?? [];
     const contains = children.some((child) => child.url === pageUrl);
     return {
@@ -82,7 +78,7 @@ export function laneItems(tree = [], pageUrl, alphabetical = false, landing) {
           }))
         : false,
     };
-  }));
+  });
 }
 
 // Mark the current top-level section on both its landing page and its

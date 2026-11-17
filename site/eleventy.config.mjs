@@ -139,11 +139,6 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addGlobalData("layout", "wiki");
   eleventyConfig.addFilter("laneItems", laneItems);
-  // Each lane's own page, by its title, for the first sidebar item.
-  eleventyConfig.addGlobalData(
-    "laneUrls",
-    Object.fromEntries(Object.values(lanes).map(({ title, url }) => [title, url])),
-  );
   eleventyConfig.addFilter("sectionNavigation", sectionNavigation);
   // govukDate comes from the GOV.UK plugin, which registers it after this
   // function runs, so look it up when the filter is used.
