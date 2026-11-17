@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { repoPath } from "../../scripts/site-links.mjs";
+import { pageUrl, repoPath } from "../../scripts/site-links.mjs";
 import { lanes } from "../lanes.mjs";
 
 // Computed data for every page. Eleventy merges this with the plugin's own
@@ -31,10 +31,11 @@ export default {
       ? firstHeading(data.page.inputPath)
       : undefined),
   description: (data) => data.description || data.summary,
-  // README.md becomes its folder's index page. Other pages keep their own
-  // permalink, including the plugin's 404 page, sitemap, and search index.
+  // Published Markdown under content/ retains its pre-migration URL.
+  // Other README.md files become their folder's index; plugin pages keep theirs.
   permalink: (data) => {
     const input = repoPath(data.page.inputPath);
+    if (input.startsWith("content/")) return `${pageUrl(input)}index.html`;
     if (path.posix.basename(input) !== "README.md") return data.permalink;
     const dir = path.posix.dirname(input);
     return dir === "." ? "/index.html" : `/${dir}/index.html`;
