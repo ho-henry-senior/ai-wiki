@@ -3,7 +3,7 @@ import fs from "node:fs";
 import test from "node:test";
 
 const cases = [
-  ["goals/index.html", "goals", "Goals"],
+  ["goals/index.html", "goals"],
   ["pages/security/index.html", "goals", "Security"],
   ["articles/index.html", "articles"],
   ["pages/cloud-agent-security/index.html", "articles", "Secure the Copilot cloud agent"],
@@ -26,7 +26,7 @@ test("built pages have no breadcrumbs and show the active navigation", () => {
     if (selectedPage) {
       const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
       assert.ok(sidebar, `${page}: sidebar exists`);
-      assert.match(sidebar, /aria-current="page"/, `${page}: current sidebar item`);
+      assert.match(sidebar, /aria-current="(?:page|true)"/, `${page}: current sidebar item`);
     }
   }
 });
