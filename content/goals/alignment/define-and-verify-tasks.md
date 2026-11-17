@@ -85,7 +85,7 @@ For why corrections belong on the pull request, see [Traceability & Trust](../tr
 
 A small, clear change may need only a brief agreement and one issue. Larger or ambiguous work warrants a reviewed specification and linked issues. The principle stays the same: establish what success means before delegating implementation.
 
-**Next:** [limit what the agent can do](../security/README.md), step 3 of [start here](../../README.md#start-here).
+**Next:** [limit what the agent can do](../security/README.md), step 3 of [start here](../../../README.md#start-here).
 
 ## Sources
 
