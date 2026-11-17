@@ -69,3 +69,11 @@ test("the Articles sidebar can be sorted by title", () => {
   );
   assert.deepEqual(laneItems(tree, "/a/").map((item) => item.text), ["Beta", "Alpha"]);
 });
+
+test("a lane's sidebar starts with its own page, current there", () => {
+  const tree = [{ url: "/pages/security/", title: "Security" }];
+  const items = laneItems(tree, "/goals/", false, { url: "/goals/" });
+  assert.deepEqual(items[0], { href: "/goals/", text: "Overview", current: true });
+  assert.equal(items[1].current, false);
+  assert.equal(laneItems(tree, "/goals/").length, 1);
+});

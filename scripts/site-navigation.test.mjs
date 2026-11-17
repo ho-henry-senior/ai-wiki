@@ -26,6 +26,7 @@ test("built pages have no breadcrumbs and show the active navigation", () => {
     if (selectedPage) {
       const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
       assert.ok(sidebar, `${page}: sidebar exists`);
+      // The x-govuk sub-navigation marks the current item aria-current="true".
       assert.match(sidebar, /aria-current="(?:page|true)"/, `${page}: current sidebar item`);
     }
   }
