@@ -14,7 +14,6 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
 - [Prompt injection in coding-agent workflows](goals/security/prompt-injection-coding-agents.md) — treat untrusted content as data rather than authority.
 - [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — how Copilot charges for tokens, which model tier to use, and how to cap a session.
 - [Define, steer, and verify a task](goals/alignment/define-and-verify-tasks.md) — write the task, hand it to Copilot, steer it, and check the result.
-- [AI glossary](reference/glossary.md) — practical definitions of foundational AI and current generative AI terms.
 - [How models and harnesses interact](goals/economy/model-harness-interaction.md) — the tool-call loop, message structure, session state, and context limits.
 - [Agent data-flow checklist](reference/agent-data-flow-checklist.md) — questions for reviewing a particular agent setup, integration, or sensitive task.
 - [Furnish repositories with context for agents](goals/alignment/repository-context-for-agents.md) — developing guidance for prioritizing useful repository context without taking on unnecessary documentation.
