@@ -211,14 +211,15 @@ jobs:
             console.error("Article contents should be an accessible, unlabelled bulleted list.");
             process.exit(1);
           }
-          if (!glossary.includes('app-contents-list--letters') ||
-              !glossary.includes('app-contents-list--letters" aria-label="On this page">\n    <ol>')) {
+          const letterNav = glossary.match(/<nav[^>]*app-contents-list--letters[^>]*>[\s\S]*?<\/nav>/)?.[0];
+          if (!letterNav || !letterNav.includes('aria-label="On this page"') ||
+              !letterNav.includes("<ol>")) {
             console.error("Glossary letter index should remain a compact ordered list.");
             process.exit(1);
           }
           const tags = article.indexOf('class="govuk-body-s app-tags"');
-          const finalSection = article.indexOf('class="app-prose-scope"', title);
-          if (tags < finalSection) {
+          const finalSection = article.lastIndexOf("<h2");
+          if (tags < 0 || finalSection < 0 || tags < finalSection) {
             console.error("Tags should follow the article body.");
             process.exit(1);
           }
