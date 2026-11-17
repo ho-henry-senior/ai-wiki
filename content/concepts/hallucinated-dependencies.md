@@ -2,7 +2,7 @@
 type: reference
 summary: Models sometimes name packages that do not exist, often the same ones; attackers register those names, and an agent that installs dependencies itself can run their code before anyone reviews it.
 status: developing
-lane: goals
+lane: articles
 goal: security
 order: 26
 checked: 2026-11-16

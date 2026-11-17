@@ -2,7 +2,7 @@
 type: reference
 summary: The model only asks to use a tool; the harness, such as Copilot CLI, decides whether it runs, asks you, or refuses, so put limits in the harness, not the prompt.
 status: established
-lane: goals
+lane: articles
 goal: security
 order: 20
 tags:

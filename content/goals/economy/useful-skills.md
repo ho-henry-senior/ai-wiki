@@ -2,7 +2,7 @@
 type: reference
 summary: Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate.
 status: developing
-lane: goals
+lane: articles
 goal: economy
 order: 2
 checked: 2026-11-15

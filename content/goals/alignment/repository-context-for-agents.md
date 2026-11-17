@@ -2,7 +2,7 @@
 type: guide
 summary: When an agent gets something wrong because it lacked a fact about your system, write that fact down once, near the code it concerns, and link it from AGENTS.md.
 status: developing
-lane: goals
+lane: articles
 goal: alignment
 order: 4
 checked: 2026-11-15

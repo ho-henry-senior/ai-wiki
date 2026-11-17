@@ -2,7 +2,7 @@
 type: guide
 summary: Why a model can follow instructions hidden in issues, files, web pages, and tool output, and how to limit what a Copilot agent can do if it does.
 status: established
-lane: goals
+lane: articles
 goal: security
 order: 4
 checked: 2026-11-15

@@ -2,7 +2,7 @@
 type: reference
 summary: Instructions guide model behavior; independently enforced permissions restrict actions even when the model chooses incorrectly.
 status: established
-lane: goals
+lane: articles
 goal: security
 order: 21
 tags:

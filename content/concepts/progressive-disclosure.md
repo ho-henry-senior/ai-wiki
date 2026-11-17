@@ -2,7 +2,7 @@
 type: pattern
 summary: Keep what the agent loads for every task small, and let detail load only when a task needs it; in Copilot, through a short AGENTS.md, path-specific instructions, and skills.
 status: established
-lane: goals
+lane: articles
 goal: economy
 order: 22
 checked: 2026-11-15
