@@ -24,7 +24,7 @@ test("built pages have no breadcrumbs and show the active navigation", () => {
       assert.match(activeItems[0], /aria-current="(?:page|true)"/, page);
     }
     if (page === "goals/index.html") {
-      const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\\s\\S]*?<\\/nav>/)?.[0];
+      const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
       assert.ok(sidebar, "Goals sidebar exists");
       assert.doesNotMatch(sidebar, />Overview<|aria-current=/, "Goals landing page selects nothing in the sidebar");
     }
