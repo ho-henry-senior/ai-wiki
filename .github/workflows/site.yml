@@ -187,16 +187,39 @@ jobs:
             echo "The cloud agent page has no contents list linking to its sections." >&2
             exit 1
           }
-      - name: Check header reading order
+      - name: Check article summary, contents and tags
         run: |
           node --input-type=module <<'NODE'
           import fs from "node:fs";
-          const page = fs.readFileSync("_site/pages/cloud-agent-security/index.html", "utf8");
-          const title = page.indexOf("Secure the Copilot cloud agent", page.indexOf("<h1"));
-          const metadata = page.indexOf("Checked: 15 November 2026", title);
-          const description = page.indexOf('class="govuk-body-l"', title);
-          if (title < 0 || metadata < title || description < metadata) {
-            console.error("Expected h1, checked/status metadata, then description.");
+          const article = fs.readFileSync("_site/pages/cloud-agent-security/index.html", "utf8");
+          const harness = fs.readFileSync("_site/pages/model-harness-interaction/index.html", "utf8");
+          const glossary = fs.readFileSync("_site/pages/glossary/index.html", "utf8");
+          const title = article.indexOf("Secure the Copilot cloud agent", article.indexOf("<h1"));
+          const metadata = article.indexOf("Checked: 15 November 2026", title);
+          const body = article.indexOf('class="app-prose-scope"', title);
+          if (title < 0 || metadata < title || body < metadata) {
+            console.error("Expected h1, metadata, then article body.");
+            process.exit(1);
+          }
+          if (article.includes('class="govuk-body-l"') || harness.includes('class="govuk-body-l"')) {
+            console.error("Article repeats its listing summary before the body.");
+            process.exit(1);
+          }
+          const nav = harness.match(/<nav class="app-contents-list[^"]*"[^>]*>[\s\S]*?<\/nav>/)?.[0];
+          if (!nav || nav.includes(">Contents<") || !nav.includes('aria-label="On this page"') ||
+              !nav.includes('<ul class="govuk-list govuk-list--bullet">')) {
+            console.error("Article contents should be an accessible, unlabelled bulleted list.");
+            process.exit(1);
+          }
+          if (!glossary.includes('app-contents-list--letters') ||
+              !glossary.includes('app-contents-list--letters" aria-label="On this page">\n    <ol>')) {
+            console.error("Glossary letter index should remain a compact ordered list.");
+            process.exit(1);
+          }
+          const tags = article.indexOf('class="govuk-body-s app-tags"');
+          const finalSection = article.indexOf('class="app-prose-scope"', title);
+          if (tags < finalSection) {
+            console.error("Tags should follow the article body.");
             process.exit(1);
           }
           NODE
