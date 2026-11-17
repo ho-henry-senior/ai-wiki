@@ -1,0 +1,41 @@
+name: Verify
+
+# Runs the repository's checks (`just verify`) on every pull request:
+# tests, Markdown formatting, local links and heading anchors, and the
+# writing-standard checks. Not every contributor, person or agent, can run
+# them locally, so this makes them part of every pull request. A ruleset on
+# main can require this check to pass before merging.
+# See maintainers/MAINTAINING.md.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: package-lock.json
+      # Only the checks' own pinned packages, without running install
+      # scripts. The website's packages are installed separately, by the
+      # Website workflow.
+      - name: Install tools
+        run: npm ci --ignore-scripts
+      # The same checks as `just verify`, which only calls this npm script,
+      # so Just itself does not need installing.
+      - name: Run the checks
+        run: npm run verify

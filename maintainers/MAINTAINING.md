@@ -10,7 +10,7 @@ Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just 
 - `checked` dates that are not real past dates written YYYY-MM-DD, and dates of checking written in the text instead;
 - sentences that closely repeat a sentence on another page, which usually means advice should move to its [owner](#who-owns-what). Overviews, headings, "See …" pointers, and "Checked …" notes are skipped.
 
-`just verify` runs it and its tests, and fails on any warning. To see warnings without failing, run `node scripts/style.mjs`. If a warning is wrong, improve the check or the rule in `maintainers/STYLE.md` rather than working around it.
+`just verify` runs it and its tests, and fails on any warning. The [Verify workflow](../.github/workflows/verify.yml) runs the same checks on every pull request, so a contributor who cannot run them locally still sees the result; a ruleset on `main` can require it, and the Website build, to pass before merging. To see warnings without failing, run `node scripts/style.mjs`. If a warning is wrong, improve the check or the rule in `maintainers/STYLE.md` rather than working around it.
 
 When you add or remove a page, update `content/README.md` and the relevant concept, slide or source index if applicable, which is how readers browse on GitHub. The website builds its navigation and its own sitemap from front matter, so it needs no index edits.
 
