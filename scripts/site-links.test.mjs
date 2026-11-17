@@ -6,6 +6,9 @@ test("maps Markdown files to site URLs, with README as the folder index", () => 
   assert.equal(pageUrl("README.md"), "/");
   assert.equal(pageUrl("pages/README.md"), "/pages/");
   assert.equal(pageUrl("pages/security.md"), "/pages/security/");
+  assert.equal(pageUrl("content/goals/security/README.md"), "/pages/security/");
+  assert.equal(pageUrl("content/goals/security/local-agent-security.md"), "/pages/local-agent-security/");
+  assert.equal(pageUrl("content/concepts/tool-call-loop.md"), "/concepts/tool-call-loop/");
   assert.equal(
     pageUrl("concepts/tool-call-loop.md"),
     "/concepts/tool-call-loop/",
