@@ -1,6 +1,6 @@
 ---
 type: overview
-summary: Agree on the problem before delegating the solution; use an agent to challenge requirements, review a specification, then verify implementation against it.
+summary: Start with a grilling, not a prompt; answer or rule out each point the agent raises, let the answers become the specification, then steer and verify against it.
 status: established
 lane: goals
 goal: alignment
@@ -9,21 +9,21 @@ order: 1
 
 # Alignment
 
-An agent can produce a convincing solution to the wrong problem. It may fill missing requirements with plausible assumptions and then judge success by its own interpretation. **Agree on the problem before delegating the solution.** Here, alignment means agreeing what this work should achieve; the [glossary](../../reference/glossary.md#alignment) has the broader AI meaning.
+Start with a grilling, not a prompt. A short prompt leaves the agent to guess at everything it does not say, and an agent can then build a convincing solution to the wrong problem. Being questioned first makes you face those gaps before any code exists, and the answers become the specification the work is built and checked against. Here, alignment means agreeing what this work should achieve; the [glossary](../../reference/glossary.md#alignment) has the broader AI meaning.
 
 ## Core advice
 
-- **Agree on the problem before delegating.** A precise implementation of a misunderstood request is still the wrong result. Ask the agent to question you about unclear requirements and challenge your assumptions, then review the specification it drafts before any code is written: "Before writing code, question me about this request, then draft acceptance criteria for me to review." [Agree on the problem](define-and-verify-tasks.md#agree-on-the-problem).
-- **Give it the context the code can't tell it.** Some rules cannot be read from the code, such as why a column order matters to another team. Add them to `AGENTS.md`, which Copilot's agents load for every task. [Write repository instructions in AGENTS.md](repository-instructions.md).
-- **Give it checks it can run.** An agent that can run your tests checks its work against them; one that cannot will judge it by reading the code. List the test commands in `AGENTS.md`, with what each one checks. [Let the agent run your repository's commands](agent-tool-delegation.md).
-- **Steer early, and verify against the agreement.** A wrong turn costs more the longer it runs, so correct it in the session or on the pull request. Then check each "Done when" line against the diff, not against the agent's summary, and read the tests it wrote: they share its understanding of the task. [Steer it](define-and-verify-tasks.md#steer-it) and [passing tests are evidence, not proof](../../concepts/tests-are-evidence.md).
+- **Begin with the agent questioning you.** Give it a brief description of what you want, then ask it to question you before proposing a solution: "Before writing code, question me about this request. Ask about unclear behavior, edge cases, and constraints, and challenge vague answers." Its questions surface the aspects you had not considered, and it asks better ones if it understands your repository; see [Economy](../economy/README.md). [Agree on the problem](define-and-verify-tasks.md#agree-on-the-problem).
+- **Answer each point, or declare it out of scope.** Either way, it becomes a decision rather than something the agent guesses later. Write the out-of-scope points down too; they stop nearby work the agent might think helps. [Agree on the problem](define-and-verify-tasks.md#agree-on-the-problem).
+- **Let the answers become a detailed specification, and build from it.** Have the agent turn the answers into intended behavior, "Done when" lines you can observe, and open questions, and review it before any issues are created. The detail is what brings the result close to what you wanted. [Turn the specification into issues](define-and-verify-tasks.md#turn-the-specification-into-issues).
+- **Steer early, and verify against the agreement.** A wrong turn costs more the longer it runs, so correct it in the session or on the pull request. Then check each "Done when" line against the diff, not the agent's summary, and read the tests it wrote: they share its understanding of the task. [Steer it](define-and-verify-tasks.md#steer-it) and [passing tests are evidence, not proof](../../concepts/tests-are-evidence.md).
 
 Scale the formality to the risk: a small change may need only a brief agreed description, while larger or ambiguous work needs a reviewed specification before issues are created. In either case, do not let unanswered product decisions silently become implementation choices.
 
 ## Try this first
 
-Before your next non-trivial task, ask Copilot to question your request rather than implement it. Have it identify one assumption you had not stated, then draft acceptance criteria for you to review before coding.
+Before your next non-trivial task, ask Copilot to grill you rather than implement it. Answer or rule out each point it raises, then have it draft acceptance criteria for you to review before coding.
 
 ## Explore further
 
-Who approves the result is covered under [Traceability & Trust](../traceability/README.md). For more depth, see [furnish repositories with context for agents](repository-context-for-agents.md) for domain facts and decision records, [from agile roles to agent-assisted workflows](../../articles/agent-role-boundaries.md) for one way to split work between roles, the [lo-fi software factory case study](../../articles/lo-fi-software-factory-case-study.md) for specifications and handoffs in practice, and [evals](../../concepts/evals.md) for comparing agent behavior across tasks.
+Who approves the result is covered under [Traceability & Trust](../traceability/README.md). For more depth, see [from agile roles to agent-assisted workflows](../../articles/agent-role-boundaries.md) for one way to split work between roles, the [lo-fi software factory case study](../../articles/lo-fi-software-factory-case-study.md) for specifications and handoffs in practice, and [evals](../../concepts/evals.md) for comparing agent behavior across tasks.
