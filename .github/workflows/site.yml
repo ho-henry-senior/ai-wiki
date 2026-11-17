@@ -173,10 +173,11 @@ jobs:
             const html = fs.readFileSync("_site/" + path, "utf8");
             if (html.includes('class="govuk-breadcrumbs') || html.includes('govuk-breadcrumbs__list'))
               throw new Error(path + ": breadcrumbs remain");
-            const nav = html.match(/<nav[^>]*govuk-service-navigation__wrapper[^>]*>[\\s\\S]*?<\\/nav>/)?.[0];
-            if (!nav) throw new Error(path + ": missing top navigation");
+            const navigation = html.match(/<nav[^>]*govuk-service-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
+            if (!navigation) throw new Error(path + ": missing top navigation");
+            const entries = [...navigation.matchAll(/<li[^>]*govuk-service-navigation__item[^>]*>[\s\S]*?<\/li>/g)].map((x) => x[0]);
             for (const section of ["Goals", "Reference", "Articles"]) {
-              const entry = nav.match(new RegExp('<li[^>]*govuk-service-navigation__item[^>]*>[\\\\s\\\\S]*?' + section + '[\\\\s\\\\S]*?<\\\\/li>'))?.[0];
+              const entry = entries.find((x) => x.includes(">" + section + "</a>"));
               if (!entry) throw new Error(path + ": missing " + section + " link");
               const highlighted = entry.includes("govuk-service-navigation__item--active");
               if (highlighted !== (section === activeSection))
@@ -185,9 +186,9 @@ jobs:
                 throw new Error(path + ": active section lacks aria-current");
             }
             if (selectedPage) {
-              const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\\s\\S]*?<\\/nav>/)?.[0];
+              const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
               if (!sidebar) throw new Error(path + ": missing sidebar");
-              const selected = sidebar.match(/<a[^>]*aria-current="page"[^>]*>[\\s\\S]*?<\\/a>/)?.[0];
+              const selected = sidebar.match(/<a[^>]*aria-current="page"[^>]*>[\s\S]*?<\/a>/)?.[0];
               if (!selected || !selected.includes(selectedPage))
                 throw new Error(path + ": sidebar does not highlight current page");
             }
