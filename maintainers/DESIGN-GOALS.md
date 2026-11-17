@@ -16,7 +16,7 @@ The wiki is primarily maintained by one contributor with AI assistance. Favor an
 
 Help readers improve these outcomes in AI-assisted work:
 
-- **Alignment:** Agree on the problem before delegating the solution. Use agents to question requirements, expose assumptions and draft specifications for human review. Turn agreed requirements into tasks, give agents the context and checks they need, steer implementation and verify results against the agreement. This task-level meaning complements the broader AI meaning in the [glossary](../pages/glossary.md#alignment).
+- **Alignment:** Agree on the problem before delegating the solution. Use agents to question requirements, expose assumptions and draft specifications for human review. Turn agreed requirements into tasks, give agents the context and checks they need, steer implementation and verify results against the agreement. This task-level meaning complements the broader AI meaning in the [glossary](../content/reference/glossary.md#alignment).
 - **Economy:** Achieve useful results with less time and fewer tokens, without sacrificing quality or security. Reduce rework, delegate repeatable tasks to deterministic tools, and make their interfaces clear.
 - **Security:** Control what an agent can reach and do: its permissions, sandbox, tools, provisioning, and exposure of sensitive data. Identify risks, configure controls enforced independently of the model, and review integrations before enabling them.
 - **Traceability & Trust:** Leave a record someone else can follow later, and accept changes on evidence. The record covers what was asked, what the agent did, who directed and approved it, and the evidence behind the result: record agent authorship honestly and keep corrections visible, for example by steering through issue and PR comments rather than private chat. An agent's explanation of its work is a claim, not a complete account of its reasoning. For public-sector work, this record is often an obligation, not just good practice. Trust is the decision to accept a change: where human review is spent, and, as agent pull requests multiply, which changes need a person at all. An agent declaring a change low-risk is never enough to accept it.
@@ -73,7 +73,7 @@ Use small, focused files for concepts and reusable guidance. Use larger articles
 
 Write every page to [the writing standard](STYLE.md).
 
-Keep reusable explanations in `concepts/`, narrative articles and applied references in `pages/`, provenance in `sources/`, and short standalone summaries in `slides/`. Slides link to their canonical concepts; preserve necessary examples and caveats in those concepts rather than imposing a slide-sized limit.
+Keep reusable explanations in `concepts/`, narrative articles and applied references in `content/`, provenance in `sources/`, and short standalone summaries in `slides/`. Slides link to their canonical concepts; preserve necessary examples and caveats in those concepts rather than imposing a slide-sized limit.
 
 The topic map is allowed to change as the wiki grows; it is a navigation aid, not a rigid taxonomy.
 
