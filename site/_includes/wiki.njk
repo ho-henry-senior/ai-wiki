@@ -94,7 +94,7 @@
 {% block content %}
   {%- set sidebar = false %}
   {%- if sectionKey %}
-    {%- set sidebar = collections.navigation | eleventyNavigation(sectionKey) | laneItems(page.url, sectionKey == "Articles") %}
+    {%- set sidebar = collections.navigation | eleventyNavigation(sectionKey) | laneItems(page.url, sectionKey == "Articles", { url: laneUrls[sectionKey] }) %}
   {%- elif tag or tagIndex %}
     {%- set sidebar = collections.tags | tagItems(page.url) %}
   {%- endif %}
