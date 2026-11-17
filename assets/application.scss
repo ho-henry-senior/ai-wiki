@@ -28,3 +28,8 @@
 .app-page-details {
   color: govuk.govuk-colour("dark-grey");
 }
+
+// The checked/status line sits directly below the heading, before the summary.
+.app-document-header:has(.app-page-details) .govuk-heading-xl {
+  margin-bottom: govuk.govuk-spacing(2);
+}
