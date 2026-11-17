@@ -5,7 +5,7 @@ lane: articles
 date: 2026-11-14
 ---
 
-# Retrieval-augmented generation
+# Retrieval-augmented generation (RAG)
 
 **Background:** how an agent can draw on documentation too large to include in every request.
 

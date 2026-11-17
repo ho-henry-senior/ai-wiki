@@ -43,7 +43,9 @@ export default async function (eleventyConfig) {
       .getAll()
       .filter(
         (item) =>
-          /\.(md|njk)$/.test(item.inputPath) && !/^tag/.test(item.data.layout),
+          /\.(md|njk)$/.test(item.inputPath) &&
+          !item.inputPath.endsWith("/content/reference/glossary.md") &&
+          !/^tag/.test(item.data.layout),
       ),
   );
   // The four goal overviews, which the Goals lane page lists.

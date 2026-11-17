@@ -14,13 +14,13 @@ export const lanes = {
     title: "Reference",
     url: "/reference/",
     description:
-      "Things to look up: the glossary, the data-flow checklist, and research notes.",
+      "Things to look up: the data-flow checklist and research notes.",
   },
   articles: {
     title: "Articles",
     url: "/articles/",
     description:
-      "Current thinking, background, and case studies, newest first. These are perspectives and context, not recommendations. [Subscribe to the Atom feed](/articles/feed.xml) to hear of new ones.",
+      "",
   },
 };
 
