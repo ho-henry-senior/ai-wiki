@@ -50,14 +50,31 @@
   {%- endif %}
 {%- endmacro %}
 
-{#- Where the page sits: for example Home, Goals, Security, from the same
-    navigation data as the sidebar (breadcrumbs in site/lanes.mjs). -#}
-{% block beforeContent %}
-  {%- set trail = collections.navigation | breadcrumbs(eleventyNavigation.key) %}
-  {{ govukBreadcrumbs({
-    classes: "govuk-!-display-none-print",
-    items: trail
-  }) if trail | length }}
+{#- Use the GOV.UK service-navigation component directly so its active section
+    follows the page's lane, not a URL prefix or an article's main goal. -#}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% from "components/search/macro.njk" import appSearch with context %}
+{% block govukHeader %}
+  {{ appHeader(options.header) }}
+  {{ govukServiceNavigation({
+    classes: "app-service-navigation",
+    attributes: options.serviceNavigation.attributes,
+    ariaLabel: options.serviceNavigation.ariaLabel,
+    menuButtonText: options.serviceNavigation.menuButtonText,
+    menuButtonLabel: options.serviceNavigation.menuButtonLabel,
+    navigationLabel: options.serviceNavigation.navigationLabel,
+    navigationId: options.serviceNavigation.navigationId,
+    navigationClasses: options.serviceNavigation.navigationClasses,
+    serviceName: options.serviceNavigation.serviceName,
+    serviceUrl: options.serviceNavigation.serviceUrl,
+    navigation: options.serviceNavigation.navigation | sectionNavigation(lane, page.url),
+    slots: {
+      end: appSearch(options.serviceNavigation.search) if options.serviceNavigation.search.indexPath else options.serviceNavigation.slots.end
+    }
+  }) }}
+  {% block phaseBanner %}
+    {{ govukPhaseBanner(options.header.phaseBanner) if options.header.phaseBanner }}
+  {% endblock %}
 {% endblock %}
 
 {#- One layout for every page. Pages in a lane, the lane pages and the tag

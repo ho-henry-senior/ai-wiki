@@ -157,6 +157,8 @@ jobs:
             echo "The Articles sidebar does not include agent tool delegation." >&2
             exit 1
           }
+      - name: Test rendered navigation
+        run: node --test scripts/site-navigation.test.mjs
       - name: Check pages show checked date and status as metadata
         run: |
           page=_site/pages/cloud-agent-security/index.html

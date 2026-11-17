@@ -1,28 +1,33 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { breadcrumbs, laneItems, metadataParts, tagItems } from "../site/lanes.mjs";
+import { laneItems, metadataParts, sectionNavigation, tagItems } from "../site/lanes.mjs";
 
-const item = (key, parent, url) => ({
-  url,
-  data: { title: key, eleventyNavigation: { key, parent } },
-});
-
-test("lists the pages above a page, from the top down", () => {
-  const items = [
-    item("Goals", undefined, "/goals/"),
-    item("Security", "Goals", "/pages/security/"),
-    item("Secure the cloud agent", "Security", "/pages/cloud-agent-security/"),
-  ];
-  assert.deepEqual(breadcrumbs(items, "Secure the cloud agent"), [
+test("top navigation identifies landing pages, article pages, and standalone pages", () => {
+  const nav = [
     { text: "Goals", href: "/goals/" },
-    { text: "Security", href: "/pages/security/" },
-  ]);
+    { text: "Reference", href: "/reference/" },
+    { text: "Articles", href: "/articles/" },
+  ];
+  assert.deepEqual(sectionNavigation(nav, "goals", "/goals/")[0], {
+    ...nav[0], current: true, active: false,
+  });
+  assert.deepEqual(sectionNavigation(nav, "goals", "/pages/security/")[0], {
+    ...nav[0], current: false, active: true,
+  });
+  // Even an article linked to Security belongs to the Articles section.
+  assert.deepEqual(sectionNavigation(nav, "articles", "/pages/cloud-agent-security/").map((x) => x.active), [false, false, true]);
+  assert.deepEqual(sectionNavigation(nav, "reference", "/reference/data/").map((x) => x.active), [false, true, false]);
+  assert.deepEqual(sectionNavigation(nav, undefined, "/pages/glossary/").map((x) => x.active), [false, false, false]);
+  assert.deepEqual(nav[0], { text: "Goals", href: "/goals/" });
 });
 
-test("stops at a missing parent, and at a loop", () => {
-  assert.deepEqual(breadcrumbs([item("A", "Missing", "/a/")], "A"), []);
-  const loop = [item("A", "B", "/a/"), item("B", "A", "/b/")];
-  assert.deepEqual(breadcrumbs(loop, "A"), [{ text: "B", href: "/b/" }]);
+test("left sidebar marks only the selected item as current", () => {
+  const tree = [
+    { url: "/pages/alignment/", title: "Alignment" },
+    { url: "/pages/security/", title: "Security" },
+  ];
+  assert.deepEqual(laneItems(tree, "/pages/security/").map((x) => x.current), [false, true]);
+  assert.deepEqual(laneItems(tree, "/goals/").map((x) => x.current), [false, false]);
 });
 
 test("tag sidebar lists all tags, then each tag, marking the current one", () => {
