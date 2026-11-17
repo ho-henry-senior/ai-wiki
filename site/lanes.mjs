@@ -1,4 +1,3 @@
-
 // The site's three lanes and the goals that group the Goals lane. Each
 // page says where it belongs with front matter: `lane`, and for goals pages,
 // `goal`, plus `order` within its group. See maintainers/MAINTAINING.md#website.
@@ -7,8 +6,7 @@ export const lanes = {
   goals: {
     title: "Goals",
     url: "/goals/",
-    description:
-      "Four outcomes to improve in AI-assisted work. Each goal starts with an overview of what matters, then the guides that act on it and the ideas behind them.",
+    description: "",
   },
   reference: {
     title: "Reference",
@@ -19,8 +17,7 @@ export const lanes = {
   articles: {
     title: "Articles",
     url: "/articles/",
-    description:
-      "",
+    description: "",
   },
 };
 
