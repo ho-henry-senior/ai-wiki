@@ -81,25 +81,15 @@ export function laneItems(tree = [], pageUrl, alphabetical = false) {
   });
 }
 
-// Breadcrumbs for a page: the pages above it in the navigation tree, from
-// the top down, in the shape GOV.UK breadcrumbs expect. Built from the same
-// navigation data as the sidebar.
-export function breadcrumbs(items = [], key) {
-  const byKey = new Map();
-  for (const item of items) {
-    const nav = item.data?.eleventyNavigation;
-    if (nav?.key && !byKey.has(nav.key)) byKey.set(nav.key, { item, nav });
-  }
-  const trail = [];
-  const seen = new Set([key]);
-  let parent = byKey.get(key)?.nav.parent;
-  while (parent && byKey.has(parent) && !seen.has(parent)) {
-    seen.add(parent);
-    const { item, nav } = byKey.get(parent);
-    trail.unshift({ text: item.data.title || nav.key, href: item.url });
-    parent = nav.parent;
-  }
-  return trail;
+// Mark the current top-level section on both its landing page and its
+// content pages. A supporting article belongs to Articles regardless of goal.
+// Standalone pages (glossary, tags, etc.) select no section.
+export function sectionNavigation(items = [], lane, pageUrl) {
+  return items.map((item) => {
+    const section = Object.entries(lanes).find(([, value]) => value.url === item.href)?.[0];
+    const current = item.href === pageUrl;
+    return { ...item, current, active: !current && section === lane };
+  });
 }
 
 // Sidebar items for the tag pages: all tags, then each tag, in the shape the
