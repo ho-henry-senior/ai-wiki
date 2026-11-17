@@ -269,7 +269,12 @@ async function markdownFiles(rootDir, directory) {
         results.push(file);
     }
   }
-  await walk(directory);
+  try {
+    await walk(directory);
+  } catch (error) {
+    // Small fixtures may exercise one content area without creating all four.
+    if (error.code !== "ENOENT") throw error;
+  }
   return results.sort();
 }
 
