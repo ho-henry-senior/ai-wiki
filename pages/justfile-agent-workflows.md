@@ -5,6 +5,8 @@ status: established
 lane: goals
 goal: economy
 order: 3
+tags:
+  - Commands
 ---
 
 # Give agents a command interface with Just

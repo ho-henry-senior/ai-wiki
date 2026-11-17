@@ -8,6 +8,8 @@ order: 3
 checked: 2026-11-15
 tags:
   - Copilot cloud agent
+  - Permissions and sandboxing
+  - MCP
 ---
 
 # Secure the Copilot cloud agent

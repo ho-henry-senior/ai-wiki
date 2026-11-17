@@ -10,6 +10,7 @@ tags:
   - Copilot in the editor
   - Copilot CLI
   - Copilot cloud agent
+  - Testing
 ---
 
 # Define, steer, and verify a task

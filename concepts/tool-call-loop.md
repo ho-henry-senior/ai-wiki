@@ -5,6 +5,9 @@ status: established
 lane: goals
 goal: security
 order: 20
+tags:
+  - Context and tokens
+  - Permissions and sandboxing
 ---
 
 # The model requests; the harness acts

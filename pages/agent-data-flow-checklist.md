@@ -5,6 +5,9 @@ status: established
 lane: reference
 order: 2
 checked: 2026-11-15
+tags:
+  - Data and privacy
+  - MCP
 ---
 
 # Agent data-flow checklist

@@ -6,6 +6,8 @@ lane: goals
 goal: economy
 order: 24
 checked: 2026-11-15
+tags:
+  - Skills and custom agents
 ---
 
 # Skills, profiles, and tools have different jobs

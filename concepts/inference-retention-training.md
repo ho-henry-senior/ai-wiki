@@ -6,6 +6,8 @@ lane: goals
 goal: security
 order: 25
 checked: 2026-11-15
+tags:
+  - Data and privacy
 ---
 
 # Inference, retention, and training are separate

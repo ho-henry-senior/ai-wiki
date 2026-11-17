@@ -6,6 +6,8 @@ lane: goals
 goal: security
 order: 24
 checked: 2026-11-15
+tags:
+  - Data and privacy
 ---
 
 # Secrets can leak through tool output

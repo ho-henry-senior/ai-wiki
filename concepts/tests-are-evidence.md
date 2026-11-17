@@ -5,6 +5,8 @@ status: established
 lane: goals
 goal: alignment
 order: 20
+tags:
+  - Testing
 ---
 
 # Passing tests are evidence, not proof

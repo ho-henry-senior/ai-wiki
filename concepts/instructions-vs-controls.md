@@ -5,6 +5,8 @@ status: established
 lane: goals
 goal: security
 order: 21
+tags:
+  - Permissions and sandboxing
 ---
 
 # Instructions are not enforced controls

@@ -11,6 +11,7 @@ tags:
   - Copilot CLI
   - Copilot cloud agent
   - Copilot code review
+  - AGENTS.md
 ---
 
 # Write repository instructions in AGENTS.md

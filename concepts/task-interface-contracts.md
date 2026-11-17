@@ -5,6 +5,8 @@ status: established
 lane: goals
 goal: economy
 order: 23
+tags:
+  - Commands
 ---
 
 # Task names need explicit contracts

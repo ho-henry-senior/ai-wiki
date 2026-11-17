@@ -6,6 +6,8 @@ lane: goals
 goal: economy
 order: 21
 checked: 2026-11-15
+tags:
+  - Context and tokens
 ---
 
 # Session history is not active context

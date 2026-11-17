@@ -18,6 +18,7 @@ tags:
   - Copilot CLI
   - Copilot app
   - Copilot cloud agent
+  - Context and tokens
 ---
 
 # Choose a model and control cost

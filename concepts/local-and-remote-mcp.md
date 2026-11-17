@@ -6,6 +6,9 @@ lane: goals
 goal: security
 order: 23
 checked: 2026-11-15
+tags:
+  - Data and privacy
+  - MCP
 ---
 
 # Local MCP does not mean local-only data
