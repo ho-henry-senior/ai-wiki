@@ -157,43 +157,8 @@ jobs:
             echo "The Articles sidebar does not include agent tool delegation." >&2
             exit 1
           }
-      - name: Check active navigation without breadcrumbs
-        run: |
-          node --input-type=module <<'NODE'
-          import fs from "node:fs";
-          const cases = [
-            ["goals/index.html", "Goals", null],
-            ["pages/security/index.html", "Goals", "Security"],
-            ["articles/index.html", "Articles", null],
-            ["pages/cloud-agent-security/index.html", "Articles", "Secure the Copilot cloud agent"],
-            ["reference/index.html", "Reference", null],
-            ["pages/glossary/index.html", null, null],
-          ];
-          for (const [path, activeSection, selectedPage] of cases) {
-            const html = fs.readFileSync("_site/" + path, "utf8");
-            if (html.includes('class="govuk-breadcrumbs') || html.includes('govuk-breadcrumbs__list'))
-              throw new Error(path + ": breadcrumbs remain");
-            const navigation = html.match(/<nav[^>]*govuk-service-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
-            if (!navigation) throw new Error(path + ": missing top navigation");
-            const entries = [...navigation.matchAll(/<li[^>]*govuk-service-navigation__item[^>]*>[\s\S]*?<\/li>/g)].map((x) => x[0]);
-            for (const section of ["Goals", "Reference", "Articles"]) {
-              const entry = entries.find((x) => x.includes(">" + section + "</a>"));
-              if (!entry) throw new Error(path + ": missing " + section + " link");
-              const highlighted = entry.includes("govuk-service-navigation__item--active");
-              if (highlighted !== (section === activeSection))
-                throw new Error(path + ": wrong active section " + section);
-              if (highlighted && !entry.includes("aria-current="))
-                throw new Error(path + ": active section lacks aria-current");
-            }
-            if (selectedPage) {
-              const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
-              if (!sidebar) throw new Error(path + ": missing sidebar");
-              const selected = sidebar.match(/<a[^>]*aria-current="page"[^>]*>[\s\S]*?<\/a>/)?.[0];
-              if (!selected || !selected.includes(selectedPage))
-                throw new Error(path + ": sidebar does not highlight current page");
-            }
-          }
-          NODE
+      - name: Test rendered navigation
+        run: node --test scripts/site-navigation.test.mjs
       - name: Check pages show checked date and status as metadata
         run: |
           page=_site/pages/cloud-agent-security/index.html
