@@ -14,8 +14,8 @@ Three changes worth making first, in this order. Each is small enough to try tod
 
 - **[Alignment](pages/alignment.md)** — Solve the problem you intended.
 - **[Economy](pages/economy.md)** — Spend less time and fewer tokens.
-- **[Traceability](pages/traceability.md)** — Leave a record others can follow.
 - **[Security](pages/security.md)** — Limit what an agent can reach and do.
+- **[Traceability & Trust](pages/traceability.md)** — Leave a record others can follow, and review changes you can rely on.
 
 ## Look something up
 

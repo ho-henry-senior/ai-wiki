@@ -27,8 +27,8 @@ export const lanes = {
 export const goals = {
   alignment: "Alignment",
   economy: "Economy",
-  traceability: "Traceability",
   security: "Security",
+  traceability: "Traceability & Trust",
 };
 
 const homeKey = "Home";

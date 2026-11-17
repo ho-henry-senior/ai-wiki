@@ -23,7 +23,7 @@ A request says expired credentials must be rejected. A test that confirms a vali
 
 ## Ask for tests that can fail
 
-- **One test per requirement.** List the expected behaviors under "Done when" in the task, and ask for a test for each line. See [define, steer, and verify a task](../pages/define-and-verify-tasks.md#write-the-task).
+- **One test per requirement.** List the expected behaviors under "Done when" in the task, and ask for a test for each line. See [define, steer, and verify a task](../pages/define-and-verify-tasks.md#turn-the-specification-into-issues).
 - **See it fail first.** Add to the task's checks: "Write each test first and run it to show it fails, then make it pass." A test that never failed may not test anything.
 - **Read the tests.** A good test checks an observable result and would fail for a plausible bug. A test that a mock returns its configured value tests the setup, not the code.
 - **Make the agent ask, not guess.** If the expected behavior is unclear, the agent should ask, and state any small assumption in the pull request.

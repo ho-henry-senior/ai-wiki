@@ -64,7 +64,7 @@ Choose the model and settings before you start. For new work, start a new sessio
 
 ## Cut tokens
 
-- **Write a clear task** with a "Done when" list: [define, steer, and verify a task](define-and-verify-tasks.md#write-the-task).
+- **Write a clear task** with a "Done when" list: [define, steer, and verify a task](define-and-verify-tasks.md#turn-the-specification-into-issues).
 - **Keep instructions short;** they load with every task in the features that read them: [load context through focused entrypoints](../concepts/progressive-disclosure.md).
 - **List focused commands,** so the agent does not read whole logs: [let the agent run your repository's commands](agent-tool-delegation.md).
 - **Enable only the MCP toolsets** the task needs, and raise reasoning effort only for hard tasks.
