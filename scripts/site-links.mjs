@@ -29,7 +29,26 @@ export const isExcluded = (file) =>
 // README.md becomes its folder's index page. URLs start at the site root;
 // Eleventy's HTML base plugin, which the GOV.UK plugin adds, puts the path
 // prefix in front when it writes the page.
+// Published URLs keep their old paths even when Markdown is organised under
+// content/. The source path remains canonical for GitHub-relative links.
+export function publishedSourcePath(file) {
+  if (file === "content/README.md") return "pages/README.md";
+  const parts = file.split("/");
+  if (parts[0] !== "content" || parts.length < 3) return file;
+  const [, kind, ...rest] = parts;
+  if (kind === "goals" && rest.length >= 2) {
+    const name = rest.at(-1) === "README.md" ? `${rest[0]}.md` : rest.at(-1);
+    return `pages/${name}`;
+  }
+  if (kind === "articles" || kind === "reference")
+    return `pages/${rest.at(-1)}`;
+  if (["concepts", "sources", "slides"].includes(kind))
+    return `${kind}/${rest.join("/")}`;
+  return file;
+}
+
 export function pageUrl(file) {
+  file = publishedSourcePath(file);
   const dir = path.posix.dirname(file);
   const name = path.posix.basename(file, ".md");
   const folder = dir === "." ? "" : `${dir}/`;
