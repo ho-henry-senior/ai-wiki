@@ -15,6 +15,7 @@ import {
   eleventyNavigation,
   laneItems,
   lanes,
+  tagItems,
 } from "./lanes.mjs";
 
 // Builds the wiki as a website. The Markdown stays the source: pages keep
@@ -127,6 +128,10 @@ export default async function (eleventyConfig) {
   eleventyConfig.addGlobalData("layout", "wiki");
   eleventyConfig.addFilter("laneItems", laneItems);
   eleventyConfig.addFilter("breadcrumbs", breadcrumbs);
+  const slugify = eleventyConfig.getFilter("slugify");
+  eleventyConfig.addFilter("tagItems", (tags, pageUrl) =>
+    tagItems(tags, pageUrl, slugify),
+  );
   eleventyConfig.addFilter("contents", contents);
   eleventyConfig.addFilter("isLetterIndex", isLetterIndex);
   // Eleventy runs plugins after this function, so the GOV.UK plugin's
@@ -138,17 +143,12 @@ export default async function (eleventyConfig) {
   });
 
   // A landing page for each lane, generated here so the lanes need no
-  // Markdown files of their own. Goals lists the four goal overviews in
-  // order, Articles lists articles newest first, and Reference shows its
-  // sidebar.
+  // Markdown files of their own. Each has its lane's sidebar; Goals lists
+  // the four goal overviews in order, and Articles lists articles newest
+  // first.
   const lists = { goals: "goalOverviews", articles: "articles" };
   for (const [lane, { title, url, description }] of Object.entries(lanes)) {
-    const listing = lists[lane]
-      ? {
-          layout: "collection",
-          pagination: { data: `collections.${lists[lane]}`, size: 50 },
-        }
-      : { sectionKey: title };
+    const listing = { sectionKey: title, listCollection: lists[lane] };
     eleventyConfig.addTemplate(`lanes/${lane}.md`, "", {
       title,
       description,

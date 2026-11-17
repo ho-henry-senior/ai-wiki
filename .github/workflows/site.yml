@@ -109,6 +109,28 @@ jobs:
             echo "The top bar does not link to the Goals lane." >&2
             exit 1
           }
+      - name: Check every page uses the same layout, with a sidebar
+        run: |
+          for page in goals articles reference tags tags/mcp \
+            pages/cloud-agent-security concepts/retrieval-augmented-generation; do
+            file="_site/$page/index.html"
+            grep -q 'x-govuk-sub-navigation' "$file" || {
+              echo "$page has no sidebar." >&2
+              exit 1
+            }
+            if grep -q 'x-govuk-masthead' "$file"; then
+              echo "$page still uses the plugin's collection layout." >&2
+              exit 1
+            fi
+          done
+          grep -q 'Published: ' _site/concepts/retrieval-augmented-generation/index.html || {
+            echo "An article does not show its date." >&2
+            exit 1
+          }
+          grep -q 'href="/ai-wiki/pages/agent-tool-delegation/"' _site/pages/define-and-verify-tasks/index.html || {
+            echo "The Alignment sidebar does not include agent tool delegation." >&2
+            exit 1
+          }
       - name: Check pages show checked date and status as metadata
         run: |
           page=_site/pages/cloud-agent-security/index.html

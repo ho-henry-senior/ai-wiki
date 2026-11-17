@@ -20,9 +20,9 @@ function firstHeading(inputPath) {
 }
 
 export default {
-  // Goals and Reference pages show their lane's navigation.
+  // Pages in a lane show their lane's navigation.
   sectionKey: (data) =>
-    ["goals", "reference"].includes(data.lane)
+    ["goals", "reference", "articles"].includes(data.lane)
       ? lanes[data.lane].title
       : data.sectionKey,
   title: (data) =>

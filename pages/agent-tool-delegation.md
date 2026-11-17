@@ -2,6 +2,9 @@
 type: pattern
 summary: Why an agent that can run your checks does better than one that guesses, how to list the commands with what each does, and how to give the Copilot cloud agent the dependencies to run them.
 status: established
+lane: goals
+goal: alignment
+order: 3
 checked: 2026-11-15
 tags:
   - Copilot cloud agent
