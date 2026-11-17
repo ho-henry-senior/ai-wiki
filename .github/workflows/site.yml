@@ -97,8 +97,9 @@ jobs:
             echo "The Goals page lists the goals as: $order" >&2
             exit 1
           fi
-          grep -q 'Traceability &amp; Trust' _site/goals/index.html || {
+          grep -qE 'Traceability (&amp;|&#38;|&) Trust' _site/goals/index.html || {
             echo "The Goals page does not name Traceability & Trust." >&2
+            grep -o 'Traceability.\{0,30\}' _site/goals/index.html | head -3 >&2 || true
             exit 1
           }
           for goal in alignment economy traceability security; do
