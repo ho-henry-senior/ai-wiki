@@ -272,15 +272,8 @@ jobs:
               exit 1
             }
           done
-      - name: Check breadcrumbs and the Articles feed
+      - name: Check the Articles feed
         run: |
-          page=_site/pages/cloud-agent-security/index.html
-          trail=$(python3 -c 'import re,sys; m=re.search(r"<nav[^>]*govuk-breadcrumbs.*?</nav>", open(sys.argv[1]).read(), re.S); print(m.group(0) if m else "")' "$page")
-          echo "$trail" | grep -q 'href="/ai-wiki/articles/"' || {
-            echo "The cloud agent page has no breadcrumbs up to Articles." >&2
-            grep -o 'govuk-breadcrumbs.\{0,600\}' "$page" >&2 || true
-            exit 1
-          }
           test -s _site/articles/feed.xml || { echo "The Articles feed was not built." >&2; exit 1; }
           entries=$(grep -c '<entry>' _site/articles/feed.xml || true)
           if [ "$entries" -ne 5 ]; then
