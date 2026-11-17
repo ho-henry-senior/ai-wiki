@@ -10,7 +10,12 @@ import {
   siteUrl,
 } from "../scripts/site-links.mjs";
 import { contents, isLetterIndex } from "../scripts/site-contents.mjs";
-import { eleventyNavigation, laneItems, lanes } from "./lanes.mjs";
+import {
+  breadcrumbs,
+  eleventyNavigation,
+  laneItems,
+  lanes,
+} from "./lanes.mjs";
 
 // Builds the wiki as a website. The Markdown stays the source: pages keep
 // relative .md links that work on GitHub and in editors, and this config
@@ -104,6 +109,12 @@ export default async function (eleventyConfig) {
       // Tag pages: /tags/ lists every tag, /tags/<tag>/ its pages. Tags
       // are allowed in site/tags.mjs.
       tags: { tagTitle: "Pages tagged ‘{{ tag }}’" },
+      // An Atom feed of the Articles lane, linked from every page's head.
+      feed: {
+        title: "Articles: Making the most of agents",
+        collection: "articles",
+        permalink: "/articles/feed.xml",
+      },
     },
   });
 
@@ -115,6 +126,7 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addGlobalData("layout", "wiki");
   eleventyConfig.addFilter("laneItems", laneItems);
+  eleventyConfig.addFilter("breadcrumbs", breadcrumbs);
   eleventyConfig.addFilter("contents", contents);
   eleventyConfig.addFilter("isLetterIndex", isLetterIndex);
   // Eleventy runs plugins after this function, so the GOV.UK plugin's

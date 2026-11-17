@@ -35,6 +35,16 @@
   {%- endif %}
 {%- endmacro %}
 
+{#- Where the page sits: for example Home, Goals, Security, from the same
+    navigation data as the sidebar (breadcrumbs in site/lanes.mjs). -#}
+{% block beforeContent %}
+  {%- set trail = collections.navigation | breadcrumbs(eleventyNavigation.key) %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print",
+    items: trail
+  }) if trail | length }}
+{% endblock %}
+
 {% block content %}
   {% if lane == "articles" %}
     {{ appDocumentHeader({ title: title, description: description, date: date }) }}
