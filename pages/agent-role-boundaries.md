@@ -5,6 +5,8 @@ status: developing
 lane: articles
 date: 2026-11-14
 checked: 2026-11-15
+tags:
+  - Skills and custom agents
 ---
 
 # From agile roles to agent-assisted workflows

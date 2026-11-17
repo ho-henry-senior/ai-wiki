@@ -13,9 +13,19 @@
 // not listed here, so add a tag here before using it.
 
 export const allowedTags = [
+  // Parts of Copilot.
   "Copilot app",
   "Copilot CLI",
   "Copilot cloud agent",
   "Copilot code review",
   "Copilot in the editor",
+  // Topics. A first set, to refine as the wiki grows.
+  "AGENTS.md",
+  "Commands",
+  "Context and tokens",
+  "Data and privacy",
+  "MCP",
+  "Permissions and sandboxing",
+  "Skills and custom agents",
+  "Testing",
 ];

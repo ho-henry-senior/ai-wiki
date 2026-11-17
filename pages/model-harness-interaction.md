@@ -6,6 +6,9 @@ lane: goals
 goal: economy
 order: 20
 checked: 2026-11-15
+tags:
+  - Context and tokens
+  - Data and privacy
 ---
 
 # How models and harnesses interact

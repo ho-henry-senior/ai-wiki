@@ -162,6 +162,11 @@ jobs:
             echo "The Copilot cloud agent tag page does not list the cloud agent page." >&2
             exit 1
           }
+          grep -q 'Where MCP servers run' _site/tags/mcp/index.html || grep -q 'local-and-remote-mcp' _site/tags/mcp/index.html || {
+            echo "The MCP tag page does not list the local and remote MCP concept." >&2
+            ls _site/tags >&2
+            exit 1
+          }
           grep -q 'Copilot CLI' _site/tags/index.html || {
             echo "The tags index does not list Copilot CLI." >&2
             exit 1

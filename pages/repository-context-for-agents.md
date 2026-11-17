@@ -6,6 +6,8 @@ lane: goals
 goal: alignment
 order: 4
 checked: 2026-11-15
+tags:
+  - AGENTS.md
 ---
 
 # Furnish repositories with context for agents

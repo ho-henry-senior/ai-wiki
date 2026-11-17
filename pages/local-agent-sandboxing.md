@@ -10,6 +10,7 @@ tags:
   - Copilot in the editor
   - Copilot CLI
   - Copilot app
+  - Permissions and sandboxing
 ---
 
 # Sandbox a local coding agent

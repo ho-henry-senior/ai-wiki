@@ -5,6 +5,9 @@ status: established
 lane: goals
 goal: alignment
 order: 5
+tags:
+  - AGENTS.md
+  - Skills and custom agents
 ---
 
 # A structure for agent-facing repositories

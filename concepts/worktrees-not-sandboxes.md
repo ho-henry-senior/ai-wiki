@@ -5,6 +5,8 @@ status: established
 lane: goals
 goal: security
 order: 22
+tags:
+  - Permissions and sandboxing
 ---
 
 # A worktree is not a sandbox

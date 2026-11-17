@@ -6,6 +6,8 @@ lane: goals
 goal: economy
 order: 2
 checked: 2026-11-15
+tags:
+  - Skills and custom agents
 ---
 
 # Choose and add skills

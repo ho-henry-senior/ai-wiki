@@ -5,6 +5,8 @@ status: established
 checked: 2026-11-15
 tags:
   - Copilot cloud agent
+  - AGENTS.md
+  - Commands
 ---
 
 # Let the agent run your repository's commands

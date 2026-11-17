@@ -4,6 +4,9 @@ summary: Local development tools agents can run for focused tests, linting, type
 status: established
 lane: reference
 order: 4
+tags:
+  - Commands
+  - Testing
 ---
 
 # Local checks and tools for coding agents

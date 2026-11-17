@@ -6,6 +6,9 @@ lane: goals
 goal: economy
 order: 22
 checked: 2026-11-15
+tags:
+  - AGENTS.md
+  - Context and tokens
 ---
 
 # Load context through focused entrypoints
