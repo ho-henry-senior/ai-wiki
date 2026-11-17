@@ -7,11 +7,13 @@
     header component normally renders title and description together, so
     render the title alone and preserve the plugin's description markup. -#}
 {%- macro pageHeader() %}
-  {{ appDocumentHeader({ title: title }) }}
-  {{ pageMetadata() }}
-  {%- if description %}
-  <p class="govuk-body-l">{{ description | markdown("inline") | noOrphans | safe }}</p>
-  {%- endif %}
+  <header class="app-document-header">
+    {{ appHeading({ title: title }) }}
+    {{ pageMetadata() }}
+    {%- if description %}
+    <p class="govuk-body-l">{{ description | markdown("inline") | noOrphans | safe }}</p>
+    {%- endif %}
+  </header>
 {%- endmacro %}
 
 {%- macro pageMetadata() %}
