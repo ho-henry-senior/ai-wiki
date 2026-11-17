@@ -137,6 +137,19 @@ jobs:
             echo "The cloud agent page has no contents list linking to its sections." >&2
             exit 1
           }
+      - name: Check header reading order
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const page = fs.readFileSync("_site/pages/cloud-agent-security/index.html", "utf8");
+          const title = page.indexOf("Secure the Copilot cloud agent", page.indexOf("<h1"));
+          const metadata = page.indexOf("Checked: 15 November 2026", title);
+          const description = page.indexOf('class="govuk-body-l"', title);
+          if (title < 0 || metadata < title || description < metadata) {
+            console.error("Expected h1, checked/status metadata, then description.");
+            process.exit(1);
+          }
+          NODE
       - name: Check the glossary's letters are one line of links
         run: |
           grep -q 'app-contents-list app-contents-list--letters' _site/pages/glossary/index.html || {
