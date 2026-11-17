@@ -23,7 +23,7 @@ Help readers improve these outcomes in AI-assisted work:
 
 Alignment owns whether the work matches what was agreed: defining, steering, and verifying it. Traceability & Trust owns the record of the work and the decision to accept it. Security owns what the agent can reach and do.
 
-Present the goals in this order, alphabetically, so the order does not imply a ranking; the homepage's first steps say what to do first. Give each goal overview about four core points. Test each one: could a reader do it this week, in under an hour, with the page alone? Material that describes a process or a policy fails that test; put it in a guide, as options, and link it from "Explore further".
+Present the goals in this order, alphabetically, so the order does not imply a ranking; the homepage's first steps say what to do first. Give each goal overview about four core points. Each should be understandable on its own, explain the principle behind it, and offer a practical starting action. A useful prompt is whether a reader could make a start this week with the page alone; it is a prompt, not a rule, and some important controls take longer. Material that describes a whole process or policy belongs in a guide, as options, linked from "Explore further".
 
 These goals overlap: for example, a clear specification can improve alignment, reduce rework, and support traceability. Organize navigation around reader outcomes without forcing a topic into only one goal.
 
