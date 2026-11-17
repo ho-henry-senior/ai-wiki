@@ -1,13 +1,8 @@
 ---
 type: reference
-summary: A practical glossary of foundational AI and current generative AI terminology.
-lane: reference
-order: 1
 ---
 
 # AI glossary
-
-This glossary covers widely used terms in AI and machine learning, with an emphasis on contemporary generative AI and agentic systems. Inclusion does not depend on whether a term already appears elsewhere in the wiki. Definitions are concise, practical guides rather than formal standards; terminology and capabilities can evolve.
 
 The [source research note](../sources/ai-terms-research.md) records supporting sources, commonly confused terms, and areas where definitions are unsettled.
 
