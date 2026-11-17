@@ -23,3 +23,8 @@
   flex-wrap: wrap;
   gap: 0 govuk.govuk-spacing(3);
 }
+
+// Page metadata stays secondary to the title; status is plain text, not a badge.
+.app-page-details {
+  color: govuk.govuk-colour("dark-grey");
+}

@@ -3,20 +3,16 @@
     which provides the macros used here. -#}
 {% extends "layouts/base.njk" %}
 
-{#- Under the title: the page's completeness status, when its facts were
-    checked, and its tags, then a contents list
-    for longer pages. A missing status means unassessed, so it shows
-    nothing. -#}
+{#- Under the title: a quiet metadata line with the checked date and
+    completeness status, followed by tags and the contents list. Omit
+    unknown fields and their separator. -#}
 {%- macro pageDetails() %}
-  {%- set statusColours = { established: "green", developing: "yellow", stub: "grey" } %}
-  {%- if status in statusColours or checked %}
+  {%- set knownStatuses = ["established", "developing", "stub"] %}
+  {%- if checked or status in knownStatuses %}
   <p class="govuk-body-s app-page-details">
-    {%- if status in statusColours %}
-    <strong class="govuk-tag govuk-tag--{{ statusColours[status] }} app-status">{{ status | capitalize }}</strong>
-    {%- endif %}
-    {%- if checked %}
-    <span class="app-checked">Facts checked {{ checked | govukDate }}</span>
-    {%- endif %}
+    {%- if checked %}Checked: {{ checked | govukDate }}{% endif %}
+    {%- if checked and status in knownStatuses %} · {% endif %}
+    {%- if status in knownStatuses %}Status: {{ status | capitalize }}{% endif %}
   </p>
   {%- endif %}
   {%- if tags | length %}
