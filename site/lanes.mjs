@@ -64,16 +64,7 @@ export function laneItems(tree = [], pageUrl, alphabetical = false, landing) {
     : tree;
   // The lane's own page comes first, so it is marked current there too.
   const first = landing?.url
-    ? [
-        {
-          href: landing.url,
-          text: "Overview",
-          current: landing.url === pageUrl,
-          // Set like the other items: the sub-navigation marks the current
-          // page with aria-current="page" only when this is set too.
-          parent: landing.url === pageUrl,
-        },
-      ]
+    ? [{ href: landing.url, text: "Overview", current: landing.url === pageUrl }]
     : [];
   return first.concat(items.map((item) => {
     const children = item.children ?? [];
