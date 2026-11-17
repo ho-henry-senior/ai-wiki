@@ -25,12 +25,14 @@ const style = [
 async function fixture(t, files) {
   const root = await mkdtemp(path.join(os.tmpdir(), "wiki-style-"));
   t.after(() => rm(root, { recursive: true, force: true }));
-  await mkdir(path.join(root, "pages"));
-  await mkdir(path.join(root, "concepts"));
+  for (const folder of ["content/goals", "content/concepts", "content/articles", "content/reference"])
+    await mkdir(path.join(root, folder), { recursive: true });
   await mkdir(path.join(root, "maintainers"));
   await writeFile(path.join(root, "maintainers/STYLE.md"), style);
-  for (const [file, text] of Object.entries(files))
+  for (const [file, text] of Object.entries(files)) {
+    await mkdir(path.dirname(path.join(root, file)), { recursive: true });
     await writeFile(path.join(root, file), text);
+  }
   return root;
 }
 
