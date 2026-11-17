@@ -6,4 +6,4 @@ This directory contains project instructions for maintaining this wiki, not guid
 - [Writing standard](STYLE.md) — rules for published prose and examples.
 - [Maintaining the wiki](MAINTAINING.md) — content conventions, sources, website, checks, and reviews.
 
-Reader-facing knowledge belongs in [`pages/`](../pages/README.md), [`concepts/`](../concepts/README.md), and [`sources/`](../sources/README.md). Keep instructions for writing and maintaining that knowledge here, not in their public indexes. The root [`AGENTS.md`](../AGENTS.md) remains the entry point for coding agents.
+Reader-facing knowledge belongs in [`pages/`](../content/README.md), [`concepts/`](../content/concepts/README.md), and [`sources/`](../content/sources/README.md). Keep instructions for writing and maintaining that knowledge here, not in their public indexes. The root [`AGENTS.md`](../AGENTS.md) remains the entry point for coding agents.

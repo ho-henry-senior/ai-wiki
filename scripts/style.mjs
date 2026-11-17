@@ -10,9 +10,9 @@ import { allowedTags } from "../site/tags.mjs";
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const excluded = new Set([
-  "pages/README.md",
-  "pages/glossary.md",
-  "concepts/README.md",
+  "content/README.md",
+  "content/reference/glossary.md",
+  "content/concepts/README.md",
 ]);
 // Types that STYLE.md gives no ceiling.
 const unlimited = new Set(["reference", "case-study"]);
@@ -154,6 +154,16 @@ export function checkRecheck(file, meta, domains) {
 }
 
 // A page's `tags` must be a list of tags from site/tags.mjs.
+// A page in content/goals/<goal>/ must say the same goal in its front matter,
+// because the site's navigation reads the field and GitHub shows the folder.
+export function checkGoalFolder(file, meta) {
+  const folder = file.match(/^content\/goals\/([^/]+)\//)?.[1];
+  if (!folder || meta.goal === folder) return [];
+  return [
+    `${file}: is in content/goals/${folder}/ but has goal: ${meta.goal ?? "(none)"}; move the file or change its goal`,
+  ];
+}
+
 export function checkTags(file, meta, known = allowedTags) {
   const tags = meta.tags;
   if (tags === undefined) return [];
@@ -260,14 +270,17 @@ export function findDuplicates(pages, threshold = 0.6, minShared = 4) {
 }
 
 async function markdownFiles(rootDir, directory) {
-  const entries = await readdir(path.join(rootDir, directory), {
-    withFileTypes: true,
-  });
-  return entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
-    .map((entry) => `${directory}/${entry.name}`)
-    .filter((file) => !excluded.has(file))
-    .sort();
+  const results = [];
+  async function walk(folder) {
+    for (const entry of await readdir(path.join(rootDir, folder), { withFileTypes: true })) {
+      const file = `${folder}/${entry.name}`;
+      if (entry.isDirectory()) await walk(file);
+      else if (entry.isFile() && file.endsWith(".md") && !excluded.has(file))
+        results.push(file);
+    }
+  }
+  await walk(directory);
+  return results.sort();
 }
 
 export async function checkStyle(rootDir = root) {
@@ -275,8 +288,10 @@ export async function checkStyle(rootDir = root) {
     await readFile(path.join(rootDir, "maintainers/STYLE.md"), "utf8"),
   );
   const files = [
-    ...(await markdownFiles(rootDir, "pages")),
-    ...(await markdownFiles(rootDir, "concepts")),
+    ...(await markdownFiles(rootDir, "content/goals")),
+    ...(await markdownFiles(rootDir, "content/concepts")),
+    ...(await markdownFiles(rootDir, "content/articles")),
+    ...(await markdownFiles(rootDir, "content/reference")),
   ];
   let domains;
   try {
@@ -291,7 +306,7 @@ export async function checkStyle(rootDir = root) {
   for (const file of files) {
     const text = await readFile(path.join(rootDir, file), "utf8");
     const { meta } = frontMatter(text);
-    const kind = file.startsWith("concepts/") ? "concept" : meta.type;
+    const kind = file.startsWith("content/concepts/") ? "concept" : meta.type;
     pages.push({
       path: file,
       kind,
@@ -302,6 +317,7 @@ export async function checkStyle(rootDir = root) {
     warnings.push(...checkRecheck(file, meta, domains));
     warnings.push(...checkChecked(file, meta, prose(text)));
     warnings.push(...checkTags(file, meta));
+    warnings.push(...checkGoalFolder(file, meta));
   }
   for (const page of pages) {
     const words = countWords(page.prose);

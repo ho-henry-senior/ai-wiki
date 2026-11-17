@@ -9,13 +9,13 @@ Review the knowledge structure and its evidence, not just Markdown formatting. P
 
 ## 1. Establish scope and coverage
 
-Read [the design goals](../../../maintainers/DESIGN-GOALS.md), [the writing standard](../../../maintainers/STYLE.md), [agent instructions](../../../AGENTS.md), [article conventions](../../../maintainers/MAINTAINING.md#articles-and-concepts), [concept conventions](../../../concepts/README.md), and [source conventions](../../../sources/README.md). Inspect the worktree and preserve unrelated changes.
+Read [the design goals](../../../maintainers/DESIGN-GOALS.md), [the writing standard](../../../maintainers/STYLE.md), [agent instructions](../../../AGENTS.md), [article conventions](../../../maintainers/MAINTAINING.md#articles-and-concepts), [concept conventions](../../../content/concepts/README.md), and [source conventions](../../../content/sources/README.md). Inspect the worktree and preserve unrelated changes.
 
 For a whole-wiki review, inventory and read every authored article, concept, and slide, the glossary, indexes, and source records. Check slides against their canonical concepts. Include repository instructions and review tooling when checking navigation and verification coverage. Read raw archives only when needed to resolve a claim; leave them unchanged.
 
 For a scoped review, identify the requested subset and its directly related material. Record what was read and what remains unchecked in session notes; do not describe a partial review as whole-wiki coverage.
 
-For deeper corpus-inventory or terminology methods, consult the optional [candidate-skills research](../../../sources/wiki-information-architecture-skills.md). These external skills are not prerequisites for a review.
+For deeper corpus-inventory or terminology methods, consult the optional [candidate-skills research](../../../content/sources/wiki-information-architecture-skills.md). These external skills are not prerequisites for a review.
 
 **Complete when:** every in-scope file has a recorded disposition, and exclusions are explicit.
 
@@ -56,7 +56,7 @@ Present concise findings and the extraction plan. A review-only request ends wit
 
 When extracting concepts:
 
-- Put the full focused explanation in `concepts/`, following its conventions; retain its example, caveats, and sources.
+- Put the full focused explanation in `content/concepts/`, following its conventions; retain its example, caveats, and sources.
 - Replace the article's detailed explanation with a contextual summary and link. Keep it readable without requiring every linked page to be opened.
 - Preserve existing paths and heading anchors where practical. Update all affected incoming links if a target must change.
 - Update concept and article indexes, relevant topic-map entries, and glossary links. Keep glossary definitions short and maintain its wider AI scope.
