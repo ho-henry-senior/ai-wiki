@@ -1,6 +1,6 @@
 ---
 type: overview
-summary: Stop the agent discovering what you could tell it: give the repository the information it would otherwise infer, and cheap deterministic tools behind a discoverable, focused command interface.
+summary: Stop the agent discovering what you could tell it; give the repository the information it would otherwise infer, and cheap deterministic tools behind a discoverable, focused command interface.
 status: established
 lane: goals
 goal: economy
