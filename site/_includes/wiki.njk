@@ -3,14 +3,13 @@
     macros used here. -#}
 {% extends "layouts/base.njk" %}
 
-{#- Put metadata immediately after the h1, before the description. The
-    header component normally renders title and description together, so
-    render the title alone and preserve the plugin's description markup. -#}
+{#- Keep summaries for search and collection listings, but don't repeat
+    them above an article whose body already has an introduction. -#}
 {%- macro pageHeader() %}
   <header class="app-document-header">
     {{ appHeading({ caption: caption, title: title or ("Pages tagged ‘" + tag + "’") }) }}
     {{ pageMetadata() }}
-    {%- if description %}
+    {%- if description and not content %}
     <p class="govuk-body-l">{{ description | markdown("inline") | noOrphans | safe }}</p>
     {%- endif %}
   </header>
@@ -30,23 +29,34 @@
 {%- endmacro %}
 
 {%- macro pageDetails() %}
+  {%- set sections = content | contents %}
+  {%- if sections | length %}
+  <nav class="app-contents-list{{ " app-contents-list--letters" if sections | isLetterIndex }}" aria-label="On this page">
+    {%- if sections | isLetterIndex %}
+    <ol>
+      {%- for section in sections %}
+      <li><a href="#{{ section.id }}">{{ section.text | safe }}</a></li>
+      {%- endfor %}
+    </ol>
+    {%- else %}
+    <ul class="govuk-list govuk-list--bullet">
+      {%- for section in sections %}
+      <li><a href="#{{ section.id }}">{{ section.text | safe }}</a></li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+  </nav>
+  {%- endif %}
+{%- endmacro %}
+
+{#- Tags are optional metadata for exploration, not part of the reading order. -#}
+{%- macro pageTags() %}
   {%- if tags | length %}
   <p class="govuk-body-s app-tags">Tags:
     {%- for tag in tags %}
     <a class="govuk-link" href="/tags/{{ tag | slugify }}/">{{ tag }}</a>{{ "," if not loop.last }}
     {%- endfor %}
   </p>
-  {%- endif %}
-  {%- set sections = content | contents %}
-  {%- if sections | length %}
-  <nav class="app-contents-list{{ " app-contents-list--letters" if sections | isLetterIndex }}" aria-labelledby="contents-title">
-    <h2 class="app-contents-list__title" id="contents-title">Contents</h2>
-    <ol>
-      {%- for section in sections %}
-      <li><a href="#{{ section.id }}">{{ section.text | safe }}</a></li>
-      {%- endfor %}
-    </ol>
-  </nav>
   {%- endif %}
 {%- endmacro %}
 
@@ -121,6 +131,7 @@
       {%- endfor %}
     </ul>
     {%- endif %}
+    {{ pageTags() }}
   {%- endset %}
 
   {% if sidebar %}
