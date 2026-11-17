@@ -24,6 +24,14 @@ With an agent, the work is split: a model writes the code, a person directs it, 
 
 If you must keep records longer, check your organization's records policy; GitHub Enterprise Cloud can stream agent audit-log events to long-term storage.
 
+## Trust: reviewing changes at scale
+
+<div class="app-developing-card">
+  <p class="govuk-body-s"><strong>Developing — guidance not yet established</strong></p>
+  <p>As agents produce more pull requests, how can automated checks and risk assessments help people decide which changes need human review and which might be safe to merge automatically?</p>
+  <p>This is an area for investigation, not yet a recommended workflow. The aim is to support risk-informed decisions with evidence rather than rely on an agent's confidence.</p>
+</div>
+
 ## Try this first
 
 Check that a reader could answer these questions from your last agent pull request alone:
