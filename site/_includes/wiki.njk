@@ -9,7 +9,7 @@
   <header class="app-document-header">
     {{ appHeading({ caption: caption, title: title or ("Pages tagged ‘" + tag + "’") }) }}
     {{ pageMetadata() }}
-    {%- if description and not content %}
+    {%- if description and lane != "articles" %}
     <p class="govuk-body-l">{{ description | markdown("inline") | noOrphans | safe }}</p>
     {%- endif %}
   </header>
