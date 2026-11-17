@@ -154,6 +154,16 @@ export function checkRecheck(file, meta, domains) {
 }
 
 // A page's `tags` must be a list of tags from site/tags.mjs.
+// A page in content/goals/<goal>/ must say the same goal in its front matter,
+// because the site's navigation reads the field and GitHub shows the folder.
+export function checkGoalFolder(file, meta) {
+  const folder = file.match(/^content\/goals\/([^/]+)\//)?.[1];
+  if (!folder || meta.goal === folder) return [];
+  return [
+    `${file}: is in content/goals/${folder}/ but has goal: ${meta.goal ?? "(none)"}; move the file or change its goal`,
+  ];
+}
+
 export function checkTags(file, meta, known = allowedTags) {
   const tags = meta.tags;
   if (tags === undefined) return [];
@@ -307,6 +317,7 @@ export async function checkStyle(rootDir = root) {
     warnings.push(...checkRecheck(file, meta, domains));
     warnings.push(...checkChecked(file, meta, prose(text)));
     warnings.push(...checkTags(file, meta));
+    warnings.push(...checkGoalFolder(file, meta));
   }
   for (const page of pages) {
     const words = countWords(page.prose);

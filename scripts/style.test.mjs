@@ -7,6 +7,7 @@ import {
   allowedDomains,
   checkChecked,
   checkRecheck,
+  checkGoalFolder,
   checkTags,
   checkStyle,
   countWords,
@@ -36,8 +37,9 @@ async function fixture(t, files) {
   return root;
 }
 
+// Fixture pages sit in content/goals/alignment/, so they say that goal.
 const page = (type, body) =>
-  `---\ntype: ${type}\nsummary: S.\n---\n\n# Title\n\n${body}\n`;
+  `---\ntype: ${type}\nsummary: S.\ngoal: alignment\n---\n\n# Title\n\n${body}\n`;
 
 test("reads hedge words and length ceilings from STYLE.md", () => {
   const rules = parseRules(style);
@@ -110,8 +112,8 @@ test("reports long pages, hedges, and duplicates; exempts references", async (t)
       Array.from({ length: 41 }, (_, i) => `term${i}`).join(" ") + ".",
     ),
     "content/goals/alignment/long-reference.md": page("reference", `${long}.`),
-    "content/goals/alignment/long-because.md": `---\ntype: guide\nsummary: S.\nlong-because: one setup procedure\n---\n\n# Title\n\n${long}.\n`,
-    "content/goals/alignment/long-no-reason.md": `---\ntype: guide\nsummary: S.\nlong-because:\n---\n\n# Title\n\n${long}.\n`,
+    "content/goals/alignment/long-because.md": `---\ntype: guide\nsummary: S.\ngoal: alignment\nlong-because: one setup procedure\n---\n\n# Title\n\n${long}.\n`,
+    "content/goals/alignment/long-no-reason.md": `---\ntype: guide\nsummary: S.\ngoal: alignment\nlong-because:\n---\n\n# Title\n\n${long}.\n`,
     "content/goals/alignment/hedgy.md": page("guide", "Use useful checks."),
     "content/concepts/README.md": page("reference", "Use useful checks."),
   });
@@ -222,4 +224,12 @@ test("tags must be a list of known tags", () => {
     /unknown tag "copilot cli"/,
   );
   assert.match(checkTags("a.md", { tags: "Copilot CLI" }, known)[0], /must be a list/);
+});
+
+test("a page's goal folder must match its goal field", () => {
+  const file = "content/goals/economy/cost.md";
+  assert.deepEqual(checkGoalFolder(file, { goal: "economy" }), []);
+  assert.match(checkGoalFolder(file, { goal: "security" })[0], /has goal: security/);
+  assert.match(checkGoalFolder(file, {})[0], /has goal: \(none\)/);
+  assert.deepEqual(checkGoalFolder("content/concepts/x.md", { goal: "economy" }), []);
 });
