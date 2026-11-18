@@ -54,6 +54,7 @@ The agents ran unattended with broad tool access and were not independently sand
 
 This account is based on a participant's retrospective and inspection of the workflow documentation and issue and pull-request records. Project names, links, dates, and distinctive implementation details are omitted to preserve anonymity. The account is not an independently measured comparison.
 
+- [Agent roles directory](../reference/agent-roles-directory.md) — original Product, Business Analyst, Developer and Reviewer Markdown configurations supplied for this example.
 - [From agile roles to agent-assisted workflows](agent-role-boundaries.md) — an illustrative perspective on familiar responsibilities and human handoffs, not an account of this exercise.
 - [Define, steer, and verify a task](../goals/alignment/define-and-verify-tasks.md) — write the task, steer it, and record the evidence.
 - [Agent data-flow checklist](../reference/agent-data-flow-checklist.md) — review permissions, data flows, and controls before running agents.
