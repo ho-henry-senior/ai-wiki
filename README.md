@@ -2,7 +2,14 @@
 
 Practical guidance for developers using AI agents, focusing on GitHub Copilot.
 
-## Start here
+## Goals
+
+- **[Alignment](content/goals/alignment/README.md)** — Solve the problem you intended.
+- **[Economy](content/goals/economy/README.md)** — Spend less time and fewer tokens.
+- **[Security](content/goals/security/README.md)** — Limit what an agent can reach and do.
+- **[Traceability & Trust](content/goals/traceability/README.md)** — Leave a record others can follow, and review changes you can rely on.
+
+## First steps
 
 1. **Prepare your repository for agents.** Add an `AGENTS.md` as a shared entry point for the agent's essential instructions. Give it the facts it cannot infer reliably—schemas, connections between systems, past decisions, and known anomalies. Keep the entry point short and link to details when needed: this is [progressive disclosure](content/concepts/progressive-disclosure.md). Give the agent a discoverable command interface, such as a `justfile`, so it knows what it can run and how to check its work.
 
@@ -16,14 +23,7 @@ Practical guidance for developers using AI agents, focusing on GitHub Copilot.
 
    See [security](content/goals/security/README.md).
 
-## By goal
-
-- **[Alignment](content/goals/alignment/README.md)** — Solve the problem you intended.
-- **[Economy](content/goals/economy/README.md)** — Spend less time and fewer tokens.
-- **[Security](content/goals/security/README.md)** — Limit what an agent can reach and do.
-- **[Traceability & Trust](content/goals/traceability/README.md)** — Leave a record others can follow, and review changes you can rely on.
-
-## Look something up
+## References
 
 - [Agent data-flow checklist](content/reference/agent-data-flow-checklist.md) — review an agent setup before sensitive work.
 - Indexes of every [page](content/README.md), [concept](content/concepts/README.md), [slide](content/slides/README.md), and [source](content/sources/README.md).
