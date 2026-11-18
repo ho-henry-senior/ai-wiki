@@ -1,2 +1,4 @@
 node_modules/
 _site/
+# The source watch's candidates list, written before its agent runs.
+.source-watch/

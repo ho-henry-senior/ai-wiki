@@ -2,7 +2,7 @@
 
 The [weekly source watch](../.github/workflows/weekly-source-watch.md) reads these sources and drafts records of what they publish, into `data/source-watch/`. It is an experiment ([#122](https://github.com/ho-henry-senior/ai-wiki/issues/122)): the records are judged before anything is shown to readers.
 
-The maintainer chooses the sources. To add one, add a row here and add its domain to the workflow's `network.allowed` list; a source whose domain is not allowed cannot be read. Prefer a feed (RSS or Atom) over a web page, because feeds list items with dates and are easier to read reliably. The Anthropic and Claude addresses are pages, not feeds, and the GitHub feed addresses follow GitHub's usual pattern; the first manual run shows which give dated, readable items, and the run reports any that do not.
+The maintainer chooses the sources. To add one, add a row here and add its domain to the workflow's `network.allowed` list; a source whose domain is not allowed cannot be read. Before the agent runs, `scripts/source-watch.mjs` fetches each address and parses it, so the agent only judges a short list. It reads **feeds only** (RSS or Atom), which list items with dates. A web page, such as the Anthropic, Claude and DORA addresses below, is reported as not read; to include one, find its feed.
 
 - **AI Hero (Matt Pocock)**, practitioner, educator: practical agent workflows and skills for developers. Read from `https://www.aihero.dev/rss.xml`.
 - **Anthropic news**, vendor: Claude releases and announcements; primary source for its own products. Read from `https://www.anthropic.com/news`.
