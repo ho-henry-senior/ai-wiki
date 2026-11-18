@@ -13,3 +13,4 @@ This index links to research and source notes behind the wiki's guidance. Follow
 - [General AI terms: source-backed vocabulary candidates](ai-terms-research.md) — primary-source research for a standalone AI glossary, with definitions, distinctions, and areas of uncertainty.
 - [Public agent skills for wiki information architecture](wiki-information-architecture-skills.md) — potential complements to wiki review, with fit and adoption cautions.
 - [Code Review Bottleneck: notes on a Warp talk](warp-code-review-bottleneck.md) — exploratory notes on internal review loops, end-to-end verification, and merge-risk summaries for agent pull requests.
+- [Real agent-ready repository examples: candidate research](agent-ready-repository-examples.md) — source-linked Justfiles, agent instructions, skill examples and repository layouts assessed for a first Reference collection.
