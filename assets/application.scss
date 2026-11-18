@@ -45,3 +45,16 @@
 .app-document-header .govuk-heading-l {
   margin-bottom: govuk.govuk-spacing(3);
 }
+
+// The Articles landing page can switch between three pre-rendered lists.
+// Without JavaScript, the default alphabetical list remains visible.
+.app-article-view-controls {
+  margin-bottom: govuk.govuk-spacing(4);
+}
+.app-article-view-controls .govuk-button {
+  margin-right: govuk.govuk-spacing(2);
+  margin-bottom: govuk.govuk-spacing(2);
+}
+.app-article-view-controls .govuk-button[aria-pressed="true"] {
+  box-shadow: inset 0 -3px currentColor;
+}

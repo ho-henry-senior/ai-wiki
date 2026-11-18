@@ -12,6 +12,8 @@ import {
 import { contents, isLetterIndex } from "../scripts/site-contents.mjs";
 import {
   eleventyNavigation,
+  articleTopicGroups,
+  articleTypeGroups,
   laneItems,
   lanes,
   metadataParts,
@@ -141,6 +143,8 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addGlobalData("layout", "wiki");
   eleventyConfig.addFilter("laneItems", laneItems);
+  eleventyConfig.addFilter("articleTopicGroups", articleTopicGroups);
+  eleventyConfig.addFilter("articleTypeGroups", articleTypeGroups);
   eleventyConfig.addFilter("sectionNavigation", sectionNavigation);
   // govukDate comes from the GOV.UK plugin, which registers it after this
   // function runs, so look it up when the filter is used.
@@ -183,6 +187,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "../assets/search.js": "assets/search.js",
     "../assets/search-ranking.js": "assets/search-ranking.js",
+    "../assets/article-views.js": "assets/article-views.js",
     "../assets/diagrams.js": "assets/diagrams.js",
     // Mermaid's single prebuilt file, from site/'s own packages. Only this
     // file is published, and only pages with a diagram load it.
@@ -194,6 +199,8 @@ export default async function (eleventyConfig) {
     const depth = folder.split("/").filter(Boolean).length;
     const assets = `${"../".repeat(depth)}assets/`;
     let scripts = `<script type="module" src="${assets}search.js"></script>`;
+    if (content.includes('data-article-views'))
+      scripts += `<script type="module" src="${assets}article-views.js"></script>`;
     if (content.includes('<pre class="mermaid">'))
       scripts += `<script src="${assets}mermaid.min.js"></script><script type="module" src="${assets}diagrams.js"></script>`;
     return content.replace("</head>", `${scripts}</head>`);
