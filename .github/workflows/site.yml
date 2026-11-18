@@ -73,13 +73,41 @@ jobs:
           for lane in goals reference articles; do
             test -f "_site/$lane/index.html" || { echo "Missing the $lane lane page" >&2; exit 1; }
           done
-          # Every page with lane: articles is listed on the Articles page.
-          expected=$(grep -rl '^lane: articles' content | wc -l)
-          articles=$(grep -c 'app-document-list__item"' _site/articles/index.html || true)
-          if [ "$articles" -ne "$expected" ]; then
-            echo "The Articles page lists $articles articles; expected $expected." >&2
-            exit 1
-          fi
+          # Each view lists the same collection; topic groups may repeat an
+          # article under multiple tags. Count unique article links per view,
+          # rather than every rendered list item on the page.
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+
+          html = Path("_site/articles/index.html").read_text()
+          expected = sum(
+              1 for path in Path("content").rglob("*.md")
+              if re.search(r"^lane: articles\\s*$", path.read_text(), re.M)
+          )
+          views = {}
+          for name in ("alphabetical", "topic", "type"):
+              panel = re.search(
+                  rf'<section id="articles-{name}"[^>]*>(.*?)</section>',
+                  html, re.S,
+              )
+              if not panel:
+                  raise SystemExit(f"Missing Articles {name} view.")
+              links = re.findall(
+                  r'class="app-document-list__item-title"><a class="govuk-link" href="([^"]+)"',
+                  panel.group(1),
+              )
+              views[name] = links
+              if len(set(links)) != expected:
+                  raise SystemExit(
+                      f"Articles {name} view has {len(set(links))} unique articles; expected {expected}."
+                  )
+
+          if len(views["alphabetical"]) != expected or len(views["type"]) != expected:
+              raise SystemExit("Alphabetical and type views should list each article exactly once.")
+          if set(views["alphabetical"]) != set(views["topic"]) or set(views["alphabetical"]) != set(views["type"]):
+              raise SystemExit("Articles views contain different sets of pages.")
+          PY
           # Goal pages hold only their core advice: nothing is nested under
           # them in the Goals sidebar.
           sidebar=$(python3 -c 'import re,sys; m=re.search(r"<nav[^>]*x-govuk-sub-navigation.*?</nav>", open(sys.argv[1]).read(), re.S); print(m.group(0) if m else "")' _site/pages/security/index.html)
