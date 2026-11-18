@@ -15,7 +15,7 @@ Start with a grilling, not a prompt. A short request leaves the agent guessing, 
 
 - **[Agent-led requirements discovery](agent-led-requirements-discovery.md)** — Give it a brief description of what you want, then ask it to question you before proposing a solution.
 - **[Explicit decisions and scope boundaries](explicit-decisions-and-scope-boundaries.md)** — Challenge unnecessary scope suggested by the agent, agree what to exclude, and focus effort on what matters.
-- **[Detailed specification from agreed decisions](detailed-specification-from-agreed-decisions.md)** — Have the agent turn the answers into intended behavior, "Done when" lines you can observe, and open questions, and review it before any issues are created.
+- **[Detailed specification from agreed decisions](detailed-specification-from-agreed-decisions.md)** — Have the agent turn the answers into intended behavior, acceptance criteria you can observe, and open questions, and review it before any issues are created.
 - **[Steering and verification against the specification](steering-and-verification-against-the-specification.md)** — A wrong turn costs more the longer it runs, so correct it in the session or on the pull request.
 
 ## Explore further

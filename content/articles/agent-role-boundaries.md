@@ -29,11 +29,11 @@ A contract written in instructions is not enforced. In Copilot, make each role a
 ```markdown
 ---
 name: reviewer
-description: Reviews a pull request against its issue's "Done when" lines and reports findings. Does not change code.
+description: Reviews a pull request against its issue's acceptance criteria and reports findings. Does not change code.
 tools: ["read", "search"]
 ---
 
-Compare the diff with each "Done when" line in the linked issue. Report what is met, what is missing, and any risk.
+Compare the diff with each acceptance criterion in the linked issue. Report what is met, what is missing, and any risk.
 ```
 
 See [skills, profiles, and tools have different jobs](../concepts/skills-profiles-and-tools.md).

@@ -41,7 +41,7 @@ Check whether someone could answer these five questions from an agent-produced p
 This fictional timeline shows how a pull request can provide those answers:
 
 ```text
-Issue #41   Add CSV export to the Orders page. Done when: header row; quoted values; 10,000 rows.
+Issue #41   Add CSV export to the Orders page. Acceptance criteria: header row; quoted values; 10,000 rows.
 PR #42      Opened by Copilot, linked to #41. Commits authored by Copilot, co-authored by A. Patel.
 Comment     A. Patel: @copilot keep the existing column order; finance imports this file.
 Comment     A. Patel: Unit tests passed. The 10,000-row test did not run: no test data.
