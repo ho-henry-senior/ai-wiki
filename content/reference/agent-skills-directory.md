@@ -1,6 +1,6 @@
 ---
 type: reference
-summary: Curated agent skills for requirements, specifications, tickets, implementation, review and documentation, with source and author links.
+summary: Built-in GitHub Copilot skills and curated community and project skills, with availability, original sources and authors.
 status: developing
 lane: reference
 order: 11
@@ -11,9 +11,36 @@ tags:
 
 # Agent skills directory
 
-A small selection of **real skills to inspect and adapt**, not tested endorsements or skills installed by this wiki. Each entry links to the original `SKILL.md` and its author or maintainer. Read the whole skill and bundled scripts before installation: a skill can ask an agent to run commands or act in external systems.
+This directory distinguishes **skills built into Copilot** from **community and project skills**. Built-in availability depends on the Copilot environment; third-party and project entries are examples to inspect and adapt, not tested endorsements or installations made by this wiki.
 
 To build one, see [Write a SKILL.md](writing-agent-skills.md). For whether a skill is worth installing, see [Choose and add skills](../goals/economy/useful-skills.md).
+
+## Built-in GitHub Copilot skills
+
+These are supplied by GitHub rather than installed from a community repository. GitHub's [Copilot app built-in skills reference](https://docs.github.com/en/copilot/reference/github-copilot-app-reference/built-in-skills) lists six **app** skills; this is not a list of skills guaranteed to be available in Copilot CLI, IDEs, code review or the cloud agent. Some are explicitly invoked; others run as part of an app workflow.
+
+| Skill | Copilot environment | When to use it |
+| --- | --- | --- |
+| `/af` | Copilot app | Find installable MCP servers, tools, skills and agents through Agent Finder. |
+| `/orchestrate` | Copilot app | Coordinate child agent sessions across tasks or repositories. |
+| `/pr-stack` | Copilot app | Manage dependent pull requests in a stack. |
+| `/create-canvas` | Copilot app | Build or troubleshoot canvas extensions in the app. |
+| `agent-merge` | Copilot app, Agent Merge workflow | Respond to PR review comments, failing checks and merge conflicts. The workflow invokes it automatically. |
+| `customize-cloud-agent` | Copilot app | Configure the cloud agent's setup steps, dependencies, tools or runner; invoked for relevant setup requests. |
+
+Not every built-in skill has a slash-command entrypoint. Type `/` in the Copilot app to see commands **available in the current context**. Do not confuse these skills with other built-in *slash commands* or *custom agents*. See [GitHub's app slash-command reference](https://docs.github.com/en/copilot/reference/github-copilot-app-reference/slash-commands).
+
+### Copilot CLI: a separately documented example
+
+The [Copilot CLI command reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference#resource-discovery) documents a built-in `discover-resources` skill for searching public tool and skill catalogues **in experimental mode**. It proposes candidates; it does not install them. This is not evidence that the six app skills above are available in the CLI.
+
+To inspect the skills actually found by your CLI, run `copilot skill list` in a terminal, or `/skills` and `/skills info` in an interactive session. These listings can include built-in, plugin, project and personal skills. See [GitHub's CLI skills guidance](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills).
+
+**Checked:** 2026-11-18 against GitHub's documentation. Product-provided skills and invocation rules may change; consult the live reference rather than treating this as an exhaustive cross-product inventory.
+
+## Community and project skills
+
+The following eight skills come from their credited authors or maintainers. Each entry links to the original `SKILL.md` where it is published. Read the whole skill and bundled scripts before installation: a skill can ask an agent to run commands or act in external systems.
 
 ## Requirements and planning
 
