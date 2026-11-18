@@ -5,23 +5,23 @@ Articles, applied patterns, reference catalogs, and checklists for AI-assisted s
 Folders organise the source; on the website, each page's `lane` and `goal` front matter decide where it appears. So retrieval-augmented generation, vector stores, and evals are articles on the site, though they live in `content/concepts/`.
 
 - [Alignment](goals/alignment/README.md) — core advice for matching work to the intended outcome.
-  - [Agent-led requirements discovery](goals/alignment/begin-with-the-agent-questioning-you.md)
-  - [Explicit decisions and scope boundaries](goals/alignment/answer-or-declare-out-of-scope.md)
-  - [Specification from agreed requirements](goals/alignment/build-from-a-detailed-specification.md)
-  - [Early steering and outcome verification](goals/alignment/steer-and-verify-against-the-agreement.md)
+  - [Agent-led requirements discovery](goals/alignment/agent-led-requirements-discovery.md)
+  - [Explicit decisions and scope boundaries](goals/alignment/explicit-decisions-and-scope-boundaries.md)
+  - [Detailed specification from agreed decisions](goals/alignment/detailed-specification-from-agreed-decisions.md)
+  - [Steering and verification against the specification](goals/alignment/steering-and-verification-against-the-specification.md)
 - [Economy](goals/economy/README.md) — core advice for using time and tokens effectively without sacrificing quality or security.
-  - [Agent-ready repository context](goals/economy/give-the-repository-information.md)
-  - [Discoverable deterministic checks](goals/economy/give-it-cheap-deterministic-tools.md)
+  - [Agent-ready repository context](goals/economy/agent-ready-repository-context.md)
+  - [Discoverable deterministic checks](goals/economy/discoverable-deterministic-checks.md)
 - [Security](goals/security/README.md) — limit what an agent can reach and do, starting from where its tools run.
-  - [Excessive agent access](goals/security/it-can-reach-too-much.md)
-  - [Unexpected data exposure](goals/security/data-goes-somewhere-unexpected.md)
-  - [Prompt injection](goals/security/text-it-reads-takes-control.md)
-  - [Untrusted code execution](goals/security/untrusted-code-runs.md)
+  - [Excessive agent access](goals/security/excessive-agent-access.md)
+  - [Unexpected data exposure](goals/security/unexpected-data-exposure.md)
+  - [Hidden instructions in content](goals/security/hidden-instructions-in-content.md)
+  - [Untrusted code execution](goals/security/untrusted-code-execution.md)
 - [Traceability & Trust](goals/traceability/README.md) — developing core advice for keeping a record of agent work and reviewing changes you can rely on.
-  - [Agent authorship and attribution](goals/traceability/let-the-record-make-itself.md)
-  - [Pull request verification evidence](goals/traceability/put-check-results-on-the-pull-request.md)
-  - [Risk-focused change review](goals/traceability/read-the-risky-parts-first.md)
-  - [Risk- and evidence-based approval](goals/traceability/direct-human-attention-by-risk.md)
+  - [Agent authorship and attribution](goals/traceability/agent-authorship-and-attribution.md)
+  - [Pull request verification evidence](goals/traceability/pull-request-verification-evidence.md)
+  - [Risk-focused change review](goals/traceability/risk-focused-change-review.md)
+  - [Independent change approval](goals/traceability/independent-change-approval.md)
 - [Secure a local coding agent](goals/security/local-agent-security.md) — Copilot CLI, app, and editor: sandbox, tool and URL permissions, credentials.
 - [Secure the Copilot cloud agent](goals/security/cloud-agent-security.md) — what GitHub enforces, and the secrets, firewall, MCP, and approval settings you set.
 - [Sandbox a local coding agent](goals/security/local-agent-sandboxing.md) — turn on Copilot's local sandbox and prove the limits are enforced.

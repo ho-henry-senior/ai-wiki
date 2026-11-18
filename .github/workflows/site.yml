@@ -89,11 +89,11 @@ jobs:
             exit 1
           fi
           # Each goal's core points are pages nested under it.
-          echo "$sidebar" | grep -q 'href="/ai-wiki/pages/it-can-reach-too-much/"' || {
+          echo "$sidebar" | grep -q 'href="/ai-wiki/pages/excessive-agent-access/"' || {
             echo "The Goals sidebar does not nest Security's advice pages." >&2
             exit 1
           }
-          grep -q 'x-govuk-sub-navigation' _site/pages/it-can-reach-too-much/index.html || {
+          grep -q 'x-govuk-sub-navigation' _site/pages/excessive-agent-access/index.html || {
             echo "An advice page has no Goals sidebar." >&2
             exit 1
           }

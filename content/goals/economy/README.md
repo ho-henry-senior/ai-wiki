@@ -13,8 +13,8 @@ Stop the agent discovering what you could tell it. When an agent lacks a fact, i
 
 ## Core advice
 
-- **[Agent-ready repository context](give-the-repository-information.md)** — Put the instructions every task needs in `AGENTS.md`, and keep it short, linking to detail that loads only when a task needs it: progressive disclosure.
-- **[Discoverable deterministic checks](give-it-cheap-deterministic-tools.md)** — Static analysis, linters, type checks, and tests give the same answer every time, and the agent spends tokens only on reading the result.
+- **[Agent-ready repository context](agent-ready-repository-context.md)** — Put the instructions every task needs in `AGENTS.md`, and keep it short, linking to detail that loads only when a task needs it: progressive disclosure.
+- **[Discoverable deterministic checks](discoverable-deterministic-checks.md)** — Static analysis, linters, type checks, and tests give the same answer every time, and the agent spends tokens only on reading the result.
 
 Do not trade away [security](../security/README.md) controls for speed. A faster run that leaks a credential is the most expensive run of all.
 
