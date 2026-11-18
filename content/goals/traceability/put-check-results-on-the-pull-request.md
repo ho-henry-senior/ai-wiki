@@ -8,7 +8,7 @@ order: 2
 checked: 2026-11-15
 ---
 
-# Put the check results on the pull request
+# Pull request verification evidence
 
 Actions keeps checks, runs, and logs for 90 days by default, and public repositories cannot keep them longer, while CLI and editor sessions are yours to delete. So add one comment saying which checks ran, what they showed, and which did not, and make corrections in pull request comments, [as when steering](../alignment/define-and-verify-tasks.md#steer-it). Summarize logs rather than pasting them, and never record secrets: a record is shared more widely than the session it came from.
 
