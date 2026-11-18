@@ -187,3 +187,9 @@ Before the first run:
 PRs use the repository's `GITHUB_TOKEN` and do not automatically trigger other Actions workflows. Review and verify the proposed branch before merging. Missing credentials and other failures are recorded in Actions rather than creating daily failure issues. Disable the workflow in Actions to pause it.
 
 To change the automation, edit its Markdown source, then run `gh aw compile daily-wiki-review --validate` with the [gh-aw CLI extension](https://github.github.com/gh-aw/setup/quick-start/) and commit both source and regenerated lock file. The initial lock was compiled with gh-aw v1.0.1. `just verify` includes the workflow Markdown; compilation separately checks the generated Actions configuration.
+
+## Source watch
+
+The [weekly source watch](../.github/workflows/weekly-source-watch.md) is an experiment ([#122](https://github.com/ho-henry-senior/ai-wiki/issues/122)) to learn whether an agent can find what matters to the wiki in the sources it follows. Each week it reads the sources listed in [source-watch.md](source-watch.md), records anything new in one file under `data/source-watch/`, and opens a draft PR whose description lists the items that might change the wiki's advice. It never edits wiki pages: fetched feeds are untrusted text, so it runs separately from the daily review, with permission to add only that one records file. The records are not published on the site, so their quality can be judged first.
+
+To change the sources, edit `source-watch.md` and add each new domain to the workflow's `network.allowed` list. After changing the workflow, recompile its lock file with `gh aw compile weekly-source-watch --validate`.
