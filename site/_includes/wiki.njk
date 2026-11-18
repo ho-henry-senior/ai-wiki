@@ -7,7 +7,7 @@
     them above an article whose body already has an introduction. -#}
 {%- macro pageHeader() %}
   <header class="app-document-header">
-    {{ appHeading({ caption: caption, title: title or ("Pages tagged ‘" + tag + "’") }) }}
+    {{ appHeading({ caption: caption, title: title or ("Pages tagged ‘" + tag + "’"), size: "l" }) }}
     {{ pageMetadata() }}
     {#- Goal pages and articles carry summaries for listings and search, but
         open with their own introduction; don't print the summary again. -#}

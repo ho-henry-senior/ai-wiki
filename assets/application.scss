@@ -30,7 +30,7 @@
 }
 
 // The checked/status line sits directly below the heading, before the summary.
-.app-document-header:has(.app-page-details) .govuk-heading-xl {
+.app-document-header:has(.app-page-details) .govuk-heading-l {
   margin-bottom: govuk.govuk-spacing(2);
 }
 
@@ -41,10 +41,7 @@
   margin-bottom: govuk.govuk-spacing(6);
 }
 
-// Keep page titles visible and accessible without repeating the sidebar's
-// visual emphasis. Titles remain h1 elements for direct links and screen readers.
-.app-document-header .govuk-heading-xl {
-  font-size: 1.75rem;
-  line-height: 1.2;
+// Keep title spacing compact without overriding GOV.UK's responsive type scale.
+.app-document-header .govuk-heading-l {
   margin-bottom: govuk.govuk-spacing(3);
 }
