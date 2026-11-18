@@ -83,7 +83,7 @@ jobs:
           html = Path("_site/articles/index.html").read_text()
           expected = sum(
               1 for path in Path("content").rglob("*.md")
-              if re.search(r"^lane: articles\\s*$", path.read_text(), re.M)
+              if re.search(r"^lane: articles\s*$", path.read_text(), re.M)
           )
           views = {}
           for name in ("alphabetical", "topic", "type"):
