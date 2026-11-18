@@ -15,6 +15,8 @@ Write so a developer understands what matters and why, and can act on it, on one
 9. **Lead with the transferable idea.** Name a concept or principle clearly, say why it matters, and show how to apply it. Make tools examples of the idea rather than the reason for the page. Use a concept's established name as its heading when that name helps readers recognise and reuse it.
 10. **Decide what to do with long pages.** A page over about 500 words for an overview or concept, or about 900 for a guide or pattern, needs one decision, taken in this order: replace restated material with a link to its owner; split the page if it answers two separate questions; otherwise shorten it, or keep it whole and give the reason as `long-because` in its front matter. Shortening never cuts a reason, an important caveat, or a qualification needed for accuracy. Checklists, references, and case studies have no ceiling.
 
+11. **Write for scanning.** Readers often skim before reading closely. Put the main point first, and give each paragraph one idea. Break paragraphs when the idea changes; concise writing does not mean dense text. Use bold sparingly for an important principle, and make link text describe its destination. Put supporting links on their own line when they would interrupt the advice. Use headings and lists only when they improve clarity.
+
 ## What each page does
 
 Each [page type](MAINTAINING.md#articles-and-concepts) has a job. Write to it:
@@ -55,6 +57,20 @@ After:
 > Put rules the agent must always follow in `AGENTS.md` itself, not in a linked file. Copilot CLI loads a file referenced as `@path` immediately, but other Copilot features may not, and an ordinary Markdown link is only followed if the agent decides to.
 
 The page then records `checked: 2026-11-15` in its front matter.
+
+**Write for scanning.** Before, the principle, action and follow-through run together:
+
+> Requirements discovery is a negotiation: the agent suggests possibilities, but you decide the scope. Challenge unnecessary additions and record the boundaries so they are not reintroduced later. [Agree on the problem](../content/goals/alignment/define-and-verify-tasks.md#agree-on-the-problem).
+
+After, separate the ideas and the supporting link:
+
+> **Requirements discovery is a negotiation:** the agent suggests possibilities, but you decide the scope.
+>
+> Challenge unnecessary additions.
+>
+> Record the boundaries so they are not reintroduced later.
+>
+> More detail: [Agree on the problem](../content/goals/alignment/define-and-verify-tasks.md#agree-on-the-problem).
 
 ## Checking a page
 
