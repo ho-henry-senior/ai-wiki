@@ -15,7 +15,9 @@ tags:
 
 # Sandbox a local coding agent
 
-Instructions depend on the model following them, and approval prompts depend on you reading them. Copilot's tool, path, and URL rules are enforced whatever the model decides, but they match the commands Copilot is asked to run, not everything those commands go on to do. The sandbox works at a lower level: the operating system restricts which files, network destinations, and credentials those commands and the programs they start can reach. So an action beyond what you allow fails, even when a mistake or an [injected instruction](prompt-injection-coding-agents.md) leads the model to attempt it.
+Instructions depend on the model following them, and approval prompts depend on you reading them. Copilot's tool, path, and URL rules are enforced whatever the model decides, but they match the commands Copilot is asked to run, not everything those commands go on to do.
+
+**The sandbox works at a lower level:** the operating system restricts which files, network destinations, and credentials those commands and the programs they start can reach. So an action beyond what you allow fails, even when a mistake or an [injected instruction](prompt-injection-coding-agents.md) leads the model to attempt it.
 
 ## Turn it on
 

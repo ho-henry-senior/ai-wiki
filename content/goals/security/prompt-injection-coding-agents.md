@@ -10,7 +10,11 @@ checked: 2026-11-15
 
 # Prompt injection in coding-agent workflows
 
-An agent's context holds your request, its instructions, and everything it reads along the way, including issues, files, web pages, and tool output. The harness labels where each part came from, so the system can tell your request from a tool result. But models are trained to follow instructions, and they can still follow ones that arrive in lower-trust content. The boundary exists in how the context is structured, not reliably in how the model behaves, so an instruction hidden in a bug report can be followed as if you had written it. This is prompt injection. Models are getting better at resisting it, but no model or prompt prevents it, so the defense that holds is limiting what the agent can do when it is fooled.
+An agent's context holds your request, its instructions, and everything it reads along the way, including issues, files, web pages, and tool output. The harness labels where each part came from, so the system can tell your request from a tool result.
+
+But models are trained to follow instructions, and they can still follow ones that arrive in lower-trust content. The boundary exists in how the context is structured, not reliably in how the model behaves, so an instruction hidden in a bug report can be followed as if you had written it. This is prompt injection.
+
+Models are getting better at resisting it, but no model or prompt prevents it, so the defense that holds is limiting what the agent can do when it is fooled.
 
 ## An example
 
