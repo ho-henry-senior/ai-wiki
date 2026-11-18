@@ -68,4 +68,4 @@ List diagnostics such as audits and scans separately from the check that must pa
 
 A command list tells the agent what it can run, not how the system works. For that, see [repository context for agents](repository-context-for-agents.md).
 
-**Next:** [write your next task down](define-and-verify-tasks.md), step 2 of [start here](../../../README.md#start-here).
+**Next:** [write your next task down](define-and-verify-tasks.md), step 2 of [start here](../../../README.md#first-steps).

@@ -85,7 +85,7 @@ You don't need a tool-specific file for these agents unless you have rules only 
 
 This wiki's own [AGENTS.md](../../../AGENTS.md) is a working example. For where instruction files sit alongside skills and task commands, see [a structure for agent-facing repositories](agent-facing-repository-structure.md).
 
-**Next:** [let the agent run your repository's commands](agent-tool-delegation.md), step 1 of [start here](../../../README.md#start-here).
+**Next:** [let the agent run your repository's commands](agent-tool-delegation.md), step 1 of [start here](../../../README.md#first-steps).
 
 ## Sources
 
