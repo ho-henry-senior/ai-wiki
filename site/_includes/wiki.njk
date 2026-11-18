@@ -103,7 +103,8 @@
 
   {%- set mainColumn %}
     {{ pageHeader() }}
-    {{ pageDetails() }}
+    {#- The short homepage needs no duplicate in-page navigation. -#}
+    {% if page.url != "/" %}{{ pageDetails() }}{% endif %}
     {{ appProseScope(content) if content }}
     {%- if listCollection == "articles" %}
     <ol class="app-document-list app-document-list--large">
