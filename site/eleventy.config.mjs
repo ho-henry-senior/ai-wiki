@@ -187,6 +187,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "../assets/search.js": "assets/search.js",
     "../assets/search-ranking.js": "assets/search-ranking.js",
+    "../assets/article-views.js": "assets/article-views.js",
     "../assets/diagrams.js": "assets/diagrams.js",
     // Mermaid's single prebuilt file, from site/'s own packages. Only this
     // file is published, and only pages with a diagram load it.
