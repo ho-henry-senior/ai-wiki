@@ -107,22 +107,7 @@
     {% if page.url != "/" %}{{ pageDetails() }}{% endif %}
     {{ appProseScope(content) if content }}
     {%- if listCollection == "articles" %}
-    <ol class="app-document-list app-document-list--large">
-      {%- for item in collections.articles %}
-      {%- set parts = { lane: "articles", type: item.data.type, goal: item.data.goal } | metadataParts %}
-      <li class="app-document-list__item">
-        <h2 class="app-document-list__item-title"><a class="govuk-link" href="{{ item.url }}">{{ item.data.title }}</a></h2>
-        {%- if item.data.description %}
-        <p class="app-document-list__item-description">{{ item.data.description | markdown("inline") | safe }}</p>
-        {%- endif %}
-        {%- if parts | length %}
-        <ul class="app-document-list__item-metadata">
-          <li class="app-document-list__attribute">{% for part in parts %}{{ part.text }}{{ " · " if not loop.last }}{% endfor %}</li>
-        </ul>
-        {%- endif %}
-      </li>
-      {%- endfor %}
-    </ol>
+    {% include "article-views.njk" %}
     {%- elif listCollection %}
     {{ appDocumentList({ classes: "app-document-list--large", items: collections[listCollection] }) }}
     {%- elif tag %}

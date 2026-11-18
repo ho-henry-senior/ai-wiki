@@ -103,6 +103,43 @@ export function tagItems(tags = [], pageUrl, slugify) {
   ];
 }
 
+// Group the same article collection for the landing page. Topic tags are
+// subject labels, not Copilot product/feature tags. An article may appear in
+// more than one topic; items without a topic remain discoverable in Other.
+import { allowedTags } from "./tags.mjs";
+
+const byTitle = (a, b) => a.data.title.localeCompare(b.data.title);
+
+export function articleTopicGroups(articles = []) {
+  const groups = allowedTags
+    .filter((tag) => !tag.startsWith("Copilot "))
+    .map((title) => ({
+      title,
+      items: articles.filter((item) => item.data.tags?.includes(title)).sort(byTitle),
+    }))
+    .filter((group) => group.items.length)
+    .sort((a, b) => a.title.localeCompare(b.title));
+
+  const other = articles.filter(
+    (item) => !allowedTags.some(
+      (tag) => !tag.startsWith("Copilot ") && item.data.tags?.includes(tag),
+    ),
+  );
+  if (other.length) groups.push({ title: "Other articles", items: other.sort(byTitle) });
+  return groups;
+}
+
+export function articleTypeGroups(articles = []) {
+  const groups = new Map();
+  for (const item of articles) {
+    const title = typeLabels[item.data.type] || "Other";
+    if (!groups.has(title)) groups.set(title, []);
+    groups.get(title).push(item);
+  }
+  return [...groups].sort(([a], [b]) => a.localeCompare(b))
+    .map(([title, items]) => ({ title, items: items.sort(byTitle) }));
+}
+
 // Labels for the existing `type` values, shown on articles.
 export const typeLabels = {
   guide: "Guide",

@@ -1,0 +1,47 @@
+{#- All article lists are rendered at build time; the selector only changes
+    which is shown. The default list works without JavaScript. -#}
+{% macro articleList(items, grouped) %}
+<ol class="app-document-list app-document-list--large">
+  {%- for item in items %}
+  {%- set parts = { lane: "articles", type: item.data.type, goal: item.data.goal } | metadataParts %}
+  <li class="app-document-list__item">
+    {% if grouped %}
+    <h3 class="app-document-list__item-title"><a class="govuk-link" href="{{ item.url }}">{{ item.data.title }}</a></h3>
+    {% else %}
+    <h2 class="app-document-list__item-title"><a class="govuk-link" href="{{ item.url }}">{{ item.data.title }}</a></h2>
+    {% endif %}
+    {%- if item.data.description %}
+    <p class="app-document-list__item-description">{{ item.data.description | markdown("inline") | safe }}</p>
+    {%- endif %}
+    {%- if parts | length %}
+    <ul class="app-document-list__item-metadata">
+      <li class="app-document-list__attribute">{% for part in parts %}{{ part.text }}{{ " · " if not loop.last }}{% endfor %}</li>
+    </ul>
+    {%- endif %}
+  </li>
+  {%- endfor %}
+</ol>
+{% endmacro %}
+
+<div data-article-views>
+  <div class="app-article-view-controls" role="group" aria-label="Arrange articles" hidden>
+    <button type="button" class="govuk-button govuk-button--secondary" data-article-view="alphabetical" aria-controls="articles-alphabetical" aria-pressed="true">Alphabetical</button>
+    <button type="button" class="govuk-button govuk-button--secondary" data-article-view="topic" aria-controls="articles-topic" aria-pressed="false">By topic</button>
+    <button type="button" class="govuk-button govuk-button--secondary" data-article-view="type" aria-controls="articles-type" aria-pressed="false">By type</button>
+  </div>
+  <section id="articles-alphabetical" data-article-panel="alphabetical" aria-label="Articles alphabetically">
+    {{ articleList(collections.articles, false) }}
+  </section>
+  <section id="articles-topic" data-article-panel="topic" aria-label="Articles by topic" hidden>
+    {%- for group in collections.articles | articleTopicGroups %}
+    <h2 class="govuk-heading-m">{{ group.title }}</h2>
+    {{ articleList(group.items, true) }}
+    {%- endfor %}
+  </section>
+  <section id="articles-type" data-article-panel="type" aria-label="Articles by type" hidden>
+    {%- for group in collections.articles | articleTypeGroups %}
+    <h2 class="govuk-heading-m">{{ group.title }}</h2>
+    {{ articleList(group.items, true) }}
+    {%- endfor %}
+  </section>
+</div>
