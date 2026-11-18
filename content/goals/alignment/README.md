@@ -11,6 +11,8 @@ order: 1
 
 Start with a grilling, not a prompt. A short request leaves the agent guessing, and it can build a convincing solution to the wrong problem. Have it question you first, answer or rule out each point, then turn those decisions into a specification to steer and verify the work against. Here, alignment means agreeing what the work should achieve; the [glossary](../../reference/glossary.md#alignment) covers the broader AI meaning.
 
+A practical starting point is Matt Pocock's [\`/grill-me\` and \`/grilling\` skills](../../reference/agent-skills-directory.md#grill-me-and-grilling); the user still decides which recommendations to accept.
+
 ## Core advice
 
 - **[Agent-led requirements discovery](agent-led-requirements-discovery.md)** — Give it a brief description of what you want, then ask it to question you before proposing a solution.

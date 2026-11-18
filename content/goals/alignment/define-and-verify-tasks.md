@@ -25,6 +25,8 @@ Ask the agent to question your request before proposing a solution. Have it chal
 
 Review the draft specification, settle or explicitly defer open decisions, and agree what should be built. The agent may propose answers, but it should not silently turn its guesses into requirements.
 
+Matt Pocock's [\`/to-spec\` skill](../../reference/agent-skills-directory.md#to-spec) is an example of converting a conversation into a specification. Review and agree the result before publishing it or starting implementation.
+
 ## Turn the specification into issues
 
 Once the specification is agreed, ask the agent to split it into small, verifiable GitHub issues, each linked to the specification. Check that the issues collectively cover the agreed outcome and do not introduce new requirements. For each issue, use four headings. Each answers a question the implementing agent would otherwise answer for itself:
@@ -59,6 +61,8 @@ Users can export the orders table as a CSV file from the Orders page.
 If you cannot write the acceptance criteria, the issue is not ready: return to the specification or settle the open questions first. For a small, clear change, a short agreed task may be enough without a separate specification document.
 
 For independent local agent tasks, [Git worktrees](../../reference/git-worktrees-for-agents.md) give each session a separate working directory and branch without isolating its tools or credentials.
+
+For a worked approach to splitting the specification into dependent vertical slices, see Matt Pocock's [\`/to-tickets\` skill](../../reference/agent-skills-directory.md#to-tickets). Check and approve the breakdown before creating issues.
 
 ## Hand an issue to Copilot
 

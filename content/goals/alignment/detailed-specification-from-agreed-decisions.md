@@ -14,3 +14,5 @@ Have the agent turn the answers into intended behavior, acceptance criteria you 
 The detail is what brings the result close to what you wanted.
 
 More detail: [Turn the specification into issues](define-and-verify-tasks.md#turn-the-specification-into-issues).
+
+**Related skill:** Matt Pocock's [\`/to-spec\`](../../reference/agent-skills-directory.md#to-spec) synthesises a conversation into a specification. Its publication step differs from this wiki's human-review-first guidance.
