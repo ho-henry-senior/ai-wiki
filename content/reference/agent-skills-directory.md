@@ -19,16 +19,16 @@ To build one, see [Write a SKILL.md](writing-agent-skills.md). For whether a ski
 
 These are supplied by GitHub rather than installed from a community repository. GitHub's [Copilot app built-in skills reference](https://docs.github.com/en/copilot/reference/github-copilot-app-reference/built-in-skills) lists six **app** skills; this is not a list of skills guaranteed to be available in Copilot CLI, IDEs, code review or the cloud agent. Some are explicitly invoked; others run as part of an app workflow.
 
-| Skill | Copilot environment | When to use it |
-| --- | --- | --- |
-| `/af` | Copilot app | Find installable MCP servers, tools, skills and agents through Agent Finder. |
-| `/orchestrate` | Copilot app | Coordinate child agent sessions across tasks or repositories. |
-| `/pr-stack` | Copilot app | Manage dependent pull requests in a stack. |
-| `/create-canvas` | Copilot app | Build or troubleshoot canvas extensions in the app. |
-| `agent-merge` | Copilot app, Agent Merge workflow | Respond to PR review comments, failing checks and merge conflicts. The workflow invokes it automatically. |
-| `customize-cloud-agent` | Copilot app | Configure the cloud agent's setup steps, dependencies, tools or runner; invoked for relevant setup requests. |
+| Skill                   | Copilot environment               | When to use it                                                                                               |
+| ----------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `/af`                   | Copilot app                       | Find installable MCP servers, tools, skills and agents through Agent Finder.                                 |
+| `/orchestrate`          | Copilot app                       | Coordinate child agent sessions across tasks or repositories.                                                |
+| `/pr-stack`             | Copilot app                       | Manage dependent pull requests in a stack.                                                                   |
+| `/create-canvas`        | Copilot app                       | Build or troubleshoot canvas extensions in the app.                                                          |
+| `agent-merge`           | Copilot app, Agent Merge workflow | Respond to PR review comments, failing checks and merge conflicts. The workflow invokes it automatically.    |
+| `customize-cloud-agent` | Copilot app                       | Configure the cloud agent's setup steps, dependencies, tools or runner; invoked for relevant setup requests. |
 
-Not every built-in skill has a slash-command entrypoint. Type `/` in the Copilot app to see commands **available in the current context**. Do not confuse these skills with other built-in *slash commands* or *custom agents*. See [GitHub's app slash-command reference](https://docs.github.com/en/copilot/reference/github-copilot-app-reference/slash-commands).
+Not every built-in skill has a slash-command entrypoint. Type `/` in the Copilot app to see commands **available in the current context**. Do not confuse these skills with other built-in _slash commands_ or _custom agents_. See [GitHub's app slash-command reference](https://docs.github.com/en/copilot/reference/github-copilot-app-reference/slash-commands).
 
 ### Copilot CLI: a separately documented example
 
