@@ -39,3 +39,4 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
 - [Choose and add skills](goals/economy/useful-skills.md) — when a skill is worth adding, where Copilot finds skills, and candidates to evaluate.
 - [From agile roles to agent-assisted workflows](articles/agent-role-boundaries.md) — a perspective on familiar responsibilities and handoffs in an agent-assisted workflow.
 - [Case study: a lo-fi software factory](articles/lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.
+- [The Home Repo pattern for agents working across repositories](articles/home-repo-pattern.md) — a shared starting point for agent context and skills across projects, with access and maintenance limits.
