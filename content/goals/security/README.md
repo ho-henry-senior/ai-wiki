@@ -9,7 +9,7 @@ order: 3
 
 # Security
 
-A chat model's risks are mostly about what goes in and what comes out. An agent adds what it can do: it runs commands, edits files, and calls services with real access, choosing actions from text it reads, some of which you did not write. So for each risk below, ask what stops the damage if the model is wrong or tricked. Asking the agent to be careful does not stop it; controls enforced independently of the model do, even when it makes a mistake or follows malicious instructions.
+A coding agent can run commands, edit files and call services with real access, so its risks extend beyond what a chat model reads and writes. Mistakes or instructions hidden in untrusted text can steer those actions. Rather than asking the agent to be careful, limit what its tools can reach and use controls enforced independently of the model.
 
 ## Core advice
 

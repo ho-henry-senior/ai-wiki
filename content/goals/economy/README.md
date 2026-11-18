@@ -9,7 +9,7 @@ order: 2
 
 # Economy
 
-Stop the agent discovering what you could tell it. When an agent lacks a fact, it infers it from the code and its history; when it does not know how to run your tests or tools, it experiments. Either way you pay in tokens and time, and the result varies from run to run. Telling it, or giving it a tool, is cheaper, faster, and more consistent. A run that misses the outcome entirely is the most expensive of all, which is [Alignment](../alignment/README.md)'s concern.
+Stop the agent discovering what you could tell it. Without repository context it infers facts from code and history; without clear commands it experiments, costing time and tokens. Give it the information and deterministic tools it needs to work faster and more consistently. A run that misses the intended outcome is costliest of all; see [Alignment](../alignment/README.md).
 
 ## Core advice
 
