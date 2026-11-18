@@ -39,9 +39,3 @@ jobs:
       # so Just itself does not need installing.
       - name: Run the checks
         run: npm run verify
-      # TEMPORARY: inspect expected formatting for two existing Reference assets.
-      - name: Show formatter diff
-        if: failure()
-        run: |
-          npx prettier --write content/reference/agents-md-example.md content/reference/justfile-example.md
-          git diff -- content/reference/agents-md-example.md content/reference/justfile-example.md
