@@ -60,6 +60,8 @@ If you cannot write the acceptance criteria, the issue is not ready: return to t
 
 For independent local agent tasks, [Git worktrees](../../reference/git-worktrees-for-agents.md) give each session a separate working directory and branch without isolating its tools or credentials.
 
+Related skill: Matt Pocock's [\`/to-tickets\`](../../reference/agent-skills-directory.md#to-tickets) proposes dependent vertical-slice tickets. Check and approve the breakdown before creating issues.
+
 ## Hand an issue to Copilot
 
 - **Cloud agent:** assign the issue to Copilot under **Assignees**, with extra instructions in the optional prompt field. Copilot works in GitHub Actions, opens a draft pull request linked to the issue, and requests your review when it finishes.

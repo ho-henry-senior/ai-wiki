@@ -181,6 +181,9 @@ Copyable starting points and worked examples. Change commands and constraints to
 - [AGENTS.md example: short repository entrypoint](/pages/agents-md-example/) — instructions, project rules and verification commands to adapt.
 - [Repository layout example: instructions to checks](/pages/repository-layout-example/) — a directory tree and Mermaid diagram connecting agent guidance to CI.
 - [Git worktrees for parallel agent work](/pages/git-worktrees-for-agents/) — commands and a diagram for running agents in separate working directories.
+- [Agent skills directory](/pages/agent-skills-directory/) — selected skills, direct source files and author credits.
+- [Write a SKILL.md](/pages/writing-agent-skills/) — a small complete skill and its file format.
+- [Agent roles directory](/pages/agent-roles-directory/) — emerging role assets from the lo-fi software factory case study.
 
 ## Checklists and tools
 

@@ -37,6 +37,8 @@ In the Copilot features that support skills, the agent uses each skill's name an
 
 Source: GitHub's [agent skills documentation](https://docs.github.com/en/copilot/concepts/customizations/agent-skills).
 
+For a source-linked collection with author credits, see the [agent skills directory](../../reference/agent-skills-directory.md). To author a skill, see [Write a SKILL.md](../../reference/writing-agent-skills.md).
+
 ## Candidates to evaluate
 
 None of these has been tried here, and built-in equivalents have not been checked. Treat them as ideas to test with the steps above.
