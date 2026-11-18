@@ -41,3 +41,6 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
 - [Case study: a lo-fi software factory](articles/lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.
 - [The Home Repo pattern for agents working across repositories](articles/home-repo-pattern.md) — a shared starting point for agent context and skills across projects, with access and maintenance limits.
 - [Git worktrees for parallel agent work](reference/git-worktrees-for-agents.md) — commands, a diagram, and practical boundaries for separate agent working directories.
+- [Justfile example: discoverable checks](reference/justfile-example.md) — copyable focused tests, verification and formatting recipes.
+- [AGENTS.md example: short repository entrypoint](reference/agents-md-example.md) — adaptable instructions with project pointers and checks.
+- [Repository layout example: instructions to checks](reference/repository-layout-example.md) — file tree and Mermaid diagram connecting agent guidance to CI.
