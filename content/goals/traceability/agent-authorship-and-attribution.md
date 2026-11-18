@@ -10,7 +10,7 @@ checked: 2026-11-15
 
 # Agent authorship and attribution
 
-A reader needs to know which changes a person wrote and which an agent did. Copilot cloud agent commits are authored by Copilot, signed, and link to the session log, which stays on GitHub and cannot be deleted. For a tool that commits under your name, add a `Co-authored-by:` line naming it.
+A reader needs to know which changes a person wrote and which an agent did. Copilot cloud agent commits are authored by Copilot, signed, and link to the session log, which stays on GitHub and cannot be deleted.\n\nFor a tool that commits under your name, add a `Co-authored-by:` line naming it.
 
 ## Sources
 
