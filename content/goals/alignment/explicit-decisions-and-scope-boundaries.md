@@ -15,4 +15,4 @@ Challenge unnecessary suggestions and explicitly agree what's in and out; an exc
 
 Record those boundaries in the specification so the agent doesn't quietly reintroduce excluded work later.
 
-[Agree on the problem](define-and-verify-tasks.md#agree-on-the-problem).
+More detail: [Agree on the problem](define-and-verify-tasks.md#agree-on-the-problem)
