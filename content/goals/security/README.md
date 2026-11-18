@@ -18,8 +18,6 @@ A coding agent can run commands, edit files and call services with real access, 
 3. **[Hidden instructions in content](hidden-instructions-in-content.md)** — The model cannot reliably tell data from instructions, so a hidden line in an issue, web page, or tool output can steer it: prompt injection.
 4. **[Untrusted code execution](untrusted-code-execution.md)** — An agent can install compromised dependencies, run repository scripts, or load untrusted skills and MCP servers.
 
-Changes that weaken a test or loosen an access rule to make a task pass are caught at review: see [Traceability & Trust](../traceability/README.md). A wrong answer alone is a reliability problem, covered under [Alignment](../alignment/README.md); it becomes a security problem when the agent acts on it, so risk 1 matters even without an attacker.
-
 ## Explore further
 
 The [lo-fi software factory case study](../../articles/lo-fi-software-factory-case-study.md) describes an unattended local workflow. For outside references, see OWASP on [prompt injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) and [excessive agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/), and the Cloud Security Alliance on [slopsquatting](https://labs.cloudsecurityalliance.org/research-rb/csa-research-note-slopsquatting-ai-coding-assistant-supply-c/), how often models invent package names.

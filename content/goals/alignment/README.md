@@ -18,8 +18,6 @@ Start with a grilling, not a prompt. A short request leaves the agent guessing, 
 - **[Detailed specification from agreed decisions](detailed-specification-from-agreed-decisions.md)** — Have the agent turn the answers into intended behavior, "Done when" lines you can observe, and open questions, and review it before any issues are created.
 - **[Steering and verification against the specification](steering-and-verification-against-the-specification.md)** — A wrong turn costs more the longer it runs, so correct it in the session or on the pull request.
 
-Scale the formality to the risk: a small change may need only a brief agreed description, while larger or ambiguous work needs a reviewed specification before issues are created. In either case, do not let unanswered product decisions silently become implementation choices.
-
 ## Explore further
 
 Who approves the result is covered under [Traceability & Trust](../traceability/README.md). For more depth, see [from agile roles to agent-assisted workflows](../../articles/agent-role-boundaries.md) for one way to split work between roles, the [lo-fi software factory case study](../../articles/lo-fi-software-factory-case-study.md) for specifications and handoffs in practice, and [evals](../../concepts/evals.md) for comparing agent behavior across tasks.

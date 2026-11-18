@@ -16,8 +16,6 @@ Stop the agent discovering what you could tell it. Without repository context it
 - **[Agent-ready repository context](agent-ready-repository-context.md)** — Put the instructions every task needs in `AGENTS.md`, and keep it short, linking to detail that loads only when a task needs it: progressive disclosure.
 - **[Discoverable deterministic checks](discoverable-deterministic-checks.md)** — Static analysis, linters, type checks, and tests give the same answer every time, and the agent spends tokens only on reading the result.
 
-Do not trade away [security](../security/README.md) controls for speed. A faster run that leaks a credential is the most expensive run of all.
-
 ## Explore further
 
 Two more levers matter once those are in place. A long session resends more context on every turn: in Copilot CLI, `/context` shows what the next request carries and `/compact` summarizes it, as [session history versus context](../../concepts/session-history-vs-context.md) explains. And the model is the biggest price lever: see [choose a model and control cost](choose-a-model-and-control-cost.md). Add a skill only when it pays off: [choose and add skills](useful-skills.md). For background, [evals](../../concepts/evals.md) compare time, tokens, and outcomes across setups, and the [lo-fi software factory case study](../../articles/lo-fi-software-factory-case-study.md) is an observed workflow, without a measured cost baseline.
