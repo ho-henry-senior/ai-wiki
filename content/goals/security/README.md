@@ -13,10 +13,10 @@ A chat model's risks are mostly about what goes in and what comes out. An agent 
 
 ## Core advice
 
-1. **[It can reach too much](it-can-reach-too-much.md)** — Without restrictions, a local agent runs commands with your access, so a mistake or an injected instruction can affect your files and credentials.
-2. **[Data goes somewhere you did not expect](data-goes-somewhere-unexpected.md)** — Files and tool output included in model requests go to the model provider, and copies can appear in session logs, pull requests, or CI logs; MCP integrations can send it to their own services.
-3. **[Text it reads takes control](text-it-reads-takes-control.md)** — The model cannot reliably tell data from instructions, so a hidden line in an issue, web page, or tool output can steer it: prompt injection.
-4. **[Untrusted code runs](untrusted-code-runs.md)** — An agent can install compromised dependencies, run repository scripts, or load untrusted skills and MCP servers.
+1. **[Excessive agent access](excessive-agent-access.md)** — Without restrictions, a local agent runs commands with your access, so a mistake or an injected instruction can affect your files and credentials.
+2. **[Unexpected data exposure](unexpected-data-exposure.md)** — Files and tool output included in model requests go to the model provider, and copies can appear in session logs, pull requests, or CI logs; MCP integrations can send it to their own services.
+3. **[Hidden instructions in content](hidden-instructions-in-content.md)** — The model cannot reliably tell data from instructions, so a hidden line in an issue, web page, or tool output can steer it: prompt injection.
+4. **[Untrusted code execution](untrusted-code-execution.md)** — An agent can install compromised dependencies, run repository scripts, or load untrusted skills and MCP servers.
 
 Changes that weaken a test or loosen an access rule to make a task pass are caught at review: see [Traceability & Trust](../traceability/README.md). A wrong answer alone is a reliability problem, covered under [Alignment](../alignment/README.md); it becomes a security problem when the agent acts on it, so risk 1 matters even without an attacker.
 

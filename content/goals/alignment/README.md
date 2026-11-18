@@ -13,10 +13,10 @@ Start with a grilling, not a prompt. A short prompt leaves the agent to guess at
 
 ## Core advice
 
-- **[Begin with the agent questioning you](begin-with-the-agent-questioning-you.md)** — Give it a brief description of what you want, then ask it to question you before proposing a solution.
-- **[Answer each point, or declare it out of scope](answer-or-declare-out-of-scope.md)** — Either way, it becomes a decision rather than something the agent guesses later.
-- **[Let the answers become a detailed specification, and build from it](build-from-a-detailed-specification.md)** — Have the agent turn the answers into intended behavior, "Done when" lines you can observe, and open questions, and review it before any issues are created.
-- **[Steer early, and verify against the agreement](steer-and-verify-against-the-agreement.md)** — A wrong turn costs more the longer it runs, so correct it in the session or on the pull request.
+- **[Agent-led requirements discovery](agent-led-requirements-discovery.md)** — Give it a brief description of what you want, then ask it to question you before proposing a solution.
+- **[Explicit decisions and scope boundaries](explicit-decisions-and-scope-boundaries.md)** — Either way, it becomes a decision rather than something the agent guesses later.
+- **[Detailed specification from agreed decisions](detailed-specification-from-agreed-decisions.md)** — Have the agent turn the answers into intended behavior, "Done when" lines you can observe, and open questions, and review it before any issues are created.
+- **[Steering and verification against the specification](steering-and-verification-against-the-specification.md)** — A wrong turn costs more the longer it runs, so correct it in the session or on the pull request.
 
 Scale the formality to the risk: a small change may need only a brief agreed description, while larger or ambiguous work needs a reviewed specification before issues are created. In either case, do not let unanswered product decisions silently become implementation choices.
 

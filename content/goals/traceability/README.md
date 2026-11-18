@@ -13,10 +13,10 @@ With an agent, the work is split: a model writes the code, a person directs it, 
 
 ## Core advice
 
-- **[Let the record make itself](let-the-record-make-itself.md)** — A reader needs to know which changes a person wrote and which an agent did.
-- **[Put the check results on the pull request](put-check-results-on-the-pull-request.md)** — Add one comment saying which checks ran, what they showed, and which did not.
-- **[Read the risky parts first](read-the-risky-parts-first.md)** — The agent's pull request description is its own account of what it did, so check it against the diff.
-- **[Direct human attention by risk and evidence](direct-human-attention-by-risk.md)** — Who looks, and how closely, should depend on what a change touches and what the checks showed, not the agent's confidence.
+- **[Agent authorship and attribution](agent-authorship-and-attribution.md)** — A reader needs to know which changes a person wrote and which an agent did.
+- **[Pull request verification evidence](pull-request-verification-evidence.md)** — Add one comment saying which checks ran, what they showed, and which did not.
+- **[Risk-focused change review](risk-focused-change-review.md)** — The agent's pull request description is its own account of what it did, so check it against the diff.
+- **[Independent change approval](independent-change-approval.md)** — Who looks, and how closely, should depend on what a change touches and what the checks showed, not the agent's confidence.
 
 ## Trust: reviewing changes at scale
 
