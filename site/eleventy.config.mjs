@@ -88,6 +88,8 @@ export default async function (eleventyConfig) {
       })),
     },
     titleSuffix: "Making the most of agents",
+    // Compact GOV.UK heading scale: h2 uses heading-m, h3 heading-s.
+    markdown: { headingsStartWith: "l" },
     url: siteUrl,
     // No crown icons or GOV.UK sharing image.
     icons: { mask: false, shortcut: false, touch: false },
