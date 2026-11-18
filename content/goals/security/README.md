@@ -23,10 +23,6 @@ A chat model's risks are mostly about what goes in and what comes out. An agent 
 
 Changes that weaken a test or loosen an access rule to make a task pass are caught at review: see [Traceability & Trust](../traceability/README.md). A wrong answer alone is a reliability problem, covered under [Alignment](../alignment/README.md); it becomes a security problem when the agent acts on it, so risk 1 matters even without an attacker.
 
-## Try this first
-
-Where the agent's tools run decides which limits you have. For Copilot CLI, the app, or agent mode in your editor, start with the [local guide](local-agent-security.md) and its [sandbox](local-agent-sandboxing.md). For the Copilot cloud agent, start with the [cloud guide](cloud-agent-security.md). For either, use the [data-flow checklist](../../reference/agent-data-flow-checklist.md) once.
-
 ## Explore further
 
 The [lo-fi software factory case study](../../articles/lo-fi-software-factory-case-study.md) describes an unattended local workflow. For outside references, see OWASP on [prompt injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) and [excessive agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/), and the Cloud Security Alliance on [slopsquatting](https://labs.cloudsecurityalliance.org/research-rb/csa-research-note-slopsquatting-ai-coding-assistant-supply-c/), how often models invent package names.
