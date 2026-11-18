@@ -13,13 +13,10 @@ A chat model's risks are mostly about what goes in and what comes out. An agent 
 
 ## Core advice
 
-**1. It can reach too much.** Without restrictions, a local agent runs commands with your access, so a mistake or an injected instruction can affect your files and credentials. Approval prompts alone do not isolate those commands, and [a worktree is not a sandbox](../../concepts/worktrees-not-sandboxes.md). Locally, turn on Copilot's sandbox, which is off by default: [secure a local coding agent](local-agent-security.md). In the cloud, GitHub enforces a firewall and workflow approval, with gaps: [secure the Copilot cloud agent](cloud-agent-security.md).
-
-**2. Data goes somewhere you did not expect.** Files and tool output included in model requests go to the model provider, and copies can appear in session logs, pull requests, or CI logs; MCP integrations can send it to their own services. Use a Business or Enterprise seat for work code, because individual plans train on interactions by default, and keep secrets out of the agent's reach. See [inference, retention, and training](../../concepts/inference-retention-training.md), [secrets in tool output](../../concepts/secrets-in-tool-output.md), and the [data-flow checklist](../../reference/agent-data-flow-checklist.md).
-
-**3. Text it reads takes control.** The model cannot reliably tell data from instructions, so a hidden line in an issue, web page, or tool output can steer it: [prompt injection](prompt-injection-coding-agents.md). Rules in `AGENTS.md` cannot prevent it, because [instructions are not enforced controls](../../concepts/instructions-vs-controls.md); the limits in risk 1 contain it. Deny the commands that would do most harm if it obeyed, such as `copilot --deny-tool='shell(git push)'`.
-
-**4. Untrusted code runs.** An agent can install compromised dependencies, run repository scripts, or load untrusted skills and MCP servers. Models also invent package names, often the same ones, so attackers register them in advance. Check [new dependencies](../../concepts/hallucinated-dependencies.md) in the diff, and the source and permissions of a skill or MCP server before enabling it: [local MCP does not mean local-only data](../../concepts/local-and-remote-mcp.md).
+1. **[It can reach too much](it-can-reach-too-much.md)** — Without restrictions, a local agent runs commands with your access, so a mistake or an injected instruction can affect your files and credentials.
+2. **[Data goes somewhere you did not expect](data-goes-somewhere-unexpected.md)** — Files and tool output included in model requests go to the model provider, and copies can appear in session logs, pull requests, or CI logs; MCP integrations can send it to their own services.
+3. **[Text it reads takes control](text-it-reads-takes-control.md)** — The model cannot reliably tell data from instructions, so a hidden line in an issue, web page, or tool output can steer it: prompt injection.
+4. **[Untrusted code runs](untrusted-code-runs.md)** — An agent can install compromised dependencies, run repository scripts, or load untrusted skills and MCP servers.
 
 Changes that weaken a test or loosen an access rule to make a task pass are caught at review: see [Traceability & Trust](../traceability/README.md). A wrong answer alone is a reliability problem, covered under [Alignment](../alignment/README.md); it becomes a security problem when the agent acts on it, so risk 1 matters even without an attacker.
 
