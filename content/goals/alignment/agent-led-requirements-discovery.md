@@ -15,4 +15,4 @@ Its questions surface the aspects you had not considered, and it asks better one
 
 More detail: [Agree on the problem](define-and-verify-tasks.md#agree-on-the-problem).
 
-**Related skill:** Matt Pocock's [\`/grill-me\` / \`/grilling\`](../../reference/agent-skills-directory.md#grill-me-and-grilling) runs a structured decision interview. It is an example, not a prerequisite.
+Related skill: Matt Pocock's [\`/grill-me\` / \`/grilling\`](../../reference/agent-skills-directory.md#grill-me-and-grilling) runs a structured decision interview. It is an example, not a prerequisite.

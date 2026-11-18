@@ -10,7 +10,7 @@ tags:
 
 # Agent roles directory
 
-These four **original role files** were supplied as examples from the [lo-fi software factory case study](../articles/lo-fi-software-factory-case-study.md). Their individual authorship is not independently established; the files are reproduced here as supplied, without claiming they are general standards. Follow the source links to inspect or adapt the complete `.agent.md` files.
+These four **original role files** were supplied as examples from the [lo-fi software factory case study](../articles/lo-fi-software-factory-case-study.md). They were written for the case study's project and are reproduced here as supplied, not presented as general standards. Follow the source links to inspect or adapt the complete `.agent.md` files.
 
 Roles allocate responsibilities, while [skills](agent-skills-directory.md) provide repeatable procedures. Neither role instructions nor skill text enforces tool permissions. See [skills, profiles, and tools have different jobs](../concepts/skills-profiles-and-tools.md).
 
