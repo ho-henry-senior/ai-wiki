@@ -47,7 +47,7 @@ description: Review API changes against documented contracts when asked about AP
 Do not modify files unless asked to make a fix.
 ```
 
-The opening and closing `---` delimit YAML front matter. **`name` and `description` are required.** The description should explain *what the skill does* and *when to use it*: agents may use it to decide whether to load the instructions. The body is normal Markdown with headings, steps, links and code blocks.
+The opening and closing `---` delimit YAML front matter. **`name` and `description` are required.** The description should explain _what the skill does_ and _when to use it_: agents may use it to decide whether to load the instructions. The body is normal Markdown with headings, steps, links and code blocks.
 
 Optional standard metadata includes `license`, `compatibility`, `allowed-tools` and `metadata`. Product-specific fields such as `disable-model-invocation` in [some listed skills](agent-skills-directory.md) are not universal requirements.
 
