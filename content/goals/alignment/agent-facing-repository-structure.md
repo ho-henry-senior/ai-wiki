@@ -53,3 +53,5 @@ repo/
 Use `docs/agents/` only for material written for agents, such as issue-tracker conventions, tooling notes, or findings from recurring investigations. Keep ordinary project documentation where it already lives under `docs/`, and link to it from `AGENTS.md`. A document does not belong here just because an agent reads it; two homes for the same information drift apart.
 
 Keep `.github/workflows/` for automation, not as a second home for agent instructions.
+
+**Worked example:** [Repository layout example: instructions to checks](../../reference/repository-layout-example.md) shows a smaller tree and Mermaid diagram linking instructions, named commands, tests and CI. Use the relationships, not the directory names, as a starting point.

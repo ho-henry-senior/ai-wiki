@@ -12,7 +12,7 @@ export const lanes = {
     title: "Reference",
     url: "/reference/",
     description:
-      "Things to look up: the data-flow checklist and research notes.",
+      "Copyable assets, practical checklists, tools and the sources behind the guidance.",
   },
   articles: {
     title: "Articles",
