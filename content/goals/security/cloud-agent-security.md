@@ -14,7 +14,9 @@ tags:
 
 # Secure the Copilot cloud agent
 
-The Copilot cloud agent runs in a fresh GitHub Actions environment, not on your computer, and usually nobody watches the run. You see its work only when it opens a pull request, by which time it has already used whatever secrets and network access it had. Reviewing the pull request protects your default branch; only limits on the run protect everything else. GitHub enforces some of those limits, and you set the rest.
+The Copilot cloud agent runs in a fresh GitHub Actions environment, not on your computer, and usually nobody watches the run. You see its work only when it opens a pull request, by which time it has already used whatever secrets and network access it had.
+
+**Reviewing the pull request protects your default branch; only limits on the run protect everything else.** GitHub enforces some of those limits, and you set the rest.
 
 ## What GitHub enforces
 

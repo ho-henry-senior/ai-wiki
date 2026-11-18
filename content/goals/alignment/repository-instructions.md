@@ -16,7 +16,11 @@ tags:
 
 # Write repository instructions in AGENTS.md
 
-An agent can read your code, but not the rules that exist only in your team's heads: which command to run, which folder never to edit, why money is stored in pence. Put those in an `AGENTS.md` file at the root of your repository. It is the shared convention: Copilot's agents read it, and so do other agents such as Claude Code and Codex, so one file serves them all and there are no copies to drift apart. Each Copilot feature that reads it loads it with every task, so a long file uses context and tokens on every request. Keep it to what an agent cannot work out from the code, and point to other files for detail.
+An agent can read your code, but not the rules that exist only in your team's heads: which command to run, which folder never to edit, why money is stored in pence. Put those in an `AGENTS.md` file at the root of your repository.
+
+It is the shared convention: Copilot's agents read it, and so do other agents such as Claude Code and Codex, so one file serves them all and there are no copies to drift apart.
+
+Each Copilot feature that reads it loads it with every task, so a long file uses context and tokens on every request. Keep it to what an agent cannot work out from the code, and point to other files for detail.
 
 ## Start with this
 

@@ -49,7 +49,11 @@ format:
 
 ## Give the Copilot cloud agent what it needs to run them
 
-The cloud agent works in a fresh GitHub Actions environment, so it can only run your commands if their dependencies are installed. Add `.github/workflows/copilot-setup-steps.yml` with a single job named `copilot-setup-steps` that installs them, for example with `npm ci`. Copilot runs it before the agent starts, and code review reuses it by default. It only takes effect once it is on the default branch. If a setup step fails, the agent starts anyway with whatever was installed, and may then fall back to guessing, so check the setup log when results look wrong. Setup steps also run outside the cloud agent's firewall; see [secure the Copilot cloud agent](../security/cloud-agent-security.md).
+The cloud agent works in a fresh GitHub Actions environment, so it can only run your commands if their dependencies are installed. Add `.github/workflows/copilot-setup-steps.yml` with a single job named `copilot-setup-steps` that installs them, for example with `npm ci`. Copilot runs it before the agent starts, and code review reuses it by default. It only takes effect once it is on the default branch.
+
+If a setup step fails, the agent starts anyway with whatever was installed, and may then fall back to guessing. Check the setup log when results look wrong.
+
+Setup steps also run outside the cloud agent's firewall; see [secure the Copilot cloud agent](../security/cloud-agent-security.md).
 
 Source: GitHub's documentation on [customizing the cloud agent's environment](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/customize-the-agent-environment).
 

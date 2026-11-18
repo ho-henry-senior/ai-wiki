@@ -15,7 +15,9 @@ tags:
 
 # Secure a local coding agent
 
-When Copilot CLI, the Copilot app, or agent mode in your editor runs a command, the model only asks for it; the command itself runs on your computer, with your account. Without restrictions it could reach whatever you can: your SSH keys, tokens, other repositories, and the network. A mistaken command or an [injected instruction](prompt-injection-coding-agents.md) is limited only by what Copilot's settings allow, so set those limits rather than relying on instructions, which the model can be talked out of.
+When Copilot CLI, the Copilot app, or agent mode in your editor runs a command, the model only asks for it; the command itself runs on your computer, with your account. Without restrictions it could reach whatever you can: your SSH keys, tokens, other repositories, and the network.
+
+A mistaken command or an [injected instruction](prompt-injection-coding-agents.md) is limited only by what Copilot's settings allow, so set those limits rather than relying on instructions, which the model can be talked out of.
 
 ## Try this first
 
