@@ -13,10 +13,10 @@ Start with a grilling, not a prompt. A short prompt leaves the agent to guess at
 
 ## Core advice
 
-- **Begin with the agent questioning you.** Give it a brief description of what you want, then ask it to question you before proposing a solution: "Before writing code, question me about this request. Ask about unclear behavior, edge cases, and constraints, and challenge vague answers." Its questions surface the aspects you had not considered, and it asks better ones if it understands your repository; see [Economy](../economy/README.md). [Agree on the problem](define-and-verify-tasks.md#agree-on-the-problem).
-- **Answer each point, or declare it out of scope.** Either way, it becomes a decision rather than something the agent guesses later. Write the out-of-scope points down too; they stop nearby work the agent might think helps. [Agree on the problem](define-and-verify-tasks.md#agree-on-the-problem).
-- **Let the answers become a detailed specification, and build from it.** Have the agent turn the answers into intended behavior, "Done when" lines you can observe, and open questions, and review it before any issues are created. The detail is what brings the result close to what you wanted. [Turn the specification into issues](define-and-verify-tasks.md#turn-the-specification-into-issues).
-- **Steer early, and verify against the agreement.** A wrong turn costs more the longer it runs, so correct it in the session or on the pull request. Then check each "Done when" line against the diff, not the agent's summary, and read the tests it wrote: they share its understanding of the task. [Steer it](define-and-verify-tasks.md#steer-it) and [passing tests are evidence, not proof](../../concepts/tests-are-evidence.md).
+- **[Begin with the agent questioning you](begin-with-the-agent-questioning-you.md)** — Give it a brief description of what you want, then ask it to question you before proposing a solution.
+- **[Answer each point, or declare it out of scope](answer-or-declare-out-of-scope.md)** — Either way, it becomes a decision rather than something the agent guesses later.
+- **[Let the answers become a detailed specification, and build from it](build-from-a-detailed-specification.md)** — Have the agent turn the answers into intended behavior, "Done when" lines you can observe, and open questions, and review it before any issues are created.
+- **[Steer early, and verify against the agreement](steer-and-verify-against-the-agreement.md)** — A wrong turn costs more the longer it runs, so correct it in the session or on the pull request.
 
 Scale the formality to the risk: a small change may need only a brief agreed description, while larger or ambiguous work needs a reviewed specification before issues are created. In either case, do not let unanswered product decisions silently become implementation choices.
 

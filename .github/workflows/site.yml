@@ -88,6 +88,15 @@ jobs:
             echo "The Goals sidebar still nests articles under Security." >&2
             exit 1
           fi
+          # Each goal's core points are pages nested under it.
+          echo "$sidebar" | grep -q 'href="/ai-wiki/pages/it-can-reach-too-much/"' || {
+            echo "The Goals sidebar does not nest Security's advice pages." >&2
+            exit 1
+          }
+          grep -q 'x-govuk-sub-navigation' _site/pages/it-can-reach-too-much/index.html || {
+            echo "An advice page has no Goals sidebar." >&2
+            exit 1
+          }
           # Articles show their type and main goal.
           grep -q 'Guide · <a class="govuk-link" href="/ai-wiki/pages/security/">Goal: Security</a>' _site/pages/cloud-agent-security/index.html || {
             echo "The cloud agent page does not show its type and main goal." >&2
