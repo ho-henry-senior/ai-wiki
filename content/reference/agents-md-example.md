@@ -31,10 +31,10 @@ tags:
 
 ## Checks
 
-- Discover supported commands with \`just --list\`.
-- While editing, run \`just test tests/test_orders.py\`.
-- Before handoff, run \`just verify\`; this must pass.
-- \`just format\` changes files; run it deliberately.
+- Discover supported commands with `just --list`.
+- While editing, run `just test tests/test_orders.py`.
+- Before handoff, run `just verify`; this must pass.
+- `just format` changes files; run it deliberately.
 ```
 
 Create this file at the repository root. Replace the business rules and paths with *real* project facts; the commands must correspond to actual recipes in your repository. Keep critical rules directly in the file. An ordinary Markdown pointer does not guarantee another file will be read, and instructions are not enforced security controls.
