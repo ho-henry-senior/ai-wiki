@@ -10,7 +10,7 @@ tags:
 
 # AGENTS.md example: short repository entrypoint
 
-**Use this asset** when you want the agent to know the few project rules that cannot be inferred from code, without loading a manual into every task. This is an *adaptable example*, not an excerpt from a third-party project.
+**Use this asset** when you want the agent to know the few project rules that cannot be inferred from code, without loading a manual into every task. This is an _adaptable example_, not an excerpt from a third-party project.
 
 ## Copy and adapt: `AGENTS.md`
 
@@ -37,7 +37,7 @@ tags:
 - `just format` changes files; run it deliberately.
 ```
 
-Create this file at the repository root. Replace the business rules and paths with *real* project facts; the commands must correspond to actual recipes in your repository. Keep critical rules directly in the file. An ordinary Markdown pointer does not guarantee another file will be read, and instructions are not enforced security controls.
+Create this file at the repository root. Replace the business rules and paths with _real_ project facts; the commands must correspond to actual recipes in your repository. Keep critical rules directly in the file. An ordinary Markdown pointer does not guarantee another file will be read, and instructions are not enforced security controls.
 
 ## Real files to inspect
 

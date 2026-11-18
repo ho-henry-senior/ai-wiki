@@ -170,9 +170,36 @@ export default async function (eleventyConfig) {
   // the four goal overviews in order, and Articles lists every article by
   // title, with its type and main goal.
   const lists = { goals: "goalOverviews", articles: "articles" };
+  // Reference is deliberately grouped by reader need rather than a second
+  // taxonomy. Keep the sidebar flat and preserve the published page URLs.
+  // Site-absolute links are rewritten with the deployment path prefix.
+  const referenceIndex = `## Examples and assets
+
+Copyable starting points and worked examples. Change commands and constraints to fit your project.
+
+- [Justfile example: discoverable checks](/pages/justfile-example/) — a complete task interface for focused tests and handoff checks.
+- [AGENTS.md example: short repository entrypoint](/pages/agents-md-example/) — instructions, project rules and verification commands to adapt.
+- [Repository layout example: instructions to checks](/pages/repository-layout-example/) — a directory tree and Mermaid diagram connecting agent guidance to CI.
+- [Git worktrees for parallel agent work](/pages/git-worktrees-for-agents/) — commands and a diagram for running agents in separate working directories.
+
+## Checklists and tools
+
+Use these while configuring an agent, reviewing its access or checking its changes.
+
+- [Agent data-flow checklist](/pages/agent-data-flow-checklist/) — trace sensitive information through an agent setup and its integrations.
+- [Local checks and tools for coding agents](/pages/local-development-tools/) — testing, linting, formatting and security tool options.
+
+## Glossary
+
+- [Glossary](/pages/glossary/) — definitions of common AI terms and distinctions.
+
+## Sources and research
+
+- [Sources](/sources/) — research notes, provenance and supporting material behind the wiki's recommendations.
+`;
   for (const [lane, { title, url, description }] of Object.entries(lanes)) {
     const listing = { sectionKey: title, listCollection: lists[lane] };
-    eleventyConfig.addTemplate(`lanes/${lane}.md`, "", {
+    eleventyConfig.addTemplate(`lanes/${lane}.md`, lane === "reference" ? referenceIndex : "", {
       title,
       description,
       permalink: url,

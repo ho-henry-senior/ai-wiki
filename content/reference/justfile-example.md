@@ -11,7 +11,7 @@ tags:
 
 # Justfile example: discoverable checks
 
-**Use this asset** when an agent needs a short, named set of commands for editing and verification. This is an *adaptable example* for a Python project using pytest and Ruff, not a copy of any external repository.
+**Use this asset** when an agent needs a short, named set of commands for editing and verification. This is an _adaptable example_ for a Python project using pytest and Ruff, not a copy of any external repository.
 
 ## Copy and adapt: `justfile`
 
