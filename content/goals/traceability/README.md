@@ -9,7 +9,7 @@ order: 4
 
 # Traceability & Trust
 
-With an agent, the work is split: a model writes the code, a person directs it, and someone else approves it. The decisions that shaped the result often happen in a session only one person saw, and the evidence that it worked, such as check runs and logs, expires. Unless the record is copied to where reviewers look, later readers cannot reconstruct who decided what, or why; for public-sector work, being able to answer that is often an obligation. The same record lets a reviewer trust a change without redoing the work.
+Agent work splits implementation, decisions and approval between a model and people. Decisions may be buried in private sessions, while checks and logs expire, leaving later readers unable to reconstruct what happened or why. Keep a record and verification evidence where reviewers can find them, so they can judge whether to trust the change without repeating the work; in public-sector work, that record may be an obligation.
 
 ## Core advice
 

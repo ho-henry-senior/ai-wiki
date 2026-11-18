@@ -9,7 +9,7 @@ order: 1
 
 # Alignment
 
-Start with a grilling, not a prompt. A short prompt leaves the agent to guess at everything it does not say, and an agent can then build a convincing solution to the wrong problem. Being questioned first makes you face those gaps before any code exists, and the answers become the specification the work is built and checked against. Here, alignment means agreeing what this work should achieve; the [glossary](../../reference/glossary.md#alignment) has the broader AI meaning.
+Start with a grilling, not a prompt. A short request leaves the agent guessing, and it can build a convincing solution to the wrong problem. Have it question you first, answer or rule out each point, then turn those decisions into a specification to steer and verify the work against. Here, alignment means agreeing what the work should achieve; the [glossary](../../reference/glossary.md#alignment) covers the broader AI meaning.
 
 ## Core advice
 
