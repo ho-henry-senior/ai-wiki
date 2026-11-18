@@ -29,9 +29,9 @@ If you must keep records longer, check your organization's records policy; GitHu
   <p>This is an area for investigation, not yet a recommended workflow. The aim is to support risk-informed decisions with evidence rather than rely on an agent's confidence.</p>
 </div>
 
-## Try this first
+## Example
 
-Check that a reader could answer these questions from your last agent pull request alone:
+Check whether someone could answer these five questions from an agent-produced pull request alone:
 
 | Question                            | Where the answer should be                    |
 | ----------------------------------- | --------------------------------------------- |
@@ -41,9 +41,7 @@ Check that a reader could answer these questions from your last agent pull reque
 | What was checked, and what was not? | A pull request comment summarizing the checks |
 | Who approved it?                    | The pull request review                       |
 
-## Example
-
-A fictional timeline that answers every question above:
+This fictional timeline shows how a pull request can provide those answers:
 
 ```text
 Issue #41   Add CSV export to the Orders page. Done when: header row; quoted values; 10,000 rows.
