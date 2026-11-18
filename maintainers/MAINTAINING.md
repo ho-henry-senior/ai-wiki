@@ -24,6 +24,8 @@ The dependency overrides pin patched `glob` and `minimatch` releases while the l
 
 Project instructions in `maintainers/` are for this wiki's contributors and agents; the published `content/` tree is for readers. Do not put project-maintenance instructions in published indexes. The wiki is also built as a website with [Eleventy](https://www.11ty.dev/) and the [GOV.UK Eleventy Plugin](https://github.com/x-govuk/govuk-eleventy-plugin), and published to GitHub Pages from `main` by the [website workflow](../.github/workflows/site.yml). Every pull request builds the site, so a change that breaks the build fails its checks. The Markdown stays the source, and must keep working on GitHub and in editors:
 
+**Keep checks in step with site changes.** When changing templates, navigation, or generated content, review the corresponding assertions in [the Website workflow](../.github/workflows/site.yml) and tests under `scripts/`. Update them in the same pull request so they check the new behaviour and still catch regressions. Run both Verify and Website before merging.
+
 - **Keep links as relative `.md` paths.** The build rewrites them for the site; links to files that are not on the site, such as `AGENTS.md`, go to GitHub. The rules are in `scripts/site-links.mjs`, with tests.
 - **Do not put template syntax in pages.** Markdown is never processed as a template, so code examples such as `${{ github.ref }}` appear as written.
 - **Do not use GOV.UK's typeface or crown.** Only GOV.UK may use the GDS Transport typeface, the crown, or the GOV.UK logotype, and the site must not suggest it is part of GOV.UK. `assets/application.scss` replaces the typeface, the build removes the font files and crown icons the plugin copies in, and CI fails if either appears.
