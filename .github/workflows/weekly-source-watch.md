@@ -84,7 +84,7 @@ safe-outputs:
     report-as-issue: false
   create-pull-request:
     title-prefix: "[source-watch] "
-    branch-prefix: automation/source-watch/
+    branch-prefix: automation/source-watch-run/
     base-branch: main
     draft: true
     auto-merge: false
