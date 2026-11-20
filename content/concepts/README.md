@@ -18,9 +18,6 @@ This directory holds focused explanations that articles can reuse. Each concept 
 - [A worktree is not a sandbox](worktrees-not-sandboxes.md) — separating changes versus restricting execution.
 - [Instructions are not enforced controls](instructions-vs-controls.md) — behavioral guidance versus independently enforced permissions.
 
-## Repository feedback
-
-
 ## Background
 
 These explain general AI ideas behind the guidance. They are not steps in the goal paths.
