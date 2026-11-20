@@ -1,6 +1,6 @@
 ---
 type: guide
-summary: Why a local agent's commands are as powerful as you are, and how to limit them in Copilot with the sandbox, tool and URL rules, and credentials kept out of reach.
+summary: Secure a local coding agent by enabling its sandbox, limiting tools and network access, keeping credentials out of reach, and retaining approvals.
 status: established
 lane: articles
 goal: security
@@ -15,30 +15,39 @@ tags:
 
 # Secure a local coding agent
 
-When Copilot CLI, the Copilot app, or agent mode in your editor runs a command, the model only asks for it; the command itself runs on your computer, with your account. Without restrictions it could reach whatever you can: your SSH keys, tokens, other repositories, and the network.
+A local coding agent runs tools and commands on your computer, often with access to your files, credentials, and network. Instructions such as “do not push” are not access restrictions. Set boundaries that your tools and operating system enforce, even when the agent makes a mistake or follows [an injected instruction](prompt-injection-coding-agents.md).
 
-A mistaken command or an [injected instruction](prompt-injection-coding-agents.md) is limited only by what Copilot's settings allow, so set those limits rather than relying on instructions, which the model can be talked out of.
+## Enable the sandbox
 
-## Try this first
+Copilot's local sandbox limits what commands and their child processes can read, change, or contact. It is off by default, so turn it on for the environment you use:
 
-1. **Turn on the sandbox.** It makes the operating system enforce limits on files, network, and credentials, so a command that goes beyond them fails even if you approve it. In Copilot CLI, run `/sandbox enable`; it is off by default. See [sandbox a local coding agent](local-agent-sandboxing.md).
-2. **Deny the commands that would do most harm if the agent were misled,** such as publishing or deleting: `copilot --deny-tool='shell(git push)' --deny-tool='shell(rm)'`. Deny rules take precedence over allow rules, so a broad allow elsewhere cannot switch them back on.
-3. **Keep the approval prompts,** your last chance to see a command before it runs. `--allow-all`, also called `--yolo`, removes every prompt and every path and URL restriction, so use it only in a disposable environment. Allow narrowly instead: `--allow-tool='write'` lets Copilot edit files without asking, which you can review and undo with Git, while shell commands still ask.
-4. **Restrict URLs, and know what that covers.** `--allow-url` and `--deny-url` apply to Copilot's web fetch tool and to network commands it recognizes, such as `curl` and `wget`. A script or program the agent runs can still connect elsewhere, so use the sandbox's network settings for a real limit.
-5. **Log out of what you would not hand over.** Any credential your session can use, a command the agent runs can use too, and its output goes to the model. Do not run with production credentials or cloud CLI sessions logged in. The sandbox can also block access to your Git and GitHub CLI credentials.
+- **Copilot CLI:** run `/sandbox enable`. Use `/sandbox` to configure filesystem paths, network access, and credentials; settings are stored under `sandbox` in the CLI's `settings.json`.
+- **Copilot app:** enable sandboxing with `/sandbox` for a session, or in the project's settings. The app and CLI have separate settings.
+- **VS Code:** sandboxing applies to sessions using Agent Host.
 
-## What to check
+Choose which project paths and network destinations the task actually needs. A sandbox is an enforced boundary for the commands it covers, **not** a guarantee that every integration is isolated. See [GitHub's local sandbox configuration](https://docs.github.com/en/copilot/how-tos/cloud-and-local-sandboxes/configuring-local-sandbox-settings).
 
-| Boundary     | Question                                                                            | Why it matters                                                                                                                                                              |
-| ------------ | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Files        | Can commands read your home directory, SSH keys, or other repositories?             | Copilot CLI's path rules allow the current directory, its subdirectories, and the temporary directory by default; the sandbox enforces file limits in the operating system. |
-| Commands     | Which commands run without asking, and do the programs they start inherit that?     | A test runner or package install can run any code in the repository.                                                                                                        |
-| Network      | Can commands, or code they run, reach any host?                                     | The network is how stolen data leaves and how unvetted code arrives.                                                                                                        |
-| Credentials  | Which tokens, SSH agents, credential helpers, and cloud CLI sessions are available? | Whatever is available can be used, or printed into output the model sees.                                                                                                   |
-| Integrations | Do MCP servers run outside the sandbox?                                             | An MCP server runs as its own process, and the sandbox may not cover it.                                                                                                    |
+## Restrict tools and network actions
 
-**Approval is not isolation.** An approval prompt depends on you reading each command, and after dozens of harmless ones, people stop reading. A sandbox limits what the command can do whether or not you read it. Use both.
+Deny commands that could do substantial harm if requested by mistake or by untrusted content. In Copilot CLI, for example:
 
-**Use a container or virtual machine when you trust the work less.** An unfamiliar repository can run its own code the moment the agent installs dependencies or runs tests, and an unattended run has nobody reading the prompts. Give the container only the files it needs, limited credentials, and explicit network rules.
+```sh
+copilot --deny-tool='shell(git push)' --deny-tool='shell(rm)'
+```
 
-Source: GitHub's documentation on [configuring Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/configure-copilot-cli). Other local agents offer similar controls under different names; look for the equivalent of each step above. For where data goes, use the [agent data-flow checklist](../../reference/agent-data-flow-checklist.md).
+Deny rules take precedence over allow rules. Keep approval prompts for consequential commands; `--allow-all` (`--yolo`) removes prompts and path and URL restrictions, so reserve it for disposable environments.
+
+Copilot's `--allow-url` and `--deny-url` rules cover its web fetch tool and recognized network commands such as `curl`, but they are **not** general network isolation: a script can make its own connections. Enforce the necessary network boundaries in the sandbox.
+
+## Keep credentials and sensitive data out of reach
+
+Don't run an agent with production credentials, cloud CLI logins, or unrelated SSH keys available to its tools. Limit the environment to the files, repositories, and credentials needed for the task. Commands can print sensitive information into tool output sent to the model; see the [agent data-flow checklist](../../reference/agent-data-flow-checklist.md).
+
+## Know where the limits end
+
+- **Approvals are not isolation.** A prompt requires you to notice a dangerous command; enforcement restricts it even when you miss one.
+- **MCP servers and other integrations** may run as separate processes outside the sandbox. Check their own permissions.
+- **Read-only access isn't confidentiality.** A command that cannot change a secret might still read or transmit it.
+- **Containers and virtual machines** can add isolation for unfamiliar code, but host mounts, credentials, and network access still need restricting.
+
+The sandbox restricts local execution; it does not stop context you deliberately supply from being sent to the model provider. For Copilot's settings, consult [CLI configuration](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/configure-copilot-cli) and [local sandboxing](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes).

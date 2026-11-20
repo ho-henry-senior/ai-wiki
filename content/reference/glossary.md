@@ -166,7 +166,7 @@ A technique that retrieves external information and includes it in the model's i
 
 ### Sandbox
 
-An enforced limit on what an agent's commands can read, change, or contact, applied by the operating system or platform rather than by instructions. Copilot's local sandbox is turned on with `/sandbox enable`. See [sandbox a local coding agent](../goals/security/local-agent-sandboxing.md).
+An enforced limit on what an agent's commands can read, change, or contact, applied by the operating system or platform rather than by instructions. Copilot's local sandbox is turned on with `/sandbox enable`. See [secure a local coding agent](../goals/security/local-agent-security.md).
 
 ### Skill
 
