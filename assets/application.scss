@@ -59,7 +59,6 @@
   box-shadow: inset 0 -3px currentColor;
 }
 
- 
 // Shared reading-order cards for explanatory series.
 .app-series-navigation {
   margin-top: govuk.govuk-spacing(7);
@@ -74,7 +73,8 @@
 
 .app-series-navigation__links {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  // auto-fill keeps empty columns, so a lone Next card stays on the right.
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
   gap: govuk.govuk-spacing(3);
 }
 
@@ -109,14 +109,13 @@
   display: block;
 }
 
+// GOV.UK's responsive type scale, rather than fixed sizes.
 .app-series-navigation__direction {
-  font-size: 0.875rem;
-  font-weight: 600;
+  @include govuk.govuk-font($size: 16, $weight: bold);
   margin-bottom: govuk.govuk-spacing(2);
 }
 
 .app-series-navigation__title {
-  font-size: 1.1875rem;
-  font-weight: 700;
+  @include govuk.govuk-font($size: 19, $weight: bold);
   text-decoration: underline;
 }

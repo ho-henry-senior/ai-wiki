@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
+import { series } from "../site/series.mjs";
 
 const cases = [
   ["goals/index.html", "goals"],
@@ -56,6 +57,10 @@ test("series navigation uses linked cards with titles and reading order", () => 
   assert.match(nav, /Part 2 of 3/);
   assert.match(nav, /class="app-series-navigation__card app-series-navigation__card--previous"/);
   assert.match(nav, /class="app-series-navigation__card app-series-navigation__card--next"/);
-  assert.match(nav, /Inside a coding agent/);
-  assert.match(nav, /How a coding agent carries out a task/);
+  // Titles come from the series data, so retitling a part needs no change here.
+  const [first, , third] = series["understanding-coding-agents"].parts;
+  assert.ok(nav.includes(first.title), "Previous card names part 1");
+  assert.ok(nav.includes(third.title), "Next card names part 3");
+  assert.match(nav, /<span aria-hidden="true">←<\/span> Previous/);
+  assert.match(nav, /Next <span aria-hidden="true">→<\/span>/);
 });

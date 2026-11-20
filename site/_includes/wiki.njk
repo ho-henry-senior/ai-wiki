@@ -129,13 +129,13 @@
         <div class="app-series-navigation__links">
           {% if reading.previous %}
           <a class="app-series-navigation__card app-series-navigation__card--previous" href="{{ reading.previous.url }}">
-            <span class="app-series-navigation__direction">← Previous</span>
+            <span class="app-series-navigation__direction"><span aria-hidden="true">←</span> Previous</span>
             <span class="app-series-navigation__title">{{ reading.previous.title }}</span>
           </a>
           {% endif %}
           {% if reading.next %}
           <a class="app-series-navigation__card app-series-navigation__card--next" href="{{ reading.next.url }}">
-            <span class="app-series-navigation__direction">Next →</span>
+            <span class="app-series-navigation__direction">Next <span aria-hidden="true">→</span></span>
             <span class="app-series-navigation__title">{{ reading.next.title }}</span>
           </a>
           {% endif %}
