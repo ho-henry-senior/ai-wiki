@@ -2,7 +2,7 @@
 // previous/next links and their overview links; pages remain ordinary articles.
 export const series = {
   "understanding-coding-agents": {
-    title: "Understanding how coding agents work",
+    title: "How Coding Agents Work",
     overview: { title: "Series introduction", url: "/pages/understanding-coding-agents/" },
     parts: [
       { title: "Inside a coding agent", url: "/pages/inside-coding-agent/" },
