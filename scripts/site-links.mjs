@@ -77,6 +77,31 @@ export function rewriteLink(href, inputPath) {
   return `${repository}/blob/main/${file}${anchor}`;
 }
 
+// Whether a rewritten link leaves the wiki: any web address outside the site,
+// including repository files that rewriteLink sends to GitHub. Site-absolute
+// paths, same-page anchors and other schemes, such as mailto:, stay unmarked.
+export function isExternalLink(href) {
+  if (!/^https?:\/\//i.test(href ?? "")) return false;
+  const url = new URL(href);
+  const site = new URL(siteUrl);
+  return url.host !== site.host || !url.pathname.startsWith(site.pathname);
+}
+
+// Adds the external-link class and description to a rendered opening <a>
+// tag, keeping any class another renderer, such as the GOV.UK plugin's,
+// has already set.
+export const externalLinkClass = "app-link--external";
+export const externalLinkDescription = "app-external-link-description";
+export function markExternalLink(tag) {
+  if (!tag.includes(externalLinkClass))
+    tag = /\sclass="/.test(tag)
+      ? tag.replace(/\sclass="([^"]*)"/, (_, names) => ` class="${`${names} ${externalLinkClass}`.trim()}"`)
+      : tag.replace(/^<a\b/, `<a class="${externalLinkClass}"`);
+  if (!/\saria-describedby="/.test(tag))
+    tag = tag.replace(/^<a\b/, `<a aria-describedby="${externalLinkDescription}"`);
+  return tag;
+}
+
 // GitHub's heading IDs, so that links such as page.md#core-advice work the
 // same on the site as on GitHub: lower case, punctuation removed, spaces
 // become hyphens, and repeated headings get -1, -2, and so on.

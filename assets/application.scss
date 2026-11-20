@@ -75,6 +75,30 @@
   --govuk-text-colour: #{govuk.govuk-colour("black")};
 }
 
+// Links that leave the wiki, marked by the build (site/eleventy.config.mjs):
+// an arrow after the link text, in the link's own colour, so it follows the
+// visited, hover and focus states. Links within the wiki have no marker.
+.app-link--external::after {
+  content: "";
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  margin-left: 0.15em;
+  background-color: currentColor;
+  $arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5 3h8v8h-2V6.4l-6.3 6.3-1.4-1.4L9.6 5H5z'/%3E%3C/svg%3E");
+  -webkit-mask: $arrow center / contain no-repeat;
+  mask: $arrow center / contain no-repeat;
+}
+
+// Forced-colours modes replace background colours, which would hide the
+// arrow; draw it in the system link colour instead.
+@media (forced-colors: active) {
+  .app-link--external::after {
+    forced-color-adjust: none;
+    background-color: LinkText;
+  }
+}
+
 // A contents list of single letters, such as the glossary's A to Z, as one
 // wrapping line of links rather than a tall list. See site/_includes/wiki.njk.
 .app-contents-list--letters ol {
