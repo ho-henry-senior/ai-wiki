@@ -39,7 +39,7 @@ test("built pages have no breadcrumbs and show the active navigation", () => {
 
 test("Reference sidebar is alphabetical while the landing page retains purpose groups", () => {
   const html = fs.readFileSync("_site/reference/index.html", "utf8");
-  const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\\s\\S]*?<\\/nav>/)?.[0];
+  const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
   assert.ok(sidebar, "Reference sidebar exists");
   const titles = ["AGENTS.md example", "Agent data-flow checklist", "Write a SKILL.md"];
   const positions = titles.map((title) => sidebar.indexOf(title));
