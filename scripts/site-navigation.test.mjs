@@ -36,3 +36,15 @@ test("built pages have no breadcrumbs and show the active navigation", () => {
     }
   }
 });
+
+test("Reference sidebar is alphabetical while the landing page retains purpose groups", () => {
+  const html = fs.readFileSync("_site/reference/index.html", "utf8");
+  const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
+  assert.ok(sidebar, "Reference sidebar exists");
+  const titles = ["Agent data-flow checklist", "AGENTS.md example", "Write a SKILL.md"];
+  const positions = titles.map((title) => sidebar.indexOf(title));
+  assert.ok(positions.every((position) => position >= 0), "Expected reference entries exist");
+  assert.ok(positions[0] < positions[1] && positions[1] < positions[2], "Reference entries are sorted");
+  assert.ok(html.includes("Examples and assets") && html.includes("Checklists and tools"),
+    "Reference landing page remains grouped by purpose");
+});
