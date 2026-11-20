@@ -54,7 +54,7 @@ The model does not execute the test or the edit. It requests actions from the ha
 
 ## How observations change the next action
 
-The first test failure tells the model *what happened*, not necessarily *why*. Its next useful action might be to search for the failing assertion, read the handler, inspect recent changes or run a narrower test. The model can choose among available tools, and the harness returns the observations.
+The first test failure tells the model _what happened_, not necessarily _why_. Its next action might be to search for the failing assertion, read the handler, inspect recent changes or run a narrower test. The model can choose among available tools, and the harness returns the observations.
 
 If the first edit fails, the loop may continue: inspect the new error, revise a hypothesis, edit again and rerun checks. A tool refusal can also lead the model to choose another permitted route or ask you for help. An agent does not have to follow a fixed script, and a final answer may be produced without a tool call.
 
@@ -74,7 +74,7 @@ This boundary is why enforceable limits belong in the harness, not just in a pro
 
 ## What this reveals about cost and trust
 
-Each round can add tool execution time and another model call, with new input and output tokens. Repository search may be a useful tool request, or the harness may use retrieval to supply relevant files before a call; see [inside a coding agent](../articles/inside-coding-agent.md#how-the-agent-finds-relevant-code).
+Each round can add tool execution time and another model call, with new input and output tokens. Repository search may be a useful tool request, or the harness may use retrieval to supply matching files before a call; see [inside a coding agent](../articles/inside-coding-agent.md#how-the-agent-finds-relevant-code).
 
 Passing tests is evidence that those checks succeeded in that environment. It does not prove that the developer's underlying requirement has been met. The agent's final explanation is likewise a report to review, not an independent record of everything it did. See [define, steer and verify a task](../goals/alignment/define-and-verify-tasks.md).
 
