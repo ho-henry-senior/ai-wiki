@@ -7,11 +7,10 @@ goal: alignment
 order: 1
 checked: 2026-11-15
 tags:
-  - Copilot CLI
-  - Copilot cloud agent
-  - Testing
+  - Copilot
   - Specifications
   - Pull requests and review
+  - Testing
 ---
 
 # Define, steer, and verify a task

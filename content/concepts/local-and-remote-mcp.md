@@ -7,6 +7,7 @@ goal: security
 order: 23
 checked: 2026-11-15
 tags:
+  - Security
   - Data and privacy
   - MCP
 ---

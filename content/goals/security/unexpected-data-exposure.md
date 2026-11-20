@@ -6,6 +6,7 @@ lane: goals
 goal: security
 order: 2
 tags:
+  - Security
   - Data and privacy
 ---
 

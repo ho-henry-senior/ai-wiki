@@ -4,7 +4,7 @@ summary: An anonymized account of using local agents and polling scripts to coor
 lane: articles
 date: 2026-11-14
 tags:
-  - Skills and agent roles
+  - Agent roles
   - Permissions and sandboxing
 ---
 

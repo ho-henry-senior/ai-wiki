@@ -7,7 +7,7 @@ goal: alignment
 order: 5
 tags:
   - AGENTS.md
-  - Skills and agent roles
+  - Repository
 ---
 
 # A structure for agent-facing repositories

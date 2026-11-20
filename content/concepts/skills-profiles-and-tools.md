@@ -9,7 +9,9 @@ seriesOrder: 3
 order: 24
 checked: 2026-11-20
 tags:
-  - Skills and agent roles
+  - Copilot
+  - Agent roles
+  - Skills
 ---
 
 # Agent roles, skills and tools

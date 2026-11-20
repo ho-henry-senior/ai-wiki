@@ -6,7 +6,8 @@ lane: goals
 goal: economy
 order: 2
 tags:
-  - Commands
+  - Economy
+  - Repository
   - Testing
 ---
 

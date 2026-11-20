@@ -9,6 +9,7 @@ checked: 2026-11-15
 tags:
   - AGENTS.md
   - Context and tokens
+  - Economy
 ---
 
 # Progressive disclosure

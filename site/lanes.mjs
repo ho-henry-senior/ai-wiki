@@ -109,16 +109,15 @@ export function tagItems(tags = [], pageUrl, slugify) {
   ];
 }
 
-// Group the same article collection for the landing page. Topic tags are
-// subject labels, not Copilot product/feature tags. An article may appear in
-// more than one topic; items without a topic remain discoverable in Other.
+// Group the same article collection for the landing page by tag, including
+// Copilot. An article may appear in more than one topic; items without a
+// tag remain discoverable in Other.
 import { allowedTags } from "./tags.mjs";
 
 const byTitle = (a, b) => a.data.title.localeCompare(b.data.title);
 
 export function articleTopicGroups(articles = []) {
   const groups = allowedTags
-    .filter((tag) => !tag.startsWith("Copilot "))
     .map((title) => ({
       title,
       items: articles.filter((item) => item.data.tags?.includes(title)).sort(byTitle),
@@ -127,9 +126,7 @@ export function articleTopicGroups(articles = []) {
     .sort((a, b) => a.title.localeCompare(b.title));
 
   const other = articles.filter(
-    (item) => !allowedTags.some(
-      (tag) => !tag.startsWith("Copilot ") && item.data.tags?.includes(tag),
-    ),
+    (item) => !allowedTags.some((tag) => item.data.tags?.includes(tag)),
   );
   if (other.length) groups.push({ title: "Other articles", items: other.sort(byTitle) });
   return groups;

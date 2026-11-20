@@ -6,7 +6,8 @@ lane: articles
 goal: economy
 order: 3
 tags:
-  - Commands
+  - Economy
+  - Repository
 ---
 
 # Give agents a command interface with Just

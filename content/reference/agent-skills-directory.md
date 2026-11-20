@@ -6,7 +6,8 @@ lane: reference
 order: 11
 checked: 2026-11-18
 tags:
-  - Skills and agent roles
+  - Copilot
+  - Skills
 ---
 
 # Agent skills directory

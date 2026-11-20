@@ -6,6 +6,7 @@ lane: goals
 goal: security
 order: 3
 tags:
+  - Security
   - Untrusted content and code
 ---
 

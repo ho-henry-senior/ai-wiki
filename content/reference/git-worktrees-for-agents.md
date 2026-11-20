@@ -5,7 +5,7 @@ status: developing
 lane: reference
 order: 5
 tags:
-  - Commands
+  - Repository
 ---
 
 # Git worktrees for parallel agent work

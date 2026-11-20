@@ -7,10 +7,9 @@ goal: alignment
 order: 2
 checked: 2026-11-15
 tags:
-  - Copilot in the editor
-  - Copilot CLI
-  - Copilot cloud agent
+  - Copilot
   - AGENTS.md
+  - Repository
 ---
 
 # Write repository instructions in AGENTS.md

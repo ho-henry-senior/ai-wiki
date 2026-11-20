@@ -6,7 +6,7 @@ lane: articles
 date: 2026-11-14
 checked: 2026-11-15
 tags:
-  - Skills and agent roles
+  - Agent roles
 ---
 
 # Agile roles in agentic development

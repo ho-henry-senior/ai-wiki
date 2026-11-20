@@ -6,6 +6,7 @@ lane: articles
 goal: security
 order: 21
 tags:
+  - Security
   - Permissions and sandboxing
 ---
 

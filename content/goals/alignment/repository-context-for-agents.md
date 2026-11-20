@@ -8,6 +8,8 @@ order: 4
 checked: 2026-11-15
 tags:
   - AGENTS.md
+  - Economy
+  - Repository
 ---
 
 # Repository context for coding agents

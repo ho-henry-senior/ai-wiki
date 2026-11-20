@@ -6,6 +6,7 @@ lane: goals
 goal: security
 order: 1
 tags:
+  - Security
   - Permissions and sandboxing
 ---
 

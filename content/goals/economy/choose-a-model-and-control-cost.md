@@ -14,8 +14,8 @@ goal: economy
 order: 1
 checked: 2026-11-15
 tags:
-  - Copilot CLI
-  - Copilot cloud agent
+  - Copilot
+  - Economy
   - Context and tokens
 ---
 
