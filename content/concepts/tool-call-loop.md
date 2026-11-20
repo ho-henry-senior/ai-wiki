@@ -74,7 +74,7 @@ This boundary is why enforceable limits belong in the harness, not just in a pro
 
 ## What this reveals about cost and trust
 
-Each round can add tool execution time and another model call, with new input and output tokens. Repository search may be a useful tool request, or the harness may use retrieval to supply matching files before a call; see [inside a coding agent](../articles/inside-coding-agent.md#how-the-agent-finds-relevant-code).
+Each round can add tool execution time and another model call, with new input and output tokens. Repository search may be a useful tool request, or the harness may use retrieval to supply matching files before a call; see [inside a coding agent](../articles/inside-coding-agent.md#how-the-agent-finds-task-related-code).
 
 Passing tests is evidence that those checks succeeded in that environment. It does not prove that the developer's underlying requirement has been met. The agent's final explanation is likewise a report to review, not an independent record of everything it did. See [define, steer and verify a task](../goals/alignment/define-and-verify-tasks.md).
 
