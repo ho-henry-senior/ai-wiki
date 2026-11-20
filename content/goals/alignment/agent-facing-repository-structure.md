@@ -44,7 +44,7 @@ repo/
 | `.github/instructions/`                     | Rules for one part of the codebase                             | [Add rules for one part of the codebase](repository-instructions.md#add-rules-for-one-part-of-the-codebase)           |
 | `.agents/skills/`                           | Procedures loaded only when a task needs them                  | [Choose and add skills](../economy/useful-skills.md)                                                                  |
 | `.github/agents/`                           | Roles with their own tools and limits                          | [Skills, profiles, and tools](../../concepts/skills-profiles-and-tools.md)                                            |
-| `justfile` or package scripts               | The commands the agent should run                              | [Let the agent run your repository's commands](agent-tool-delegation.md)                                              |
+| `justfile` or package scripts               | The commands the agent should run                              | [Enable agents to run repository commands](agent-tool-delegation.md)                                              |
 | `.github/workflows/copilot-setup-steps.yml` | Installing dependencies for the cloud agent                    | [Give the cloud agent what it needs](agent-tool-delegation.md#give-the-copilot-cloud-agent-what-it-needs-to-run-them) |
 | `docs/`                                     | Domain, architecture, and decisions                            | [Repository context for agents](repository-context-for-agents.md)                                                     |
 
