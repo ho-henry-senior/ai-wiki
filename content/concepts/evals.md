@@ -25,7 +25,7 @@ For example, give Copilot five known bugs in disposable copies of a repository, 
 
 ## Limits
 
-An eval measures only the cases it contains. Small samples make differences uncertain, and a score can rise while the real goal does not. See [passing tests are evidence, not proof](tests-are-evidence.md).
+An eval measures only the cases it contains. Small samples make differences uncertain, and a score can rise while the real goal does not. See [Verify the result](../goals/alignment/define-and-verify-tasks.md#verify-the-result) for checking agent-written tests against requirements.
 
 ## Sources
 
