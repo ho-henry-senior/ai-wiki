@@ -58,3 +58,64 @@
 .app-article-view-controls .govuk-button[aria-pressed="true"] {
   box-shadow: inset 0 -3px currentColor;
 }
+
+// Shared reading-order cards for explanatory series.
+.app-series-navigation {
+  margin-top: govuk.govuk-spacing(7);
+  margin-bottom: govuk.govuk-spacing(6);
+  border-top: 1px solid govuk.govuk-colour("mid-grey");
+  padding-top: govuk.govuk-spacing(4);
+}
+
+.app-series-navigation__heading {
+  margin-bottom: govuk.govuk-spacing(3);
+}
+
+.app-series-navigation__links {
+  display: grid;
+  // auto-fill keeps empty columns, so a lone Next card stays on the right.
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: govuk.govuk-spacing(3);
+}
+
+.app-series-navigation__card {
+  display: block;
+  padding: govuk.govuk-spacing(4);
+  border: 2px solid govuk.govuk-colour("mid-grey");
+  color: govuk.govuk-colour("blue");
+  text-decoration: none;
+  background-color: govuk.govuk-colour("white");
+}
+
+.app-series-navigation__card:hover {
+  border-color: govuk.govuk-colour("blue");
+  background-color: govuk.govuk-colour("light-grey");
+}
+
+.app-series-navigation__card:focus {
+  outline: 3px solid govuk.govuk-colour("yellow");
+  outline-offset: 0;
+  color: govuk.govuk-colour("black");
+  background-color: govuk.govuk-colour("yellow");
+  border-color: govuk.govuk-colour("black");
+}
+
+.app-series-navigation__card--next {
+  grid-column: -2 / -1;
+}
+
+.app-series-navigation__direction,
+.app-series-navigation__title {
+  display: block;
+}
+
+// GOV.UK's responsive type scale, rather than fixed sizes.
+.app-series-navigation__direction {
+  @include govuk.govuk-font($size: 16, $weight: bold);
+  margin-bottom: govuk.govuk-spacing(2);
+}
+
+.app-series-navigation__title {
+  @include govuk.govuk-font($size: 19, $weight: bold);
+  text-decoration: underline;
+}

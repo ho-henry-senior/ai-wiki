@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
+import { series } from "../site/series.mjs";
 
 const cases = [
   ["goals/index.html", "goals"],
@@ -47,4 +48,19 @@ test("Reference sidebar is alphabetical while the landing page retains purpose g
   assert.ok(positions[0] < positions[1] && positions[1] < positions[2], "Reference entries are sorted");
   assert.ok(html.includes("Examples and assets") && html.includes("Checklists and tools"),
     "Reference landing page remains grouped by purpose");
+});
+
+test("series navigation uses linked cards with titles and reading order", () => {
+  const html = fs.readFileSync("_site/pages/model-requests-and-responses/index.html", "utf8");
+  const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
+  assert.ok(nav, "Series navigation exists");
+  assert.match(nav, /Part 2 of 3/);
+  assert.match(nav, /class="app-series-navigation__card app-series-navigation__card--previous"/);
+  assert.match(nav, /class="app-series-navigation__card app-series-navigation__card--next"/);
+  // Titles come from the series data, so retitling a part needs no change here.
+  const [first, , third] = series["understanding-coding-agents"].parts;
+  assert.ok(nav.includes(first.title), "Previous card names part 1");
+  assert.ok(nav.includes(third.title), "Next card names part 3");
+  assert.match(nav, /<span aria-hidden="true">←<\/span> Previous/);
+  assert.match(nav, /Next <span aria-hidden="true">→<\/span>/);
 });

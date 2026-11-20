@@ -123,13 +123,21 @@
       {%- set reading = series | seriesNavigation(seriesOrder) %}
       {% if reading %}
       <nav class="app-series-navigation" aria-label="Series navigation">
-        <p class="govuk-body-s"><a class="govuk-link" href="{{ reading.overview.url }}">{{ reading.title }}</a>{% if reading.current > 0 %} · Part {{ reading.current }} of {{ reading.total }}{% endif %}</p>
+        <p class="govuk-body-s app-series-navigation__heading">
+          <a class="govuk-link" href="{{ reading.overview.url }}">{{ reading.title }}</a>{% if reading.current > 0 %} · Part {{ reading.current }} of {{ reading.total }}{% endif %}
+        </p>
         <div class="app-series-navigation__links">
           {% if reading.previous %}
-          <p class="govuk-body"><a class="govuk-link" href="{{ reading.previous.url }}">← Previous: {{ reading.previous.title }}</a></p>
+          <a class="app-series-navigation__card app-series-navigation__card--previous" href="{{ reading.previous.url }}">
+            <span class="app-series-navigation__direction"><span aria-hidden="true">←</span> Previous</span>
+            <span class="app-series-navigation__title">{{ reading.previous.title }}</span>
+          </a>
           {% endif %}
           {% if reading.next %}
-          <p class="govuk-body"><a class="govuk-link" href="{{ reading.next.url }}">Next: {{ reading.next.title }} →</a></p>
+          <a class="app-series-navigation__card app-series-navigation__card--next" href="{{ reading.next.url }}">
+            <span class="app-series-navigation__direction">Next <span aria-hidden="true">→</span></span>
+            <span class="app-series-navigation__title">{{ reading.next.title }}</span>
+          </a>
           {% endif %}
         </div>
       </nav>
