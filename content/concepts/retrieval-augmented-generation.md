@@ -17,7 +17,7 @@ The search can use keywords, [vector similarity](vector-stores.md), structured q
 
 It helps when material is too large or changes too often to include in every prompt, such as architecture decisions across many repositories. Exact search finds a known API name; similarity search can find a related decision worded differently.
 
-For a single repository, a short `AGENTS.md`, links, and ordinary search are usually enough. Indexing adds setup and upkeep, so compare it on real questions before adopting it; see [evals](evals.md).
+For a single repository, a short `AGENTS.md`, links, and ordinary search are usually enough. Indexing adds setup and upkeep, so compare it on real questions before adopting it; see [evaluation (eval)](../reference/glossary.md#evaluation-eval).
 
 ## Limits
 
