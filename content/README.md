@@ -27,7 +27,7 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
 - [Prompt injection in coding-agent workflows](goals/security/prompt-injection-coding-agents.md) — treat untrusted content as data rather than authority.
 - [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — how Copilot charges for tokens, which model tier to use, and how to cap a session.
 - [Define, steer, and verify a task](goals/alignment/define-and-verify-tasks.md) — write the task, hand it to Copilot, steer it, and check the result.
-- [Understanding how coding agents work](articles/understanding-coding-agents.md) — an illustrated three-part series on agent components, model requests, search and the tool-call loop.
+- [How Coding Agents Work](articles/understanding-coding-agents.md) — an illustrated three-part series on agent components, model requests, search and the tool-call loop.
 - [Agent data-flow checklist](reference/agent-data-flow-checklist.md) — questions for reviewing a particular agent setup, integration, or sensitive task.
 - [Furnish repositories with context for agents](goals/alignment/repository-context-for-agents.md) — developing guidance for prioritizing useful repository context without taking on unnecessary documentation.
 - [A structure for agent-facing repositories](goals/alignment/agent-facing-repository-structure.md) — a map of where instructions, skills, commands, and Copilot files go, linking to each page.
