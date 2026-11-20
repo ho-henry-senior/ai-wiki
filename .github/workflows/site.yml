@@ -256,7 +256,7 @@ jobs:
           node --input-type=module <<'NODE'
           import fs from "node:fs";
           const article = fs.readFileSync("_site/pages/cloud-agent-security/index.html", "utf8");
-          const harness = fs.readFileSync("_site/pages/model-harness-interaction/index.html", "utf8");
+          const harness = fs.readFileSync("_site/concepts/tool-call-loop/index.html", "utf8");
           const glossary = fs.readFileSync("_site/pages/glossary/index.html", "utf8");
           const title = article.indexOf("Secure the Copilot cloud agent", article.indexOf("<h1"));
           const metadata = article.indexOf("Checked: 15 November 2026", title);
