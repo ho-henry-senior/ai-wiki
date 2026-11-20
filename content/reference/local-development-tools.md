@@ -50,4 +50,3 @@ A tool's output is evidence, not proof of correctness or security. Document the 
 
 - [Let the agent run your repository's commands](../goals/alignment/agent-tool-delegation.md) — advertise commands and their meaning in `AGENTS.md`.
 - [Give agents a command interface with Just](../goals/economy/justfile-agent-workflows.md) — discovery, focused tests, composition and gates.
-- [Repository Justfile patterns](../sources/repository-justfiles.md) — examples observed in Node.js and Python repositories.

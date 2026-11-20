@@ -43,7 +43,6 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
 - [Justfile example: discoverable checks](reference/justfile-example.md) — copyable focused tests, verification and formatting recipes.
 - [AGENTS.md example: short repository entrypoint](reference/agents-md-example.md) — adaptable instructions with project pointers and checks.
 - [Repository layout example: instructions to checks](reference/repository-layout-example.md) — file tree and Mermaid diagram connecting agent guidance to CI.
-- [Real repository examples: instructions, commands and checks](reference/real-repository-examples.md) — four inspected repositories with source files, practical lessons and limits.
 - [Agent skills directory](reference/agent-skills-directory.md) — eight inspected skills, with creators, source files, uses and limitations.
 - [Write a SKILL.md](reference/writing-agent-skills.md) — syntax, file structure and a complete minimal skill.
 - [Agent roles directory](reference/agent-roles-directory.md) — emerging role collection based on the lo-fi software factory case study.

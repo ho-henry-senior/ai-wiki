@@ -54,4 +54,4 @@ Use `docs/agents/` only for material written for agents, such as issue-tracker c
 
 Keep `.github/workflows/` for automation, not as a second home for agent instructions.
 
-**Worked example:** [Repository layout example: instructions to checks](../../reference/repository-layout-example.md) shows a smaller tree and Mermaid diagram linking instructions, named commands, tests and CI. [Real repository examples](../../reference/real-repository-examples.md#awesome-copilot-agent-resource-folders-with-stated-conventions) shows how Awesome Copilot documents a larger collection of agent resources. Use the relationships, not the directory names, as a starting point.
+**Worked example:** [Repository layout example: instructions to checks](../../reference/repository-layout-example.md) shows a smaller tree and Mermaid diagram linking instructions, named commands, tests and CI. [Awesome Copilot's AGENTS.md](https://github.com/github/awesome-copilot/blob/main/AGENTS.md) documents a larger collection of agent resources. Use the relationships, not the directory names, as a starting point.
