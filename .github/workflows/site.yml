@@ -362,6 +362,12 @@ jobs:
           grep -q 'assets/diagrams.js' "$page" || { echo "Diagram page does not load the viewer script." >&2; exit 1; }
           grep -q 'Enlarge diagram' _site/assets/diagrams.js || { echo "Diagram enlargement control is missing." >&2; exit 1; }
           grep -q 'dialog.showModal()' _site/assets/diagrams.js || { echo "Diagram viewer is missing." >&2; exit 1; }
+          grep -q 'diagram.setAttribute("role", "button")' _site/assets/diagrams.js || { echo "Diagram is not a keyboard-accessible enlargement control." >&2; exit 1; }
+          grep -q 'diagram.tabIndex = 0' _site/assets/diagrams.js || { echo "Diagram cannot receive keyboard focus." >&2; exit 1; }
+          if grep -q 'app-diagram__enlarge' _site/assets/diagrams.js; then
+            echo "Separate diagram enlarge button was reintroduced." >&2
+            exit 1
+          fi
           if grep -q 'mermaid.min.js' _site/pages/security/index.html; then
             echo "A page without a diagram loads Mermaid." >&2
             exit 1
