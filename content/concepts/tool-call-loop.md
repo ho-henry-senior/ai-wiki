@@ -1,6 +1,6 @@
 ---
 type: explanation
-summary: Follow one coding task through tool requests, harness execution, results, edits and tests, and see why a passing test is evidence rather than proof.
+summary: How a model requests a tool, the harness permits or refuses it, and returned results inform the next action.
 status: developing
 lane: articles
 series: understanding-coding-agents
