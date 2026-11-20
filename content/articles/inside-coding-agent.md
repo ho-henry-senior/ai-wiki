@@ -48,7 +48,7 @@ The model-to-harness arrow is **not** an arrow into your shell. The harness deci
 
 Suppose the developer asks, “Fix the failing test.” The model may be able to reason about source code, but whether it can inspect that code depends on what is in its current input and which tools the harness offers. Whether it can edit files or run tests depends on the available tools and enforced permissions.
 
-An illustrative tool interface exposed to the model might be:
+A tool definition tells the model which operation it can request. For example:
 
 ```json
 {
@@ -60,7 +60,7 @@ An illustrative tool interface exposed to the model might be:
 }
 ```
 
-This describes an available action; it does not include the shell implementation. **Illustrative schema, not a literal Copilot tool definition.** The actual interfaces and approval behaviour vary between Copilot surfaces and other agents.
+The interface describes an action, not how the shell tool is implemented. Copilot surfaces can expose different tools and approval rules.
 
 ## How the agent finds task-related code
 
