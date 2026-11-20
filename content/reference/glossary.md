@@ -68,7 +68,7 @@ A numerical representation of data, such as text, where relationships between ve
 
 ### Evaluation (eval)
 
-A test of a model or AI application against criteria for a task, such as correctness, quality, or safety. Evals help detect regressions and compare approaches; results depend on the test data and criteria. See [evals](../concepts/evals.md).
+A repeatable assessment of how well a model or agent performs defined tasks against expected outcomes or grading criteria. For a coding agent, an eval can compare task success, reliability or cost before and after a change to its model or instructions. Unlike verifying one code change, an eval measures performance across a set of tasks or runs. Its conclusions are limited by how representative the tasks and criteria are. See [Anthropic's explanation of agent evals](https://www.anthropic.com/research/demystifying-evals-for-ai-agents) and [OpenAI's evaluation guidance](https://developers.openai.com/api/docs/guides/evaluation-best-practices).
 
 ## F
 
