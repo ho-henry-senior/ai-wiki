@@ -48,5 +48,5 @@ A tool's output is evidence, not proof of correctness or security. Document the 
 
 ## Related guidance
 
-- [Let the agent run your repository's commands](../goals/alignment/agent-tool-delegation.md) — advertise commands and their meaning in `AGENTS.md`.
+- [Enable agents to run repository commands](../goals/alignment/agent-tool-delegation.md) — advertise commands and their meaning in `AGENTS.md`.
 - [Give agents a command interface with Just](../goals/economy/justfile-agent-workflows.md) — discovery, focused tests, composition and gates.
