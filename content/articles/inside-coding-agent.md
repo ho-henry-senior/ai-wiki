@@ -62,16 +62,16 @@ An illustrative tool interface exposed to the model might be:
 
 This describes an available action; it does not include the shell implementation. **Illustrative schema, not a literal Copilot tool definition.** The actual interfaces and approval behaviour vary between Copilot surfaces and other agents.
 
-## How the agent finds relevant code
+## How the agent finds task-related code
 
-The agent needs relevant code in the model's input, not just somewhere on disk. Two routes are possible:
+The agent needs task-related code in the model's input, not just somewhere on disk. Two routes are possible:
 
 - **Agent-directed search:** the model requests a search tool, such as text search or semantic code search; the harness returns matching files or excerpts, which can inform another model call.
-- **Automatic retrieval:** the harness or a retrieval component selects relevant repository passages before a model call, without the model separately requesting each search.
+- **Automatic retrieval:** the harness or a retrieval component selects matching repository passages before a model call, without the model separately requesting each search.
 
 These are alternative patterns that a product can combine. **Neither requires a vector database.** Search may use filenames, symbols, text matches or embeddings-based semantic similarity. Retrieval-augmented generation (RAG) means supplying retrieved material to a model; vector search is one possible retrieval mechanism. See [RAG](../concepts/retrieval-augmented-generation.md) and [vector stores](../concepts/vector-stores.md) for those distinct concepts.
 
-The choice affects what the model can discover and the costs of indexing or further tool and model calls. The diagram's dashed path represents an *optional conceptual arrangement*, not an assertion that every Copilot surface automatically retrieves context.
+The choice affects what the model can discover and the costs of indexing or further tool and model calls. The diagram's dashed path represents an _optional conceptual arrangement_, not an assertion that every Copilot surface automatically retrieves context.
 
 ## Why the boundary matters
 
