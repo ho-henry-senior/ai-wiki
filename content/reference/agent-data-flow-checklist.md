@@ -56,7 +56,7 @@ This fictional entry shows how to record a flow, including unknowns.
 
 - [ ] Grant only the file, network, and service access the task needs, and keep production credentials out. A mistake or an injected instruction can use whatever the agent can reach.
 - [ ] Check where each tool, skill, dependency, and MCP server comes from and what it can reach before enabling it, because each runs code with the agent's access. Models can also [invent package names that attackers register](../concepts/hallucinated-dependencies.md).
-- [ ] Check which limits cover each tool; [worktrees do not isolate permissions](git-worktrees-for-agents.md#what-worktrees-do-not-isolate), and a sandbox may not cover MCP servers.
+- [ ] Check which enforced limits cover each tool, including integrations such as MCP servers that may run outside the agent's sandbox.
 - [ ] Make sure limits are [enforced, not just instructions](../concepts/instructions-vs-controls.md), because the text that misleads the agent can override an instruction.
 - [ ] Require approval for destructive, costly, privileged, or public actions.
 - [ ] Review generated changes and run tests and security checks before accepting them, because the agent's summary may not mention a weakened test or check.
