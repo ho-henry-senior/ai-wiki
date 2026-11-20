@@ -60,7 +60,7 @@ Keep `.github/workflows/` for automation, not as a second home for agent instruc
 
 ## How instructions connect to checks
 
-The tree illustrates where files might live; the useful relationship is that instructions point to commands backed by executable checks. For example, in a Node.js repository:
+The tree illustrates where files might live; the key relationship is that instructions point to commands backed by executable checks. For example, in a Node.js repository:
 
 ```mermaid
 flowchart TD
