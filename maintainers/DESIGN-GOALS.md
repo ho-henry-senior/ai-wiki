@@ -49,6 +49,8 @@ Which features other agents support, such as Codex, Claude Code, Cursor, or Gemi
 
 ## Organization
 
+Aim for a smaller, more focused collection in which every page earns its place. Consider what readers already know, and ask what would actually be lost if a page disappeared.
+
 For each outcome, identify the core advice readers can act on. Use it to decide what the wiki needs to explain, prioritize, and link together, and revisit it as practices and evidence change. Review the wiki against that advice to find gaps and unsupported recommendations.
 
 Make the primary reader journey: homepage, outcome overview, then actions with practical examples. Give each action with why it matters and how to verify it, and explain the underlying principle well enough for readers to apply it to cases the page does not cover. A journey may span several pages or remain within one page; retain direct paths to practical guidance for readers who already understand the principle. A page may support more than one outcome; link to shared material rather than duplicating it.
