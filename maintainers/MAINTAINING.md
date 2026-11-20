@@ -73,6 +73,12 @@ Focused reusable concepts live in `content/concepts/` and use the types describe
 
 The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it.
 
+Give reusable material, whether prose, a diagram or an example, one canonical home, and compose it elsewhere by linking rather than copying. A technical way to include shared assets in several pages is tracked in [#133](https://github.com/ho-henry-senior/ai-wiki/issues/133).
+
+Match content to the page's purpose. Advice on making a repository ready for agents, for example, is about properties of the repository; how to define and approve a task, or what an agent is permitted to do at runtime, are separate topics with their own pages.
+
+Before polishing a page, ask whether it should exist: keep it, refine it, merge it into another page, remove it, or defer it. Do not assume every page should be kept and expanded. [Page reviews](PAGE-REVIEWS.md) sets out how to decide, and records the decisions made so far.
+
 ## Writing a concept
 
 Use descriptive, lowercase, hyphenated filenames and the same `type` and `summary` front matter as authored pages. Concepts normally use `type: reference` or `type: pattern`.
