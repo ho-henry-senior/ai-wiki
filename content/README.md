@@ -7,8 +7,6 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
 - [Alignment](goals/alignment/README.md) — core advice for matching work to the intended outcome.
   - [Requirements discovery with coding agents](goals/alignment/agent-led-requirements-discovery.md)
   - [Explicit decisions and scope boundaries](goals/alignment/explicit-decisions-and-scope-boundaries.md)
-  - [Detailed specification from agreed decisions](goals/alignment/detailed-specification-from-agreed-decisions.md)
-  - [Steering and verification against the specification](goals/alignment/steering-and-verification-against-the-specification.md)
 - [Economy](goals/economy/README.md) — core advice for using time and tokens effectively without sacrificing quality or security.
   - [Agent-ready repository context](goals/economy/agent-ready-repository-context.md)
   - [Discoverable deterministic checks](goals/economy/discoverable-deterministic-checks.md)
