@@ -10,4 +10,4 @@
 
 [Copilot CLI: where the harness's check appears](../includes/tool-call-loop-copilot-cli.md)
 
-[Full concept, examples, and sources](../concepts/tool-call-loop.md) · [All slides](README.md)
+[Full agent-loop explanation and sources](../concepts/tool-call-loop.md) · [All slides](README.md)
