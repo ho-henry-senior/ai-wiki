@@ -10,7 +10,7 @@ tags:
   - Skills and custom agents
 ---
 
-# Skills, profiles, and tools have different jobs
+# Skills, agent profiles, and tools
 
 Before you add configuration, name what is missing. Add a **skill** when a task keeps needing the same procedure, a **profile** when work needs a distinct role with its own limits, and a **tool** when the agent needs an action it cannot perform. A longer procedure cannot make up for a missing tool.
 
