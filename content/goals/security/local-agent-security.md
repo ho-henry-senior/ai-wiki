@@ -9,7 +9,6 @@ checked: 2026-11-16
 tags:
   - Copilot in the editor
   - Copilot CLI
-  - Copilot app
   - Permissions and sandboxing
 ---
 

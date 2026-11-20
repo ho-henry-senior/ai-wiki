@@ -6,6 +6,8 @@ lane: goals
 goal: traceability
 order: 2
 checked: 2026-11-15
+tags:
+  - Pull requests and review
 ---
 
 # Pull request verification evidence

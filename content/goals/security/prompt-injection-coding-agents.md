@@ -6,6 +6,8 @@ lane: articles
 goal: security
 order: 4
 checked: 2026-11-15
+tags:
+  - Untrusted content and code
 ---
 
 # Prompt injection in coding-agent workflows

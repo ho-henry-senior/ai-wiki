@@ -6,7 +6,7 @@ lane: articles
 series: skills-and-agent-roles
 seriesOrder: 0
 tags:
-  - Skills and custom agents
+  - Skills and agent roles
 ---
 
 # Skills and agent roles

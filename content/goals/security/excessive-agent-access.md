@@ -5,6 +5,8 @@ status: established
 lane: goals
 goal: security
 order: 1
+tags:
+  - Permissions and sandboxing
 ---
 
 # Excessive agent access

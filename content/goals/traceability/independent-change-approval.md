@@ -6,6 +6,8 @@ lane: goals
 goal: traceability
 order: 4
 checked: 2026-11-17
+tags:
+  - Pull requests and review
 ---
 
 # Independent change approval

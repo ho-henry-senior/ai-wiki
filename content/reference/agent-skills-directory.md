@@ -6,7 +6,7 @@ lane: reference
 order: 11
 checked: 2026-11-18
 tags:
-  - Skills and custom agents
+  - Skills and agent roles
 ---
 
 # Agent skills directory

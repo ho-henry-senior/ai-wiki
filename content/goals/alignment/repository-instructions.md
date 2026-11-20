@@ -10,7 +10,6 @@ tags:
   - Copilot in the editor
   - Copilot CLI
   - Copilot cloud agent
-  - Copilot code review
   - AGENTS.md
 ---
 

@@ -6,6 +6,8 @@ lane: goals
 goal: traceability
 order: 1
 checked: 2026-11-15
+tags:
+  - Pull requests and review
 ---
 
 # Agent authorship and attribution

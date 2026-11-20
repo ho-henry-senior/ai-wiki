@@ -5,6 +5,8 @@ status: established
 lane: goals
 goal: traceability
 order: 3
+tags:
+  - Pull requests and review
 ---
 
 # Risk-focused change review

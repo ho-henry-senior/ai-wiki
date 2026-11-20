@@ -8,7 +8,7 @@ seriesOrder: 4
 checked: 2026-11-20
 order: 13
 tags:
-  - Skills and custom agents
+  - Skills and agent roles
 ---
 
 # How agent roles use skills

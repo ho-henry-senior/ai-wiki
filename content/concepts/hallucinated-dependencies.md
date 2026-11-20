@@ -6,6 +6,8 @@ lane: articles
 goal: security
 order: 26
 checked: 2026-11-16
+tags:
+  - Untrusted content and code
 ---
 
 # Invented dependencies and supply-chain attacks

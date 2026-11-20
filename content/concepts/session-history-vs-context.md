@@ -8,6 +8,7 @@ order: 21
 checked: 2026-11-15
 tags:
   - Context and tokens
+  - Copilot CLI
 ---
 
 # Session history and active context

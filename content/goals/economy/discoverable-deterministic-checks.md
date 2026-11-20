@@ -5,6 +5,9 @@ status: established
 lane: goals
 goal: economy
 order: 2
+tags:
+  - Commands
+  - Testing
 ---
 
 # Discoverable deterministic checks

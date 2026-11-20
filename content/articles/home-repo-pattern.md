@@ -7,7 +7,7 @@ goal: alignment
 checked: 2026-11-18
 tags:
   - AGENTS.md
-  - Skills and custom agents
+  - Skills and agent roles
 ---
 
 # The Home Repo pattern for agents working across repositories

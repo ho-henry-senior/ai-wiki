@@ -5,6 +5,8 @@ status: established
 lane: goals
 goal: alignment
 order: 2
+tags:
+  - Specifications
 ---
 
 # Explicit decisions and scope boundaries

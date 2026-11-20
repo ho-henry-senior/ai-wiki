@@ -9,7 +9,7 @@ seriesOrder: 3
 order: 24
 checked: 2026-11-20
 tags:
-  - Skills and custom agents
+  - Skills and agent roles
 ---
 
 # Agent roles, skills and tools
