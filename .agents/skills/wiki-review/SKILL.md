@@ -15,7 +15,7 @@ For a whole-wiki review, inventory and read every authored article, concept, and
 
 For a scoped review, identify the requested subset and its directly related material. Record what was read and what remains unchecked in session notes; do not describe a partial review as whole-wiki coverage.
 
-For deeper corpus-inventory or terminology methods, consult the optional [candidate-skills research](../../../content/sources/wiki-information-architecture-skills.md). These external skills are not prerequisites for a review.
+For deeper corpus-inventory or terminology methods, consult the optional [candidate-skills research](../../../maintainers/research/wiki-information-architecture-skills.md). These external skills are not prerequisites for a review.
 
 **Complete when:** every in-scope file has a recorded disposition, and exclusions are explicit.
 
