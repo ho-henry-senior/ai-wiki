@@ -20,7 +20,6 @@ This directory holds focused explanations that articles can reuse. Each concept 
 
 ## Repository feedback
 
-- [Task names need explicit contracts](task-interface-contracts.md) — scope, side effects, prerequisites, and gates versus diagnostics.
 - [Passing tests are evidence, not proof](tests-are-evidence.md) — assertions, intended behavior, and independent expectations.
 
 ## Background
