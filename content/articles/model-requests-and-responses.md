@@ -35,7 +35,7 @@ The developer asks the agent to fix a failing test. The harness might provide in
 }
 ```
 
-**Instructions** describe desired behaviour; **messages** carry the conversation; **tool definitions** tell the model which actions it may request and how to specify their arguments. A real request may also include repository instructions, selected source files and earlier tool results. Access to a whole repository does not mean every file is in this input.
+**Instructions** describe desired behaviour; **messages** carry the conversation; **tool definitions** tell the model which actions it may request and how to specify their arguments. A real request may also include repository instructions, selected source files and earlier tool results. Those sources can come from an agent-requested search or optional automatic retrieval, including semantic search. Access to a whole repository does not mean every file is in this input. The search method affects which evidence becomes visible; it need not use embeddings or vectors.
 
 ## A tool request is output, not execution
 
@@ -81,3 +81,4 @@ The next part, [how a coding agent carries out a task](../concepts/tool-call-loo
 - [OpenAI: Function calling](https://platform.openai.com/docs/guides/function-calling)
 - [GitHub: Managing context in Copilot CLI](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/context-management)
 - [MCP architecture](https://modelcontextprotocol.io/docs/learn/architecture)
+- [VS Code: How Copilot understands your workspace](https://code.visualstudio.com/docs/agents/reference/workspace-context)
