@@ -13,10 +13,12 @@ The team first coordinated specialist agents manually, then used local polling s
 
 ## The workflow
 
-1. A Product agent discussed the problem with the team and drafted a specification. The team reviewed and approved it.
-2. A Business Analyst agent proposed a sequence of tickets from the approved specification. People reviewed the breakdown and approved the issues.
-3. A Developer agent implemented each available issue, ran checks, and opened a pull request.
-4. A Reviewer agent examined the change and published findings.
+The four agent roles used [project-specific Markdown configurations](../reference/agent-roles-directory.md), preserved from this exercise rather than proposed as general templates.
+
+1. A [Product agent](../../data/role-examples/product.agent.md) discussed the problem with the team and drafted a specification. The team reviewed and approved it.
+2. A [Business Analyst agent](../../data/role-examples/business-analyst.agent.md) proposed a sequence of tickets from the approved specification. People reviewed the breakdown and approved the issues.
+3. A [Developer agent](../../data/role-examples/developer.agent.md) implemented each available issue, ran checks, and opened a pull request.
+4. A [Reviewer agent](../../data/role-examples/reviewer.agent.md) examined the change and published findings.
 5. A human reviewed the implementation and findings, then decided whether to merge.
 
 The first issue was started manually. For subsequent work, a human applied a readiness label to each issue; a polling script selected ready issues without open blockers and started the Developer agent. Another script watched for pull requests ready for review and started the Reviewer. A review-complete label signaled that a review comment had been published, not that the change was approved.
