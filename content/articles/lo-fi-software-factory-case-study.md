@@ -48,7 +48,7 @@ The participant considered the exercise particularly successful for three of the
 
 The exercise showed that a local dispatcher could coordinate specialist agents around issues, pull requests, and review artifacts, while people retained approval points. It does not demonstrate a fully autonomous or production-ready factory. The work was technically well bounded, the scripts depended on one local machine, and concurrency was deliberately limited. Scaling would require further decisions about remote execution, tooling, concurrent work, conflicts, issue readiness, review findings, and merge authority.
 
-The agents ran unattended with broad tool access and were not independently sandboxed. Approval gates controlled workflow handoffs, not every action an agent could take. Separate worktrees isolated changes, but [a worktree is not a security sandbox](../concepts/worktrees-not-sandboxes.md). A similar workflow needs enforced access controls, such as a sandbox and scoped credentials, matched to its data and risks.
+The agents ran unattended with broad tool access and were not independently sandboxed. Approval gates controlled workflow handoffs, not every action an agent could take. A similar workflow needs enforced access controls, such as a sandbox and scoped credentials, matched to its data and risks.
 
 ## Evidence and related guidance
 

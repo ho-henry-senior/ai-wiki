@@ -74,7 +74,7 @@ A test-first workflow focused on observable behaviour at agreed interfaces. Requ
 
 **Author:** [Matt Pocock](https://github.com/mattpocock). **Source:** [implement-spec/SKILL.md](https://github.com/mattpocock/skills/blob/main/skills/engineering/implement-spec/SKILL.md).
 
-Coordinates ticket implementations through separate worktrees, subagents and an integration branch. Needs a configured tracker and supported tooling; [worktrees are not sandboxes](../concepts/worktrees-not-sandboxes.md).
+Coordinates ticket implementations through separate worktrees, subagents and an integration branch. Needs a configured tracker and supported tooling; see [Git worktrees for parallel agent work](git-worktrees-for-agents.md).
 
 ### /code-review
 
