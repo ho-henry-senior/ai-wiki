@@ -31,7 +31,7 @@ Lead readers toward practical changes with a clear likely benefit and modest eff
 
 To support those outcomes:
 
-- **Make guidance practical.** Include workflows, examples, concepts, and explanations that help readers apply AI to real work.
+- **Make guidance practical.** Include workflows, examples, concepts, and explanations that help readers apply AI to real work. Where advice recommends a repository practice, connect it to a real implementation readers can inspect and adapt when that adds value. Prefer attributed, source-linked examples to invented templates; explain what each demonstrates, what transfers, and what depends on its project. Do not require an example on every page.
 - **Improve agent work in repositories.** Document ways to make repositories easier for agents to use, including tools, machine-readable instructions, and indexed project documentation that helps agents load only the context they need.
 - **Support spec-driven development.** Show how agents can challenge initial requests, surface unresolved decisions and draft specifications that humans review before agents turn agreed requirements into tasks and implement them.
 - **Cover security best practices.** Develop practical guidance for using agents and AI-enabled development tools securely.
