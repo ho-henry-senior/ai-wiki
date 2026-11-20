@@ -4,6 +4,8 @@ import { govukEleventyPlugin } from "@x-govuk/govuk-eleventy-plugin";
 import {
   excluded,
   githubSlug,
+  isExternalLink,
+  markExternalLink,
   pathPrefix,
   repository,
   rewriteLink,
@@ -260,11 +262,18 @@ Use these while configuring an agent, reviewing its access or checking its chang
       md.renderer.rules.link_open ||
       ((tokens, idx, options, env, self) =>
         self.renderToken(tokens, idx, options));
+    // Links that leave the wiki, including files sent to GitHub, get an
+    // arrow icon (assets/application.scss) and a description for screen
+    // readers, which the layout adds once per page (site/_includes/wiki.njk).
     md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
-      const href = tokens[idx].attrGet("href");
-      if (href && env?.page?.inputPath)
-        tokens[idx].attrSet("href", rewriteLink(href, env.page.inputPath));
-      return render(tokens, idx, options, env, self);
+      const token = tokens[idx];
+      let href = token.attrGet("href");
+      if (href && env?.page?.inputPath) {
+        href = rewriteLink(href, env.page.inputPath);
+        token.attrSet("href", href);
+      }
+      const html = render(tokens, idx, options, env, self);
+      return isExternalLink(href) ? markExternalLink(html) : html;
     };
 
     // Diagrams: write ```mermaid blocks as <pre class="mermaid">, which

@@ -168,4 +168,10 @@
   {% else %}
     {{ mainColumn | safe }}
   {% endif %}
+  {#- Read after the name of each link to another site; see the link rule in
+      site/eleventy.config.mjs. Outside the page content, so search does not
+      index it. -#}
+  {%- if "app-link--external" in mainColumn %}
+  <p id="app-external-link-description" hidden>Goes to another site</p>
+  {%- endif %}
 {% endblock %}

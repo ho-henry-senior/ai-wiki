@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { githubSlug, pageUrl, rewriteLink } from "./site-links.mjs";
+import { githubSlug, isExternalLink, markExternalLink, pageUrl, rewriteLink } from "./site-links.mjs";
 
 test("maps Markdown files to site URLs, with README as the folder index", () => {
   assert.equal(pageUrl("README.md"), "/");
@@ -90,4 +90,34 @@ test("makes heading IDs the way GitHub does", () => {
   const seen = new Map();
   assert.equal(githubSlug("Sources", seen), "sources");
   assert.equal(githubSlug("Sources", seen), "sources-1");
+});
+
+test("marks links that leave the wiki, including files sent to GitHub", () => {
+  assert.equal(isExternalLink("https://docs.github.com/en/copilot"), true);
+  assert.equal(isExternalLink("http://example.com/"), true);
+  // A repository file that is not a site page goes to GitHub.
+  assert.equal(isExternalLink(rewriteLink("../../AGENTS.md", "./content/goals/alignment.md")), true);
+  // The published site itself, by full address, is not external.
+  assert.equal(isExternalLink("https://ho-henry-senior.github.io/ai-wiki/pages/security/"), false);
+  // Another project on the same host is.
+  assert.equal(isExternalLink("https://ho-henry-senior.github.io/other-project/"), true);
+  for (const href of ["/pages/security/", "#sources", "mailto:someone@example.com", "", undefined])
+    assert.equal(isExternalLink(href), false, String(href));
+  assert.equal(isExternalLink(rewriteLink("local-agent-security.md", "./pages/security.md")), false);
+});
+
+test("adds the external class and description to a rendered link tag", () => {
+  const description = 'aria-describedby="app-external-link-description"';
+  assert.equal(
+    markExternalLink('<a href="https://example.com/">'),
+    `<a ${description} class="app-link--external" href="https://example.com/">`,
+  );
+  // Keeps a class set by another renderer.
+  assert.equal(
+    markExternalLink('<a class="govuk-link" href="https://example.com/">'),
+    `<a ${description} class="govuk-link app-link--external" href="https://example.com/">`,
+  );
+  // Does not mark a link twice.
+  const marked = markExternalLink('<a href="https://example.com/">');
+  assert.equal(markExternalLink(marked), marked);
 });

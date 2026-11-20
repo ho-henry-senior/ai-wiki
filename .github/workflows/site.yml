@@ -95,6 +95,28 @@ jobs:
             echo "Shared assets in content/includes/ were published as pages." >&2
             exit 1
           fi
+      - name: Check external link markers
+        run: |
+          # Links that leave the wiki, including repository files sent to
+          # GitHub, are marked; links within the wiki are not.
+          page=_site/concepts/tool-call-loop/index.html
+          grep -qE '<a [^>]*class="[^"]*app-link--external[^"]*"[^>]*href="https://docs\.github\.com/|<a [^>]*href="https://docs\.github\.com/[^>]*class="[^"]*app-link--external' "$page" || {
+            echo "A link to GitHub Docs is not marked as external." >&2
+            exit 1
+          }
+          grep -q 'id="app-external-link-description"' "$page" || {
+            echo "The page has no description for its external links." >&2
+            exit 1
+          }
+          roles=_site/pages/agent-roles-directory/index.html
+          grep -oE '<a [^>]*>' "$roles" | grep 'github.com/ho-henry-senior/ai-wiki/blob/main/data/role-examples/' | grep -q app-link--external || {
+            echo "A link to a repository file on GitHub is not marked as external." >&2
+            exit 1
+          }
+          if grep -rhoE '<a [^>]*>' _site --include=*.html | grep -E 'href="(/ai-wiki/|#)' | grep -q app-link--external; then
+            echo "A link within the wiki is marked as external." >&2
+            exit 1
+          fi
       - name: Check the navigation
         run: |
           for lane in goals reference articles; do
