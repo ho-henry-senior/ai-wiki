@@ -9,56 +9,6 @@
 );
 @forward "pkg:@x-govuk/govuk-eleventy-plugin";
 
-// The header sets --govuk-text-colour to white for everything inside it, and
-// the search results list sits inside the header, so results showed white
-// text on a white background. Restore the normal text colour in the list.
-.app-search__menu {
-  --govuk-text-colour: #{govuk.govuk-colour("black")};
-}
-
-// A contents list of single letters, such as the glossary's A to Z, as one
-// wrapping line of links rather than a tall list. See site/_includes/wiki.njk.
-.app-contents-list--letters ol {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 govuk.govuk-spacing(3);
-}
-
-// Page metadata stays secondary to the title; status is plain text, not a badge.
-.app-page-details {
-  color: govuk.govuk-colour("dark-grey");
-}
-
-// The checked/status line sits directly below the heading, before the summary.
-.app-document-header:has(.app-page-details) .govuk-heading-l {
-  margin-bottom: govuk.govuk-spacing(2);
-}
-
-// Visually separate emerging Trust guidance from established Traceability advice.
-.app-developing-card {
-  border: 1px solid govuk.govuk-colour("mid-grey");
-  padding: govuk.govuk-spacing(4);
-  margin-bottom: govuk.govuk-spacing(6);
-}
-
-// Keep title spacing compact without overriding GOV.UK's responsive type scale.
-.app-document-header .govuk-heading-l {
-  margin-bottom: govuk.govuk-spacing(3);
-}
-
-// The Articles landing page can switch between three pre-rendered lists.
-// Without JavaScript, the default alphabetical list remains visible.
-.app-article-view-controls {
-  margin-bottom: govuk.govuk-spacing(4);
-}
-.app-article-view-controls .govuk-button {
-  margin-right: govuk.govuk-spacing(2);
-  margin-bottom: govuk.govuk-spacing(2);
-}
-.app-article-view-controls .govuk-button[aria-pressed="true"] {
-  box-shadow: inset 0 -3px currentColor;
-}
-
 // All Mermaid diagrams can be enlarged without changing their page layout.
 .app-diagram {
   margin-bottom: govuk.govuk-spacing(5);
@@ -138,4 +88,55 @@
 .app-diagram-dialog__viewport svg {
   display: block;
   min-width: 100%;
+}
+
+
+// The header sets --govuk-text-colour to white for everything inside it, and
+// the search results list sits inside the header, so results showed white
+// text on a white background. Restore the normal text colour in the list.
+.app-search__menu {
+  --govuk-text-colour: #{govuk.govuk-colour("black")};
+}
+
+// A contents list of single letters, such as the glossary's A to Z, as one
+// wrapping line of links rather than a tall list. See site/_includes/wiki.njk.
+.app-contents-list--letters ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 govuk.govuk-spacing(3);
+}
+
+// Page metadata stays secondary to the title; status is plain text, not a badge.
+.app-page-details {
+  color: govuk.govuk-colour("dark-grey");
+}
+
+// The checked/status line sits directly below the heading, before the summary.
+.app-document-header:has(.app-page-details) .govuk-heading-l {
+  margin-bottom: govuk.govuk-spacing(2);
+}
+
+// Visually separate emerging Trust guidance from established Traceability advice.
+.app-developing-card {
+  border: 1px solid govuk.govuk-colour("mid-grey");
+  padding: govuk.govuk-spacing(4);
+  margin-bottom: govuk.govuk-spacing(6);
+}
+
+// Keep title spacing compact without overriding GOV.UK's responsive type scale.
+.app-document-header .govuk-heading-l {
+  margin-bottom: govuk.govuk-spacing(3);
+}
+
+// The Articles landing page can switch between three pre-rendered lists.
+// Without JavaScript, the default alphabetical list remains visible.
+.app-article-view-controls {
+  margin-bottom: govuk.govuk-spacing(4);
+}
+.app-article-view-controls .govuk-button {
+  margin-right: govuk.govuk-spacing(2);
+  margin-bottom: govuk.govuk-spacing(2);
+}
+.app-article-view-controls .govuk-button[aria-pressed="true"] {
+  box-shadow: inset 0 -3px currentColor;
 }
