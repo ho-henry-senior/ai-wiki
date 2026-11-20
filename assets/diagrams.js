@@ -27,6 +27,8 @@ if (diagrams.length) {
   let activeDiagram = null;
   let zoom = 100;
   let returnFocus = null;
+  let originalParent = null;
+  let originalStyle = null;
 
   const setZoom = (value) => {
     zoom = Math.max(100, Math.min(250, value));
@@ -48,8 +50,15 @@ if (diagrams.length) {
   dialog.addEventListener("close", () => {
     returnFocus?.focus();
     returnFocus = null;
+    if (activeDiagram && originalParent) {
+      if (originalStyle === null) activeDiagram.removeAttribute("style");
+      else activeDiagram.setAttribute("style", originalStyle);
+      originalParent.append(activeDiagram);
+    }
     viewport.replaceChildren();
     activeDiagram = null;
+    originalParent = null;
+    originalStyle = null;
   });
 
   diagrams.forEach((svg, index) => {
@@ -66,9 +75,9 @@ if (diagrams.length) {
     enlarge.setAttribute("aria-label", `Enlarge diagram ${index + 1}`);
     enlarge.addEventListener("click", () => {
       returnFocus = enlarge;
-      activeDiagram = svg.cloneNode(true);
-      activeDiagram.removeAttribute("id");
-      activeDiagram.setAttribute("role", "img");
+      activeDiagram = svg;
+      originalParent = svg.parentNode;
+      originalStyle = svg.getAttribute("style");
       activeDiagram.style.maxWidth = "none";
       activeDiagram.style.height = "auto";
       viewport.replaceChildren(activeDiagram);
