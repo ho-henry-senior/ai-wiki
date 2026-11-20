@@ -45,7 +45,7 @@ flowchart TD
     BB --> PB["Review and PR B"]
 ```
 
-The arrows show the working arrangement, not permission boundaries. Each agent runs in its own working directory, but the worktrees share repository history and may still access the same machine and external services.
+Each agent works in its own directory, with shared repository history.
 
 ## Finish a task
 
@@ -60,13 +60,11 @@ git worktree list
 
 The branch deletion is optional; use it only after the branch is merged or otherwise no longer needed. By default, `git worktree remove` refuses to remove a worktree containing uncommitted changes, and `git branch -d` checks that the branch is merged. Do not force either command just to make cleanup succeed.
 
-## What worktrees do not isolate
+## Shared state and concurrent changes
 
-Worktrees separate working files and Git indexes, but **not** your operating-system account, credentials, network access, running services or all repository metadata. Two projects using the same database, ports or generated output outside their worktrees can still interfere with each other. Dependencies and ignored build artefacts inside each working directory normally need their own setup.
+Worktrees share Git history and repository metadata. Concurrent tasks may also use the same database, ports or generated files outside their working directories. Install dependencies and set up ignored build artefacts in each directory as needed.
 
-Worktrees also do not make parallel changes independent: two agents can modify the same underlying feature on different branches, leaving conflicts or incompatible behaviour to resolve at integration time. Prefer distinct, reviewable tasks, and test the combined result after merging.
-
-For restricted execution, use an enforced [sandbox and limited credentials](../goals/security/local-agent-security.md); a separate working directory cannot prevent an agent from reading other accessible files or taking actions through external services.
+Parallel branches can still introduce conflicting or incompatible changes to the same feature. Prefer distinct tasks and test the combined result after merging.
 
 ## Source
 
