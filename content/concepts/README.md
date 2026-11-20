@@ -15,7 +15,6 @@ This directory holds focused explanations that articles can reuse. Each concept 
 - [Inference, retention, and training are separate](inference-retention-training.md) — distinct questions about where data goes and how it is used.
 - [Secrets can leak through tool output](secrets-in-tool-output.md) — accidental exposure through diagnostics, history, and later requests.
 - [Invented package names can be real attacks](hallucinated-dependencies.md) — how hallucinated dependencies become malware, and what stops it.
-- [A worktree is not a sandbox](worktrees-not-sandboxes.md) — separating changes versus restricting execution.
 - [Instructions are not enforced controls](instructions-vs-controls.md) — behavioral guidance versus independently enforced permissions.
 
 ## Background
