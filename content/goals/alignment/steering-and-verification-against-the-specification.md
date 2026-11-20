@@ -13,4 +13,4 @@ A wrong turn costs more the longer it runs, so correct it in the session or on t
 
 Then check each acceptance criterion against the diff, not the agent's summary, and read the tests it wrote: they share its understanding of the task.
 
-More detail: [Steer it](define-and-verify-tasks.md#steer-it) and [passing tests are evidence, not proof](../../concepts/tests-are-evidence.md).
+More detail: [Steer it](define-and-verify-tasks.md#steer-it) and [Verify the result](define-and-verify-tasks.md#verify-the-result).

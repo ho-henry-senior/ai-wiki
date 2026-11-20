@@ -164,7 +164,7 @@ jobs:
             echo "The Goals page still links a Concepts group." >&2
             exit 1
           fi
-          grep -q 'sub-navigation' _site/concepts/tests-are-evidence/index.html || {
+          grep -q 'sub-navigation' _site/concepts/tool-call-loop/index.html || {
             echo "A concept page has no Articles sidebar." >&2
             exit 1
           }

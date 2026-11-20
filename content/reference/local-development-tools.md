@@ -44,7 +44,7 @@ These are examples, not universal commands: flags and test selectors depend on t
 - **Advisory diagnostics:** unused-code reports, security scans and dependency audits may have false positives or pre-existing findings. Record and triage results; do not silently delete code or change dependencies.
 - **Mutating tools:** formatters with write flags, auto-fix commands and generators change files. Label them clearly and keep them separate from read-only verification.
 
-A tool's output is evidence, not proof of correctness or security. Document the command's scope, expected runtime, side effects and failure policy in [the agent's command list](../goals/alignment/agent-tool-delegation.md). See also [passing tests are evidence, not proof](../concepts/tests-are-evidence.md).
+A tool's output is evidence, not proof of correctness or security. Document the command's scope, expected runtime, side effects and failure policy in [the agent's command list](../goals/alignment/agent-tool-delegation.md). Check the tests against the agreed behavior, not just whether they pass; see [Verify the result](../goals/alignment/define-and-verify-tasks.md#verify-the-result).
 
 ## Related guidance
 
