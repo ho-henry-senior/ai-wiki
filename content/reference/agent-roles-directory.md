@@ -42,4 +42,4 @@ Independently examines a pull request against its Issue, code, tests and securit
 
 The Developer and Reviewer files assume the case study's `demo-config.json`, `docs/handover.md`, worktree paths, GitHub labels and dispatcher. The Product and Business Analyst assume globally installed skills and defined human approval points. **Do not install these as drop-in general-purpose agents**: replace those dependencies and verify supported front matter for your chosen agent before use.
 
-The files show the actual sequence of responsibilities and handoffs in the case study, not a tested general architecture. For the underlying idea, read [From agile roles to agent-assisted workflows](../articles/agent-role-boundaries.md).
+The files show the actual sequence of responsibilities and handoffs in the case study, not a tested general architecture. For the underlying idea, read [Agile roles in agentic development](../articles/agent-role-boundaries.md).
