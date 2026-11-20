@@ -35,10 +35,6 @@ jobs:
       # Website workflow.
       - name: Install tools
         run: npm ci --ignore-scripts
-      - name: Show requested formatting changes (temporary diagnostic)
-        run: |
-          npx prettier --write content/articles/inside-coding-agent.md content/concepts/tool-call-loop.md
-          git diff -- content/articles/inside-coding-agent.md content/concepts/tool-call-loop.md
       # The same checks as `just verify`, which only calls this npm script,
       # so Just itself does not need installing.
       - name: Run the checks
