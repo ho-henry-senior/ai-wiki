@@ -81,4 +81,4 @@ Just helps when a repository has commands across multiple tools, or when composi
 
 For options beyond the example's pytest and Ruff commands, see the [local development tools reference](../../reference/local-development-tools.md).
 
-The wiki's own [justfile](../../../justfile) is a working example of named build and verification commands. [Repository Justfile patterns](../../sources/repository-justfiles.md) records examples from Node.js and Python projects.
+The wiki's own [justfile](../../../justfile) is a working example of named build and verification commands. [Just's real project recipes](../../reference/real-repository-examples.md#just-focused-tests-and-a-broader-check) show focused test filters and a broader CI recipe. [Repository Justfile patterns](../../sources/repository-justfiles.md) records examples from Node.js and Python projects.
