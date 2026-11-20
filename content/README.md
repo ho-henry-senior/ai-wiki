@@ -2,7 +2,7 @@
 
 Articles, applied patterns, reference catalogs, and checklists for AI-assisted software work.
 
-Folders organise the source; on the website, each page's `lane` and `goal` front matter decide where it appears. So retrieval-augmented generation, vector stores, and evals are articles on the site, though they live in `content/concepts/`.
+Folders organise the source; on the website, each page's `lane` and `goal` front matter decide where it appears. So retrieval-augmented generation and vector stores are articles on the site, though they live in `content/concepts/`.
 
 - [Alignment](goals/alignment/README.md) — core advice for matching work to the intended outcome.
   - [Agent-led requirements discovery](goals/alignment/agent-led-requirements-discovery.md)
