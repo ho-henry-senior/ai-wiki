@@ -1,6 +1,6 @@
 ---
 type: explanation
-summary: Follow one coding task through tool requests, harness execution, results, edits and tests, and see why a passing test is evidence rather than proof.
+summary: How a model requests a tool, the harness permits or refuses it, and returned results inform the next action.
 status: developing
 lane: articles
 series: understanding-coding-agents
@@ -10,59 +10,19 @@ tags:
   - Permissions and sandboxing
 ---
 
-# How a coding agent carries out a task
+# The tool-call loop
 
 One developer request can trigger several model calls. After each call, the harness may execute a permitted tool, return the result, and ask the model what to do next. That repeating exchange is the **agent loop**.
 
-This is the third part of [understanding how coding agents work](../articles/understanding-coding-agents.md). The earlier parts explain [the components](../articles/inside-coding-agent.md) and [the request payloads](../articles/model-requests-and-responses.md).
+This is the third part of the series [How coding agents work](../articles/understanding-coding-agents.md). The earlier parts explain [the components](../articles/inside-coding-agent.md) and [the request payloads](../articles/model-requests-and-responses.md).
 
-## Follow a failing test
-
-Suppose you ask, “Fix the failing test.” The following sequence is **illustrative**, not a captured Copilot session:
-
-```mermaid
-sequenceDiagram
-    participant U as Developer
-    participant H as Harness
-    participant M as Model
-    participant T as Tools and repository
-    U->>H: Fix the failing test
-    H->>M: Task, instructions and available tools
-    M-->>H: Request run_command("just test")
-    H->>H: Check permission or ask approval
-    H->>T: Execute just test
-    T-->>H: Test fails: expected 200, got 500
-    H->>M: Tool result plus context
-    M-->>H: Request read_file("src/handler.py")
-    H->>T: Read file
-    T-->>H: File contents
-    H->>M: File contents plus context
-    M-->>H: Request edit of src/handler.py
-    H->>H: Check write permission
-    H->>T: Apply edit
-    T-->>H: Edit result
-    H->>M: Edit result plus context
-    M-->>H: Request run_command("just test")
-    H->>T: Run tests again
-    T-->>H: Tests pass
-    H->>M: Test result
-    M-->>H: Final answer and evidence
-    H-->>U: Report the change and test outcome
-```
-
-The model does not execute the test or the edit. It requests actions from the harness, which applies its permission rules and invokes tools. Some actions may require your approval or be denied. A tool result can enter the next model request as evidence, even though its contents may be untrusted.
-
-## How observations change the next action
-
-The first test failure tells the model _what happened_, not necessarily _why_. Its next action might be to search for the failing assertion, read the handler, inspect recent changes or run a narrower test. The model can choose among available tools, and the harness returns the observations.
-
-If the first edit fails, the loop may continue: inspect the new error, revise a hypothesis, edit again and rerun checks. A tool refusal can also lead the model to choose another permitted route or ask you for help. An agent does not have to follow a fixed script, and a final answer may be produced without a tool call.
-
-## A smaller view of one tool handoff
+## One round of the loop
 
 <!-- include -->
 
 [Diagram: a tool call, from the model's request to the harness's decision and back](../includes/tool-call-loop-diagram.md)
+
+The model requests an action; the harness checks its permission rules, runs or refuses it, and returns a result. A tool result becomes information in the next model request, not an instruction with the same authority as the user's request.
 
 <!-- include -->
 
@@ -70,7 +30,11 @@ If the first edit fails, the loop may continue: inspect the new error, revise a 
 
 [View the short slide](../slides/tool-call-loop.md).
 
-This boundary is why enforceable limits belong in the harness, not just in a prompt. It is also where file contents and tool results can re-enter model context; see [unexpected data exposure](../goals/security/unexpected-data-exposure.md).
+## How observations change the next action
+
+Suppose you ask the agent to fix a failing test. It runs the tests, receives an error, and chooses what to inspect. The failure tells the model _what happened_, not necessarily _why_. Its next action might be to search for the failing assertion, read the handler, inspect recent changes or run a narrower test. The model can choose among available tools, and the harness returns the observations.
+
+If the first edit fails, the loop may continue: inspect the new error, revise a hypothesis, edit again and rerun checks. A tool refusal can also lead the model to choose another permitted route or ask you for help. An agent does not have to follow a fixed script, and a final answer may be produced without a tool call.
 
 ## What this reveals about cost and trust
 

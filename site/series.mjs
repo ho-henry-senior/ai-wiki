@@ -2,12 +2,12 @@
 // previous/next links and their overview links; pages remain ordinary articles.
 export const series = {
   "understanding-coding-agents": {
-    title: "Understanding how coding agents work",
+    title: "How coding agents work",
     overview: { title: "Series introduction", url: "/pages/understanding-coding-agents/" },
     parts: [
       { title: "Inside a coding agent", url: "/pages/inside-coding-agent/" },
       { title: "What the model receives and returns", url: "/pages/model-requests-and-responses/" },
-      { title: "How a coding agent carries out a task", url: "/concepts/tool-call-loop/" },
+      { title: "The tool-call loop", url: "/concepts/tool-call-loop/" },
     ],
   },
 };
