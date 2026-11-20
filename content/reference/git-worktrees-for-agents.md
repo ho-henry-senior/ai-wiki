@@ -66,7 +66,7 @@ Worktrees separate working files and Git indexes, but **not** your operating-sys
 
 Worktrees also do not make parallel changes independent: two agents can modify the same underlying feature on different branches, leaving conflicts or incompatible behaviour to resolve at integration time. Prefer distinct, reviewable tasks, and test the combined result after merging.
 
-For the security boundary, see [a worktree is not a sandbox](../concepts/worktrees-not-sandboxes.md). Use an enforced sandbox and limited credentials when an agent needs restricted execution permissions; a separate directory alone does not provide them.
+For restricted execution, use an enforced [sandbox and limited credentials](../goals/security/local-agent-security.md); a separate working directory cannot prevent an agent from reading other accessible files or taking actions through external services.
 
 ## Source
 
