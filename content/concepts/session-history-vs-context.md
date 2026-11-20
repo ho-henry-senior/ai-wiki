@@ -24,7 +24,7 @@ What a session has saved is not the same as what the model sees next. Each reque
 
 When the conversation reaches about 80% of the context window, Copilot CLI summarizes older parts in the background. This is called **compaction**, and it can lose detail. Run `/compact` yourself before a new phase of work, optionally with a focus, such as `/compact focus on the export module`.
 
-Compaction does not delete the saved history. A long debugging log can stay in the session while the model sees only a summary, and both may still contain sensitive data; see [secrets can leak through tool output](secrets-in-tool-output.md).
+Compaction does not delete the saved history. A long debugging log can stay in the session while the model sees only a summary, and both may still contain sensitive data; see [unexpected data exposure](../goals/security/unexpected-data-exposure.md).
 
 The model does not learn from the conversation. Continuity comes from what the harness sends with each request.
 
