@@ -1,8 +1,3 @@
----
-lane: reference
-order: 6
----
-
 # Public agent skills for wiki information architecture
 
 Researched 2026-11-14 for possible complements to `.agents/skills/wiki-review/SKILL.md`. Method: read public repository files through the GitHub API (not installed or run). Counts and dates will drift; re-check before adopting anything.
