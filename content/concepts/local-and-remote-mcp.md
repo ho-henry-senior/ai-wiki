@@ -11,7 +11,7 @@ tags:
   - MCP
 ---
 
-# Local MCP does not mean local-only data
+# Local MCP servers and data access
 
 An MCP server can run locally or on another system. **Either kind can make further network requests if its environment permits them.** Execution location and downstream data destinations are separate questions.
 

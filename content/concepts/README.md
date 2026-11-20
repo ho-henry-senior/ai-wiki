@@ -5,16 +5,16 @@ This directory holds focused explanations that articles can reuse. Each concept 
 ## Models, tools, and context
 
 - [The tool-call loop](tool-call-loop.md) — how the model requests tools, the harness permits or refuses them, and results inform the next step.
-- [Session history is not active context](session-history-vs-context.md) — saved conversations, context windows, compaction, and API-managed state.
-- [Skills, profiles, and tools have different jobs](skills-profiles-and-tools.md) — reusable procedures, roles, and executable capabilities.
+- [Session history and active context](session-history-vs-context.md) — saved conversations, context windows, compaction, and API-managed state.
+- [Skills, agent profiles, and tools](skills-profiles-and-tools.md) — reusable procedures, roles, and executable capabilities.
 - [Load context through focused entrypoints](progressive-disclosure.md) — disclose relevant detail on demand rather than loading everything.
 
 ## Security and data handling
 
-- [Local MCP does not mean local-only data](local-and-remote-mcp.md) — execution location, permissions, and downstream network requests.
-- [Inference, retention, and training are separate](inference-retention-training.md) — distinct questions about where data goes and how it is used.
-- [Invented package names can be real attacks](hallucinated-dependencies.md) — how hallucinated dependencies become malware, and what stops it.
-- [Instructions are not enforced controls](instructions-vs-controls.md) — behavioral guidance versus independently enforced permissions.
+- [Local MCP servers and data access](local-and-remote-mcp.md) — execution location, permissions, and downstream network requests.
+- [Inference, data retention, and model training](inference-retention-training.md) — distinct questions about where data goes and how it is used.
+- [Invented dependencies and supply-chain attacks](hallucinated-dependencies.md) — how hallucinated dependencies become malware, and what stops it.
+- [Instructions and enforced controls](instructions-vs-controls.md) — behavioral guidance versus independently enforced permissions.
 
 ## Background
 

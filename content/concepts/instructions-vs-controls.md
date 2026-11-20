@@ -9,7 +9,7 @@ tags:
   - Permissions and sandboxing
 ---
 
-# Instructions are not enforced controls
+# Instructions and enforced controls
 
 Asking an agent to avoid an action differs from preventing that action. Instructions guide behavior; access restrictions must be enforced by the harness, tool, operating system, or connected service.
 

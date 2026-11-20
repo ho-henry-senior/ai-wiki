@@ -9,7 +9,7 @@ tags:
   - Skills and custom agents
 ---
 
-# From agile roles to agent-assisted workflows
+# Agile roles in agentic development
 
 Start with one agent and a human reviewer. Split the work into roles only when the same kind of work keeps recurring and each handoff can be reviewed. This page shows one way to do it, not a required workflow or evidence that it works better; the [case study](lo-fi-software-factory-case-study.md) records one real attempt.
 

@@ -10,7 +10,7 @@ tags:
   - Data and privacy
 ---
 
-# Inference, retention, and training are separate
+# Inference, data retention, and model training
 
 Ask three questions about any agent that handles sensitive data: what is sent, what is kept and for how long, and whether it is used for training. "Not used for training" does not mean "never sent" or "never stored".
 

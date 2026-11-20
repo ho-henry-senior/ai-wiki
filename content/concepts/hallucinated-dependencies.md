@@ -8,7 +8,7 @@ order: 26
 checked: 2026-11-16
 ---
 
-# Invented package names can be real attacks
+# Invented dependencies and supply-chain attacks
 
 A model suggests a package by predicting a plausible name, not by checking a registry, so it sometimes names one that does not exist. Attackers register such names with malicious code. This is called slopsquatting. An agent makes it worse than a chat answer would, because it adds the dependency and runs the install itself, so the code can run before the change reaches review.
 
