@@ -1,8 +1,10 @@
 ---
 type: reference
-summary: Add a skill only for a recurring task the agent does not already handle well, try it on a real case first, and know where Copilot finds skills; includes candidates to evaluate.
+summary: What agent skills are, when a reusable procedure is worth adding, how Copilot finds skills, and how to test their value.
 status: developing
 lane: articles
+series: skills-and-agent-roles
+seriesOrder: 1
 goal: economy
 order: 2
 checked: 2026-11-15
@@ -10,7 +12,9 @@ tags:
   - Skills and custom agents
 ---
 
-# Choose and add skills
+# What a skill is, and when to add one
+
+A **skill** is a reusable package of task-specific instructions in a `SKILL.md` file, optionally accompanied by reference material, scripts and templates. In agents that support skills, the name and description help the agent decide when to load the instructions, instead of putting every procedure in every task's context.
 
 Add a skill only when a task keeps coming up, the agent does not already handle it well, and the skill improves the result on a real case. Do not start by installing one: a skill adds to what the agent loads and needs upkeep, and without trying the task first you cannot tell whether it helps.
 
@@ -37,19 +41,10 @@ In the Copilot features that support skills, the agent uses each skill's name an
 
 Source: GitHub's [agent skills documentation](https://docs.github.com/en/copilot/concepts/customizations/agent-skills).
 
-For a source-linked collection with author credits, see the [agent skills directory](../../reference/agent-skills-directory.md). To author a skill, see [Write a SKILL.md](../../reference/writing-agent-skills.md).
+For a source-linked collection with author credits, see the [agent skills directory](../../reference/agent-skills-directory.md). Next, [write a SKILL.md](../../reference/writing-agent-skills.md) with a worked example.
 
-## Candidates to evaluate
+## Find an existing skill
 
-None of these has been tried here, and built-in equivalents have not been checked. Treat them as ideas to test with the steps above.
+The [agent skills directory](../../reference/agent-skills-directory.md) lists GitHub-provided and community examples, with original sources and inspection notes. Inspect the instructions and bundled scripts before adopting one; the directory's entries are **not** evidence that a skill improves results in your project.
 
-| Skill                                                                                                   | Task                                                                 | Notes                                                                                                                                                                                       | Reviewed   |
-| ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| [Matt Pocock: to-spec](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-spec)       | Turn a discussion and codebase into a specification                  | Publishes to your issue tracker with a `ready-for-agent` label without asking you to approve the finished spec first; adapt it if you want approval.                                        | 2026-11-14 |
-| [Matt Pocock: to-tickets](https://github.com/mattpocock/skills/tree/main/skills/engineering/to-tickets) | Break a plan into independently verifiable tickets with dependencies | Asks you to approve the breakdown before publishing; works with local ticket files or an issue tracker.                                                                                     | 2026-11-14 |
-| [Matt Pocock: TDD](https://github.com/mattpocock/skills/tree/main/skills/engineering/tdd)               | Write tests that check behavior, not implementation                  | Includes notes on [good and bad tests](https://github.com/mattpocock/skills/blob/main/skills/engineering/tdd/tests.md).                                                                     | 2026-11-13 |
-| [pstack: TDD](https://github.com/backnotprop/pstack/blob/main/skills/tdd/SKILL.md)                      | Decide when to add a regression test                                 | Prefers no test over a bad one; pairs with [Test Behavior, Not Implementation](https://github.com/backnotprop/pstack/blob/main/skills/principle-test-behavior-not-implementation/SKILL.md). | 2026-11-13 |
-
-When a candidate passes a trial, record the task, the agents it works with, the evidence, any built-in equivalent, and the review date, and move it into a "Tried" section.
-
-For how skills differ from custom agents and tools, see [skills, profiles, and tools have different jobs](../../concepts/skills-profiles-and-tools.md).
+For how a skill differs from a role's responsibilities and a tool's capabilities, continue to [Agent roles, skills and tools](../../concepts/skills-profiles-and-tools.md).
