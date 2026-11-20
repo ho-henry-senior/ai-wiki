@@ -12,7 +12,7 @@ tags:
   - Commands
 ---
 
-# Let the agent run your repository's commands
+# Enable agents to run repository commands
 
 List the commands the agent should run in `AGENTS.md`, with what each one checks and whether it changes files. The agent then runs your tests and checks instead of guessing commands or approximating a check by reading code, which is slower, costs more tokens, and is less reliable.
 
