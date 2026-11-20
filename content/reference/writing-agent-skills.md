@@ -8,7 +8,7 @@ seriesOrder: 2
 order: 12
 checked: 2026-11-18
 tags:
-  - Skills and custom agents
+  - Skills
 ---
 
 # Write a SKILL.md

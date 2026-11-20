@@ -8,7 +8,9 @@ seriesOrder: 4
 checked: 2026-11-20
 order: 13
 tags:
-  - Skills and custom agents
+  - Copilot
+  - Agent roles
+  - Skills
 ---
 
 # How agent roles use skills

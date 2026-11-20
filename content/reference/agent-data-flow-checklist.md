@@ -6,6 +6,8 @@ lane: reference
 order: 2
 checked: 2026-11-15
 tags:
+  - Copilot
+  - Security
   - Data and privacy
   - MCP
 ---

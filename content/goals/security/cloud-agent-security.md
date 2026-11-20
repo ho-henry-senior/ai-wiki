@@ -7,7 +7,8 @@ goal: security
 order: 3
 checked: 2026-11-15
 tags:
-  - Copilot cloud agent
+  - Copilot
+  - Security
   - Permissions and sandboxing
   - MCP
 ---

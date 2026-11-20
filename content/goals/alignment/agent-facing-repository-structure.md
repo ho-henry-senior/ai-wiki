@@ -7,7 +7,7 @@ goal: alignment
 order: 5
 tags:
   - AGENTS.md
-  - Skills and custom agents
+  - Repository
 ---
 
 # A structure for agent-facing repositories

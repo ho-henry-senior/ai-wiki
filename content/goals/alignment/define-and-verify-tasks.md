@@ -7,9 +7,9 @@ goal: alignment
 order: 1
 checked: 2026-11-15
 tags:
-  - Copilot in the editor
-  - Copilot CLI
-  - Copilot cloud agent
+  - Copilot
+  - Specifications
+  - Pull requests and review
   - Testing
 ---
 

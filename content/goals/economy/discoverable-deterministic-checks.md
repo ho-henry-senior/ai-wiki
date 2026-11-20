@@ -5,6 +5,10 @@ status: established
 lane: goals
 goal: economy
 order: 2
+tags:
+  - Economy
+  - Repository
+  - Testing
 ---
 
 # Discoverable deterministic checks

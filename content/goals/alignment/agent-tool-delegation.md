@@ -7,9 +7,9 @@ goal: alignment
 order: 3
 checked: 2026-11-15
 tags:
-  - Copilot cloud agent
+  - Copilot
   - AGENTS.md
-  - Commands
+  - Repository
 ---
 
 # Enable agents to run repository commands

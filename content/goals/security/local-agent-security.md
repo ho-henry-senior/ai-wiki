@@ -7,9 +7,8 @@ goal: security
 order: 1
 checked: 2026-11-16
 tags:
-  - Copilot in the editor
-  - Copilot CLI
-  - Copilot app
+  - Copilot
+  - Security
   - Permissions and sandboxing
 ---
 

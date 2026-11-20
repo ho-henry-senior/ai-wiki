@@ -6,6 +6,7 @@ lane: reference
 order: 9
 tags:
   - AGENTS.md
+  - Repository
 ---
 
 # AGENTS.md example: short repository entrypoint

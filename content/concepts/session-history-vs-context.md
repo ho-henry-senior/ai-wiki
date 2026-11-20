@@ -7,7 +7,9 @@ goal: economy
 order: 21
 checked: 2026-11-15
 tags:
+  - Copilot
   - Context and tokens
+  - Economy
 ---
 
 # Session history and active context

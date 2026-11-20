@@ -327,13 +327,13 @@ jobs:
       - name: Check pages link to their tags
         run: |
           page=_site/pages/cloud-agent-security/index.html
-          grep -q 'href="/ai-wiki/tags/copilot-cloud-agent/">Copilot cloud agent</a>' "$page" || {
+          grep -q 'href="/ai-wiki/tags/copilot/">Copilot</a>' "$page" || {
             echo "The cloud agent page does not link to its tag." >&2
             grep -o 'app-tags.\{0,300\}' "$page" >&2 || true
             exit 1
           }
-          grep -q 'Secure the Copilot cloud agent' _site/tags/copilot-cloud-agent/index.html || {
-            echo "The Copilot cloud agent tag page does not list the cloud agent page." >&2
+          grep -q 'Secure the Copilot cloud agent' _site/tags/copilot/index.html || {
+            echo "The Copilot tag page does not list the cloud agent page." >&2
             exit 1
           }
           grep -q 'Where MCP servers run' _site/tags/mcp/index.html || grep -q 'local-and-remote-mcp' _site/tags/mcp/index.html || {
@@ -341,8 +341,8 @@ jobs:
             ls _site/tags >&2
             exit 1
           }
-          grep -q 'Copilot CLI' _site/tags/index.html || {
-            echo "The tags index does not list Copilot CLI." >&2
+          grep -q 'Security' _site/tags/index.html || {
+            echo "The tags index does not list Security." >&2
             exit 1
           }
           if [ -e _site/surfaces ]; then

@@ -5,6 +5,8 @@ status: established
 lane: goals
 goal: alignment
 order: 1
+tags:
+  - Specifications
 ---
 
 # Requirements discovery with coding agents

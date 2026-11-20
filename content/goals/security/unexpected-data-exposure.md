@@ -5,6 +5,9 @@ status: established
 lane: goals
 goal: security
 order: 2
+tags:
+  - Security
+  - Data and privacy
 ---
 
 # Unexpected data exposure

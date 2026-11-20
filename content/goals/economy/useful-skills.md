@@ -9,7 +9,9 @@ goal: economy
 order: 2
 checked: 2026-11-15
 tags:
-  - Skills and custom agents
+  - Copilot
+  - Economy
+  - Skills
 ---
 
 # What a skill is, and when to add one

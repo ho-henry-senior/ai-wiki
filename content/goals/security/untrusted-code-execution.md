@@ -5,6 +5,9 @@ status: established
 lane: goals
 goal: security
 order: 4
+tags:
+  - Security
+  - Untrusted content and code
 ---
 
 # Untrusted code execution
