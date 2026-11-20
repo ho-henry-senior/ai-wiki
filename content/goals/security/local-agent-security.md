@@ -41,7 +41,7 @@ Copilot's `--allow-url` and `--deny-url` rules cover its web fetch tool and reco
 
 ## Keep credentials and sensitive data out of reach
 
-Don't run an agent with production credentials, cloud CLI logins, or unrelated SSH keys available to its tools. Limit the environment to the files, repositories, and credentials needed for the task. Commands can print sensitive information into tool output sent to the model; see the [agent data-flow checklist](../../reference/agent-data-flow-checklist.md).
+Don't run an agent with production credentials, cloud CLI logins, or unrelated SSH keys available to its tools. Limit the environment to the files, repositories, and credentials needed for the task. Commands can print tokens, environment variables or customer data into tool output sent to the model and saved in session history. Use synthetic fixtures and diagnostics that mask secrets before printing them; redaction after the request cannot undo disclosure. If a credential appears in tool output, revoke or rotate it instead of relying on deleting the log. See the [agent data-flow checklist](../../reference/agent-data-flow-checklist.md).
 
 ## Know where the limits end
 

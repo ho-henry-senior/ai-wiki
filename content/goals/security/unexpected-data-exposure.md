@@ -13,4 +13,6 @@ Files and tool output included in model requests go to the model provider, and c
 
 Use a Business or Enterprise seat for work code, because individual plans train on interactions by default, and keep secrets out of the agent's reach.
 
-More detail: [inference, retention, and training](../../concepts/inference-retention-training.md), [secrets in tool output](../../concepts/secrets-in-tool-output.md), and the [data-flow checklist](../../reference/agent-data-flow-checklist.md).
+Commands can disclose credentials or private data through diagnostic output without an intentional upload. Prevent sensitive output at its source; deleting a local log cannot retract data already sent or copied into synced sessions. Revoke or rotate exposed credentials.
+
+More detail: [inference, retention, and training](../../concepts/inference-retention-training.md), [session history](../../concepts/session-history-vs-context.md), and the [data-flow checklist](../../reference/agent-data-flow-checklist.md).
