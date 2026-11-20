@@ -340,8 +340,8 @@ jobs:
         run: |
           test -s _site/articles/feed.xml || { echo "The Articles feed was not built." >&2; exit 1; }
           entries=$(grep -c '<entry>' _site/articles/feed.xml || true)
-          if [ "$entries" -ne 5 ]; then
-            echo "The Articles feed has $entries entries; expected 5." >&2
+          if [ "$entries" -ne 4 ]; then
+            echo "The Articles feed has $entries entries; expected 4." >&2
             exit 1
           fi
           grep -q 'https://ho-henry-senior.github.io/ai-wiki/' _site/articles/feed.xml || {
