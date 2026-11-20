@@ -10,7 +10,7 @@ tags:
   - AGENTS.md
 ---
 
-# Furnish repositories with context for agents
+# Repository context for coding agents
 
 When an agent gets something wrong because it did not know a fact about your system, write that fact down once, near the code it concerns, and link it from `AGENTS.md`.
 
