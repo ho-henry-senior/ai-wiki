@@ -18,12 +18,14 @@ A **role** says what responsibility an agent takes and where it hands work back;
 
 In GitHub Copilot, a role can be implemented as a **custom agent** in a profile file such as `.github/agents/reviewer.agent.md`. Agent roles are the general idea; _custom agent_ and _agent profile_ are Copilot's configuration terms.
 
-|               | Skill                                  | Agent role (Copilot custom agent)                       | Tool                               |
-| ------------- | -------------------------------------- | ------------------------------------------------------- | ---------------------------------- |
-| Answers       | How should this kind of task be done?  | What is this agent for, and what may it do?             | What action can the agent perform? |
-| Example       | A review procedure and report template | A reviewer that reports findings but does not edit code | A command that runs the tests      |
-| In Copilot    | `.agents/skills/NAME/SKILL.md`         | `.github/agents/NAME.agent.md`                          | Built-in tools and MCP servers     |
-| Shared format | Yes: the open Agent Skills standard    | No: each agent product has its own format               | MCP is shared across agents        |
+|               | Skill                        | Agent role                         | Tool                        |
+| ------------- | ---------------------------- | ---------------------------------- | --------------------------- |
+| Answers       | How should the task be done? | What is the agent responsible for? | What action can it perform? |
+| Example       | Review procedure             | Reviewer role                      | Test command                |
+| In Copilot    | Agent Skills                 | Custom agent                       | Built-in tools or MCP       |
+| Shared format | Open Agent Skills standard   | Product-specific profile           | MCP for shared tools        |
+
+In Copilot, a skill can live at `.agents/skills/NAME/SKILL.md`, a custom agent profile at `.github/agents/NAME.agent.md`, and an executable action can be a built-in tool or an MCP server.
 
 To decide when a skill is warranted, see [What a skill is, and when to add one](../goals/economy/useful-skills.md). To create one, see [Write a SKILL.md](../reference/writing-agent-skills.md).
 
