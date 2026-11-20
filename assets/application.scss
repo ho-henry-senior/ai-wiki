@@ -9,15 +9,17 @@
 );
 @forward "pkg:@x-govuk/govuk-eleventy-plugin";
 
-// All Mermaid diagrams can be enlarged without changing their page layout.
-.app-diagram {
-  margin-bottom: govuk.govuk-spacing(5);
+// Make the diagram itself an accessible enlargement control, without a button
+// competing with the content. Keep the focus indicator visible for keyboard use.
+.app-diagram__trigger,
+.app-diagram__trigger svg,
+.app-diagram__trigger svg * {
+  cursor: zoom-in;
 }
 
-// The buttons are GOV.UK secondary buttons, with GOV.UK's focus style.
-.app-diagram__enlarge {
-  margin-top: govuk.govuk-spacing(2);
-  margin-bottom: 0;
+.app-diagram__trigger:focus-visible {
+  outline: 3px solid govuk.govuk-colour("yellow");
+  outline-offset: 3px;
 }
 
 .app-diagram-dialog {
