@@ -1,6 +1,6 @@
 ---
 type: reference
-summary: Built-in GitHub Copilot skills and curated community and project skills, with availability, original sources and authors.
+summary: A single source-linked catalogue of GitHub-provided, inspected community and project skills, and candidates not yet tried.
 status: developing
 lane: reference
 order: 11
@@ -11,9 +11,9 @@ tags:
 
 # Agent skills directory
 
-This directory distinguishes **skills built into Copilot** from **community and project skills**. Built-in availability depends on the Copilot environment; third-party and project entries are examples to inspect and adapt, not tested endorsements or installations made by this wiki.
+This directory is the wiki's catalogue of **GitHub-provided skills**, **inspected community and project skills**, and **other candidates to evaluate**. Built-in availability depends on the Copilot environment; listing a third-party skill is not a tested endorsement. No community or project skill in this directory has been trialled against an equivalent task without the skill.
 
-To build one, see [Write a SKILL.md](writing-agent-skills.md). For whether a skill is worth installing, see [Choose and add skills](../goals/economy/useful-skills.md).
+For what a skill is and how to decide whether one is worth adding, read [What a skill is, and when to add one](../goals/economy/useful-skills.md). To build one, see [Write a SKILL.md](writing-agent-skills.md).
 
 ## Built-in GitHub Copilot skills
 
@@ -97,3 +97,15 @@ Checks documentation claims against code/configuration and distinguishes confirm
 Reviews this wiki's structure, navigation, duplicated concepts and design goals. Its procedures refer to project-specific conventions.
 
 These eight entries were inspected on 2026-11-18, **not installed or executed** in this review. Their requirements and slash-command availability vary by product and may change. Recheck the source before adoption.
+
+## Additional candidate to inspect
+
+### pstack: TDD
+
+**Source:** [pstack TDD SKILL.md](https://github.com/backnotprop/pstack/blob/main/skills/tdd/SKILL.md) (credited to the pstack maintainers).
+
+A different take on regression tests that favours avoiding brittle tests; it points to [Test Behavior, Not Implementation](https://github.com/backnotprop/pstack/blob/main/skills/principle-test-behavior-not-implementation/SKILL.md). This was noted as a candidate on 2026-11-13, but **has not been independently inspected or trialled for this directory**.
+
+## Testing a candidate
+
+Try the underlying task without the skill first, then with it on a comparable real case. Record the task, agent and version, results, date and any built-in equivalent before calling a skill **tried**. See the [selection procedure](../goals/economy/useful-skills.md#decide-whether-you-need-one). The entries above are **built-in**, **inspected** or **candidate**; none is labelled **tried**.

@@ -1,33 +1,66 @@
 ---
-type: reference
-summary: Add a skill for a repeatable procedure, a profile for a role with limits, and a tool for an action the agent cannot perform; in Copilot these are skills, custom agents, and tools or MCP servers.
+type: explanation
+summary: How agent roles, reusable skills and executable tools differ, with a Copilot custom-agent example and permission boundaries.
 status: established
 lane: articles
 goal: economy
+series: skills-and-agent-roles
+seriesOrder: 3
 order: 24
-checked: 2026-11-15
+checked: 2026-11-20
 tags:
   - Skills and custom agents
 ---
 
-# Skills, agent profiles, and tools
+# Agent roles, skills and tools
 
-Before you add configuration, name what is missing. Add a **skill** when a task keeps needing the same procedure, a **profile** when work needs a distinct role with its own limits, and a **tool** when the agent needs an action it cannot perform. A longer procedure cannot make up for a missing tool.
+A **role** says what responsibility an agent takes and where it hands work back; a **skill** provides a repeatable procedure; a **tool** makes an action possible. Choosing the wrong one creates either duplicated instructions or a capability the agent still cannot use.
 
-|               | Skill                                  | Profile                                                 | Tool                               |
-| ------------- | -------------------------------------- | ------------------------------------------------------- | ---------------------------------- |
-| Answers       | How should this kind of task be done?  | What is this agent for, and what may it do?             | What action can the agent perform? |
-| Example       | A review procedure and report template | A reviewer that reports findings but does not edit code | A command that runs the tests      |
-| In Copilot    | `.agents/skills/NAME/SKILL.md`         | A custom agent in `.github/agents/NAME.agent.md`        | Built-in tools and MCP servers     |
-| Shared format | Yes: the open Agent Skills standard    | No: each agent product has its own format               | MCP is shared across agents        |
+In GitHub Copilot, a role can be implemented as a **custom agent** in a profile file such as `.github/agents/reviewer.agent.md`. Agent roles are the general idea; _custom agent_ and _agent profile_ are Copilot's configuration terms.
 
-They combine: a reviewer custom agent can use a review skill and a test-quality skill, and call tools to read the diff and run checks.
+|               | Skill                        | Agent role                         | Tool                        |
+| ------------- | ---------------------------- | ---------------------------------- | --------------------------- |
+| Answers       | How should the task be done? | What is the agent responsible for? | What action can it perform? |
+| Example       | Review procedure             | Reviewer role                      | Test command                |
+| In Copilot    | Agent Skills                 | Custom agent                       | Built-in tools or MCP       |
+| Shared format | Open Agent Skills standard   | Product-specific profile           | MCP for shared tools        |
 
-## Limits
+In Copilot, a skill can live at `.agents/skills/NAME/SKILL.md`, a custom agent profile at `.github/agents/NAME.agent.md`, and an executable action can be a built-in tool or an MCP server.
 
-A profile's description does not restrict what it can do. In Copilot, a custom agent's `tools` list controls which tools it can use; if you omit the list, it can use all of them. Set the list when the restriction matters. See [instructions are not enforced controls](instructions-vs-controls.md).
+To decide when a skill is warranted, see [What a skill is, and when to add one](../goals/economy/useful-skills.md). To create one, see [Write a SKILL.md](../reference/writing-agent-skills.md).
 
-Agents also build features in over time, so check whether Copilot already does what a skill would add. See [choose and add skills](../goals/economy/useful-skills.md).
+## Define the role's contract
+
+A role is more than a descriptive label. Write down what it produces, what work it owns, what is out of scope, and what it hands to a person or another role.
+
+- **Purpose:** the outcome it exists to produce.
+- **Expected work:** responsibilities and decisions it may prepare.
+- **Out of scope:** work it must not take on and decisions it must return to a human.
+- **Handoff:** the output a reviewer or the next role needs.
+
+These instructions state intended behaviour; they are **not enforced permission boundaries**.
+
+## Example: a Copilot reviewer
+
+A custom agent can describe a reviewer that reports findings without editing code:
+
+```markdown
+---
+name: reviewer
+description: Reviews a pull request against its issue's acceptance criteria and reports findings. Does not change code.
+tools: ["read", "search"]
+---
+
+Compare the diff with each acceptance criterion in the linked issue. Report what is met, what is missing, and any risk.
+```
+
+GitHub's [custom-agent configuration reference](https://docs.github.com/en/copilot/reference/custom-agents-configuration) specifies the `tools` field: it limits the tools exposed to the custom agent; when omitted, all available tools are enabled by default. A tool restriction does not itself prove the agent has no other side effects, and its instructions cannot replace repository protections or external approvals. See [Instructions and enforced controls](instructions-vs-controls.md).
+
+## Combine roles and skills
+
+A reviewer role can use a reusable review skill if that skill is available in the agent's environment. The role owns **which changes to review, what to deliver, and where authority ends**. The skill owns **the repeatable review procedure**. Tools provide access to the diff, tests and permitted actions.
+
+Naming a skill in an agent's instructions is not a guarantee that the skill is present or loaded. Skills are discovered according to the Copilot environment and its [agent-skills support](https://docs.github.com/en/copilot/concepts/customizations/agent-skills); the skill's steps also need suitable tools. For examples drawn from actual role files, continue to [How agent roles use skills](../reference/agent-roles-directory.md).
 
 ## Sources
 
@@ -36,4 +69,4 @@ Agents also build features in over time, so check whether Copilot already does w
 - [GitHub Docs: About custom agents](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-custom-agents)
 - [GitHub Docs: Custom agents configuration](https://docs.github.com/en/copilot/reference/custom-agents-configuration)
 
-Illustrated in the [agent-workflow perspective](../articles/agent-role-boundaries.md) and the [repository layout](../goals/alignment/agent-facing-repository-structure.md).
+The [agent-workflow perspective](../articles/agent-role-boundaries.md) illustrates role handoffs. **Checked:** 2026-11-20 against GitHub's agent-skills and custom-agent configuration documentation.

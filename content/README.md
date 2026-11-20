@@ -25,6 +25,7 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
 - [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — how Copilot charges for tokens, which model tier to use, and how to cap a session.
 - [Define, steer, and verify a task](goals/alignment/define-and-verify-tasks.md) — write the task, hand it to Copilot, steer it, and check the result.
 - [How coding agents work](articles/understanding-coding-agents.md) — an illustrated three-part series on agent components, model requests, search and the tool-call loop.
+- [Skills and agent roles](articles/skills-and-agent-roles.md) — a four-part series on choosing and writing skills, defining agent roles and combining them.
 - [Agent data-flow checklist](reference/agent-data-flow-checklist.md) — questions for reviewing a particular agent setup, integration, or sensitive task.
 - [Repository context for coding agents](goals/alignment/repository-context-for-agents.md) — developing guidance for prioritizing useful repository context without taking on unnecessary documentation.
 - [A structure for agent-facing repositories](goals/alignment/agent-facing-repository-structure.md) — an example layout showing where instructions, skills and commands belong, with a diagram connecting them to tests and CI.
@@ -32,13 +33,13 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
 - [Enable agents to run repository commands](goals/alignment/agent-tool-delegation.md) — list commands in `AGENTS.md`, examples of what to list, and setting up the Copilot cloud agent to run them.
 - [Give agents a command interface with Just](goals/economy/justfile-agent-workflows.md) — advertise recipes, run single tests, compose checks, and define handoff gates.
 - [Local checks and tools for coding agents](reference/local-development-tools.md) — a reference catalogue of testing, linting, unused-code, container and security tools.
-- [Choose and add skills](goals/economy/useful-skills.md) — when a skill is worth adding, where Copilot finds skills, and candidates to evaluate.
+- [What a skill is, and when to add one](goals/economy/useful-skills.md) — when to use a reusable procedure, where Copilot finds skills, and how to test its value.
 - [Agile roles in agentic development](articles/agent-role-boundaries.md) — a perspective on familiar responsibilities and handoffs in an agent-assisted workflow.
 - [Case study: a lo-fi software factory](articles/lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.
 - [The Home Repo pattern for agents working across repositories](articles/home-repo-pattern.md) — a shared starting point for agent context and skills across projects, with access and maintenance limits.
 - [Git worktrees for parallel agent work](reference/git-worktrees-for-agents.md) — commands, a diagram, and practical boundaries for separate agent working directories.
 - [Justfile example: discoverable checks](reference/justfile-example.md) — copyable focused tests, verification and formatting recipes.
 - [AGENTS.md example: short repository entrypoint](reference/agents-md-example.md) — adaptable instructions with project pointers and checks.
-- [Agent skills directory](reference/agent-skills-directory.md) — eight inspected skills, with creators, source files, uses and limitations.
+- [Agent skills directory](reference/agent-skills-directory.md) — built-in, inspected and candidate skills, with credited sources and limitations.
 - [Write a SKILL.md](reference/writing-agent-skills.md) — syntax, file structure and a complete minimal skill.
-- [Agent roles directory](reference/agent-roles-directory.md) — emerging role collection based on the lo-fi software factory case study.
+- [How agent roles use skills](reference/agent-roles-directory.md) — original role files showing explicit skill use and possible adaptations.

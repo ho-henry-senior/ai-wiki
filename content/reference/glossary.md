@@ -22,6 +22,10 @@ How well an AI system's behavior reflects human intentions and values. In this w
 
 An AI system that uses a model to pursue a task, often by selecting actions, using tools, and responding to results. The term is used inconsistently; state how much control the model has over the task's steps. See [Building effective agents](https://www.anthropic.com/research/building-effective-agents) and [the tool-call loop](../concepts/tool-call-loop.md).
 
+### Agent role
+
+A defined responsibility, boundary and handoff for an agent working on part of a task. In Copilot, this can be implemented by a custom agent profile. See [Agent roles, skills and tools](../concepts/skills-profiles-and-tools.md).
+
 ### Agent harness
 
 The software around a model that supplies context and tools, handles tool requests, and manages the interaction loop. It is distinct from the model and from the overall agent system, although usage varies. See [the tool-call loop](../concepts/tool-call-loop.md) and [inside a coding agent](../articles/inside-coding-agent.md).
@@ -56,7 +60,7 @@ The amount of input and generated output a model can consider in a single intera
 
 ### Custom agent
 
-In Copilot, a named role defined in `.github/agents/NAME.agent.md`, with its own instructions and an optional `tools` list that limits what it can do. See [skills, profiles, and tools](../concepts/skills-profiles-and-tools.md).
+In Copilot, an implementation of an agent role, defined in `.github/agents/NAME.agent.md` with its own instructions and an optional `tools` list. See [Agent roles, skills and tools](../concepts/skills-profiles-and-tools.md).
 
 ## E
 
@@ -168,7 +172,7 @@ An enforced limit on what an agent's commands can read, change, or contact, appl
 
 ### Skill
 
-A reusable package of task-specific instructions and optional supporting resources, in a `SKILL.md` file. In agents that support skills, the name and description help the agent choose one, and the instructions load when needed. See [skills, profiles, and tools](../concepts/skills-profiles-and-tools.md) for how their purposes differ.
+A reusable package of task-specific instructions and optional resources, in a `SKILL.md` file. See [What a skill is, and when to add one](../goals/economy/useful-skills.md) for discovery and use, and [Agent roles, skills and tools](../concepts/skills-profiles-and-tools.md) for the distinctions.
 
 ### Stochastic
 

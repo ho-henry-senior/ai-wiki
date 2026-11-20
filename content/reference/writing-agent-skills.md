@@ -2,7 +2,9 @@
 type: reference
 summary: The SKILL.md syntax, required YAML metadata, Markdown instructions, optional supporting files and a complete small example.
 status: developing
-lane: reference
+lane: articles
+series: skills-and-agent-roles
+seriesOrder: 2
 order: 12
 checked: 2026-11-18
 tags:
@@ -11,7 +13,7 @@ tags:
 
 # Write a SKILL.md
 
-A skill is a directory containing a `SKILL.md` file with **YAML front matter** followed by **Markdown instructions**. The portable [Agent Skills specification](https://agentskills.io/specification) defines the format, not where every product searches for skills or whether it supports slash commands.
+Once you have [decided a skill is worth adding](../goals/economy/useful-skills.md), create a directory containing a `SKILL.md` file with **YAML front matter** followed by **Markdown instructions**. The portable [Agent Skills specification](https://agentskills.io/specification) defines the format, not where every product searches for skills or whether it supports slash commands.
 
 ## Composition
 
@@ -57,4 +59,4 @@ Keep the main file focused on its inputs, steps, expected output and checks. Put
 
 Avoid copying `AGENTS.md` into each skill. A skill is for a bounded repeatable procedure, not every repository rule. Scripts can read data, write files and use the network, so inspect their dependencies and permissions before running them.
 
-Test the skill on one actual task and compare the results with doing it without the skill. See [the skills directory](agent-skills-directory.md) for existing files and authors, or [the wiki-review skill](https://github.com/ho-henry-senior/ai-wiki/blob/main/.agents/skills/wiki-review/SKILL.md) for a project-specific example.
+Before reusing it, follow the [real-task comparison](../goals/economy/useful-skills.md#decide-whether-you-need-one). See [the skills directory](agent-skills-directory.md) for existing files and authors, or [the wiki-review skill](https://github.com/ho-henry-senior/ai-wiki/blob/main/.agents/skills/wiki-review/SKILL.md) for a project-specific example.

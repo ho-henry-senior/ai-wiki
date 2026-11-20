@@ -42,12 +42,14 @@ test("Reference sidebar is alphabetical while the landing page retains purpose g
   const html = fs.readFileSync("_site/reference/index.html", "utf8");
   const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
   assert.ok(sidebar, "Reference sidebar exists");
-  const titles = ["Agent data-flow checklist", "AGENTS.md example", "Write a SKILL.md"];
+  const titles = ["Agent data-flow checklist", "AGENTS.md example", "Local checks and tools"];
   const positions = titles.map((title) => sidebar.indexOf(title));
   assert.ok(positions.every((position) => position >= 0), "Expected reference entries exist");
   assert.ok(positions[0] < positions[1] && positions[1] < positions[2], "Reference entries are sorted");
   assert.ok(html.includes("Examples and assets") && html.includes("Checklists and tools"),
     "Reference landing page remains grouped by purpose");
+  assert.ok(html.includes("Write a SKILL.md"), "Series how-to retains direct Reference discovery");
+  assert.ok(html.includes("Agent skills directory"), "Standalone skills directory stays in Reference");
 });
 
 test("series navigation uses linked cards with titles and reading order", () => {
@@ -79,4 +81,32 @@ test("sources follow series navigation across the series", () => {
     assert.ok(sources > navigation, `${page}: sources appear after navigation`);
     assert.equal(html.match(/<h2 id="sources"/g)?.length, 1, `${page}: Sources occurs once`);
   }
+});
+
+
+test("skills and agent roles series has four linked chapters with accurate cards", () => {
+  const entry = series["skills-and-agent-roles"];
+  assert.equal(entry.parts.length, 4);
+  const pages = [
+    "pages/skills-and-agent-roles/index.html",
+    "pages/useful-skills/index.html",
+    "pages/writing-agent-skills/index.html",
+    "concepts/skills-profiles-and-tools/index.html",
+    "pages/agent-roles-directory/index.html",
+  ];
+  for (const [index, page] of pages.entries()) {
+    const html = fs.readFileSync(`_site/${page}`, "utf8");
+    const navigation = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
+    assert.ok(navigation, `${page}: series navigation exists`);
+    if (index > 0) {
+      assert.ok(navigation.includes(`Part ${index} of 4`), `${page}: part number`);
+      const prev = index === 1 ? entry.overview : entry.parts[index - 2];
+      assert.ok(navigation.includes(prev.title), `${page}: previous link title`);
+    }
+    if (index < 4) {
+      assert.ok(navigation.includes(entry.parts[index].title), `${page}: next link title`);
+    }
+  }
+  const skills = fs.readFileSync("_site/pages/agent-skills-directory/index.html", "utf8");
+  assert.doesNotMatch(skills, /<nav class="app-series-navigation"/, "Skills directory is not part of series");
 });

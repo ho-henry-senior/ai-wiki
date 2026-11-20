@@ -1,6 +1,6 @@
 ---
 type: explanation
-summary: One way to split agile work between agent roles and people, with role contracts, a RACI table, and Copilot custom agents that enforce each role's limits.
+summary: An illustrative agile workflow using separate agent responsibilities, explicit human approvals and reviewable handoffs.
 status: developing
 lane: articles
 date: 2026-11-14
@@ -11,59 +11,23 @@ tags:
 
 # Agile roles in agentic development
 
-Start with one agent and a human reviewer. Split the work into roles only when the same kind of work keeps recurring and each handoff can be reviewed. This page shows one way to do it, not a required workflow or evidence that it works better; the [case study](lo-fi-software-factory-case-study.md) records one real attempt.
+Start with one agent and a human reviewer. Split work into separate agent roles only when repeated work and reviewable handoffs justify the extra coordination. This is one possible workflow, not a standard arrangement or evidence that it performs better; the [lo-fi software factory case study](lo-fi-software-factory-case-study.md) records one attempt.
 
-The idea is to avoid giving one agent a large, open-ended task. Smaller loops produce outputs a person can review, and give points to step in.
+Four roles illustrate the division: a **Product** agent explores requirements, a **Business Analyst** turns approved decisions into tasks, a **Developer** implements them, and a **Reviewer** independently examines the changes. A human retains authority over scope and release. Each additional handoff needs a clear deliverable.
 
-## Write each role as a contract
+For how to define a role contract and restrict a Copilot custom agent's tools, see [Agent roles, skills and tools](../concepts/skills-profiles-and-tools.md). The original four role files, and their use of skills, are examined in [How agent roles use skills](../reference/agent-roles-directory.md).
 
-A role without stated limits drifts into neighboring work, and its output becomes hard to review against anything. For each role, state:
+## Example responsibilities
 
-- **Purpose:** what the role exists to produce.
-- **Expected:** the work and decisions it owns.
-- **Out of scope:** what it must not do, and when it must hand off.
-- **Hands off:** what it returns, and to whom.
+**R** does the work; **A** is accountable; **C** is consulted; **I** is informed. This deliberately small RACI illustrates the important handoffs, not every activity a team performs.
 
-A contract written in instructions is not enforced. In Copilot, make each role a custom agent in `.github/agents/`, and use its `tools` list to remove what the role must not do. For example, a reviewer that reads and reports but cannot edit:
-
-```markdown
----
-name: reviewer
-description: Reviews a pull request against its issue's acceptance criteria and reports findings. Does not change code.
-tools: ["read", "search"]
----
-
-Compare the diff with each acceptance criterion in the linked issue. Report what is met, what is missing, and any risk.
-```
-
-See [skills, profiles, and tools have different jobs](../concepts/skills-profiles-and-tools.md).
-
-## Example roles
-
-| Role                   | Expected                                                         | Out of scope                                    |
-| ---------------------- | ---------------------------------------------------------------- | ----------------------------------------------- |
-| Product agent          | Clarify the problem, outcome, constraints, and acceptance intent | Writing or reviewing code; approving release    |
-| Business analyst agent | Draft the specification and break approved scope into tasks      | Code review                                     |
-| Developer agent        | Implement a task with tests, run checks, open and update the PR  | Changing priorities; approving merge or release |
-| Reviewer agent         | Assess the PR against requirements and standards; recommend      | Implementing the change; approving merge        |
-| Human owner            | Set priorities, approve scope, approve merge and release         | Set by your organization                        |
-
-## Who is responsible
-
-**R** does the work, **A** is accountable, **C** is consulted, **I** is informed. A blank means not assigned here, not forbidden; the contracts state what is forbidden.
-
-| Activity                                    | Product | Analyst | Developer | Reviewer | Human |
-| ------------------------------------------- | :-----: | :-----: | :-------: | :------: | :---: |
-| Clarify problem, outcome, acceptance intent |    R    |    C    |     I     |    I     |   A   |
-| Draft the specification                     |    C    |    R    |     C     |    I     |   A   |
-| Approve the specification and scope         |    C    |    C    |     I     |    I     |  R/A  |
-| Break scope into tasks                      |    C    |   R/A   |     C     |    I     |   I   |
-| Prioritize and assign work                  |    C    |    C    |     I     |    I     |  R/A  |
-| Propose a design or ADR, when needed        |    C    |    C    |     R     |    I     |   A   |
-| Implement, test, and open the PR            |    I    |    C    |    R/A    |    I     |   I   |
-| Review the PR                               |    I    |    I    |     C     |   R/A    |   I   |
-| Address review findings                     |    I    |    I    |    R/A    |    C     |   I   |
-| Approve merge or release                    |    C    |    I    |     I     |    C     |  R/A  |
+| Activity                              | Product | Analyst | Developer | Reviewer | Human |
+| ------------------------------------- | :-----: | :-----: | :-------: | :------: | :---: |
+| Clarify problem and acceptance intent |    R    |    C    |     I     |    I     |   A   |
+| Approve specification and scope       |    C    |    C    |     I     |    I     |  R/A  |
+| Implement, test and open PR           |    I    |    C    |     R     |    I     |   A   |
+| Review PR and report findings         |    I    |    I    |     C     |    R     |   A   |
+| Approve merge or release              |    C    |    I    |     I     |    C     |  R/A  |
 
 ## The handoffs
 
@@ -89,7 +53,7 @@ sequenceDiagram
     Human->>Dev: Merge or release approval
 ```
 
-Roles prepare work and recommend; the human decides and stays accountable. On GitHub, keep branch protection so the person who asked for a change cannot be its only approver; see [verify the result](../goals/alignment/define-and-verify-tasks.md#verify-the-result).
+Roles prepare work and recommend; the human decides and stays accountable. Copilot custom-agent instructions cannot enforce approvals on their own. Keep independent [review and approval controls](../goals/traceability/independent-change-approval.md) around the pull request.
 
 ## Sources
 
