@@ -1,0 +1,83 @@
+---
+type: explanation
+summary: Annotated illustrative payloads show what a harness gives the model, how a model asks for a tool, and how results become later context.
+status: developing
+lane: articles
+series: understanding-coding-agents
+seriesOrder: 2
+tags:
+  - Context and tokens
+---
+
+# What the model receives and returns
+
+The model does not automatically see everything in your repository or session. For each interaction, the harness assembles an input that may contain instructions, messages, tool definitions and selected context. The model returns generated content, sometimes including a structured request for a tool.
+
+The JSON below is **a teaching representation, not a captured Copilot payload or a single provider's API schema**. Real formats, message roles and continuation rules vary.
+
+## A request assembled by the harness
+
+The developer asks the agent to fix a failing test. The harness might provide information with these roles:
+
+```json
+{
+  "instructions": [
+    "You are assisting with repository changes.",
+    "Run the project's checks before reporting completion."
+  ],
+  "messages": [
+    {"role": "user", "content": "Fix the failing test."}
+  ],
+  "tools": [
+    {"name": "run_command", "parameters": {"command": "string"}},
+    {"name": "read_file", "parameters": {"path": "string"}}
+  ]
+}
+```
+
+**Instructions** describe desired behaviour; **messages** carry the conversation; **tool definitions** tell the model which actions it may request and how to specify their arguments. A real request may also include repository instructions, selected source files and earlier tool results. Access to a whole repository does not mean every file is in this input.
+
+## A tool request is output, not execution
+
+The model may generate a structured request resembling:
+
+```json
+{
+  "tool_call": {
+    "name": "run_command",
+    "arguments": {"command": "just test"}
+  }
+}
+```
+
+The model chose the tool name and arguments, but the harness must still process the request and decide whether the operation is permitted. An interface may instead show an approval prompt or return a refusal.
+
+## Tool results become information for another request
+
+After a permitted command runs, the harness might present a result like:
+
+```json
+{
+  "tool_result": {
+    "command": "just test",
+    "exit_code": 1,
+    "output": "AssertionError: expected 200, got 500"
+  }
+}
+```
+
+On a later model call, that result can accompany the original task and additional context. The model can use the failure to choose another action, such as reading the test file. The output is **evidence to interpret**, not a trusted instruction; a file or command result can contain misleading or malicious text.
+
+## The next request is not necessarily identical
+
+The harness builds each request from the information available at that point. Earlier tool results may be included, summarized or omitted as sessions grow. Tool schemas and repeated context also contribute to token use, so a single chat message may result in several separately processed model requests.
+
+This is distinct from what the session **stores**. For the difference between saved history and active context, and Copilot CLI's `/context` and `/compact` commands, see [session history is not active context](../concepts/session-history-vs-context.md).
+
+The next part, [how a coding agent carries out a task](../concepts/tool-call-loop.md), puts these exchanges into a complete sequence.
+
+## Sources
+
+- [OpenAI: Function calling](https://platform.openai.com/docs/guides/function-calling)
+- [GitHub: Managing context in Copilot CLI](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/context-management)
+- [MCP architecture](https://modelcontextprotocol.io/docs/learn/architecture)
