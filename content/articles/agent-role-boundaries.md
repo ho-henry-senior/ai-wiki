@@ -26,7 +26,7 @@ For how to define a role contract and restrict a Copilot custom agent's tools, s
 | Clarify problem and acceptance intent |    R    |    C    |     I     |    I     |   A   |
 | Approve specification and scope       |    C    |    C    |     I     |    I     |  R/A  |
 | Implement, test and open PR           |    I    |    C    |     R     |    I     |   A   |
-| Review PR and report findings          |    I    |    I    |     C     |    R     |   A   |
+| Review PR and report findings         |    I    |    I    |     C     |    R     |   A   |
 | Approve merge or release              |    C    |    I    |     I     |    C     |  R/A  |
 
 ## The handoffs
