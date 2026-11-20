@@ -30,7 +30,7 @@ jobs:
       - name: Install tools
         run: npm ci --prefix site --ignore-scripts
       - name: Test link rewriting and search ranking
-        run: node --test scripts/site-links.test.mjs scripts/search-ranking.test.mjs scripts/site-contents.test.mjs scripts/breadcrumbs.test.mjs
+        run: node --test scripts/site-links.test.mjs scripts/search-ranking.test.mjs scripts/site-contents.test.mjs scripts/site-includes.test.mjs scripts/breadcrumbs.test.mjs
       - name: Build the site
         run: npm run build --prefix site
       - name: Check the built site
@@ -66,6 +66,33 @@ jobs:
           fi
           if [ -d _site/assets/fonts ]; then
             echo "The GDS Transport font files were published." >&2
+            exit 1
+          fi
+      - name: Check shared includes
+        run: |
+          # The tool-call-loop concept and slide include the same diagram and
+          # fragment from content/includes/, which is not published itself.
+          for page in concepts/tool-call-loop slides/tool-call-loop; do
+            file="_site/$page/index.html"
+            grep -q '<pre class="mermaid">sequenceDiagram' "$file" || {
+              echo "$page does not show the shared tool-call diagram." >&2
+              exit 1
+            }
+            grep -q 'mermaid.min.js' "$file" || {
+              echo "$page has a diagram but does not load Mermaid." >&2
+              exit 1
+            }
+            grep -q 'href="/ai-wiki/pages/local-agent-security/"' "$file" || {
+              echo "$page does not show the shared Copilot CLI fragment with its link rewritten." >&2
+              exit 1
+            }
+            if grep -qE 'include --|/includes/' "$file"; then
+              echo "$page still shows an include marker or a link to an asset." >&2
+              exit 1
+            fi
+          done
+          if [ -e _site/content/includes ] || [ -e _site/includes ]; then
+            echo "Shared assets in content/includes/ were published as pages." >&2
             exit 1
           fi
       - name: Check the navigation

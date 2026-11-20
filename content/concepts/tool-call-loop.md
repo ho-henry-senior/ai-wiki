@@ -18,13 +18,21 @@ The model never runs a tool itself. It asks, and the harness (Copilot CLI, the c
 
 ## The loop
 
+<!-- include -->
+
+[Diagram: a tool call, from the model's request to the harness's decision and back](../includes/tool-call-loop-diagram.md)
+
 1. The harness sends the model your request, its instructions, and descriptions of the tools available.
 2. The model replies with an answer or a request to use a tool.
 3. The harness checks the request against its permissions, then runs it, asks you, or refuses.
 4. The harness sends the result, or the refusal, back to the model. Tool output can enter the model's context this way, including sensitive data; see [unexpected data exposure](../goals/security/unexpected-data-exposure.md).
 5. The model continues, perhaps asking for more tools, until it answers.
 
-One request from you can involve many rounds. In Copilot CLI, step 3 is the approval prompt you see, and flags such as `--deny-tool` change what it allows; see [secure a local coding agent](../goals/security/local-agent-security.md).
+One request from you can involve many rounds.
+
+<!-- include -->
+
+[Copilot CLI: where the harness's check appears](../includes/tool-call-loop-copilot-cli.md)
 
 ## Example
 
