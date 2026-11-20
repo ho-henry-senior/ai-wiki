@@ -23,7 +23,9 @@ Ask the agent to question your request before proposing a solution. Have it chal
 
 > Before writing code, question me about the CSV export I want. Ask about ambiguous behavior, edge cases and constraints. Challenge vague answers. Draft a specification with acceptance criteria, non-goals and unresolved questions. Do not create issues or implement anything until I have reviewed it.
 
-Review the draft specification, settle or explicitly defer open decisions, and agree what should be built. The agent may propose answers, but it should not silently turn its guesses into requirements.
+Review the draft specification, settle or explicitly defer open decisions, and agree what should be built. The agent may propose answers, but it should not silently turn its guesses into requirements. Challenge unnecessary suggestions and record what is out of scope so excluded work is not quietly reintroduced.
+
+Matt Pocock's [\`/to-spec\`](../../reference/agent-skills-directory.md#to-spec) can synthesise the discussion into a specification. Its publication step differs from this wiki's recommendation to review and agree the full specification first.
 
 ## Turn the specification into issues
 
