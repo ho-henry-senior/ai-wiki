@@ -82,7 +82,7 @@ For why corrections belong on the pull request, see [Traceability & Trust](../tr
 
 - **Check each acceptance criterion against the diff,** not against the pull request description, which is the agent's account and can be wrong.
 - **Review the diff before approving workflows, then confirm the checks ran.** Workflows do not run on the cloud agent's pull request until you click **Approve and run workflows**. Approving runs the agent's code with the workflows' permissions, so read the diff first, especially changes under `.github/workflows/`. Record any check that did not run, so the reviewer knows what was not tested.
-- **Read the tests the agent wrote.** They share its understanding of the task, so they can pass while missing what you meant. See [passing tests are evidence, not proof](../../concepts/tests-are-evidence.md#ask-for-tests-that-can-fail).
+- **Read the tests the agent wrote.** They share its assumptions about the task, so passing tests do not establish that the intended behavior was checked. Match each acceptance criterion to a test of an observable result, and look for plausible bugs that would make it fail. For example, a successful-login test does not verify that expired credentials are rejected. For a new behavior, ask the agent to run the test before fixing the code and show that it fails for the expected reason. Keep integration checks for behavior that unit tests cannot cover.
 - **Have someone else approve it.** You may share the agent's assumptions about the task; another reviewer may catch what you both missed. GitHub stops the person who asked Copilot for a pull request from approving it, so with required approvals on, someone else has to.
 
 ## Scale it to the work
