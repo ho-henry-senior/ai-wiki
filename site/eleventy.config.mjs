@@ -10,6 +10,7 @@ import {
   siteUrl,
 } from "../scripts/site-links.mjs";
 import { contents, isLetterIndex } from "../scripts/site-contents.mjs";
+import { seriesNavigation } from "./series.mjs";
 import { expandIncludes, includesDir } from "../scripts/site-includes.mjs";
 import {
   eleventyNavigation,
@@ -144,6 +145,7 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addGlobalData("layout", "wiki");
   eleventyConfig.addFilter("laneItems", laneItems);
+  eleventyConfig.addFilter("seriesNavigation", seriesNavigation);
   eleventyConfig.addFilter("articleTopicGroups", articleTopicGroups);
   eleventyConfig.addFilter("articleTypeGroups", articleTypeGroups);
   eleventyConfig.addFilter("sectionNavigation", sectionNavigation);

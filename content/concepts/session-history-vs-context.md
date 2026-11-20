@@ -35,4 +35,4 @@ Other agents work the same way under different commands.
 - [GitHub Docs: Managing context in Copilot CLI](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/context-management)
 - [GitHub Docs: Context management](https://docs.github.com/en/copilot/concepts/prompting-and-context/context-management)
 
-Applied in [how models and harnesses interact](../goals/economy/model-harness-interaction.md) and [the data-flow checklist](../reference/agent-data-flow-checklist.md).
+Applied in [what the model receives and returns](../articles/model-requests-and-responses.md) and [the data-flow checklist](../reference/agent-data-flow-checklist.md).

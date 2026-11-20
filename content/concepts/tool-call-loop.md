@@ -1,57 +1,85 @@
 ---
-type: reference
-summary: The model only asks to use a tool; the harness, such as Copilot CLI, decides whether it runs, asks you, or refuses, so put limits in the harness, not the prompt.
-status: established
+type: explanation
+summary: Follow one coding task through tool requests, harness execution, results, edits and tests, and see why a passing test is evidence rather than proof.
+status: developing
 lane: articles
-goal: security
-order: 20
+series: understanding-coding-agents
+seriesOrder: 3
 tags:
   - Context and tokens
   - Permissions and sandboxing
 ---
 
-# The model requests; the harness acts
+# How a coding agent carries out a task
 
-The model never runs a tool itself. It asks, and the harness (Copilot CLI, the cloud agent, or agent mode in your editor) decides whether to run the tool, ask you first, or refuse. That is why limits belong in Copilot's settings, not in your prompt.
+One developer request can trigger several model calls. After each call, the harness may execute a permitted tool, return the result, and ask the model what to do next. That repeating exchange is the **agent loop**.
 
-[View the short slide](../slides/tool-call-loop.md).
+This is the third part of [understanding how coding agents work](../articles/understanding-coding-agents.md). The earlier parts explain [the components](../articles/inside-coding-agent.md) and [the request payloads](../articles/model-requests-and-responses.md).
 
-## The loop
+## Follow a failing test
+
+Suppose you ask, “Fix the failing test.” The following sequence is **illustrative**, not a captured Copilot session:
+
+```mermaid
+sequenceDiagram
+    participant U as Developer
+    participant H as Harness
+    participant M as Model
+    participant T as Tools and repository
+    U->>H: Fix the failing test
+    H->>M: Task, instructions and available tools
+    M-->>H: Request run_command("just test")
+    H->>H: Check permission or ask approval
+    H->>T: Execute just test
+    T-->>H: Test fails: expected 200, got 500
+    H->>M: Tool result plus context
+    M-->>H: Request read_file("src/handler.py")
+    H->>T: Read file
+    T-->>H: File contents
+    H->>M: File contents plus context
+    M-->>H: Request edit of src/handler.py
+    H->>H: Check write permission
+    H->>T: Apply edit
+    T-->>H: Edit result
+    H->>M: Edit result plus context
+    M-->>H: Request run_command("just test")
+    H->>T: Run tests again
+    T-->>H: Tests pass
+    H->>M: Test result
+    M-->>H: Final answer and evidence
+    H-->>U: Report the change and test outcome
+```
+
+The model does not execute the test or the edit. It requests actions from the harness, which applies its permission rules and invokes tools. Some actions may require your approval or be denied. A tool result can enter the next model request as evidence, even though its contents may be untrusted.
+
+## How observations change the next action
+
+The first test failure tells the model _what happened_, not necessarily _why_. Its next action might be to search for the failing assertion, read the handler, inspect recent changes or run a narrower test. The model can choose among available tools, and the harness returns the observations.
+
+If the first edit fails, the loop may continue: inspect the new error, revise a hypothesis, edit again and rerun checks. A tool refusal can also lead the model to choose another permitted route or ask you for help. An agent does not have to follow a fixed script, and a final answer may be produced without a tool call.
+
+## A smaller view of one tool handoff
 
 <!-- include -->
 
 [Diagram: a tool call, from the model's request to the harness's decision and back](../includes/tool-call-loop-diagram.md)
 
-1. The harness sends the model your request, its instructions, and descriptions of the tools available.
-2. The model replies with an answer or a request to use a tool.
-3. The harness checks the request against its permissions, then runs it, asks you, or refuses.
-4. The harness sends the result, or the refusal, back to the model. Tool output can enter the model's context this way, including sensitive data; see [unexpected data exposure](../goals/security/unexpected-data-exposure.md).
-5. The model continues, perhaps asking for more tools, until it answers.
-
-One request from you can involve many rounds.
-
 <!-- include -->
 
 [Copilot CLI: where the harness's check appears](../includes/tool-call-loop-copilot-cli.md)
 
-## Example
+[View the short slide](../slides/tool-call-loop.md).
 
-An illustrative exchange, not any provider's exact format:
+This boundary is why enforceable limits belong in the harness, not just in a prompt. It is also where file contents and tool results can re-enter model context; see [unexpected data exposure](../goals/security/unexpected-data-exposure.md).
 
-```text
-Harness -> Model:  User: What files are in the project root?
-                   Tool available: list_files(path) lists a directory.
-Model -> Harness:  Call list_files with path "."
-Harness:           Checks the request is allowed, then runs it.
-Harness -> Model:  Result: README.md, src/
-Model -> Harness:  The root contains README.md and src/.
-```
+## What this reveals about cost and trust
 
-The model only needs a tool's name, purpose, and arguments, not its code. A tool may run locally or remotely. MCP standardizes how a harness talks to tool servers, not how it talks to the model.
+Each round can add tool execution time and another model call, with new input and output tokens. Repository search may require a tool request, or the harness may use retrieval to supply matching files before a call; see [inside a coding agent](../articles/inside-coding-agent.md#how-the-agent-finds-task-related-code).
+
+Passing tests is evidence that those checks succeeded in that environment. It does not prove that the developer's underlying requirement has been met. The agent's final explanation is likewise a report to review, not an independent record of everything it did. See [define, steer and verify a task](../goals/alignment/define-and-verify-tasks.md).
 
 ## Sources
 
 - [GitHub Docs: Configuring Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/configure-copilot-cli)
 - [MCP architecture](https://modelcontextprotocol.io/docs/learn/architecture)
-
-Applied in [how models and harnesses interact](../goals/economy/model-harness-interaction.md).
+- [OpenAI: Unrolling the Codex agent loop](https://openai.com/index/unrolling-the-codex-agent-loop/)

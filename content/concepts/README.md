@@ -4,7 +4,7 @@ This directory holds focused explanations that articles can reuse. Each concept 
 
 ## Models, tools, and context
 
-- [The model requests; the harness acts](tool-call-loop.md) — tool definitions, structured requests, results, and a complete exchange.
+- [How a coding agent carries out a task](tool-call-loop.md) — a repeated model-and-tool exchange, from running tests through a verified change.
 - [Session history is not active context](session-history-vs-context.md) — saved conversations, context windows, compaction, and API-managed state.
 - [Skills, profiles, and tools have different jobs](skills-profiles-and-tools.md) — reusable procedures, roles, and executable capabilities.
 - [Load context through focused entrypoints](progressive-disclosure.md) — disclose relevant detail on demand rather than loading everything.

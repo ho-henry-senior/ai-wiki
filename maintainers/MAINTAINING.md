@@ -44,7 +44,7 @@ Each page says where it belongs in the site's navigation with front matter. `lan
 
 A page can have `tags`, one per line, such as `Copilot CLI`. Tags are one flat list for every kind of category: tags for a part of Copilot start with "Copilot", so they sort together, and topic tags need no prefix. Tag a page with what it explains, not what it only mentions. The site shows a page's tags under its title, each linking to a page of everything with that tag, and `/tags/` lists them all; these come from the GOV.UK plugin's tag layouts. The allowed tags are in `site/tags.mjs`, and `just style` rejects any others, so add a tag there before using it.
 
-Pages in a lane show breadcrumbs above the title, worked out from the same navigation data. The Articles lane has an Atom feed at `/articles/feed.xml`, built by the GOV.UK plugin from the articles collection, so a new article appears in it once it has `lane: articles` and a `date`.
+Pages in a lane show breadcrumbs above the title, worked out from the same navigation data. Articles can group an explanatory series under its introduction using `series` and `seriesOrder` front matter, with its reading order in `site/series.mjs`. The site generates previous/next links and nested sidebar entries; keep the canonical content in ordinary Markdown pages. The Articles lane has an Atom feed at `/articles/feed.xml`, built by the GOV.UK plugin from the articles collection, so a new article appears in it once it has `lane: articles` and a `date`.
 
 The site's footer links to the glossary, the tags index, the plugin's generated sitemap, this maintainer documentation, and the repository. Put links there that are useful from any page but are not pages of a lane.
 

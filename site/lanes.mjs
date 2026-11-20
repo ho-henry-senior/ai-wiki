@@ -45,6 +45,8 @@ export const eleventyNavigation = {
   parent: (data) => {
     if (data.homepage) return false;
     if (!data.lane) return data.eleventyNavigation?.parent || homeKey;
+    if (data.lane === "articles" && data.seriesOrder > 0)
+      return "Understanding how coding agents work";
     if (data.lane !== "goals") return lanes[data.lane]?.title;
     if (data.type === "overview") return lanes.goals.title;
     return goals[data.goal] || lanes.goals.title;
@@ -56,8 +58,8 @@ export const eleventyNavigation = {
 // Sidebar items for a lane, in the shape the GOV.UK sub-navigation expects.
 // The plugin expands a group only when the page's URL sits inside the
 // group's folder, but our page URLs are flat (/pages/...), so expand the
-// group that contains the current page instead. The Articles lane is a
-// flat list, so it is sorted by title.
+// group that contains the current page instead. Articles are sorted by
+// title at the top level, with series parts nested under their introduction.
 export function laneItems(tree = [], pageUrl, alphabetical = false) {
   const items = alphabetical
     ? [...tree].sort((a, b) => a.title.localeCompare(b.title))
