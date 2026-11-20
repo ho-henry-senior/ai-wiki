@@ -9,6 +9,63 @@
 );
 @forward "pkg:@x-govuk/govuk-eleventy-plugin";
 
+// All Mermaid diagrams can be enlarged without changing their page layout.
+.app-diagram {
+  margin-bottom: govuk.govuk-spacing(5);
+}
+
+// The buttons are GOV.UK secondary buttons, with GOV.UK's focus style.
+.app-diagram__enlarge {
+  margin-top: govuk.govuk-spacing(2);
+  margin-bottom: 0;
+}
+
+.app-diagram-dialog {
+  box-sizing: border-box;
+  width: 96vw;
+  max-width: 96vw;
+  max-height: 92vh;
+  padding: govuk.govuk-spacing(3);
+  border: 2px solid govuk.govuk-colour("dark-grey");
+}
+
+.app-diagram-dialog::backdrop {
+  background: rgb(0 0 0 / 0.7);
+}
+
+.app-diagram-dialog__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: govuk.govuk-spacing(2);
+  margin-bottom: govuk.govuk-spacing(3);
+}
+
+.app-diagram-dialog__toolbar .govuk-button {
+  margin-bottom: 0;
+}
+
+.app-diagram-dialog__close {
+  margin-left: auto;
+}
+
+.app-diagram-dialog__viewport {
+  overflow: auto;
+  max-height: calc(92vh - 7rem);
+  min-height: 10rem;
+}
+
+.app-diagram-dialog__viewport:focus {
+  outline: 3px solid govuk.govuk-colour("yellow");
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 4px govuk.govuk-colour("black");
+}
+
+.app-diagram-dialog__viewport svg {
+  display: block;
+  min-width: 100%;
+}
+
 // The header sets --govuk-text-colour to white for everything inside it, and
 // the search results list sits inside the header, so results showed white
 // text on a white background. Restore the normal text colour in the list.

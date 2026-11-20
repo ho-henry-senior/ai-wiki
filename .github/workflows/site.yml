@@ -359,6 +359,9 @@ jobs:
           grep -q '<pre class="mermaid">' "$page" || { echo "The Mermaid diagram was not marked for drawing." >&2; exit 1; }
           grep -q 'assets/mermaid.min.js' "$page" || { echo "The diagram page does not load Mermaid." >&2; exit 1; }
           test -s _site/assets/mermaid.min.js || { echo "mermaid.min.js was not published." >&2; exit 1; }
+          grep -q 'assets/diagrams.js' "$page" || { echo "Diagram page does not load the viewer script." >&2; exit 1; }
+          grep -q 'Enlarge diagram' _site/assets/diagrams.js || { echo "Diagram enlargement control is missing." >&2; exit 1; }
+          grep -q 'dialog.showModal()' _site/assets/diagrams.js || { echo "Diagram viewer is missing." >&2; exit 1; }
           if grep -q 'mermaid.min.js' _site/pages/security/index.html; then
             echo "A page without a diagram loads Mermaid." >&2
             exit 1
