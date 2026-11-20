@@ -46,7 +46,7 @@ export const eleventyNavigation = {
     if (data.homepage) return false;
     if (!data.lane) return data.eleventyNavigation?.parent || homeKey;
     if (data.lane === "articles" && data.seriesOrder > 0)
-      return "Understanding how coding agents work";
+      return "How Coding Agents Work";
     if (data.lane !== "goals") return lanes[data.lane]?.title;
     if (data.type === "overview") return lanes.goals.title;
     return goals[data.goal] || lanes.goals.title;
