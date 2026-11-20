@@ -13,4 +13,4 @@ Put the instructions every task needs in [`AGENTS.md`](../alignment/repository-i
 
 Record what the code cannot show: decisions in ADRs, schemas, how your repositories relate, and diagrams in Mermaid, which is text the agent reads like any other file and which GitHub renders.
 
-More detail: [Furnish repositories with context for agents](../alignment/repository-context-for-agents.md).
+More detail: [Repository context for coding agents](../alignment/repository-context-for-agents.md).
