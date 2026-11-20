@@ -1,6 +1,6 @@
 import path from "node:path";
 
-// Link rewriting for the website build (eleventy.config.mjs). Kept separate
+// Link rewriting for the website build (site/eleventy.config.mjs). Kept separate
 // so it can be tested without the site's build tools installed.
 
 export const repository = "https://github.com/ho-henry-senior/ai-wiki";
@@ -18,6 +18,8 @@ export const excluded = [
   "_site/",
   "data/",
   "scripts/",
+  // Shared assets, included into pages by scripts/site-includes.mjs.
+  "content/includes/",
 ];
 
 export const isExcluded = (file) =>

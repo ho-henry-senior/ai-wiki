@@ -10,6 +10,7 @@ import {
   siteUrl,
 } from "../scripts/site-links.mjs";
 import { contents, isLetterIndex } from "../scripts/site-contents.mjs";
+import { expandIncludes, includesDir } from "../scripts/site-includes.mjs";
 import {
   eleventyNavigation,
   articleTopicGroups,
@@ -239,6 +240,16 @@ Use these while configuring an agent, reviewing its access or checking its chang
   // The layout shows the title, so drop the page's own first heading.
   eleventyConfig.addPreprocessor("first-heading", "md", (data, content) =>
     content.replace(/^#\s+.+\n?/m, ""),
+  );
+
+  // Includes: replace each marked link to a shared asset in content/includes/
+  // with the asset's Markdown, so one diagram or fragment can appear on
+  // several pages. Rules and errors are in scripts/site-includes.mjs. Assets
+  // are not pages, so watch them for changes while serving.
+  const rootDir = path.resolve(import.meta.dirname, "..");
+  eleventyConfig.addWatchTarget(`../${includesDir}`);
+  eleventyConfig.addPreprocessor("includes", "md", (data, content) =>
+    expandIncludes(content, data.page.inputPath, { rootDir }),
   );
 
   eleventyConfig.amendLibrary("md", (md) => {

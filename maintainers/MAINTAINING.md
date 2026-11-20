@@ -26,6 +26,16 @@ Project instructions in `maintainers/` are for this wiki's contributors and agen
 
 - **Keep links as relative `.md` paths.** The build rewrites them for the site; links to files that are not on the site, such as `AGENTS.md`, go to GitHub. The rules are in `scripts/site-links.mjs`, with tests.
 - **Do not put template syntax in pages.** Markdown is never processed as a template, so code examples such as `${{ github.ref }}` appear as written.
+- **Share a diagram or short fragment with an include, rather than copying it.** Put the asset in `content/includes/` as a Markdown file, and on each page that uses it, put `<!-- include -->` on its own line before a descriptive link to it:
+
+  ```markdown
+  <!-- include -->
+
+  [Diagram: a tool call, from the model's request to the harness's decision and back](../includes/tool-call-loop-diagram.md)
+  ```
+
+  On GitHub, readers see the link, and the asset renders when they open it. The website replaces the marker and link with the asset's Markdown before rendering, so an included ` ```mermaid ` block is drawn like any other diagram, and its `##` headings count towards the page's contents list. Assets are not published as pages. They have no front matter and no `#` title, may start with a comment saying which pages use them, and write links relative to themselves; the build rewrites those links for each page. An asset cannot include another asset, so there are no cycles. A missing asset, a path outside `content/includes/`, or a marker without a link fails the build with the page and line; `just links` also catches a missing asset. `just style` does not read assets, so their text does not count towards a page's length ceiling: use includes to share material, not to hide length. The rules are in `scripts/site-includes.mjs`, with tests. Preview with `just serve`.
+
 - **Do not use GOV.UK's typeface or crown.** Only GOV.UK may use the GDS Transport typeface, the crown, or the GOV.UK logotype, and the site must not suggest it is part of GOV.UK. `assets/application.scss` replaces the typeface, the build removes the font files and crown icons the plugin copies in, and CI fails if either appears.
 
 **Keep checks in step with site changes.** When changing templates, navigation, or generated content, review the corresponding assertions in [the Website workflow](../.github/workflows/site.yml) and tests under `scripts/`. Update them in the same pull request so they check the new behaviour and still catch regressions. Run both Verify and Website before merging.
@@ -127,7 +137,7 @@ Each idea below is explained in full on one page. Anywhere else, give a one-line
 
 ## Writing a slide
 
-Keep the takeaway and a small visual or example understandable on their own. Link to the canonical concept rather than duplicating its full explanation. Keep essential qualifications, and check a slide against its concept when either changes; follow the [freshness guidance](#keeping-content-current). Add it to the [slide index](../content/slides/README.md) and the relevant [goal navigation](../README.md).
+Keep the takeaway and a small visual or example understandable on their own. Link to the canonical concept rather than duplicating its full explanation. When the slide and its concept show the same diagram or sentence, [include](#website) one shared asset in both rather than keeping two copies. Keep essential qualifications, and check a slide against its concept when either changes; follow the [freshness guidance](#keeping-content-current). Add it to the [slide index](../content/slides/README.md) and the relevant [goal navigation](../README.md).
 
 ## Completeness status
 
