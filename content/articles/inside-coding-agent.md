@@ -48,7 +48,7 @@ The model-to-harness arrow is **not** an arrow into your shell. The harness deci
 
 Suppose the developer asks, “Fix the failing test.” The model may be able to reason about source code, but whether it can inspect that code depends on what is in its current input and which tools the harness offers. Whether it can edit files or run tests depends on the available tools and enforced permissions.
 
-A tool definition tells the model which operation it can request. For example:
+A tool definition tells the model which operation it can request. A simplified example; real definitions vary by product:
 
 ```json
 {

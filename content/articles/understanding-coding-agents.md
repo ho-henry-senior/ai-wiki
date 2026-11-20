@@ -9,7 +9,7 @@ tags:
   - Context and tokens
 ---
 
-# How Coding Agents Work
+# How coding agents work
 
 A coding agent can look like a chat box that reads code, fixes bugs and runs tests. Behind that interface, a model and an application exchange messages, request tools and interpret results. This series opens that black box.
 
@@ -19,7 +19,7 @@ The pages use diagrams and short request examples to explain the system from thr
 
 1. [Inside a coding agent](inside-coding-agent.md) — identify the model, harness, tools and environment, and which component can actually act.
 2. [What the model receives and returns](model-requests-and-responses.md) — examine the instructions, messages and tool definitions passed to a model, and the structured outputs it can produce.
-3. [How a coding agent carries out a task](../concepts/tool-call-loop.md) — see how the model requests tools and receives their results.
+3. [The tool-call loop](../concepts/tool-call-loop.md) — see how the model requests tools and receives their results.
 
 ## Why this matters
 

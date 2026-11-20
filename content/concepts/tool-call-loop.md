@@ -10,19 +10,19 @@ tags:
   - Permissions and sandboxing
 ---
 
-# How a coding agent carries out a task
+# The tool-call loop
 
 One developer request can trigger several model calls. After each call, the harness may execute a permitted tool, return the result, and ask the model what to do next. That repeating exchange is the **agent loop**.
 
-This is the third part of [How Coding Agents Work](../articles/understanding-coding-agents.md). The earlier parts explain [the components](../articles/inside-coding-agent.md) and [the request payloads](../articles/model-requests-and-responses.md).
+This is the third part of the series [How coding agents work](../articles/understanding-coding-agents.md). The earlier parts explain [the components](../articles/inside-coding-agent.md) and [the request payloads](../articles/model-requests-and-responses.md).
 
-## The tool-call loop
+## One round of the loop
 
 <!-- include -->
 
 [Diagram: a tool call, from the model's request to the harness's decision and back](../includes/tool-call-loop-diagram.md)
 
-The model requests an action; the harness checks its permission rules, runs or refuses it, and returns a result. A single user request can involve several rounds. A tool result becomes information in the next model request, not an instruction with the same authority as the user's request.
+The model requests an action; the harness checks its permission rules, runs or refuses it, and returns a result. A tool result becomes information in the next model request, not an instruction with the same authority as the user's request.
 
 <!-- include -->
 

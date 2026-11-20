@@ -15,7 +15,7 @@ The model does not automatically see everything in your repository or session. F
 
 ## A request assembled by the harness
 
-When a developer asks an agent to fix a failing test, the harness constructs a request containing information such as:
+When a developer asks an agent to fix a failing test, the harness constructs a request containing information such as the following. The examples on this page are simplified; real formats vary by product.
 
 ```json
 {
@@ -72,7 +72,7 @@ The harness builds each request from the information available at that point. Ea
 
 This is distinct from what the session **stores**. For the difference between saved history and active context, and Copilot CLI's `/context` and `/compact` commands, see [session history is not active context](../concepts/session-history-vs-context.md).
 
-The next part, [how a coding agent carries out a task](../concepts/tool-call-loop.md), puts these exchanges into a complete sequence.
+The next part, [the tool-call loop](../concepts/tool-call-loop.md), shows how these exchanges repeat until the task is done.
 
 ## Sources
 
