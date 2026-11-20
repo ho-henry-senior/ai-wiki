@@ -13,11 +13,9 @@ tags:
 
 The model does not automatically see everything in your repository or session. For each interaction, the harness assembles an input that may contain instructions, messages, tool definitions and selected context. The model returns generated content, sometimes including a structured request for a tool.
 
-The JSON below is **a teaching representation, not a captured Copilot payload or a single provider's API schema**. Real formats, message roles and continuation rules vary.
-
 ## A request assembled by the harness
 
-The developer asks the agent to fix a failing test. The harness might provide information with these roles:
+When a developer asks an agent to fix a failing test, the harness constructs a request containing information such as:
 
 ```json
 {
@@ -35,11 +33,11 @@ The developer asks the agent to fix a failing test. The harness might provide in
 }
 ```
 
-**Instructions** describe desired behaviour; **messages** carry the conversation; **tool definitions** tell the model which actions it may request and how to specify their arguments. A real request may also include repository instructions, selected source files and earlier tool results. Those sources can come from an agent-requested search or optional automatic retrieval, including semantic search. Access to a whole repository does not mean every file is in this input. The search method affects which evidence becomes visible; it need not use embeddings or vectors.
+**Instructions** describe desired behaviour; **messages** carry the conversation; **tool definitions** tell the model which actions it may request and how to specify their arguments. A request can also include repository instructions, selected source files and earlier tool results. Those sources can come from an agent-requested search or optional automatic retrieval, including semantic search. Access to a whole repository does not mean every file is in this input. The search method affects which evidence becomes visible; it need not use embeddings or vectors.
 
 ## A tool request is output, not execution
 
-The model may generate a structured request resembling:
+The model can respond with a tool request:
 
 ```json
 {
@@ -54,7 +52,7 @@ The model chose the tool name and arguments, but the harness must still process 
 
 ## Tool results become information for another request
 
-After a permitted command runs, the harness might present a result like:
+The harness runs the permitted command and returns the result:
 
 ```json
 {
