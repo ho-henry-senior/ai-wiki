@@ -93,28 +93,32 @@ if (diagrams.length) {
   });
 
   diagrams.forEach((svg, index) => {
-    const container = document.createElement("div");
-    container.className = "app-diagram";
-    const pre = svg.closest("pre.mermaid");
-    pre.before(container);
-    container.append(pre);
+    const diagram = svg.closest("pre.mermaid");
+    // The diagram itself is the control: no separate button or visual chrome.
+    diagram.classList.add("app-diagram__trigger");
+    diagram.setAttribute("role", "button");
+    diagram.tabIndex = 0;
+    diagram.setAttribute("aria-label", `Enlarge diagram ${index + 1}`);
 
-    const enlarge = makeButton("Enlarge diagram");
-    enlarge.classList.add("app-diagram__enlarge");
-    enlarge.setAttribute("aria-label", `Enlarge diagram ${index + 1}`);
-    enlarge.addEventListener("click", () => {
-      returnFocus = enlarge;
+    const open = () => {
+      returnFocus = diagram;
       activeDiagram = svg;
       originalParent = svg.parentNode;
       originalStyle = svg.getAttribute("style");
-      // SVG is moved rather than cloned, so Mermaid's IDs stay unique.
+      // Move the original SVG so Mermaid's internal IDs remain unique.
       activeDiagram.style.maxWidth = "none";
       activeDiagram.style.height = "auto";
       viewport.replaceChildren(activeDiagram);
       setZoom(100);
       dialog.showModal();
       close.focus();
+    };
+
+    diagram.addEventListener("click", open);
+    diagram.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault(); // Space must not scroll the page.
+      open();
     });
-    container.append(enlarge);
   });
 }
