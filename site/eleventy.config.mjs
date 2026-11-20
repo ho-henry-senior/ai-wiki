@@ -185,9 +185,8 @@ Copyable starting points and worked examples. Change commands and constraints to
 - [Justfile example: discoverable checks](/pages/justfile-example/) — a complete task interface for focused tests and handoff checks.
 - [AGENTS.md example: short repository entrypoint](/pages/agents-md-example/) — instructions, project rules and verification commands to adapt.
 - [Git worktrees for parallel agent work](/pages/git-worktrees-for-agents/) — commands and a diagram for running agents in separate working directories.
-- [Agent skills directory](/pages/agent-skills-directory/) — selected skills, direct source files and author credits.
+- [Agent skills directory](/pages/agent-skills-directory/) — built-in, inspected and candidate skills, with original sources and cautions.
 - [Write a SKILL.md](/pages/writing-agent-skills/) — a small complete skill and its file format.
-- [Agent roles directory](/pages/agent-roles-directory/) — emerging role assets from the lo-fi software factory case study.
 
 ## Checklists and tools
 
