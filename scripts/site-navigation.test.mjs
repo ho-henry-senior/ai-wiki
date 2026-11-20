@@ -48,3 +48,14 @@ test("Reference sidebar is alphabetical while the landing page retains purpose g
   assert.ok(html.includes("Examples and assets") && html.includes("Checklists and tools"),
     "Reference landing page remains grouped by purpose");
 });
+
+test("series navigation uses linked cards with titles and reading order", () => {
+  const html = fs.readFileSync("_site/pages/model-requests-and-responses/index.html", "utf8");
+  const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
+  assert.ok(nav, "Series navigation exists");
+  assert.match(nav, /Part 2 of 3/);
+  assert.match(nav, /class="app-series-navigation__card app-series-navigation__card--previous"/);
+  assert.match(nav, /class="app-series-navigation__card app-series-navigation__card--next"/);
+  assert.match(nav, /Inside a coding agent/);
+  assert.match(nav, /How a coding agent carries out a task/);
+});
