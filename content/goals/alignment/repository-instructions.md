@@ -89,7 +89,7 @@ You don't need a tool-specific file for these agents unless you have rules only 
 
 **Copyable asset:** [AGENTS.md example: short repository entrypoint](../../reference/agents-md-example.md) brings project pointers, working rules and check commands into one file. Replace every illustrative path and rule with facts about your repository.
 
-This wiki's own [AGENTS.md](../../../AGENTS.md) is a working example. For a contrasting short entrypoint, see [real repository examples](../../reference/real-repository-examples.md#vs-code-a-short-instructions-entrypoint). For where instruction files sit alongside skills and task commands, see [a structure for agent-facing repositories](agent-facing-repository-structure.md).
+This wiki's own [AGENTS.md](../../../AGENTS.md) is a working example. For a contrasting short entrypoint, see [VS Code's AGENTS.md](https://github.com/microsoft/vscode/blob/main/AGENTS.md). For where instruction files sit alongside skills and task commands, see [a structure for agent-facing repositories](agent-facing-repository-structure.md).
 
 **Next:** [let the agent run your repository's commands](agent-tool-delegation.md), step 1 of [start here](../../../README.md#first-steps).
 
