@@ -83,6 +83,58 @@ test("rewrites the asset's relative links for the including page", () => {
   assert.equal(fromRoot, "[Slide](content/slides/loop.md)");
 });
 
+test("leaves link-shaped text in code spans unchanged", () => {
+  const asset = "content/includes/x.md";
+  const page = "content/slides/loop.md";
+  assert.equal(
+    rebaseLinks(
+      "Write `[name](example.md)` to link; see [the guide](../goals/guide.md).",
+      asset,
+      "content/concepts/deep/loop.md",
+    ),
+    "Write `[name](example.md)` to link; see [the guide](../../goals/guide.md).",
+  );
+  // Longer runs, a code span inside link text, and a span over two lines.
+  assert.equal(
+    rebaseLinks("``a `[b](c.md)` d`` [`code`](e.md)", asset, "content/x/y/z.md"),
+    "``a `[b](c.md)` d`` [`code`](../../includes/e.md)",
+  );
+  assert.equal(
+    rebaseLinks("`[a](b.md)\n[c](d.md)` [e](f.md)", asset, "content/x/y/z.md"),
+    "`[a](b.md)\n[c](d.md)` [e](../../includes/f.md)",
+  );
+  // An unmatched backtick is text, so the link after it is rewritten.
+  assert.equal(
+    rebaseLinks("A ` then [e](f.md)", asset, "content/x/y/z.md"),
+    "A ` then [e](../../includes/f.md)",
+  );
+  // An escaped backtick does not open a code span.
+  assert.equal(
+    rebaseLinks("\\` [e](f.md) `", asset, "content/x/y/z.md"),
+    "\\` [e](../../includes/f.md) `",
+  );
+  // A reference definition is rewritten only at the start of a line.
+  assert.equal(
+    rebaseLinks("`x` [r]: f.md\n[r]: f.md", asset, page),
+    "`x` [r]: f.md\n[r]: ../includes/f.md",
+  );
+});
+
+test("keeps code examples in an included fragment as written", () => {
+  const out = expand(
+    include("../../includes/note.md"),
+    {
+      "content/includes/note.md":
+        "Use `[name](example.md)` for a link, as in [the glossary](../reference/glossary.md).",
+    },
+    "../content/goals/security/page.md",
+  );
+  assert.equal(
+    out,
+    "Use `[name](example.md)` for a link, as in [the glossary](../../reference/glossary.md).",
+  );
+});
+
 test("rebases a link to the including page itself", () => {
   assert.equal(
     rebaseLinks("[Full](../concepts/loop.md#sources)", "content/includes/x.md", "content/concepts/loop.md"),

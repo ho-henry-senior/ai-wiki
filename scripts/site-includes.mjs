@@ -103,12 +103,23 @@ function prepareAsset(text, asset, page, where) {
   if (text.startsWith("---\n"))
     throw new IncludeError(`${where}: ${asset} must not have front matter`);
 
+  // Rewrite links in each run of lines outside fenced code blocks, so that
+  // code spans that continue onto another line are kept whole.
+  const result = [];
+  let prose = [];
+  const flush = () => {
+    if (prose.length) result.push(rebaseLinks(prose.join("\n"), asset, page));
+    prose = [];
+  };
   let fence = null;
-  const lines = text.trim().split("\n");
-  const result = lines.map((line) => {
+  for (const line of text.trim().split("\n")) {
     const wasInFence = fence;
     fence = trackFence(line, fence);
-    if (wasInFence || fence) return line;
+    if (wasInFence || fence) {
+      flush();
+      result.push(line);
+      continue;
+    }
     if (marker.test(line))
       throw new IncludeError(
         `${where}: ${asset} contains an include; includes cannot be nested`,
@@ -117,14 +128,17 @@ function prepareAsset(text, asset, page, where) {
       throw new IncludeError(
         `${where}: ${asset} must not have a # title; the including page has one`,
       );
-    return rebaseLinks(line, asset, page);
-  });
+    prose.push(line);
+  }
+  flush();
   return result.join("\n");
 }
 
 // Links in an asset are written relative to the asset, so GitHub and the
-// link checker follow them; make them relative to the including page.
-export function rebaseLinks(line, asset, page) {
+// link checker follow them; make them relative to the including page. Text
+// in code spans, such as `[name](example.md)`, is code, not a link, so it
+// is left as written.
+export function rebaseLinks(text, asset, page) {
   const rebase = (href) => {
     if (notRelative.test(href)) return href;
     const hashAt = href.indexOf("#");
@@ -134,10 +148,61 @@ export function rebaseLinks(line, asset, page) {
     const relative = path.posix.relative(path.posix.dirname(page), file);
     return (relative || path.posix.basename(file)) + anchor;
   };
-  return line
-    .replace(/(\]\()([^()\s]+)/g, (_, open, href) => open + rebase(href))
-    .replace(
-      /^( {0,3}\[[^\]]+\]:\s*)(\S+)/,
-      (_, start, href) => start + rebase(href),
+  // Inline links anywhere; reference definitions only at the start of a
+  // line, which a piece of text after a code span is not.
+  const rewrite = (piece, startsLine) => {
+    piece = piece.replace(
+      /(\]\()([^()\s]+)/g,
+      (_, open, href) => open + rebase(href),
     );
+    return piece.replace(
+      /(^|\n)( {0,3}\[[^\]\n]+\]:[ \t]*)(\S+)/g,
+      (match, before, start, href, offset) =>
+        offset === 0 && !startsLine ? match : before + start + rebase(href),
+    );
+  };
+
+  let out = "";
+  let from = 0;
+  let startsLine = true;
+  for (const span of codeSpans(text)) {
+    out += rewrite(text.slice(from, span.start), startsLine);
+    out += text.slice(span.start, span.end);
+    from = span.end;
+    startsLine = false;
+  }
+  return out + rewrite(text.slice(from), startsLine);
 }
+
+// Code spans, as CommonMark defines them: a run of backticks closed by the
+// next run of the same length. A run with no match is text. A backslash can
+// escape the first backtick of an opening run, but escapes do not work
+// inside a code span, so it cannot stop one closing.
+function codeSpans(text) {
+  const spans = [];
+  const runs = [...text.matchAll(/`+/g)].map((run) => ({
+    index: run.index,
+    length: run[0].length,
+  }));
+  for (let i = 0; i < runs.length; i++) {
+    const open = { ...runs[i] };
+    if (isEscaped(text, open.index)) {
+      open.index++;
+      open.length--;
+      if (!open.length) continue;
+    }
+    const close = runs.findIndex(
+      (run, j) => j > i && run.length === open.length,
+    );
+    if (close === -1) continue;
+    spans.push({ start: open.index, end: runs[close].index + open.length });
+    i = close;
+  }
+  return spans;
+}
+
+const isEscaped = (text, index) => {
+  let slashes = 0;
+  while (text[index - 1 - slashes] === "\\") slashes++;
+  return slashes % 2 === 1;
+};
