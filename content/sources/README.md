@@ -9,5 +9,4 @@ This index links to research and source notes behind the wiki's guidance. Follow
 
 ## Source index
 
-- [General AI terms: source-backed vocabulary candidates](ai-terms-research.md) — primary-source research for a standalone AI glossary, with definitions, distinctions, and areas of uncertainty.
 - [Code Review Bottleneck: notes on a Warp talk](warp-code-review-bottleneck.md) — exploratory notes on internal review loops, end-to-end verification, and merge-risk summaries for agent pull requests.

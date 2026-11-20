@@ -4,8 +4,6 @@ type: reference
 
 # AI glossary
 
-The [source research note](../sources/ai-terms-research.md) records supporting sources, commonly confused terms, and areas where definitions are unsettled.
-
 ## A
 
 ### AI system

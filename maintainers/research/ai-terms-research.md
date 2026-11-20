@@ -1,11 +1,6 @@
----
-lane: reference
-order: 4
----
-
 # General AI terms: source-backed vocabulary candidates
 
-Research note for a standalone, broadly applicable AI glossary. It is deliberately **not** limited to terms already used in this wiki's pages. Reviewed 2026-11-14. Vendor documentation (OpenAI, Anthropic) changes quickly, so re-check those links before relying on product-specific details; standards, regulations, and papers are more stable. Proposed definitions are concise paraphrases for the glossary, not quotations, and the cited sources support the points listed under each term.
+Archived source research for the [published AI glossary](../../content/reference/glossary.md). This is maintainer background, not a second reader-facing glossary. It is deliberately **not** limited to terms already used in this wiki's pages. Reviewed 2026-11-14. Vendor documentation (OpenAI, Anthropic) changes quickly, so re-check those links before relying on product-specific details; standards, regulations, and papers are more stable. Proposed definitions are concise paraphrases for the glossary, not quotations, and the cited sources support the points listed under each term.
 
 ## How to use this note
 
