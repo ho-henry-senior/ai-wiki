@@ -22,7 +22,7 @@ When Copilot appears to run a test, the language model has not opened a shell. T
 - **Environment:** the repository, filesystem, processes, credentials and services a permitted tool can reach.
 - **Instructions and context:** information provided to the model, not independent enforcement mechanisms. The harness decides what is supplied in each request.
 
-Here, **agent** means the task-performing combination. Product documentation sometimes uses the word for a narrower component.
+In this article, **coding agent** means the complete system: the model, harness, tools and execution environment.
 
 ## Who talks to whom?
 
