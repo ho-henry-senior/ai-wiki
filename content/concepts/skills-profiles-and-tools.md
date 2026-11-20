@@ -16,7 +16,7 @@ tags:
 
 A **role** says what responsibility an agent takes and where it hands work back; a **skill** provides a repeatable procedure; a **tool** makes an action possible. Choosing the wrong one creates either duplicated instructions or a capability the agent still cannot use.
 
-In GitHub Copilot, a role can be implemented as a **custom agent** in a profile file such as `.github/agents/reviewer.agent.md`. Agent roles are the general idea; *custom agent* and *agent profile* are Copilot's configuration terms.
+In GitHub Copilot, a role can be implemented as a **custom agent** in a profile file such as `.github/agents/reviewer.agent.md`. Agent roles are the general idea; _custom agent_ and _agent profile_ are Copilot's configuration terms.
 
 |               | Skill                                  | Agent role (Copilot custom agent)                       | Tool                               |
 | ------------- | -------------------------------------- | ------------------------------------------------------- | ---------------------------------- |
