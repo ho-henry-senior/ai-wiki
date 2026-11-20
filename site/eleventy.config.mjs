@@ -10,6 +10,7 @@ import {
   siteUrl,
 } from "../scripts/site-links.mjs";
 import { contents, isLetterIndex } from "../scripts/site-contents.mjs";
+import { splitFinalSources } from "../scripts/site-sources.mjs";
 import { seriesNavigation } from "./series.mjs";
 import { expandIncludes, includesDir } from "../scripts/site-includes.mjs";
 import {
@@ -159,6 +160,7 @@ export default async function (eleventyConfig) {
     tagItems(tags, pageUrl, slugify),
   );
   eleventyConfig.addFilter("contents", contents);
+  eleventyConfig.addFilter("splitFinalSources", splitFinalSources);
   eleventyConfig.addFilter("isLetterIndex", isLetterIndex);
   // Eleventy runs plugins after this function, so the GOV.UK plugin's
   // computed navigation data would replace ours. Adding ours from a plugin
