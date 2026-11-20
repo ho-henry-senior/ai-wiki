@@ -41,7 +41,7 @@ test("Reference sidebar is alphabetical while the landing page retains purpose g
   const html = fs.readFileSync("_site/reference/index.html", "utf8");
   const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
   assert.ok(sidebar, "Reference sidebar exists");
-  const titles = ["AGENTS.md example", "Agent data-flow checklist", "Write a SKILL.md"];
+  const titles = ["Agent data-flow checklist", "AGENTS.md example", "Write a SKILL.md"];
   const positions = titles.map((title) => sidebar.indexOf(title));
   assert.ok(positions.every((position) => position >= 0), "Expected reference entries exist");
   assert.ok(positions[0] < positions[1] && positions[1] < positions[2], "Reference entries are sorted");
