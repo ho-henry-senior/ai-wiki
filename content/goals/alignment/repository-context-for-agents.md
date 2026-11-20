@@ -14,7 +14,7 @@ tags:
 
 When an agent gets something wrong because it did not know a fact about your system, write that fact down once, near the code it concerns, and link it from `AGENTS.md`.
 
-Do not try to document everything first: you cannot predict which facts an agent will need, and documentation nobody uses goes stale. Each wrong assumption shows you a fact that matters.
+Do not try to document everything first: you cannot predict which facts an agent will need, and documentation nobody uses goes stale. Each wrong assumption shows you a fact that matters. Keep the instructions every task needs in a short `AGENTS.md`, and link to details that can be loaded for a specific task: [progressive disclosure](../../concepts/progressive-disclosure.md).
 
 ## Start with one missing fact
 

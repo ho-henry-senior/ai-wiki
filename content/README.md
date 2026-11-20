@@ -8,7 +8,6 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
   - [Requirements discovery with coding agents](goals/alignment/agent-led-requirements-discovery.md)
   - [Explicit decisions and scope boundaries](goals/alignment/explicit-decisions-and-scope-boundaries.md)
 - [Economy](goals/economy/README.md) — core advice for using time and tokens effectively without sacrificing quality or security.
-  - [Agent-ready repository context](goals/economy/agent-ready-repository-context.md)
   - [Discoverable deterministic checks](goals/economy/discoverable-deterministic-checks.md)
 - [Security](goals/security/README.md) — limit what an agent can reach and do, starting from where its tools run.
   - [Excessive agent access](goals/security/excessive-agent-access.md)
@@ -28,7 +27,7 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
 - [How coding agents work](articles/understanding-coding-agents.md) — an illustrated three-part series on agent components, model requests, search and the tool-call loop.
 - [Agent data-flow checklist](reference/agent-data-flow-checklist.md) — questions for reviewing a particular agent setup, integration, or sensitive task.
 - [Repository context for coding agents](goals/alignment/repository-context-for-agents.md) — developing guidance for prioritizing useful repository context without taking on unnecessary documentation.
-- [A structure for agent-facing repositories](goals/alignment/agent-facing-repository-structure.md) — a map of where instructions, skills, commands, and Copilot files go, linking to each page.
+- [A structure for agent-facing repositories](goals/alignment/agent-facing-repository-structure.md) — an example layout showing where instructions, skills and commands belong, with a diagram connecting them to tests and CI.
 - [Write repository instructions in AGENTS.md](goals/alignment/repository-instructions.md) — what to put in it, which Copilot features and other agents read it, and how to fill Copilot's gaps.
 - [Enable agents to run repository commands](goals/alignment/agent-tool-delegation.md) — list commands in `AGENTS.md`, examples of what to list, and setting up the Copilot cloud agent to run them.
 - [Give agents a command interface with Just](goals/economy/justfile-agent-workflows.md) — advertise recipes, run single tests, compose checks, and define handoff gates.
@@ -40,7 +39,6 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
 - [Git worktrees for parallel agent work](reference/git-worktrees-for-agents.md) — commands, a diagram, and practical boundaries for separate agent working directories.
 - [Justfile example: discoverable checks](reference/justfile-example.md) — copyable focused tests, verification and formatting recipes.
 - [AGENTS.md example: short repository entrypoint](reference/agents-md-example.md) — adaptable instructions with project pointers and checks.
-- [Repository layout example: instructions to checks](reference/repository-layout-example.md) — file tree and Mermaid diagram connecting agent guidance to CI.
 - [Agent skills directory](reference/agent-skills-directory.md) — eight inspected skills, with creators, source files, uses and limitations.
 - [Write a SKILL.md](reference/writing-agent-skills.md) — syntax, file structure and a complete minimal skill.
 - [Agent roles directory](reference/agent-roles-directory.md) — emerging role collection based on the lo-fi software factory case study.
