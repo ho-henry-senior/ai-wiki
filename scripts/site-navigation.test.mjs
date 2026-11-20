@@ -64,3 +64,19 @@ test("series navigation uses linked cards with titles and reading order", () => 
   assert.match(nav, /<span aria-hidden="true">←<\/span> Previous/);
   assert.match(nav, /Next <span aria-hidden="true">→<\/span>/);
 });
+
+test("sources follow series navigation across the series", () => {
+  const pages = [
+    "pages/inside-coding-agent/index.html",
+    "pages/model-requests-and-responses/index.html",
+    "concepts/tool-call-loop/index.html",
+  ];
+  for (const page of pages) {
+    const html = fs.readFileSync(`_site/${page}`, "utf8");
+    const navigation = html.indexOf('<nav class="app-series-navigation"');
+    const sources = html.indexOf('<h2 id="sources"');
+    assert.ok(navigation >= 0, `${page}: series navigation exists`);
+    assert.ok(sources > navigation, `${page}: sources appear after navigation`);
+    assert.equal(html.match(/<h2 id="sources"/g)?.length, 1, `${page}: Sources occurs once`);
+  }
+});
