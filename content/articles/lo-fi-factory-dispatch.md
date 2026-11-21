@@ -5,6 +5,7 @@ summary: How local dispatchers used GitHub issue and PR labels to coordinate dev
 tags:
   - Agent roles
 ---
+
 # Dispatching development with GitHub labels
 
 The team began by coordinating agents manually. It later used local polling scripts to start Developer and Reviewer agents from GitHub workflow state. This was deliberately a lightweight coordination mechanism, not a remote orchestration service.
@@ -13,12 +14,12 @@ The team began by coordinating agents manually. It later used local polling scri
 
 The preserved dispatcher implementation uses one queue for implementation and another for review.
 
-| Issue state | Meaning |
-| --- | --- |
-| `agent-ready` | A person has authorised the issue for dispatch |
-| `agent-in-progress` | The dispatcher has claimed the issue |
-| `agent-pr-opened` | A matching implementation PR was verified |
-| `agent-failed` | The attempted handoff needs inspection |
+| Issue state         | Meaning                                        |
+| ------------------- | ---------------------------------------------- |
+| `agent-ready`       | A person has authorised the issue for dispatch |
+| `agent-in-progress` | The dispatcher has claimed the issue           |
+| `agent-pr-opened`   | A matching implementation PR was verified      |
+| `agent-failed`      | The attempted handoff needs inspection         |
 
 PRs similarly move through `review-ready`, `review-in-progress`, `review-complete` or `review-failed`. **Review complete means findings were published, not that the code was approved.**
 
