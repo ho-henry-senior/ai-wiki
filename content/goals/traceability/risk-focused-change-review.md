@@ -1,5 +1,5 @@
 ---
-type: guide
+type: advice
 summary: "The agent's pull request description is its own account of what it did, so check it against the diff."
 status: established
 lane: goals
