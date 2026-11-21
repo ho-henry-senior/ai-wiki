@@ -99,7 +99,7 @@ test("Skills is an unnumbered guide across Guides and Reference", () => {
   assert.deepEqual(skills.parts.map((x) => x.title), ["Write a SKILL.md", "Agent skills directory"]);
   for (const path of ["pages/useful-skills/index.html", "pages/writing-agent-skills/index.html", "pages/agent-skills-directory/index.html"]) {
     const html = fs.readFileSync(`_site/${path}`, "utf8");
-    const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\\s\\S]*?<\\/nav>/)?.[0];
+    const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
     assert.ok(nav, `${path}: guide context shown`);
     assert.match(nav, /Guide navigation/);
     assert.match(nav, /href="\/ai-wiki\/pages\/useful-skills\/"/);
