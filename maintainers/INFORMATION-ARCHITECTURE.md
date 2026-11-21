@@ -27,6 +27,21 @@ This specification records the **agreed design direction from [issue #173](https
 
 The file's location under `content/` is an authoring arrangement, **not** a navigation taxonomy. For example, content authored under `content/reference/` can be linked from Guides without moving the source or URL.
 
+### Page types
+
+A page's editorial type describes **how to use the content**, not where it appears in the website:
+
+- `overview` — entry point to an outcome or coherent group of approaches.
+- `advice` — concise recommendation under a Goal, with its rationale and where to act.
+- `how-to` — practical steps for a task and how to check the result.
+- `pattern` — reusable practice or building block.
+- `explanation` — why an idea works and how concepts relate.
+- `reference` — reusable facts, instructions, examples, catalogues or checklists for lookup.
+- `case-study` — an observed application, results and limitations.
+- `exploration` — a provisional investigation rather than established advice or a case study.
+
+A Guide is a collection, **not** an editorial page type. A `reference`-type page may appear in the Guides lane when it serves as the entry to a group, and a `how-to` may be a canonical Reference resource when direct lookup is its primary purpose. Review actual reader needs rather than enforcing a one-to-one type/lane mapping.
+
 ### Four lanes
 
 - **Goals** — four desired outcomes: Alignment, Economy, Security, and Traceability & Trust. Their overviews link to concise `advice` pages and supporting content. A goal overview's advice is organised under that goal.
