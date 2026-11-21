@@ -66,12 +66,12 @@ test("Guide reading context and sidebar nesting use the canonical URL", () => {
   const skills = guideNavigation("/pages/writing-agent-skills/");
   assert.equal(skills.title, "Skills");
   assert.equal(skills.ordered, true);
-  assert.equal(skills.current, 2);
+  assert.equal(skills.current, 3);
   assert.equal(skills.numbered, false);
-  assert.equal(skills.previous.url, "/pages/agent-skills-directory/");
-  assert.equal(skills.next, null);
+  assert.equal(skills.previous.url, "/pages/install-agent-skills/");
+  assert.equal(skills.next.url, "/pages/test-agent-skills/");
   assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/pages/writing-agent-skills/" } }), "Skills");
-  assert.equal(eleventyNavigation.parent({ lane: "reference", page: { url: "/pages/agent-skills-directory/" } }), "Reference");
+  assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/pages/agent-skills-directory/" } }), "Skills");
 
   const roles = guideNavigation("/pages/agent-role-boundaries/");
   assert.equal(roles.title, "Agent roles");

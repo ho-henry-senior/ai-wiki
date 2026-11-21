@@ -1,0 +1,8 @@
+<!-- Shared asset, included by content/goals/economy/useful-skills.md and content/concepts/skills-profiles-and-tools.md. See maintainers/MAINTAINING.md#website. -->
+
+|                                | AGENTS.md                               | Skill                                                                         | Agent role                                                      | Tool                                     |
+| ------------------------------ | --------------------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------- | ---------------------------------------- |
+| Answers                        | What does every task here need to know? | How should this kind of task be done?                                         | What is this agent responsible for?                             | What action can the agent perform?       |
+| Used                           | In every task, by agents that read it   | When a task matches its description, or you call it by name                   | When you choose that agent, or another agent hands work to it   | When the agent calls it and it's allowed |
+| What it controls or influences | Influences behaviour; enforces nothing  | Influences how the task is done; its scripts run with the agent's permissions | Influences behaviour; its `tools` list limits what it's offered | Makes an action possible                 |
+| In Copilot                     | `AGENTS.md` at the repository root      | `.agents/skills/NAME/SKILL.md`                                                | A custom agent in `.github/agents/NAME.agent.md`                | Built-in tools or an MCP server          |

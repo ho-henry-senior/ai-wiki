@@ -15,11 +15,12 @@ const cases = [
   ["pages/lo-fi-software-factory-case-study/index.html", "case-studies", "Case study: a lo-fi software factory"],
   ["pages/cloud-agent-security/index.html", "articles", "Secure the Copilot cloud agent"],
   ["reference/index.html", "reference"],
-  ["pages/writing-agent-skills/index.html", "guides", "Write a SKILL.md"],
+  ["pages/writing-agent-skills/index.html", "guides", "Write your own skill"],
+  ["pages/install-agent-skills/index.html", "guides", "Install an existing skill"],
   ["concepts/skills-profiles-and-tools/index.html", "guides", "Agent roles"],
   ["pages/agent-role-boundaries/index.html", "guides", "Agile roles in agentic development"],
   ["pages/agent-roles-directory/index.html", "guides", "How agent roles use skills"],
-  ["pages/agent-skills-directory/index.html", "reference", "Agent skills directory"],
+  ["pages/agent-skills-directory/index.html", "guides", "Skills worth trying"],
   ["pages/agent-facing-repository-structure/index.html", "guides", "Set up a repository for agents"],
   ["pages/local-agent-security/index.html", "guides", "Secure a local coding agent"],
   ["pages/local-agent-credentials/index.html", "guides", "Protect credentials and sensitive data"],
@@ -64,8 +65,8 @@ test("Reference sidebar is alphabetical while the landing page retains purpose g
   assert.ok(positions[0] < positions[1] && positions[1] < positions[2], "Reference entries are sorted");
   assert.ok(html.includes("Examples and assets") && html.includes("Checklists and tools"),
     "Reference landing page remains grouped by purpose");
-  assert.ok(html.includes("Write a SKILL.md"), "Write a SKILL.md retains a direct link from the Reference landing page");
-  assert.ok(html.includes("Agent skills directory"), "Standalone skills directory stays in Reference");
+  assert.ok(html.includes("Write your own skill"), "The skill example keeps a direct link from the Reference landing page");
+  assert.doesNotMatch(sidebar, /Skills worth trying|Agent skills directory/, "The skills list has moved into the Skills guide");
 });
 
 test("ordered Guides navigation uses linked cards with titles and reading order", () => {
@@ -102,21 +103,25 @@ test("sources follow Guides navigation across the ordered guide", () => {
 });
 
 
-test("Skills runs from the decision to the directory to writing a skill", () => {
+test("Skills runs through its task chapters", () => {
   const index = fs.readFileSync("_site/guides/index.html", "utf8");
   for (const url of ["/pages/useful-skills/", "/concepts/skills-profiles-and-tools/"]) {
     assert.ok(index.includes('href="/ai-wiki' + url + '"'), "Guide index contains " + url);
   }
   assert.deepEqual(guides.skills.parts.map((part) => part.url), [
     "/pages/agent-skills-directory/",
+    "/pages/install-agent-skills/",
     "/pages/writing-agent-skills/",
+    "/pages/test-agent-skills/",
   ]);
   assert.equal(guides.skills.ordered, true);
   assert.equal(guides.skills.numbered, false);
   for (const [file, previous, next] of [
     ["pages/useful-skills/index.html", null, "/pages/agent-skills-directory/"],
-    ["pages/agent-skills-directory/index.html", "/pages/useful-skills/", "/pages/writing-agent-skills/"],
-    ["pages/writing-agent-skills/index.html", "/pages/agent-skills-directory/", null],
+    ["pages/agent-skills-directory/index.html", "/pages/useful-skills/", "/pages/install-agent-skills/"],
+    ["pages/install-agent-skills/index.html", "/pages/agent-skills-directory/", "/pages/writing-agent-skills/"],
+    ["pages/writing-agent-skills/index.html", "/pages/install-agent-skills/", "/pages/test-agent-skills/"],
+    ["pages/test-agent-skills/index.html", "/pages/writing-agent-skills/", null],
   ]) {
     const html = fs.readFileSync("_site/" + file, "utf8");
     const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
