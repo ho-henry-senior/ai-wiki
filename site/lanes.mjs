@@ -5,6 +5,7 @@
 import { series } from "./series.mjs";
 import { guides } from "./guides.mjs";
 
+// The order here is the order of the site's top bar.
 export const lanes = {
   goals: {
     title: "Goals",
@@ -16,16 +17,16 @@ export const lanes = {
     url: "/guides/",
     description: "Collections of related pages to explore together.",
   },
+  articles: {
+    title: "Articles",
+    url: "/articles/",
+    description: "",
+  },
   reference: {
     title: "Reference",
     url: "/reference/",
     description:
       "Copyable assets, practical checklists, tools and the sources behind the guidance.",
-  },
-  articles: {
-    title: "Articles",
-    url: "/articles/",
-    description: "",
   },
 };
 

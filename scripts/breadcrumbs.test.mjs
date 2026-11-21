@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { laneItems, metadataParts, sectionNavigation, tagItems } from "../site/lanes.mjs";
+import { laneItems, lanes, metadataParts, sectionNavigation, tagItems } from "../site/lanes.mjs";
 
 test("top navigation identifies landing pages, article pages, and standalone pages", () => {
   const nav = [
     { text: "Goals", href: "/goals/" },
     { text: "Guides", href: "/guides/" },
-    { text: "Reference", href: "/reference/" },
     { text: "Articles", href: "/articles/" },
+    { text: "Reference", href: "/reference/" },
   ];
   assert.deepEqual(sectionNavigation(nav, "goals", "/goals/")[0], {
     ...nav[0], current: true, active: false,
@@ -16,10 +16,14 @@ test("top navigation identifies landing pages, article pages, and standalone pag
     ...nav[0], current: false, active: true,
   });
   // Even an article linked to Security belongs to the Articles section.
-  assert.deepEqual(sectionNavigation(nav, "articles", "/pages/cloud-agent-security/").map((x) => x.active), [false, false, false, true]);
-  assert.deepEqual(sectionNavigation(nav, "reference", "/reference/data/").map((x) => x.active), [false, false, true, false]);
+  assert.deepEqual(sectionNavigation(nav, "articles", "/pages/cloud-agent-security/").map((x) => x.active), [false, false, true, false]);
+  assert.deepEqual(sectionNavigation(nav, "reference", "/reference/data/").map((x) => x.active), [false, false, false, true]);
   assert.deepEqual(sectionNavigation(nav, undefined, "/pages/glossary/").map((x) => x.active), [false, false, false, false]);
   assert.deepEqual(nav[0], { text: "Goals", href: "/goals/" });
+});
+
+test("the top bar lists Goals, Guides, Articles, then Reference", () => {
+  assert.deepEqual(Object.values(lanes).map((lane) => lane.title), ["Goals", "Guides", "Articles", "Reference"]);
 });
 
 test("left sidebar marks only the selected item as current", () => {
