@@ -63,14 +63,36 @@ test("Guide reading context and sidebar nesting use the canonical URL", () => {
   assert.equal(guideNavigation("/pages/understanding-coding-agents/").current, 0);
   assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/pages/model-requests-and-responses/" } }), "How coding agents work");
 
-  const thematic = guideNavigation("/pages/writing-agent-skills/");
-  assert.equal(thematic.title, "Skills");
-  assert.equal(thematic.ordered, false);
-  assert.equal(thematic.current, 1);
-  assert.equal(thematic.previous, null);
-  assert.equal(thematic.next, null);
-  assert.equal(eleventyNavigation.parent({ lane: "reference", page: { url: "/pages/writing-agent-skills/" } }), "Reference");
+  const skills = guideNavigation("/pages/writing-agent-skills/");
+  assert.equal(skills.title, "Skills");
+  assert.equal(skills.ordered, true);
+  assert.equal(skills.current, 1);
+  assert.equal(skills.previous.url, "/pages/useful-skills/");
+  assert.equal(skills.next.url, "/pages/agent-skills-directory/");
+  assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/pages/writing-agent-skills/" } }), "Skills");
+  assert.equal(eleventyNavigation.parent({ lane: "reference", page: { url: "/pages/agent-skills-directory/" } }), "Reference");
+
+  const roles = guideNavigation("/pages/agent-role-boundaries/");
+  assert.equal(roles.title, "Agent roles");
+  assert.equal(roles.ordered, true);
+  assert.equal(roles.current, 2);
+  assert.equal(roles.total, 3);
+  assert.equal(roles.previous.url, "/concepts/skills-profiles-and-tools/");
+  assert.equal(roles.next.url, "/pages/agent-roles-directory/");
+  assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/pages/agent-role-boundaries/" } }), "Agent roles");
+  assert.equal(guideForUrl("/pages/skills-and-agent-roles/"), null);
   assert.equal(guideForUrl("/pages/cloud-agent-security/"), null);
+});
+
+test("ordered Guide sidebars follow the registry rather than legacy page order", () => {
+  for (const [url, expected] of [
+    ["/pages/writing-agent-skills/", 1],
+    ["/concepts/skills-profiles-and-tools/", 1],
+    ["/pages/agent-role-boundaries/", 2],
+    ["/pages/agent-roles-directory/", 3],
+  ]) {
+    assert.equal(eleventyNavigation.order({ lane: "guides", page: { url }, order: 99 }), expected);
+  }
 });
 
 test("page front matter does not duplicate registry membership", () => {
