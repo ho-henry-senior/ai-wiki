@@ -73,7 +73,8 @@ summary: A concise description of what this page explains.
 Suggested `type` values:
 
 - `overview` — an entrypoint to an outcome or a group of related approaches.
-- `guide` — applied guidance for approaching a task or problem.
+- `advice` — one core point under a goal: a concise recommendation, why it matters, and where to act.
+- `how-to` — practical steps for carrying out a task, and how to check they worked.
 - `pattern` — a reusable practice or building block.
 - `explanation` — an article explaining how related ideas fit together and why they matter.
 - `reference` — information or a checklist to consult.
