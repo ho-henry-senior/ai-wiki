@@ -5,6 +5,7 @@ status: developing
 lane: guides
 goal: security
 checked: 2026-11-21
+verification: Copilot CLI and app details are checked against GitHub Docs, which the daily review rechecks. VS Code details are checked by hand against VS Code's documentation and are not rechecked automatically.
 recheck: every-run
 check-against:
   - https://docs.github.com/en/copilot/how-tos/cloud-and-local-sandboxes/configuring-local-sandbox-settings
@@ -48,10 +49,10 @@ A credential that a command receives can still be misused within its scope. Comb
 
 ## Give Copilot a narrow GitHub token
 
-Copilot CLI uses the first token it finds in `COPILOT_GITHUB_TOKEN`, `GH_TOKEN` or `GITHUB_TOKEN`, before your stored login. A broad token you exported for another tool is therefore the one it uses. Unset those variables, or give Copilot a token that can do nothing but make Copilot requests:
+Copilot CLI uses the first token it finds in `COPILOT_GITHUB_TOKEN`, `GH_TOKEN` or `GITHUB_TOKEN`, before your stored login. A broad token you exported for another tool is therefore the one it uses. Unset those variables, or give Copilot a token made only for signing in to it:
 
 1. Create a [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new) owned by your personal account, not an organization.
-2. Under **Repository access**, choose **Public repositories**.
+2. Under **Repository access**, GitHub offers **Public repositories**, **All repositories** or **Only select repositories**. For a token used only to sign in to Copilot, **Public repositories** gives the least access; choose **Only select repositories** if a task needs the token to reach a private repository.
 3. Under **Account** permissions, add **Copilot Requests**, and nothing else.
 4. Set a short expiry, and pass it as `COPILOT_GITHUB_TOKEN` in the shell that starts the agent.
 

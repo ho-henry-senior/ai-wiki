@@ -5,6 +5,7 @@ status: developing
 lane: guides
 goal: security
 checked: 2026-11-21
+verification: Copilot CLI and app details are checked against GitHub Docs, which the daily review rechecks. VS Code details are checked by hand against VS Code's documentation and are not rechecked automatically.
 recheck: every-run
 check-against:
   - https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes
@@ -22,13 +23,13 @@ The sandbox restricts the processes it starts. An agent also uses tools that run
 
 ## Know what the sandbox covers
 
-| Runs                                   | Sandboxed?                                                                                                                              |
-| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Shell commands and their file searches | Yes, when the sandbox is on.                                                                                                            |
-| Local MCP and language (LSP) servers   | Yes by default, in the CLI, the app and VS Code. You can turn this off, so check the setting.                                           |
-| Copilot's built-in file tools          | Not by the operating system. In the CLI they run inside Copilot, and only best-effort policy checks apply. VS Code uses its own checks. |
-| Remote MCP servers                     | Never. They run on someone else's system with whatever access you granted them.                                                         |
-| Servers you start yourself             | No. In VS Code, only the MCP servers it manages are sandboxed.                                                                          |
+| Runs                                                                     | Sandboxed?                                                                                                                              |
+| ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Shell commands and their file searches                                   | Yes, when the sandbox is on.                                                                                                            |
+| Local MCP and language (LSP) servers that Copilot starts for the session | Yes by default, in the CLI, the app and VS Code. You can turn this off, so check the setting.                                           |
+| Copilot's built-in file tools                                            | Not by the operating system. In the CLI they run inside Copilot, and only best-effort policy checks apply. VS Code uses its own checks. |
+| Remote MCP servers                                                       | Never. They run on someone else's system with whatever access you granted them.                                                         |
+| MCP servers started any other way                                        | No. In VS Code, the sandbox covers only servers started or managed for the session, not ones you start independently.                   |
 
 In VS Code, Claude and Codex agent sessions don't use Copilot's sandbox settings.
 
@@ -40,7 +41,7 @@ An MCP server is code that runs with access you give it, and its tools are offer
 
 - **Who publishes it,** and whether that is the source you meant. Prefer servers listed in the [GitHub MCP Registry](https://github.com/mcp) or published by the service's own vendor.
 - **What it runs.** A command such as `npx -y some-server` downloads and runs the latest version each time it starts; pin a version you have reviewed.
-- **What it can reach.** Which credentials you pass it, for example a token in `-e`, which files it can read, and which hosts it contacts. Give it a token scoped to the job, as for [the agent itself](local-agent-credentials.md#give-copilot-a-narrow-github-token).
+- **What it can reach.** Which credentials you pass it, for example a token in `-e`, which files it can read, and which hosts it contacts. Give it its own credential, scoped to that service and to the job, rather than one you use for other work.
 - **Which tools it exposes.** Enable only the tools the task needs, and prefer read-only ones.
 
 In Copilot CLI, `copilot mcp list` shows configured servers and `copilot mcp get NAME` shows a server's tools. Limit a server to named tools in its configuration, in `~/.copilot/mcp-config.json`, or deny one with `--deny-tool='SERVER(tool_name)'`. If your organization sets an MCP allowlist, only servers on it can run.

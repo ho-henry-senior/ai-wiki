@@ -5,6 +5,7 @@ status: developing
 lane: guides
 goal: security
 checked: 2026-11-21
+verification: Copilot CLI and app details are checked against GitHub Docs, which the daily review rechecks. VS Code details are checked by hand against VS Code's documentation and are not rechecked automatically.
 recheck: every-run
 check-against:
   - https://docs.github.com/en/copilot/how-tos/cloud-and-local-sandboxes/configuring-local-sandbox-settings
