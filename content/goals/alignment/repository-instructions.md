@@ -2,9 +2,8 @@
 type: reference
 summary: Why repository rules belong in one short AGENTS.md, which Copilot features read it, and how to fill Copilot's remaining gaps without duplicating rules.
 status: established
-lane: articles
+lane: guides
 goal: alignment
-order: 2
 checked: 2026-11-15
 tags:
   - Copilot
@@ -87,7 +86,7 @@ You don't need a tool-specific file for these agents unless you have rules only 
 
 **Copyable asset:** [AGENTS.md example: short repository entrypoint](../../reference/agents-md-example.md) brings project pointers, working rules and check commands into one file. Replace every illustrative path and rule with facts about your repository.
 
-This wiki's own [AGENTS.md](../../../AGENTS.md) is a working example. For a contrasting short entrypoint, see [VS Code's AGENTS.md](https://github.com/microsoft/vscode/blob/main/AGENTS.md). For where instruction files sit alongside skills and task commands, see [a structure for agent-facing repositories](agent-facing-repository-structure.md).
+This wiki's own [AGENTS.md](../../../AGENTS.md) is a working example. For a contrasting short entrypoint, see [VS Code's AGENTS.md](https://github.com/microsoft/vscode/blob/main/AGENTS.md). For where instruction files sit alongside skills and task commands, see [Set up a repository for agents](agent-facing-repository-structure.md).
 
 **Next:** [enable agents to run repository commands](agent-tool-delegation.md), step 1 of [start here](../../../README.md#first-steps).
 

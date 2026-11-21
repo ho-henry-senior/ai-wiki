@@ -2,9 +2,8 @@
 type: how-to
 summary: Use a justfile as a discoverable command interface for coding agents, with focused tests, composed checks, and clear handoff gates.
 status: established
-lane: articles
+lane: guides
 goal: economy
-order: 3
 tags:
   - Economy
   - Repository
@@ -80,7 +79,7 @@ Describe the effect of each command, whether it changes files, and whether failu
 
 ## Use the runner you already have
 
-Just helps when a repository has commands across multiple tools, or when composition and `just --list` make them easier to find. Don't add it if existing package scripts or a Makefile already provide a clear interface. See [enable agents to run repository commands](../alignment/agent-tool-delegation.md) for the general principle and [a structure for agent-facing repositories](../alignment/agent-facing-repository-structure.md) for where these files belong.
+Just helps when a repository has commands across multiple tools, or when composition and `just --list` make them easier to find. Don't add it if existing package scripts or a Makefile already provide a clear interface. See [enable agents to run repository commands](../alignment/agent-tool-delegation.md) for the general principle and [Set up a repository for agents](../alignment/agent-facing-repository-structure.md) for where these files belong.
 
 For options beyond the example's pytest and Ruff commands, see the [local checks and tools for coding agents](../../reference/local-development-tools.md).
 

@@ -93,6 +93,8 @@ A Guide can gather pages whose **primary purposes differ**. The Guides can inclu
 
 - **The tool-call loop** — Guides lane; ordered chapter; discoverable within How coding agents work.
 
+- **Session history and active context** — Guides lane; fourth ordered chapter of How coding agents work.
+
 - **Skills** — Guides lane; ordered entry explaining when to add skills; discoverable via Guides.
 
 - **Write a SKILL.md** — Guides lane; ordered Skills chapter on writing a reusable procedure; retains its canonical URL.
@@ -104,6 +106,10 @@ A Guide can gather pages whose **primary purposes differ**. The Guides can inclu
 - **Agile roles in agentic development** — Guides lane; first Agent roles chapter.
 
 - **How agent roles use skills** — Guides lane; second Agent roles chapter.
+
+- **Set up a repository for agents** — Guides lane; thematic entry, the repository-layout map, with unnumbered links to its four resources.
+
+- **Write repository instructions in AGENTS.md, Repository context for coding agents, Enable agents to run repository commands, Give agents a command interface with Just** — Guides lane; thematic members of Set up a repository for agents, in a deliberate display order without Previous/Next.
 
 The coding-agent and Agent roles chapters stay in Guides to simplify Articles navigation. The Skills directory stays in Reference because direct lookup there remains useful, despite its place in the ordered Skills reading route. A page may be linked or featured elsewhere without its active lane changing.
 

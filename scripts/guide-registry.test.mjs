@@ -57,7 +57,7 @@ test("Guide reading context and sidebar nesting use the canonical URL", () => {
   const ordered = guideNavigation("/pages/model-requests-and-responses/");
   assert.equal(ordered.title, "How coding agents work");
   assert.equal(ordered.current, 2);
-  assert.equal(ordered.total, 3);
+  assert.equal(ordered.total, 4);
   assert.equal(ordered.previous.url, "/pages/inside-coding-agent/");
   assert.equal(ordered.next.url, "/concepts/tool-call-loop/");
   assert.equal(guideNavigation("/pages/understanding-coding-agents/").current, 0);

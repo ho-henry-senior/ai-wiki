@@ -18,6 +18,9 @@ const cases = [
   ["pages/agent-role-boundaries/index.html", "guides", "Agile roles in agentic development"],
   ["pages/agent-roles-directory/index.html", "guides", "How agent roles use skills"],
   ["pages/agent-skills-directory/index.html", "reference", "Agent skills directory"],
+  ["pages/agent-facing-repository-structure/index.html", "guides", "Set up a repository for agents"],
+  ["pages/repository-instructions/index.html", "guides", "Write repository instructions in AGENTS.md"],
+  ["concepts/session-history-vs-context/index.html", "guides", "Session history and active context"],
   ["pages/glossary/index.html", null],
 ];
 
@@ -65,7 +68,7 @@ test("ordered Guides navigation uses linked cards with titles and reading order"
   const html = fs.readFileSync("_site/pages/model-requests-and-responses/index.html", "utf8");
   const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
   assert.ok(nav, "Guide navigation exists");
-  assert.match(nav, /Part 2 of 3/);
+  assert.match(nav, /Part 2 of 4/);
   assert.match(nav, /Guide navigation/);
   assert.match(nav, /class="app-series-navigation__card app-series-navigation__card--previous"/);
   assert.match(nav, /class="app-series-navigation__card app-series-navigation__card--next"/);
@@ -82,6 +85,7 @@ test("sources follow Guides navigation across the ordered guide", () => {
     "pages/inside-coding-agent/index.html",
     "pages/model-requests-and-responses/index.html",
     "concepts/tool-call-loop/index.html",
+    "concepts/session-history-vs-context/index.html",
   ];
   for (const page of pages) {
     const html = fs.readFileSync(`_site/${page}`, "utf8");
@@ -151,6 +155,9 @@ test("Guide members have direct-entry context near the title", () => {
     "pages/agent-skills-directory/index.html",
     "pages/agent-role-boundaries/index.html",
     "pages/agent-roles-directory/index.html",
+    "concepts/session-history-vs-context/index.html",
+    "pages/repository-instructions/index.html",
+    "pages/justfile-agent-workflows/index.html",
   ];
   for (const file of members) {
     const html = fs.readFileSync(`_site/${file}`, "utf8");
@@ -158,9 +165,9 @@ test("Guide members have direct-entry context near the title", () => {
     const context = html.indexOf('class="govuk-body-s app-guide-context"');
     const body = html.indexOf('class="app-prose-scope"');
     assert.ok(header >= 0 && context > header && body > context, `${file}: Guide link near title`);
-    assert.match(html.slice(context, body), /Part of the <a class="govuk-link" href="\/ai-wiki\/(pages\/understanding-coding-agents|pages\/useful-skills|concepts\/skills-profiles-and-tools)\/"/);
+    assert.match(html.slice(context, body), /Part of the <a class="govuk-link" href="\/ai-wiki\/(pages\/understanding-coding-agents|pages\/useful-skills|concepts\/skills-profiles-and-tools|pages\/agent-facing-repository-structure)\/"/);
   }
-  for (const entry of ["pages/useful-skills/index.html", "concepts/skills-profiles-and-tools/index.html"]) {
+  for (const entry of ["pages/useful-skills/index.html", "concepts/skills-profiles-and-tools/index.html", "pages/agent-facing-repository-structure/index.html"]) {
     const html = fs.readFileSync(`_site/${entry}`, "utf8");
     assert.doesNotMatch(html, /class="govuk-body-s app-guide-context"/, `${entry}: entry pages need no "Part of" line`);
   }
@@ -183,4 +190,17 @@ test("checked metadata shows a date, with optional accessible verification detai
   // Missing dates must not be presented as if they were verified.
   const glossary = fs.readFileSync("_site/pages/glossary/index.html", "utf8");
   assert.doesNotMatch(glossary, /app-checked-date|app-verification-details/);
+});
+
+test("Set up a repository for agents is a thematic Guide without Previous/Next", () => {
+  const guide = guides["repository-setup"];
+  assert.equal(guide.ordered, false);
+  for (const member of [guide.overview, ...guide.parts]) {
+    const html = fs.readFileSync(`_site${member.url}index.html`, "utf8");
+    const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
+    assert.ok(nav, `${member.url}: guide navigation exists`);
+    assert.doesNotMatch(nav, /Part \d+ of/, `${member.url}: no chapter numbers`);
+    assert.doesNotMatch(nav, /app-series-navigation__card/, `${member.url}: no Previous/Next`);
+    for (const part of guide.parts) assert.ok(nav.includes(part.title), `${member.url}: lists ${part.title}`);
+  }
 });
