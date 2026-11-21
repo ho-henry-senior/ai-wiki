@@ -84,6 +84,17 @@ test("Guide reading context and sidebar nesting use the canonical URL", () => {
   assert.equal(guideForUrl("/pages/cloud-agent-security/"), null);
 });
 
+test("comma-titled Guide chapters use safe navigation keys without changing their labels", () => {
+  const page = {
+    lane: "guides",
+    title: "Agent roles, skills and tools",
+    page: { url: "/concepts/skills-profiles-and-tools/" },
+  };
+  assert.equal(eleventyNavigation.key(page), "guide-member:/concepts/skills-profiles-and-tools/");
+  assert.equal(eleventyNavigation.title(page), "Agent roles, skills and tools");
+  assert.equal(eleventyNavigation.parent(page), "Agent roles");
+});
+
 test("Guide sidebars use the registry's chapter order", () => {
   const children = [
     { title: "How agent roles use skills", url: "/pages/agent-roles-directory/" },
