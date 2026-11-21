@@ -159,6 +159,14 @@ export default async function (eleventyConfig) {
       return eleventyConfig.getFilter("eleventyNavigation")(items, key);
     } catch (error) {
       console.error("NAVIGATION ROOT CAUSE", error?.stack || error);
+      console.error("NAVIGATION ROLE ENTRIES", items.filter((item) =>
+        /Agent roles|agent-roles|role-boundaries|skills-profiles/i.test(
+          JSON.stringify([item.data.title, item.url, item.data.eleventyNavigation]),
+        ),
+      ).map((item) => ({
+        url: item.url, title: item.data.title, lane: item.data.lane,
+        navigation: item.data.eleventyNavigation,
+      })));
       throw error;
     }
   });
