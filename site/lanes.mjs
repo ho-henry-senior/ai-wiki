@@ -48,8 +48,15 @@ const homeKey = "Home";
 export const eleventyNavigation = {
   key: (data) => {
     if (data.homepage) return data.eleventyNavigation?.key || homeKey;
-    return data.eleventyNavigation?.key || data.title;
+    const key = data.eleventyNavigation?.key || data.title;
+    // Eleventy Navigation treats commas in keys as multiple parents. A
+    // Guide chapter can have a comma in its heading, but never in its key.
+    const member = guideForUrl(data.page?.url);
+    if (data.lane === "guides" && member?.position > 0 && key?.includes(","))
+      return `guide-member:${data.page.url}`;
+    return key;
   },
+  title: (data) => data.eleventyNavigation?.title || data.title,
   parent: (data) => {
     if (data.homepage) return false;
     if (!data.lane) return data.eleventyNavigation?.parent || homeKey;
