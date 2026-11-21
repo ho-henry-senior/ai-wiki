@@ -13,7 +13,7 @@ Stop the agent discovering what you could tell it. Without repository context it
 
 ## Core advice
 
-- **[Repository context for coding agents](../alignment/repository-context-for-agents.md)** — Keep [`AGENTS.md`](../alignment/repository-instructions.md) short, and link to decisions, schemas and other detail that the agent loads only when needed: [progressive disclosure](../../concepts/progressive-disclosure.md).
+- **[Well-organised repository context](agent-ready-repository-context.md)** — Give the agent the facts it would otherwise infer: a short `AGENTS.md` for what every task needs, and detail it can load when a task calls for it.
 - **[Discoverable deterministic checks](discoverable-deterministic-checks.md)** — Static analysis, linters, type checks, and tests give the same answer every time, and the agent spends tokens only on reading the result.
 
 ## Explore further

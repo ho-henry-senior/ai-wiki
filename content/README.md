@@ -10,6 +10,7 @@ Pages are listed here by their section on the website, which their `lane` front 
   - [Requirements discovery with coding agents](goals/alignment/agent-led-requirements-discovery.md)
   - [Explicit decisions and scope boundaries](goals/alignment/explicit-decisions-and-scope-boundaries.md)
 - [Economy](goals/economy/README.md) — core advice for using time and tokens effectively without sacrificing quality or security.
+  - [Well-organised repository context](goals/economy/agent-ready-repository-context.md)
   - [Discoverable deterministic checks](goals/economy/discoverable-deterministic-checks.md)
 - [Security](goals/security/README.md) — limit what an agent can reach and do, starting from where its tools run.
   - [Excessive agent access](goals/security/excessive-agent-access.md)

@@ -48,12 +48,28 @@ A Guide is a collection, **not** an editorial page type. A `reference`-type page
 
 ### Four lanes
 
-- **Goals** — four desired outcomes: Alignment, Economy, Security, and Trust & Traceability. Each overview states its core points, as short sections or as links to concise `advice` pages, and links to supporting content. A goal overview's advice is organised under that goal.
+- **Goals** — four desired outcomes: Alignment, Economy, Security, and Trust & Traceability. Each overview states its [core points](#core-points) and links to supporting content. A goal overview's advice is organised under that goal.
 - **Guides** — coherent collections presented through one clear entry point. A Guide may be ordered, or thematic with independent resources. A Guides-lane chapter can be nested under its entry in the section navigation.
 - **Articles** — independent explanations, patterns, perspectives and case studies that readers can browse without first choosing a Guide. Do not force all practical how-tos into Guides.
 - **Reference** — reusable instructions, checklists, catalogues, examples, definitions and source material that readers often need directly.
 
 Each published page has at most one primary lane; pages with no lane may remain accessible without an active primary navigation section. **Lane** affects the active top navigation item and its sidebar; **type** describes the editorial form, so a chapter can still be an `explanation`, and a Reference resource may also be part of Skills.
+
+### Core points
+
+A goal has **two to five core points**: the few things a reader should take away. This is a guideline, not a quota. Fewer than two suggests it is not a collection; more than five, that it has not decided what matters most.
+
+Each core point has **one clear home for its substantive explanation**. The home can be any of these:
+
+- **An existing page,** when one page already covers the point. Security's _Prompt injection_ point links straight to its page, which states the point and routes readers to the controls.
+- **A routing page** (`type: advice`), when several pages each contribute part of the advice. Economy's two points work this way.
+- **A section of the overview,** when nothing substantial sits behind the point. Trust & Traceability's four points work this way.
+
+Choose the home that serves the reader; don't create a page just to fill the structure. A routing page must earn the extra click with a decision, a synthesis or a route that the overview doesn't already give. If it only repeats the overview's summary and lists links, make it a section instead.
+
+Guides don't follow this count. A Guide is a reading route, so its length follows the reader's journey, and its chapters needn't be core points.
+
+Trust & Traceability's overview sections are a recent pilot from [#183](https://github.com/ho-henry-senior/ai-wiki/issues/183). Assess how readers find them before using overview sections, or routing pages, as the default for every goal.
 
 ### Primary navigation, section listings and Guide context
 
