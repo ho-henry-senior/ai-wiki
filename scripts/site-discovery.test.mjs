@@ -19,7 +19,7 @@ function markdownFiles(dir) {
 
 function publishedPages() {
   const entries = markdownFiles("content").filter(
-    (file) => /^lane: (goals|guides|articles|reference)\s*$/m.test(fs.readFileSync(file, "utf8")),
+    (file) => /^lane: (goals|guides|articles|reference|case-studies)\s*$/m.test(fs.readFileSync(file, "utf8")),
   );
   const urls = entries.map((file) => pageUrl(file.split(path.sep).join("/")));
   assert.equal(new Set(urls).size, urls.length, "Published page URLs must be unique");
