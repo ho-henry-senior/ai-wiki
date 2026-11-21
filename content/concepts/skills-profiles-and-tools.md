@@ -6,6 +6,7 @@ lane: guides
 goal: economy
 order: 24
 checked: 2026-11-20
+verification: "Checked against GitHub's agent-skills and custom-agent configuration documentation; see Sources for the relevant references."
 tags:
   - Copilot
   - Agent roles
