@@ -1,21 +1,21 @@
 ---
-type: reference
-summary: Where Copilot finds skills, the SKILL.md syntax and required metadata, optional supporting files, and a complete small example.
+type: how-to
+summary: Create a skill folder and SKILL.md where Copilot finds it, write a description that gets it used at the right time, keep the instructions to one procedure, and check that it loads.
 status: developing
 lane: guides
-order: 12
 checked: 2026-11-15
 tags:
+  - Copilot
   - Skills
 ---
 
-# Write a SKILL.md
+# Write your own skill
 
-Once you have [decided a skill is worth adding](../goals/economy/useful-skills.md) and found nothing suitable in [the skills directory](agent-skills-directory.md), create a directory containing a `SKILL.md` file with **YAML front matter** followed by **Markdown instructions**. The portable [Agent Skills specification](https://agentskills.io/specification) defines the format, not where every product searches for skills or whether it supports slash commands.
+Write a skill when a task keeps coming up and nothing in [skills worth trying](agent-skills-directory.md) fits. A skill is a folder with a `SKILL.md` file: **YAML front matter** with its name and description, then **Markdown instructions**. The format is the open [Agent Skills specification](https://agentskills.io/specification), so the same skill can work in other agents that support it.
 
-## Where to put it
+## 1. Choose where it goes
 
-Put project skills in `.agents/skills/NAME/SKILL.md`. Copilot reads it, and the folder is not named after one product. Copilot also reads `.github/skills/` and `.claude/skills/`. The `SKILL.md` format is the open Agent Skills standard, so the same skill can work in other agents that support it.
+Put a project skill in `.agents/skills/NAME/SKILL.md`. Copilot reads it there, and so do other agents, because the folder isn't named after one product. Copilot also reads `.github/skills/` and `.claude/skills/`.
 
 | Copilot feature                                     |  Loads project skills   |
 | --------------------------------------------------- | :---------------------: |
@@ -23,11 +23,9 @@ Put project skills in `.agents/skills/NAME/SKILL.md`. Copilot reads it, and the 
 | Copilot CLI and the Copilot app                     |           Yes           |
 | Agent mode in VS Code, Visual Studio, and JetBrains | Yes (version-dependent) |
 
-In the Copilot features that support skills, the agent uses each skill's name and description to choose one, then loads its instructions when the task calls for it. Personal skills go in `~/.copilot/skills/` or `~/.agents/skills/`, but cloud sessions do not see them; put any skill the cloud agent needs in the repository. To share skills across several repositories, see [the Home Repo pattern](../articles/home-repo-pattern.md). `gh skill` in the GitHub CLI can find and install skills from GitHub repositories.
+A personal skill goes in `~/.copilot/skills/` or `~/.agents/skills/`, but cloud sessions don't see it; put any skill the cloud agent needs in the repository. To share skills across several repositories, see [the Home Repo pattern](../articles/home-repo-pattern.md).
 
-Source for this section: GitHub's [agent skills documentation](https://docs.github.com/en/copilot/concepts/customizations/agent-skills).
-
-## Composition
+## 2. Create the folder and file
 
 ```text
 .agents/skills/
@@ -38,11 +36,24 @@ Source for this section: GitHub's [agent skills documentation](https://docs.gith
     └── assets/              # Optional templates or data
 ```
 
-The required file is named `SKILL.md` exactly. The skill directory and `name` should match, using lowercase hyphenated words. The optional folders are not needed for a small skill.
+The file must be named `SKILL.md`. Give the folder the same name as the skill, in lowercase hyphenated words. A small skill needs none of the optional folders.
 
-## Complete example
+## 3. Write the description
 
-Save this as `.agents/skills/review-api-changes/SKILL.md`:
+Copilot sees only the name and description until it decides to use a skill, so the description decides whether it is ever used. Say **what the skill does** and **when to use it**, in the words a request would use:
+
+```markdown
+---
+name: review-api-changes
+description: Review API changes against documented contracts when asked about API compatibility.
+---
+```
+
+`name` and `description` are required. A vague description, such as "helps with APIs", gets the skill loaded for the wrong tasks or not at all. The specification also defines optional fields, such as `license`, `compatibility` and `allowed-tools`; products differ in which they support.
+
+## 4. Write the procedure
+
+Under the front matter, write one bounded procedure: its inputs, steps, expected output and checks. The complete example:
 
 ```markdown
 ---
@@ -61,14 +72,20 @@ description: Review API changes against documented contracts when asked about AP
 Do not modify files unless asked to make a fix.
 ```
 
-The opening and closing `---` delimit YAML front matter. **`name` and `description` are required.** The description should explain _what the skill does_ and _when to use it_: agents may use it to decide whether to load the instructions. The body is normal Markdown with headings, steps, links and code blocks.
+Put longer explanations in `references/`, helpers in `scripts/` and templates in `assets/`, and link to them from `SKILL.md`, saying when to use each. A link is a pointer, not proof the agent opened the file. Don't copy `AGENTS.md` into the skill: rules every task needs belong there, not in each procedure.
 
-Optional standard metadata includes `license`, `compatibility`, `allowed-tools` and `metadata`. Product-specific fields such as `disable-model-invocation` in [some listed skills](agent-skills-directory.md) are not universal requirements.
+## 5. Check that it loads
 
-## Instructions and supporting files
+In Copilot CLI, run `/skills reload`, then `/skills info review-api-changes` to see that Copilot found it. Then check both ways it can be used:
 
-Keep the main file focused on its inputs, steps, expected output and checks. Put longer explanations in `references/`, executable helpers in `scripts/` and templates in `assets/`. Link to supporting files from `SKILL.md`; a link is a pointer, not proof the agent loaded it.
+- **By name:** start a prompt with `/review-api-changes` and check that the agent follows the steps.
+- **By description:** ask for the task in ordinary words, without naming the skill, and check that Copilot chooses it. If it doesn't, the description doesn't match how the task is asked for.
 
-Avoid copying `AGENTS.md` into each skill. A skill is for a bounded repeatable procedure, not every repository rule. Scripts can read data, write files and use the network, so inspect their dependencies and permissions before running them.
+In VS Code, type `/skills` in the chat input to see the skills it found. Once it loads, [test whether it helps](test-agent-skills.md). For a project-specific example, see this wiki's [wiki-review skill](https://github.com/ho-henry-senior/ai-wiki/blob/main/.agents/skills/wiki-review/SKILL.md).
 
-Before reusing it, follow the [real-task comparison](../goals/economy/useful-skills.md#decide-whether-you-need-one). For a project-specific example, see [the wiki-review skill](https://github.com/ho-henry-senior/ai-wiki/blob/main/.agents/skills/wiki-review/SKILL.md) for a project-specific example.
+## Sources
+
+- [Agent Skills specification](https://agentskills.io/specification)
+- [GitHub Docs: About agent skills](https://docs.github.com/en/copilot/concepts/customizations/agent-skills)
+- [GitHub Docs: Creating agent skills for Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/create-skills)
+- [VS Code docs: Use Agent Skills in VS Code](https://code.visualstudio.com/docs/agent-customization/agent-skills)

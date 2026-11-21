@@ -96,11 +96,15 @@ A Guide can gather pages whose **primary purposes differ**. The Guides can inclu
 
 - **Session history and active context** — Guides lane; fourth ordered chapter of How coding agents work.
 
-- **Skills** — Guides lane; ordered but unnumbered entry explaining what a skill is and when to add one; discoverable via Guides.
+- **Skills** — Guides lane; ordered but unnumbered entry explaining what a skill is and how Copilot uses one, with the shared comparison of AGENTS.md, skills, roles and tools; discoverable via Guides.
 
-- **Write a SKILL.md** — Guides lane; final Skills chapter: where Copilot finds skills and the file format; retains its canonical URL.
+- **Install an existing skill** — Guides lane; Skills chapter on reviewing, installing and checking someone else's skill.
 
-- **Agent skills directory** — Reference lane; first Skills chapter, for finding an existing skill, and standalone lookup resource, discoverable via Reference **and** Skills.
+- **Write your own skill** — Guides lane; Skills chapter on placing, describing and checking a new skill; retains the canonical URL of the former _Write a SKILL.md_.
+
+- **Test whether a skill helps** — Guides lane; final Skills chapter on comparing a task with and without a skill.
+
+- **Skills worth trying** — Guides lane; first Skills chapter, a short list of built-in skills and the community skills the wiki refers to; retains the canonical URL of the former _Agent skills directory_.
 
 - **Agent roles** — Guides lane; ordered entry that also explains what a role is.
 
@@ -116,7 +120,7 @@ A Guide can gather pages whose **primary purposes differ**. The Guides can inclu
 
 - **Configure the sandbox and tool restrictions, Protect credentials and sensitive data, Check integrations and sandbox boundaries** — Guides lane; members of Secure a local coding agent, with Previous/Next but no chapter numbers.
 
-The coding-agent and Agent roles chapters stay in Guides to simplify Articles navigation. The Skills directory stays in Reference because direct lookup there remains useful, despite its place in the ordered Skills reading route. A page may be linked or featured elsewhere without its active lane changing.
+The coding-agent and Agent roles chapters stay in Guides to simplify Articles navigation. The skills list moved from Reference into the Skills guide in [#208](https://github.com/ho-henry-senior/ai-wiki/issues/208): the wiki keeps a short list rather than a catalogue. A page may be linked or featured elsewhere without its active lane changing.
 
 **Sidebar rule for the design:** the Guides sidebar should expose Guide entries, with chapter children only where they belong to the Guides navigation tree. It should not pull canonical Reference pages into the Guides sidebar. Cross-lane members instead show contextual links in the page body or Guide navigation. Avoid creating two exhaustive trees containing the same resources.
 
@@ -131,7 +135,7 @@ The coding-agent and Agent roles chapters stay in Guides to simplify Articles na
 
 ## Example reader journeys
 
-**Guides → Skills → Agent skills directory → Write a SKILL.md:** the reader starts with the Skills introduction and its decision, follows Previous/Next to the source-linked directory in Reference to look for an existing skill, then to the writing chapter in Guides if nothing fits. The directory still works on direct entry from Reference or search.
+**Guides → Skills → Skills worth trying → Install an existing skill → Write your own skill → Test whether a skill helps:** the reader starts with what a skill is, looks for an existing skill, installs one or writes their own, then tests it. Every chapter is a task, and each still works on direct entry from search or a link.
 
 **Articles or search → The tool-call loop:** the page opens at its canonical URL, explains itself, indicates that it is in the ordered _How coding agents work_ Guide, and offers optional chapter navigation. No prior chapter is required to understand its basic purpose.
 

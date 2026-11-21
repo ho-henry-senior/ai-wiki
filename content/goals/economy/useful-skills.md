@@ -1,11 +1,10 @@
 ---
-type: reference
-summary: What agent skills are, when a reusable procedure is worth adding, and how to test whether one helps before you keep it.
+type: explanation
+summary: What an agent skill is, how Copilot decides to use one, how it differs from AGENTS.md and agent roles, and the steps for finding, installing, writing and testing one.
 status: developing
 lane: guides
 goal: economy
-order: 2
-checked: 2026-11-15
+checked: 2026-11-21
 tags:
   - Copilot
   - Economy
@@ -14,20 +13,35 @@ tags:
 
 # Skills
 
-A **skill** is a reusable package of task-specific instructions in a `SKILL.md` file, optionally accompanied by reference material, scripts and templates. In agents that support skills, the name and description help the agent decide when to load the instructions, instead of putting every procedure in every task's context; see [progressive disclosure](../../concepts/progressive-disclosure.md).
+A **skill** is a reusable procedure for one kind of task, in a `SKILL.md` file, optionally with reference material, scripts and templates alongside it. Instead of putting every procedure in every task's context, the agent loads a skill only when a task needs it; see [progressive disclosure](../../concepts/progressive-disclosure.md).
 
-Add a skill only when a task keeps coming up, the agent does not already handle it well, and the skill improves the result on a real case. Do not start by installing one: a skill adds to what the agent loads and needs upkeep, and without trying the task first you cannot tell whether it helps.
+## How Copilot uses a skill
 
-## Decide whether you need one
+1. **It knows the skill exists.** Copilot sees each available skill's name and description, not its instructions.
+2. **It decides to use it.** When your prompt matches a skill's description, Copilot loads that `SKILL.md` into the agent's context. In Copilot CLI you can also call a skill by name, for example `/review-api-changes`.
+3. **It follows the instructions.** The agent works through the steps and opens the skill's scripts, references or templates when the instructions point to them.
 
-1. **Name the recurring task.** For example, "turn a discussion into a specification".
-2. **Try it without a skill.** Copilot may already do it, or a line in `AGENTS.md` may be enough.
-3. **Try the skill on one real case.** Keep it only if the result is clearly better and worth the setup and upkeep.
-4. **Record what you found:** the task, the agent and version you used, the result, and the date.
+So the description decides whether a skill is ever used, and the instructions decide what happens when it is. A skill only guides the agent: it can't do anything the agent couldn't already do.
 
-Agents build features in over time. When Copilot gains a built-in equivalent, record that and retire the skill.
+## Skills, instructions and roles
 
-## Next steps
+A skill sits between instructions that apply to every task and a role with its own responsibilities. Use a skill for a procedure you want repeated; put rules every task needs in `AGENTS.md`; and add an [agent role](../../concepts/skills-profiles-and-tools.md) only when the work needs separate responsibilities.
 
-- **[Find an existing skill](../../reference/agent-skills-directory.md).** The directory lists GitHub-provided and community skills, with their sources and what is known about each. An entry is not evidence that a skill improves results in your project, so inspect its instructions and scripts, then try it on a real case.
-- **[Write a SKILL.md](../../reference/writing-agent-skills.md)** when nothing fits: the file format, where Copilot finds it, and a worked example.
+<!-- include -->
+
+[Table: how a skill compares with AGENTS.md, an agent role and a tool](../../includes/skills-instructions-roles-tools.md)
+
+## The steps
+
+Before anything else, try the task without a skill. Copilot may already do it well, or a line in `AGENTS.md` may be enough. Add a skill only when a task keeps coming up and the agent doesn't handle it well.
+
+- **[Skills worth trying](../../reference/agent-skills-directory.md):** the skills built into Copilot, and a few community skills this wiki refers to.
+- **[Install an existing skill](../../reference/install-agent-skills.md):** read it, install it with `gh skill`, and check that Copilot can see it.
+- **[Write your own skill](../../reference/writing-agent-skills.md):** where to put it, a description that gets it used at the right time, and a worked example.
+- **[Test whether a skill helps](../../reference/test-agent-skills.md):** compare the same task with and without it, record the result, and retire it when it's no longer needed.
+
+## Sources
+
+- [GitHub Docs: About agent skills](https://docs.github.com/en/copilot/concepts/customizations/agent-skills)
+- [GitHub Docs: Adding agent skills for Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills)
+- [Agent Skills specification](https://agentskills.io/specification)

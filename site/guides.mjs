@@ -6,13 +6,15 @@
 export const guides = {
   skills: {
     title: "Skills",
-    // Decide, then find an existing skill, then write one if none fits.
+    // Each chapter is a task: find, install or write, then test.
     ordered: true,
     numbered: false,
     overview: { title: "Skills", url: "/pages/useful-skills/" },
     parts: [
-      { title: "Agent skills directory", url: "/pages/agent-skills-directory/" },
-      { title: "Write a SKILL.md", url: "/pages/writing-agent-skills/" },
+      { title: "Skills worth trying", url: "/pages/agent-skills-directory/" },
+      { title: "Install an existing skill", url: "/pages/install-agent-skills/" },
+      { title: "Write your own skill", url: "/pages/writing-agent-skills/" },
+      { title: "Test whether a skill helps", url: "/pages/test-agent-skills/" },
     ],
   },
   "agent-roles": {

@@ -38,9 +38,11 @@ Pages are listed here by their section on the website, which their `lane` front 
   - [Repository context for coding agents](goals/alignment/repository-context-for-agents.md) — write down the facts an agent got wrong, near the code they concern.
   - [Enable agents to run repository commands](goals/alignment/agent-tool-delegation.md) — list commands in `AGENTS.md`, and set up the Copilot cloud agent to run them.
   - [Give agents a command interface with Just](goals/economy/justfile-agent-workflows.md) — advertise recipes, run single tests, compose checks, and define handoff gates.
-- [Skills](goals/economy/useful-skills.md) — what a skill is, and how to tell whether one is worth adding.
-  - [Agent skills directory](reference/agent-skills-directory.md) — built-in, inspected and candidate skills, with credited sources and limitations.
-  - [Write a SKILL.md](reference/writing-agent-skills.md) — where Copilot finds skills, the file format, and a complete minimal skill.
+- [Skills](goals/economy/useful-skills.md) — what a skill is, how Copilot uses one, and how it differs from AGENTS.md and agent roles.
+  - [Skills worth trying](reference/agent-skills-directory.md) — the skills built into Copilot, and a few community skills this wiki refers to.
+  - [Install an existing skill](reference/install-agent-skills.md) — read it, install a pinned version with `gh skill`, and check Copilot can see it.
+  - [Write your own skill](reference/writing-agent-skills.md) — where it goes, a description that gets it used, and a complete minimal skill.
+  - [Test whether a skill helps](reference/test-agent-skills.md) — compare a real task with and without it, record the result, and retire it when it's not needed.
 
 ## Articles
 
@@ -59,5 +61,4 @@ Pages are listed here by their section on the website, which their `lane` front 
 - [AGENTS.md example: short repository entrypoint](reference/agents-md-example.md) — adaptable instructions with project pointers and checks.
 - [Local checks and tools for coding agents](reference/local-development-tools.md) — a reference catalogue of testing, linting, unused-code, container and security tools.
 - [Git worktrees for parallel agent work](reference/git-worktrees-for-agents.md) — commands, a diagram, and practical boundaries for separate agent working directories.
-- [Agent skills directory](reference/agent-skills-directory.md) — also part of the Skills guide.
 - [AI glossary](reference/glossary.md) — definitions of common AI terms and distinctions.

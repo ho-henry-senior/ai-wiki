@@ -47,7 +47,7 @@ The Developer role implements one selected issue, runs repository checks and ope
 
 The Reviewer role assesses a PR and verification evidence, reports findings and leaves approval to a human. Its supplied instructions do not explicitly call a skill. A reader **could adapt** it to use a reusable review checklist skill, but the role must still define what to review and who approves. Again, this is a proposed adaptation, not an observed use.
 
-For original sources and their cautions, consult the standalone [agent skills directory](agent-skills-directory.md).
+For original sources and their cautions, see [skills worth trying](agent-skills-directory.md).
 
 ## Check discovery and tool access
 
