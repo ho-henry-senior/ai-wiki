@@ -15,7 +15,7 @@
     {%- endif %}
     {#- Goal pages and articles carry summaries for listings and search, but
         open with their own introduction; don't print the summary again. -#}
-    {%- if description and lane != "articles" and lane != "goals" and lane != "guides" %}
+    {%- if description and lane != "articles" and lane != "goals" and lane != "guides" and lane != "case-studies" %}
     <p class="govuk-body-l">{{ description | markdown("inline") | noOrphans | safe }}</p>
     {%- endif %}
   </header>
@@ -108,7 +108,7 @@
 {% block content %}
   {%- set sidebar = false %}
   {%- if sectionKey %}
-    {%- set sidebar = collections.navigation | eleventyNavigation(sectionKey) | laneItems(page.url, sectionKey == "Guides" or sectionKey == "Articles" or sectionKey == "Reference") %}
+    {%- set sidebar = collections.navigation | eleventyNavigation(sectionKey) | laneItems(page.url, sectionKey == "Guides" or sectionKey == "Articles" or sectionKey == "Reference" or sectionKey == "Case studies") %}
   {%- elif tag or tagIndex %}
     {%- set sidebar = collections.tags | tagItems(page.url) %}
   {%- endif %}
