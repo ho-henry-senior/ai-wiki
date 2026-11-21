@@ -14,6 +14,7 @@ tags:
 
 Without restrictions, a local agent runs commands with your access, so a mistake or an injected instruction can affect your files and credentials.
 
-Approval prompts are not access restrictions; see [secure a local coding agent](local-agent-security.md).
+Neither instructions nor approval prompts restrict that access. What does depends on where the agent runs:
 
-Locally, turn on Copilot's sandbox, which is off by default: [secure a local coding agent](local-agent-security.md). In the cloud, GitHub enforces a firewall and workflow approval, with gaps: [secure the Copilot cloud agent](cloud-agent-security.md).
+- **On your computer,** nothing is restricted until you turn on Copilot's local sandbox, which is off by default. Then narrow the credentials the agent holds and check what runs outside the sandbox. The [Secure a local coding agent](local-agent-security.md) guide covers all three.
+- **In the cloud,** GitHub enforces a firewall and workflow approval, with gaps that you close in the agent's settings: [secure the Copilot cloud agent](cloud-agent-security.md).

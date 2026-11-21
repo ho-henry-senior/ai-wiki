@@ -111,6 +111,10 @@ A Guide can gather pages whose **primary purposes differ**. The Guides can inclu
 
 - **Write repository instructions in AGENTS.md, Repository context for coding agents, Enable agents to run repository commands, Give agents a command interface with Just** — Guides lane; members of Set up a repository for agents, with Previous/Next but no chapter numbers.
 
+- **Secure a local coding agent** — Guides lane; ordered but unnumbered entry, the setup overview, followed by three chapters. The Security goal explains the risks; this Guide is the setup route.
+
+- **Configure the sandbox and tool restrictions, Protect credentials and sensitive data, Check integrations and sandbox boundaries** — Guides lane; members of Secure a local coding agent, with Previous/Next but no chapter numbers.
+
 The coding-agent and Agent roles chapters stay in Guides to simplify Articles navigation. The Skills directory stays in Reference because direct lookup there remains useful, despite its place in the ordered Skills reading route. A page may be linked or featured elsewhere without its active lane changing.
 
 **Sidebar rule for the design:** the Guides sidebar should expose Guide entries, with chapter children only where they belong to the Guides navigation tree. It should not pull canonical Reference pages into the Guides sidebar. Cross-lane members instead show contextual links in the page body or Guide navigation. Avoid creating two exhaustive trees containing the same resources.

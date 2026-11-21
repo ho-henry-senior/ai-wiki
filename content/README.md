@@ -37,12 +37,15 @@ Pages are listed here by their section on the website, which their `lane` front 
   - [Repository context for coding agents](goals/alignment/repository-context-for-agents.md) — write down the facts an agent got wrong, near the code they concern.
   - [Enable agents to run repository commands](goals/alignment/agent-tool-delegation.md) — list commands in `AGENTS.md`, and set up the Copilot cloud agent to run them.
   - [Give agents a command interface with Just](goals/economy/justfile-agent-workflows.md) — advertise recipes, run single tests, compose checks, and define handoff gates.
+- [Secure a local coding agent](goals/security/local-agent-security.md) — limits a local agent can't get round, for its commands, its credentials, and what runs outside its sandbox.
+  - [Configure the sandbox and tool restrictions](goals/security/local-sandbox-and-tool-restrictions.md) — Copilot CLI, app and VS Code: folders, network, deny rules, and a test that a restriction works.
+  - [Protect credentials and sensitive data](goals/security/local-agent-credentials.md) — credential pass-through, a narrow token for Copilot, and keeping secrets out of tool output.
+  - [Check integrations and sandbox boundaries](goals/security/local-agent-integrations.md) — what the sandbox doesn't cover, and reviewing MCP servers and repository configuration.
 
 ## Articles
 
 - [Define, steer, and verify a task](goals/alignment/define-and-verify-tasks.md) — write the task, hand it to Copilot, steer it, and check the result.
 - [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — how Copilot charges for tokens, which model tier to use, and how to cap a session.
-- [Secure a local coding agent](goals/security/local-agent-security.md) — Copilot CLI, app, and editor: sandbox, tool and URL permissions, credentials.
 - [Secure the Copilot cloud agent](goals/security/cloud-agent-security.md) — what GitHub enforces, and the secrets, firewall, MCP, and approval settings you set.
 - [Case study: a lo-fi software factory](articles/lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.
 - [The Home Repo pattern for agents working across repositories](articles/home-repo-pattern.md) — a shared starting point for agent context and skills across projects, with access and maintenance limits.
