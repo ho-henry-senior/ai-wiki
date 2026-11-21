@@ -16,7 +16,7 @@ The examples below are paraphrased and deliberately omit repository, issue, PR a
 
 An early change established the shared Fetch client contract. The implementation report recorded passing focused and broader tests. A subsequent agent review nevertheless reproduced a discrepancy: when a caller cancelled while a response body was still being read, the error was classified as a network failure rather than a caller abort.
 
-That distinction mattered because the ticket explicitly required network failures, caller cancellation and configured timeouts to be distinguishable. Passing tests were useful evidence, but they had not exercised this particular sequence. The preserved review comment establishes the finding; it is not, by itself, proof of when or how the defect was fixed.
+That distinction mattered because the ticket explicitly required network failures, caller cancellation and configured timeouts to be distinguishable. Passing tests established partial coverage, but they had not exercised this particular sequence. The preserved review comment establishes the finding; it is not, by itself, proof of when or how the defect was fixed.
 
 ## A maintainability concern prompted follow-up
 
