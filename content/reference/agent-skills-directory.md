@@ -3,6 +3,8 @@ type: reference
 summary: A single source-linked catalogue of GitHub-provided, inspected community and project skills, and candidates not yet tried.
 status: developing
 lane: reference
+guide: skills
+guideOrder: 2
 order: 11
 checked: 2026-11-18
 tags:
