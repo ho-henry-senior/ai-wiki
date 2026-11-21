@@ -34,7 +34,7 @@ export const goals = {
   alignment: "Alignment",
   economy: "Economy",
   security: "Security",
-  traceability: "Traceability & Trust",
+  traceability: "Trust & Traceability",
 };
 
 const homeKey = "Home";

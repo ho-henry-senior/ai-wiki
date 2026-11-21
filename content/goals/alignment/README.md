@@ -20,4 +20,4 @@ Start with a grilling, not a prompt. A short request leaves the agent guessing, 
 
 ## Explore further
 
-Who approves the result is covered under [Traceability & Trust](../traceability/README.md). For more depth, see [from agile roles to agent-assisted workflows](../../articles/agent-role-boundaries.md) for one way to split work between roles, the [lo-fi software factory case study](../../articles/lo-fi-software-factory-case-study.md) for specifications and handoffs in practice, and [evaluation (eval)](../../reference/glossary.md#evaluation-eval) for comparing agent behavior across tasks.
+Who approves the result is covered under [Trust & Traceability](../traceability/README.md). For more depth, see [from agile roles to agent-assisted workflows](../../articles/agent-role-boundaries.md) for one way to split work between roles, the [lo-fi software factory case study](../../articles/lo-fi-software-factory-case-study.md) for specifications and handoffs in practice, and [evaluation (eval)](../../reference/glossary.md#evaluation-eval) for comparing agent behavior across tasks.

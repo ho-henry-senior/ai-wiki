@@ -16,7 +16,7 @@
 //   across the lanes, which the goal navigation does not. Keep a narrower
 //   tag inside one only while it still groups something distinct. Not every
 //   goal is a tag: Specifications and Pull requests and review already
-//   gather Alignment's and Traceability & Trust's pages.
+//   gather Alignment's and Trust & Traceability's pages.
 //
 // Eleventy builds a collection for each tag, and the GOV.UK plugin's tag
 // layouts list them at /tags/ and /tags/<tag>/. The Articles landing page's

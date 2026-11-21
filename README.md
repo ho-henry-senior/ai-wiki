@@ -7,7 +7,7 @@ Practical guidance for developers using AI agents, focusing on GitHub Copilot.
 - **[Alignment](content/goals/alignment/README.md)** — Solve the problem you intended.
 - **[Economy](content/goals/economy/README.md)** — Spend less time and fewer tokens.
 - **[Security](content/goals/security/README.md)** — Limit what an agent can reach and do.
-- **[Traceability & Trust](content/goals/traceability/README.md)** — Leave a record others can follow, and review changes you can rely on.
+- **[Trust & Traceability](content/goals/traceability/README.md)** — Review changes you can rely on, and leave a record others can follow.
 
 ## Guides
 
