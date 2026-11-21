@@ -35,7 +35,7 @@ Write each link so the agent can tell when it matters, for example "Before chang
 
 Copilot CLI loads a file referenced as `@path` from `AGENTS.md` immediately, so an `@` reference is not on demand. An ordinary link is followed only if the agent chooses to. Keep rules that every task needs in `AGENTS.md` itself.
 
-See [write repository instructions in AGENTS.md](../goals/alignment/repository-instructions.md) and [what a skill is, and when to add one](../goals/economy/useful-skills.md).
+See [write repository instructions in AGENTS.md](../goals/alignment/repository-instructions.md) and [Skills](../goals/economy/useful-skills.md).
 
 ## Sources
 

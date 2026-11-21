@@ -27,7 +27,7 @@ In GitHub Copilot, a role can be implemented as a **custom agent** in a profile 
 
 In Copilot, a skill can live at `.agents/skills/NAME/SKILL.md`, a custom agent profile at `.github/agents/NAME.agent.md`, and an executable action can be a built-in tool or an MCP server.
 
-To decide when a skill is warranted, see [What a skill is, and when to add one](../goals/economy/useful-skills.md). To create one, see [Write a SKILL.md](../reference/writing-agent-skills.md).
+To decide when a skill is warranted, see [Skills](../goals/economy/useful-skills.md). To create one, see [Write a SKILL.md](../reference/writing-agent-skills.md).
 
 ## Define the role's contract
 

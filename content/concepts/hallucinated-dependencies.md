@@ -31,7 +31,7 @@ Compromised real packages and names one typo away from real ones reach you the s
 - **Install from the lock file in automation,** for example with `npm ci` in `copilot-setup-steps.yml`, so every run installs exactly the versions the lock file records. That makes installs reproducible, not safe: the agent can change the manifest and the lock file, so the lock file is only as trustworthy as the review of its diff.
 - **Contain what an install script can reach.** On your computer, the [local sandbox](../goals/security/local-agent-security.md#enable-the-sandbox) limits files, network, and credentials. In the cloud, the firewall's recommended allowlist includes common package registries, so it does not stop the download; keep the `copilot` environment minimal instead.
 
-Asking the agent in `AGENTS.md` to check before adding a dependency helps, but it is an instruction, not a limit; see [instructions are not enforced controls](instructions-vs-controls.md).
+Asking the agent in `AGENTS.md` to check before adding a dependency helps, but it is an instruction, not a limit; see [instructions and enforced controls](instructions-vs-controls.md).
 
 ## Sources
 

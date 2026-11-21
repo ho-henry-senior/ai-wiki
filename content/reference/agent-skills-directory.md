@@ -14,7 +14,7 @@ tags:
 
 This directory is the wiki's catalogue of **GitHub-provided skills**, **inspected community and project skills**, and **other candidates to evaluate**. Built-in availability depends on the Copilot environment; listing a third-party skill is not a tested endorsement. No community or project skill in this directory has been trialled against an equivalent task without the skill.
 
-For what a skill is and how to decide whether one is worth adding, read [What a skill is, and when to add one](../goals/economy/useful-skills.md). To build one, see [Write a SKILL.md](writing-agent-skills.md).
+For what a skill is and how to decide whether one is worth adding, read [Skills](../goals/economy/useful-skills.md). To build one, see [Write a SKILL.md](writing-agent-skills.md).
 
 ## Built-in GitHub Copilot skills
 
@@ -43,55 +43,55 @@ To inspect the skills actually found by your CLI, run `copilot skill list` in a 
 
 The following eight skills come from their credited authors or maintainers. Each entry links to the original `SKILL.md` where it is published. Read the whole skill and bundled scripts before installation: a skill can ask an agent to run commands or act in external systems.
 
-## Requirements and planning
+### Requirements and planning
 
-### /grill-me and /grilling
+#### /grill-me and /grilling
 
 **Author:** [Matt Pocock](https://github.com/mattpocock). **Source:** [grill-me](https://github.com/mattpocock/skills/blob/main/skills/productivity/grill-me/SKILL.md) and [grilling](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md).
 
 `/grill-me` delegates to `/grilling`. The latter interviews the user in rounds, clarifying dependencies between decisions before work begins. A deliberately intensive method; the user still owns the decisions.
 
-### /to-spec
+#### /to-spec
 
 **Author:** [Matt Pocock](https://github.com/mattpocock). **Source:** [to-spec/SKILL.md](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-spec/SKILL.md).
 
 Synthesises a conversation and repository context into a specification. **Caution:** the source publishes to a configured tracker without a final approval of the full specification; [this wiki recommends human agreement](../goals/alignment/define-and-verify-tasks.md#agree-on-the-problem) before implementation.
 
-### /to-tickets
+#### /to-tickets
 
 **Author:** [Matt Pocock](https://github.com/mattpocock). **Source:** [to-tickets/SKILL.md](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-tickets/SKILL.md).
 
 Breaks a specification into verifiable vertical-slice tickets with explicit dependencies. Asks the user to approve the ticket breakdown before publishing to the configured tracker or local files.
 
-## Implementation and review
+### Implementation and review
 
-### /tdd
+#### /tdd
 
 **Author:** [Matt Pocock](https://github.com/mattpocock). **Source:** [tdd/SKILL.md](https://github.com/mattpocock/skills/blob/main/skills/engineering/tdd/SKILL.md).
 
 A test-first workflow focused on observable behaviour at agreed interfaces. Requires test-boundary decisions and repository test tooling.
 
-### /implement-spec
+#### /implement-spec
 
 **Author:** [Matt Pocock](https://github.com/mattpocock). **Source:** [implement-spec/SKILL.md](https://github.com/mattpocock/skills/blob/main/skills/engineering/implement-spec/SKILL.md).
 
 Coordinates ticket implementations through separate worktrees, subagents and an integration branch. Needs a configured tracker and supported tooling; see [Git worktrees for parallel agent work](git-worktrees-for-agents.md).
 
-### /code-review
+#### /code-review
 
 **Author:** [Matt Pocock](https://github.com/mattpocock). **Source:** [code-review/SKILL.md](https://github.com/mattpocock/skills/blob/main/skills/engineering/code-review/SKILL.md).
 
 Reviews a diff both against repository coding standards and the originating specification. It uses subagents; human review remains essential.
 
-## Documentation and maintenance
+### Documentation and maintenance
 
-### docs-sync-audit
+#### docs-sync-audit
 
 **Maintainer:** [GitHub Awesome Copilot community](https://github.com/github/awesome-copilot). **Source:** [docs-sync-audit/SKILL.md](https://github.com/github/awesome-copilot/blob/main/skills/docs-sync-audit/SKILL.md).
 
 Checks documentation claims against code/configuration and distinguishes confirmed drift from possible gaps. Its bundled script needs separate inspection. The repository maintainer is credited rather than assuming individual authorship.
 
-### wiki-review
+#### wiki-review
 
 **Maintainer:** [Making the most of agents contributors](https://github.com/ho-henry-senior/ai-wiki). **Source:** [wiki-review/SKILL.md](https://github.com/ho-henry-senior/ai-wiki/blob/main/.agents/skills/wiki-review/SKILL.md).
 
@@ -109,4 +109,4 @@ A different take on regression tests that favours avoiding brittle tests; it poi
 
 ## Testing a candidate
 
-Try the underlying task without the skill first, then with it on a comparable real case. Record the task, agent and version, results, date and any built-in equivalent before calling a skill **tried**. See the [selection procedure](../goals/economy/useful-skills.md#decide-whether-you-need-one). The entries above are **built-in**, **inspected** or **candidate**; none is labelled **tried**.
+The entries above are **built-in**, **inspected** or **candidate**; none is labelled **tried** yet. To try one, follow the [trial in Skills](../goals/economy/useful-skills.md#decide-whether-you-need-one), and record the result before calling it tried.

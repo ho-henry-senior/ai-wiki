@@ -13,6 +13,7 @@ Practical guidance for developers using AI agents, focusing on GitHub Copilot.
 
 - **[How coding agents work](content/articles/understanding-coding-agents.md)** — an ordered guide to the model, harness and tool-call loop.
 - **[Skills](content/goals/economy/useful-skills.md)** — decide when to use a skill, write one, or find examples in the directory.
+- **[Agent roles](content/articles/agent-roles.md)** — define agent responsibilities, plan handoffs, and see how roles use skills.
 
 ## First steps
 

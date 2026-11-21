@@ -52,11 +52,11 @@ Intermediate reasoning steps produced or elicited while solving a task. A displa
 
 ### Compaction
 
-Summarizing older parts of a long conversation so it fits the context window. It can lose detail and does not delete the saved history. Copilot CLI compacts automatically, or on request with `/compact`. See [session history versus active context](../concepts/session-history-vs-context.md).
+Summarizing older parts of a long conversation so it fits the context window. It can lose detail and does not delete the saved history. Copilot CLI compacts automatically, or on request with `/compact`. See [session history and active context](../concepts/session-history-vs-context.md).
 
 ### Context window
 
-The amount of input and generated output a model can consider in a single interaction. It is not the same as persistent memory or training data, and a larger context window does not guarantee that all included information will be used well. See [session history versus active context](../concepts/session-history-vs-context.md).
+The amount of input and generated output a model can consider in a single interaction. It is not the same as persistent memory or training data, and a larger context window does not guarantee that all included information will be used well. See [session history and active context](../concepts/session-history-vs-context.md).
 
 ### Custom agent
 
@@ -90,7 +90,7 @@ AI systems that use models to generate content, such as text, images, audio, vid
 
 ### Guardrails
 
-Controls around an AI system that constrain inputs, outputs, or actions—for example, content filters, tool permissions, output schemas, or human approval steps. “Guardrails” has no single standard definition, and no single control guarantees safety. See [instructions versus enforced controls](../concepts/instructions-vs-controls.md).
+Controls around an AI system that constrain inputs, outputs, or actions—for example, content filters, tool permissions, output schemas, or human approval steps. “Guardrails” has no single standard definition, and no single control guarantees safety. See [instructions and enforced controls](../concepts/instructions-vs-controls.md).
 
 ## H
 
@@ -172,7 +172,7 @@ An enforced limit on what an agent's commands can read, change, or contact, appl
 
 ### Skill
 
-A reusable package of task-specific instructions and optional resources, in a `SKILL.md` file. See [What a skill is, and when to add one](../goals/economy/useful-skills.md) for discovery and use, and [Agent roles, skills and tools](../concepts/skills-profiles-and-tools.md) for the distinctions.
+A reusable package of task-specific instructions and optional resources, in a `SKILL.md` file. See [Skills](../goals/economy/useful-skills.md) for discovery and use, and [Agent roles, skills and tools](../concepts/skills-profiles-and-tools.md) for the distinctions.
 
 ### Stochastic
 

@@ -68,7 +68,7 @@ On a later model call, that result can accompany the original task and additiona
 
 The harness builds each request from the information available at that point. Earlier tool results may be included, summarized or omitted as sessions grow. Tool schemas and repeated context also contribute to token use, so a single chat message may result in several separately processed model requests.
 
-This is distinct from what the session **stores**. For the difference between saved history and active context, and Copilot CLI's `/context` and `/compact` commands, see [session history is not active context](../concepts/session-history-vs-context.md).
+This is distinct from what the session **stores**. For the difference between saved history and active context, and Copilot CLI's `/context` and `/compact` commands, see [session history and active context](../concepts/session-history-vs-context.md).
 
 The next part, [the tool-call loop](../concepts/tool-call-loop.md), shows how these exchanges repeat until the task is done.
 

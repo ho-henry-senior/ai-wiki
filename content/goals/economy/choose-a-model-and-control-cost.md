@@ -37,7 +37,7 @@ Copilot prices each request's tokens at the model's rate and converts the total 
 
 The context is resent with every request, so repeated input can become a large part of an agent session's cost: a long log read early may be included in later requests until compaction removes it, at the cached rate while the cache holds.
 
-More detail: [The tool-call loop](../../concepts/tool-call-loop.md) and [session history versus context](../../concepts/session-history-vs-context.md).
+More detail: [The tool-call loop](../../concepts/tool-call-loop.md) and [session history and active context](../../concepts/session-history-vs-context.md).
 
 ## Choose a tier
 
@@ -65,8 +65,8 @@ Choose the model and settings before you start. For new work, start a new sessio
 ## Cut tokens
 
 - **Write a clear task** with acceptance criteria: [define, steer, and verify a task](../alignment/define-and-verify-tasks.md#turn-the-specification-into-issues).
-- **Keep instructions short;** they load with every task in the features that read them: [load context through focused entrypoints](../../concepts/progressive-disclosure.md).
-- **List focused commands,** so the agent does not read whole logs: [let the agent run your repository's commands](../alignment/agent-tool-delegation.md).
+- **Keep instructions short;** they load with every task in the features that read them: [progressive disclosure](../../concepts/progressive-disclosure.md).
+- **List focused commands,** so the agent does not read whole logs: [enable agents to run repository commands](../alignment/agent-tool-delegation.md).
 - **Enable only the MCP toolsets** the task needs, and raise reasoning effort only for hard tasks.
 
 ## Cap a session
