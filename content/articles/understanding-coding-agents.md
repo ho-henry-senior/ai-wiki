@@ -11,11 +11,11 @@ tags:
 
 # How coding agents work
 
-A coding agent can look like a chat box that reads code, fixes bugs and runs tests. Behind that interface, a model and an application exchange messages, request tools and interpret results. This series opens that black box.
+A coding agent can look like a chat box that reads code, fixes bugs and runs tests. Behind that interface, a model and an application exchange messages, request tools and interpret results. This guide opens that black box.
 
 The pages use diagrams and short request examples to explain the system from three angles: its parts, the information it exchanges, and how its actions repeat.
 
-## Read the series
+## Read the guide
 
 1. [Inside a coding agent](inside-coding-agent.md) — identify the model, harness, tools and environment, and which component can actually act.
 2. [What the model receives and returns](model-requests-and-responses.md) — examine the instructions, messages and tool definitions passed to a model, and the structured outputs it can produce.
