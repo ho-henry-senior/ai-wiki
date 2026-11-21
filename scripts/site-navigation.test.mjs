@@ -111,7 +111,7 @@ test("Skills is an ordered Guide with a Reference directory", () => {
     ["pages/agent-skills-directory/index.html", "/pages/writing-agent-skills/", null, "Part 2 of 2"],
   ]) {
     const html = fs.readFileSync("_site/" + file, "utf8");
-    const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\\s\\S]*?<\\/nav>/)?.[0];
+    const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
     assert.ok(nav, file + ": Guide navigation exists");
     assert.match(nav, /aria-label="Guide navigation"/);
     if (part) assert.ok(nav.includes(part), file + ": sequence position");
@@ -136,7 +136,7 @@ test("Agent roles has three linked chapters with Previous/Next", () => {
   const href = (file) => 'href="/ai-wiki/' + file.replace(/index[.]html$/, "") + '"';
   for (const [file, previous, next] of pages) {
     const html = fs.readFileSync("_site/" + file, "utf8");
-    const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\\s\\S]*?<\\/nav>/)?.[0];
+    const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
     assert.ok(nav, file + ": Guide nav");
     assert.match(nav, /Agent roles/);
     if (previous) assert.ok(nav.includes(href(previous)), file + ": Previous link");
