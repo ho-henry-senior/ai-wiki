@@ -4,8 +4,6 @@ summary: How agent roles, reusable skills and executable tools differ, with a Co
 status: established
 lane: articles
 goal: economy
-series: skills-and-agent-roles
-seriesOrder: 3
 order: 24
 checked: 2026-11-20
 tags:
