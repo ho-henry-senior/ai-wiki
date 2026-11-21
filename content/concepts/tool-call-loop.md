@@ -2,9 +2,9 @@
 type: explanation
 summary: How a model requests a tool, the harness permits or refuses it, and returned results inform the next action.
 status: developing
-lane: articles
-series: understanding-coding-agents
-seriesOrder: 3
+lane: guides
+guide: understanding-coding-agents
+guideOrder: 3
 tags:
   - Context and tokens
   - Permissions and sandboxing
@@ -14,7 +14,7 @@ tags:
 
 One developer request can trigger several model calls. After each call, the harness may execute a permitted tool, return the result, and ask the model what to do next. That repeating exchange is the **agent loop**.
 
-This is the third part of the series [How coding agents work](../articles/understanding-coding-agents.md). The earlier parts explain [the components](../articles/inside-coding-agent.md) and [the request payloads](../articles/model-requests-and-responses.md).
+This is the third chapter of the guide [How coding agents work](../articles/understanding-coding-agents.md). The earlier parts explain [the components](../articles/inside-coding-agent.md) and [the request payloads](../articles/model-requests-and-responses.md).
 
 ## One round of the loop
 
