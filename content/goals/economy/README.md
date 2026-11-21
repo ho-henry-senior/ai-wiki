@@ -18,7 +18,7 @@ Stop the agent discovering what you could tell it. Without repository context it
 
 ## Explore further
 
-Once the agent has useful repository context and discoverable commands, there are other ways to improve economy:
+Once the agent has repository context and discoverable commands, there are other ways to improve economy:
 
 - **Manage session context.** Long sessions can carry growing amounts of context. In Copilot CLI, `/context` shows what the next request carries and `/compact` summarises it. See [Session history and active context](../../concepts/session-history-vs-context.md).
 - **Choose a cost-effective model.** Model selection is a major cost lever. See [Choose a model and control cost](choose-a-model-and-control-cost.md).
