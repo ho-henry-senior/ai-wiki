@@ -15,7 +15,7 @@ tags:
 
 Static analysis, linters, type checks, and tests give the same answer every time, and the agent spends tokens only on reading the result; it could approximate some of them by reading code, but more slowly, at greater cost, and less consistently.
 
-Name them in a `justfile`, so the agent does not experiment to find how to run them, with focused recipes, such as one test or one file of tests, for while it edits, and a full gate to run once before handoff.
+Make the checks discoverable through the repository's existing command interface. Provide a focused command for testing one file or case, and a full verification command to run before handoff. Add a task runner such as Just only when existing commands are scattered or hard to invoke.
 
 On the next task, check whether the agent uses a focused command while editing and runs the full gate before handoff.
 
