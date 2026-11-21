@@ -119,3 +119,12 @@ test("page front matter does not duplicate registry membership", () => {
     assert.doesNotMatch(frontMatter, /^guide(?:Order)?:/m, `${file}: membership belongs in registry`);
   }
 });
+
+test("An unnumbered ordered Guide keeps Previous/Next without chapter numbers", () => {
+  const repository = guideNavigation("/pages/repository-context-for-agents/");
+  assert.equal(repository.ordered, true);
+  assert.equal(repository.numbered, false);
+  assert.equal(repository.previous.url, "/pages/repository-instructions/");
+  assert.equal(repository.next.url, "/pages/agent-tool-delegation/");
+  assert.equal(guideNavigation("/pages/model-requests-and-responses/").numbered, true);
+});

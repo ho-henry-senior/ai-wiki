@@ -146,7 +146,7 @@
       {% if reading %}
       <nav class="app-series-navigation" aria-label="Guide navigation">
         <p class="govuk-body-s app-series-navigation__heading">
-          <a class="govuk-link" href="{{ reading.overview.url }}">{{ reading.title }}</a>{% if reading.ordered and reading.current > 0 %} · Part {{ reading.current }} of {{ reading.total }}{% endif %}
+          <a class="govuk-link" href="{{ reading.overview.url }}">{{ reading.title }}</a>{% if reading.numbered and reading.current > 0 %} · Part {{ reading.current }} of {{ reading.total }}{% endif %}
         </p>
         {% if guideReading and not reading.ordered %}
         <ul class="govuk-list govuk-list--bullet">
