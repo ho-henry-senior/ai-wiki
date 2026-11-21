@@ -37,7 +37,7 @@ The Copilot cloud agent runs in a fresh GitHub Actions environment, not on your 
 3. **Review the MCP servers you configure for the agent** as carefully as code that runs with its permissions, because that is what they are, and the firewall does not limit them.
 4. **Leave Require approval for workflow runs on** in the cloud agent's settings. Turning it off lets unreviewed code from the agent run in workflows that may have write access or secrets. [Verify the result](../alignment/define-and-verify-tasks.md#verify-the-result) says what to check before approving.
 5. **Keep branch protection with required reviews.** GitHub stops the person who asked the agent for the work from approving its pull request, so with required reviews on, someone who did not direct the work has to approve it. Without required reviews, nothing makes that second look happen.
-6. **Decide what it may read.** Assigning it an issue gives the issue's text to the model, so treat issues and comments from outside your team as untrusted input. See [prompt injection](prompt-injection-coding-agents.md).
+6. **Decide what it may read.** Assigning it an issue gives the issue's text to the model, so treat issues and comments from outside your team as untrusted input. See [prompt injection](prompt-injection.md).
 
 Organization owners can set the firewall for every repository and stop repositories adding their own allowlist rules. Repository administrators can change it only where the organization lets them.
 

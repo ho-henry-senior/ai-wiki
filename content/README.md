@@ -21,7 +21,6 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
   - [Independent change approval](goals/traceability/independent-change-approval.md)
 - [Secure a local coding agent](goals/security/local-agent-security.md) — Copilot CLI, app, and editor: sandbox, tool and URL permissions, credentials.
 - [Secure the Copilot cloud agent](goals/security/cloud-agent-security.md) — what GitHub enforces, and the secrets, firewall, MCP, and approval settings you set.
-- [Prompt injection in coding-agent workflows](goals/security/prompt-injection-coding-agents.md) — treat untrusted content as data rather than authority.
 - [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — how Copilot charges for tokens, which model tier to use, and how to cap a session.
 - [Define, steer, and verify a task](goals/alignment/define-and-verify-tasks.md) — write the task, hand it to Copilot, steer it, and check the result.
 - [How coding agents work](articles/understanding-coding-agents.md) — an illustrated three-chapter guide on agent components, model requests, search and the tool-call loop.

@@ -82,3 +82,30 @@ test("all Guides-lane pages stay out of Articles navigation", () => {
     assert.ok(!articleSidebar.includes(href), "Articles sidebar must not duplicate " + url);
   }
 });
+
+test("Prompt injection is one canonical article linked from Security", () => {
+  const url = "/pages/prompt-injection/";
+  const obsoleteUrl = "/pages/prompt-injection-coding-agents/";
+  const published = publishedPages();
+  assert.ok(published.includes(url), "Canonical page must be published");
+  assert.ok(!published.includes(obsoleteUrl), "Old article must not be published");
+
+  const index = JSON.parse(fs.readFileSync(path.join(siteRoot, "search-index.json"), "utf8"));
+  const searchUrls = index.map((page) => normalizedUrl(page.url));
+  assert.equal(searchUrls.filter((href) => href === url).length, 1);
+  assert.ok(!searchUrls.includes(obsoleteUrl));
+
+  const sitemap = fs.readFileSync(path.join(siteRoot, "sitemap/index.html"), "utf8");
+  const main = sitemap.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1];
+  assert.ok(main, "Sitemap has a main content region");
+  const links = [...main.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)]
+    .map(([, href]) => normalizedUrl(href));
+  assert.equal(links.filter((href) => href === url).length, 1);
+  assert.ok(!links.includes(obsoleteUrl));
+
+  const security = fs.readFileSync(path.join(siteRoot, "pages/security/index.html"), "utf8");
+  assert.ok(security.includes('href="' + prefix + url + '"'));
+  assert.ok(!security.includes('href="' + prefix + obsoleteUrl + '"'));
+  const canonical = fs.readFileSync(path.join(siteRoot, url.slice(1), "index.html"), "utf8");
+  assert.match(canonical, /Prompt injection/);
+});

@@ -14,7 +14,7 @@ tags:
 
 # Secure a local coding agent
 
-A local coding agent runs tools and commands on your computer, often with access to your files, credentials, and network. Instructions such as “do not push” are not access restrictions. Set boundaries that your tools and operating system enforce, even when the agent makes a mistake or follows [an injected instruction](prompt-injection-coding-agents.md).
+A local coding agent runs tools and commands on your computer, often with access to your files, credentials, and network. Instructions such as “do not push” are not access restrictions. Set boundaries that your tools and operating system enforce, even when the agent makes a mistake or follows [an injected instruction](prompt-injection.md).
 
 ## Enable the sandbox
 
