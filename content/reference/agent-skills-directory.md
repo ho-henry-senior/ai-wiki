@@ -14,7 +14,7 @@ tags:
 
 This directory is the wiki's catalogue of **GitHub-provided skills**, **inspected community and project skills**, and **other candidates to evaluate**. Built-in availability depends on the Copilot environment; listing a third-party skill is not a tested endorsement. No community or project skill in this directory has been trialled against an equivalent task without the skill.
 
-For what a skill is and how to decide whether one is worth adding, read [Skills](../goals/economy/useful-skills.md). To build one, see [Write a SKILL.md](writing-agent-skills.md).
+For what a skill is and how to decide whether one is worth adding, read [Skills](../goals/economy/useful-skills.md). If nothing here fits, [write a SKILL.md](writing-agent-skills.md).
 
 ## Built-in GitHub Copilot skills
 

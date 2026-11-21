@@ -95,11 +95,11 @@ A Guide can gather pages whose **primary purposes differ**. The Guides can inclu
 
 - **Session history and active context** — Guides lane; fourth ordered chapter of How coding agents work.
 
-- **Skills** — Guides lane; ordered entry explaining when to add skills; discoverable via Guides.
+- **Skills** — Guides lane; ordered but unnumbered entry explaining what a skill is and when to add one; discoverable via Guides.
 
-- **Write a SKILL.md** — Guides lane; ordered Skills chapter on writing a reusable procedure; retains its canonical URL.
+- **Write a SKILL.md** — Guides lane; final Skills chapter: where Copilot finds skills and the file format; retains its canonical URL.
 
-- **Agent skills directory** — Reference lane; final Skills chapter and standalone lookup resource, discoverable via Reference **and** Skills.
+- **Agent skills directory** — Reference lane; first Skills chapter, for finding an existing skill, and standalone lookup resource, discoverable via Reference **and** Skills.
 
 - **Agent roles** — Guides lane; ordered entry that also explains what a role is.
 
@@ -130,7 +130,7 @@ The coding-agent and Agent roles chapters stay in Guides to simplify Articles na
 
 ## Example reader journeys
 
-**Guides → Skills → Write a SKILL.md → Agent skills directory:** the reader starts with the Skills introduction, follows Previous/Next to the writing chapter in Guides, then reaches the source-linked directory in Reference. That last page still works on direct entry from Reference or search.
+**Guides → Skills → Agent skills directory → Write a SKILL.md:** the reader starts with the Skills introduction and its decision, follows Previous/Next to the source-linked directory in Reference to look for an existing skill, then to the writing chapter in Guides if nothing fits. The directory still works on direct entry from Reference or search.
 
 **Articles or search → The tool-call loop:** the page opens at its canonical URL, explains itself, indicates that it is in the ordered _How coding agents work_ Guide, and offers optional chapter navigation. No prior chapter is required to understand its basic purpose.
 

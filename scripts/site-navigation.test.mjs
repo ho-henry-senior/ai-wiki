@@ -100,26 +100,27 @@ test("sources follow Guides navigation across the ordered guide", () => {
 });
 
 
-test("Skills is an ordered Guide with a Reference directory", () => {
+test("Skills runs from the decision to the directory to writing a skill", () => {
   const index = fs.readFileSync("_site/guides/index.html", "utf8");
   for (const url of ["/pages/useful-skills/", "/concepts/skills-profiles-and-tools/"]) {
     assert.ok(index.includes('href="/ai-wiki' + url + '"'), "Guide index contains " + url);
   }
   assert.deepEqual(guides.skills.parts.map((part) => part.url), [
-    "/pages/writing-agent-skills/",
     "/pages/agent-skills-directory/",
+    "/pages/writing-agent-skills/",
   ]);
   assert.equal(guides.skills.ordered, true);
-  for (const [file, previous, next, part] of [
-    ["pages/useful-skills/index.html", null, "/pages/writing-agent-skills/", null],
-    ["pages/writing-agent-skills/index.html", "/pages/useful-skills/", "/pages/agent-skills-directory/", "Part 1 of 2"],
-    ["pages/agent-skills-directory/index.html", "/pages/writing-agent-skills/", null, "Part 2 of 2"],
+  assert.equal(guides.skills.numbered, false);
+  for (const [file, previous, next] of [
+    ["pages/useful-skills/index.html", null, "/pages/agent-skills-directory/"],
+    ["pages/agent-skills-directory/index.html", "/pages/useful-skills/", "/pages/writing-agent-skills/"],
+    ["pages/writing-agent-skills/index.html", "/pages/agent-skills-directory/", null],
   ]) {
     const html = fs.readFileSync("_site/" + file, "utf8");
     const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
     assert.ok(nav, file + ": Guide navigation exists");
     assert.match(nav, /aria-label="Guide navigation"/);
-    if (part) assert.ok(nav.includes(part), file + ": sequence position");
+    assert.doesNotMatch(nav, /Part \d+ of/, file + ": no chapter numbers");
     if (previous) assert.ok(nav.includes('href="/ai-wiki' + previous + '"'), file + ": Previous link");
     else assert.doesNotMatch(nav, /app-series-navigation__card--previous/, file);
     if (next) assert.ok(nav.includes('href="/ai-wiki' + next + '"'), file + ": Next link");
