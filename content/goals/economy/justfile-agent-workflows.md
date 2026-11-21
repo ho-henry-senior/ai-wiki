@@ -41,9 +41,13 @@ lint:
 
 # Final read-only gate before handoff; stop if any check fails.
 verify: test-all lint format-check
+
+# Apply formatting (changes files).
+format:
+    python -m ruff format .
 ```
 
-Examples: `just test tests/test_orders.py` runs one file; `just test tests/test_orders.py::test_total` runs one test; `just verify` runs the complete gate. These commands assume pytest and Ruff are installed. Adapt the recipes to your project rather than adding tools just for the example.
+Examples: `just test tests/test_orders.py` runs one file; `just test tests/test_orders.py::test_total` runs one test; `just verify` runs the complete gate. Save the file as `justfile` at the repository root; it assumes Just, pytest and Ruff are installed. `format` changes files, while `format-check` does not. Adapt the recipes to your project rather than adding tools just for the example.
 
 A focused recipe should accept a **test path or test identifier**, not require the agent to edit the `justfile` for each test. The exact syntax varies by runner: Jest, Vitest, and `unittest` use different selectors. If test identifiers can come from untrusted input, validate them before interpolating them into shell commands.
 
@@ -77,8 +81,6 @@ Describe the effect of each command, whether it changes files, and whether failu
 ## Use the runner you already have
 
 Just helps when a repository has commands across multiple tools, or when composition and `just --list` make them easier to find. Don't add it if existing package scripts or a Makefile already provide a clear interface. See [enable agents to run repository commands](../alignment/agent-tool-delegation.md) for the general principle and [a structure for agent-facing repositories](../alignment/agent-facing-repository-structure.md) for where these files belong.
-
-**Copyable asset:** [Justfile example: discoverable checks](../../reference/justfile-example.md) provides a complete small `justfile` with focused testing, a read-only verification gate and a separate formatting command. Adapt its recipes to the project's real tools.
 
 For options beyond the example's pytest and Ruff commands, see the [local checks and tools for coding agents](../../reference/local-development-tools.md).
 

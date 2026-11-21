@@ -26,27 +26,7 @@ Give an agent commands that run the project's existing checks rather than asking
 | Lint Dockerfiles                | Hadolint                                                     | Dockerfile mistakes and maintainability issues                                      |
 | Validate other project files    | Template linters, YAML linters, Markdown/link checkers       | Errors in non-code artifacts                                                        |
 
-## Give agents focused commands
-
-Prefer a recipe that accepts a test file or test identifier, for example:
-
-```sh
-python -m pytest tests/test_orders.py -q
-python -m pytest tests/test_orders.py::test_total -q
-npx vitest run src/orders.test.ts
-```
-
-These are examples, not universal commands: flags and test selectors depend on the project's runner. The agent should run the smallest check that covers the change during editing, then the required full gate before handoff. See [the Justfile guide](../goals/economy/justfile-agent-workflows.md) for an executable example with parameterised recipes and composition.
-
-## Decide which results block handoff
-
-- **Required checks:** tests, lint, types and formatting checks that the repository expects to pass. Run them in CI as well as locally.
-- **Advisory diagnostics:** unused-code reports, security scans and dependency audits may have false positives or pre-existing findings. Record and triage results; do not silently delete code or change dependencies.
-- **Mutating tools:** formatters with write flags, auto-fix commands and generators change files. Label them clearly and keep them separate from read-only verification.
-
-A tool's output is evidence, not proof of correctness or security. Document the command's scope, expected runtime, side effects and failure policy in [the agent's command list](../goals/alignment/agent-tool-delegation.md). Check the tests against the agreed behavior, not just whether they pass; see [Verify the result](../goals/alignment/define-and-verify-tasks.md#verify-the-result).
-
 ## Related guidance
 
-- [Enable agents to run repository commands](../goals/alignment/agent-tool-delegation.md) — advertise commands and their meaning in `AGENTS.md`.
-- [Give agents a command interface with Just](../goals/economy/justfile-agent-workflows.md) — discovery, focused tests, composition and gates.
+- [Enable agents to run repository commands](../goals/alignment/agent-tool-delegation.md) — which commands to list in `AGENTS.md`, what each one does, and which results should block handoff.
+- [Give agents a command interface with Just](../goals/economy/justfile-agent-workflows.md) — focused test recipes, a read-only handoff gate, and keeping diagnostics and file-changing commands out of it.
