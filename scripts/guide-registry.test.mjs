@@ -75,39 +75,39 @@ test("Guide reading context and sidebar nesting use the canonical URL", () => {
   const roles = guideNavigation("/pages/agent-role-boundaries/");
   assert.equal(roles.title, "Agent roles");
   assert.equal(roles.ordered, true);
-  assert.equal(roles.current, 2);
-  assert.equal(roles.total, 3);
+  assert.equal(roles.current, 1);
+  assert.equal(roles.total, 2);
   assert.equal(roles.previous.url, "/concepts/skills-profiles-and-tools/");
   assert.equal(roles.next.url, "/pages/agent-roles-directory/");
   assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/pages/agent-role-boundaries/" } }), "Agent roles");
-  assert.equal(guideForUrl("/pages/skills-and-agent-roles/"), null);
+  // The entry page's title matches the guide's, so its chapters nest under it.
+  assert.equal(guideNavigation("/concepts/skills-profiles-and-tools/").current, 0);
   assert.equal(guideForUrl("/pages/cloud-agent-security/"), null);
 });
 
 test("comma-titled Guide chapters use safe navigation keys without changing their labels", () => {
+  // No current chapter has a comma in its title, so give a real chapter one.
   const page = {
     lane: "guides",
-    title: "Agent roles, skills and tools",
-    page: { url: "/concepts/skills-profiles-and-tools/" },
+    title: "Inside a coding agent, part one",
+    page: { url: "/pages/inside-coding-agent/" },
   };
-  assert.equal(eleventyNavigation.key(page), "guide-member:/concepts/skills-profiles-and-tools/");
-  assert.equal(eleventyNavigation.title(page), "Agent roles, skills and tools");
-  assert.equal(eleventyNavigation.parent(page), "Agent roles");
+  assert.equal(eleventyNavigation.key(page), "guide-member:/pages/inside-coding-agent/");
+  assert.equal(eleventyNavigation.title(page), "Inside a coding agent, part one");
+  assert.equal(eleventyNavigation.parent(page), "How coding agents work");
 });
 
 test("Guide sidebars use the registry's chapter order", () => {
   const children = [
     { title: "How agent roles use skills", url: "/pages/agent-roles-directory/" },
-    { title: "Agent roles, skills and tools", url: "/concepts/skills-profiles-and-tools/" },
     { title: "Agile roles in agentic development", url: "/pages/agent-role-boundaries/" },
   ];
   const [group] = laneItems([{
     title: "Agent roles",
-    url: "/pages/agent-roles/",
+    url: "/concepts/skills-profiles-and-tools/",
     children,
   }], "/pages/agent-role-boundaries/");
   assert.deepEqual(group.children.map((child) => child.href), [
-    "/concepts/skills-profiles-and-tools/",
     "/pages/agent-role-boundaries/",
     "/pages/agent-roles-directory/",
   ]);

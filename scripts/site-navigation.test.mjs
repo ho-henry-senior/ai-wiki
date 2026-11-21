@@ -14,8 +14,7 @@ const cases = [
   ["pages/cloud-agent-security/index.html", "articles", "Secure the Copilot cloud agent"],
   ["reference/index.html", "reference"],
   ["pages/writing-agent-skills/index.html", "guides", "Write a SKILL.md"],
-  ["pages/agent-roles/index.html", "guides", "Agent roles"],
-  ["concepts/skills-profiles-and-tools/index.html", "guides", "Agent roles, skills and tools"],
+  ["concepts/skills-profiles-and-tools/index.html", "guides", "Agent roles"],
   ["pages/agent-role-boundaries/index.html", "guides", "Agile roles in agentic development"],
   ["pages/agent-roles-directory/index.html", "guides", "How agent roles use skills"],
   ["pages/agent-skills-directory/index.html", "reference", "Agent skills directory"],
@@ -97,7 +96,7 @@ test("sources follow Guides navigation across the ordered guide", () => {
 
 test("Skills is an ordered Guide with a Reference directory", () => {
   const index = fs.readFileSync("_site/guides/index.html", "utf8");
-  for (const url of ["/pages/useful-skills/", "/pages/agent-roles/"]) {
+  for (const url of ["/pages/useful-skills/", "/concepts/skills-profiles-and-tools/"]) {
     assert.ok(index.includes('href="/ai-wiki' + url + '"'), "Guide index contains " + url);
   }
   assert.deepEqual(guides.skills.parts.map((part) => part.url), [
@@ -121,15 +120,12 @@ test("Skills is an ordered Guide with a Reference directory", () => {
     else assert.doesNotMatch(nav, /app-series-navigation__card--next/, file);
     assert.doesNotMatch(nav, /<span aria-current="page">/, file + ": no thematic member list");
   }
-  const comparison = fs.readFileSync("_site/pages/skills-and-agent-roles/index.html", "utf8");
-  assert.doesNotMatch(comparison, /<nav class="app-series-navigation"/);
 });
 
-test("Agent roles has three linked chapters with Previous/Next", () => {
+test("Agent roles has two linked chapters with Previous/Next", () => {
   assert.equal(guides["agent-roles"].ordered, true);
   const pages = [
-    ["pages/agent-roles/index.html", null, "concepts/skills-profiles-and-tools/index.html"],
-    ["concepts/skills-profiles-and-tools/index.html", "pages/agent-roles/index.html", "pages/agent-role-boundaries/index.html"],
+    ["concepts/skills-profiles-and-tools/index.html", null, "pages/agent-role-boundaries/index.html"],
     ["pages/agent-role-boundaries/index.html", "concepts/skills-profiles-and-tools/index.html", "pages/agent-roles-directory/index.html"],
     ["pages/agent-roles-directory/index.html", "pages/agent-role-boundaries/index.html", null],
   ];
@@ -153,7 +149,6 @@ test("Guide members have direct-entry context near the title", () => {
     "concepts/tool-call-loop/index.html",
     "pages/writing-agent-skills/index.html",
     "pages/agent-skills-directory/index.html",
-    "concepts/skills-profiles-and-tools/index.html",
     "pages/agent-role-boundaries/index.html",
     "pages/agent-roles-directory/index.html",
   ];
@@ -163,8 +158,10 @@ test("Guide members have direct-entry context near the title", () => {
     const context = html.indexOf('class="govuk-body-s app-guide-context"');
     const body = html.indexOf('class="app-prose-scope"');
     assert.ok(header >= 0 && context > header && body > context, `${file}: Guide link near title`);
-    assert.match(html.slice(context, body), /Part of the <a class="govuk-link" href="\/ai-wiki\/pages\/(understanding-coding-agents|useful-skills|agent-roles)\/"/);
+    assert.match(html.slice(context, body), /Part of the <a class="govuk-link" href="\/ai-wiki\/(pages\/understanding-coding-agents|pages\/useful-skills|concepts\/skills-profiles-and-tools)\/"/);
   }
-  const entry = fs.readFileSync("_site/pages/useful-skills/index.html", "utf8");
-  assert.doesNotMatch(entry, /class="govuk-body-s app-guide-context"/);
+  for (const entry of ["pages/useful-skills/index.html", "concepts/skills-profiles-and-tools/index.html"]) {
+    const html = fs.readFileSync(`_site/${entry}`, "utf8");
+    assert.doesNotMatch(html, /class="govuk-body-s app-guide-context"/, `${entry}: entry pages need no "Part of" line`);
+  }
 });
