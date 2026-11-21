@@ -45,8 +45,12 @@ test("published pages and Guide members remain in sitemap and search", () => {
     for (const part of guide.parts) expected.add(part.url);
   }
   const sitemap = fs.readFileSync(path.join(siteRoot, "sitemap/index.html"), "utf8");
+  // Navigation and footer links are not sitemap entries. Count only the
+  // sitemap's content, so a site-wide link cannot look like a duplicate.
+  const main = sitemap.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1];
+  assert.ok(main, "Sitemap has a main content region");
   const sitemapCounts = new Map();
-  for (const [, href] of sitemap.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)) {
+  for (const [, href] of main.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)) {
     const url = normalizedUrl(href);
     if (url) sitemapCounts.set(url, (sitemapCounts.get(url) ?? 0) + 1);
   }
@@ -62,15 +66,19 @@ test("published pages and Guide members remain in sitemap and search", () => {
   }
 });
 
-test("Guide chapters stay grouped, not duplicated in Articles navigation", () => {
+test("all Guides-lane pages stay out of Articles navigation", () => {
   const articles = fs.readFileSync(path.join(siteRoot, "articles/index.html"), "utf8");
   const articlePage = fs.readFileSync(path.join(siteRoot, "pages/cloud-agent-security/index.html"), "utf8");
   const articleSidebar = articlePage.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
   assert.ok(articleSidebar, "An Article must keep its own sidebar");
-  const chapters = guides["understanding-coding-agents"].parts;
-  for (const member of chapters) {
-    const href = 'href="' + prefix + member.url + '"';
-    assert.ok(!articles.includes(href), "Articles listing must not duplicate " + member.url);
-    assert.ok(!articleSidebar.includes(href), "Articles sidebar must not duplicate " + member.url);
+  // Check all Guides-lane pages, not just one Guide's known chapters.
+  const guidePages = markdownFiles("content")
+    .filter((file) => /^lane: guides\s*$/m.test(fs.readFileSync(file, "utf8")))
+    .map((file) => pageUrl(file.split(path.sep).join("/")));
+  assert.ok(guidePages.length > 0, "Expected Guides-lane pages");
+  for (const url of guidePages) {
+    const href = 'href="' + prefix + url + '"';
+    assert.ok(!articles.includes(href), "Articles listing must not duplicate " + url);
+    assert.ok(!articleSidebar.includes(href), "Articles sidebar must not duplicate " + url);
   }
 });
