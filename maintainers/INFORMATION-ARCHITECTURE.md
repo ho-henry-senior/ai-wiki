@@ -23,11 +23,11 @@ This specification records the **agreed design direction from [issue #173](https
 
 **Topic discovery** (`tags`): What topics does this page substantially cover? Flat, controlled vocabulary; a complementary way in, not a hierarchy.
 
-**Curated collection** (`site/guides.mjs plus guide today`): Which Guide connects this page to related material? Membership does not imply that every page must move to the Guides lane.
+**Curated collection** (`site/guides.mjs`, plus `guide` in front matter today): Which Guide connects this page to related material? Membership does not imply that every page must move to the Guides lane.
 
-**Reading structure** (`Ordered/thematic Guide definition and guideOrder today`): Is there a necessary sequence? Number and show Previous/Next only for an ordered Guide.
+**Reading structure** (ordered/thematic Guide definition and `guideOrder` today): Is there a necessary sequence? Number and show Previous/Next only for an ordered Guide.
 
-**Stable identity** (`Published URL and source file`): Where can the page always be linked? Keep one canonical published URL; section membership does not create copies.
+**Stable identity** (published URL and source file): Where can the page always be linked? Keep one canonical published URL; section membership does not create copies.
 
 The file's location under `content/` is an authoring arrangement, **not** a navigation taxonomy. For example, content authored under `content/reference/` can be linked from Guides without moving the source or URL.
 
