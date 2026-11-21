@@ -12,7 +12,7 @@ The exercise demonstrated that local scripts could coordinate specialist coding 
 
 ## What was observed
 
-The ticketed refactor was implemented and merged into a fork. A participant estimated roughly one to two days for ticket creation, review and implementation, including a team workshop and individual follow-up. That is a retrospective estimate, not measured total person-time.
+The original account records a completed migration in a fork, while wider integration remained subject to sign-off. A participant estimated roughly one to two days for ticket creation, review and implementation, including a team workshop and individual follow-up. That is a retrospective estimate, not measured total person-time.
 
 Agents and people ran unit tests and static checks; a participant also exercised representative application interactions manually. At the time of the original account, the final integration PR awaited another person's sign-off, with broader QA and regression testing planned. Some scenarios could not be tested locally, and one integration error had an uncertain cause.
 
@@ -28,7 +28,7 @@ The preserved dispatcher verifies expected PRs and review comments, and retains 
 
 Only one local Developer and one local Reviewer ran at a time, with separate worktrees. This reduced concurrent changes but did not prove conflicts could not occur. Local locks do not coordinate separate machines or clones. The dashboard provides visibility rather than control, and labels are snapshots of workflow state, not authenticated proof of process health.
 
-The unattended agents had broad tool access and were not independently sandboxed. Human approval gates governed workflow progression; they did not enforce a security boundary around every tool action. A comparable deployment would need access controls, credential scoping and sandboxing appropriate to the environment.
+The unattended agents had broad tool access and were not independently sandboxed. Human approval gates governed workflow progression; they did not enforce a security boundary around every tool action. A comparable deployment would need access controls, credential scoping and sandboxing matched to the environment.
 
 ## Lessons for another experiment
 
