@@ -15,15 +15,19 @@ This specification records the **agreed design direction from [issue #173](https
 
 ## Dimensions of the content model
 
-| Dimension               | Field / source today                                     | Question it answers                                          | Guidance                                                                                                                   |
-| ----------------------- | -------------------------------------------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| Primary navigation lane | `lane`                                                   | Which top-level section and sidebar provide primary context? | One lane per navigated page: `goals`, `guides`, `articles`, `reference`.                                                   |
-| Editorial type          | `type`                                                   | What kind of page is this?                                   | `overview`, `advice`, `how-to`, `pattern`, `explanation`, `reference`, `case-study`, `exploration`; **not** a second lane. |
-| Outcome                 | `goal`                                                   | Which of the four outcomes does this most directly support?  | `alignment`, `economy`, `security`, `traceability`; optional when a single primary outcome is not clear.                   |
-| Topic discovery         | `tags`                                                   | What topics does this page substantially cover?              | Flat, controlled vocabulary; a complementary way in, not a hierarchy.                                                      |
-| Curated collection      | `site/guides.mjs` plus `guide` today                     | Which Guide connects this page to related material?          | Membership does not imply that every page must move to the Guides lane.                                                    |
-| Reading structure       | Ordered/thematic Guide definition and `guideOrder` today | Is there a necessary sequence?                               | Number and show Previous/Next only for an ordered Guide.                                                                   |
-| Stable identity         | Published URL and source file                            | Where can the page always be linked?                         | Keep one canonical published URL; section membership does not create copies.                                               |
+**Primary navigation lane** (`lane`): Which top-level section and sidebar provide primary context? One lane per navigated page: `goals`, `guides`, `articles`, `reference`.
+
+**Editorial type** (`type`): What kind of page is this? `overview`, `advice`, `how-to`, `pattern`, `explanation`, `reference`, `case-study`, `exploration`; **not** a second lane.
+
+**Outcome** (`goal`): Which of the four outcomes does this most directly support? `alignment`, `economy`, `security`, `traceability`; optional when a single primary outcome is not clear.
+
+**Topic discovery** (`tags`): What topics does this page substantially cover? Flat, controlled vocabulary; a complementary way in, not a hierarchy.
+
+**Curated collection** (`site/guides.mjs plus guide today`): Which Guide connects this page to related material? Membership does not imply that every page must move to the Guides lane.
+
+**Reading structure** (`Ordered/thematic Guide definition and guideOrder today`): Is there a necessary sequence? Number and show Previous/Next only for an ordered Guide.
+
+**Stable identity** (`Published URL and source file`): Where can the page always be linked? Keep one canonical published URL; section membership does not create copies.
 
 The file's location under `content/` is an authoring arrangement, **not** a navigation taxonomy. For example, content authored under `content/reference/` can be linked from Guides without moving the source or URL.
 
@@ -65,15 +69,19 @@ The navigation tree's structure and the lane's purpose together determine broad 
 
 A Guide can gather pages whose **primary purposes differ**. The current, deliberately asymmetric arrangement is valid:
 
-| Page                                | Primary lane | Guide relationship                       | Broad discovery               |
-| ----------------------------------- | ------------ | ---------------------------------------- | ----------------------------- |
-| How coding agents work              | Guides       | Ordered entry                            | Guides                        |
-| Inside a coding agent               | Guides       | Ordered chapter                          | Within How coding agents work |
-| What the model receives and returns | Guides       | Ordered chapter                          | Within How coding agents work |
-| The tool-call loop                  | Guides       | Ordered chapter                          | Within How coding agents work |
-| Skills                              | Guides       | Thematic entry that also explains skills | Guides                        |
-| Write a SKILL.md                    | Reference    | Thematic Skills member                   | Reference **and** Skills      |
-| Agent skills directory              | Reference    | Thematic Skills member                   | Reference **and** Skills      |
+- **How coding agents work** — Guides lane; ordered entry; discoverable via Guides.
+
+- **Inside a coding agent** — Guides lane; ordered chapter; discoverable via Within How coding agents work.
+
+- **What the model receives and returns** — Guides lane; ordered chapter; discoverable via Within How coding agents work.
+
+- **The tool-call loop** — Guides lane; ordered chapter; discoverable via Within How coding agents work.
+
+- **Skills** — Guides lane; thematic entry that also explains skills; discoverable via Guides.
+
+- **Write a SKILL.md** — Reference lane; thematic skills member; discoverable via Reference **and** Skills.
+
+- **Agent skills directory** — Reference lane; thematic skills member; discoverable via Reference **and** Skills.
 
 The coding-agent chapters stay in Guides to achieve the *specific navigation-simplification goal*; returning them to the Articles landing page merely to satisfy a conceptual classification would defeat it. The Skills Reference pages stay in Reference because direct lookup there remains useful. A page may be linked or featured elsewhere without its active lane changing.
 
