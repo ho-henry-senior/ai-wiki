@@ -41,7 +41,9 @@ Project instructions in `maintainers/` are for this wiki's contributors and agen
 
 **Keep checks in step with site changes.** When changing templates, navigation, or generated content, review the corresponding assertions in [the Website workflow](../.github/workflows/site.yml) and tests under `scripts/`. Update them in the same pull request so they check the new behaviour and still catch regressions. Run both Verify and Website before merging.
 
-The [information architecture specification](INFORMATION-ARCHITECTURE.md) is the single authority for the website's lanes, page types, Goals, tags, Guides, navigation contexts, reader journeys, and sitemap/search requirements. It distinguishes the agreed design from the current implementation and proposed migrations. Review it before changing page placement or navigation; the configuration details below describe how the present build works.\n\nThe site's footer links to the glossary, the tags index, the plugin's generated sitemap, this maintainer documentation, and the repository. Put links there that are useful from any page but are not pages of a lane.
+The [information architecture specification](INFORMATION-ARCHITECTURE.md) is the single authority for the website's lanes, page types, Goals, tags, Guides, navigation contexts, reader journeys, and sitemap/search requirements. It distinguishes the agreed design from the current implementation and proposed migrations. Review it before changing page placement or navigation; the configuration details below describe how the present build works.
+
+The site's footer links to the glossary, the tags index, the plugin's generated sitemap, this maintainer documentation, and the repository. Put links there that are useful from any page but are not pages of a lane.
 
 Each page's title comes from its first `#` heading and its description from `summary`; Published Markdown under `content/` retains its existing public URL; indexes have explicit paths. These are set in `site/_data/eleventyComputed.js`, and the build configuration is `site/eleventy.config.mjs`. Under the title, each page shows a subdued metadata line with its `checked` date and completeness `status` when present, and pages with three or more `##` sections get a contents list of them; the layout is `site/_includes/wiki.njk`. Heading IDs follow GitHub's rules, so `page.md#section` links work on both. Mermaid diagrams (` ```mermaid ` blocks) render on GitHub and on the site; the site loads Mermaid's script only on pages that have a diagram. Search uses the plugin's search box with our own ranking, in `assets/search-ranking.js`: whole-word matches, with title matches first, then descriptions, then page text.
 
@@ -64,16 +66,7 @@ summary: A concise description of what this page explains.
 ---
 ```
 
-Suggested `type` values:
-
-- `overview` — an entrypoint to an outcome or a group of related approaches.
-- `advice` — one core point under a goal: a concise recommendation, why it matters, and where to act.
-- `how-to` — practical steps for carrying out a task, and how to check they worked.
-- `pattern` — a reusable practice or building block.
-- `explanation` — an article explaining how related ideas fit together and why they matter.
-- `reference` — information or a checklist to consult.
-- `case-study` — an account of an approach applied in practice and what happened.
-- `exploration` — a provisional investigation or path, rather than a case study or established practice.
+For the supported page types, their meanings, and how type differs from lane or Guide membership, see [Information architecture](INFORMATION-ARCHITECTURE.md#dimensions-of-the-content-model). Choose the type that describes the page's editorial purpose, then follow the relevant writing standard.
 
 Focused reusable concepts live in `content/concepts/` and use the types described in the [concept conventions](#writing-a-concept). An explanatory article may bring several concepts together without replacing them.
 
