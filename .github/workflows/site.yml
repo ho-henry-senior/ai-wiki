@@ -247,6 +247,8 @@ jobs:
           }
       - name: Test rendered navigation
         run: node --test scripts/site-navigation.test.mjs
+      - name: Check sitemap and search discovery
+        run: node --test scripts/site-discovery.test.mjs
       - name: Check pages show checked date and status as metadata
         run: |
           page=_site/pages/cloud-agent-security/index.html

@@ -112,10 +112,9 @@ The coding-agent chapters stay in Guides to achieve the _specific navigation-sim
 - The complete published page inventory must remain discoverable through the sitemap and search index even if a Guides-lane chapter is not listed separately under Articles.
 - Prefer a **single canonical sitemap entry per published page**; a Guide can express relationships through links rather than duplicate canonical URLs.
 - Do not filter a page out of the Eleventy navigation collection merely to hide it from a sidebar until the resulting sitemap behaviour has been checked.
-- Verify the GOV.UK Eleventy plugin's actual sitemap and search-index generation before relying on a navigation-tree change. Its dependency on the tree is **suspected but not yet confirmed**.
-- Acceptance tests for a future implementation should separately compare the complete published content inventory against `/sitemap/` and `search-index.json`, assert each expected canonical page occurs exactly once in each, and ensure Guides-lane chapters do not surface as individual Articles index/sidebar items. Check URL normalization and format of each generated index rather than assuming their raw structures are identical.
-
-Sitemap and search completeness are **required outcomes**, not claims that the existing build has already been audited against them.
+- The GOV.UK Eleventy plugin's generated sitemap and search index have been checked against published pages with a lane: each appears exactly once in both outputs. `scripts/site-discovery.test.mjs` enforces this result on Website builds.
+- The checks also ensure that Guides-lane pages do not appear in the Articles landing page or sidebar. They compare canonical URLs rather than assuming the sitemap and search index share a raw data format.
+- The plugin's internal dependency on the navigation tree has **not** been established by these output tests. Do not remove a page from the navigation collection merely to hide a sidebar item without verifying the generated sitemap and search output again.
 
 ## Guide metadata: current state and proposed cleanup
 
