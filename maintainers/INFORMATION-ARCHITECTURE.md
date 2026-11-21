@@ -67,7 +67,7 @@ The navigation tree's structure and the lane's purpose together determine broad 
 
 ## Guides are collections, not mandatory containers
 
-A Guide can gather pages whose **primary purposes differ**. The current, deliberately asymmetric arrangement is valid:
+A Guide can gather pages whose **primary purposes differ**. The Guides can include ordered chapters whose primary lane is Guides and independently useful Reference resources:
 
 - **How coding agents work** — Guides lane; ordered entry; discoverable via Guides.
 
@@ -77,13 +77,21 @@ A Guide can gather pages whose **primary purposes differ**. The current, deliber
 
 - **The tool-call loop** — Guides lane; ordered chapter; discoverable within How coding agents work.
 
-- **Skills** — Guides lane; thematic entry that also explains skills; discoverable via Guides.
+- **Skills** — Guides lane; ordered entry explaining when to add skills; discoverable via Guides.
 
-- **Write a SKILL.md** — Reference lane; thematic skills member; discoverable via Reference **and** Skills.
+- **Write a SKILL.md** — Guides lane; ordered Skills chapter on writing a reusable procedure; retains its canonical URL.
 
-- **Agent skills directory** — Reference lane; thematic skills member; discoverable via Reference **and** Skills.
+- **Agent skills directory** — Reference lane; final Skills chapter and standalone lookup resource, discoverable via Reference **and** Skills.
 
-The coding-agent chapters stay in Guides to achieve the _specific navigation-simplification goal_; returning them to the Articles landing page merely to satisfy a conceptual classification would defeat it. The Skills Reference pages stay in Reference because direct lookup there remains useful. A page may be linked or featured elsewhere without its active lane changing.
+- **Agent roles** — Guides lane; ordered entry point to role responsibilities and handoffs.
+
+- **Agent roles, skills and tools** — Guides lane; first Agent roles chapter.
+
+- **Agile roles in agentic development** — Guides lane; second Agent roles chapter.
+
+- **How agent roles use skills** — Guides lane; third Agent roles chapter.
+
+The coding-agent and Agent roles chapters stay in Guides to simplify Articles navigation. The Skills directory stays in Reference because direct lookup there remains useful, despite its place in the ordered Skills reading route. A page may be linked or featured elsewhere without its active lane changing.
 
 **Sidebar rule for the design:** the Guides sidebar should expose Guide entries, with chapter children only where they belong to the Guides navigation tree. It should not pull canonical Reference pages into the Guides sidebar. Cross-lane members instead show contextual links in the page body or Guide navigation. Avoid creating two exhaustive trees containing the same resources.
 
@@ -91,12 +99,13 @@ The coding-agent chapters stay in Guides to achieve the _specific navigation-sim
 
 - **Ordered:** the order is part of the Guide's instructional intent; chapter number and Previous/Next are appropriate. Each chapter must still support direct entry.
 - **Thematic:** members can be explored independently; show descriptive, unnumbered destinations rather than artificial Previous/Next. Identify the current destination accessibly.
+- An ordered Guide may include a Reference page as a step in a recommended reading route without changing that page's canonical home. Reader progression does not erase independent reference use.
 - Both kinds need a useful entry page and at least one additional worthwhile resource. A Guide need not have a newly written, thin introduction if an existing page already orients the reader.
 - A page may conceptually relate to several Guides, but **multiple formal memberships are deferred**. Validate at most one membership until a real example justifies the UI and data model.
 
 ## Example reader journeys
 
-**Guides → Skills → Write a SKILL.md:** the reader starts with the Skills introduction, follows an unnumbered link, arrives at the canonical Reference resource, sees Reference as its primary section, and has an optional way back to Skills. The same resource must work when entered from Reference or search.
+**Guides → Skills → Write a SKILL.md → Agent skills directory:** the reader starts with the Skills introduction, follows Previous/Next to the writing chapter in Guides, then reaches the source-linked directory in Reference. That last page still works on direct entry from Reference or search.
 
 **Articles or search → The tool-call loop:** the page opens at its canonical URL, explains itself, indicates that it is in the ordered _How coding agents work_ Guide, and offers optional chapter navigation. No prior chapter is required to understand its basic purpose.
 
