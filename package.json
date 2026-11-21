@@ -11,7 +11,7 @@
     "links": "remark . .agents/skills .github/workflows --quiet --frail --no-stdout",
     "style": "node scripts/style.mjs --strict",
     "test:style": "node --test scripts/style.test.mjs",
-    "test:site": "node --test scripts/site-links.test.mjs scripts/search-ranking.test.mjs scripts/site-contents.test.mjs scripts/site-includes.test.mjs scripts/breadcrumbs.test.mjs scripts/article-groups.test.mjs scripts/source-watch.test.mjs"
+    "test:site": "node --test scripts/guide-registry.test.mjs scripts/site-links.test.mjs scripts/search-ranking.test.mjs scripts/site-contents.test.mjs scripts/site-includes.test.mjs scripts/breadcrumbs.test.mjs scripts/article-groups.test.mjs scripts/source-watch.test.mjs"
   },
   "devDependencies": {
     "prettier": "3.10.1",
