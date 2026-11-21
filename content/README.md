@@ -12,7 +12,7 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
 - [Security](goals/security/README.md) — limit what an agent can reach and do, starting from where its tools run.
   - [Excessive agent access](goals/security/excessive-agent-access.md)
   - [Unexpected data exposure](goals/security/unexpected-data-exposure.md)
-  - [Prompt injection](goals/security/prompt-injection.md)
+  - [Prompt injection](goals/security/prompt-injection-coding-agents.md)
   - [Untrusted code execution](goals/security/untrusted-code-execution.md)
 - [Trust & Traceability](goals/traceability/README.md) — developing core advice for reviewing changes you can rely on and keeping a record of agent work.
   - [Agent authorship and attribution](goals/traceability/agent-authorship-and-attribution.md)
