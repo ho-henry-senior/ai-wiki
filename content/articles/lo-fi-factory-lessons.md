@@ -5,6 +5,7 @@ summary: Observed outcomes, operational limits and transferable lessons from the
 tags:
   - Permissions and sandboxing
 ---
+
 # What worked, what failed, and what remains
 
 The exercise demonstrated that local scripts could coordinate specialist coding agents through GitHub issues, PRs and review comments while people retained approval points. It did not establish that the process was autonomous, cheaper or ready for production.
