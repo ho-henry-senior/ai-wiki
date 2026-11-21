@@ -48,12 +48,24 @@ A Guide is a collection, **not** an editorial page type. A `reference`-type page
 
 ### Four lanes
 
-- **Goals** — four desired outcomes: Alignment, Economy, Security, and Trust & Traceability. Each overview states its core points, as short sections or as links to concise `advice` pages, and links to supporting content. A goal overview's advice is organised under that goal.
+- **Goals** — four desired outcomes: Alignment, Economy, Security, and Trust & Traceability. Each overview states its [core points](#core-points) and links to supporting content. A goal overview's advice is organised under that goal.
 - **Guides** — coherent collections presented through one clear entry point. A Guide may be ordered, or thematic with independent resources. A Guides-lane chapter can be nested under its entry in the section navigation.
 - **Articles** — independent explanations, patterns, perspectives and case studies that readers can browse without first choosing a Guide. Do not force all practical how-tos into Guides.
 - **Reference** — reusable instructions, checklists, catalogues, examples, definitions and source material that readers often need directly.
 
 Each published page has at most one primary lane; pages with no lane may remain accessible without an active primary navigation section. **Lane** affects the active top navigation item and its sidebar; **type** describes the editorial form, so a chapter can still be an `explanation`, and a Reference resource may also be part of Skills.
+
+### Core points
+
+A goal or Guide has **two to five core points**: the few things a reader should take away. This is a guideline, not a quota. Fewer than two suggests it is not a collection; more than five, that it has not decided what matters most.
+
+Each core point links to **exactly one page that owns it**:
+
+- **An existing page,** when one page already covers the point. Security's _Prompt injection_ point links straight to its page, which states the point and routes readers to the controls.
+- **A routing page** (`type: advice`), when the how-to is spread across several pages. It states the point, why it matters and how to check it, then sends readers to the right page for each part. Economy's two points work this way.
+- **A section of the overview,** when nothing substantial sits behind the point. Trust & Traceability's four points work this way.
+
+A routing page must add more than the overview's one-line summary: a page that only repeats it and links once should be a section instead. In a Guide, the core points are usually its chapters or resources, since each has material of its own.
 
 ### Primary navigation, section listings and Guide context
 
