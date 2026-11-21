@@ -6,7 +6,7 @@ This directory holds focused explanations that articles can reuse. Each concept 
 
 - [The tool-call loop](tool-call-loop.md) — how the model requests tools, the harness permits or refuses them, and results inform the next step.
 - [Session history and active context](session-history-vs-context.md) — saved conversations, context windows, compaction, and API-managed state.
-- [Agent roles, skills and tools](skills-profiles-and-tools.md) — reusable procedures, roles, and executable capabilities.
+- [Agent roles](skills-profiles-and-tools.md) — what a role is, and how it differs from a skill and a tool.
 - [Progressive disclosure](progressive-disclosure.md) — disclose relevant detail on demand rather than loading everything.
 
 ## Security and data handling

@@ -43,6 +43,11 @@ From reviews 6 to 12:
 
 - **Prompt injection — Consolidate into [Prompt injection](../content/goals/security/prompt-injection.md) in [PR #182](https://github.com/ho-henry-senior/ai-wiki/pull/182).** Keep the substantive explanation under the concise heading and URL; remove the redundant three-paragraph advice page, link directly from the Security overview, and retain the Copilot CLI deny-rule example. No redirects are needed at this stage.
 
+From the whole-wiki editorial review ([#183](https://github.com/ho-henry-senior/ai-wiki/issues/183)):
+
+- **Agent roles (guide introduction) — Merge into [Agent roles](../content/concepts/skills-profiles-and-tools.md) in [PR #185](https://github.com/ho-henry-senior/ai-wiki/pull/185).** It mostly listed the guide's pages; the concept page becomes the entry and takes in what a role is for and when to add one.
+- **Skills and agent roles — Remove in [PR #185](https://github.com/ho-henry-senior/ai-wiki/pull/185).** It restated the skill/role distinction that [Agent roles](../content/concepts/skills-profiles-and-tools.md) owns; the rest was links to the two guides.
+
 ## Next
 
 Compare the remaining Articles and Reference pages in groups, note further pages to merge or remove, and then prioritise small batches of changes. A detailed review of every remaining page, one at a time, is not needed.

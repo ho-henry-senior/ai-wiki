@@ -24,7 +24,7 @@ An AI system that uses a model to pursue a task, often by selecting actions, usi
 
 ### Agent role
 
-A defined responsibility, boundary and handoff for an agent working on part of a task. In Copilot, this can be implemented by a custom agent profile. See [Agent roles, skills and tools](../concepts/skills-profiles-and-tools.md).
+A defined responsibility, boundary and handoff for an agent working on part of a task. In Copilot, this can be implemented by a custom agent profile. See [Agent roles](../concepts/skills-profiles-and-tools.md).
 
 ### Agent harness
 
@@ -60,7 +60,7 @@ The amount of input and generated output a model can consider in a single intera
 
 ### Custom agent
 
-In Copilot, an implementation of an agent role, defined in `.github/agents/NAME.agent.md` with its own instructions and an optional `tools` list. See [Agent roles, skills and tools](../concepts/skills-profiles-and-tools.md).
+In Copilot, an implementation of an agent role, defined in `.github/agents/NAME.agent.md` with its own instructions and an optional `tools` list. See [Agent roles](../concepts/skills-profiles-and-tools.md).
 
 ## E
 
@@ -172,7 +172,7 @@ An enforced limit on what an agent's commands can read, change, or contact, appl
 
 ### Skill
 
-A reusable package of task-specific instructions and optional resources, in a `SKILL.md` file. See [Skills](../goals/economy/useful-skills.md) for discovery and use, and [Agent roles, skills and tools](../concepts/skills-profiles-and-tools.md) for the distinctions.
+A reusable package of task-specific instructions and optional resources, in a `SKILL.md` file. See [Skills](../goals/economy/useful-skills.md) for discovery and use, and [Agent roles](../concepts/skills-profiles-and-tools.md) for the distinctions.
 
 ### Stochastic
 

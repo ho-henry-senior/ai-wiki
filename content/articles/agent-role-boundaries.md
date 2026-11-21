@@ -15,7 +15,7 @@ Start with one agent and a human reviewer. Split work into separate agent roles 
 
 Four roles illustrate the division: a **Product** agent explores requirements, a **Business Analyst** turns approved decisions into tasks, a **Developer** implements them, and a **Reviewer** independently examines the changes. A human retains authority over scope and release. Each additional handoff needs a clear deliverable.
 
-For how to define a role contract and restrict a Copilot custom agent's tools, see [Agent roles, skills and tools](../concepts/skills-profiles-and-tools.md). The original four role files, and their use of skills, are examined in [How agent roles use skills](../reference/agent-roles-directory.md).
+For how to define a role contract and restrict a Copilot custom agent's tools, see [Agent roles](../concepts/skills-profiles-and-tools.md). The original four role files, and their use of skills, are examined in [How agent roles use skills](../reference/agent-roles-directory.md).
 
 ## Example responsibilities
 

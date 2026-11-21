@@ -15,9 +15,8 @@ export const guides = {
   "agent-roles": {
     title: "Agent roles",
     ordered: true,
-    overview: { title: "Agent roles", url: "/pages/agent-roles/" },
+    overview: { title: "Agent roles", url: "/concepts/skills-profiles-and-tools/" },
     parts: [
-      { title: "Agent roles, skills and tools", url: "/concepts/skills-profiles-and-tools/" },
       { title: "Agile roles in agentic development", url: "/pages/agent-role-boundaries/" },
       { title: "How agent roles use skills", url: "/pages/agent-roles-directory/" },
     ],

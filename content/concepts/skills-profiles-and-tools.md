@@ -1,6 +1,6 @@
 ---
 type: explanation
-summary: How agent roles, reusable skills and executable tools differ, with a Copilot custom-agent example and permission boundaries.
+summary: What an agent role is, when to add one, and how it differs from a skill and a tool, with a Copilot custom-agent example and its permission limits.
 status: established
 lane: guides
 goal: economy
@@ -12,9 +12,11 @@ tags:
   - Skills
 ---
 
-# Agent roles, skills and tools
+# Agent roles
 
-A **role** says what responsibility an agent takes and where it hands work back; a **skill** provides a repeatable procedure; a **tool** makes an action possible. Choosing the wrong one creates either duplicated instructions or a capability the agent still cannot use.
+An **agent role** says what an agent is responsible for, where its work stops, and what it hands back to a person or another agent. Roles help when work genuinely needs distinct responsibilities or independent review, but each extra role adds coordination. Start with one agent and a human reviewer, and add a role only when clear responsibilities and handoffs improve a recurring workflow.
+
+A role differs from a **skill**, which provides a repeatable procedure, and a **tool**, which makes an action possible. Choosing the wrong one creates either duplicated instructions or a capability the agent still cannot use.
 
 In GitHub Copilot, a role can be implemented as a **custom agent** in a profile file such as `.github/agents/reviewer.agent.md`. Agent roles are the general idea; _custom agent_ and _agent profile_ are Copilot's configuration terms.
 
@@ -60,7 +62,7 @@ GitHub's [custom-agent configuration reference](https://docs.github.com/en/copil
 
 A reviewer role can use a reusable review skill if that skill is available in the agent's environment. The role owns **which changes to review, what to deliver, and where authority ends**. The skill owns **the repeatable review procedure**. Tools provide access to the diff, tests and permitted actions.
 
-Naming a skill in an agent's instructions is not a guarantee that the skill is present or loaded. Skills are discovered according to the Copilot environment and its [agent-skills support](https://docs.github.com/en/copilot/concepts/customizations/agent-skills); the skill's steps also need suitable tools. For examples drawn from actual role files, continue to [How agent roles use skills](../reference/agent-roles-directory.md).
+Naming a skill in an agent's instructions is not a guarantee that the skill is present or loaded. Skills are discovered according to the Copilot environment and its [agent-skills support](https://docs.github.com/en/copilot/concepts/customizations/agent-skills); the skill's steps also need suitable tools. For examples drawn from actual role files, see [How agent roles use skills](../reference/agent-roles-directory.md).
 
 ## Sources
 
