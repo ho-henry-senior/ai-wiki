@@ -3,12 +3,18 @@
 // article with a clear main goal. See maintainers/MAINTAINING.md#website.
 
 import { series } from "./series.mjs";
+import { guides } from "./guides.mjs";
 
 export const lanes = {
   goals: {
     title: "Goals",
     url: "/goals/",
     description: "",
+  },
+  guides: {
+    title: "Guides",
+    url: "/guides/",
+    description: "Collections of related pages to explore together.",
   },
   reference: {
     title: "Reference",
@@ -49,6 +55,8 @@ export const eleventyNavigation = {
     if (!data.lane) return data.eleventyNavigation?.parent || homeKey;
     // A series part sits under its introduction, whose navigation key is
     // its title, so the title is kept in one place: site/series.mjs.
+    if (data.lane === "guides" && data.guideOrder > 0)
+      return guides[data.guide]?.title ?? lanes.guides.title;
     if (data.lane === "articles" && data.seriesOrder > 0)
       return series[data.series]?.title ?? lanes.articles.title;
     if (data.lane !== "goals") return lanes[data.lane]?.title;
