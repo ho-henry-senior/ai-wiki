@@ -14,16 +14,11 @@ The team began by coordinating agents manually. It later used local polling scri
 
 The preserved dispatcher implementation uses one queue for implementation and another for review.
 
-| Issue state         | Meaning                                        |
-| ------------------- | ---------------------------------------------- |
-| `agent-ready`       | A person has authorised the issue for dispatch |
-| `agent-in-progress` | The dispatcher has claimed the issue           |
-| `agent-pr-opened`   | A matching implementation PR was verified      |
-| `agent-failed`      | The attempted handoff needs inspection         |
+The issue queue records four states: **ready** (human-authorised), **in progress** (claimed by the dispatcher), **PR opened** (the expected implementation PR was verified), and **failed** (an operator must inspect the handoff).
 
-PRs similarly move through `review-ready`, `review-in-progress`, `review-complete` or `review-failed`. **Review complete means findings were published, not that the code was approved.**
+The PR review queue similarly records ready, in progress, complete and failed. Review completion records published findings; the human merge decision remains separate.
 
-The application issues retained their completed implementation labels in the inspected repository. Current labels establish recorded end states, not the exact historical order or timing of every transition.
+The application issues retained their completed workflow labels in the inspected repository. Current labels establish recorded end states, not the exact historical order or timing of every transition.
 
 ## Dispatch only eligible work
 
@@ -37,7 +32,7 @@ The Reviewer works in a separate detached worktree and checks the expected PR re
 
 There is no automatic retry. The operator inspects the state, retains partial or dirty worktrees where necessary, and deliberately resets the corresponding workflow label before restarting. Local locks coordinate processes on one machine, not across multiple clones or hosts.
 
-The preserved implementation includes these safeguards and offline tests with mocked GitHub and agent commands. Some may have been refined after the original exercise; their presence in the current demo is not proof that every safeguard operated throughout the trial.
+The preserved implementation includes these safeguards and offline tests with mocked GitHub and agent commands. Their historical deployment during the exercise is not fully documented.
 
 ## Visibility is not control
 
