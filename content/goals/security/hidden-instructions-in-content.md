@@ -1,5 +1,5 @@
 ---
-type: guide
+type: advice
 summary: "The model cannot reliably tell data from instructions, so a hidden line in an issue, web page, or tool output can steer it: prompt injection."
 status: established
 lane: goals
