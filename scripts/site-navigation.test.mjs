@@ -59,12 +59,12 @@ test("Reference sidebar is alphabetical while the landing page retains purpose g
 test("ordered Guides navigation uses linked cards with titles and reading order", () => {
   const html = fs.readFileSync("_site/pages/model-requests-and-responses/index.html", "utf8");
   const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
-  assert.ok(nav, "Series navigation exists");
+  assert.ok(nav, "Guide navigation exists");
   assert.match(nav, /Part 2 of 3/);
   assert.match(nav, /Guide navigation/);
   assert.match(nav, /class="app-series-navigation__card app-series-navigation__card--previous"/);
   assert.match(nav, /class="app-series-navigation__card app-series-navigation__card--next"/);
-  // Titles come from the series data, so retitling a part needs no change here.
+  // Titles come from the guide data, so retitling a part needs no change here.
   const [first, , third] = guides["understanding-coding-agents"].parts;
   assert.ok(nav.includes(first.title), "Previous card names part 1");
   assert.ok(nav.includes(third.title), "Next card names part 3");
@@ -89,7 +89,7 @@ test("sources follow Guides navigation across the ordered guide", () => {
 });
 
 
-test("skills and agent roles series has four linked chapters with accurate cards", () => {
+test("legacy skills and agent roles series has four linked chapters with accurate cards", () => {
   const entry = series["skills-and-agent-roles"];
   assert.equal(entry.parts.length, 4);
   const pages = [
