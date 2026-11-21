@@ -2,8 +2,7 @@
 // belongs with front matter: `lane`, and `goal` for a goal overview or an
 // article with a clear main goal. See maintainers/MAINTAINING.md#website.
 
-import { guideForUrl } from "./guides.mjs";
-import { caseStudyForUrl } from "./case-study-series.mjs";
+import { guideForUrl, caseStudyForUrl } from "./guides.mjs";
 
 // The order here is the order of the site's top bar.
 export const lanes = {
@@ -57,7 +56,7 @@ export const eleventyNavigation = {
     const key = data.eleventyNavigation?.key || data.title;
     // Eleventy Navigation treats commas in keys as multiple parents. A
     // Guide chapter can have a comma in its heading, but never in its key.
-    const member = guideForUrl(data.page?.url) ?? caseStudyForUrl(data.page?.url);
+    const member = guideForUrl(data.page?.url);
     if ((data.lane === "guides" || data.lane === "case-studies") && member?.position > 0 && key?.includes(","))
       return `guide-member:${data.page.url}`;
     return key;
@@ -71,9 +70,8 @@ export const eleventyNavigation = {
     const member = guideForUrl(data.page?.url);
     if (data.lane === "guides" && member?.position > 0)
       return member.guide.title;
-    const studyMember = caseStudyForUrl(data.page?.url);
-    if (data.lane === "case-studies" && studyMember?.position > 0)
-      return studyMember.study.title;
+    if (data.lane === "case-studies" && member?.guide.kind === "case-study" && member.position > 0)
+      return member.guide.title;
     if (data.lane !== "goals") return lanes[data.lane]?.title;
     if (data.type === "overview") return lanes.goals.title;
     return goals[data.goal] || lanes.goals.title;
@@ -96,10 +94,10 @@ export function laneItems(tree = [], pageUrl, alphabetical = false) {
     // The Guide registry owns reading order; old page-specific order
     // values must not rearrange the chapter list in the sidebar.
     const children = [...(item.children ?? [])];
-    if (guideForUrl(item.url)?.guide.ordered || caseStudyForUrl(item.url)?.study.ordered)
+    if (guideForUrl(item.url)?.guide.ordered)
       children.sort((a, b) =>
-        (guideForUrl(a.url)?.position ?? caseStudyForUrl(a.url)?.position ?? Infinity) -
-        (guideForUrl(b.url)?.position ?? caseStudyForUrl(b.url)?.position ?? Infinity),
+        (guideForUrl(a.url)?.position ?? Infinity) -
+        (guideForUrl(b.url)?.position ?? Infinity),
       );
     const contains = children.some((child) => child.url === pageUrl);
     return {
