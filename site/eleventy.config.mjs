@@ -73,29 +73,6 @@ export default async function (eleventyConfig) {
       .filter((item) => item.data.lane === "articles")
       .sort((a, b) => a.data.title.localeCompare(b.data.title)),
   );
-  // Old detailed-article URL remains valid, but is not indexed as a second page.
-  eleventyConfig.addTemplate(
-    "redirects/prompt-injection-coding-agents.html",
-    `<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Prompt injection — page moved</title>
-  <meta name="robots" content="noindex">
-  <link rel="canonical" href="https://ho-henry-senior.github.io/ai-wiki/pages/prompt-injection/">
-  <meta http-equiv="refresh" content="0; url=https://ho-henry-senior.github.io/ai-wiki/pages/prompt-injection/">
-</head>
-<body>
-  <p>This page has moved to <a href="https://ho-henry-senior.github.io/ai-wiki/pages/prompt-injection/">Prompt injection</a>.</p>
-</body>
-</html>`,
-    {
-      layout: false,
-      permalink: "/pages/prompt-injection-coding-agents/index.html",
-      eleventyExcludeFromCollections: true,
-    },
-  );
-
   // The registry names entry pages; front matter has no entry marker.
   eleventyConfig.addCollection("guideEntries", (api) => {
     const entryUrls = new Set(Object.values(guides).map((guide) => guide.overview.url));
