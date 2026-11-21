@@ -5,6 +5,7 @@ import { laneItems, metadataParts, sectionNavigation, tagItems } from "../site/l
 test("top navigation identifies landing pages, article pages, and standalone pages", () => {
   const nav = [
     { text: "Goals", href: "/goals/" },
+    { text: "Guides", href: "/guides/" },
     { text: "Reference", href: "/reference/" },
     { text: "Articles", href: "/articles/" },
   ];
@@ -15,9 +16,9 @@ test("top navigation identifies landing pages, article pages, and standalone pag
     ...nav[0], current: false, active: true,
   });
   // Even an article linked to Security belongs to the Articles section.
-  assert.deepEqual(sectionNavigation(nav, "articles", "/pages/cloud-agent-security/").map((x) => x.active), [false, false, true]);
-  assert.deepEqual(sectionNavigation(nav, "reference", "/reference/data/").map((x) => x.active), [false, true, false]);
-  assert.deepEqual(sectionNavigation(nav, undefined, "/pages/glossary/").map((x) => x.active), [false, false, false]);
+  assert.deepEqual(sectionNavigation(nav, "articles", "/pages/cloud-agent-security/").map((x) => x.active), [false, false, false, true]);
+  assert.deepEqual(sectionNavigation(nav, "reference", "/reference/data/").map((x) => x.active), [false, false, true, false]);
+  assert.deepEqual(sectionNavigation(nav, undefined, "/pages/glossary/").map((x) => x.active), [false, false, false, false]);
   assert.deepEqual(nav[0], { text: "Goals", href: "/goals/" });
 });
 
@@ -43,11 +44,11 @@ test("metadata shows an article's type and goal, then dates and status", () => {
   const date = (d) => `D(${d})`;
   assert.deepEqual(
     metadataParts(
-      { lane: "articles", type: "guide", goal: "economy", checked: "2026-11-15", status: "developing" },
+      { lane: "articles", type: "how-to", goal: "economy", checked: "2026-11-15", status: "developing" },
       date,
     ),
     [
-      { text: "Guide" },
+      { text: "How-to" },
       { text: "Goal: Economy", href: "/pages/economy/" },
       { text: "Checked: D(2026-11-15)" },
       { text: "Status: Developing" },
