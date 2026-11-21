@@ -119,9 +119,11 @@ jobs:
           fi
       - name: Check the navigation
         run: |
-          for lane in goals reference articles; do
+          for lane in goals guides articles reference; do
             test -f "_site/$lane/index.html" || { echo "Missing the $lane lane page" >&2; exit 1; }
           done
+          # Guides lists only entry points, not its chapters.
+          grep -q 'href="/ai-wiki/pages/understanding-coding-agents/"' _site/guides/index.html || exit 1
           # Each view lists the same collection; topic groups may repeat an
           # article under multiple tags. Count unique article links per view,
           # rather than every rendered list item on the page.
