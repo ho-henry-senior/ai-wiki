@@ -22,7 +22,7 @@ Add a skill only when a task keeps coming up, the agent does not already handle 
 
 ## Choose where to begin
 
-Use this page to decide whether a skill helps your task. To create one, go to [Write a SKILL.md](../../reference/writing-agent-skills.md); to inspect existing examples, go to the [agent skills directory](../../reference/agent-skills-directory.md). These are independent resources, not steps in a required sequence.
+Use this page to decide whether a skill helps your task. To create one, go to [Write a SKILL.md](../../reference/writing-agent-skills.md); to inspect existing examples, go to the [agent skills directory](../../reference/agent-skills-directory.md). Read the resources in that order for a practical introduction, or jump directly to whichever you need.
 
 ## Decide whether you need one
 
