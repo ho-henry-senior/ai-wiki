@@ -2,9 +2,9 @@
 type: explanation
 summary: How a model requests a tool, the harness permits or refuses it, and returned results inform the next action.
 status: developing
-lane: articles
-series: understanding-coding-agents
-seriesOrder: 3
+lane: guides
+guide: understanding-coding-agents
+guideOrder: 3
 tags:
   - Context and tokens
   - Permissions and sandboxing
