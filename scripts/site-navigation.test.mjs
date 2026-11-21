@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
-import { series } from "../site/series.mjs";
 import { guides } from "../site/guides.mjs";
 
 const cases = [
@@ -9,10 +8,12 @@ const cases = [
   ["pages/security/index.html", "goals", "Security"],
   ["guides/index.html", "guides"],
   ["pages/understanding-coding-agents/index.html", "guides", "How coding agents work"],
+  ["pages/useful-skills/index.html", "guides", "Skills"],
   ["pages/model-requests-and-responses/index.html", "guides", "What the model receives and returns"],
   ["articles/index.html", "articles"],
   ["pages/cloud-agent-security/index.html", "articles", "Secure the Copilot cloud agent"],
   ["reference/index.html", "reference"],
+  ["pages/writing-agent-skills/index.html", "reference", "Write a SKILL.md"],
   ["pages/glossary/index.html", null],
 ];
 
@@ -89,29 +90,25 @@ test("sources follow Guides navigation across the ordered guide", () => {
 });
 
 
-test("legacy skills and agent roles series has four linked chapters with accurate cards", () => {
-  const entry = series["skills-and-agent-roles"];
-  assert.equal(entry.parts.length, 4);
-  const pages = [
-    "pages/skills-and-agent-roles/index.html",
-    "pages/useful-skills/index.html",
-    "pages/writing-agent-skills/index.html",
-    "concepts/skills-profiles-and-tools/index.html",
-    "pages/agent-roles-directory/index.html",
-  ];
-  for (const [index, page] of pages.entries()) {
-    const html = fs.readFileSync(`_site/${page}`, "utf8");
-    const navigation = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
-    assert.ok(navigation, `${page}: series navigation exists`);
-    if (index > 0) {
-      assert.ok(navigation.includes(`Part ${index} of 4`), `${page}: part number`);
-      const prev = index === 1 ? entry.overview : entry.parts[index - 2];
-      assert.ok(navigation.includes(prev.title), `${page}: previous link title`);
-    }
-    if (index < 4) {
-      assert.ok(navigation.includes(entry.parts[index].title), `${page}: next link title`);
-    }
+test("Skills is an unnumbered guide across Guides and Reference", () => {
+  const index = fs.readFileSync("_site/guides/index.html", "utf8");
+  assert.match(index, /href="\/ai-wiki\/pages\/useful-skills\/"/);
+  assert.match(index, /Skills/);
+  const skills = guides.skills;
+  assert.equal(skills.ordered, false);
+  assert.deepEqual(skills.parts.map((x) => x.title), ["Write a SKILL.md", "Agent skills directory"]);
+  for (const path of ["pages/useful-skills/index.html", "pages/writing-agent-skills/index.html", "pages/agent-skills-directory/index.html"]) {
+    const html = fs.readFileSync(`_site/${path}`, "utf8");
+    const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\\s\\S]*?<\\/nav>/)?.[0];
+    assert.ok(nav, `${path}: guide context shown`);
+    assert.match(nav, /Guide navigation/);
+    assert.match(nav, /href="\/ai-wiki\/pages\/useful-skills\/"/);
+    assert.match(nav, /Write a SKILL.md/);
+    assert.match(nav, /Agent skills directory/);
+    assert.doesNotMatch(nav, /Part [1-9]|Previous|Next/);
   }
-  const skills = fs.readFileSync("_site/pages/agent-skills-directory/index.html", "utf8");
-  assert.doesNotMatch(skills, /<nav class="app-series-navigation"/, "Skills directory is not part of series");
+  for (const path of ["pages/skills-and-agent-roles/index.html", "concepts/skills-profiles-and-tools/index.html", "pages/agent-roles-directory/index.html"]) {
+    const html = fs.readFileSync(`_site/${path}`, "utf8");
+    assert.doesNotMatch(html, /<nav class="app-series-navigation"/);
+  }
 });
