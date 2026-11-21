@@ -21,25 +21,26 @@ Pages are listed here by their section on the website, which their `lane` front 
 
 ## Guides
 
-- [How coding agents work](articles/understanding-coding-agents.md) — an illustrated three-chapter guide to agent components, model requests and the tool-call loop.
+- [How coding agents work](articles/understanding-coding-agents.md) — an illustrated four-chapter guide to agent components, model requests, the tool-call loop and session context.
   - [Inside a coding agent](articles/inside-coding-agent.md)
   - [What the model receives and returns](articles/model-requests-and-responses.md)
   - [The tool-call loop](concepts/tool-call-loop.md)
+  - [Session history and active context](concepts/session-history-vs-context.md)
 - [Skills](goals/economy/useful-skills.md) — what a skill is, when to add one, and where Copilot finds skills.
   - [Write a SKILL.md](reference/writing-agent-skills.md) — syntax, file structure and a complete minimal skill.
   - [Agent skills directory](reference/agent-skills-directory.md) — built-in, inspected and candidate skills, with credited sources and limitations.
 - [Agent roles](concepts/skills-profiles-and-tools.md) — what a role is, when to add one, and how it differs from a skill and a tool.
   - [Agile roles in agentic development](articles/agent-role-boundaries.md) — familiar responsibilities and handoffs in an agent-assisted workflow.
   - [How agent roles use skills](reference/agent-roles-directory.md) — original role files showing explicit skill use and possible adaptations.
+- [Set up a repository for agents](goals/alignment/agent-facing-repository-structure.md) — where agent instructions, skills and commands belong, with a diagram connecting them to tests and CI.
+  - [Write repository instructions in AGENTS.md](goals/alignment/repository-instructions.md) — what to put in it, which Copilot features and other agents read it, and how to fill Copilot's gaps.
+  - [Repository context for coding agents](goals/alignment/repository-context-for-agents.md) — write down the facts an agent got wrong, near the code they concern.
+  - [Enable agents to run repository commands](goals/alignment/agent-tool-delegation.md) — list commands in `AGENTS.md`, and set up the Copilot cloud agent to run them.
+  - [Give agents a command interface with Just](goals/economy/justfile-agent-workflows.md) — advertise recipes, run single tests, compose checks, and define handoff gates.
 
 ## Articles
 
 - [Define, steer, and verify a task](goals/alignment/define-and-verify-tasks.md) — write the task, hand it to Copilot, steer it, and check the result.
-- [Write repository instructions in AGENTS.md](goals/alignment/repository-instructions.md) — what to put in it, which Copilot features and other agents read it, and how to fill Copilot's gaps.
-- [A structure for agent-facing repositories](goals/alignment/agent-facing-repository-structure.md) — an example layout showing where instructions, skills and commands belong, with a diagram connecting them to tests and CI.
-- [Repository context for coding agents](goals/alignment/repository-context-for-agents.md) — developing guidance for prioritizing useful repository context without taking on unnecessary documentation.
-- [Enable agents to run repository commands](goals/alignment/agent-tool-delegation.md) — list commands in `AGENTS.md`, examples of what to list, and setting up the Copilot cloud agent to run them.
-- [Give agents a command interface with Just](goals/economy/justfile-agent-workflows.md) — advertise recipes, run single tests, compose checks, and define handoff gates.
 - [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — how Copilot charges for tokens, which model tier to use, and how to cap a session.
 - [Secure a local coding agent](goals/security/local-agent-security.md) — Copilot CLI, app, and editor: sandbox, tool and URL permissions, credentials.
 - [Secure the Copilot cloud agent](goals/security/cloud-agent-security.md) — what GitHub enforces, and the secrets, firewall, MCP, and approval settings you set.

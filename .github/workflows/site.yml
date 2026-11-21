@@ -241,8 +241,8 @@ jobs:
             echo "An article does not show its date." >&2
             exit 1
           }
-          grep -q 'href="/ai-wiki/pages/agent-tool-delegation/"' _site/pages/define-and-verify-tasks/index.html || {
-            echo "The Articles sidebar does not include agent tool delegation." >&2
+          grep -q 'href="/ai-wiki/pages/home-repo-pattern/"' _site/pages/define-and-verify-tasks/index.html || {
+            echo "The Articles sidebar does not include the Home Repo pattern." >&2
             exit 1
           }
       - name: Test rendered navigation

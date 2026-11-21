@@ -22,6 +22,6 @@ Organise what you give it:
 - **What every task needs** goes in `AGENTS.md`: the commands to run, rules that aren't obvious from the code, and pointers to detail. See [write repository instructions in AGENTS.md](../alignment/repository-instructions.md) and the [AGENTS.md example](../../reference/agents-md-example.md).
 - **Detail that only some tasks need** goes in files the agent opens when a task calls for them, linked from `AGENTS.md` with when to read each one: [progressive disclosure](../../concepts/progressive-disclosure.md).
 - **Decisions and contracts** stay near the code they concern, in ADRs or where a contract is defined: [repository context for coding agents](../alignment/repository-context-for-agents.md).
-- **Where each kind of file goes** is mapped in [a structure for agent-facing repositories](../alignment/agent-facing-repository-structure.md).
+- **Where each kind of file goes** is mapped in [Set up a repository for agents](../alignment/agent-facing-repository-structure.md), the guide that collects these pages.
 
 On the next task, notice whether the agent asks about, or guesses, something you have written down. If it does, that fact is missing or hard to find: [start with that one missing fact](../alignment/repository-context-for-agents.md#start-with-one-missing-fact).

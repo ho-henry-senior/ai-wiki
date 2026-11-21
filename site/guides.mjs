@@ -29,6 +29,18 @@ export const guides = {
       { title: "Inside a coding agent", url: "/pages/inside-coding-agent/" },
       { title: "What the model receives and returns", url: "/pages/model-requests-and-responses/" },
       { title: "The tool-call loop", url: "/concepts/tool-call-loop/" },
+      { title: "Session history and active context", url: "/concepts/session-history-vs-context/" },
+    ],
+  },
+  "repository-setup": {
+    title: "Set up a repository for agents",
+    ordered: false,
+    overview: { title: "Set up a repository for agents", url: "/pages/agent-facing-repository-structure/" },
+    parts: [
+      { title: "Write repository instructions in AGENTS.md", url: "/pages/repository-instructions/" },
+      { title: "Repository context for coding agents", url: "/pages/repository-context-for-agents/" },
+      { title: "Enable agents to run repository commands", url: "/pages/agent-tool-delegation/" },
+      { title: "Give agents a command interface with Just", url: "/pages/justfile-agent-workflows/" },
     ],
   },
 };

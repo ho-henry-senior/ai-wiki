@@ -2,15 +2,16 @@
 type: pattern
 summary: An illustrative repository layout showing where agent instructions, skills and commands belong, and how tests connect to CI.
 status: established
-lane: articles
+lane: guides
 goal: alignment
-order: 5
 tags:
   - AGENTS.md
   - Repository
 ---
 
-# A structure for agent-facing repositories
+# Set up a repository for agents
+
+An agent works better in a repository that tells it what it needs: shared instructions, the facts it would otherwise guess, and commands it can run to check its work. The layout below shows where each piece can live, and the pages in this guide explain each one.
 
 Start with `AGENTS.md` and your existing commands. Add the other pieces below only when a recurring problem calls for them, because each file is one more thing to keep in step with the code; this is a map, not a setup checklist.
 
