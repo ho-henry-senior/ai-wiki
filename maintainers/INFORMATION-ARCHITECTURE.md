@@ -118,7 +118,7 @@ The coding-agent chapters stay in Guides to achieve the _specific navigation-sim
 
 ## Guide metadata: current state and proposed cleanup
 
-**Current implementation:** `site/guides.mjs` contains collection titles, entry URLs, members and ordered/thematic behaviour. Page front matter also repeats `guide` and `guideOrder`, where `guideOrder: 0` doubles as a hidden entry-point marker. The Guides index currently derives entries from lane and that marker. Legacy `series` rendering also remains in code.
+**Current implementation:** `site/guides.mjs` contains collection titles, entry URLs, members and ordered/thematic behaviour. Page front matter also repeats `guide` and `guideOrder`, where `guideOrder: 0` doubles as a hidden entry-point marker. The Guides index currently derives entries from lane and that marker.
 
 **Preferred future model, subject to implementation review:** make `site/guides.mjs` the single authority for entry, membership, kind and ordering; derive Guide context and any navigation-tree nesting from a member's canonical URL. Derive the Guides index from the registry rather than relying on `guideOrder: 0`. Avoid adding a separate visibility field unless implementation evidence demonstrates that it is necessary.
 
