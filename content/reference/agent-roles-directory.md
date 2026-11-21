@@ -2,7 +2,7 @@
 type: explanation
 summary: How agent roles can call reusable skills, illustrated by four original role files from the lo-fi software factory case study.
 status: developing
-lane: articles
+lane: guides
 checked: 2026-11-20
 order: 13
 tags:
