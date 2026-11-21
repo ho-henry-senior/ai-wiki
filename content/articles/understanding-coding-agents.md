@@ -2,9 +2,9 @@
 type: explanation
 summary: A three-part illustrated explanation of what coding agents are made of, what model requests contain, and how a task unfolds through tool calls.
 status: developing
-lane: articles
-series: understanding-coding-agents
-seriesOrder: 0
+lane: guides
+guide: understanding-coding-agents
+guideOrder: 0
 tags:
   - Context and tokens
 ---
