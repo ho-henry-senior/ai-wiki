@@ -54,7 +54,7 @@ test("metadata shows an article's type and goal, then dates and status", () => {
     [
       { text: "How-to" },
       { text: "Goal: Economy", href: "/pages/economy/" },
-      { text: "Checked: D(2026-11-15)" },
+      { text: "Checked: D(2026-11-15)", kind: "checked" },
       { text: "Status: Developing" },
     ],
   );
