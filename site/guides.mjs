@@ -1,6 +1,8 @@
 // A guide gathers related pages around a reader journey. Its members may
 // keep their primary lane (for example Reference) while sharing guide context.
 // An ordered guide has chapters; a thematic guide has independent resources.
+// An ordered guide with `numbered: false` keeps Previous/Next, which implies
+// a sequence, but shows no "Part n of m", so it does not read as a checklist.
 export const guides = {
   skills: {
     title: "Skills",
@@ -34,7 +36,8 @@ export const guides = {
   },
   "repository-setup": {
     title: "Set up a repository for agents",
-    ordered: false,
+    ordered: true,
+    numbered: false,
     overview: { title: "Set up a repository for agents", url: "/pages/agent-facing-repository-structure/" },
     parts: [
       { title: "Write repository instructions in AGENTS.md", url: "/pages/repository-instructions/" },
@@ -51,6 +54,8 @@ const membersByUrl = new Map();
 for (const [id, guide] of Object.entries(guides)) {
   if (!guide.overview?.url || !guide.title)
     throw new Error(`Guide ${id} needs a title and an entry URL`);
+  if (guide.numbered === false && !guide.ordered)
+    throw new Error(`Guide ${id} sets numbered: false but is not ordered`);
   if (guide.ordered && guide.parts.length < 2)
     throw new Error(`Ordered guide ${id} needs at least two chapters`);
   for (const [position, member] of [guide.overview, ...guide.parts].entries()) {
@@ -78,6 +83,7 @@ export function guideNavigation(url) {
     title: guide.title,
     overview: guide.overview,
     ordered: guide.ordered === true,
+    numbered: guide.ordered === true && guide.numbered !== false,
     items: guide.parts,
     current: position,
     total: guide.parts.length,

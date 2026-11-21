@@ -10,7 +10,7 @@ The architecture is informed by [issue #173](https://github.com/ho-henry-senior/
 2. **One canonical page; multiple paths to it.** A page may be linked from Goals, a Guide, another Article, Reference, tags, featured links, search, or the sitemap. Do not copy it to make another entry.
 3. **A deep link is a complete reading experience.** A reader landing directly on a chapter or Reference page must understand what it does without reading a preceding page. Give unobtrusive context and a route to the Guide.
 4. **Primary navigation is not the complete inventory.** A concise Articles list must not imply that the hidden Guide chapters are unsearchable, unlinked or omitted from the sitemap.
-5. **Order is meaningful, not automatic.** Ordered Guides may use chapter numbers and Previous/Next. Thematic Guides should offer independent, unnumbered choices.
+5. **Order is meaningful, not automatic.** Ordered Guides use Previous/Next, and may use chapter numbers. Thematic Guides should offer independent, unnumbered choices.
 6. **Different kinds of metadata answer different questions.** Editorial content type, intended outcome, topic tags, navigation home, and Guide membership do not stand for one another.
 
 ## Dimensions of the content model
@@ -25,7 +25,7 @@ The architecture is informed by [issue #173](https://github.com/ho-henry-senior/
 
 **Curated collection** (`site/guides.mjs`): Which Guide connects this page to related material? Membership does not imply that every page must move to the Guides lane.
 
-**Reading structure** (ordered/thematic Guide definition in `site/guides.mjs`): Is there a necessary sequence? Number and show Previous/Next only for an ordered Guide.
+**Reading structure** (ordered/thematic Guide definition in `site/guides.mjs`): Is there a necessary sequence? Show Previous/Next only for an ordered Guide, and number its chapters unless the sequence is a suggestion rather than steps.
 
 **Stable identity** (published URL and source file): Where can the page always be linked? Keep one canonical published URL; section membership does not create copies.
 
@@ -107,9 +107,9 @@ A Guide can gather pages whose **primary purposes differ**. The Guides can inclu
 
 - **How agent roles use skills** — Guides lane; second Agent roles chapter.
 
-- **Set up a repository for agents** — Guides lane; thematic entry, the repository-layout map, with unnumbered links to its four resources.
+- **Set up a repository for agents** — Guides lane; ordered but unnumbered entry, the repository-layout map, followed by its four resources.
 
-- **Write repository instructions in AGENTS.md, Repository context for coding agents, Enable agents to run repository commands, Give agents a command interface with Just** — Guides lane; thematic members of Set up a repository for agents, in a deliberate display order without Previous/Next.
+- **Write repository instructions in AGENTS.md, Repository context for coding agents, Enable agents to run repository commands, Give agents a command interface with Just** — Guides lane; members of Set up a repository for agents, with Previous/Next but no chapter numbers.
 
 The coding-agent and Agent roles chapters stay in Guides to simplify Articles navigation. The Skills directory stays in Reference because direct lookup there remains useful, despite its place in the ordered Skills reading route. A page may be linked or featured elsewhere without its active lane changing.
 
@@ -118,6 +118,7 @@ The coding-agent and Agent roles chapters stay in Guides to simplify Articles na
 ### Ordered and thematic Guides
 
 - **Ordered:** the order is part of the Guide's instructional intent; chapter number and Previous/Next are appropriate. Each chapter must still support direct entry.
+- **Ordered, unnumbered** (`numbered: false`): Previous/Next implies a sensible reading sequence, but there are no chapter numbers, because the pages are not a set of steps. Set up a repository for agents works this way.
 - **Thematic:** members can be explored independently; show descriptive, unnumbered destinations rather than artificial Previous/Next. Identify the current destination accessibly.
 - An ordered Guide may include a Reference page as a step in a recommended reading route without changing that page's canonical home. Reader progression does not erase independent reference use.
 - Both kinds need a useful entry page and at least one additional worthwhile resource. A Guide need not have a newly written, thin introduction if an existing page already orients the reader.
