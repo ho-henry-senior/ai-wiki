@@ -2,7 +2,7 @@
 // belongs with front matter: `lane`, and `goal` for a goal overview or an
 // article with a clear main goal. See maintainers/MAINTAINING.md#website.
 
-import { guides } from "./guides.mjs";
+import { guideForUrl } from "./guides.mjs";
 
 // The order here is the order of the site's top bar.
 export const lanes = {
@@ -53,8 +53,11 @@ export const eleventyNavigation = {
   parent: (data) => {
     if (data.homepage) return false;
     if (!data.lane) return data.eleventyNavigation?.parent || homeKey;
-    if (data.lane === "guides" && data.guideOrder > 0)
-      return guides[data.guide]?.title ?? lanes.guides.title;
+    // Only Guides-lane chapters nest under the registry's entry heading.
+    // Reference members remain in their own primary navigation lane.
+    const member = guideForUrl(data.page?.url);
+    if (data.lane === "guides" && member?.position > 0)
+      return member.guide.title;
     if (data.lane !== "goals") return lanes[data.lane]?.title;
     if (data.type === "overview") return lanes.goals.title;
     return goals[data.goal] || lanes.goals.title;
