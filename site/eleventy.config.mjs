@@ -190,7 +190,7 @@ export default async function (eleventyConfig) {
 
 Copyable starting points and worked examples. Change commands and constraints to fit your project.
 
-- [Give agents a command interface with Just](/pages/justfile-agent-workflows/) — a complete copyable `justfile` for focused tests and a handoff gate.
+- [Give agents a command interface with Just](/pages/justfile-agent-workflows/) — a complete copyable justfile for focused tests and a handoff gate.
 - [AGENTS.md example: short repository entrypoint](/pages/agents-md-example/) — instructions, project rules and verification commands to adapt.
 - [Git worktrees for parallel agent work](/pages/git-worktrees-for-agents/) — commands and a diagram for running agents in separate working directories.
 - [Agent skills directory](/pages/agent-skills-directory/) — built-in, inspected and candidate skills, with original sources and cautions.
