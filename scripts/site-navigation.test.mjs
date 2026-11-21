@@ -11,6 +11,8 @@ const cases = [
   ["pages/useful-skills/index.html", "guides", "Skills"],
   ["pages/model-requests-and-responses/index.html", "guides", "What the model receives and returns"],
   ["articles/index.html", "articles"],
+  ["case-studies/index.html", "case-studies"],
+  ["pages/lo-fi-software-factory-case-study/index.html", "case-studies", "Case study: a lo-fi software factory"],
   ["pages/cloud-agent-security/index.html", "articles", "Secure the Copilot cloud agent"],
   ["reference/index.html", "reference"],
   ["pages/writing-agent-skills/index.html", "guides", "Write a SKILL.md"],
