@@ -1,6 +1,6 @@
 ---
 type: overview
-summary: Start with a grilling, not a prompt; answer or rule out each point the agent raises, let the answers become the specification, then steer and verify against it.
+summary: Have the agent question you before it starts; answer or rule out each point it raises, let the answers become the specification, then steer and verify against it.
 status: established
 lane: goals
 goal: alignment
@@ -9,7 +9,7 @@ order: 1
 
 # Alignment
 
-Start with a grilling, not a prompt. A short request leaves the agent guessing, and it can build a convincing solution to the wrong problem. Have it question you first, answer or rule out each point, then turn those decisions into a specification to steer and verify the work against. Here, alignment means agreeing what the work should achieve; the [glossary](../../reference/glossary.md#alignment) covers the broader AI meaning.
+Before an agent starts work, have it question you about what you want. A short request leaves it guessing, and it can build a convincing solution to the wrong problem. Answer or rule out each point it raises, then turn those decisions into a specification to steer and verify the work against. Here, alignment means agreeing what the work should achieve; the [glossary](../../reference/glossary.md#alignment) covers the broader AI meaning.
 
 ## Core advice
 
