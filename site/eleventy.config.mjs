@@ -153,6 +153,15 @@ export default async function (eleventyConfig) {
   }
 
   eleventyConfig.addGlobalData("layout", "wiki");
+  // Diagnostic wrapper while investigating an Eleventy navigation build error.
+  eleventyConfig.addFilter("inspectNavigation", (items, key) => {
+    try {
+      return eleventyConfig.getFilter("eleventyNavigation")(items, key);
+    } catch (error) {
+      console.error("NAVIGATION ROOT CAUSE", error?.stack || error);
+      throw error;
+    }
+  });
   eleventyConfig.addFilter("laneItems", laneItems);
   eleventyConfig.addFilter("guideNavigation", guideNavigation);
   eleventyConfig.addFilter("articleTopicGroups", articleTopicGroups);
