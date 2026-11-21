@@ -65,17 +65,12 @@ test("published pages and Guide members remain in sitemap and search", () => {
 test("Guide chapters stay grouped, not duplicated in Articles navigation", () => {
   const articles = fs.readFileSync(path.join(siteRoot, "articles/index.html"), "utf8");
   const articlePage = fs.readFileSync(path.join(siteRoot, "pages/cloud-agent-security/index.html"), "utf8");
-  const articleSidebar = articlePage.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\\s\\S]*?<\\/nav>/)?.[0];
+  const articleSidebar = articlePage.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
   assert.ok(articleSidebar, "An Article must keep its own sidebar");
-  const chapterUrls = guides["understanding-coding-agents"].parts.map((item) => item.url);
-  for (const url of chapterUrls) {
-    const escaped = url.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\  const articles = fs.readFileSync(path.join(siteRoot, "articles/index.html"), "utf8");
-  const chapterUrls = guides["understanding-coding-agents"].parts.map((item) => item.url);
-  for (const url of chapterUrls) {
-    assert.doesNotMatch(articles, new RegExp(`href="(?:/ai-wiki)?${url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
-  }");
-    const href = new RegExp(`href="(?:/ai-wiki)?${escaped}"`);
-    assert.doesNotMatch(articles, href, `Article landing page lists ${url}`);
-    assert.doesNotMatch(articleSidebar, href, `Articles sidebar lists ${url}`);
+  const chapters = guides["understanding-coding-agents"].parts;
+  for (const member of chapters) {
+    const href = 'href="' + prefix + member.url + '"';
+    assert.ok(!articles.includes(href), "Articles listing must not duplicate " + member.url);
+    assert.ok(!articleSidebar.includes(href), "Articles sidebar must not duplicate " + member.url);
   }
 });
