@@ -109,7 +109,7 @@
         conventional Sources-at-end order for GitHub readers. -#}
     {%- set articleBody = content %}
     {%- set sourcesBody = "" %}
-    {%- if series and seriesOrder is defined and content %}
+    {%- if ((series and seriesOrder is defined) or (guide and guideOrder is defined)) and content %}
       {%- set sections = content | splitFinalSources %}
       {%- set articleBody = sections.article %}
       {%- set sourcesBody = sections.sources %}
@@ -128,13 +128,18 @@
       {%- endfor %}
     </ul>
     {%- endif %}
-    {% if series and seriesOrder is defined %}
-      {%- set reading = series | seriesNavigation(seriesOrder) %}
+    {% if (series and seriesOrder is defined) or (guide and guideOrder is defined) %}
+      {%- set reading = (guide | guideNavigation(guideOrder)) if guide and guideOrder is defined else (series | seriesNavigation(seriesOrder)) %}
       {% if reading %}
-      <nav class="app-series-navigation" aria-label="Series navigation">
+      <nav class="app-series-navigation" aria-label="{{ 'Guide navigation' if guide else 'Series navigation' }}">
         <p class="govuk-body-s app-series-navigation__heading">
-          <a class="govuk-link" href="{{ reading.overview.url }}">{{ reading.title }}</a>{% if reading.current > 0 %} · Part {{ reading.current }} of {{ reading.total }}{% endif %}
+          <a class="govuk-link" href="{{ reading.overview.url }}">{{ reading.title }}</a>{% if reading.ordered and reading.current > 0 %} · Part {{ reading.current }} of {{ reading.total }}{% elif not guide and reading.current > 0 %} · Part {{ reading.current }} of {{ reading.total }}{% endif %}
         </p>
+        {% if guide and not reading.ordered %}
+        <ul class="govuk-list govuk-list--bullet">
+          {% for member in reading.items %}<li><a class="govuk-link" href="{{ member.url }}">{{ member.title }}</a></li>{% endfor %}
+        </ul>
+        {% endif %}
         <div class="app-series-navigation__links">
           {% if reading.previous %}
           <a class="app-series-navigation__card app-series-navigation__card--previous" href="{{ reading.previous.url }}">
