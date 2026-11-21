@@ -36,12 +36,12 @@ Data reaches more places than anyone chose to send it: the model provider, saved
 
 This fictional entry shows how to record a flow, including unknowns.
 
-| Field                    | Example                                                                                      |
-| ------------------------ | -------------------------------------------------------------------------------------------- |
-| Data and source          | A synthetic application log from a local test fixture                                        |
-| Trigger and destination  | Copilot CLI reads the file; the output goes to the model in the next request                 |
-| Kept, and who can see it | Prompts kept 28 days (Business plan, CLI); the local session is synced to the user's account |
-| Controls                 | Sandbox on; the task is limited to the fixture; real logs stay out of the workspace          |
+| Field                    | Example                                                                                                                                                                                  |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Data and source          | A synthetic application log from a local test fixture                                                                                                                                    |
+| Trigger and destination  | Copilot CLI reads the file; the output goes to the model in the next request                                                                                                             |
+| Kept, and who can see it | The plan's retention for the CLI (see [the answers for Copilot](../concepts/inference-retention-training.md#the-answers-for-copilot)); the local session is synced to the user's account |
+| Controls                 | Sandbox on; the task is limited to the fixture; real logs stay out of the workspace                                                                                                      |
 
 ## Check each destination
 
