@@ -1,5 +1,5 @@
 ---
-type: guide
+type: advice
 summary: "Who looks, and how closely, should depend on what a change touches and what the checks showed, not the agent's confidence."
 status: established
 lane: goals
