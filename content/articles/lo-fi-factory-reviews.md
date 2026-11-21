@@ -8,7 +8,7 @@ tags:
 
 # Agent reviews and human decisions
 
-The refactor produced pull requests with tests, verification reports and review comments. The most useful evidence is not that reviews occurred, but that different review passes found different problems and people used the findings to decide what to change.
+The refactor produced pull requests with tests, verification reports and review comments. The strongest evidence is not that reviews occurred, but that different review passes found different problems and people used the findings to decide what to change.
 
 The examples below are paraphrased and deliberately omit repository, issue, PR and commit identifiers.
 
