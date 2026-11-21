@@ -26,6 +26,27 @@ The four agent roles used [project-specific Markdown configurations](../referenc
 
 The first issue was started manually. For subsequent work, a human applied a readiness label to each issue; a polling script selected ready issues without open blockers and started the Developer agent. Another script watched for pull requests ready for review and started the Reviewer. A review-complete label signaled that a review comment had been published, not that the change was approved.
 
+### How the handoffs worked
+
+The preserved demo documentation makes the control points more concrete. This is a **simplified diagram of the documented workflow**, not a transcript or timing record of every run:
+
+```mermaid
+flowchart TD
+    A[Human approves specification] --> B[Business Analyst proposes Issues]
+    B --> C[Human approves and marks Issue ready]
+    C --> D{Open blockers?}
+    D -->|Yes| E[Leave Issue queued]
+    D -->|No| F[Developer works in separate worktree]
+    F --> G[PR opened and verified]
+    G --> H[Reviewer examines PR revision]
+    H --> I[Review findings published]
+    I --> J[Human decides whether to merge]
+```
+
+Three choices mattered. **Readiness was explicit:** publishing an Issue did not launch an agent; the human had to mark it ready. **Dependency checks were mechanical:** the dispatcher queried GitHub's native blocking relationships rather than interpreting free-text dependencies. **Review was evidence, not approval:** the reviewer published findings, but merging remained a human decision.
+
+The workflow used two distinct queues. Issue labels such as `agent-ready`, `agent-in-progress` and `agent-failed` described implementation state; PR labels such as `review-ready`, `review-complete` and `review-failed` described review state. These labels communicated what the scripts had recorded, not necessarily whether a live agent process was healthy.
+
 The scripts checked native issue-blocking relationships, not dependency descriptions in issue text. Closing a blocker could make dependent work eligible; it did not itself prove that the prerequisite changes had been merged. The team merged prerequisite work before allowing dependent work to proceed.
 
 The scripts ran on one local machine. At most one Developer and one Reviewer ran at a time, in separate Git worktrees. This allowed implementation and review to overlap while avoiding concurrent implementation branches that would need to be merged together. There were no code conflicts in this exercise; that does not establish that worktrees prevent conflicts in general.
@@ -39,6 +60,16 @@ Agents and people ran unit tests and static checks. A participant also manually 
 The Reviewer agents often reported no actionable defects, but some reviews raised concerns. The team considered certain error-handling concerns outside the initial refactor scope and did not address them during the exercise. A published review and passing checks are evidence for a human decision, not proof that all important risks have been resolved.
 
 Occasional agent failures required manual recovery: the operator inspected the state, reset workflow labels, cleared the working state where needed, and restarted the polling process. There was no automatic retry or automatic merge.
+
+### What the implementation reveals about failures and oversight
+
+The demo's dispatcher code and operational notes describe a more careful handoff than simply treating an agent's exit as success. After development, the dispatcher checks that a matching, open, non-draft PR exists before queuing review. After review, it checks for a findings comment on the expected PR revision; a changed revision or missing comment is a failed handoff rather than a completed review.
+
+The documented recovery procedure deliberately **retains failed or dirty worktrees** for inspection. It asks the operator to check interrupted processes, partial changes and workflow labels before retrying. This reduces the chance that an automatic restart would silently overwrite work or duplicate an existing branch. The demo's offline dispatcher tests exercise state handling with mocked GitHub and agent commands; they are not measurements of unattended reliability in production.
+
+The repository also contains a **read-only terminal dashboard** that groups Issues and PRs by their workflow labels, flags failed or unqueued work, and distinguishes current, stale and unavailable data. Importantly, it observes state; it does not start agents, approve reviews or merge PRs. This is an example of separating visibility from authority.
+
+These details come from the preserved implementation and its documentation. **Not every feature in the repository can be shown to have existed during the original exercise**: the dashboard, manual-run procedures and later safeguards may reflect subsequent development. They illustrate how the prototype evolved, not additional measured outcomes of the original trial.
 
 ## Assessment against the goals
 
@@ -55,9 +86,19 @@ The exercise showed that a local dispatcher could coordinate specialist agents a
 
 The agents ran unattended with broad tool access and were not independently sandboxed. Approval gates controlled workflow handoffs, not every action an agent could take. A similar workflow needs enforced access controls, such as a sandbox and scoped credentials, matched to its data and risks.
 
+## Lessons for a similar experiment
+
+- **Make authorisation visible in the workflow.** A requirement approved for discussion is not automatically approved for publication or implementation; make each handoff explicit.
+- **Check artifacts before advancing state.** An agent reporting success is not the same as finding the expected PR or review comment on the expected revision.
+- **Keep failure recovery inspectable.** Preserve partial work and let a person decide how to resume rather than blindly retrying.
+- **Separate observation from control.** A dashboard can direct attention to failures without granting it approval or merge authority.
+- **Treat permissions as a separate design problem.** Human approval gates did not sandbox the unattended agents in this exercise.
+
 ## Evidence and related guidance
 
-This account is based on a participant's retrospective and inspection of the workflow documentation and issue and pull-request records. Project names, links, dates, and distinctive implementation details are omitted to preserve anonymity. The account is not an independently measured comparison.
+This account is based on a participant's retrospective and inspection of workflow documentation and issue and pull-request records. The expanded explanation also draws on the preserved demo's role profiles, handover guide, dispatcher scripts, workflow-label definitions, recovery notes and dashboard documentation. Project names, identifying repository details, local configuration and security-sensitive material are not reproduced here. The account is not an independently measured comparison.
+
+The source material supports descriptions of **how the preserved workflow is designed**. It does not by itself establish which later safeguards were in place during the exercise, how reliably unattended runs completed, or whether the project would have been faster under a different process.
 
 - [How agent roles use skills](../reference/agent-roles-directory.md) — original Product, Business Analyst, Developer and Reviewer role files, with their actual skill references and limits.
 - [Agile roles in agentic development](agent-role-boundaries.md) — an illustrative perspective on familiar responsibilities and human handoffs, not an account of this exercise.
