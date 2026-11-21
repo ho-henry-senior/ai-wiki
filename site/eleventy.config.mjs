@@ -14,6 +14,7 @@ import {
 import { contents, isLetterIndex } from "../scripts/site-contents.mjs";
 import { splitFinalSources } from "../scripts/site-sources.mjs";
 import { guideNavigation, guides } from "./guides.mjs";
+import { caseStudyForUrl, caseStudyNavigation } from "./case-study-series.mjs";
 import { expandIncludes, includesDir } from "../scripts/site-includes.mjs";
 import {
   eleventyNavigation,
@@ -74,7 +75,7 @@ export default async function (eleventyConfig) {
       .sort((a, b) => a.data.title.localeCompare(b.data.title)),
   );
   eleventyConfig.addCollection("caseStudies", (api) =>
-    api.getAll().filter((item) => item.data.lane === "case-studies")
+    api.getAll().filter((item) => item.data.lane === "case-studies" && (!caseStudyForUrl(item.url) || caseStudyForUrl(item.url).position === 0))
       .sort((a, b) => a.data.title.localeCompare(b.data.title)),
   );
   // The registry names entry pages; front matter has no entry marker.
@@ -158,7 +159,7 @@ export default async function (eleventyConfig) {
 
   eleventyConfig.addGlobalData("layout", "wiki");
   eleventyConfig.addFilter("laneItems", laneItems);
-  eleventyConfig.addFilter("guideNavigation", guideNavigation);
+  eleventyConfig.addFilter("guideNavigation", (url) => guideNavigation(url) ?? caseStudyNavigation(url));
   eleventyConfig.addFilter("articleTopicGroups", articleTopicGroups);
   eleventyConfig.addFilter("articleTypeGroups", articleTypeGroups);
   eleventyConfig.addFilter("sectionNavigation", sectionNavigation);
