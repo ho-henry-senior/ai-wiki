@@ -2,7 +2,7 @@
 type: explanation
 summary: An illustrative agile workflow using separate agent responsibilities, explicit human approvals and reviewable handoffs.
 status: developing
-lane: articles
+lane: guides
 date: 2026-11-14
 checked: 2026-11-15
 tags:

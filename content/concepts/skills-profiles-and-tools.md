@@ -2,7 +2,7 @@
 type: explanation
 summary: How agent roles, reusable skills and executable tools differ, with a Copilot custom-agent example and permission boundaries.
 status: established
-lane: articles
+lane: guides
 goal: economy
 order: 24
 checked: 2026-11-20

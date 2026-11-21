@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { guideNavigation, guideForUrl, guides, validateGuideUrls } from "../site/guides.mjs";
-import { eleventyNavigation } from "../site/lanes.mjs";
+import { eleventyNavigation, laneItems } from "../site/lanes.mjs";
 import { pageUrl } from "./site-links.mjs";
 
 function markdownFiles(dir) {
@@ -63,14 +63,54 @@ test("Guide reading context and sidebar nesting use the canonical URL", () => {
   assert.equal(guideNavigation("/pages/understanding-coding-agents/").current, 0);
   assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/pages/model-requests-and-responses/" } }), "How coding agents work");
 
-  const thematic = guideNavigation("/pages/writing-agent-skills/");
-  assert.equal(thematic.title, "Skills");
-  assert.equal(thematic.ordered, false);
-  assert.equal(thematic.current, 1);
-  assert.equal(thematic.previous, null);
-  assert.equal(thematic.next, null);
-  assert.equal(eleventyNavigation.parent({ lane: "reference", page: { url: "/pages/writing-agent-skills/" } }), "Reference");
+  const skills = guideNavigation("/pages/writing-agent-skills/");
+  assert.equal(skills.title, "Skills");
+  assert.equal(skills.ordered, true);
+  assert.equal(skills.current, 1);
+  assert.equal(skills.previous.url, "/pages/useful-skills/");
+  assert.equal(skills.next.url, "/pages/agent-skills-directory/");
+  assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/pages/writing-agent-skills/" } }), "Skills");
+  assert.equal(eleventyNavigation.parent({ lane: "reference", page: { url: "/pages/agent-skills-directory/" } }), "Reference");
+
+  const roles = guideNavigation("/pages/agent-role-boundaries/");
+  assert.equal(roles.title, "Agent roles");
+  assert.equal(roles.ordered, true);
+  assert.equal(roles.current, 2);
+  assert.equal(roles.total, 3);
+  assert.equal(roles.previous.url, "/concepts/skills-profiles-and-tools/");
+  assert.equal(roles.next.url, "/pages/agent-roles-directory/");
+  assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/pages/agent-role-boundaries/" } }), "Agent roles");
+  assert.equal(guideForUrl("/pages/skills-and-agent-roles/"), null);
   assert.equal(guideForUrl("/pages/cloud-agent-security/"), null);
+});
+
+test("comma-titled Guide chapters use safe navigation keys without changing their labels", () => {
+  const page = {
+    lane: "guides",
+    title: "Agent roles, skills and tools",
+    page: { url: "/concepts/skills-profiles-and-tools/" },
+  };
+  assert.equal(eleventyNavigation.key(page), "guide-member:/concepts/skills-profiles-and-tools/");
+  assert.equal(eleventyNavigation.title(page), "Agent roles, skills and tools");
+  assert.equal(eleventyNavigation.parent(page), "Agent roles");
+});
+
+test("Guide sidebars use the registry's chapter order", () => {
+  const children = [
+    { title: "How agent roles use skills", url: "/pages/agent-roles-directory/" },
+    { title: "Agent roles, skills and tools", url: "/concepts/skills-profiles-and-tools/" },
+    { title: "Agile roles in agentic development", url: "/pages/agent-role-boundaries/" },
+  ];
+  const [group] = laneItems([{
+    title: "Agent roles",
+    url: "/pages/agent-roles/",
+    children,
+  }], "/pages/agent-role-boundaries/");
+  assert.deepEqual(group.children.map((child) => child.href), [
+    "/concepts/skills-profiles-and-tools/",
+    "/pages/agent-role-boundaries/",
+    "/pages/agent-roles-directory/",
+  ]);
 });
 
 test("page front matter does not duplicate registry membership", () => {

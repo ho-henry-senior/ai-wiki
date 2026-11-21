@@ -48,8 +48,15 @@ const homeKey = "Home";
 export const eleventyNavigation = {
   key: (data) => {
     if (data.homepage) return data.eleventyNavigation?.key || homeKey;
-    return data.eleventyNavigation?.key || data.title;
+    const key = data.eleventyNavigation?.key || data.title;
+    // Eleventy Navigation treats commas in keys as multiple parents. A
+    // Guide chapter can have a comma in its heading, but never in its key.
+    const member = guideForUrl(data.page?.url);
+    if (data.lane === "guides" && member?.position > 0 && key?.includes(","))
+      return `guide-member:${data.page.url}`;
+    return key;
   },
+  title: (data) => data.eleventyNavigation?.title || data.title,
   parent: (data) => {
     if (data.homepage) return false;
     if (!data.lane) return data.eleventyNavigation?.parent || homeKey;
@@ -70,13 +77,20 @@ export const eleventyNavigation = {
 // The plugin expands a group only when the page's URL sits inside the
 // group's folder, but our page URLs are flat (/pages/...), so expand the
 // group that contains the current page instead. Articles are sorted by
-// title at the top level, with series parts nested under their introduction.
+// title at the top level; Guide chapters follow the registry's order.
 export function laneItems(tree = [], pageUrl, alphabetical = false) {
   const items = alphabetical
     ? [...tree].sort((a, b) => a.title.localeCompare(b.title))
     : tree;
   return items.map((item) => {
-    const children = item.children ?? [];
+    // The Guide registry owns reading order; old page-specific order
+    // values must not rearrange the chapter list in the sidebar.
+    const children = [...(item.children ?? [])];
+    if (guideForUrl(item.url)?.guide.ordered)
+      children.sort((a, b) =>
+        (guideForUrl(a.url)?.position ?? Infinity) -
+        (guideForUrl(b.url)?.position ?? Infinity),
+      );
     const contains = children.some((child) => child.url === pageUrl);
     return {
       href: item.url,

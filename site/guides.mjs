@@ -4,11 +4,22 @@
 export const guides = {
   skills: {
     title: "Skills",
-    ordered: false,
+    // A practical reading route; chapters remain independently useful.
+    ordered: true,
     overview: { title: "Skills", url: "/pages/useful-skills/" },
     parts: [
       { title: "Write a SKILL.md", url: "/pages/writing-agent-skills/" },
       { title: "Agent skills directory", url: "/pages/agent-skills-directory/" },
+    ],
+  },
+  "agent-roles": {
+    title: "Agent roles",
+    ordered: true,
+    overview: { title: "Agent roles", url: "/pages/agent-roles/" },
+    parts: [
+      { title: "Agent roles, skills and tools", url: "/concepts/skills-profiles-and-tools/" },
+      { title: "Agile roles in agentic development", url: "/pages/agent-role-boundaries/" },
+      { title: "How agent roles use skills", url: "/pages/agent-roles-directory/" },
     ],
   },
   "understanding-coding-agents": {

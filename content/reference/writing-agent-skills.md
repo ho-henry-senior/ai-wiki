@@ -2,7 +2,7 @@
 type: reference
 summary: The SKILL.md syntax, required YAML metadata, Markdown instructions, optional supporting files and a complete small example.
 status: developing
-lane: reference
+lane: guides
 order: 12
 checked: 2026-11-18
 tags:
