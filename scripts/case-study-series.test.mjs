@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
-import { readingRoutes, guides, caseStudyForUrl, guideForUrl, guideNavigation, validateGuideUrls } from "../site/guides.mjs";
+import { readingRoutes, guides, caseStudyForUrl, guideForUrl, guideNavigation } from "../site/guides.mjs";
 import { eleventyNavigation, laneItems } from "../site/lanes.mjs";
 import { pageUrl } from "./site-links.mjs";
 
@@ -11,7 +11,7 @@ const all = [study.overview, ...study.parts];
 test("case-study chapters resolve, stay in their lane and retain a stable entry", () => {
   const published = fs.readdirSync("content/articles").filter((x) => x.endsWith(".md"))
     .map((x) => pageUrl("content/articles/" + x));
-  assert.equal(validateGuideUrls(published), true);
+  assert.ok(all.every((item) => published.includes(item.url)));
   assert.equal(study.overview.url, "/pages/lo-fi-software-factory-case-study/");
   assert.equal(new Set(all.map((x) => x.url)).size, all.length);
   for (const item of all) {
