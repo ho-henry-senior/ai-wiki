@@ -112,3 +112,30 @@ test("Skills is an unnumbered guide across Guides and Reference", () => {
     assert.doesNotMatch(html, /<nav class="app-series-navigation"/);
   }
 });
+
+test("Guide members have direct-entry context and thematic current-page semantics", () => {
+  const members = [
+    "pages/inside-coding-agent/index.html",
+    "pages/model-requests-and-responses/index.html",
+    "concepts/tool-call-loop/index.html",
+    "pages/writing-agent-skills/index.html",
+    "pages/agent-skills-directory/index.html",
+  ];
+  for (const file of members) {
+    const html = fs.readFileSync(`_site/${file}`, "utf8");
+    const header = html.indexOf("app-document-header");
+    const context = html.indexOf('class="govuk-body-s app-guide-context"');
+    const body = html.indexOf('class="app-prose-scope"');
+    assert.ok(header >= 0 && context > header && body > context, `${file}: Guide link near title`);
+    assert.match(html.slice(context, body), /Part of the <a class="govuk-link" href="\/ai-wiki\/pages\/(understanding-coding-agents|useful-skills)\/"/);
+  }
+  for (const file of ["pages/writing-agent-skills/index.html", "pages/agent-skills-directory/index.html"]) {
+    const html = fs.readFileSync(`_site/${file}`, "utf8");
+    const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
+    assert.ok(nav, `${file}: thematic navigation`);
+    assert.match(nav, /<span aria-current="page">/);
+    assert.doesNotMatch(nav, /<a[^>]*aria-current="page"/);
+  }
+  const entry = fs.readFileSync("_site/pages/useful-skills/index.html", "utf8");
+  assert.doesNotMatch(entry, /class="govuk-body-s app-guide-context"/);
+});
