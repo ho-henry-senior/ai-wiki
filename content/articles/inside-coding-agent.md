@@ -3,8 +3,6 @@ type: explanation
 summary: Meet the model, harness, tools and environment that together make up a coding agent, and see which component controls each action.
 status: developing
 lane: guides
-guide: understanding-coding-agents
-guideOrder: 1
 tags:
   - Context and tokens
   - Permissions and sandboxing

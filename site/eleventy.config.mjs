@@ -13,7 +13,7 @@ import {
 } from "../scripts/site-links.mjs";
 import { contents, isLetterIndex } from "../scripts/site-contents.mjs";
 import { splitFinalSources } from "../scripts/site-sources.mjs";
-import { guideNavigation } from "./guides.mjs";
+import { guideNavigation, guides } from "./guides.mjs";
 import { expandIncludes, includesDir } from "../scripts/site-includes.mjs";
 import {
   eleventyNavigation,
@@ -73,10 +73,12 @@ export default async function (eleventyConfig) {
       .filter((item) => item.data.lane === "articles")
       .sort((a, b) => a.data.title.localeCompare(b.data.title)),
   );
-  eleventyConfig.addCollection("guideEntries", (api) =>
-    api.getAll().filter((item) => item.data.lane === "guides" && item.data.guideOrder === 0)
-      .sort((a, b) => a.data.title.localeCompare(b.data.title)),
-  );
+  // The registry names entry pages; front matter has no entry marker.
+  eleventyConfig.addCollection("guideEntries", (api) => {
+    const entryUrls = new Set(Object.values(guides).map((guide) => guide.overview.url));
+    return api.getAll().filter((item) => entryUrls.has(item.url))
+      .sort((a, b) => a.data.title.localeCompare(b.data.title));
+  });
   eleventyConfig.addCollection("datedArticles", (api) =>
     api
       .getAll()

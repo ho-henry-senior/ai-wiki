@@ -246,7 +246,7 @@ jobs:
             exit 1
           }
       - name: Test rendered navigation
-        run: node --test scripts/site-navigation.test.mjs
+        run: node --test scripts/site-navigation.test.mjs scripts/guide-registry.test.mjs
       - name: Check sitemap and search discovery
         run: node --test scripts/site-discovery.test.mjs
       - name: Check pages show checked date and status as metadata
