@@ -37,14 +37,5 @@ jobs:
         run: npm ci --ignore-scripts
       # The same checks as `just verify`, which only calls this npm script,
       # so Just itself does not need installing.
-      # TEMPORARY debugging step; remove after applying the formatted output.
-      - name: Format IA document
-        run: npx prettier --write maintainers/INFORMATION-ARCHITECTURE.md
-      - name: Upload formatted IA document for review
-        uses: actions/upload-artifact@v4
-        with:
-          name: ia-document-formatted
-          path: maintainers/INFORMATION-ARCHITECTURE.md
-          retention-days: 1
       - name: Run the checks
         run: npm run verify
