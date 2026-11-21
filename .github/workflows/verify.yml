@@ -35,6 +35,10 @@ jobs:
       # Website workflow.
       - name: Install tools
         run: npm ci --ignore-scripts
+      - name: Show Markdown formatting changes for diagnosis
+        run: |
+          npx prettier --write content/articles/lo-fi-factory-{issues,dispatch,reviews,lessons}.md
+          git diff -- content/articles/lo-fi-factory-issues.md content/articles/lo-fi-factory-dispatch.md content/articles/lo-fi-factory-reviews.md content/articles/lo-fi-factory-lessons.md
       # The same checks as `just verify`, which only calls this npm script,
       # so Just itself does not need installing.
       - name: Run the checks
