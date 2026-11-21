@@ -2,9 +2,9 @@
 type: explanation
 summary: Annotated illustrative payloads show what a harness gives the model, how a model asks for a tool, and how results become later context.
 status: developing
-lane: articles
-series: understanding-coding-agents
-seriesOrder: 2
+lane: guides
+guide: understanding-coding-agents
+guideOrder: 2
 tags:
   - Context and tokens
 ---
