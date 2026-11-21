@@ -1,11 +1,16 @@
 ---
-type: reference
+type: explanation
 summary: Sending data for a response, keeping it, and training on it are separate questions; for Copilot, the answers depend on your plan and which feature you use.
 status: developing
 lane: articles
 goal: security
 order: 25
 checked: 2026-11-15
+recheck: every-run
+check-against:
+  - https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/session-data
+  - https://github.blog/changelog/2026-03-25-updates-to-our-privacy-statement-and-terms-of-service-how-we-use-your-data/
+  - https://github.blog/news-insights/product-news/updates-to-github-copilot-interaction-data-usage-policy/
 tags:
   - Copilot
   - Security
@@ -18,15 +23,15 @@ Ask three questions about any agent that handles sensitive data: what is sent, w
 
 ## The answers for Copilot
 
-| Question                    | Copilot Business and Enterprise                                                                                                                                                                                                                                                                         | Copilot Free, Pro, and Pro+                                                                             |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| What is sent?               | Prompts and context go to GitHub's service and its model providers to produce a response, on every plan.                                                                                                                                                                                                | The same.                                                                                               |
-| What is kept?               | In an editor, chat and completion prompts are not kept. On GitHub.com, in GitHub Mobile, and in the CLI, prompts and responses are kept for 28 days. Cloud agent session logs stay on GitHub; see [agent authorship and attribution](../goals/traceability/README.md#agent-authorship-and-attribution). | See GitHub's privacy statement for your plan.                                                           |
-| Is it used to train models? | No.                                                                                                                                                                                                                                                                                                     | Yes, by default since 24 April 2026, unless you turn it off in your Copilot settings under **Privacy**. |
+| Question                    | Copilot Business and Enterprise                                                                                                                                                                                                                                                                         | Copilot Free, Pro, and Pro+                                                                                       |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| What is sent?               | Prompts and context go to GitHub's service and its model providers to produce a response, on every plan.                                                                                                                                                                                                | The same.                                                                                                         |
+| What is kept?               | In an editor, chat and completion prompts are not kept. On GitHub.com, in GitHub Mobile, and in the CLI, prompts and responses are kept for 28 days. Cloud agent session logs stay on GitHub; see [agent authorship and attribution](../goals/traceability/README.md#agent-authorship-and-attribution). | GitHub publishes no fixed period. It told The New Stack that this varies by use case and can be up to five years. |
+| Is it used to train models? | No.                                                                                                                                                                                                                                                                                                     | Yes, by default since 24 April 2026, unless you turn it off in your Copilot settings under **Privacy**.           |
 
 **For work code, use a Business or Enterprise seat**, or check that model training is turned off in your personal Copilot settings. An organization seat also lets administrators set policies such as content exclusion.
 
-The retention figures are from GitHub's Copilot Trust Center FAQ.
+The figures for Business and Enterprise are from GitHub's Copilot Trust Center FAQ. GitHub gave the figure for individual plans to The New Stack in March 2026.
 
 ## Other agents and tools
 
@@ -35,7 +40,9 @@ Ask the same three questions of every other agent and integration, including MCP
 ## Sources
 
 - [GitHub Changelog: Updates to our Privacy Statement and Terms of Service (25 March 2026)](https://github.blog/changelog/2026-03-25-updates-to-our-privacy-statement-and-terms-of-service-how-we-use-your-data/)
+- [GitHub Blog: Updates to GitHub Copilot interaction data usage policy](https://github.blog/news-insights/product-news/updates-to-github-copilot-interaction-data-usage-policy/)
 - [GitHub Copilot Trust Center](https://copilot.github.trust.page)
+- [The New Stack: GitHub will train AI models on your Copilot data](https://thenewstack.io/github-copilot-interaction-data/)
 - [GitHub Docs: Copilot session data](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/session-data)
 - [GitHub Docs: Managing agent sessions](https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/manage-and-track-agents)
 
