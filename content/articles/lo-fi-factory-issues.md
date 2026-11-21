@@ -5,6 +5,7 @@ summary: How an approved technical refactor became a dependency-aware set of age
 tags:
   - Agent roles
 ---
+
 # From a refactor idea to actionable issues
 
 The exercise began with a bounded, cross-cutting refactor: replacing an older server-side HTTP transport with native Fetch while keeping existing service contracts intact. The technical direction was relatively clear. That made the work suitable for testing whether specialist agents and explicit human decisions could produce implementable tickets.
