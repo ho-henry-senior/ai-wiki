@@ -191,7 +191,7 @@ export function metadataParts(page = {}, formatDate = String) {
     parts.push({ text: `Goal: ${goals[page.goal]}`, href: goalUrl(page.goal) });
   if (article && page.published)
     parts.push({ text: `Published: ${formatDate(page.published)}` });
-  if (page.checked) parts.push({ text: `Checked: ${formatDate(page.checked)}` });
+  if (page.checked) parts.push({ text: `Checked: ${formatDate(page.checked)}`, kind: "checked" });
   if (statuses.includes(page.status)) {
     const status = page.status[0].toUpperCase() + page.status.slice(1);
     parts.push({ text: `Status: ${status}` });

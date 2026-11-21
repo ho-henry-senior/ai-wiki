@@ -28,9 +28,17 @@
   {%- if parts | length %}
   <p class="govuk-body-s app-page-details">
     {%- for part in parts %}
-    {%- if part.href %}<a class="govuk-link" href="{{ part.href }}">{{ part.text }}</a>{% else %}{{ part.text }}{% endif %}{{ " · " if not loop.last }}
+    {%- if part.kind == "checked" %}<span class="app-checked-date">{{ part.text }}</span>{% elif part.href %}<a class="govuk-link" href="{{ part.href }}">{{ part.text }}</a>{% else %}{{ part.text }}{% endif %}{{ " · " if not loop.last }}
     {%- endfor %}
   </p>
+  {%- endif %}
+  {#- Native disclosure works with keyboard and touch, with no JavaScript.
+      Verification notes are optional and never replace substantive caveats. -#}
+  {%- if checked and verification %}
+  <details class="app-verification-details">
+    <summary>Verification details</summary>
+    <p class="govuk-body-s">{{ verification }}</p>
+  </details>
   {%- endif %}
 {%- endmacro %}
 
