@@ -25,7 +25,8 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
 - [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — how Copilot charges for tokens, which model tier to use, and how to cap a session.
 - [Define, steer, and verify a task](goals/alignment/define-and-verify-tasks.md) — write the task, hand it to Copilot, steer it, and check the result.
 - [How coding agents work](articles/understanding-coding-agents.md) — an illustrated three-chapter guide on agent components, model requests, search and the tool-call loop.
-- [Skills](goals/economy/useful-skills.md) — a thematic guide to understanding, writing and finding agent skills.
+- [Skills](goals/economy/useful-skills.md) — an ordered guide to deciding whether to add, writing, and finding agent skills.
+- [Agent roles](articles/agent-roles.md) — an ordered guide to role boundaries, handoffs and example role files.
 - [Skills and agent roles](articles/skills-and-agent-roles.md) — how reusable procedures and agent responsibilities differ.
 - [Agent data-flow checklist](reference/agent-data-flow-checklist.md) — questions for reviewing a particular agent setup, integration, or sensitive task.
 - [Repository context for coding agents](goals/alignment/repository-context-for-agents.md) — developing guidance for prioritizing useful repository context without taking on unnecessary documentation.
