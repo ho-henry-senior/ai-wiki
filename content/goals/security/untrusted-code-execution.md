@@ -1,5 +1,5 @@
 ---
-type: guide
+type: advice
 summary: "An agent can install compromised dependencies, run repository scripts, or load untrusted skills and MCP servers."
 status: established
 lane: goals
