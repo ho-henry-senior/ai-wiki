@@ -14,6 +14,7 @@ import {
 import { contents, isLetterIndex } from "../scripts/site-contents.mjs";
 import { splitFinalSources } from "../scripts/site-sources.mjs";
 import { seriesNavigation } from "./series.mjs";
+import { guideNavigation } from "./guides.mjs";
 import { expandIncludes, includesDir } from "../scripts/site-includes.mjs";
 import {
   eleventyNavigation,
@@ -71,6 +72,10 @@ export default async function (eleventyConfig) {
     api
       .getAll()
       .filter((item) => item.data.lane === "articles")
+      .sort((a, b) => a.data.title.localeCompare(b.data.title)),
+  );
+  eleventyConfig.addCollection("guideEntries", (api) =>
+    api.getAll().filter((item) => item.data.lane === "guides" && item.data.guideOrder === 0)
       .sort((a, b) => a.data.title.localeCompare(b.data.title)),
   );
   eleventyConfig.addCollection("datedArticles", (api) =>
@@ -149,6 +154,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addGlobalData("layout", "wiki");
   eleventyConfig.addFilter("laneItems", laneItems);
   eleventyConfig.addFilter("seriesNavigation", seriesNavigation);
+  eleventyConfig.addFilter("guideNavigation", guideNavigation);
   eleventyConfig.addFilter("articleTopicGroups", articleTopicGroups);
   eleventyConfig.addFilter("articleTypeGroups", articleTypeGroups);
   eleventyConfig.addFilter("sectionNavigation", sectionNavigation);
@@ -176,7 +182,7 @@ export default async function (eleventyConfig) {
   // Markdown files of their own. Each has its lane's sidebar; Goals lists
   // the four goal overviews in order, and Articles lists every article by
   // title, with its type and main goal.
-  const lists = { goals: "goalOverviews", articles: "articles" };
+  const lists = { goals: "goalOverviews", guides: "guideEntries", articles: "articles" };
   // Reference is deliberately grouped by reader need rather than a second
   // taxonomy. Keep the sidebar flat and preserve the published page URLs.
   // Site-absolute links are rewritten with the deployment path prefix.
