@@ -165,3 +165,22 @@ test("Guide members have direct-entry context near the title", () => {
     assert.doesNotMatch(html, /class="govuk-body-s app-guide-context"/, `${entry}: entry pages need no "Part of" line`);
   }
 });
+
+
+test("checked metadata shows a date, with optional accessible verification details", () => {
+  const agentRoles = fs.readFileSync("_site/concepts/skills-profiles-and-tools/index.html", "utf8");
+  assert.match(agentRoles, /class="app-checked-date">Checked: 20 November 2026<\/span>/);
+  assert.match(agentRoles, /<details class="app-verification-details">\s*<summary>Verification details<\/summary>/);
+  assert.match(agentRoles, /Checked against GitHub&#39;s agent-skills and custom-agent configuration documentation/);
+  assert.match(agentRoles, /<p class="govuk-body-s">/);
+
+  // Pages with a checked date but no verification notes should not show
+  // an inert disclosure control; their visible dates still matter.
+  const local = fs.readFileSync("_site/pages/local-agent-security/index.html", "utf8");
+  assert.match(local, /class="app-checked-date">Checked: /);
+  assert.doesNotMatch(local, /app-verification-details/);
+
+  // Missing dates must not be presented as if they were verified.
+  const glossary = fs.readFileSync("_site/pages/glossary/index.html", "utf8");
+  assert.doesNotMatch(glossary, /app-checked-date|app-verification-details/);
+});
