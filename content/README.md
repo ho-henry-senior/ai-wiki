@@ -14,7 +14,7 @@ Folders organise the source; on the website, each page's `lane` and `goal` front
   - [Unexpected data exposure](goals/security/unexpected-data-exposure.md)
   - [Hidden instructions in content](goals/security/hidden-instructions-in-content.md)
   - [Untrusted code execution](goals/security/untrusted-code-execution.md)
-- [Traceability & Trust](goals/traceability/README.md) — developing core advice for keeping a record of agent work and reviewing changes you can rely on.
+- [Trust & Traceability](goals/traceability/README.md) — developing core advice for reviewing changes you can rely on and keeping a record of agent work.
   - [Agent authorship and attribution](goals/traceability/agent-authorship-and-attribution.md)
   - [Pull request verification evidence](goals/traceability/pull-request-verification-evidence.md)
   - [Risk-focused change review](goals/traceability/risk-focused-change-review.md)

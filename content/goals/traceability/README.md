@@ -1,15 +1,15 @@
 ---
 type: overview
-summary: Why agent work needs a record someone else can follow, and a review you can rely on; let the record make itself, put the check results on the pull request, read the risky parts first, and direct human attention by risk.
+summary: Why agent work needs a review you can rely on, and a record someone else can follow; let the record make itself, put the check results on the pull request, read the risky parts first, and direct human attention by risk.
 status: established
 lane: goals
 goal: traceability
 order: 4
 ---
 
-# Traceability & Trust
+# Trust & Traceability
 
-Agent work splits implementation, decisions and approval between a model and people. Decisions may be buried in private sessions, while checks and logs expire, leaving later readers unable to reconstruct what happened or why. Keep a record and verification evidence where reviewers can find them, so they can judge whether to trust the change without repeating the work; in public-sector work, that record may be an obligation.
+As agents produce more changes, reviewers must decide which to trust, and on what evidence. Agent work splits implementation, decisions and approval between a model and people. Decisions may be buried in private sessions, while checks and logs expire, leaving later readers unable to reconstruct what happened or why. Keep a record and verification evidence where reviewers can find them, so they can judge whether to trust the change without repeating the work; in public-sector work, that record may be an obligation.
 
 ## Core advice
 
