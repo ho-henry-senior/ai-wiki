@@ -62,7 +62,14 @@ export const eleventyNavigation = {
     if (data.type === "overview") return lanes.goals.title;
     return goals[data.goal] || lanes.goals.title;
   },
-  order: (data) => data.order ?? data.eleventyNavigation?.order,
+  // Follow the registry's reading order in a Guide sidebar, regardless of
+  // an older cross-lane display order on a chapter.
+  order: (data) => {
+    const member = guideForUrl(data.page?.url);
+    if (data.lane === "guides" && member?.position > 0)
+      return member.position;
+    return data.order ?? data.eleventyNavigation?.order;
+  },
   excerpt: (data) => data.eleventyNavigation?.excerpt || data.description,
 };
 
@@ -70,7 +77,7 @@ export const eleventyNavigation = {
 // The plugin expands a group only when the page's URL sits inside the
 // group's folder, but our page URLs are flat (/pages/...), so expand the
 // group that contains the current page instead. Articles are sorted by
-// title at the top level, with series parts nested under their introduction.
+// title at the top level; Guide chapters follow the registry's order.
 export function laneItems(tree = [], pageUrl, alphabetical = false) {
   const items = alphabetical
     ? [...tree].sort((a, b) => a.title.localeCompare(b.title))
