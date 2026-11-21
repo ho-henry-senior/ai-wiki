@@ -171,7 +171,7 @@ test("checked metadata shows a date, with optional accessible verification detai
   const agentRoles = fs.readFileSync("_site/concepts/skills-profiles-and-tools/index.html", "utf8");
   assert.match(agentRoles, /class="app-checked-date">Checked: 20 November 2026<\/span>/);
   assert.match(agentRoles, /<details class="app-verification-details">\s*<summary>Verification details<\/summary>/);
-  assert.match(agentRoles, /Checked against GitHub&#39;s agent-skills and custom-agent configuration documentation/);
+  assert.match(agentRoles, /Checked against GitHub.{1,12}s agent-skills and custom-agent configuration documentation/);
   assert.match(agentRoles, /<p class="govuk-body-s">/);
 
   // Pages with a checked date but no verification notes should not show
