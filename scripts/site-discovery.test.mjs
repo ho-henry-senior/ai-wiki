@@ -109,3 +109,15 @@ test("Prompt injection is one canonical article linked from Security", () => {
   const canonical = fs.readFileSync(path.join(siteRoot, url.slice(1), "index.html"), "utf8");
   assert.match(canonical, /Prompt injection/);
 });
+
+
+test("Case studies retain their canonical URL outside Articles", () => {
+  const url = "/pages/lo-fi-software-factory-case-study/";
+  const href = 'href="' + prefix + url + '"';
+  const listing = fs.readFileSync(path.join(siteRoot, "case-studies/index.html"), "utf8");
+  const articles = fs.readFileSync(path.join(siteRoot, "articles/index.html"), "utf8");
+  const detail = fs.readFileSync(path.join(siteRoot, url.slice(1), "index.html"), "utf8");
+  assert.ok(listing.includes(href), "Case studies listing links to case study");
+  assert.ok(!articles.includes(href), "Articles listing no longer duplicates it");
+  assert.match(detail, /Case study: a lo-fi software factory/);
+});
