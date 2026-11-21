@@ -82,3 +82,30 @@ test("all Guides-lane pages stay out of Articles navigation", () => {
     assert.ok(!articleSidebar.includes(href), "Articles sidebar must not duplicate " + url);
   }
 });
+
+test("retired Prompt injection URL redirects to one canonical article", () => {
+  const oldUrl = "/pages/prompt-injection/";
+  const canonicalUrl = "/pages/prompt-injection-coding-agents/";
+  const old = fs.readFileSync(path.join(siteRoot, oldUrl.slice(1), "index.html"), "utf8");
+  assert.match(old, /<meta name="robots" content="noindex">/);
+  assert.ok(old.includes('http-equiv="refresh"'), "Old URL should redirect");
+  assert.ok(old.includes("https://ho-henry-senior.github.io" + prefix + canonicalUrl));
+  assert.ok(!publishedPages().includes(oldUrl), "Redirect must not be an authored lane page");
+
+  const index = JSON.parse(fs.readFileSync(path.join(siteRoot, "search-index.json"), "utf8"));
+  const searchUrls = index.map((page) => normalizedUrl(page.url));
+  assert.ok(!searchUrls.includes(oldUrl), "Old page must not appear in search");
+  assert.equal(searchUrls.filter((url) => url === canonicalUrl).length, 1);
+
+  const sitemap = fs.readFileSync(path.join(siteRoot, "sitemap/index.html"), "utf8");
+  const main = sitemap.match(/<main\\b[^>]*>([\\s\\S]*?)<\\/main>/)?.[1];
+  assert.ok(main, "Sitemap has a main content region");
+  const links = [...main.matchAll(/<a\\b[^>]*\\bhref="([^"]+)"/g)]
+    .map(([, href]) => normalizedUrl(href));
+  assert.ok(!links.includes(oldUrl), "Redirect must not be in the sitemap");
+  assert.equal(links.filter((url) => url === canonicalUrl).length, 1);
+
+  const security = fs.readFileSync(path.join(siteRoot, "pages/security/index.html"), "utf8");
+  assert.ok(security.includes('href="' + prefix + canonicalUrl + '"'));
+  assert.ok(!security.includes('href="' + prefix + oldUrl + '"'));
+});
