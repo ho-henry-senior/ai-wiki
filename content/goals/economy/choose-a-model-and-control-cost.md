@@ -1,5 +1,5 @@
 ---
-type: guide
+type: how-to
 summary: How Copilot charges for tokens, which model tier to use for which task, and how to keep a session's cost down and capped.
 status: developing
 recheck: every-run
