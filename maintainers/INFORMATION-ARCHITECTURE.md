@@ -2,7 +2,7 @@
 
 This is the **single owner of the wiki's navigation taxonomy and reader-facing information architecture**. For build commands, Markdown handling and website maintenance, see [Maintaining the wiki](MAINTAINING.md); for editorial purposes and writing limits, see [Design goals](DESIGN-GOALS.md) and [the writing standard](STYLE.md).
 
-This specification records the **agreed design direction from [issue #173](https://github.com/ho-henry-senior/ai-wiki/issues/173)**, including the clarification that Guides must simplify Articles navigation without concealing content. It distinguishes intended behaviour from the present implementation and work that still requires verification or a separate PR. It is **not** an instruction to migrate existing pages immediately.
+The architecture is informed by [issue #173](https://github.com/ho-henry-senior/ai-wiki/issues/173). Guides should simplify Articles navigation without concealing content. Current implementation details and preferred future behaviour are distinguished where they differ.
 
 ## Principles
 
@@ -71,11 +71,11 @@ A Guide can gather pages whose **primary purposes differ**. The current, deliber
 
 - **How coding agents work** — Guides lane; ordered entry; discoverable via Guides.
 
-- **Inside a coding agent** — Guides lane; ordered chapter; discoverable via Within How coding agents work.
+- **Inside a coding agent** — Guides lane; ordered chapter; discoverable within How coding agents work.
 
-- **What the model receives and returns** — Guides lane; ordered chapter; discoverable via Within How coding agents work.
+- **What the model receives and returns** — Guides lane; ordered chapter; discoverable within How coding agents work.
 
-- **The tool-call loop** — Guides lane; ordered chapter; discoverable via Within How coding agents work.
+- **The tool-call loop** — Guides lane; ordered chapter; discoverable within How coding agents work.
 
 - **Skills** — Guides lane; thematic entry that also explains skills; discoverable via Guides.
 
@@ -125,15 +125,4 @@ Sitemap and search completeness are **required outcomes**, not claims that the e
 
 Future validation should reject unresolved entry/member URLs, missing entries, multiple memberships (for now), and ordered Guides that lack a meaningful multi-page sequence. For a thematic Guide, member ordering is a deliberate display choice, **not** a prerequisite reading order.
 
-**Do not apply this proposed registry refactor as part of the documentation PR.** Before retiring fields, inspect Eleventy navigation, sitemap and search output and design backward-compatible migration tests.
-
-## Implementation follow-ups (not authorised by this document)
-
-1. Inspect the rendered homepage, Guides index, ordered and thematic member pages, Articles and Reference lists, sidebars, mobile views, sitemap and search output.
-2. Verify the GOV.UK Eleventy plugin's data sources, then add checks for canonical sitemap/search coverage, no duplicate pages, and simplified broad navigation.
-3. Consider moving Guide membership and entry detection into the registry, with tested URL lookups, and removing duplicated `guide`/`guideOrder` front matter after review.
-4. Add a short Guide-context line on direct-entry pages and accessible current-page semantics in thematic navigation.
-5. Remove the obsolete Skills-and-roles `series.mjs` path and correct the Economy overview's outdated description of that series.
-6. Keep code and content changes in small PRs; both Verify and Website must pass, and navigation should be visually reviewed. **Do not merge without explicit approval.**
-
-Decisions documented here should be revisited if real reader journeys contradict them. Track scope and unresolved implementation questions in [#173](https://github.com/ho-henry-senior/ai-wiki/issues/173), not by silently altering the taxonomy during unrelated page edits.
+Before retiring fields, verify Eleventy navigation, sitemap and search behaviour, and provide backward-compatible migration tests. Implementation tasks and unresolved questions are tracked in [#173](https://github.com/ho-henry-senior/ai-wiki/issues/173). Revisit these design rules if actual reader journeys contradict them.
