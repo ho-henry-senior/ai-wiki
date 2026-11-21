@@ -34,17 +34,7 @@ Point to commands; do not copy their implementation into instructions, where it 
 
 ## Use what the repository already has
 
-If package scripts or a Makefile already work, list those. Add a task runner only when commands are scattered or hard to invoke. This wiki uses [Just](https://just.systems/), and `just --list` shows each recipe with its comment. For a worked example of **single-test execution, composition, and final gates**, see [give agents a command interface with Just](../economy/justfile-agent-workflows.md):
-
-```just
-# Test and check the sitemap, Markdown formatting, and local links without modifying files.
-verify:
-    npm run verify
-
-# Apply Markdown formatting (modifies files).
-format:
-    npm run format
-```
+If package scripts or a Makefile already work, list those. Add a task runner only when commands are scattered across tools or hard to invoke. [Give agents a command interface with Just](../economy/justfile-agent-workflows.md) shows one: a `justfile` with focused tests, composed gates, and a command list that `just --list` prints.
 
 ## Give the Copilot cloud agent what it needs to run them
 
@@ -67,8 +57,6 @@ Source: GitHub's documentation on [customizing the cloud agent's environment](ht
 | Find unused code                      | [Knip](https://knip.dev/) (JS/TS), [Vulture](https://github.com/jendrikseipp/vulture) (Python) |
 | Report dependency and security issues | Dependency audit, Trivy, Semgrep                                                               |
 
-List diagnostics such as audits and scans separately from the check that must pass, because they often report findings that already exist. For a broader catalogue covering Semgrep, Hadolint, unused-code tools and more, see [local checks and tools for coding agents](../../reference/local-development-tools.md). For a complete copyable `justfile` and links to real ones, see [give agents a command interface with Just](../economy/justfile-agent-workflows.md).
+List diagnostics such as audits and scans separately from the check that must pass, because they often report findings that already exist. For a broader catalogue covering Semgrep, Hadolint, unused-code tools and more, see [local checks and tools for coding agents](../../reference/local-development-tools.md).
 
 A command list tells the agent what it can run, not how the system works. For that, see [repository context for coding agents](repository-context-for-agents.md).
-
-**Next:** [write your next task down](define-and-verify-tasks.md), step 2 of [start here](../../../README.md#first-steps).
