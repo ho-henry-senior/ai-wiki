@@ -60,10 +60,10 @@ Each published page has at most one primary lane; pages with no lane may remain 
 These are three separate reader experiences, even if today's implementation shares underlying navigation data:
 
 1. **Primary site navigation** offers `Goals | Guides | Articles | Reference`.
-2. **Section listings and sidebars** offer a navigable, intentionally *selective* view. The Guides index shows Guide entries, not a duplicate list of every chapter. Articles navigation should not regain every coding-agent chapter just because that chapter is a meaningful explanation.
+2. **Section listings and sidebars** offer a navigable, intentionally _selective_ view. The Guides index shows Guide entries, not a duplicate list of every chapter. Articles navigation should not regain every coding-agent chapter just because that chapter is a meaningful explanation.
 3. **Contextual Guide navigation** connects members of a particular collection. A deep-linked member should show a short `Part of the … guide` route near the top and suitable Guide links in context. An ordered Guide can also show Previous/Next. This context never changes the page's canonical URL or primary lane according to how the reader arrived.
 
-The navigation tree's structure and the lane's purpose together determine broad visibility in the *current* site; no separate navigation-visibility front-matter field is part of the agreed model.
+The navigation tree's structure and the lane's purpose together determine broad visibility in the _current_ site; no separate navigation-visibility front-matter field is part of the agreed model.
 
 ## Guides are collections, not mandatory containers
 
@@ -83,7 +83,7 @@ A Guide can gather pages whose **primary purposes differ**. The current, deliber
 
 - **Agent skills directory** — Reference lane; thematic skills member; discoverable via Reference **and** Skills.
 
-The coding-agent chapters stay in Guides to achieve the *specific navigation-simplification goal*; returning them to the Articles landing page merely to satisfy a conceptual classification would defeat it. The Skills Reference pages stay in Reference because direct lookup there remains useful. A page may be linked or featured elsewhere without its active lane changing.
+The coding-agent chapters stay in Guides to achieve the _specific navigation-simplification goal_; returning them to the Articles landing page merely to satisfy a conceptual classification would defeat it. The Skills Reference pages stay in Reference because direct lookup there remains useful. A page may be linked or featured elsewhere without its active lane changing.
 
 **Sidebar rule for the design:** the Guides sidebar should expose Guide entries, with chapter children only where they belong to the Guides navigation tree. It should not pull canonical Reference pages into the Guides sidebar. Cross-lane members instead show contextual links in the page body or Guide navigation. Avoid creating two exhaustive trees containing the same resources.
 
@@ -98,7 +98,7 @@ The coding-agent chapters stay in Guides to achieve the *specific navigation-sim
 
 **Guides → Skills → Write a SKILL.md:** the reader starts with the Skills introduction, follows an unnumbered link, arrives at the canonical Reference resource, sees Reference as its primary section, and has an optional way back to Skills. The same resource must work when entered from Reference or search.
 
-**Articles or search → The tool-call loop:** the page opens at its canonical URL, explains itself, indicates that it is in the ordered *How coding agents work* Guide, and offers optional chapter navigation. No prior chapter is required to understand its basic purpose.
+**Articles or search → The tool-call loop:** the page opens at its canonical URL, explains itself, indicates that it is in the ordered _How coding agents work_ Guide, and offers optional chapter navigation. No prior chapter is required to understand its basic purpose.
 
 **Goals → practical how-to:** a Goal can link directly to a standalone Article or Reference page where that is the best action. The destination's primary navigation state is determined by its own lane, not the referring link.
 
