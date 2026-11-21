@@ -9,6 +9,10 @@
   <header class="app-document-header">
     {{ appHeading({ caption: caption, title: title or ("Pages tagged ‘" + tag + "’"), size: "l" }) }}
     {{ pageMetadata() }}
+    {%- set guideContext = page.url | guideNavigation %}
+    {%- if guideContext and guideContext.current > 0 %}
+    <p class="govuk-body-s app-guide-context">Part of the <a class="govuk-link" href="{{ guideContext.overview.url }}">{{ guideContext.title }}</a> guide</p>
+    {%- endif %}
     {#- Goal pages and articles carry summaries for listings and search, but
         open with their own introduction; don't print the summary again. -#}
     {%- if description and lane != "articles" and lane != "goals" and lane != "guides" %}
@@ -103,13 +107,14 @@
 
   {%- set mainColumn %}
     {{ pageHeader() }}
+    {%- set guideReading = page.url | guideNavigation %}
     {#- The short homepage needs no duplicate in-page navigation. -#}
     {% if page.url != "/" %}{{ pageDetails() }}{% endif %}
     {#- Guide navigation precedes Sources; Markdown retains the conventional
         Sources-at-end order for GitHub readers. -#}
     {%- set articleBody = content %}
     {%- set sourcesBody = "" %}
-    {%- if guide and guideOrder is defined and content %}
+    {%- if guideReading and content %}
       {%- set sections = content | splitFinalSources %}
       {%- set articleBody = sections.article %}
       {%- set sourcesBody = sections.sources %}
@@ -128,16 +133,16 @@
       {%- endfor %}
     </ul>
     {%- endif %}
-    {% if guide and guideOrder is defined %}
-      {%- set reading = guide | guideNavigation(guideOrder) %}
+    {% if guideReading %}
+      {%- set reading = guideReading %}
       {% if reading %}
       <nav class="app-series-navigation" aria-label="Guide navigation">
         <p class="govuk-body-s app-series-navigation__heading">
           <a class="govuk-link" href="{{ reading.overview.url }}">{{ reading.title }}</a>{% if reading.ordered and reading.current > 0 %} · Part {{ reading.current }} of {{ reading.total }}{% endif %}
         </p>
-        {% if guide and not reading.ordered %}
+        {% if guideReading and not reading.ordered %}
         <ul class="govuk-list govuk-list--bullet">
-          {% for member in reading.items %}<li><a class="govuk-link" href="{{ member.url }}">{{ member.title }}</a></li>{% endfor %}
+          {% for member in reading.items %}<li>{% if member.url == page.url %}<span aria-current="page">{{ member.title }}</span>{% else %}<a class="govuk-link" href="{{ member.url }}">{{ member.title }}</a>{% endif %}</li>{% endfor %}
         </ul>
         {% endif %}
         <div class="app-series-navigation__links">
