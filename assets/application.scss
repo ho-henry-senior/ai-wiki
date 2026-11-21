@@ -112,6 +112,55 @@
   color: govuk.govuk-colour("dark-grey");
 }
 
+// A calendar icon indicates *when* claims were checked, not an approval mark.
+// Use an inline SVG mask so the text stays visible in forced-colours mode.
+.app-checked-date::before {
+  content: "";
+  display: inline-block;
+  width: 0.95em;
+  height: 0.95em;
+  margin-right: 0.3em;
+  vertical-align: -0.12em;
+  background-color: currentColor;
+  $calendar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M16 3v4M8 3v4M3 10h18'/%3E%3C/svg%3E");
+  -webkit-mask: $calendar center / contain no-repeat;
+  mask: $calendar center / contain no-repeat;
+}
+
+// Native details/summary is operable by mouse, keyboard and touch without JS.
+.app-verification-details {
+  margin-top: govuk.govuk-spacing(1);
+  margin-bottom: govuk.govuk-spacing(3);
+  color: govuk.govuk-colour("dark-grey");
+  @include govuk.govuk-font($size: 16);
+}
+
+.app-verification-details summary {
+  display: list-item;
+  width: fit-content;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.app-verification-details summary:hover {
+  color: govuk.govuk-colour("blue");
+}
+
+.app-verification-details summary:focus-visible {
+  outline: 3px solid govuk.govuk-colour("yellow");
+  outline-offset: 2px;
+  color: govuk.govuk-colour("black");
+  background-color: govuk.govuk-colour("yellow");
+}
+
+.app-verification-details p {
+  max-width: 44rem;
+  margin-top: govuk.govuk-spacing(2);
+  margin-bottom: 0;
+  color: inherit;
+}
+
 // The checked/status line sits directly below the heading, before the summary.
 .app-document-header:has(.app-page-details) .govuk-heading-l {
   margin-bottom: govuk.govuk-spacing(2);
