@@ -68,7 +68,7 @@ Source: GitHub's documentation on [customizing the cloud agent's environment](ht
 | Find unused code                      | [Knip](https://knip.dev/) (JS/TS), [Vulture](https://github.com/jendrikseipp/vulture) (Python) |
 | Report dependency and security issues | Dependency audit, Trivy, Semgrep                                                               |
 
-List diagnostics such as audits and scans separately from the check that must pass, because they often report findings that already exist. For a broader catalogue covering Semgrep, Hadolint, unused-code tools and more, see [local checks and tools for coding agents](../../reference/local-development-tools.md). For an adaptable command interface and links to real Justfiles, see the [Justfile example](../../reference/justfile-example.md).
+List diagnostics such as audits and scans separately from the check that must pass, because they often report findings that already exist. For a broader catalogue covering Semgrep, Hadolint, unused-code tools and more, see [local checks and tools for coding agents](../../reference/local-development-tools.md). For a complete copyable `justfile` and links to real ones, see [give agents a command interface with Just](../economy/justfile-agent-workflows.md).
 
 A command list tells the agent what it can run, not how the system works. For that, see [repository context for coding agents](repository-context-for-agents.md).
 

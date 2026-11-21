@@ -49,7 +49,6 @@ Pages are listed here by their section on the website, which their `lane` front 
 
 - [Agent data-flow checklist](reference/agent-data-flow-checklist.md) — questions for reviewing a particular agent setup, integration, or sensitive task.
 - [AGENTS.md example: short repository entrypoint](reference/agents-md-example.md) — adaptable instructions with project pointers and checks.
-- [Justfile example: discoverable checks](reference/justfile-example.md) — copyable focused tests, verification and formatting recipes.
 - [Local checks and tools for coding agents](reference/local-development-tools.md) — a reference catalogue of testing, linting, unused-code, container and security tools.
 - [Git worktrees for parallel agent work](reference/git-worktrees-for-agents.md) — commands, a diagram, and practical boundaries for separate agent working directories.
 - [Agent skills directory](reference/agent-skills-directory.md) — also part of the Skills guide.
