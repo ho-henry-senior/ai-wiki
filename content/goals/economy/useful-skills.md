@@ -2,9 +2,9 @@
 type: reference
 summary: What agent skills are, when a reusable procedure is worth adding, how Copilot finds skills, and how to test their value.
 status: developing
-lane: articles
-series: skills-and-agent-roles
-seriesOrder: 1
+lane: guides
+guide: skills
+guideOrder: 0
 goal: economy
 order: 2
 checked: 2026-11-15
@@ -14,11 +14,17 @@ tags:
   - Skills
 ---
 
-# What a skill is, and when to add one
+# Skills
+
+## What a skill is, and when to add one
 
 A **skill** is a reusable package of task-specific instructions in a `SKILL.md` file, optionally accompanied by reference material, scripts and templates. In agents that support skills, the name and description help the agent decide when to load the instructions, instead of putting every procedure in every task's context.
 
 Add a skill only when a task keeps coming up, the agent does not already handle it well, and the skill improves the result on a real case. Do not start by installing one: a skill adds to what the agent loads and needs upkeep, and without trying the task first you cannot tell whether it helps.
+
+## Choose where to begin
+
+Use this page to decide whether a skill helps your task. To create one, go to [Write a SKILL.md](../../reference/writing-agent-skills.md); to inspect existing examples, go to the [agent skills directory](../../reference/agent-skills-directory.md). These are independent resources, not steps in a required sequence.
 
 ## Decide whether you need one
 
@@ -47,4 +53,4 @@ Source: GitHub's [agent skills documentation](https://docs.github.com/en/copilot
 
 The [agent skills directory](../../reference/agent-skills-directory.md) lists GitHub-provided and community examples, with original sources and inspection notes. Inspect the instructions and bundled scripts before adopting one; the directory's entries are **not** evidence that a skill improves results in your project.
 
-Next, [write a SKILL.md](../../reference/writing-agent-skills.md) with a worked example.
+You can also [write a SKILL.md](../../reference/writing-agent-skills.md) with a worked example.
