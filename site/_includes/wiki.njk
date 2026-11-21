@@ -11,7 +11,7 @@
     {{ pageMetadata() }}
     {#- Goal pages and articles carry summaries for listings and search, but
         open with their own introduction; don't print the summary again. -#}
-    {%- if description and lane != "articles" and lane != "goals" %}
+    {%- if description and lane != "articles" and lane != "goals" and lane != "guides" %}
     <p class="govuk-body-l">{{ description | markdown("inline") | noOrphans | safe }}</p>
     {%- endif %}
   </header>
