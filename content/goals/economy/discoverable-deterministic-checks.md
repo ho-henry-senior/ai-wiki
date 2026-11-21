@@ -1,5 +1,5 @@
 ---
-type: guide
+type: advice
 summary: "Static analysis, linters, type checks, and tests give the same answer every time, and the agent spends tokens only on reading the result."
 status: established
 lane: goals
