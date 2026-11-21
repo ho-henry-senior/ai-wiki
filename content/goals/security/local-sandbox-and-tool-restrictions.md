@@ -22,11 +22,11 @@ Without a sandbox, the commands an agent runs can read, change and delete anythi
 
 ## Turn on the sandbox
 
-| Where            | How                                                                                                                                                     |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Copilot CLI      | Run `/sandbox enable`. It stays on in later sessions until you run `/sandbox disable`. `/sandbox` opens the settings; `/sandbox status` shows the state. |
-| GitHub Copilot app | In **Settings**, under **Repositories**, choose the repository and turn on **Sandbox new sessions**. Use `/restart-session` to apply it to an open session. |
-| VS Code          | Turn on **Sandboxing for terminal** in the session's permissions picker, or set `chat.agent.sandbox.enabled` to `on` for new sessions. On Windows the setting is `chat.agent.sandbox.enabledWindows`, and support is experimental. |
+| Where              | How                                                                                                                                                                                                                                |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Copilot CLI        | Run `/sandbox enable`. It stays on in later sessions until you run `/sandbox disable`. `/sandbox` opens the settings; `/sandbox status` shows the state.                                                                           |
+| GitHub Copilot app | In **Settings**, under **Repositories**, choose the repository and turn on **Sandbox new sessions**. Use `/restart-session` to apply it to an open session.                                                                        |
+| VS Code            | Turn on **Sandboxing for terminal** in the session's permissions picker, or set `chat.agent.sandbox.enabled` to `on` for new sessions. On Windows the setting is `chat.agent.sandbox.enabledWindows`, and support is experimental. |
 
 macOS needs no extra software. Linux needs bubblewrap 0.5.0 or later and slirp4netns, and Windows needs a recent Windows 11 build. GitHub's [sandbox settings page](https://docs.github.com/en/copilot/how-tos/cloud-and-local-sandboxes/configuring-local-sandbox-settings) lists the exact requirements.
 
