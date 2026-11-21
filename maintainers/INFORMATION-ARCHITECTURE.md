@@ -15,7 +15,7 @@ The architecture is informed by [issue #173](https://github.com/ho-henry-senior/
 
 ## Dimensions of the content model
 
-**Primary navigation lane** (`lane`): Which top-level section and sidebar provide primary context? One lane per navigated page: `goals`, `guides`, `articles`, `reference`.
+**Primary navigation lane** (`lane`): Which top-level section and sidebar provide primary context? One lane per navigated page: `goals`, `guides`, `articles`, `case-studies`, `reference`.
 
 **Editorial type** (`type`): What kind of page is this? `overview`, `advice`, `how-to`, `pattern`, `explanation`, `reference`, `case-study`, `exploration`; **not** a second lane.
 
@@ -46,11 +46,12 @@ A page's editorial type describes **how to use the content**, not where it appea
 
 A Guide is a collection, **not** an editorial page type. A `reference`-type page may appear in the Guides lane when it serves as the entry to a group, and a `how-to` may be a canonical Reference resource when direct lookup is its primary purpose. Review actual reader needs rather than enforcing a one-to-one type/lane mapping.
 
-### Four lanes
+### Five lanes
 
 - **Goals** — four desired outcomes: Alignment, Economy, Security, and Trust & Traceability. Each overview states its [core points](#core-points) and links to supporting content. A goal overview's advice is organised under that goal.
 - **Guides** — coherent collections presented through one clear entry point. A Guide may be ordered, or thematic with independent resources. A Guides-lane chapter can be nested under its entry in the section navigation.
-- **Articles** — independent explanations, patterns, perspectives and case studies that readers can browse without first choosing a Guide. Do not force all practical how-tos into Guides.
+- **Articles** — independent explanations, patterns and perspectives that readers can browse without first choosing a Guide. Do not force all practical how-tos into Guides.
+- **Case studies** — documented applications of agents: context, actual workflow, outcomes, evidence, limitations and transferable lessons. The landing page lists studies without inventing a hierarchy.
 - **Reference** — reusable instructions, checklists, catalogues, examples, definitions and source material that readers often need directly.
 
 Each published page has at most one primary lane; pages with no lane may remain accessible without an active primary navigation section. **Lane** affects the active top navigation item and its sidebar; **type** describes the editorial form, so a chapter can still be an `explanation`, and a Reference resource may also be part of Skills.
@@ -75,7 +76,7 @@ Trust & Traceability's overview sections are a recent pilot from [#183](https://
 
 These are three separate reader experiences, even if today's implementation shares underlying navigation data:
 
-1. **Primary site navigation** offers `Goals | Guides | Articles | Reference`.
+1. **Primary site navigation** offers `Goals | Guides | Articles | Case studies | Reference`.
 2. **Section listings and sidebars** offer a navigable, intentionally _selective_ view. The Guides index shows Guide entries, not a duplicate list of every chapter. Articles navigation should not regain every coding-agent chapter just because that chapter is a meaningful explanation.
 3. **Contextual Guide navigation** connects members of a particular collection. A deep-linked member should show a short `Part of the … guide` route near the top and suitable Guide links in context. An ordered Guide can also show Previous/Next. This context never changes the page's canonical URL or primary lane according to how the reader arrived.
 
@@ -157,3 +158,7 @@ The coding-agent and Agent roles chapters stay in Guides to simplify Articles na
 Every registry member must resolve to a published Markdown page. Validation rejects unresolved URLs, duplicate membership (including across Guides), and ordered Guides without at least two chapters. The registry's title must also match its entry page's heading, which is used as a navigation key. A thematic Guide's display order is **not** a prerequisite reading order. Independently useful Reference members retain their own lane and primary sidebar.
 
 The Website regression checks in `scripts/site-discovery.test.mjs` verify that published navigable pages remain in the sitemap and search index, with Guides-lane pages absent from broad Articles navigation. Changes to Guide metadata and navigation must keep those tests passing. Track further implementation decisions in [#173](https://github.com/ho-henry-senior/ai-wiki/issues/173) and revisit these rules if actual reader journeys contradict them.
+
+### Case study editorial format
+
+Use `type: case-study` and `lane: case-studies` for observed applications. Cover the context and objective, actual workflow, outcomes, what worked and failed, assessment against the wiki goals where relevant, evidence and limitations, and transferable lessons. These are prompts, not a mandatory set of headings. Distinguish contemporaneous evidence from participant recollections and from later changes to the implementation. Do not publish private-repository credentials, local configuration, identifying details or security-sensitive material. Keep the source page's canonical published URL when changing lanes.

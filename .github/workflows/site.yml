@@ -182,7 +182,7 @@ jobs:
             grep -o 'app-page-details.\{0,300\}' _site/pages/cloud-agent-security/index.html >&2 || true
             exit 1
           }
-          grep -q 'href="/ai-wiki/pages/lo-fi-software-factory-case-study/"' _site/pages/cloud-agent-security/index.html || {
+          grep -q 'href="/ai-wiki/pages/home-repo-pattern/"' _site/pages/cloud-agent-security/index.html || {
             echo "The cloud agent page has no Articles sidebar link to another article." >&2
             grep -c "sub-navigation" _site/pages/cloud-agent-security/index.html >&2 || true
             grep -oE '<nav[^>]*>|href="[^"]*"' _site/pages/cloud-agent-security/index.html | head -25 >&2
@@ -366,9 +366,9 @@ jobs:
         run: |
           test -s _site/articles/feed.xml || { echo "The Articles feed was not built." >&2; exit 1; }
           entries=$(grep -c '<entry>' _site/articles/feed.xml || true)
-          # The dated Agent roles chapter now belongs to Guides, not Articles.
-          if [ "$entries" -ne 3 ]; then
-            echo "The Articles feed has $entries entries; expected 3." >&2
+          # Dated Guide chapters and the lo-fi case study (now in Case studies) are not Articles feed entries.
+          if [ "$entries" -ne 2 ]; then
+            echo "The Articles feed has $entries entries; expected 2." >&2
             exit 1
           fi
           grep -q 'https://ho-henry-senior.github.io/ai-wiki/' _site/articles/feed.xml || {

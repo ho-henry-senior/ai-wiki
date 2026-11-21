@@ -21,6 +21,11 @@ export const lanes = {
     url: "/articles/",
     description: "",
   },
+  "case-studies": {
+    title: "Case studies",
+    url: "/case-studies/",
+    description: "Observed applications of agents, with evidence, outcomes and limits.",
+  },
   reference: {
     title: "Reference",
     url: "/reference/",
@@ -187,10 +192,11 @@ const statuses = ["established", "developing", "stub"];
 export function metadataParts(page = {}, formatDate = String) {
   const parts = [];
   const article = page.lane === "articles";
+  const caseStudy = page.lane === "case-studies";
   if (article && typeLabels[page.type]) parts.push({ text: typeLabels[page.type] });
   if (article && goals[page.goal])
     parts.push({ text: `Goal: ${goals[page.goal]}`, href: goalUrl(page.goal) });
-  if (article && page.published)
+  if ((article || caseStudy) && page.published)
     parts.push({ text: `Published: ${formatDate(page.published)}` });
   if (page.checked) parts.push({ text: `Checked: ${formatDate(page.checked)}`, kind: "checked" });
   if (statuses.includes(page.status)) {
