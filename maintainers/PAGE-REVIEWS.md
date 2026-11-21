@@ -41,6 +41,8 @@ From reviews 6 to 12:
 - [Progressive disclosure](../content/concepts/progressive-disclosure.md) — **Keep as a short concept; refocus.** Explain deliberate context design: a small initial context, good signposts, compact destinations and expansion on demand. One concrete example is enough; leave Copilot's loading mechanics to the repository-instructions guidance. It is distinct from retrieval-augmented generation.
 - **Secrets can leak through tool output — Remove in [PR #141](https://github.com/ho-henry-senior/ai-wiki/pull/141).** The risk, masking precautions and credential-rotation response now appear in [Unexpected data exposure](../content/goals/security/unexpected-data-exposure.md) and [Secure a local coding agent](../content/goals/security/local-agent-security.md), with links to retention and session history. The standalone scenario added little.
 
+- **Prompt injection — Merge into [Prompt injection in coding-agent workflows](../content/goals/security/prompt-injection-coding-agents.md) in [PR #182](https://github.com/ho-henry-senior/ai-wiki/pull/182).** The short Goals advice repeated the Security overview and detailed explanation. Link to the article directly from Security, retain the useful Copilot CLI deny-rule example in the article, and redirect the retired URL.
+
 ## Next
 
 Compare the remaining Articles and Reference pages in groups, note further pages to merge or remove, and then prioritise small batches of changes. A detailed review of every remaining page, one at a time, is not needed.
