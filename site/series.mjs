@@ -1,16 +1,6 @@
 // Explicit reading orders for explanatory series. The same data drives
 // previous/next links and their overview links; pages remain ordinary articles.
 export const series = {
-  "skills-and-agent-roles": {
-    title: "Skills and agent roles",
-    overview: { title: "Series introduction", url: "/pages/skills-and-agent-roles/" },
-    parts: [
-      { title: "What a skill is, and when to add one", url: "/pages/useful-skills/" },
-      { title: "Write a SKILL.md", url: "/pages/writing-agent-skills/" },
-      { title: "Agent roles, skills and tools", url: "/concepts/skills-profiles-and-tools/" },
-      { title: "How agent roles use skills", url: "/pages/agent-roles-directory/" },
-    ],
-  },
 };
 
 export function seriesNavigation(name, order) {
