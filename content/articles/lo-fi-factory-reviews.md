@@ -5,6 +5,7 @@ summary: Concrete examples of review findings, fixes and human decisions in the 
 tags:
   - Agent roles
 ---
+
 # Agent reviews and human decisions
 
 The refactor produced pull requests with tests, verification reports and review comments. The most useful evidence is not that reviews occurred, but that different review passes found different problems and people used the findings to decide what to change.
