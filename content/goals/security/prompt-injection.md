@@ -10,7 +10,7 @@ tags:
   - Untrusted content and code
 ---
 
-# Hidden instructions in content
+# Prompt injection
 
 The model cannot reliably tell data from instructions, so a hidden line in an issue, web page, or tool output can steer it: [prompt injection](prompt-injection-coding-agents.md).
 
