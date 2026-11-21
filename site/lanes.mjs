@@ -62,14 +62,7 @@ export const eleventyNavigation = {
     if (data.type === "overview") return lanes.goals.title;
     return goals[data.goal] || lanes.goals.title;
   },
-  // Follow the registry's reading order in a Guide sidebar, regardless of
-  // an older cross-lane display order on a chapter.
-  order: (data) => {
-    const member = guideForUrl(data.page?.url);
-    if (data.lane === "guides" && member?.position > 0)
-      return member.position;
-    return data.order ?? data.eleventyNavigation?.order;
-  },
+  order: (data) => data.order ?? data.eleventyNavigation?.order,
   excerpt: (data) => data.eleventyNavigation?.excerpt || data.description,
 };
 
@@ -83,7 +76,14 @@ export function laneItems(tree = [], pageUrl, alphabetical = false) {
     ? [...tree].sort((a, b) => a.title.localeCompare(b.title))
     : tree;
   return items.map((item) => {
-    const children = item.children ?? [];
+    // The Guide registry owns reading order; old page-specific order
+    // values must not rearrange the chapter list in the sidebar.
+    const children = [...(item.children ?? [])];
+    if (guideForUrl(item.url)?.guide.ordered)
+      children.sort((a, b) =>
+        (guideForUrl(a.url)?.position ?? Infinity) -
+        (guideForUrl(b.url)?.position ?? Infinity),
+      );
     const contains = children.some((child) => child.url === pageUrl);
     return {
       href: item.url,
