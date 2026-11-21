@@ -29,7 +29,7 @@ The team used four specialist agent roles: Product, Business Analyst, Developer 
 
 ## What happened
 
-The ticketed refactor was implemented and merged into a fork, with unit tests, static checks and representative manual testing. A participant estimated roughly one to two days for ticket creation, review and implementation, but no measured human-only baseline or complete cost record exists. At the time of the original account, final integration still awaited another person's sign-off and broader testing was planned.
+The ticketed refactor was implemented and merged into a fork, with unit tests, static checks and selected manual testing. A participant estimated roughly one to two days for ticket creation, review and implementation, but no measured human-only baseline or complete cost record exists. At the time of the original account, final integration still awaited another person's sign-off and broader testing was planned.
 
 Reviews raised specific concerns, and occasional agent failures needed manual recovery. The agents were not independently sandboxed. The exercise shows a workable local coordination pattern for bounded work, not a fully autonomous or production-ready delivery system.
 
@@ -37,7 +37,7 @@ Reviews raised specific concerns, and occasional agent failures needed manual re
 
 - **Alignment:** approved requirements and bounded, dependency-aware tickets helped agents work towards a clear outcome.
 - **Economy:** the participant believed the process was quicker; no comparative measurement proves savings.
-- **Traceability:** issues, PRs, tests and reviews recorded useful evidence for human decisions.
+- **Traceability:** issues, PRs, tests and reviews recorded traceable evidence for human decisions.
 - **Security:** broad unattended tool access remained a significant limitation.
 
 ## Limits
