@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { guideNavigation, guideForUrl, guides, validateGuideUrls } from "../site/guides.mjs";
-import { eleventyNavigation } from "../site/lanes.mjs";
+import { eleventyNavigation, laneItems } from "../site/lanes.mjs";
 import { pageUrl } from "./site-links.mjs";
 
 function markdownFiles(dir) {
@@ -84,15 +84,22 @@ test("Guide reading context and sidebar nesting use the canonical URL", () => {
   assert.equal(guideForUrl("/pages/cloud-agent-security/"), null);
 });
 
-test("ordered Guide sidebars follow the registry rather than legacy page order", () => {
-  for (const [url, expected] of [
-    ["/pages/writing-agent-skills/", 1],
-    ["/concepts/skills-profiles-and-tools/", 1],
-    ["/pages/agent-role-boundaries/", 2],
-    ["/pages/agent-roles-directory/", 3],
-  ]) {
-    assert.equal(eleventyNavigation.order({ lane: "guides", page: { url }, order: 99 }), expected);
-  }
+test("Guide sidebars use the registry's chapter order", () => {
+  const children = [
+    { title: "How agent roles use skills", url: "/pages/agent-roles-directory/" },
+    { title: "Agent roles, skills and tools", url: "/concepts/skills-profiles-and-tools/" },
+    { title: "Agile roles in agentic development", url: "/pages/agent-role-boundaries/" },
+  ];
+  const [group] = laneItems([{
+    title: "Agent roles",
+    url: "/pages/agent-roles/",
+    children,
+  }], "/pages/agent-role-boundaries/");
+  assert.deepEqual(group.children.map((child) => child.href), [
+    "/concepts/skills-profiles-and-tools/",
+    "/pages/agent-role-boundaries/",
+    "/pages/agent-roles-directory/",
+  ]);
 });
 
 test("page front matter does not duplicate registry membership", () => {
