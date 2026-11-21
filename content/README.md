@@ -38,9 +38,9 @@ Pages are listed here by their section on the website, which their `lane` front 
   - [Repository context for coding agents](goals/alignment/repository-context-for-agents.md) — write down the facts an agent got wrong, near the code they concern.
   - [Enable agents to run repository commands](goals/alignment/agent-tool-delegation.md) — list commands in `AGENTS.md`, and set up the Copilot cloud agent to run them.
   - [Give agents a command interface with Just](goals/economy/justfile-agent-workflows.md) — advertise recipes, run single tests, compose checks, and define handoff gates.
-- [Skills](goals/economy/useful-skills.md) — what a skill is, when to add one, and where Copilot finds skills.
-  - [Write a SKILL.md](reference/writing-agent-skills.md) — syntax, file structure and a complete minimal skill.
+- [Skills](goals/economy/useful-skills.md) — what a skill is, and how to tell whether one is worth adding.
   - [Agent skills directory](reference/agent-skills-directory.md) — built-in, inspected and candidate skills, with credited sources and limitations.
+  - [Write a SKILL.md](reference/writing-agent-skills.md) — where Copilot finds skills, the file format, and a complete minimal skill.
 
 ## Articles
 

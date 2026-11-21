@@ -6,12 +6,13 @@
 export const guides = {
   skills: {
     title: "Skills",
-    // A practical reading route; chapters remain independently useful.
+    // Decide, then find an existing skill, then write one if none fits.
     ordered: true,
+    numbered: false,
     overview: { title: "Skills", url: "/pages/useful-skills/" },
     parts: [
-      { title: "Write a SKILL.md", url: "/pages/writing-agent-skills/" },
       { title: "Agent skills directory", url: "/pages/agent-skills-directory/" },
+      { title: "Write a SKILL.md", url: "/pages/writing-agent-skills/" },
     ],
   },
   "agent-roles": {

@@ -1,17 +1,31 @@
 ---
 type: reference
-summary: The SKILL.md syntax, required YAML metadata, Markdown instructions, optional supporting files and a complete small example.
+summary: Where Copilot finds skills, the SKILL.md syntax and required metadata, optional supporting files, and a complete small example.
 status: developing
 lane: guides
 order: 12
-checked: 2026-11-18
+checked: 2026-11-15
 tags:
   - Skills
 ---
 
 # Write a SKILL.md
 
-Once you have [decided a skill is worth adding](../goals/economy/useful-skills.md), create a directory containing a `SKILL.md` file with **YAML front matter** followed by **Markdown instructions**. The portable [Agent Skills specification](https://agentskills.io/specification) defines the format, not where every product searches for skills or whether it supports slash commands.
+Once you have [decided a skill is worth adding](../goals/economy/useful-skills.md) and found nothing suitable in [the skills directory](agent-skills-directory.md), create a directory containing a `SKILL.md` file with **YAML front matter** followed by **Markdown instructions**. The portable [Agent Skills specification](https://agentskills.io/specification) defines the format, not where every product searches for skills or whether it supports slash commands.
+
+## Where to put it
+
+Put project skills in `.agents/skills/NAME/SKILL.md`. Copilot reads it, and the folder is not named after one product. Copilot also reads `.github/skills/` and `.claude/skills/`. The `SKILL.md` format is the open Agent Skills standard, so the same skill can work in other agents that support it.
+
+| Copilot feature                                     |  Loads project skills   |
+| --------------------------------------------------- | :---------------------: |
+| Cloud agent and code review on GitHub.com           |           Yes           |
+| Copilot CLI and the Copilot app                     |           Yes           |
+| Agent mode in VS Code, Visual Studio, and JetBrains | Yes (version-dependent) |
+
+In the Copilot features that support skills, the agent uses each skill's name and description to choose one, then loads its instructions when the task calls for it. Personal skills go in `~/.copilot/skills/` or `~/.agents/skills/`, but cloud sessions do not see them; put any skill the cloud agent needs in the repository. To share skills across several repositories, see [the Home Repo pattern](../articles/home-repo-pattern.md). `gh skill` in the GitHub CLI can find and install skills from GitHub repositories.
+
+Source for this section: GitHub's [agent skills documentation](https://docs.github.com/en/copilot/concepts/customizations/agent-skills).
 
 ## Composition
 
@@ -57,4 +71,4 @@ Keep the main file focused on its inputs, steps, expected output and checks. Put
 
 Avoid copying `AGENTS.md` into each skill. A skill is for a bounded repeatable procedure, not every repository rule. Scripts can read data, write files and use the network, so inspect their dependencies and permissions before running them.
 
-Before reusing it, follow the [real-task comparison](../goals/economy/useful-skills.md#decide-whether-you-need-one). See [the skills directory](agent-skills-directory.md) for existing files and authors, or [the wiki-review skill](https://github.com/ho-henry-senior/ai-wiki/blob/main/.agents/skills/wiki-review/SKILL.md) for a project-specific example.
+Before reusing it, follow the [real-task comparison](../goals/economy/useful-skills.md#decide-whether-you-need-one). For a project-specific example, see [the wiki-review skill](https://github.com/ho-henry-senior/ai-wiki/blob/main/.agents/skills/wiki-review/SKILL.md) for a project-specific example.
