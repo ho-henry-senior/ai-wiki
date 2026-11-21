@@ -34,6 +34,17 @@ export const guides = {
       { title: "Session history and active context", url: "/concepts/session-history-vs-context/" },
     ],
   },
+  "local-agent-security": {
+    title: "Secure a local coding agent",
+    ordered: true,
+    numbered: false,
+    overview: { title: "Secure a local coding agent", url: "/pages/local-agent-security/" },
+    parts: [
+      { title: "Configure the sandbox and tool restrictions", url: "/pages/local-sandbox-and-tool-restrictions/" },
+      { title: "Protect credentials and sensitive data", url: "/pages/local-agent-credentials/" },
+      { title: "Check integrations and sandbox boundaries", url: "/pages/local-agent-integrations/" },
+    ],
+  },
   "repository-setup": {
     title: "Set up a repository for agents",
     ordered: true,

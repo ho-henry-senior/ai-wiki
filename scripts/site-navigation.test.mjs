@@ -19,6 +19,8 @@ const cases = [
   ["pages/agent-roles-directory/index.html", "guides", "How agent roles use skills"],
   ["pages/agent-skills-directory/index.html", "reference", "Agent skills directory"],
   ["pages/agent-facing-repository-structure/index.html", "guides", "Set up a repository for agents"],
+  ["pages/local-agent-security/index.html", "guides", "Secure a local coding agent"],
+  ["pages/local-agent-credentials/index.html", "guides", "Protect credentials and sensitive data"],
   ["pages/repository-instructions/index.html", "guides", "Write repository instructions in AGENTS.md"],
   ["concepts/session-history-vs-context/index.html", "guides", "Session history and active context"],
   ["pages/glossary/index.html", null],
@@ -192,21 +194,23 @@ test("checked metadata shows a date, with optional accessible verification detai
   assert.doesNotMatch(glossary, /app-checked-date|app-verification-details/);
 });
 
-test("Set up a repository for agents has Previous/Next but no chapter numbers", () => {
-  const guide = guides["repository-setup"];
-  assert.equal(guide.ordered, true);
-  assert.equal(guide.numbered, false);
-  const items = [guide.overview, ...guide.parts];
-  items.forEach((member, position) => {
-    const html = fs.readFileSync(`_site${member.url}index.html`, "utf8");
-    const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
-    assert.ok(nav, `${member.url}: guide navigation exists`);
-    assert.doesNotMatch(nav, /Part \d+ of/, `${member.url}: no chapter numbers`);
-    const previous = items[position - 1];
-    const next = items[position + 1];
-    if (previous) assert.ok(nav.includes(`app-series-navigation__card--previous" href="/ai-wiki${previous.url}"`), `${member.url}: Previous`);
-    else assert.doesNotMatch(nav, /app-series-navigation__card--previous/, `${member.url}: no Previous`);
-    if (next) assert.ok(nav.includes(`app-series-navigation__card--next" href="/ai-wiki${next.url}"`), `${member.url}: Next`);
-    else assert.doesNotMatch(nav, /app-series-navigation__card--next/, `${member.url}: no Next`);
-  });
+test("Unnumbered ordered Guides have Previous/Next but no chapter numbers", () => {
+  for (const id of ["repository-setup", "local-agent-security"]) {
+    const guide = guides[id];
+    assert.equal(guide.ordered, true, id);
+    assert.equal(guide.numbered, false, id);
+    const items = [guide.overview, ...guide.parts];
+    items.forEach((member, position) => {
+      const html = fs.readFileSync(`_site${member.url}index.html`, "utf8");
+      const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
+      assert.ok(nav, `${member.url}: guide navigation exists`);
+      assert.doesNotMatch(nav, /Part \d+ of/, `${member.url}: no chapter numbers`);
+      const previous = items[position - 1];
+      const next = items[position + 1];
+      if (previous) assert.ok(nav.includes(`app-series-navigation__card--previous" href="/ai-wiki${previous.url}"`), `${member.url}: Previous`);
+      else assert.doesNotMatch(nav, /app-series-navigation__card--previous/, `${member.url}: no Previous`);
+      if (next) assert.ok(nav.includes(`app-series-navigation__card--next" href="/ai-wiki${next.url}"`), `${member.url}: Next`);
+      else assert.doesNotMatch(nav, /app-series-navigation__card--next/, `${member.url}: no Next`);
+    });
+  }
 });
