@@ -45,11 +45,11 @@ test("published pages and Guide members remain in sitemap and search", () => {
     for (const part of guide.parts) expected.add(part.url);
   }
   const sitemap = fs.readFileSync(path.join(siteRoot, "sitemap/index.html"), "utf8");
-  const sitemapUrls = new Set(
-    [...sitemap.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)]
-      .map((match) => normalizedUrl(match[1]))
-      .filter(Boolean),
-  );
+  const sitemapCounts = new Map();
+  for (const [, href] of sitemap.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)) {
+    const url = normalizedUrl(href);
+    if (url) sitemapCounts.set(url, (sitemapCounts.get(url) ?? 0) + 1);
+  }
   const index = JSON.parse(fs.readFileSync(path.join(siteRoot, "search-index.json"), "utf8"));
   assert.ok(Array.isArray(index), "Search index should be a list of pages");
   const searchUrls = index.map((page) => normalizedUrl(page.url));
@@ -57,15 +57,25 @@ test("published pages and Guide members remain in sitemap and search", () => {
   for (const url of searchUrls) counts.set(url, (counts.get(url) ?? 0) + 1);
   for (const url of expected) {
     assert.ok(fs.existsSync(path.join(siteRoot, url.slice(1), "index.html")), `Missing built page: ${url}`);
-    assert.ok(sitemapUrls.has(url), `Missing sitemap page: ${url}`);
+    assert.equal(sitemapCounts.get(url), 1, `Sitemap must contain ${url} exactly once`);
     assert.equal(counts.get(url), 1, `Search index must contain ${url} exactly once`);
   }
 });
 
 test("Guide chapters stay grouped, not duplicated in Articles navigation", () => {
   const articles = fs.readFileSync(path.join(siteRoot, "articles/index.html"), "utf8");
+  const articlePage = fs.readFileSync(path.join(siteRoot, "pages/cloud-agent-security/index.html"), "utf8");
+  const articleSidebar = articlePage.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\\s\\S]*?<\\/nav>/)?.[0];
+  assert.ok(articleSidebar, "An Article must keep its own sidebar");
+  const chapterUrls = guides["understanding-coding-agents"].parts.map((item) => item.url);
+  for (const url of chapterUrls) {
+    const escaped = url.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\  const articles = fs.readFileSync(path.join(siteRoot, "articles/index.html"), "utf8");
   const chapterUrls = guides["understanding-coding-agents"].parts.map((item) => item.url);
   for (const url of chapterUrls) {
     assert.doesNotMatch(articles, new RegExp(`href="(?:/ai-wiki)?${url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+  }");
+    const href = new RegExp(`href="(?:/ai-wiki)?${escaped}"`);
+    assert.doesNotMatch(articles, href, `Article landing page lists ${url}`);
+    assert.doesNotMatch(articleSidebar, href, `Articles sidebar lists ${url}`);
   }
 });
