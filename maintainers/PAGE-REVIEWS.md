@@ -47,6 +47,7 @@ From the whole-wiki editorial review ([#183](https://github.com/ho-henry-senior/
 
 - **Agent roles (guide introduction) — Merge into [Agent roles](../content/concepts/skills-profiles-and-tools.md) in [PR #185](https://github.com/ho-henry-senior/ai-wiki/pull/185).** It mostly listed the guide's pages; the concept page becomes the entry and takes in what a role is for and when to add one.
 - **Skills and agent roles — Remove in [PR #185](https://github.com/ho-henry-senior/ai-wiki/pull/185).** It restated the skill/role distinction that [Agent roles](../content/concepts/skills-profiles-and-tools.md) owns; the rest was links to the two guides.
+- **Agent authorship and attribution, Pull request verification evidence, Risk-focused change review, and Independent change approval — Merge into [Trust & Traceability](../content/goals/traceability/README.md#core-advice) in [PR #186](https://github.com/ho-henry-senior/ai-wiki/pull/186).** A pilot: each was a short advice page that repeated its overview's summary line; each is now a section of the overview. Review the result before applying the pattern to the other goals.
 
 ## Next
 

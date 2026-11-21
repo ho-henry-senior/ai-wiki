@@ -17,10 +17,6 @@ Pages are listed here by their section on the website, which their `lane` front 
   - [Prompt injection](goals/security/prompt-injection.md)
   - [Untrusted code execution](goals/security/untrusted-code-execution.md)
 - [Trust & Traceability](goals/traceability/README.md) — developing core advice for reviewing changes you can rely on and keeping a record of agent work.
-  - [Agent authorship and attribution](goals/traceability/agent-authorship-and-attribution.md)
-  - [Pull request verification evidence](goals/traceability/pull-request-verification-evidence.md)
-  - [Risk-focused change review](goals/traceability/risk-focused-change-review.md)
-  - [Independent change approval](goals/traceability/independent-change-approval.md)
 
 ## Guides
 

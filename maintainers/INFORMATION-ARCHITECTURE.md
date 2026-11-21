@@ -48,7 +48,7 @@ A Guide is a collection, **not** an editorial page type. A `reference`-type page
 
 ### Four lanes
 
-- **Goals** — four desired outcomes: Alignment, Economy, Security, and Traceability & Trust. Their overviews link to concise `advice` pages and supporting content. A goal overview's advice is organised under that goal.
+- **Goals** — four desired outcomes: Alignment, Economy, Security, and Trust & Traceability. Each overview states its core points, as short sections or as links to concise `advice` pages, and links to supporting content. A goal overview's advice is organised under that goal.
 - **Guides** — coherent collections presented through one clear entry point. A Guide may be ordered, or thematic with independent resources. A Guides-lane chapter can be nested under its entry in the section navigation.
 - **Articles** — independent explanations, patterns, perspectives and case studies that readers can browse without first choosing a Guide. Do not force all practical how-tos into Guides.
 - **Reference** — reusable instructions, checklists, catalogues, examples, definitions and source material that readers often need directly.
