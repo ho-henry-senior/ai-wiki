@@ -23,7 +23,7 @@ Write so a developer understands what matters and why, and can act on it, on one
 
 ## What each page does
 
-Each [page type](MAINTAINING.md#articles-and-concepts) has a job. Write to it:
+Each [page type](INFORMATION-ARCHITECTURE.md#page-types) has a job. Write to it:
 
 - **Overview:** what matters for one goal and why, then where to go next. It summarizes; other pages own the detail.
 - **Concept:** a reusable mechanism or distinction, usually in `content/concepts/`, explained well enough to reason with. It may include practical implications, but explanation is its main purpose, and it needs no action.

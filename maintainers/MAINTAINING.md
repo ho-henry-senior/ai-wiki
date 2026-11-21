@@ -41,11 +41,17 @@ Project instructions in `maintainers/` are for this wiki's contributors and agen
 
 **Keep checks in step with site changes.** When changing templates, navigation, or generated content, review the corresponding assertions in [the Website workflow](../.github/workflows/site.yml) and tests under `scripts/`. Update them in the same pull request so they check the new behaviour and still catch regressions. Run both Verify and Website before merging.
 
-Each page says where it belongs in the site's navigation with front matter. `lane` is `goals`, `guides`, `articles`, or `reference`. The four goal overviews use `goals`, and so do their advice pages: one page per core point, in the goal's folder, with `type: advice`, the goal's `goal`, and an `order`. The Goals sidebar nests each goal's advice pages beneath it. A goal overview lists its points as links, each followed by one sentence; an advice page opens with that sentence, so the site does not repeat its `summary` under the title. Every supporting page, whether how-to, concept, case study, or perspective, uses `articles`. An article gives a `goal` (`alignment`, `economy`, `security`, or `traceability`) only where it clearly serves one goal most, and it must match the article's folder under `content/goals/`. Leave it out where the choice would be arbitrary; the goal pages' links express the overlap. Articles show their `type` and main goal under the title, and are listed by title in a flat sidebar. An article may also give a `date`; dated articles go in the Atom feed, newest first. A page with no `lane` stays on the site and in search, but not in the navigation. The lanes are defined in `site/lanes.mjs`.
+The [information architecture specification](INFORMATION-ARCHITECTURE.md) is the single authority for the website's lanes, page types, Goals, tags, Guides, navigation contexts, reader journeys, and sitemap/search requirements. It distinguishes the agreed design from the current implementation and proposed migrations. Review it before changing page placement or navigation. The following notes describe the current build mechanics, while the specification defines their intended meaning.
 
-A page can have `tags`, one per line, such as `Copilot` and `Permissions and sandboxing`. Tags are one flat list: a `Copilot` tag for substantial Copilot-specific guidance, a few broad subjects, and narrower topics. Tag a page with what it explains substantially, not what it only mentions. The rules for choosing tags are in `site/tags.mjs`. The site shows a page's tags under its title, each linking to a page of everything with that tag, and `/tags/` lists them all; these come from the GOV.UK plugin's tag layouts. The allowed tags are in `site/tags.mjs`, and `just style` rejects any others, so add a tag there before using it.
+### Navigation and front-matter mechanics
 
-Pages in a lane show their lane navigation. The Guides lane lists collections, not individual chapters. Skills uses its existing explainer as the entry page and links to the authoring instructions and directory in Reference without giving those resources a new primary lane. A guide declares its membership and whether chapters are ordered in `site/guides.mjs`; its entry and members use `guide` and `guideOrder` front matter. Ordered guides provide Previous/Next; thematic guides may include canonical Reference pages without changing their primary lane. Existing published URLs remain unchanged. Legacy Articles can group an explanatory series under its introduction using `series` and `seriesOrder` front matter, with its reading order in `site/series.mjs`. The site generates previous/next links and nested sidebar entries; keep the canonical content in ordinary Markdown pages. The Articles lane has an Atom feed at `/articles/feed.xml`, built by the GOV.UK plugin from the articles collection, so a new article appears in it once it has `lane: articles` and a `date`.
+The four lanes are defined in `site/lanes.mjs`. Pages use `lane: goals`, `guides`, `articles`, or `reference` for their primary navigation; a page without `lane` remains published and searchable but does not appear in a lane's navigation. Goal overview pages have `lane: goals`. Keep each core advice point in its own page under the goal's folder, with `type: advice`, the matching `goal`, and an `order`; the Goals sidebar nests these advice pages under their overview. Each overview links to its core points with one-sentence summaries, and each advice page opens with the corresponding sentence so the site need not repeat its `summary` under the title.
+
+For articles, use `lane: articles`. Set `goal: alignment`, `economy`, `security`, or `traceability` only when the page clearly has one primary goal. Where an Article is under `content/goals/<goal>/`, its `goal` field must agree with that folder; `just style` enforces this. Dated Articles use `date` and appear in the Atom feed at `/articles/feed.xml`, newest first. The feed is built from the articles collection, so a dated page outside the Articles lane is not automatically an Atom feed entry.
+
+Tags use a flat controlled vocabulary defined in `site/tags.mjs`. Use a topic only when a page addresses it substantially, not merely mentions it. Add new allowed tags to that file before using them: `just style` rejects unknown tags. The published site renders tags beneath the page title with links to their topic indexes, and `/tags/` lists all tags.
+
+Guide membership and reading structure are currently stored both in `site/guides.mjs` and in page front matter (`guide` and `guideOrder`); see the [IA specification](INFORMATION-ARCHITECTURE.md#guide-metadata-current-state-and-proposed-cleanup) for the intended single-authority model. The Guides sidebar nests Guides-lane chapters beneath their entry; Reference members retain their Reference home. Ordered Guides provide Previous/Next; thematic Guides link related resources without implying a required sequence. Existing URLs remain canonical. The current `site/series.mjs` and `seriesNavigation` compatibility path are obsolete and awaiting cleanup; do not introduce new series front matter.
 
 The site's footer links to the glossary, the tags index, the plugin's generated sitemap, this maintainer documentation, and the repository. Put links there that are useful from any page but are not pages of a lane.
 
@@ -70,16 +76,7 @@ summary: A concise description of what this page explains.
 ---
 ```
 
-Suggested `type` values:
-
-- `overview` — an entrypoint to an outcome or a group of related approaches.
-- `advice` — one core point under a goal: a concise recommendation, why it matters, and where to act.
-- `how-to` — practical steps for carrying out a task, and how to check they worked.
-- `pattern` — a reusable practice or building block.
-- `explanation` — an article explaining how related ideas fit together and why they matter.
-- `reference` — information or a checklist to consult.
-- `case-study` — an account of an approach applied in practice and what happened.
-- `exploration` — a provisional investigation or path, rather than a case study or established practice.
+For the supported page types, their meanings, and how type differs from lane or Guide membership, see [Information architecture](INFORMATION-ARCHITECTURE.md#dimensions-of-the-content-model). Choose the type that describes the page's editorial purpose, then follow the relevant writing standard.
 
 Focused reusable concepts live in `content/concepts/` and use the types described in the [concept conventions](#writing-a-concept). An explanatory article may bring several concepts together without replacing them.
 

@@ -3,6 +3,7 @@
 This directory contains project instructions for maintaining this wiki, not guidance for readers using AI coding agents. It is excluded from the published website.
 
 - [Design goals](DESIGN-GOALS.md) — audience, scope, and editorial direction.
+- [Information architecture](INFORMATION-ARCHITECTURE.md) — lanes, types, Goals, tags, Guides, navigation context, sitemap and search requirements.
 - [Writing standard](STYLE.md) — rules for published prose and examples.
 - [Maintaining the wiki](MAINTAINING.md) — content conventions, sources, website, checks, and reviews.
 - [Page reviews](PAGE-REVIEWS.md) — how to review an Article or Reference page, and the decisions recorded so far.
