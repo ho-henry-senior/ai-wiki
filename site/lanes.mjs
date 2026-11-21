@@ -76,8 +76,9 @@ export const eleventyNavigation = {
 // Sidebar items for a lane, in the shape the GOV.UK sub-navigation expects.
 // The plugin expands a group only when the page's URL sits inside the
 // group's folder, but our page URLs are flat (/pages/...), so expand the
-// group that contains the current page instead. Articles are sorted by
-// title at the top level; Guide chapters follow the registry's order.
+// group that contains the current page instead. Guides, Articles and
+// Reference are sorted by title at the top level; Guide chapters follow the
+// registry's order.
 export function laneItems(tree = [], pageUrl, alphabetical = false) {
   const items = alphabetical
     ? [...tree].sort((a, b) => a.title.localeCompare(b.title))

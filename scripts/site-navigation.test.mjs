@@ -214,3 +214,17 @@ test("Unnumbered ordered Guides have Previous/Next but no chapter numbers", () =
     });
   }
 });
+
+test("Guides are listed alphabetically on the Guides page and in its sidebar", () => {
+  const entries = Object.values(guides).map((guide) => guide.overview);
+  const expected = [...entries].sort((a, b) => a.title.localeCompare(b.title)).map((entry) => entry.url);
+  const html = fs.readFileSync("_site/guides/index.html", "utf8");
+  const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
+  assert.ok(sidebar, "Guides sidebar exists");
+  const main = html.slice(html.indexOf("</nav>", html.indexOf(sidebar) + 1));
+  for (const [where, text] of [["sidebar", sidebar], ["page", main]]) {
+    const positions = expected.map((url) => text.indexOf(`href="/ai-wiki${url}"`));
+    assert.ok(positions.every((position) => position >= 0), `${where}: every guide entry is listed`);
+    assert.deepEqual([...positions].sort((a, b) => a - b), positions, `${where}: guides are in alphabetical order`);
+  }
+});
