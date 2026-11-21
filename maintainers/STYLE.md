@@ -13,7 +13,7 @@ Write so a developer understands what matters and why, and can act on it, on one
 7. **Use plain words and short sentences without sacrificing precision.** Prefer the active voice and "you". One idea per sentence. State when a claim depends on the agent, permissions, settings, or environment. Never turn conditional behavior into a universal claim to save words.
 8. **Do not imply that examples are exhaustive.** Write "Four ways a coding agent can cause harm", not "The four ways", unless the list is genuinely complete. Apply this to headings, summaries, lists, and categories.
 9. **Lead with the transferable idea.** Name a concept or principle clearly, say why it matters, and show how to apply it. Make tools examples of the idea rather than the reason for the page. Use a concept's established name as its heading when that name helps readers recognise and reuse it.
-10. **Decide what to do with long pages.** A page over about 500 words for an overview or concept, or about 900 for a guide or pattern, needs one decision, taken in this order: replace restated material with a link to its owner; split the page if it answers two separate questions; otherwise shorten it, or keep it whole and give the reason as `long-because` in its front matter. Shortening never cuts a reason, an important caveat, or a qualification needed for accuracy. Checklists, references, and case studies have no ceiling.
+10. **Decide what to do with long pages.** A page over about 500 words for an overview, advice page or concept, or about 900 for a how-to, explanation, exploration or pattern, needs one decision, taken in this order: replace restated material with a link to its owner; split the page if it answers two separate questions; otherwise shorten it, or keep it whole and give the reason as `long-because` in its front matter. Shortening never cuts a reason, an important caveat, or a qualification needed for accuracy. Checklists, references, and case studies have no ceiling.
 
 11. **Write for scanning.** Readers often skim before reading closely. Put the main point first, and give each paragraph one idea. Break paragraphs when the idea changes; concise writing does not mean dense text. Use bold sparingly for an important principle, and make link text describe its destination. Put supporting links on their own line when they would interrupt the advice. Use headings and lists only when they improve clarity.
 
@@ -27,7 +27,8 @@ Each [page type](MAINTAINING.md#articles-and-concepts) has a job. Write to it:
 
 - **Overview:** what matters for one goal and why, then where to go next. It summarizes; other pages own the detail.
 - **Concept:** a reusable mechanism or distinction, usually in `content/concepts/`, explained well enough to reason with. It may include practical implications, but explanation is its main purpose, and it needs no action.
-- **Guide or pattern:** why the change is worth making, what to do, and how to check it worked.
+- **Advice:** a concise recommendation under a Goal, explaining why it matters and where to act.
+- **How-to or pattern:** why the change is worth making, what to do, and how to check it worked.
 - **Explanation:** how related ideas fit together, built up step by step.
 - **Reference or checklist:** something to scan or consult. Each line still says why it matters.
 - **Case study:** what happened, and what was learned.

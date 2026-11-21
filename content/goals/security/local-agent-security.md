@@ -1,5 +1,5 @@
 ---
-type: guide
+type: how-to
 summary: Secure a local coding agent by enabling its sandbox, limiting tools and network access, keeping credentials out of reach, and retaining approvals.
 status: established
 lane: articles

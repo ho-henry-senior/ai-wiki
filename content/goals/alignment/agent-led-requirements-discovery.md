@@ -1,5 +1,5 @@
 ---
-type: guide
+type: advice
 summary: "Give it a brief description of what you want, then ask it to question you before proposing a solution."
 status: established
 lane: goals

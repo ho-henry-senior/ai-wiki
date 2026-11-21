@@ -43,11 +43,11 @@ test("metadata shows an article's type and goal, then dates and status", () => {
   const date = (d) => `D(${d})`;
   assert.deepEqual(
     metadataParts(
-      { lane: "articles", type: "guide", goal: "economy", checked: "2026-11-15", status: "developing" },
+      { lane: "articles", type: "how-to", goal: "economy", checked: "2026-11-15", status: "developing" },
       date,
     ),
     [
-      { text: "Guide" },
+      { text: "How-to" },
       { text: "Goal: Economy", href: "/pages/economy/" },
       { text: "Checked: D(2026-11-15)" },
       { text: "Status: Developing" },

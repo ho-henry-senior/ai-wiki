@@ -175,7 +175,7 @@ jobs:
             exit 1
           }
           # Articles show their type and main goal.
-          grep -q 'Guide · <a class="govuk-link" href="/ai-wiki/pages/security/">Goal: Security</a>' _site/pages/cloud-agent-security/index.html || {
+          grep -q 'How-to · <a class="govuk-link" href="/ai-wiki/pages/security/">Goal: Security</a>' _site/pages/cloud-agent-security/index.html || {
             echo "The cloud agent page does not show its type and main goal." >&2
             grep -o 'app-page-details.\{0,300\}' _site/pages/cloud-agent-security/index.html >&2 || true
             exit 1

@@ -1,5 +1,5 @@
 ---
-type: guide
+type: advice
 summary: "Files and tool output included in model requests go to the model provider, and copies can appear in session logs, pull requests, or CI logs; MCP integrations can send it to their own services."
 status: established
 lane: goals

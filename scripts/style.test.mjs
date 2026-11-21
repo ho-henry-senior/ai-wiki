@@ -20,7 +20,7 @@ import {
 
 const style = [
   '6. **Cut hedges.** Avoid "appropriate", "where practical", and "useful" unless needed.',
-  "8. **Decide what to do with long pages.** A page over about 20 words for an overview or concept, or about 40 for a guide or pattern, needs one decision.",
+  "8. **Decide what to do with long pages.** A page over about 20 words for an overview or concept, or about 40 for a how-to or pattern, needs one decision.",
 ].join("\n");
 
 async function fixture(t, files) {
@@ -46,13 +46,14 @@ test("reads hedge words and length ceilings from STYLE.md", () => {
   assert.deepEqual(rules.hedges, ["appropriate", "where practical", "useful"]);
   assert.equal(rules.targets.overview, 20);
   assert.equal(rules.targets.concept, 20);
-  assert.equal(rules.targets.guide, 40);
+  assert.equal(rules.targets["how-to"], 40);
+  assert.equal(rules.targets.advice, 20);
   assert.throws(() => parseRules("# Nothing here"), /could not find/);
 });
 
 test("counts prose only, not code, tables, link targets, or sources", () => {
   const text = page(
-    "guide",
+    "how-to",
     [
       "One two [three](https://example.com/a/b/c).",
       "",
@@ -86,12 +87,12 @@ test("finds repeated sentences across pages but not pointers or overviews", () =
   const repeated =
     "Restrict credentials, filesystem paths, network destinations, and tool permissions for every agent run.";
   const pairs = findDuplicates([
-    { path: "pages/a.md", kind: "guide", prose: repeated },
-    { path: "pages/b.md", kind: "guide", prose: `Also: ${repeated}` },
+    { path: "pages/a.md", kind: "how-to", prose: repeated },
+    { path: "pages/b.md", kind: "how-to", prose: `Also: ${repeated}` },
     { path: "pages/c.md", kind: "overview", prose: repeated },
     {
       path: "pages/d.md",
-      kind: "guide",
+      kind: "how-to",
       prose:
         "See restrict credentials, filesystem paths, network destinations, and tool permissions.",
     },
@@ -106,15 +107,15 @@ test("finds repeated sentences across pages but not pointers or overviews", () =
 test("reports long pages, hedges, and duplicates; exempts references", async (t) => {
   const long = Array.from({ length: 60 }, (_, i) => `word${i}`).join(" ");
   const root = await fixture(t, {
-    "content/goals/alignment/long-guide.md": page("guide", `${long}.`),
+    "content/goals/alignment/long-guide.md": page("how-to", `${long}.`),
     "content/goals/alignment/about-guide.md": page(
-      "guide",
+      "how-to",
       Array.from({ length: 41 }, (_, i) => `term${i}`).join(" ") + ".",
     ),
     "content/goals/alignment/long-reference.md": page("reference", `${long}.`),
-    "content/goals/alignment/long-because.md": `---\ntype: guide\nsummary: S.\ngoal: alignment\nlong-because: one setup procedure\n---\n\n# Title\n\n${long}.\n`,
-    "content/goals/alignment/long-no-reason.md": `---\ntype: guide\nsummary: S.\ngoal: alignment\nlong-because:\n---\n\n# Title\n\n${long}.\n`,
-    "content/goals/alignment/hedgy.md": page("guide", "Use useful checks."),
+    "content/goals/alignment/long-because.md": `---\ntype: how-to\nsummary: S.\ngoal: alignment\nlong-because: one setup procedure\n---\n\n# Title\n\n${long}.\n`,
+    "content/goals/alignment/long-no-reason.md": `---\ntype: how-to\nsummary: S.\ngoal: alignment\nlong-because:\n---\n\n# Title\n\n${long}.\n`,
+    "content/goals/alignment/hedgy.md": page("how-to", "Use useful checks."),
     "content/concepts/README.md": page("reference", "Use useful checks."),
   });
   const warnings = await checkStyle(root);
@@ -131,9 +132,9 @@ test("reports long pages, hedges, and duplicates; exempts references", async (t)
 
 test("reads lists in front matter and the workflow's allowed domains", () => {
   const { meta } = frontMatter(
-    "---\ntype: guide\nrecheck: every-run\ncheck-against:\n  - https://docs.github.com/a\n  - https://github.blog/b\n---\n",
+    "---\ntype: how-to\nrecheck: every-run\ncheck-against:\n  - https://docs.github.com/a\n  - https://github.blog/b\n---\n",
   );
-  assert.equal(meta.type, "guide");
+  assert.equal(meta.type, "how-to");
   assert.deepEqual(meta["check-against"], [
     "https://docs.github.com/a",
     "https://github.blog/b",
@@ -157,7 +158,7 @@ test("reads lists in front matter and the workflow's allowed domains", () => {
 
 test("a page marked recheck needs reachable https sources", () => {
   const domains = ["docs.github.com", "*.example.com"];
-  assert.deepEqual(checkRecheck("p.md", { type: "guide" }, domains), []);
+  assert.deepEqual(checkRecheck("p.md", { type: "how-to" }, domains), []);
   assert.match(
     checkRecheck("p.md", { recheck: "every-run" }, domains)[0],
     /lists no sources/,

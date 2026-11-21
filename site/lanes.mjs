@@ -145,7 +145,8 @@ export function articleTypeGroups(articles = []) {
 
 // Labels for the existing `type` values, shown on articles.
 export const typeLabels = {
-  guide: "Guide",
+  "how-to": "How-to",
+  advice: "Advice",
   pattern: "Pattern",
   explanation: "Explanation",
   reference: "Reference",

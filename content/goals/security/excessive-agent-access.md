@@ -1,5 +1,5 @@
 ---
-type: guide
+type: advice
 summary: "Without restrictions, a local agent runs commands with your access, so a mistake or an injected instruction can affect your files and credentials."
 status: established
 lane: goals

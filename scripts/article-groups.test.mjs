@@ -6,7 +6,7 @@ const article = (title, tags, type) => ({ data: { title, tags, type } });
 const pages = [
   article("C", ["Testing", "Permissions and sandboxing"], "reference"),
   article("A", ["Not an allowed tag"], "pattern"),
-  article("E", ["Copilot", "Testing"], "guide"),
+  article("E", ["Copilot", "Testing"], "how-to"),
   article("B", ["Testing"], "reference"),
   article("D", [], "case-study"),
 ];
@@ -23,6 +23,6 @@ test("topic groups include all articles and allow multiple topics", () => {
 
 test("type groups use existing labels and sort titles", () => {
   const groups = articleTypeGroups(pages);
-  assert.deepEqual(groups.map((g) => g.title), ["Case study", "Guide", "Pattern", "Reference"]);
+  assert.deepEqual(groups.map((g) => g.title), ["Case study", "How-to", "Pattern", "Reference"]);
   assert.deepEqual(groups[3].items.map((x) => x.data.title), ["B", "C"]);
 });

@@ -1,5 +1,5 @@
 ---
-type: guide
+type: advice
 summary: "Challenge unnecessary scope suggested by the agent, agree what to exclude, and focus effort on what matters."
 status: established
 lane: goals

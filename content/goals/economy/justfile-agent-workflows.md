@@ -1,5 +1,5 @@
 ---
-type: guide
+type: how-to
 summary: Use a justfile as a discoverable command interface for coding agents, with focused tests, composed checks, and clear handoff gates.
 status: established
 lane: articles

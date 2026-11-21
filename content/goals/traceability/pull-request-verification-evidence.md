@@ -1,5 +1,5 @@
 ---
-type: guide
+type: advice
 summary: "Add one comment saying which checks ran, what they showed, and which did not."
 status: established
 lane: goals

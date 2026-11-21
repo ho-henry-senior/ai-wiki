@@ -23,7 +23,7 @@ Help readers improve these outcomes in AI-assisted work:
 
 Alignment owns whether the work matches what was agreed: defining, steering, and verifying it. Traceability & Trust owns the record of the work and the decision to accept it. Security owns what the agent can reach and do.
 
-Present the goals in this order, alphabetically, so the order does not imply a ranking; the homepage's first steps say what to do first. Organise the wiki around the advice we want readers to act on, not around the content we happen to have. Write each goal's core advice from the practices that made a difference, then link to the articles that support it. Give each goal overview a few core points; the number follows the advice, not a target. Each should be understandable on its own, explain the principle behind it, and offer a practical starting action. A useful prompt is whether a reader could make a start this week with the page alone; it is a prompt, not a rule, and some important controls take longer. Material that describes a whole process or policy belongs in a guide, as options, linked from "Explore further".
+Present the goals in this order, alphabetically, so the order does not imply a ranking; the homepage's first steps say what to do first. Organise the wiki around the advice we want readers to act on, not around the content we happen to have. Write each goal's core advice from the practices that made a difference, then link to the articles that support it. Give each goal overview a few core points; the number follows the advice, not a target. Each should be understandable on its own, explain the principle behind it, and offer a practical starting action. A useful prompt is whether a reader could make a start this week with the page alone; it is a prompt, not a rule, and some important controls take longer. Material that describes a whole process or policy belongs in a how-to or explanation, linked from "Explore further".
 
 These goals overlap: for example, a clear specification can improve alignment, reduce rework, and support traceability. Organize navigation around reader outcomes without forcing a topic into only one goal.
 
@@ -60,7 +60,9 @@ Make navigation reflect the goals and their priorities, not just the directory l
 Provide content for these reader needs:
 
 - **Outcome overview:** What advice helps me achieve this goal?
-- **Guide:** How do I approach a task?
+- **Advice:** What action would improve this goal, and why?
+- **How-to:** How do I carry out a task?
+- **Guide collection:** Which related pages help me explore a topic or workflow?
 - **Pattern:** What reusable approach could I adopt?
 - **Concept:** What idea or distinction do I need to understand?
 - **Explanatory article:** How do related ideas fit together, and why do they matter?
