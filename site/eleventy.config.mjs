@@ -153,45 +153,6 @@ export default async function (eleventyConfig) {
   }
 
   eleventyConfig.addGlobalData("layout", "wiki");
-  // Diagnostic wrapper while investigating an Eleventy navigation build error.
-  eleventyConfig.addFilter("inspectNavigation", (items, key) => {
-    try {
-      return eleventyConfig.getFilter("eleventyNavigation")(items, key);
-    } catch (error) {
-      console.error("NAVIGATION ROOT CAUSE", error?.stack || error);
-      const entries = items.map((item) => ({
-        key: item.data.eleventyNavigation?.key,
-        parent: item.data.eleventyNavigation?.parent,
-        url: item.url,
-      }));
-      const byKey = new Map();
-      for (const entry of entries) {
-        if (!byKey.has(entry.key)) byKey.set(entry.key, []);
-        byKey.get(entry.key).push(entry);
-      }
-      console.error("NAV DUPLICATES", [...byKey].filter(([, entries]) => entries.length > 1));
-      console.error("NAV CYCLES", entries.flatMap((entry) => {
-        let key = entry.key;
-        const seen = [];
-        while (key && byKey.has(key) && seen.length < 50) {
-          if (seen.includes(key)) return [{ cycle: [...seen.slice(seen.indexOf(key)), key], from: entry.url }];
-          seen.push(key);
-          key = byKey.get(key)[0].parent;
-        }
-        return [];
-      }).slice(0, 20));
-
-      console.error("NAVIGATION ROLE ENTRIES", items.filter((item) =>
-        /Agent roles|agent-roles|role-boundaries|skills-profiles/i.test(
-          JSON.stringify([item.data.title, item.url, item.data.eleventyNavigation]),
-        ),
-      ).map((item) => ({
-        url: item.url, title: item.data.title, lane: item.data.lane,
-        navigation: item.data.eleventyNavigation,
-      })));
-      throw error;
-    }
-  });
   eleventyConfig.addFilter("laneItems", laneItems);
   eleventyConfig.addFilter("guideNavigation", guideNavigation);
   eleventyConfig.addFilter("articleTopicGroups", articleTopicGroups);
