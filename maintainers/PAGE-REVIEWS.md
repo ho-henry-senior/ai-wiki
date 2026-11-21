@@ -65,6 +65,7 @@ From the whole-wiki editorial review ([#183](https://github.com/ho-henry-senior/
 - **Justfile example — Merge into [Give agents a command interface with Just](../content/goals/economy/justfile-agent-workflows.md) in [PR #188](https://github.com/ho-henry-senior/ai-wiki/pull/188).** Its recipes and real-file links duplicated the how-to's; only the `format` recipe was distinct.
 - [Local checks and tools for coding agents](../content/reference/local-development-tools.md) — **Keep as a catalogue; trimmed in [PR #188](https://github.com/ho-henry-senior/ai-wiki/pull/188).** Its advice on focused commands and handoff gates repeated the Just how-to and [Enable agents to run repository commands](../content/goals/alignment/agent-tool-delegation.md).
 - [AGENTS.md example: short repository entrypoint](../content/reference/agents-md-example.md) — **Keep.** A fuller copyable file than the sample in [Write repository instructions in AGENTS.md](../content/goals/alignment/repository-instructions.md), with a contrasting real example found nowhere else.
+- [Inference, data retention, and model training](../content/concepts/inference-retention-training.md) — **Keep; revised in [PR #193](https://github.com/ho-henry-senior/ai-wiki/pull/193).** The only page that separates sending, keeping and training. Filled the individual-plan retention gap, made it an explanation, set it to recheck every run, and pointed the data-flow checklist at it instead of repeating figures.
 
 ## Next
 
