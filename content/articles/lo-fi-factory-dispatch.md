@@ -35,7 +35,7 @@ The Reviewer works in a separate detached worktree and checks the expected PR re
 
 ## What happens when a run fails?
 
-There is no automatic retry. The operator inspects the state, retains partial or dirty worktrees where necessary, and deliberately resets the relevant label before restarting. Local locks coordinate processes on one machine, not across multiple clones or hosts.
+There is no automatic retry. The operator inspects the state, retains partial or dirty worktrees where necessary, and deliberately resets the corresponding workflow label before restarting. Local locks coordinate processes on one machine, not across multiple clones or hosts.
 
 The preserved implementation includes these safeguards and offline tests with mocked GitHub and agent commands. Some may have been refined after the original exercise; their presence in the current demo is not proof that every safeguard operated throughout the trial.
 
