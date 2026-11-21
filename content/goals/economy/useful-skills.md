@@ -14,15 +14,9 @@ tags:
 
 # Skills
 
-## What a skill is, and when to add one
-
 A **skill** is a reusable package of task-specific instructions in a `SKILL.md` file, optionally accompanied by reference material, scripts and templates. In agents that support skills, the name and description help the agent decide when to load the instructions, instead of putting every procedure in every task's context.
 
 Add a skill only when a task keeps coming up, the agent does not already handle it well, and the skill improves the result on a real case. Do not start by installing one: a skill adds to what the agent loads and needs upkeep, and without trying the task first you cannot tell whether it helps.
-
-## Choose where to begin
-
-Use this page to decide whether a skill helps your task. To create one, go to [Write a SKILL.md](../../reference/writing-agent-skills.md); to inspect existing examples, go to the [agent skills directory](../../reference/agent-skills-directory.md). Read the resources in that order for a practical introduction, or jump directly to whichever you need.
 
 ## Decide whether you need one
 

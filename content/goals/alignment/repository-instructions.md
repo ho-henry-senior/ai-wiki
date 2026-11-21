@@ -83,13 +83,13 @@ You don't need a tool-specific file for these agents unless you have rules only 
 - **Code review reads the PR's own branch.** Copilot code review uses the instruction files from the pull request's head branch, not the base branch. A PR can therefore change the rules used to review it. Protect `AGENTS.md`, `.github/copilot-instructions.md`, and `.github/instructions/` with `CODEOWNERS` so changes to them need human review.
 - **Check what the CLI loaded.** In Copilot CLI, run `/instructions` to see the files the session found and to turn them on or off. Edits don't reach a running session: restart with `copilot --continue` or start a new one with `/new`.
 - **Keep must-have rules in the file itself.** Copilot CLI loads `@docs/testing.md` from `AGENTS.md` immediately, but other features may not expand these references.
-- **Instructions guide; they don't enforce.** "Never push to `main`" asks the agent to behave. Branch protection or a denied tool stops it. See [instructions are not enforced controls](../../concepts/instructions-vs-controls.md).
+- **Instructions guide; they don't enforce.** "Never push to `main`" asks the agent to behave. Branch protection or a denied tool stops it. See [instructions and enforced controls](../../concepts/instructions-vs-controls.md).
 
 **Copyable asset:** [AGENTS.md example: short repository entrypoint](../../reference/agents-md-example.md) brings project pointers, working rules and check commands into one file. Replace every illustrative path and rule with facts about your repository.
 
 This wiki's own [AGENTS.md](../../../AGENTS.md) is a working example. For a contrasting short entrypoint, see [VS Code's AGENTS.md](https://github.com/microsoft/vscode/blob/main/AGENTS.md). For where instruction files sit alongside skills and task commands, see [a structure for agent-facing repositories](agent-facing-repository-structure.md).
 
-**Next:** [let the agent run your repository's commands](agent-tool-delegation.md), step 1 of [start here](../../../README.md#first-steps).
+**Next:** [enable agents to run repository commands](agent-tool-delegation.md), step 1 of [start here](../../../README.md#first-steps).
 
 ## Sources
 

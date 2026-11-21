@@ -38,7 +38,7 @@ That sentence is part of the bug report, not a request from you. Attacks can als
 
 GitHub removes HTML comments and other hidden characters from issues and comments before the Copilot cloud agent reads them, which stops text a human reviewer cannot see. Visible text can still carry instructions, and the same filtering does not apply to files in the repository or to tool output.
 
-Telling the agent to ignore injected instructions helps, but the injected text can argue back, so it is not a limit; see [instructions are not enforced controls](../../concepts/instructions-vs-controls.md). Approval prompts help only when the person reads what is being approved.
+Telling the agent to ignore injected instructions helps, but the injected text can argue back, so it is not a limit; see [instructions and enforced controls](../../concepts/instructions-vs-controls.md). Approval prompts help only when the person reads what is being approved.
 
 ## Try it safely
 

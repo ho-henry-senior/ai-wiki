@@ -24,7 +24,7 @@ For a single repository, a short `AGENTS.md`, links, and ordinary search are usu
 ## Limits
 
 - **Stale or missing passages** produce unsupported answers. Keep the index current and record each passage's source and version.
-- **Retrieved text is untrusted** and can carry [prompt injection](../goals/security/prompt-injection.md), so limit what the agent can do with what it retrieves; see [instructions are not enforced controls](instructions-vs-controls.md).
+- **Retrieved text is untrusted** and can carry [prompt injection](../goals/security/prompt-injection.md), so limit what the agent can do with what it retrieves; see [instructions and enforced controls](instructions-vs-controls.md).
 - **Access must be enforced during retrieval,** so a requester only gets passages they may read. Indexing can also send documents to another service.
 - **A citation is not proof** that the answer represents its source.
 

@@ -60,4 +60,4 @@ Co-authored-by: Example Agent <agent@example.com>
 
 ## Explore further
 
-For more depth, see [furnish repositories with context for agents](../alignment/repository-context-for-agents.md) for decisions in ADRs, and the [lo-fi software factory case study](../../articles/lo-fi-software-factory-case-study.md) for review evidence in practice.
+For more depth, see [repository context for coding agents](../alignment/repository-context-for-agents.md) for decisions in ADRs, and the [lo-fi software factory case study](../../articles/lo-fi-software-factory-case-study.md) for review evidence in practice.

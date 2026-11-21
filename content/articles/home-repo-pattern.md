@@ -65,7 +65,7 @@ A local agent with several checked-out repositories is different from the [Copil
 
 Shared instructions also need an owner: a stale repository path or broad rule can mislead every session that starts there. Changes spanning repositories still require separate tests, pull requests and approvals. Don't assume that a successful check in one repository proves the integration works.
 
-For work within a single repository, a short `AGENTS.md` and existing commands are usually simpler. See [a structure for agent-facing repositories](../goals/alignment/agent-facing-repository-structure.md) and [furnish repositories with context for agents](../goals/alignment/repository-context-for-agents.md).
+For work within a single repository, a short `AGENTS.md` and existing commands are usually simpler. See [a structure for agent-facing repositories](../goals/alignment/agent-facing-repository-structure.md) and [repository context for coding agents](../goals/alignment/repository-context-for-agents.md).
 
 ## Source
 
