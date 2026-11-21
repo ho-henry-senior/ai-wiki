@@ -16,7 +16,7 @@ When you add or remove a page, update `content/README.md` and the relevant conce
 
 Use `just format` to apply formatting or `just links` to check local links alone. Formatting preserves prose line breaks and leaves embedded code examples unchanged. Recipes delegate to npm scripts, which can also be run directly. See [the agent entrypoint](../AGENTS.md) for context pointers.
 
-For a periodic structural or freshness review, use [the wiki-review skill](../.agents/skills/wiki-review/SKILL.md). Reviews report their coverage and evidence; a structural review does not imply that every external claim has been reverified.
+For a review of a page, the whole site, or its dated claims, follow [the review method](PAGE-REVIEWS.md); agents run it through [the wiki-review skill](../.agents/skills/wiki-review/SKILL.md). Reviews report their coverage and evidence; a structural review does not imply that every external claim has been reverified.
 
 The dependency overrides pin patched `glob` and `minimatch` releases while the link-checking toolchain still requests older versions.
 
@@ -86,7 +86,7 @@ Give reusable material, whether prose, a diagram or an example, one canonical ho
 
 Match content to the page's purpose. Advice on making a repository ready for agents, for example, is about properties of the repository; how to define and approve a task, or what an agent is permitted to do at runtime, are separate topics with their own pages.
 
-Before polishing a page, ask whether it should exist: keep it, refine it, merge it into another page, remove it, or defer it. Do not assume every page should be kept and expanded. [Page reviews](PAGE-REVIEWS.md) sets out how to decide, and records the decisions made so far.
+Before polishing a page, ask whether it should exist: keep it, refine it, merge it into another page, remove it, or defer it. Do not assume every page should be kept and expanded. [Reviewing the wiki](PAGE-REVIEWS.md) sets out how to decide, and records the decisions made so far.
 
 ## Writing a concept
 
@@ -179,7 +179,7 @@ check-against:
 
 The [daily review](#daily-reviews) checks marked pages against their sources before anything else, then re-checks one other dated page, in rotation, so every page with a `checked` date is re-verified about every three weeks. It moves the page's `checked` date only when it has compared every listed source and updated the page. A run that finds nothing changed records that in its findings and leaves the page alone, so a page may have been checked more recently than its date says. Each source's domain must be on the workflow's network allowlist; `just style` fails if it is not, or if `recheck` has no sources. Keep the changing figures in one dated section, so checking them is a comparison rather than new research, and leave the rest of the page general enough not to date.
 
-Keep edit-time review focused on the affected material and directly dependent guidance, including concepts. Treat a whole-wiki review as a separate periodic task, using [the wiki-review skill](../.agents/skills/wiki-review/SKILL.md), not a prerequisite for every change.
+Keep edit-time review focused on the affected material and directly dependent guidance, including concepts. Treat a whole-wiki review as a separate periodic task, following [the review method](PAGE-REVIEWS.md#how-to-review-the-whole-site), not a prerequisite for every change.
 
 ## Daily reviews
 

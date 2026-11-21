@@ -1,21 +1,35 @@
-# Page reviews
+# Reviewing the wiki
 
-How to review an Article or Reference page, and the decisions recorded so far. The writing principles a review checks against are in [the writing standard](STYLE.md); this file covers only the review method and its record. Goals pages are outside this review: assess them in their own context.
+How to review the wiki, from one page to the whole site, and the decisions recorded so far. This is the single review method: the [wiki-review skill](../.agents/skills/wiki-review/SKILL.md) runs it for agents. Reviews check pages against [the design goals](DESIGN-GOALS.md), [the information architecture](INFORMATION-ARCHITECTURE.md) and [the writing standard](STYLE.md); this file covers only the method and its record.
+
+## Choose the scope
+
+- **A page, or a group of overlapping pages:** when editing, or when pages seem to cover the same ground. Compare the group before deciding about any one page.
+- **The whole site:** periodically, or after a structural change. Covers every lane, including Goals and Guides, and the homepage, indexes and glossary.
+- **Freshness:** checking dated claims against their sources; see [keeping content current](MAINTAINING.md#keeping-content-current). An editorial or structural review is not a fact-check: say which claims, if any, were checked.
 
 ## How to review a page
 
 1. **Read the published page,** not only its Markdown: the reading effort, clarity, density and presentation, and whether its assets help.
-2. **Ask first whether it should exist on its own.** What would a reader lose if it disappeared? Could its few distinctive points live better in another page?
+2. **Ask first whether it should exist on its own.** What would a reader lose if it disappeared? Could its few distinctive points live better in another page, or as a section of one?
 3. **Judge it in this order:** practical usefulness, then relevance to the reader, distinctiveness and overlap with other pages, writing, information density, and presentation within the page.
 4. **Count diagrams, examples and other assets in its favour only when they help.** A strong text-only page is not marked down.
 5. **Adjust for its type.** A concise piece of advice, a summary of someone else's pattern, a longer case study and a curated directory each do a different job.
-6. **Record a decision:** keep, refine, merge, remove or defer, with a one-line reason and the likely changes.
+6. **Record a decision:** keep, refine, merge, remove or defer, with a one-line reason and the likely changes. Rarely, **extract**: move an explanation that several pages reuse into a page of its own.
 
 Assess navigation and discoverability separately, as a property of the site, not of the page. Scores, if used at all, are notes to support a decision, never the decision.
 
-**Removal is provisional until it is carried out.** Before removing a page, check what is distinctive in it and where that should move, update incoming links, and add a redirect if the page was linked from outside. **Defer** means the topic deserves coverage but isn't a priority now; it is not a removal.
+**Removal is provisional until it is carried out.** Before removing a page, check what is distinctive in it and where that should move, and update every incoming link. The site cannot redirect, so a removed URL stops working; weigh that for pages linked from outside. **Defer** means the topic deserves coverage but isn't a priority now; it is not a removal.
 
-Make the changes in small batches of related pages, after comparing pages that overlap, rather than rewriting one page at a time.
+## How to review the whole site
+
+1. **Read every published page** and give each a disposition. Name anything left unread rather than describing a partial review as complete.
+2. **Group pages that overlap** and decide about the group: one idea is explained in full on one page, its [owner](MAINTAINING.md#who-owns-what), and summarised with a link elsewhere.
+3. **Trace each goal's path** from the homepage through its overview and core advice to how-tos and examples. Note missing guidance separately from guidance that exists but is hard to find.
+4. **Check navigation against the information architecture:** lanes, guides, the homepage, indexes, tags, and link text that names its destination.
+5. **Note writing themes** against the writing standard, rather than editing page by page as you read.
+6. **Report findings and proposals in an issue** for discussion before changing content. Page count is an outcome of sound decisions, not a target.
+7. **Apply agreed changes in small pull requests:** tidying first, then clear merges, then structural changes. Pilot a new pattern on one part of the site before extending it. Record each decision below.
 
 ## How to record a decision
 
@@ -54,4 +68,4 @@ From the whole-wiki editorial review ([#183](https://github.com/ho-henry-senior/
 
 ## Next
 
-Compare the remaining Articles and Reference pages in groups, note further pages to merge or remove, and then prioritise small batches of changes. A detailed review of every remaining page, one at a time, is not needed.
+The whole-wiki editorial review in [#183](https://github.com/ho-henry-senior/ai-wiki/issues/183) tracks the remaining agreed steps: extending the Trust & Traceability pilot to the other goals if it works, and the lower-priority candidates (vector stores and the slide).
