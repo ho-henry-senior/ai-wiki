@@ -59,13 +59,15 @@ Each published page has at most one primary lane; pages with no lane may remain 
 
 A goal or Guide has **two to five core points**: the few things a reader should take away. This is a guideline, not a quota. Fewer than two suggests it is not a collection; more than five, that it has not decided what matters most.
 
-Each core point links to **exactly one page that owns it**:
+Each core point has **one clear home for its substantive explanation**. The home can be any of these:
 
 - **An existing page,** when one page already covers the point. Security's _Prompt injection_ point links straight to its page, which states the point and routes readers to the controls.
-- **A routing page** (`type: advice`), when the how-to is spread across several pages. It states the point, why it matters and how to check it, then sends readers to the right page for each part. Economy's two points work this way.
+- **A routing page** (`type: advice`), when several pages each contribute part of the advice. Economy's two points work this way.
 - **A section of the overview,** when nothing substantial sits behind the point. Trust & Traceability's four points work this way.
 
-A routing page must add more than the overview's one-line summary: a page that only repeats it and links once should be a section instead. In a Guide, the core points are usually its chapters or resources, since each has material of its own.
+Choose the home that serves the reader; don't create a page just to fill the structure. A routing page must earn the extra click with a decision, a synthesis or a route that the overview doesn't already give. If it only repeats the overview's summary and lists links, make it a section instead. In a Guide, the core points are usually its chapters or resources, since each has material of its own.
+
+Trust & Traceability's overview sections are a recent pilot from [#183](https://github.com/ho-henry-senior/ai-wiki/issues/183). Assess how readers find them before using overview sections, or routing pages, as the default for every goal.
 
 ### Primary navigation, section listings and Guide context
 
