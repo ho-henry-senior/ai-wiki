@@ -98,7 +98,7 @@ test("retired Prompt injection URL redirects to one canonical article", () => {
   assert.equal(searchUrls.filter((url) => url === canonicalUrl).length, 1);
 
   const sitemap = fs.readFileSync(path.join(siteRoot, "sitemap/index.html"), "utf8");
-  const main = sitemap.match(/<main\b[^>]*>([\s\S]*?)<\\/main>/)?.[1];
+  const main = sitemap.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1];
   assert.ok(main, "Sitemap has a main content region");
   const links = [...main.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)]
     .map(([, href]) => normalizedUrl(href));
