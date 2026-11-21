@@ -1,75 +1,44 @@
 ---
 name: wiki-review
-description: Review this wiki's information architecture, design-goal alignment, reusable concepts, navigation, and stale claims. Use for whole-wiki, goal-alignment, information-architecture, or concept-extraction reviews.
+description: Review this wiki's pages, structure, navigation or dated claims using the repository's review method. Use for whole-wiki, single-page, information-architecture, or freshness reviews.
 ---
 
 # Review the wiki
 
-Review the knowledge structure and its evidence, not just Markdown formatting. Preserve useful narrative articles while making reusable explanations independently discoverable.
+This skill runs the review method in [Reviewing the wiki](../../../maintainers/PAGE-REVIEWS.md), which owns how reviews work and records their decisions. Read it first, with [the design goals](../../../maintainers/DESIGN-GOALS.md), [the information architecture](../../../maintainers/INFORMATION-ARCHITECTURE.md), [the writing standard](../../../maintainers/STYLE.md), [who owns what](../../../maintainers/MAINTAINING.md#who-owns-what), and [keeping content current](../../../maintainers/MAINTAINING.md#keeping-content-current).
 
-## 1. Establish scope and coverage
+A run started by a workflow follows that workflow's own limits where they are narrower than these steps.
 
-Read [the design goals](../../../maintainers/DESIGN-GOALS.md), [the information architecture](../../../maintainers/INFORMATION-ARCHITECTURE.md), [the writing standard](../../../maintainers/STYLE.md), [agent instructions](../../../AGENTS.md), [article conventions](../../../maintainers/MAINTAINING.md#articles-and-concepts), [concept conventions](../../../content/concepts/README.md), and [source conventions](../../../content/sources/README.md). Inspect the worktree and preserve unrelated changes.
+## 1. Settle the scope
 
-For a whole-wiki review, inventory and read every authored article, concept, and slide, the glossary, indexes, and source records. Check slides against their canonical concepts. Include repository instructions and review tooling when checking navigation and verification coverage. Read raw archives only when needed to resolve a claim; leave them unchanged.
+Choose a page or group, the whole site, or freshness, as the method describes. Inspect the worktree and preserve unrelated changes.
 
-For a scoped review, identify the requested subset and its directly related material. Record what was read and what remains unchecked in session notes; do not describe a partial review as whole-wiki coverage.
+**Complete when:** the scope is stated, and anything excluded is named.
 
-For deeper corpus-inventory or terminology methods, consult the optional [candidate-skills research](../../../maintainers/research/wiki-information-architecture-skills.md). These external skills are not prerequisites for a review.
+## 2. Read before judging
 
-**Complete when:** every in-scope file has a recorded disposition, and exclusions are explicit.
+Read every page in scope as published, not only its Markdown. For the whole site, that includes Goals, Guides, Articles and Reference pages, the homepage, indexes, glossary, slides and source records. Keep each page's disposition in session notes, not in new repository files. Read raw archives in `data/` only to resolve a claim, and leave them unchanged.
 
-## 2. Identify findings and extraction candidates
-
-For each in-scope goal and core-advice point, trace the reader's path from the homepage through the relevant principle to techniques and practical examples, including how to try and verify them. For a whole-wiki review, cover all four goals. Record the paths and evidence; distinguish absent guidance from guidance that is hard to discover. A path may span several pages or remain within one page. Treat thin coverage as a gap to report, not a reason to invent a separate page.
-
-Evaluate the material against:
-
-- **Scope:** practical guidance that is agent-agnostic by default, with detailed Copilot and GitHub examples. Identify tool-specific files recommended where a shared convention would work, advice that names no Copilot or GitHub file, setting, or command, and other products' setup instructions that drift beyond the design goals.
-- **Goal alignment:** compare the in-scope guidance and navigation with the design goals. Identify goals without a useful starting path and content that does not support the stated audience or scope.
-- **Practical priority:** check that starting points favor changes with clear likely benefit and modest effort, explain how to try and verify them, and preserve necessary security safeguards. Assess effort in context rather than treating every reader's first step as the same.
-- **Completeness:** use the [status criteria](../../../maintainers/MAINTAINING.md#completeness-status) to assess in-scope pages and concepts. Treat missing status as unassessed. Identify incomplete central routes and material gaps, and suggest stronger starting points where available without hiding essential security guidance. Propose status changes with page-specific reasons; do not promote pages automatically.
-- **Practical references:** for advice about repository practices, check whether a real implementation would help readers take the next step. Trace both directions: identify Goals or Articles that lack a relevant example or link, and inspect existing Reference examples for worthwhile incoming links from related guidance. Distinguish an absent example from an existing one that is hard to discover. Prefer adding a contextual link to an inspected Reference example over duplicating it or inventing a template. Do not require a repository example on every page.
-- **Reference candidates:** note real external or local repository files that might demonstrate an unmet need, including `AGENTS.md`, Justfiles, skills, CI and repository layouts. Name the exact source files, what they appear to demonstrate, the reader page they could support, and what still needs inspection. Do not claim a candidate is vetted until its files, provenance, relevant behaviour and limitations have been checked; keep broad candidate research and new catalogue creation under [issue #124](https://github.com/ho-henry-senior/ai-wiki/issues/124), not routine automated reviews.
-- **Reuse:** find explanations answering one standalone question or used across topics. Distinguish genuine reuse from sections that simply happen to be long.
-- **Canonical ownership:** check pages against [who owns what](../../../maintainers/MAINTAINING.md#who-owns-what). Flag any page that restates an owned idea beyond a one-line summary and link, competing explanations, and inconsistent definitions. Propose an owner for any repeated idea not yet in the table.
-- **Composition:** articles should still explain a problem and connect ideas, rather than become lists of concept links.
-- **Discovery:** check reader paths against the information architecture: Guides should simplify broad Articles navigation while leaving every published page searchable and reachable through its canonical URL, search and sitemap. Check the site navigation set by front matter (`lane`, `goal`, `order`), topic and directory indexes, glossary links, incoming references, and orphaned material. Judge prominence and link wording against the goals and each target's role: distinguish actionable advice, observed experience, illustrative approaches, and subjective perspectives. For each in-scope goal, assess whether its overview links relevant principles, techniques, and examples for its core advice; identify missing or misleading relationships. Retain direct paths to practical guidance and safeguards; make optional context discoverable without presenting it as a prerequisite.
-- **Terminology:** compare terms and definitions with the glossary and their context; verify apparent inconsistencies in the source before proposing a change.
-- **Slides:** check that summaries retain essential qualifications and link to their canonical concepts.
-- **Freshness:** inspect changing claims, versions, dates, source quality, and whether recommendations are supported by evidence. Check pages marked `recheck: every-run` against their `check-against` sources first, then the dated page the rotation selects; see [fast-changing pages](../../../maintainers/MAINTAINING.md#keeping-content-current).
-- **Writing:** check pages against [the writing standard](../../../maintainers/STYLE.md): each page does its type's job, each action has a Copilot example, sections do not depend on a link for their main point, and hedges are cut. Flag a recommendation whose reason a reader could not work out from the page; do not ask for a justification on instructions whose reason is already clear, which pads pages.
-
-For each proposed extraction, name the question or distinction, its current location, and the articles or reference uses that justify it. Keep examples and essential caveats with the explanation. Keep catalogs, checklists, and concrete workflow examples intact when splitting would reduce usefulness.
-
-**Complete when:** every in-scope core-advice point has a traced path or a recorded gap, each finding has a location and reason, and each proposed concept has a clear canonical home and plausible use.
+**Complete when:** every page in scope has a disposition, and anything unread is named.
 
 ## 3. Check evidence proportionally
 
-Follow [the freshness guidance](../../../maintainers/MAINTAINING.md#keeping-content-current). Verify potentially stale claims affected by proposed changes against current primary sources; note exactly which claims were checked. Preserve sources when moving material.
+Verify the changing claims that a proposed change relies on against current primary sources, and say exactly which were checked. Record inaccessible or inconclusive sources as limitations. An editorial or structural review is not a fact-check, and a passing link check does not verify external facts.
 
-Separate verified claims, proposals, and unresolved questions. Record inaccessible or inconclusive sources as limitations. Completeness is separate from correctness and freshness; a status or edit date does not establish either. Record review dates only for the claims actually checked. A structural review is not an exhaustive external fact-check, and a passing link checker does not verify external facts.
+**Complete when:** each changing claim used in an edit has current evidence or a stated uncertainty.
 
-**Complete when:** changing claims used in edits have current evidence or an explicit uncertainty, and unverified areas are named.
+## 4. Report
 
-## 4. Report, then apply approved changes
+Give each finding a location and a reason, and propose decisions from the method: keep, refine, merge, remove, defer, or rarely extract. Prefer making a point once, in its owner, over adding a page; page count is not a target. Flag a recommendation whose reason a reader could not work out from the page, but don't ask for justification the page already makes clear.
 
-Present concise findings and the extraction plan. A review-only request ends with findings; obtain approval before modifying content. If implementation is already requested, proceed within the agreed scope and raise material scope changes for approval.
+A review-only request ends here. Get approval before changing content.
 
-When extracting concepts:
+## 5. Apply approved changes
 
-- Put the full focused explanation in `content/concepts/`, following its conventions; retain its example, caveats, and sources.
-- Replace the article's detailed explanation with a contextual summary and link. Keep it readable without requiring every linked page to be opened.
-- Preserve existing paths and heading anchors where practical. Update all affected incoming links if a target must change.
-- Update concept and article indexes, relevant topic-map entries, and glossary links. Keep glossary definitions short and maintain its wider AI scope.
-- Change policies or authoring instructions only where the review has established a repeatable rule.
+Work in small pull requests. Keep sources, examples and essential caveats when moving material. Preserve paths and heading anchors where practical, and update every incoming link, the affected indexes, the ownership table, and the decision record in [Reviewing the wiki](../../../maintainers/PAGE-REVIEWS.md#decisions).
 
-**Complete when:** extracted concepts have incoming references and index entries, affected slides agree with their canonical concepts, articles still tell a coherent story, and no explanation or important qualification has been silently lost.
+## 6. Verify and hand off
 
-## 5. Verify and hand off
+Format changed Markdown, run `just verify`, and inspect the diff for accidental rewrites, broken navigation and lost sources. Report the scope, the changes or findings, the checks run, and any gaps in coverage or freshness that remain.
 
-Use the repository task interface to format changed Markdown, update the affected folder indexes, and run `just verify`. Check that new directories and hidden skill Markdown are included. Inspect the diff for accidental rewrites, broken navigation, and lost sources; leave raw archives and unrelated changes intact.
-
-Report the review scope, meaningful changes or findings, checks run, and unresolved freshness or coverage gaps. Keep reports in the conversation unless a persistent report was requested.
-
-**Complete when:** verification passes or failures are explicitly reported, review coverage is accounted for, and no temporary fixtures remain.
+**Complete when:** verification passes, or its failures are reported.

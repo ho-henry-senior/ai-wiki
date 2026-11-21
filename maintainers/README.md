@@ -6,7 +6,7 @@ This directory contains project instructions for maintaining this wiki, not guid
 - [Information architecture](INFORMATION-ARCHITECTURE.md) — lanes, types, Goals, tags, Guides, navigation context, sitemap and search requirements.
 - [Writing standard](STYLE.md) — rules for published prose and examples.
 - [Maintaining the wiki](MAINTAINING.md) — content conventions, sources, website, checks, and reviews.
-- [Page reviews](PAGE-REVIEWS.md) — how to review an Article or Reference page, and the decisions recorded so far.
+- [Reviewing the wiki](PAGE-REVIEWS.md) — how to review a page or the whole site, and the decisions recorded so far.
 - [AI glossary terminology research](research/ai-terms-research.md) — sources, distinctions and editorial uncertainties retained for maintainers.
 - [Wiki information architecture skills research](research/wiki-information-architecture-skills.md) — assessment and trial of external skills for maintaining this wiki.
 

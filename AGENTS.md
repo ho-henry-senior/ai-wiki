@@ -10,7 +10,7 @@ This repository publishes a Markdown knowledge base and maintains its own editor
 - When adding or restructuring content, follow [the information architecture](maintainers/INFORMATION-ARCHITECTURE.md), [the article conventions](maintainers/MAINTAINING.md#articles-and-concepts) and [concept conventions](maintainers/MAINTAINING.md#writing-a-concept). Keep reusable explanations canonical in `content/concepts/`, compose them in `content/`, and update the relevant indexes and topic map.
 - When adding or editing slides, follow [the slide conventions](maintainers/MAINTAINING.md#writing-a-slide).
 - When adding sources or researching changing claims, follow [the source conventions](maintainers/MAINTAINING.md#maintaining-sources). Keep provenance in `content/sources/` and raw source material in `data/`.
-- For whole-wiki, goal-alignment, information-architecture, or concept-extraction reviews, use [the wiki-review skill](.agents/skills/wiki-review/SKILL.md).
+- For reviews of a page, the whole wiki, its information architecture, or its dated claims, follow [the review method](maintainers/PAGE-REVIEWS.md) through [the wiki-review skill](.agents/skills/wiki-review/SKILL.md).
 
 ## Make and verify changes
 
