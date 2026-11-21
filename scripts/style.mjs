@@ -46,7 +46,8 @@ export function parseRules(styleText) {
     targets: {
       overview: short,
       concept: short,
-      guide: long,
+      advice: short,
+      "how-to": long,
       pattern: long,
       explanation: long,
       exploration: long,
