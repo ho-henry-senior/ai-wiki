@@ -23,9 +23,9 @@ The architecture is informed by [issue #173](https://github.com/ho-henry-senior/
 
 **Topic discovery** (`tags`): What topics does this page substantially cover? Flat, controlled vocabulary; a complementary way in, not a hierarchy.
 
-**Curated collection** (`site/guides.mjs`, plus `guide` in front matter today): Which Guide connects this page to related material? Membership does not imply that every page must move to the Guides lane.
+**Curated collection** (`site/guides.mjs`): Which Guide connects this page to related material? Membership does not imply that every page must move to the Guides lane.
 
-**Reading structure** (ordered/thematic Guide definition and `guideOrder` today): Is there a necessary sequence? Number and show Previous/Next only for an ordered Guide.
+**Reading structure** (ordered/thematic Guide definition in `site/guides.mjs`): Is there a necessary sequence? Number and show Previous/Next only for an ordered Guide.
 
 **Stable identity** (published URL and source file): Where can the page always be linked? Keep one canonical published URL; section membership does not create copies.
 
@@ -116,12 +116,10 @@ The coding-agent chapters stay in Guides to achieve the _specific navigation-sim
 - The checks also ensure that Guides-lane pages do not appear in the Articles landing page or sidebar. They compare canonical URLs rather than assuming the sitemap and search index share a raw data format.
 - The plugin's internal dependency on the navigation tree has **not** been established by these output tests. Do not remove a page from the navigation collection merely to hide a sidebar item without verifying the generated sitemap and search output again.
 
-## Guide metadata: current state and proposed cleanup
+## Guide metadata and validation
 
-**Current implementation:** `site/guides.mjs` contains collection titles, entry URLs, members and ordered/thematic behaviour. Page front matter also repeats `guide` and `guideOrder`, where `guideOrder: 0` doubles as a hidden entry-point marker. The Guides index currently derives entries from lane and that marker.
+**Implemented model:** `site/guides.mjs` is the single authority for Guide titles, entries, member URLs, ordered/thematic behaviour and reading order. Page front matter does not repeat `guide`, `guideOrder` or an entry marker. The Guides index derives entries from the registry; templates and the navigation tree look up a page's Guide through its canonical URL.
 
-**Preferred future model, subject to implementation review:** make `site/guides.mjs` the single authority for entry, membership, kind and ordering; derive Guide context and any navigation-tree nesting from a member's canonical URL. Derive the Guides index from the registry rather than relying on `guideOrder: 0`. Avoid adding a separate visibility field unless implementation evidence demonstrates that it is necessary.
+Every registry member must resolve to a published Markdown page. Validation rejects unresolved URLs, duplicate membership (including across Guides), and ordered Guides without at least two chapters. The registry's title must also match its entry page's heading, which is used as a navigation key. A thematic Guide's display order is **not** a prerequisite reading order. Independently useful Reference members retain their own lane and primary sidebar.
 
-Future validation should reject unresolved entry/member URLs, missing entries, multiple memberships (for now), and ordered Guides that lack a meaningful multi-page sequence. For a thematic Guide, member ordering is a deliberate display choice, **not** a prerequisite reading order.
-
-Before retiring fields, verify Eleventy navigation, sitemap and search behaviour, and provide backward-compatible migration tests. Implementation tasks and unresolved questions are tracked in [#173](https://github.com/ho-henry-senior/ai-wiki/issues/173). Revisit these design rules if actual reader journeys contradict them.
+The Website regression checks in `scripts/site-discovery.test.mjs` verify that published navigable pages remain in the sitemap and search index, with Guides-lane pages absent from broad Articles navigation. Changes to Guide metadata and navigation must keep those tests passing. Track further implementation decisions in [#173](https://github.com/ho-henry-senior/ai-wiki/issues/173) and revisit these rules if actual reader journeys contradict them.
