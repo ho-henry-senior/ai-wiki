@@ -18,4 +18,10 @@ Stop the agent discovering what you could tell it. Without repository context it
 
 ## Explore further
 
-Two more levers matter once those are in place. A long session resends more context on every turn: in Copilot CLI, `/context` shows what the next request carries and `/compact` summarizes it, as [session history and active context](../../concepts/session-history-vs-context.md) explains. And the model is the biggest price lever: see [choose a model and control cost](choose-a-model-and-control-cost.md). For reusable procedures, start with the [Skills guide](useful-skills.md); for specialist roles, see [Agent roles](../../concepts/skills-profiles-and-tools.md). Add a skill only when it pays off. For background, [evals](../../reference/glossary.md#evaluation-eval) compare time, tokens, and outcomes across setups, and the [lo-fi software factory case study](../../articles/lo-fi-software-factory-case-study.md) is an observed workflow, without a measured cost baseline.
+Once the agent has repository context and discoverable commands, there are other ways to improve economy:
+
+- **Manage session context.** Long sessions can carry growing amounts of context. In Copilot CLI, `/context` shows what the next request carries and `/compact` summarises it. See [Session history and active context](../../concepts/session-history-vs-context.md).
+- **Choose a cost-effective model.** Model selection is a major cost lever. See [Choose a model and control cost](choose-a-model-and-control-cost.md).
+- **Reuse procedures where worthwhile.** See the [Skills guide](useful-skills.md) for repeatable procedures and [Agent roles](../../concepts/skills-profiles-and-tools.md) for specialist responsibilities. Add customisation only when it pays off.
+
+For background, [evaluation (evals)](../../reference/glossary.md#evaluation-eval) explains comparing outcomes across setups. The [lo-fi software factory case study](../../articles/lo-fi-software-factory-case-study.md) describes an observed workflow, but does not establish a measured cost saving.
