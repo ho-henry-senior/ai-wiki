@@ -4,10 +4,12 @@
 export const guides = {
   skills: {
     title: "Skills",
-    ordered: false,
+    // A practical reading route; chapters remain independently useful.
+    ordered: true,
     overview: { title: "Skills", url: "/pages/useful-skills/" },
     parts: [
       { title: "Write a SKILL.md", url: "/pages/writing-agent-skills/" },
+      { title: "Skills and agent roles", url: "/pages/skills-and-agent-roles/" },
       { title: "Agent skills directory", url: "/pages/agent-skills-directory/" },
     ],
   },
