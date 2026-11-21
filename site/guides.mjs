@@ -2,6 +2,15 @@
 // keep their primary lane (for example Reference) while sharing guide context.
 // An ordered guide has chapters; a thematic guide has independent resources.
 export const guides = {
+  skills: {
+    title: "Skills",
+    ordered: false,
+    overview: { title: "Skills", url: "/pages/useful-skills/" },
+    parts: [
+      { title: "Write a SKILL.md", url: "/pages/writing-agent-skills/" },
+      { title: "Agent skills directory", url: "/pages/agent-skills-directory/" },
+    ],
+  },
   "understanding-coding-agents": {
     title: "How coding agents work",
     ordered: true,
