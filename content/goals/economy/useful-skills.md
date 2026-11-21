@@ -3,8 +3,6 @@ type: reference
 summary: What agent skills are, when a reusable procedure is worth adding, how Copilot finds skills, and how to test their value.
 status: developing
 lane: guides
-guide: skills
-guideOrder: 0
 goal: economy
 order: 2
 checked: 2026-11-15
