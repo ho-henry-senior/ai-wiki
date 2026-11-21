@@ -2,10 +2,14 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
 import { series } from "../site/series.mjs";
+import { guides } from "../site/guides.mjs";
 
 const cases = [
   ["goals/index.html", "goals"],
   ["pages/security/index.html", "goals", "Security"],
+  ["guides/index.html", "guides"],
+  ["pages/understanding-coding-agents/index.html", "guides", "How coding agents work"],
+  ["pages/model-requests-and-responses/index.html", "guides", "What the model receives and returns"],
   ["articles/index.html", "articles"],
   ["pages/cloud-agent-security/index.html", "articles", "Secure the Copilot cloud agent"],
   ["reference/index.html", "reference"],
@@ -52,22 +56,23 @@ test("Reference sidebar is alphabetical while the landing page retains purpose g
   assert.ok(html.includes("Agent skills directory"), "Standalone skills directory stays in Reference");
 });
 
-test("series navigation uses linked cards with titles and reading order", () => {
+test("ordered Guides navigation uses linked cards with titles and reading order", () => {
   const html = fs.readFileSync("_site/pages/model-requests-and-responses/index.html", "utf8");
   const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\s\S]*?<\/nav>/)?.[0];
-  assert.ok(nav, "Series navigation exists");
+  assert.ok(nav, "Guide navigation exists");
   assert.match(nav, /Part 2 of 3/);
+  assert.match(nav, /Guide navigation/);
   assert.match(nav, /class="app-series-navigation__card app-series-navigation__card--previous"/);
   assert.match(nav, /class="app-series-navigation__card app-series-navigation__card--next"/);
-  // Titles come from the series data, so retitling a part needs no change here.
-  const [first, , third] = series["understanding-coding-agents"].parts;
+  // Titles come from the guide data, so retitling a part needs no change here.
+  const [first, , third] = guides["understanding-coding-agents"].parts;
   assert.ok(nav.includes(first.title), "Previous card names part 1");
   assert.ok(nav.includes(third.title), "Next card names part 3");
   assert.match(nav, /<span aria-hidden="true">←<\/span> Previous/);
   assert.match(nav, /Next <span aria-hidden="true">→<\/span>/);
 });
 
-test("sources follow series navigation across the series", () => {
+test("sources follow Guides navigation across the ordered guide", () => {
   const pages = [
     "pages/inside-coding-agent/index.html",
     "pages/model-requests-and-responses/index.html",
@@ -77,14 +82,14 @@ test("sources follow series navigation across the series", () => {
     const html = fs.readFileSync(`_site/${page}`, "utf8");
     const navigation = html.indexOf('<nav class="app-series-navigation"');
     const sources = html.indexOf('<h2 id="sources"');
-    assert.ok(navigation >= 0, `${page}: series navigation exists`);
+    assert.ok(navigation >= 0, `${page}: guide navigation exists`);
     assert.ok(sources > navigation, `${page}: sources appear after navigation`);
     assert.equal(html.match(/<h2 id="sources"/g)?.length, 1, `${page}: Sources occurs once`);
   }
 });
 
 
-test("skills and agent roles series has four linked chapters with accurate cards", () => {
+test("legacy skills and agent roles series has four linked chapters with accurate cards", () => {
   const entry = series["skills-and-agent-roles"];
   assert.equal(entry.parts.length, 4);
   const pages = [
