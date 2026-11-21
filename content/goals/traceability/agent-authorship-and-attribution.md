@@ -1,5 +1,5 @@
 ---
-type: guide
+type: advice
 summary: "A reader needs to know which changes a person wrote and which an agent did."
 status: established
 lane: goals
