@@ -121,14 +121,8 @@ test("Skills is an ordered Guide with a Reference directory", () => {
     else assert.doesNotMatch(nav, /app-series-navigation__card--next/, file);
     assert.doesNotMatch(nav, /<span aria-current="page">/, file + ": no thematic member list");
   }
-  for (const file of [
-    "pages/skills-and-agent-roles/index.html",
-    "pages/agent-roles-directory/index.html",
-  ]) {
-    const html = fs.readFileSync("_site/" + file, "utf8");
-    if (file.includes("skills-and-agent-roles"))
-      assert.doesNotMatch(html, /<nav class="app-series-navigation"/);
-  }
+  const comparison = fs.readFileSync("_site/pages/skills-and-agent-roles/index.html", "utf8");
+  assert.doesNotMatch(comparison, /<nav class="app-series-navigation"/);
 });
 
 test("Agent roles has three linked chapters with Previous/Next", () => {
@@ -139,14 +133,15 @@ test("Agent roles has three linked chapters with Previous/Next", () => {
     ["pages/agent-role-boundaries/index.html", "concepts/skills-profiles-and-tools/index.html", "pages/agent-roles-directory/index.html"],
     ["pages/agent-roles-directory/index.html", "pages/agent-role-boundaries/index.html", null],
   ];
+  const href = (file) => 'href="/ai-wiki/' + file.replace(/index[.]html$/, "") + '"';
   for (const [file, previous, next] of pages) {
     const html = fs.readFileSync("_site/" + file, "utf8");
     const nav = html.match(/<nav class="app-series-navigation"[^>]*>[\\s\\S]*?<\\/nav>/)?.[0];
     assert.ok(nav, file + ": Guide nav");
     assert.match(nav, /Agent roles/);
-    if (previous) assert.ok(nav.includes('href="/ai-wiki/' + previous.replace(/\\/index.html$/, "/") + '"') || nav.includes('href="/ai-wiki/' + previous.replace(/index.html$/, "") + '"'), file + ": Previous link");
+    if (previous) assert.ok(nav.includes(href(previous)), file + ": Previous link");
     else assert.doesNotMatch(nav, /app-series-navigation__card--previous/);
-    if (next) assert.ok(nav.includes('href="/ai-wiki/' + next.replace(/index.html$/, "") + '"'), file + ": Next link");
+    if (next) assert.ok(nav.includes(href(next)), file + ": Next link");
     else assert.doesNotMatch(nav, /app-series-navigation__card--next/);
   }
 });
