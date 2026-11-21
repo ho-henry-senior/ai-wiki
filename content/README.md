@@ -31,8 +31,7 @@ Pages are listed here by their section on the website, which their `lane` front 
 - [Skills](goals/economy/useful-skills.md) — what a skill is, when to add one, and where Copilot finds skills.
   - [Write a SKILL.md](reference/writing-agent-skills.md) — syntax, file structure and a complete minimal skill.
   - [Agent skills directory](reference/agent-skills-directory.md) — built-in, inspected and candidate skills, with credited sources and limitations.
-- [Agent roles](articles/agent-roles.md) — an ordered guide to role boundaries, handoffs and example role files.
-  - [Agent roles, skills and tools](concepts/skills-profiles-and-tools.md)
+- [Agent roles](concepts/skills-profiles-and-tools.md) — what a role is, when to add one, and how it differs from a skill and a tool.
   - [Agile roles in agentic development](articles/agent-role-boundaries.md) — familiar responsibilities and handoffs in an agent-assisted workflow.
   - [How agent roles use skills](reference/agent-roles-directory.md) — original role files showing explicit skill use and possible adaptations.
 
@@ -47,7 +46,6 @@ Pages are listed here by their section on the website, which their `lane` front 
 - [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — how Copilot charges for tokens, which model tier to use, and how to cap a session.
 - [Secure a local coding agent](goals/security/local-agent-security.md) — Copilot CLI, app, and editor: sandbox, tool and URL permissions, credentials.
 - [Secure the Copilot cloud agent](goals/security/cloud-agent-security.md) — what GitHub enforces, and the secrets, firewall, MCP, and approval settings you set.
-- [Skills and agent roles](articles/skills-and-agent-roles.md) — how reusable procedures and agent responsibilities differ.
 - [Case study: a lo-fi software factory](articles/lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.
 - [The Home Repo pattern for agents working across repositories](articles/home-repo-pattern.md) — a shared starting point for agent context and skills across projects, with access and maintenance limits.
 

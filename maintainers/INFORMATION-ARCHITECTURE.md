@@ -83,13 +83,11 @@ A Guide can gather pages whose **primary purposes differ**. The Guides can inclu
 
 - **Agent skills directory** — Reference lane; final Skills chapter and standalone lookup resource, discoverable via Reference **and** Skills.
 
-- **Agent roles** — Guides lane; ordered entry point to role responsibilities and handoffs.
+- **Agent roles** — Guides lane; ordered entry that also explains what a role is.
 
-- **Agent roles, skills and tools** — Guides lane; first Agent roles chapter.
+- **Agile roles in agentic development** — Guides lane; first Agent roles chapter.
 
-- **Agile roles in agentic development** — Guides lane; second Agent roles chapter.
-
-- **How agent roles use skills** — Guides lane; third Agent roles chapter.
+- **How agent roles use skills** — Guides lane; second Agent roles chapter.
 
 The coding-agent and Agent roles chapters stay in Guides to simplify Articles navigation. The Skills directory stays in Reference because direct lookup there remains useful, despite its place in the ordered Skills reading route. A page may be linked or featured elsewhere without its active lane changing.
 
