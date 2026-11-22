@@ -24,7 +24,7 @@ The issue descriptions specified acceptance criteria and verification commands. 
 
 ## Why this mattered
 
-The split gave a Developer agent a bounded change to implement and a Reviewer agent concrete criteria to inspect. It also left room for human decisions about scope and ordering. A ticket's existence was not permission to begin: readiness was a separate workflow state.
+The split gave a Developer agent a bounded change to implement and a Reviewer agent concrete criteria to inspect. It also left room for human decisions about scope and ordering. A ticket's existence did not authorise implementation: readiness was a separate workflow state.
 
 The issue records support the existence and structure of this breakdown. They do not, by themselves, measure how much time the role separation saved or establish that the same process would work for ambiguous product decisions.
 
