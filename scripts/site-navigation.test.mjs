@@ -248,3 +248,20 @@ test("The glossary is a Reference page, not a footer link", () => {
   const sidebar = reference.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
   assert.ok(sidebar?.includes('href="/ai-wiki/pages/glossary/"'), "Reference sidebar links the glossary");
 });
+
+test("The homepage leads with First steps and routes to lanes rather than listing them", () => {
+  const home = fs.readFileSync("_site/index.html", "utf8");
+  const main = home.slice(home.indexOf("<main"), home.indexOf("</main>"));
+  const firstSteps = main.indexOf(">First steps</h2>");
+  const goals = main.indexOf(">Goals</h2>");
+  const guidesHeading = main.indexOf(">Guides</h2>");
+  assert.ok(firstSteps > 0 && firstSteps < goals && goals < guidesHeading, "First steps, then Goals, then Guides");
+  for (const href of ["/ai-wiki/pages/excessive-agent-access/", "/ai-wiki/pages/agent-facing-repository-structure/", "/ai-wiki/pages/agree-on-the-problem/"])
+    assert.ok(main.slice(firstSteps, goals).includes(`href="${href}"`), `First steps links ${href}`);
+  const guidesSection = main.slice(guidesHeading);
+  assert.ok(guidesSection.includes('href="/ai-wiki/guides/"'), "Guides routes to the Guides landing page");
+  for (const guide of Object.values(guides))
+    assert.ok(!guidesSection.includes(`href="/ai-wiki${guide.overview.url}"`), `Homepage does not list ${guide.title}`);
+  for (const lane of ["articles", "case-studies", "reference"])
+    assert.ok(main.includes(`href="/ai-wiki/${lane}/"`), `Homepage routes to ${lane}`);
+});

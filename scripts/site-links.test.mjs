@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { githubSlug, isExternalLink, markExternalLink, pageUrl, rewriteLink } from "./site-links.mjs";
+import { laneAnchors, githubSlug, isExternalLink, markExternalLink, pageUrl, rewriteLink } from "./site-links.mjs";
 
 test("maps Markdown files to site URLs, with README as the folder index", () => {
   assert.equal(pageUrl("README.md"), "/");
@@ -120,4 +120,15 @@ test("adds the external class and description to a rendered link tag", () => {
   // Does not mark a link twice.
   const marked = markExternalLink('<a href="https://example.com/">');
   assert.equal(markExternalLink(marked), marked);
+});
+
+test("links to a lane's section of the GitHub index go to that lane's landing page", async () => {
+  const { lanes } = await import("../site/lanes.mjs");
+  assert.equal(rewriteLink("content/README.md#guides", "./README.md"), "/guides/");
+  assert.equal(rewriteLink("../../README.md#reference", "./content/goals/alignment/README.md"), "/reference/");
+  assert.equal(rewriteLink("content/README.md#not-a-lane", "./README.md"), "/pages/#not-a-lane");
+  for (const lane of Object.values(lanes)) {
+    const anchor = "#" + lane.title.toLowerCase().replace(/ /g, "-");
+    assert.equal(laneAnchors[anchor], lane.url, lane.title);
+  }
 });
