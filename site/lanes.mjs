@@ -29,8 +29,7 @@ export const lanes = {
   reference: {
     title: "Reference",
     url: "/reference/",
-    description:
-      "Copyable assets, practical checklists, tools and the sources behind the guidance.",
+    description: "",
   },
 };
 
