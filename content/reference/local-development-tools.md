@@ -29,4 +29,5 @@ Give an agent commands that run the project's existing checks rather than asking
 ## Related guidance
 
 - [Enable agents to run repository commands](../goals/alignment/agent-tool-delegation.md) — which commands to list in `AGENTS.md`, what each one does, and which results should block handoff.
+- [Decide where to look](../goals/traceability/decide-where-to-look.md#then-look) — running these checks yourself when you review an agent's change.
 - [Give agents a command interface with Just](../goals/economy/justfile-agent-workflows.md) — focused test recipes, a read-only handoff gate, and keeping diagnostics and file-changing commands out of it.

@@ -57,6 +57,8 @@ The assessment can guide attention and help reduce risk—for example, by splitt
 
 ## Possible connections to the wiki
 
+**Used in:** [Review and approve agent work](../goals/traceability/review-and-approve-agent-work.md) ([#216](https://github.com/ho-henry-senior/ai-wiki/issues/216)), where the merge-risk questions inform [decide where to look](../goals/traceability/decide-where-to-look.md). The notes below are the original ideas.
+
 - **Unit tests in the age of AI:** distinguish fast local tests from end-to-end workflow evidence; avoid treating a green unit-test suite as sufficient proof.
 - **Agent role responsibilities and boundaries:** describe the independent reviewer, its handoff to implementation, and the human's final approval authority.
 - **Repository context for agents:** explain the local setup, tools, test data, environment, and reusable verification instructions needed for agents to exercise a system.
