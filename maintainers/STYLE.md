@@ -65,7 +65,7 @@ The page then records `checked: 2026-11-15` in its front matter.
 
 **Write for scanning.** Before, the principle, action and follow-through run together:
 
-> Requirements discovery is a negotiation: the agent suggests possibilities, but you decide the scope. Challenge unnecessary additions and record the boundaries so they are not reintroduced later. [Agree on the problem](../content/goals/alignment/define-and-verify-tasks.md#agree-on-the-problem).
+> Requirements discovery is a negotiation: the agent suggests possibilities, but you decide the scope. Challenge unnecessary additions and record the boundaries so they are not reintroduced later. [Agree on the problem](../content/goals/alignment/agree-on-the-problem.md).
 
 After, separate the ideas and the supporting link:
 
@@ -75,7 +75,7 @@ After, separate the ideas and the supporting link:
 >
 > Record the boundaries so they are not reintroduced later.
 >
-> More detail: [Agree on the problem](../content/goals/alignment/define-and-verify-tasks.md#agree-on-the-problem).
+> More detail: [Agree on the problem](../content/goals/alignment/agree-on-the-problem.md).
 
 ## Checking a page
 

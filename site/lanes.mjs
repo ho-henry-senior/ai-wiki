@@ -50,6 +50,12 @@ const homeKey = "Home";
 //
 // This replaces the plugin's computed navigation data, keeping its defaults
 // for pages with no lane.
+//
+// Eleventy Navigation treats commas in keys as multiple parents, so a Guide
+// whose title has a comma is keyed by its entry URL instead of its title.
+export const guideKey = (guide) =>
+  guide.title.includes(",") ? `guide:${guide.overview.url}` : guide.title;
+
 export const eleventyNavigation = {
   key: (data) => {
     if (data.homepage) return data.eleventyNavigation?.key || homeKey;
@@ -57,6 +63,8 @@ export const eleventyNavigation = {
     // Eleventy Navigation treats commas in keys as multiple parents. A
     // Guide chapter can have a comma in its heading, but never in its key.
     const member = guideForUrl(data.page?.url);
+    if ((data.lane === "guides" || data.lane === "case-studies") && member?.position === 0)
+      return guideKey(member.guide);
     if ((data.lane === "guides" || data.lane === "case-studies") && member?.position > 0 && key?.includes(","))
       return `guide-member:${data.page.url}`;
     return key;
@@ -69,9 +77,9 @@ export const eleventyNavigation = {
     // Reference members remain in their own primary navigation lane.
     const member = guideForUrl(data.page?.url);
     if (data.lane === "guides" && member?.position > 0)
-      return member.guide.title;
+      return guideKey(member.guide);
     if (data.lane === "case-studies" && member?.guide.kind === "case-study" && member.position > 0)
-      return member.guide.title;
+      return guideKey(member.guide);
     if (data.lane !== "goals") return lanes[data.lane]?.title;
     if (data.type === "overview") return lanes.goals.title;
     return goals[data.goal] || lanes.goals.title;

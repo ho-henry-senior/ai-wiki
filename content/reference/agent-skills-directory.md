@@ -54,7 +54,7 @@ These come from their credited authors, and other pages in this wiki link to the
 
 **Author:** [Matt Pocock](https://github.com/mattpocock). **Source:** [to-spec/SKILL.md](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-spec/SKILL.md).
 
-Synthesises a conversation and repository context into a specification. **Caution:** the source publishes to a configured tracker without a final approval of the full specification; [this wiki recommends human agreement](../goals/alignment/define-and-verify-tasks.md#agree-on-the-problem) before implementation.
+Synthesises a conversation and repository context into a specification. **Caution:** the source publishes to a configured tracker without a final approval of the full specification; [this wiki recommends human agreement](../goals/alignment/agree-on-the-problem.md) before implementation.
 
 ### /to-tickets
 

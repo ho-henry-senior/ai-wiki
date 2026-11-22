@@ -241,7 +241,7 @@ jobs:
             echo "An article does not show its date." >&2
             exit 1
           }
-          grep -q 'href="/ai-wiki/pages/home-repo-pattern/"' _site/pages/define-and-verify-tasks/index.html || {
+          grep -q 'href="/ai-wiki/pages/home-repo-pattern/"' _site/pages/choose-a-model-and-control-cost/index.html || {
             echo "The Articles sidebar does not include the Home Repo pattern." >&2
             exit 1
           }

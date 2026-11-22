@@ -129,3 +129,12 @@ test("An unnumbered ordered Guide keeps Previous/Next without chapter numbers", 
   assert.equal(repository.next.url, "/pages/agent-tool-delegation/");
   assert.equal(guideNavigation("/pages/model-requests-and-responses/").numbered, true);
 });
+
+test("A Guide whose title has a comma nests its chapters under a comma-free key", () => {
+  const entry = { lane: "guides", title: "Define, steer, and verify a task", page: { url: "/pages/define-and-verify-tasks/" } };
+  const chapter = { lane: "guides", title: "Agree on the problem", page: { url: "/pages/agree-on-the-problem/" } };
+  const key = eleventyNavigation.key(entry);
+  assert.ok(!key.includes(","), "entry key has no comma");
+  assert.equal(eleventyNavigation.parent(chapter), key);
+  assert.equal(eleventyNavigation.title(entry), "Define, steer, and verify a task");
+});

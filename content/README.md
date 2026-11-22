@@ -7,8 +7,6 @@ Pages are listed here by their section on the website, which their `lane` front 
 ## Goals
 
 - [Alignment](goals/alignment/README.md) — core advice for matching work to the intended outcome.
-  - [Requirements discovery with coding agents](goals/alignment/agent-led-requirements-discovery.md)
-  - [Explicit decisions and scope boundaries](goals/alignment/explicit-decisions-and-scope-boundaries.md)
 - [Economy](goals/economy/README.md) — core advice for using time and tokens effectively without sacrificing quality or security.
   - [Well-organised repository context](goals/economy/agent-ready-repository-context.md)
   - [Discoverable deterministic checks](goals/economy/discoverable-deterministic-checks.md)
@@ -24,6 +22,10 @@ Pages are listed here by their section on the website, which their `lane` front 
 - [Agent roles](concepts/skills-profiles-and-tools.md) — what a role is, when to add one, and how it differs from a skill and a tool.
   - [Agile roles in agentic development](articles/agent-role-boundaries.md) — familiar responsibilities and handoffs in an agent-assisted workflow.
   - [How agent roles use skills](reference/agent-roles-directory.md) — original role files showing explicit skill use and possible adaptations.
+- [Define, steer, and verify a task](goals/alignment/define-and-verify-tasks.md) — agree what success means, turn it into issues, then steer the agent and check the result.
+  - [Agree on the problem](goals/alignment/agree-on-the-problem.md) — have the agent question you, decide the scope, and agree a specification.
+  - [Turn the specification into issues](goals/alignment/turn-specification-into-issues.md) — outcome, acceptance criteria, checks and out of scope for each issue.
+  - [Hand off an issue and steer the implementation](goals/alignment/hand-off-and-steer.md) — give the agent an issue, correct it on the pull request, and check the result before accepting it.
 - [How coding agents work](articles/understanding-coding-agents.md) — an illustrated four-chapter guide to agent components, model requests, the tool-call loop and session context.
   - [Inside a coding agent](articles/inside-coding-agent.md)
   - [What the model receives and returns](articles/model-requests-and-responses.md)
@@ -46,7 +48,6 @@ Pages are listed here by their section on the website, which their `lane` front 
 
 ## Articles
 
-- [Define, steer, and verify a task](goals/alignment/define-and-verify-tasks.md) — write the task, hand it to Copilot, steer it, and check the result.
 - [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — how Copilot charges for tokens, which model tier to use, and how to cap a session.
 - [Secure the Copilot cloud agent](goals/security/cloud-agent-security.md) — what GitHub enforces, and the secrets, firewall, MCP, and approval settings you set.
 - [The Home Repo pattern for agents working across repositories](articles/home-repo-pattern.md) — a shared starting point for agent context and skills across projects, with access and maintenance limits.
