@@ -45,11 +45,15 @@ A custom agent can describe a reviewer that reports findings without editing cod
 ```markdown
 ---
 name: reviewer
-description: Reviews a pull request against its issue's acceptance criteria and reports findings. Does not change code.
+description: >-
+  Reviews a pull request against its issue's acceptance
+  criteria and reports findings. Does not change code.
 tools: ["read", "search"]
 ---
 
-Compare the diff with each acceptance criterion in the linked issue. Report what is met, what is missing, and any risk.
+Compare the diff with each acceptance criterion in the
+linked issue. Report what is met, what is missing, and
+any risk.
 ```
 
 GitHub's [custom-agent configuration reference](https://docs.github.com/en/copilot/reference/custom-agents-configuration) specifies the `tools` field: it limits the tools exposed to the custom agent; when omitted, all available tools are enabled by default. A tool restriction does not itself prove the agent has no other side effects, and its instructions cannot replace repository protections or external approvals. See [Instructions and enforced controls](instructions-vs-controls.md).
