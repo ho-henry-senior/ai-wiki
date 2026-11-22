@@ -256,7 +256,7 @@ test("The homepage leads with First steps and routes to lanes rather than listin
   const goals = main.indexOf(">Goals</h2>");
   const guidesHeading = main.indexOf(">Guides</h2>");
   assert.ok(firstSteps > 0 && firstSteps < goals && goals < guidesHeading, "First steps, then Goals, then Guides");
-  for (const href of ["/ai-wiki/pages/excessive-agent-access/", "/ai-wiki/pages/agent-facing-repository-structure/", "/ai-wiki/pages/agree-on-the-problem/"])
+  for (const href of ["/ai-wiki/pages/excessive-agent-access/", "/ai-wiki/pages/agent-facing-repository-structure/", "/ai-wiki/pages/define-and-verify-tasks/"])
     assert.ok(main.slice(firstSteps, goals).includes(`href="${href}"`), `First steps links ${href}`);
   const guidesSection = main.slice(guidesHeading);
   assert.ok(guidesSection.includes('href="/ai-wiki/guides/"'), "Guides routes to the Guides landing page");

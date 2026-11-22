@@ -8,7 +8,7 @@ Practical guidance for developers using AI agents, focusing on GitHub Copilot.
 
 2. **[Prepare your repository for agents](content/goals/alignment/agent-facing-repository-structure.md).** Give the agent short instructions in `AGENTS.md`, the facts it would otherwise guess, and commands it can run to check its work.
 
-3. **[Agree on the problem before delegating the solution](content/goals/alignment/agree-on-the-problem.md).** An agent can build a convincing solution to the wrong problem. Have it question you, then agree a specification before it starts.
+3. **[Agree on the problem before delegating the solution](content/goals/alignment/define-and-verify-tasks.md).** An agent can build a convincing solution to the wrong problem. Have it question you, agree a specification, then use it to steer and check the work.
 
 ## Goals
 
