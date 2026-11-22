@@ -2,7 +2,6 @@
 type: reference
 summary: Short definitions of AI and coding-agent terms used in this wiki, such as harness, context window, MCP and token, with links to pages that explain them in depth.
 lane: reference
-status: established
 ---
 
 # AI glossary

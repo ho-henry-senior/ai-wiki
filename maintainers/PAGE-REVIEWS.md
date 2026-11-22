@@ -86,7 +86,7 @@ From the whole-wiki editorial review ([#183](https://github.com/ho-henry-senior/
   - _Excessive agent access_, _Unexpected data exposure_ and _Discoverable deterministic checks_ are kept, because each now earns its click. The closing line of _Discoverable deterministic checks_ is cut.
   - _Vector stores_ is merged into _Retrieval-augmented generation_ as **Vector search**, with the glossary entry linking to it.
   - The _Repository context_ open questions moved to [#245](https://github.com/ho-henry-senior/ai-wiki/issues/245).
-  - Completeness statuses were assessed: the five case-study pages, _Agent roles and skills_, the glossary and RAG are `established`.
+  - Completeness statuses were assessed: the five case-study pages, _Agent roles and skills_ and RAG are `established`; the glossary stays without one.
   - The slide is kept. The _Working with repositories_ guide stays deferred until it has a defined reader journey. Rechecking pricing, retention and version facts is left to the daily freshness run.
 
 ## Next
