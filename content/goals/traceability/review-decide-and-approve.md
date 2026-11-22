@@ -28,27 +28,17 @@ Addressing an agent's findings doesn't mean the change can go ahead. Decide what
 - **defer it,** opening an issue so it isn't lost;
 - **reject it,** with a reason, such as being out of scope.
 
-## Decide
-
-You have three choices:
-
-- **Approve** when you can stand behind the change: it does what was agreed, you have checked what matters for this change, and you accept what remains unchecked.
-- **Request changes** when it isn't ready. Say what needs to change to make it complete, then review it again when it comes back. That round trip is normal review, not a failure.
-- **Decline** when it shouldn't go in, for example because the approach is wrong or the work is no longer needed.
-
-If the evidence is incomplete, ask for what's missing before you decide: a test, a check you can run, a smaller change, or a narrower scope. Don't approve on the agent's assurance that it works.
-
 ## What doesn't count as approval
 
 - **The agent's own review or summary.** By default, Copilot's code review leaves a comment review, which doesn't count toward a repository's required approvals. Every Copilot review also includes an assessment of whether it thinks the pull request is ready; that doesn't count either.
 - **A risk score or a passing check.** Both are evidence for your decision, not the decision.
 - **An agent's approval.** Copilot can be configured to submit approvals that count toward required approvals. This is in public preview and off by default. An agent's approval can't carry responsibility for the change, so this guide doesn't recommend turning it on.
 
-## Record the decision
+## Decide, and record it
 
-Use the process your team already follows: the ticket, small commits with clear messages, a documented pull request, and an approving review from a named person. GitHub records who approved and when. Add a short comment with what a later reader couldn't otherwise tell: anything you knowingly left unchecked, limitations you accepted, and why you approved despite them. For what the record should answer, see [Trust & Traceability](README.md#example).
+Approve when you can stand behind the change; otherwise request changes, saying what would make it complete, or decline it. Requesting changes and reviewing again is normal review, not a failure. If the evidence is incomplete, ask for what's missing rather than approving on the agent's assurance that it works.
 
-Merging is a separate step, and it may happen later under the repository's rules, such as required reviews from code owners.
+Record the decision through the process your team already follows: the ticket, small commits with clear messages, a documented pull request, and an approving review from a named person. Add a short comment with what a later reader couldn't otherwise tell: anything you knowingly left unchecked, limitations you accepted, and why you approved despite them. For what the record should answer, see [Trust & Traceability](README.md#example).
 
 ## Sources
 
