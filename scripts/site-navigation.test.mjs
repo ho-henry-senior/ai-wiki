@@ -288,3 +288,12 @@ test("Agent roles and Skills sit under one group; only the active Guide's chapte
   const main = listing.slice(listing.indexOf("app-document-list"));
   assert.ok(main.indexOf('href="/ai-wiki/concepts/skills-profiles-and-tools/"') > main.indexOf('href="/ai-wiki/pages/agent-roles-and-skills/"'), "the landing page lists the group's Guides beneath it");
 });
+
+test("Only top-level sidebar items carry the current-item bar", () => {
+  const html = fs.readFileSync("_site/pages/useful-skills/index.html", "utf8");
+  const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
+  assert.ok(sidebar, "sidebar exists");
+  const nested = sidebar.slice(sidebar.indexOf("x-govuk-sub-navigation__section--nested"));
+  assert.doesNotMatch(nested, /section-item--current/, "nested items have no current-item bar");
+  assert.match(nested, /href="\/ai-wiki\/pages\/useful-skills\/" aria-current="true"/, "the current nested page is still marked");
+});
