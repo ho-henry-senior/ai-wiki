@@ -19,7 +19,12 @@ For how to define a role contract and restrict a Copilot custom agent's tools, s
 
 ## Example responsibilities
 
-**R** does the work; **A** is accountable; **C** is consulted; **I** is informed. This deliberately small RACI illustrates the important handoffs, not every activity a team performs.
+This deliberately small RACI table shows the important handoffs, not every activity a team performs. The letters mean:
+
+- **R** Responsible: does the work
+- **A** Accountable: answers for the result
+- **C** Consulted: gives input before the work is done
+- **I** Informed: is told the outcome
 
 | Activity                              | Product | Analyst | Developer | Reviewer | Human |
 | ------------------------------------- | :-----: | :-----: | :-------: | :------: | :---: |
