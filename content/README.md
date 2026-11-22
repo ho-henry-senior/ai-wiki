@@ -31,6 +31,7 @@ Pages are listed here by their section on the website, which their `lane` front 
   - [What the model receives and returns](articles/model-requests-and-responses.md)
   - [The tool-call loop](concepts/tool-call-loop.md)
   - [Session history and active context](concepts/session-history-vs-context.md)
+- [Review and approve agent work](goals/traceability/review-and-approve-agent-work.md) — developing: getting agent work into a form you can approve, and assessing it.
 - [Secure a local coding agent](goals/security/local-agent-security.md) — limits a local agent can't get round, for its commands, its credentials, and what runs outside its sandbox.
   - [Configure the sandbox and tool restrictions](goals/security/local-sandbox-and-tool-restrictions.md) — Copilot CLI, app and VS Code: folders, network, deny rules, and a test that a restriction works.
   - [Protect credentials and sensitive data](goals/security/local-agent-credentials.md) — credential pass-through, a narrow token for Copilot, and keeping secrets out of tool output.
