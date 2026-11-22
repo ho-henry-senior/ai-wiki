@@ -207,7 +207,7 @@ test("checked metadata shows a date, with optional accessible verification detai
 });
 
 test("Unnumbered ordered Guides have Previous/Next but no chapter numbers", () => {
-  for (const id of ["repository-setup", "local-agent-security", "define-and-verify"]) {
+  for (const id of ["repository-setup", "local-agent-security", "define-and-verify", "review-and-approve"]) {
     const guide = guides[id];
     assert.equal(guide.ordered, true, id);
     assert.equal(guide.numbered, false, id);

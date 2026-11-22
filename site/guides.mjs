@@ -59,6 +59,16 @@ export const readingRoutes = {
       { title: "Hand off an issue and steer the implementation", url: "/pages/hand-off-and-steer/" },
     ],
   },
+  "review-and-approve": {
+    title: "Review and approve agent work",
+    ordered: true,
+    numbered: false,
+    overview: { title: "Review and approve agent work", url: "/pages/review-and-approve-agent-work/" },
+    parts: [
+      { title: "Ask for work you can approve", url: "/pages/ask-for-work-you-can-approve/" },
+      { title: "Decide where to look", url: "/pages/decide-where-to-look/" },
+    ],
+  },
   "repository-setup": {
     title: "Set up a repository for agents",
     ordered: true,

@@ -118,7 +118,7 @@ A Guide can gather pages whose **primary purposes differ**. The Guides can inclu
 
 - **Define, steer, and verify a task** — Guides lane; ordered but unnumbered entry for the task cycle that the Alignment goal explains, followed by three chapters: Agree on the problem; Turn the specification into issues; Hand off an issue and steer the implementation. The Alignment routing pages for requirements discovery and scope were folded into the first chapter ([#213](https://github.com/ho-henry-senior/ai-wiki/issues/213)).
 
-- **Review and approve agent work** — Guides lane; developing entry for the reviewer's side of approval, alongside Trust & Traceability ([#216](https://github.com/ho-henry-senior/ai-wiki/issues/216)). Its four chapters arrive in later pull requests; it joins the Guide registry when they do. Trust & Traceability keeps the principles and the record; _Define, steer, and verify a task_ keeps the task-level checks.
+- **Review and approve agent work** — Guides lane; developing entry for the reviewer's side of approval, alongside Trust & Traceability ([#216](https://github.com/ho-henry-senior/ai-wiki/issues/216)). Ordered but unnumbered; chapters 1–2 (Ask for work you can approve; Decide where to look) are published, and chapters 3–4 follow. Trust & Traceability keeps the principles and the record; _Define, steer, and verify a task_ keeps the task-level checks.
 
 - **Secure a local coding agent** — Guides lane; ordered but unnumbered entry, the setup overview, followed by three chapters. The Security goal explains the risks; this Guide is the setup route.
 
