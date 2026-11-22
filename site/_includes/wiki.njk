@@ -11,7 +11,7 @@
     {{ pageMetadata() }}
     {%- set guideContext = page.url | guideNavigation %}
     {%- if guideContext and guideContext.current > 0 %}
-    <p class="govuk-body-s app-guide-context">Part of the <a class="govuk-link" href="{{ guideContext.overview.url }}">{{ guideContext.title }}</a> guide</p>
+    <p class="govuk-body-s app-guide-context">Part of the <a class="govuk-link" href="{{ guideContext.overview.url }}">{{ guideContext.title }}</a>{{ "" if guideContext.kind == "case-study" else " guide" }}</p>
     {%- endif %}
     {#- Goal pages and articles carry summaries for listings and search, but
         open with their own introduction; don't print the summary again. -#}
@@ -144,7 +144,7 @@
     {% if guideReading %}
       {%- set reading = guideReading %}
       {% if reading %}
-      <nav class="app-series-navigation" aria-label="Guide navigation">
+      <nav class="app-series-navigation" aria-label="{{ 'Case study' if reading.kind == 'case-study' else 'Guide' }} navigation">
         <p class="govuk-body-s app-series-navigation__heading">
           <a class="govuk-link" href="{{ reading.overview.url }}">{{ reading.title }}</a>{% if reading.numbered and reading.current > 0 %} · Part {{ reading.current }} of {{ reading.total }}{% endif %}
         </p>

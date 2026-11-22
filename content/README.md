@@ -53,7 +53,11 @@ Pages are listed here by their section on the website, which their `lane` front 
 
 ## Case studies
 
-- [Case study: a lo-fi software factory](articles/lo-fi-software-factory-case-study.md) — a local agent workflow, its observed results, and limitations.
+- [Case study: a lo-fi software factory](articles/lo-fi-software-factory-case-study.md) — a four-chapter account of a local agent workflow, its real development and review evidence, outcomes, and limitations.
+  - [From a refactor idea to actionable issues](articles/lo-fi-factory-issues.md)
+  - [Dispatching development with GitHub labels](articles/lo-fi-factory-dispatch.md)
+  - [Agent reviews and human decisions](articles/lo-fi-factory-reviews.md)
+  - [What worked, what failed, and what remains](articles/lo-fi-factory-lessons.md)
 
 ## Reference
 

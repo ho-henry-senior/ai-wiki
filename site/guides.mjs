@@ -3,7 +3,7 @@
 // An ordered guide has chapters; a thematic guide has independent resources.
 // An ordered guide with `numbered: false` keeps Previous/Next, which implies
 // a sequence, but shows no "Part n of m", so it does not read as a checklist.
-export const guides = {
+export const readingRoutes = {
   skills: {
     title: "Skills",
     // Each chapter is a task: find, install or write, then test.
@@ -60,12 +60,28 @@ export const guides = {
       { title: "Give agents a command interface with Just", url: "/pages/justfile-agent-workflows/" },
     ],
   },
+  "lo-fi-software-factory": {
+    kind: "case-study",
+    title: "Case study: a lo-fi software factory",
+    ordered: true,
+    numbered: false,
+    overview: { title: "Case study: a lo-fi software factory", url: "/pages/lo-fi-software-factory-case-study/" },
+    parts: [
+      { title: "From a refactor idea to actionable issues", url: "/pages/lo-fi-factory-issues/" },
+      { title: "Dispatching development with GitHub labels", url: "/pages/lo-fi-factory-dispatch/" },
+      { title: "Agent reviews and human decisions", url: "/pages/lo-fi-factory-reviews/" },
+      { title: "What worked, what failed, and what remains", url: "/pages/lo-fi-factory-lessons/" },
+    ],
+  },
 };
+export const guides = Object.fromEntries(
+  Object.entries(readingRoutes).filter(([, route]) => route.kind !== "case-study"),
+);
 
 // The registry is the only owner of membership, order and entry points.
 // Lookups use canonical published URLs, so members can keep their own lane.
 const membersByUrl = new Map();
-for (const [id, guide] of Object.entries(guides)) {
+for (const [id, guide] of Object.entries(readingRoutes)) {
   if (!guide.overview?.url || !guide.title)
     throw new Error(`Guide ${id} needs a title and an entry URL`);
   if (guide.numbered === false && !guide.ordered)
@@ -94,6 +110,7 @@ export function guideNavigation(url) {
   const items = [guide.overview, ...guide.parts];
   return {
     id,
+    kind: guide.kind ?? "guide",
     title: guide.title,
     overview: guide.overview,
     ordered: guide.ordered === true,
@@ -115,4 +132,11 @@ export function validateGuideUrls(publishedUrls) {
       throw new Error(`Unresolved URL in guide ${match.id}: ${url}`);
   }
   return true;
+}
+
+// Case-study lookup is a filtered view of the same registry, not a second
+// membership map. Duplicate URLs across Guides and case studies are rejected.
+export function caseStudyForUrl(url) {
+  const member = guideForUrl(url);
+  return member?.guide.kind === "case-study" ? member : null;
 }

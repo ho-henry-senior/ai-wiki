@@ -2,7 +2,7 @@
 // belongs with front matter: `lane`, and `goal` for a goal overview or an
 // article with a clear main goal. See maintainers/MAINTAINING.md#website.
 
-import { guideForUrl } from "./guides.mjs";
+import { guideForUrl, caseStudyForUrl } from "./guides.mjs";
 
 // The order here is the order of the site's top bar.
 export const lanes = {
@@ -57,7 +57,7 @@ export const eleventyNavigation = {
     // Eleventy Navigation treats commas in keys as multiple parents. A
     // Guide chapter can have a comma in its heading, but never in its key.
     const member = guideForUrl(data.page?.url);
-    if (data.lane === "guides" && member?.position > 0 && key?.includes(","))
+    if ((data.lane === "guides" || data.lane === "case-studies") && member?.position > 0 && key?.includes(","))
       return `guide-member:${data.page.url}`;
     return key;
   },
@@ -69,6 +69,8 @@ export const eleventyNavigation = {
     // Reference members remain in their own primary navigation lane.
     const member = guideForUrl(data.page?.url);
     if (data.lane === "guides" && member?.position > 0)
+      return member.guide.title;
+    if (data.lane === "case-studies" && member?.guide.kind === "case-study" && member.position > 0)
       return member.guide.title;
     if (data.lane !== "goals") return lanes[data.lane]?.title;
     if (data.type === "overview") return lanes.goals.title;
