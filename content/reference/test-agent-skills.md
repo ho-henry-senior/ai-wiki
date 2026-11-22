@@ -1,6 +1,6 @@
 ---
 type: how-to
-summary: Compare the same real task with and without a skill, against results you can observe, record what you found, recheck after changes, and retire the skill when Copilot no longer needs it.
+summary: Compare a real task with the skill switched on and off, make sure it was actually used, retest after you change it, and retire it when Copilot does the same job.
 status: developing
 lane: guides
 tags:
@@ -10,37 +10,15 @@ tags:
 
 # Test whether a skill helps
 
-A skill adds to what the agent loads and needs upkeep. Keep one only if it makes a real task clearly better, and keep checking that it still does.
+A skill adds to what the agent loads and needs upkeep, so keep one only if it makes a real task clearly better. Most of that is an ordinary before-and-after comparison. Four things are specific to skills:
 
-## 1. Choose a real task and what "better" means
+- **Switch it off for the comparison.** In Copilot CLI, `/skills` lets you turn a skill off for a run, so you can do the same task with and without it, in fresh sessions.
+- **Make sure it was used.** If the agent didn't load the skill, you are comparing two runs without it. Call it by name, such as `/review-api-changes`, or check that the agent says it used it.
+- **Retest after you change it.** The description decides whether the skill is chosen, so an edit to the description can stop it being used at all.
+- **Retire it when Copilot does the same job.** Agents gain features over time; when Copilot handles the task as well without the skill, remove it.
 
-Pick a task from your own work that the skill is meant for, such as turning a discussion into a specification. Before you run anything, write down what you will look for, in terms you can observe: the specification covers every agreed decision, the tests pass first time, or you made fewer corrections.
-
-## 2. Run it without the skill
-
-Start a fresh session and do the task without the skill. In Copilot CLI you can turn a skill off for the run with `/skills`. Note the result against your criteria.
-
-## 3. Run it with the skill, under the same conditions
-
-Use the same starting point, the same model and a fresh session, and do the task again with the skill. Check that the skill was actually used, for example by calling it by name. Otherwise you are comparing two runs without it.
-
-## 4. Record what you found
-
-Write down the task, the agent and its version, the model, the result for each run, and the date. Keep the record where the skill's users will find it, such as the pull request that adds the skill or a note beside it.
-
-One comparison is evidence, not proof. If the difference is small, try a second task before deciding.
-
-## 5. Keep, change or remove it
-
-- **Keep it** if the result was clearly better and worth the upkeep.
-- **Change it** if it helped but loaded at the wrong time or missed a step; then test again.
-- **Remove it** if the results were the same, or worse.
-
-## 6. Keep checking
-
-Test again after you change the skill, after an update to an installed skill, and occasionally as Copilot changes. Agents build features in over time: when Copilot gains a built-in equivalent, record that and retire the skill.
+Record what you compared and what you found, for example in the pull request that adds the skill, so others know why it's there.
 
 ## Sources
 
-- [GitHub Docs: About agent skills](https://docs.github.com/en/copilot/concepts/customizations/agent-skills)
 - [GitHub Docs: Adding agent skills for Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills)
