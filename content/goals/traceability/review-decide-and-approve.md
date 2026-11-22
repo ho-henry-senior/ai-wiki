@@ -16,7 +16,14 @@ tags:
 
 # Review, decide and approve
 
-The last step is yours. Agents can review a change well, but the decision to accept it, and the responsibility for it, stay with the person who approves.
+The last step is yours: inspect the change and its evidence, decide what to do with the findings, and approve only what you can stand behind. Agents can review well, but the responsibility stays with the person who approves.
+
+## Inspect the change and its evidence
+
+The agent's report says what it ran, and CI shows what ran there; neither replaces examining the change.
+
+- **Use a diff tool that shows the complete change and individual commits.** Filter generated files when they obscure the review, but inspect lock files when dependencies change. Useful options include [LazyGit](https://github.com/jesseduffield/lazygit), VS Code with GitHub's [Pull Requests extension](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) or [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens), and the GitHub CLI (`gh pr checkout`, `gh pr diff`).
+- **Check what CI ran and read the tests, not just their results.** CI on a trusted runner is often more reproducible than a local run. For a risky change or gaps in the evidence, run relevant checks yourself; see [local checks and tools](../../reference/local-development-tools.md) and [verify the result](../alignment/hand-off-and-steer.md#verify-the-result).
 
 ## Use an agent's review as evidence
 
@@ -41,6 +48,9 @@ Approve when you can stand behind the change; otherwise request changes, saying 
 Record the decision through the process your team already follows: the ticket, small commits with clear messages, a documented pull request, and an approving review from a named person. Add a short comment with what a later reader couldn't otherwise tell: anything you knowingly left unchecked, limitations you accepted, and why you approved despite them. For what the record should answer, see [check the record](delivery-record.md#check-the-record).
 
 ## Sources
+
+- [GitHub CLI manual: gh pr diff](https://cli.github.com/manual/gh_pr_diff) and [gh pr checkout](https://cli.github.com/manual/gh_pr_checkout)
+- [VS Code docs: Work with GitHub in VS Code](https://code.visualstudio.com/docs/sourcecontrol/github)
 
 - [GitHub Docs: Using GitHub Copilot code review](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review)
 - [GitHub Docs: Approving a pull request with required reviews](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews)

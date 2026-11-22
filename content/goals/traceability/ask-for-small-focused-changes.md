@@ -9,7 +9,7 @@ tags:
   - Testing
 ---
 
-# Ask for work you can approve
+# Ask for small, focused changes
 
 Review starts before the agent writes anything. Your request decides how big the result will be, how focused it is, and how easy it is to check. Ask for work in the form you want to review, rather than reshaping it afterwards.
 
@@ -48,4 +48,4 @@ At the end, ask the agent to say:
 - what it didn't check, or couldn't;
 - any decisions it made that you should know about.
 
-This is the agent's account, not evidence in itself: check it against the diff and the checks. Next, [decide where to look](decide-where-to-look.md).
+This is the agent's account, not evidence in itself: check it against the diff and the checks. Next, [identify the risks in the change](identify-risks-in-a-change.md).

@@ -40,8 +40,8 @@ Pages are listed here by their section on the website, which their `lane` front 
   - [The tool-call loop](concepts/tool-call-loop.md)
   - [Session history and active context](concepts/session-history-vs-context.md)
 - [Review and approve agent work](goals/traceability/review-and-approve-agent-work.md) — developing: getting agent work into a form you can approve, and assessing it.
-  - [Ask for work you can approve](goals/traceability/ask-for-work-you-can-approve.md) — the smallest coherent change, nothing beyond the task, tests that matter, stop conditions and a checkable handoff.
-  - [Decide where to look](goals/traceability/decide-where-to-look.md) — what agents tend to get wrong, what makes a change riskier, and diff tools and checks to look with.
+  - [Ask for small, focused changes](goals/traceability/ask-for-small-focused-changes.md) — the smallest coherent change, nothing beyond the task, tests that matter, stop conditions and a checkable handoff.
+  - [Identify the risks in a change](goals/traceability/identify-risks-in-a-change.md) — what agents tend to get wrong, and how to assess impact and verification evidence.
   - [Review, decide and approve](goals/traceability/review-decide-and-approve.md) — agent review as evidence, what doesn't count as approval, and the decision and its record.
 - [Secure a local coding agent](goals/security/local-agent-security.md) — limits a local agent can't get round, for its commands, its credentials, and what runs outside its sandbox.
   - [Configure the sandbox and tool restrictions](goals/security/local-sandbox-and-tool-restrictions.md) — Copilot CLI, app and VS Code: folders, network, deny rules, and a test that a restriction works.

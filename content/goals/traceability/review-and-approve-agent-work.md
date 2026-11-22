@@ -15,14 +15,14 @@ When you approve a change, you stand behind it. An agent can't take that respons
 
 ## The steps
 
-**[Ask for work you can approve](ask-for-work-you-can-approve.md)**
+**[Ask for small, focused changes](ask-for-small-focused-changes.md)**
 
 - Ask for small changes; they're easier to review.
 - Agents usually do more than asked. Set the scope, and hold to it.
 - Ask for tests that show each requirement is met, and few enough that you can read them.
 - Tell the agent when to stop and ask, and ask for a handoff you can check.
 
-**[Decide where to look](decide-where-to-look.md)**
+**[Identify the risks in a change](identify-risks-in-a-change.md)**
 
 - Look first where agents go wrong: extra changes, altered tests, checks only the agent ran.
 - Then weigh the impact: how far the change reaches, and how hard it is to undo.
