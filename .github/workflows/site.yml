@@ -366,9 +366,10 @@ jobs:
         run: |
           test -s _site/articles/feed.xml || { echo "The Articles feed was not built." >&2; exit 1; }
           entries=$(grep -c '<entry>' _site/articles/feed.xml || true)
-          # Dated Guide chapters and the lo-fi case study (now in Case studies) are not Articles feed entries.
-          if [ "$entries" -ne 2 ]; then
-            echo "The Articles feed has $entries entries; expected 2." >&2
+          # Only RAG is a dated Article; Vector stores merged into it (#183). Dated
+          # Guide chapters and the lo-fi case study are not Articles feed entries.
+          if [ "$entries" -ne 1 ]; then
+            echo "The Articles feed has $entries entries; expected 1." >&2
             exit 1
           fi
           grep -q 'https://ho-henry-senior.github.io/ai-wiki/' _site/articles/feed.xml || {
