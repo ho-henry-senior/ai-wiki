@@ -33,4 +33,4 @@ When you approve a change, you stand behind it. An agent can't take that respons
 - Use an agent's review as evidence, not as the decision.
 - Approve only what you can stand behind.
 
-Agile delivery already records what was asked, what changed and who approved it. Have agents follow the same process, and their work leaves the same record. See [Trust & Traceability](README.md).
+The record of what was asked, what changed and who approved it comes from your existing delivery process; see [a record through your delivery process](delivery-record.md).

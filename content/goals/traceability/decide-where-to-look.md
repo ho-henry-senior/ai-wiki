@@ -25,7 +25,7 @@ Not every change needs the same depth of review. These questions help you decide
 
 ## Then weigh the risk
 
-The questions you'd ask of any change still apply. Look harder when it reaches shared code, other systems or interfaces others use; when it is hard to undo, such as a data migration; when a failure would be silent; and when it changes workflows, access rules, authentication or dependencies. A documentation fix may need only a careful read; an authentication change needs every line read and its owner's review, which a [`CODEOWNERS` file](README.md#independent-change-approval) can request. Several of these questions come from a talk on the code-review bottleneck; see [the notes on it](../../sources/warp-code-review-bottleneck.md).
+The questions you'd ask of any change still apply. Look harder when it reaches shared code, other systems or interfaces others use; when it is hard to undo, such as a data migration; when a failure would be silent; and when it changes workflows, access rules, authentication or dependencies. A documentation fix may need only a careful read; an authentication change needs every line read and its owner's review, which a [`CODEOWNERS` file](accountable-approval.md) can request. Several of these questions come from a talk on the code-review bottleneck; see [the notes on it](../../sources/warp-code-review-bottleneck.md).
 
 ## Then look
 
