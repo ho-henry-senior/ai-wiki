@@ -23,8 +23,8 @@ test("top navigation identifies landing pages, article pages, and standalone pag
   assert.deepEqual(nav[0], { text: "Goals", href: "/goals/" });
 });
 
-test("the top bar lists Goals, Guides, Articles, Case studies, then Reference", () => {
-  assert.deepEqual(Object.values(lanes).map((lane) => lane.title), ["Goals", "Guides", "Articles", "Case studies", "Reference"]);
+test("the top bar lists Goals, Guides, Case studies, Articles, then Reference", () => {
+  assert.deepEqual(Object.values(lanes).map((lane) => lane.title), ["Goals", "Guides", "Case studies", "Articles", "Reference"]);
 });
 
 test("left sidebar marks only the selected item as current", () => {
