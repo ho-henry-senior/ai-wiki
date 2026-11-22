@@ -23,9 +23,9 @@ The architecture is informed by [issue #173](https://github.com/ho-henry-senior/
 
 **Topic discovery** (`tags`): What topics does this page substantially cover? Flat, controlled vocabulary; a complementary way in, not a hierarchy.
 
-**Curated collection** (`site/guides.mjs`): Which Guide connects this page to related material? Membership does not imply that every page must move to the Guides lane.
+**Curated collection** (`site/guides.mjs`): Which reading route connects this page to related material? Guides and multi-page case studies share the registry; membership does not change a page's editorial lane.
 
-**Reading structure** (ordered/thematic Guide definition in `site/guides.mjs`): Is there a necessary sequence? Show Previous/Next only for an ordered Guide, and number its chapters unless the sequence is a suggestion rather than steps.
+**Reading structure** (ordered/thematic reading-route definition in `site/guides.mjs`): Is there a necessary sequence? Show Previous/Next only for an ordered Guide, and number its chapters unless the sequence is a suggestion rather than steps.
 
 **Stable identity** (published URL and source file): Where can the page always be linked? Keep one canonical published URL; section membership does not create copies.
 
@@ -157,12 +157,15 @@ The coding-agent and Agent roles chapters stay in Guides to simplify Articles na
 
 ## Guide metadata and validation
 
-**Implemented model:** `site/guides.mjs` is the single authority for Guide titles, entries, member URLs, ordered/thematic behaviour and reading order. Page front matter does not repeat `guide`, `guideOrder` or an entry marker. The Guides index derives entries from the registry; templates and the navigation tree look up a page's Guide through its canonical URL.
+**Implemented model:** `site/guides.mjs` is the single authority for Guide and multi-page case-study titles, entries, member URLs, ordered/thematic behaviour and reading order. Its `readingRoutes` registry validates membership across both types; the exported `guides` subset supplies the Guides index. Case-study entries appear only in Case studies, with their chapters nested beneath the entry in that lane. Case-study navigation uses unnumbered Previous/Next and the case-study wording, not Guide wording. Page front matter does not repeat `guide`, `guideOrder` or an entry marker. The Guides index derives entries from the registry; templates and the navigation tree look up a page's Guide through its canonical URL.
 
 Every registry member must resolve to a published Markdown page. Validation rejects unresolved URLs, duplicate membership (including across Guides), and ordered Guides without at least two chapters. The registry's title must also match its entry page's heading, which is used as a navigation key. A thematic Guide's display order is **not** a prerequisite reading order. Independently useful Reference members retain their own lane and primary sidebar.
 
 The Website regression checks in `scripts/site-discovery.test.mjs` verify that published navigable pages remain in the sitemap and search index, with Guides-lane pages absent from broad Articles navigation. Changes to Guide metadata and navigation must keep those tests passing. Track further implementation decisions in [#173](https://github.com/ho-henry-senior/ai-wiki/issues/173) and revisit these rules if actual reader journeys contradict them.
 
 ### Case study editorial format
+
+Multi-page case studies may use the shared reading-route registry (`kind: "case-study"`) to give chapters a reading order and Previous/Next links. Keep `type: case-study` and `lane: case-studies` on every chapter, retain the existing entry URL, and list only the entry in the Case studies index. The Website workflow runs `scripts/case-study-series.test.mjs` after building `_site`, because it checks rendered navigation and the listing. The registry rejects duplicate memberships across Guides and case studies.
+
 
 Use `type: case-study` and `lane: case-studies` for observed applications. Cover the context and objective, actual workflow, outcomes, what worked and failed, assessment against the wiki goals where relevant, evidence and limitations, and transferable lessons. These are prompts, not a mandatory set of headings. Distinguish contemporaneous evidence from participant recollections and from later changes to the implementation. Do not publish private-repository credentials, local configuration, identifying details or security-sensitive material. Keep the source page's canonical published URL when changing lanes.
