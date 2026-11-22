@@ -15,7 +15,7 @@ tags:
 
 Give the agent the facts it would otherwise infer: a short `AGENTS.md` for what every task needs, and detail it can load when a task calls for it.
 
-Without them, the agent works facts out from code and history: which command runs the tests, why money is stored as integer pence, which other repository consumes an API. That exploration costs time and tokens, and some of its guesses are wrong, so you pay again to correct them.
+Without them, the agent works facts out from code and history: which command runs the tests, why money is stored as integer pence, which other repository consumes an API. That exploration costs time and [tokens](../../reference/glossary.md#token), and some of its guesses are wrong, so you pay again to correct them.
 
 Organise what you give it:
 

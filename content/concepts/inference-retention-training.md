@@ -35,7 +35,7 @@ The figures for Business and Enterprise are from GitHub's Copilot Trust Center F
 
 ## Other agents and tools
 
-Ask the same three questions of every other agent and integration, including MCP servers, which may send data to their own services. Turning off session sync does not stop requests to the model, and a model running locally does not stop a tool from sending data elsewhere. Local history, cloud sessions, and the provider's records can each have different retention and deletion rules.
+Ask the same three questions of every other agent and integration, including [MCP](../reference/glossary.md#model-context-protocol-mcp) servers, which may send data to their own services. Turning off session sync does not stop requests to the model, and a model running locally does not stop a tool from sending data elsewhere. Local history, cloud sessions, and the provider's records can each have different retention and deletion rules.
 
 ## Sources
 

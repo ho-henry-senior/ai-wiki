@@ -11,7 +11,7 @@ tags:
 
 # Give agents a command interface with Just
 
-An agent can inspect a repository to discover how to test and check it, but that exploration takes time and tokens and may produce the wrong command. Give it a small, documented interface instead. A `justfile` names the commands; `just --list` advertises them; `AGENTS.md` tells the agent **when** to run each one. The principle matters more than the runner: existing package scripts or Make targets work too.
+An agent can inspect a repository to discover how to test and check it, but that exploration takes time and [tokens](../../reference/glossary.md#token) and may produce the wrong command. Give it a small, documented interface instead. A `justfile` names the commands; `just --list` advertises them; `AGENTS.md` tells the agent **when** to run each one. The principle matters more than the runner: existing package scripts or Make targets work too.
 
 ## Start with focused tests
 

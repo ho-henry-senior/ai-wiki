@@ -19,7 +19,7 @@ test("top navigation identifies landing pages, article pages, and standalone pag
   // Even an article linked to Security belongs to the Articles section.
   assert.deepEqual(sectionNavigation(nav, "articles", "/pages/cloud-agent-security/").map((x) => x.active), [false, false, true, false, false]);
   assert.deepEqual(sectionNavigation(nav, "reference", "/reference/data/").map((x) => x.active), [false, false, false, false, true]);
-  assert.deepEqual(sectionNavigation(nav, undefined, "/pages/glossary/").map((x) => x.active), [false, false, false, false, false]);
+  assert.deepEqual(sectionNavigation(nav, undefined, "/tags/").map((x) => x.active), [false, false, false, false, false]);
   assert.deepEqual(nav[0], { text: "Goals", href: "/goals/" });
 });
 

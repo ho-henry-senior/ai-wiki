@@ -14,9 +14,9 @@ When Copilot appears to run a test, the language model has not opened a shell. T
 
 ## The components
 
-- **Model:** consumes a request and generates text or structured output, including tool requests. It does not directly read your disk or run a command.
+- **Model:** consumes a request and generates text or [structured output](../reference/glossary.md#structured-output), including tool requests. It does not directly read your disk or run a command.
 - **Harness:** the surrounding application, such as Copilot CLI. It assembles model input, exposes tool interfaces, handles tool requests, manages the interaction and applies permission controls.
-- **Tools:** operations such as searching code, reading a file, running a shell command or calling an MCP server. A tool may execute locally or through a remote service.
+- **Tools:** operations such as searching code, reading a file, running a shell command or calling an [MCP](../reference/glossary.md#model-context-protocol-mcp) server. A tool may execute locally or through a remote service.
 - **Environment:** the repository, filesystem, processes, credentials and services a permitted tool can reach.
 - **Instructions and context:** information provided to the model, not independent enforcement mechanisms. The harness decides what is supplied in each request.
 
@@ -67,7 +67,7 @@ The agent needs task-related code in the model's input, not just somewhere on di
 - **Agent-directed search:** the model requests a search tool, such as text search or semantic code search; the harness returns matching files or excerpts, which can inform another model call.
 - **Automatic retrieval:** the harness or a retrieval component selects matching repository passages before a model call, without the model separately requesting each search.
 
-These are alternative patterns that a product can combine. **Neither requires a vector database.** Search may use filenames, symbols, text matches or embeddings-based semantic similarity. Retrieval-augmented generation (RAG) means supplying retrieved material to a model; vector search is one possible retrieval mechanism. See [RAG](../concepts/retrieval-augmented-generation.md) and [vector stores](../concepts/vector-stores.md) for those distinct concepts.
+These are alternative patterns that a product can combine. **Neither requires a vector database.** Search may use filenames, symbols, text matches or [embeddings](../reference/glossary.md#embedding)-based semantic similarity. Retrieval-augmented generation (RAG) means supplying retrieved material to a model; vector search is one possible retrieval mechanism. See [RAG](../concepts/retrieval-augmented-generation.md) and [vector stores](../concepts/vector-stores.md) for those distinct concepts.
 
 The choice affects what the model can discover and the costs of indexing or further tool and model calls. The diagram's dashed path represents an _optional conceptual arrangement_, not an assertion that every Copilot surface automatically retrieves context.
 

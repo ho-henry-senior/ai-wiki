@@ -12,7 +12,7 @@ tags:
 
 # Unexpected data exposure
 
-Files and tool output included in model requests go to the model provider, and copies can appear in session logs, pull requests, or CI logs; MCP integrations can send it to their own services.
+Files and tool output included in model requests go to the model provider, and copies can appear in session logs, pull requests, or CI logs; [MCP](../../reference/glossary.md#model-context-protocol-mcp) integrations can send it to their own services.
 
 Use a Business or Enterprise seat for work code, because individual plans train on interactions by default, and keep secrets out of the agent's reach.
 

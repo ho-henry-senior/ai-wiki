@@ -14,7 +14,7 @@ tags:
 
 # Local MCP servers and data access
 
-An MCP server can run locally or on another system. **Either kind can make further network requests if its environment permits them.** Execution location and downstream data destinations are separate questions.
+An [MCP](../reference/glossary.md#model-context-protocol-mcp) server can run locally or on another system. **Either kind can make further network requests if its environment permits them.** Execution location and downstream data destinations are separate questions.
 
 ## Local versus remote
 
@@ -22,11 +22,11 @@ A **local MCP server** runs code on your machine, possibly inside a container or
 
 A **remote MCP server** runs on another system. Arguments and other data supplied to it cross that boundary, where its operator's access, logging, and retention policies apply. It does not automatically gain local filesystem access, but may access connected systems using granted credentials or permissions.
 
-For example, a local documentation-search server might read project files and send text to a hosted embedding service. A remote search server might forward received queries to another provider. Neither flow is determined solely by the label "MCP server."
+For example, a local documentation-search server might read project files and send text to a hosted [embedding](../reference/glossary.md#embedding) service. A remote search server might forward received queries to another provider. Neither flow is determined solely by the label "MCP server."
 
 ## What to check
 
-Review the immediate server, the data and credentials it can access, its downstream destinations, and its retention behavior. Verify which filesystem, credential, and network restrictions actually cover that process or service. A harness's shell sandbox does not necessarily cover its MCP integrations. For example, the Copilot cloud agent's firewall applies only to processes started through its shell, not to MCP servers.
+Review the immediate server, the data and credentials it can access, its downstream destinations, and its retention behavior. Verify which filesystem, credential, and network restrictions actually cover that process or service. A [harness](../reference/glossary.md#agent-harness)'s shell sandbox does not necessarily cover its MCP integrations. For example, the Copilot cloud agent's firewall applies only to processes started through its shell, not to MCP servers.
 
 Transport is not a complete security classification: stdio is commonly used for local processes, while HTTP can be used for remote servers or a local service.
 

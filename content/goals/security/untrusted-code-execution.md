@@ -12,7 +12,7 @@ tags:
 
 # Untrusted code execution
 
-An agent can install compromised dependencies, run repository scripts, or load untrusted skills and MCP servers.
+An agent can install compromised dependencies, run repository scripts, or load untrusted skills and [MCP](../../reference/glossary.md#model-context-protocol-mcp) servers.
 
 Models also invent package names, often the same ones, so attackers register them in advance.
 

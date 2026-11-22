@@ -13,7 +13,7 @@ tags:
 
 # Prompt injection
 
-An agent's context holds your request, its instructions, and everything it reads along the way, including issues, files, web pages, and tool output. The harness labels where each part came from, so the system can tell your request from a tool result.
+An agent's context holds your request, its instructions, and everything it reads along the way, including issues, files, web pages, and tool output. The [harness](../../reference/glossary.md#agent-harness) labels where each part came from, so the system can tell your request from a tool result.
 
 But models are trained to follow instructions, and they can still follow ones that arrive in lower-trust content. The boundary exists in how the context is structured, not reliably in how the model behaves, so an instruction hidden in a bug report can be followed as if you had written it. This is prompt injection.
 

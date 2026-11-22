@@ -26,7 +26,8 @@ const cases = [
   ["pages/local-agent-credentials/index.html", "guides", "Protect credentials and sensitive data"],
   ["pages/repository-instructions/index.html", "guides", "Write repository instructions in AGENTS.md"],
   ["concepts/session-history-vs-context/index.html", "guides", "Session history and active context"],
-  ["pages/glossary/index.html", null],
+  ["pages/glossary/index.html", "reference", "AI glossary"],
+  ["tags/index.html", null],
 ];
 
 test("built pages have no breadcrumbs and show the active navigation", () => {
@@ -235,4 +236,13 @@ test("Guides are listed alphabetically on the Guides page and in its sidebar", (
     assert.ok(positions.every((position) => position >= 0), `${where}: every guide entry is listed`);
     assert.deepEqual([...positions].sort((a, b) => a - b), positions, `${where}: guides are in alphabetical order`);
   }
+});
+
+test("The glossary is a Reference page, not a footer link", () => {
+  const home = fs.readFileSync("_site/index.html", "utf8");
+  const footer = home.match(/govuk-footer__meta[\s\S]*?<\/footer>/)?.[0] ?? home;
+  assert.doesNotMatch(footer, /href="\/ai-wiki\/pages\/glossary\/"/, "Footer no longer links the glossary");
+  const reference = fs.readFileSync("_site/reference/index.html", "utf8");
+  const sidebar = reference.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
+  assert.ok(sidebar?.includes('href="/ai-wiki/pages/glossary/"'), "Reference sidebar links the glossary");
 });

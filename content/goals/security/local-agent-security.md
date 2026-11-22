@@ -25,7 +25,7 @@ Set limits that hold even when the agent gets it wrong. They are enforced by the
 
 - **[Configure the sandbox and tool restrictions](local-sandbox-and-tool-restrictions.md).** Turn on Copilot's local sandbox, which is off by default in the CLI, the app and VS Code. Choose the folders and network destinations the task needs, deny the commands you never want run, and test that a restriction actually blocks something.
 - **[Protect credentials and sensitive data](local-agent-credentials.md).** Decide which credentials the agent's commands can use, give it a narrowly scoped token, and keep secrets and real customer data out of what it reads and prints.
-- **[Check integrations and sandbox boundaries](local-agent-integrations.md).** Find out what runs outside the sandbox, such as remote MCP servers and some built-in tools, and review an MCP server or skill before you enable it.
+- **[Check integrations and sandbox boundaries](local-agent-integrations.md).** Find out what runs outside the sandbox, such as remote [MCP](../../reference/glossary.md#model-context-protocol-mcp) servers and some built-in tools, and review an MCP server or skill before you enable it.
 
 The steps are complementary rather than a strict sequence. The sandbox does most of the work, and the other two cover what it doesn't.
 

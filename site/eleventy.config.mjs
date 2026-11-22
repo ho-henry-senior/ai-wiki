@@ -52,7 +52,6 @@ export default async function (eleventyConfig) {
       .filter(
         (item) =>
           /\.(md|njk)$/.test(item.inputPath) &&
-          !item.inputPath.endsWith("/content/reference/glossary.md") &&
           !/^tag/.test(item.data.layout),
       ),
   );
@@ -119,7 +118,6 @@ export default async function (eleventyConfig) {
       contentLicence: false,
       meta: {
         items: [
-          { href: "/pages/glossary/", text: "Glossary" },
           { href: "/tags/", text: "Tags" },
           { href: "/sitemap/", text: "Sitemap" },
           {

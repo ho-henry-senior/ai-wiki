@@ -118,7 +118,7 @@ export function laneItems(tree = [], pageUrl, alphabetical = false) {
 
 // Mark the current top-level section on both its landing page and its
 // content pages. A supporting article belongs to Articles regardless of goal.
-// Standalone pages (glossary, tags, etc.) select no section.
+// Standalone pages (tags, the sitemap, etc.) select no section.
 export function sectionNavigation(items = [], lane, pageUrl) {
   return items.map((item) => {
     const section = Object.entries(lanes).find(([, value]) => value.url === item.href)?.[0];
