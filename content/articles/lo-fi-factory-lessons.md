@@ -22,7 +22,7 @@ The participant judged the structured process quicker than a human-led approach 
 
 The workflow had explicit approval points for specification, tickets, issue readiness and merge decisions. Occasional agent failures required an operator to inspect work, reset workflow labels and restart the process. Review findings could also prompt human-directed changes.
 
-The preserved dispatcher verifies expected PRs and review comments, and retains failed worktrees for inspection. These are valuable design choices, but the current demo includes later operational refinements. They should not all be counted as observed features of the original trial.
+The preserved dispatcher verifies expected PRs and review comments, and retains failed worktrees for inspection. Some operational refinements were added later, so the preserved implementation is not a complete historical record.
 
 ## Limits of the architecture
 
