@@ -28,7 +28,7 @@ An agent's review is review, not approval.
 
 - Ask for small changes; they're easier to review.
 - Agents usually do more than asked. Set the scope, and hold to it.
-- Ask for tests that show the change works, not many that check nothing.
+- Ask for tests that show each requirement is met, and few enough that you can read them.
 - Tell the agent when to stop and ask, and ask for a handoff you can check.
 
 **[Decide where to look](decide-where-to-look.md)**
