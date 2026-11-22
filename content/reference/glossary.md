@@ -68,7 +68,7 @@ In Copilot, an implementation of an agent role, defined in `.github/agents/NAME.
 
 ### Embedding
 
-A numerical representation of data, such as text, where relationships between vectors can be used for tasks like semantic search, clustering, or recommendation. Embeddings are produced by models and are not summaries or human-readable descriptions. See [vector stores](../concepts/vector-stores.md) and [vector embeddings](https://developers.openai.com/api/docs/guides/embeddings).
+A numerical representation of data, such as text, where relationships between vectors can be used for tasks like semantic search, clustering, or recommendation. Embeddings are produced by models and are not summaries or human-readable descriptions. See [vector stores](../concepts/retrieval-augmented-generation.md#vector-search) and [vector embeddings](https://developers.openai.com/api/docs/guides/embeddings).
 
 ### Evaluation (eval)
 
@@ -206,7 +206,7 @@ A neural-network architecture based on attention mechanisms, introduced in the 2
 
 ### Vector store
 
-A system that stores and indexes vector representations, often to retrieve items with similar embeddings. Vector stores are commonly used for semantic search and as part of RAG systems. See [vector stores](../concepts/vector-stores.md).
+A system that stores and indexes vector representations, often to retrieve items with similar embeddings. Vector stores are commonly used for semantic search and as part of RAG systems. See [vector stores](../concepts/retrieval-augmented-generation.md#vector-search).
 
 ## W
 

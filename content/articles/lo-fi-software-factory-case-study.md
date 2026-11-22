@@ -6,6 +6,7 @@ date: 2026-11-14
 tags:
   - Agent roles
   - Permissions and sandboxing
+status: established
 ---
 
 # Lo-fi software factory
