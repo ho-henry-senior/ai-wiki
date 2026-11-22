@@ -23,6 +23,7 @@ const cases = [
   ["pages/agent-skills-directory/index.html", "guides", "Skills worth trying"],
   ["pages/agent-facing-repository-structure/index.html", "guides", "Set up a repository for agents"],
   ["pages/local-agent-security/index.html", "guides", "Secure a local coding agent"],
+  ["pages/review-and-approve-agent-work/index.html", "guides", "Review and approve agent work"],
   ["pages/define-and-verify-tasks/index.html", "guides", "Define, steer, and verify a task"],
   ["pages/agree-on-the-problem/index.html", "guides", "Agree on the problem"],
   ["pages/local-agent-credentials/index.html", "guides", "Protect credentials and sensitive data"],
