@@ -32,7 +32,7 @@ The questions you'd ask of any change still apply. Look harder when it reaches s
 The agent's report says what it ran, and CI shows what ran there; neither is you seeing the change work.
 
 - **Use a diff tool that shows each commit and the whole change,** lets you filter out generated files, and splits a large change into sections you can manage. Review lock files when dependencies change: they show unexpected indirect updates. Some examples: [LazyGit](https://github.com/jesseduffield/lazygit); VS Code's diff with GitHub's [Pull Requests extension](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) and [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens); and the GitHub CLI, where `gh pr checkout` fetches the change and `gh pr diff --exclude 'generated/*'` hides generated files.
-- **Check the evidence, then run what the risk calls for.** Look at what ran in CI and at the tests themselves; CI on a trusted runner is often more reproducible than a local run. When a change is risky or the evidence leaves you unsure, run the relevant checks yourself; see [local checks and tools for coding agents](../../reference/local-development-tools.md).
+- **Check the evidence, then run what the risk calls for.** Look at what ran in CI and at the tests themselves; CI on a trusted runner is often more reproducible than a local run. When a change is risky or the evidence leaves you unsure, run the checks for the area that changed yourself; see [local checks and tools for coding agents](../../reference/local-development-tools.md).
 - **Read the tests, not just their result;** see [verify the result](../alignment/hand-off-and-steer.md#verify-the-result).
 
 ## When you can't answer a question
