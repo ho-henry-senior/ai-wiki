@@ -1,6 +1,6 @@
 ---
 type: explanation
-summary: Skills and agent roles are related but different, so they have a Guide each; how they differ, and which to read first.
+summary: Skills and agent roles are ways you can instruct agent behaviour; how they differ, and which to start with.
 lane: guides
 tags:
   - Agent roles

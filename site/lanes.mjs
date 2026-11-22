@@ -14,7 +14,7 @@ export const lanes = {
   guides: {
     title: "Guides",
     url: "/guides/",
-    description: "Collections of related pages to explore together.",
+    description: "A series of how-to guides.",
   },
   "case-studies": {
     title: "Case studies",
