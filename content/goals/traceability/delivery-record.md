@@ -31,13 +31,13 @@ Co-authored-by: Example Agent <agent@example.com>
 
 Someone should be able to answer these five questions from an agent-produced pull request alone:
 
-| Question                            | Where the answer should be                    |
-| ----------------------------------- | --------------------------------------------- |
-| What was asked?                     | The linked issue                              |
-| Who or what made the change?        | Commit authors and `Co-authored-by:` lines    |
-| What changed course, and why?       | Pull request comments                         |
-| What was checked, and what was not? | A pull request comment summarising the checks |
-| Who approved it?                    | The pull request review                       |
+| Question                            | Where the answer should be                 |
+| ----------------------------------- | ------------------------------------------ |
+| What was asked?                     | The linked issue                           |
+| Who or what made the change?        | Commit authors and `Co-authored-by:` lines |
+| What changed course, and why?       | Pull request comments                      |
+| What was checked, and what was not? | The pull request description or review     |
+| Who approved it?                    | The pull request review                    |
 
 ## Sources
 
