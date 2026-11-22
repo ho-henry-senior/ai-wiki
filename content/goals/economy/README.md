@@ -9,7 +9,7 @@ order: 2
 
 # Economy
 
-Stop the agent discovering what you could tell it. Without repository context it infers facts from code and history; without clear commands it experiments, costing time and tokens. Give it the information and deterministic tools it needs to work faster and more consistently. A run that misses the intended outcome is costliest of all; see [Alignment](../alignment/README.md).
+Stop the agent discovering what you could tell it. Without repository context it infers facts from code and history; without clear commands it experiments, costing time and [tokens](../../reference/glossary.md#token). Give it the information and deterministic tools it needs to work faster and more consistently. A run that misses the intended outcome is costliest of all; see [Alignment](../alignment/README.md).
 
 ## Core advice
 

@@ -18,7 +18,7 @@ Data reaches more places than anyone chose to send it: the model provider, saved
 
 ## Map the setup
 
-- [ ] Identify the agent, the Copilot plan or account, where its tools run, and the enabled tools and MCP servers. Each of these decides where data goes and which limits apply.
+- [ ] Identify the agent, the Copilot plan or account, where its tools run, and the enabled tools and [MCP](glossary.md#model-context-protocol-mcp) servers. Each of these decides where data goes and which limits apply.
 - [ ] List the sensitive data it could reach (see the table below).
 - [ ] For each flow, record: **data → source → trigger → destination → how long it is kept and who can see it → control**. A flow with no control in the last column is the gap to fix.
 - [ ] Include context the agent picks up on its own, debug output, generated summaries, and delegated agents, not only files you hand it, because an agent can expose data you never chose to share. Trace [unexpected data exposure](../goals/security/unexpected-data-exposure.md) through tool output and [saved session history](../concepts/session-history-vs-context.md) separately from what the model sees.

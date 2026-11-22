@@ -12,7 +12,7 @@ tags:
 
 # Instructions and enforced controls
 
-Asking an agent to avoid an action differs from preventing that action. Instructions guide behavior; access restrictions must be enforced by the harness, tool, operating system, or connected service.
+Asking an agent to avoid an action differs from preventing that action. Instructions guide behavior; access restrictions must be enforced by the [harness](../reference/glossary.md#agent-harness), tool, operating system, or connected service.
 
 For example, "use the database read-only" asks the model to behave. A database identity without write privileges prevents writes through that identity even if the agent requests one.
 

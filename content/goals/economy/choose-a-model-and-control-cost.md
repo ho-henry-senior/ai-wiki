@@ -21,7 +21,7 @@ tags:
 
 # Choose a model and control cost
 
-Use Auto or a mid-tier model by default, step up for hard problems and down for routine ones, and keep the model fixed for the session. The model is the biggest cost lever: per token, the dearest Copilot models cost about a hundred times the cheapest.
+Use Auto or a mid-tier model by default, step up for hard problems and down for routine ones, and keep the model fixed for the session. The model is the biggest cost lever: per [token](../../reference/glossary.md#token), the dearest Copilot models cost about a hundred times the cheapest.
 
 ## Try this first
 
@@ -29,13 +29,13 @@ Cap your next Copilot CLI task with `/limits set max-ai-credits 100`. Afterwards
 
 ## How Copilot charges
 
-Copilot prices each request's tokens at the model's rate and converts the total into AI Credits, at one US cent each. Plans include a monthly allowance, pooled across the organization on Business and Enterprise. Code completions and next edit suggestions are free. Each request is charged for:
+Copilot prices each request's tokens at the model's rate and converts the total into [AI Credits](../../reference/glossary.md#ai-credit), at one US cent each. Plans include a monthly allowance, pooled across the organization on Business and Enterprise. Code completions and next edit suggestions are free. Each request is charged for:
 
 - **Input:** instructions, the conversation so far, file contents, and tool output.
 - **Cached input:** input stored from a recent request, at a tenth of the input rate or less.
 - **Output:** what the model writes, including reasoning, at several times the input rate.
 
-The context is resent with every request, so repeated input can become a large part of an agent session's cost: a long log read early may be included in later requests until compaction removes it, at the cached rate while the cache holds.
+The context is resent with every request, so repeated input can become a large part of an agent session's cost: a long log read early may be included in later requests until [compaction](../../reference/glossary.md#compaction) removes it, at the cached rate while the cache holds.
 
 More detail: [The tool-call loop](../../concepts/tool-call-loop.md) and [session history and active context](../../concepts/session-history-vs-context.md).
 
@@ -57,7 +57,7 @@ A stronger model often needs fewer turns, so the gap per task is smaller than pe
 The next request pays full rate for the whole context if you:
 
 - switch model during a session;
-- change reasoning effort, context size, or the enabled tools or MCP servers;
+- change reasoning effort, context size, or the enabled tools or [MCP](../../reference/glossary.md#model-context-protocol-mcp) servers;
 - return to a session after the cache has expired.
 
 Choose the model and settings before you start. For new work, start a new session (`/new` in the CLI) or run `/compact` rather than resume an old one.

@@ -13,7 +13,7 @@ tags:
 
 # Discoverable deterministic checks
 
-Static analysis, linters, type checks, and tests give the same answer every time, and the agent spends tokens only on reading the result; it could approximate some of them by reading code, but more slowly, at greater cost, and less consistently.
+Static analysis, linters, type checks, and tests give the same answer every time, and the agent spends [tokens](../../reference/glossary.md#token) only on reading the result; it could approximate some of them by reading code, but more slowly, at greater cost, and less consistently.
 
 Make the checks discoverable through the repository's existing command interface. Provide a focused command for testing one file or case, and a full verification command to run before handoff. Add a task runner such as Just only when existing commands are scattered or hard to invoke.
 
