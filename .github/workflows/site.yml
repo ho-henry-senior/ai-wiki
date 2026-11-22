@@ -70,9 +70,9 @@ jobs:
           fi
       - name: Check shared includes
         run: |
-          # The tool-call-loop concept and slide include the same diagram and
-          # fragment from content/includes/, which is not published itself.
-          for page in concepts/tool-call-loop slides/tool-call-loop; do
+          # The tool-call-loop concept includes its diagram and a fragment
+          # from content/includes/, which is not published itself.
+          for page in concepts/tool-call-loop; do
             file="_site/$page/index.html"
             grep -q '<pre class="mermaid">sequenceDiagram' "$file" || {
               echo "$page does not show the shared tool-call diagram." >&2

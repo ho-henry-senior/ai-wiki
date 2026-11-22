@@ -77,7 +77,7 @@ Use small, focused files for concepts and reusable guidance. Use larger articles
 
 Write every page to [the writing standard](STYLE.md).
 
-Keep reusable explanations in `concepts/`, narrative articles and applied references in `content/`, provenance in `sources/`, and short standalone summaries in `slides/`. Slides link to their canonical concepts; preserve necessary examples and caveats in those concepts rather than imposing a slide-sized limit.
+Keep reusable explanations in `concepts/`, narrative articles and applied references in `content/`, and provenance in `sources/`.
 
 The topic map is allowed to change as the wiki grows; it is a navigation aid, not a rigid taxonomy.
 

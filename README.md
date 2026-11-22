@@ -26,4 +26,4 @@ Step-by-step guidance for common tasks, from preparing a repository to securing 
 ## More
 
 - [Articles](content/README.md#articles), [Case studies](content/README.md#case-studies) and [Reference](content/README.md#reference), including checklists, examples and the glossary.
-- Indexes of every [page](content/README.md), [concept](content/concepts/README.md), [slide](content/slides/README.md), and [source](content/sources/README.md).
+- Indexes of every [page](content/README.md), [concept](content/concepts/README.md), and [source](content/sources/README.md).

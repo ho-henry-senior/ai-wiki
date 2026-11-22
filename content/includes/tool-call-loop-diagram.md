@@ -1,4 +1,4 @@
-<!-- Shared asset, included by content/concepts/tool-call-loop.md and content/slides/tool-call-loop.md. See maintainers/MAINTAINING.md#website. -->
+<!-- Shared asset, included by content/concepts/tool-call-loop.md. See maintainers/MAINTAINING.md#website. -->
 
 ```mermaid
 sequenceDiagram

@@ -17,7 +17,7 @@ Choose a page or group, the whole site, or freshness, as the method describes. I
 
 ## 2. Read before judging
 
-Read every page in scope as published, not only its Markdown. For the whole site, that includes Goals, Guides, Articles and Reference pages, the homepage, indexes, glossary, slides and source records. Keep each page's disposition in session notes, not in new repository files. Read raw archives in `data/` only to resolve a claim, and leave them unchanged.
+Read every page in scope as published, not only its Markdown. For the whole site, that includes Goals, Guides, Articles and Reference pages, the homepage, indexes, glossary and source records. Keep each page's disposition in session notes, not in new repository files. Read raw archives in `data/` only to resolve a claim, and leave them unchanged.
 
 **Complete when:** every page in scope has a disposition, and anything unread is named.
 
