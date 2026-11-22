@@ -50,6 +50,12 @@ These come from their credited authors, and other pages in this wiki link to the
 
 `/grill-me` delegates to `/grilling`. The latter interviews the user in rounds, clarifying dependencies between decisions before work begins. A deliberately intensive method; the user still owns the decisions.
 
+### /grill-with-docs
+
+**Author:** [Matt Pocock](https://github.com/mattpocock). **Source:** [grill-with-docs/SKILL.md](https://github.com/mattpocock/skills/blob/main/skills/engineering/grill-with-docs/SKILL.md).
+
+Combines the questioning in `/grilling` with `/domain-modeling` to clarify a design while recording agreed terminology in `GLOSSARY.md` and significant decisions in architecture decision records (ADRs). Unlike `/grill-me`, it can change repository documentation. **Requires both `/grilling` and `/domain-modeling` to be available**; review their instructions and proposed file changes before using it.
+
 ### /to-spec
 
 **Author:** [Matt Pocock](https://github.com/mattpocock). **Source:** [to-spec/SKILL.md](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-spec/SKILL.md).
