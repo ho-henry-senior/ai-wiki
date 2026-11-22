@@ -26,7 +26,7 @@ A reader needs to know which changes a person wrote and which an agent did. Copi
 
 Use the norms you use for people's work: a ticket for the request, small commits with clear messages, a pull request that says what changed and why, and an approving review from a named person.
 
-Add one comment saying which checks ran, what they showed, and which did not, because checks don't last: Actions keeps checks, runs, and logs for 90 days by default, and public repositories cannot keep them longer, while CLI and editor sessions are yours to delete. Make corrections in pull request comments too, [as when steering](../alignment/hand-off-and-steer.md#steer-it).
+Record on the pull request what was checked, what it showed, and what wasn't checked. CI results aren't a lasting record: Actions keeps checks, runs and logs for 90 days by default, and public repositories can't keep them longer, while CLI and editor sessions are yours to delete. Make corrections in pull request comments too, [as when steering](../alignment/hand-off-and-steer.md#steer-it).
 
 Summarize logs rather than pasting them, and never record secrets: a record is shared more widely than the session it came from. To keep records longer, check your organization's records policy; GitHub Enterprise Cloud can stream agent audit-log events to long-term storage.
 
@@ -43,7 +43,7 @@ Approval is a person's decision and responsibility; an agent's review is evidenc
 <div class="app-developing-card">
   <p class="govuk-body-s"><strong>Developing — an area to watch, not a recommendation</strong></p>
   <p>Some teams are exploring automatic approval of changes judged low-risk, and tools now allow it: Copilot's code review can be set to submit approvals that count, in public preview.</p>
-  <p>This wiki doesn't recommend it: approval in UK public-sector work needs a person who can answer for the change. Checks and risk assessments can still direct people's attention.</p>
+  <p>This wiki doesn't recommend automatic approval for its UK public-sector audience. Its approach is to keep an accountable person as approver, with automated checks helping direct review effort.</p>
 </div>
 
 ## Example
