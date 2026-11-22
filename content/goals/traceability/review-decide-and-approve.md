@@ -32,7 +32,7 @@ Addressing an agent's findings doesn't mean the change can go ahead. Decide what
 
 - **The agent's own review or summary.** By default, Copilot's code review leaves a comment review, which doesn't count toward a repository's required approvals. Every Copilot review also includes an assessment of whether it thinks the pull request is ready; that doesn't count either.
 - **A risk score or a passing check.** Both are evidence for your decision, not the decision.
-- **An agent's approval.** Copilot can be configured to submit approvals that count toward required approvals. This is in public preview and off by default. An agent's approval can't carry responsibility for the change, so this guide doesn't recommend turning it on.
+- **An agent's approval.** What GitHub allows: Copilot can be configured to submit approvals that count toward required approvals, a feature in public preview and off by default. What this guide recommends: approval by an accountable person, because an agent's approval can't carry responsibility for the change. Leave the setting off.
 
 ## Decide, and record it
 
