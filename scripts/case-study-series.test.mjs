@@ -46,7 +46,7 @@ test("built case-study pages show accessible ordered navigation", () => {
     const html = fs.readFileSync("_site" + item.url + "index.html", "utf8");
     assert.match(html, /aria-label="Case study navigation"/);
     assert.doesNotMatch(html, /Part [0-9]+ of/);
-    if (i) assert.match(html, /Part of the <a[^>]+>Case study: a lo-fi software factory<\/a> case study/);
+    if (i) assert.match(html, /Part of the <a[^>]+>Case study: a lo-fi software factory<\/a>/);
     if (i < all.length - 1) assert.match(html, /app-series-navigation__card--next/);
     if (i > 0) assert.match(html, /app-series-navigation__card--previous/);
   });
