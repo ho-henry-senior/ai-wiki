@@ -23,9 +23,11 @@ Add a section like this to `AGENTS.md`, using your repository's real commands:
 ## Commands
 
 - `npm test -- path/to/file.test.ts` runs one test file. Use it while you work.
-- `npm run verify` runs all tests, type checks, lint, and link checks. It does not change files. Run it before you finish.
+- `npm run verify` runs all tests, type checks, lint, and link checks.
+  It does not change files. Run it before you finish.
 - `npm run format` rewrites files to fix formatting.
-- `npm audit` reports dependency issues. Existing findings are expected: report new ones, don't fix them.
+- `npm audit` reports dependency issues. Existing findings are expected:
+  report new ones, don't fix them.
 ```
 
 Each command needs more than a name: state **scope** (including a narrower version), **cost** (prerequisites and approximate runtime), **side effects** (read-only or mutating), and **what failure means** (blocks handoff or needs judgment). For example, `format-check` reports differences while `format` rewrites files; an audit can still identify new findings when existing ones prevent a clean result. Never assume that `verify` or `check` means the same thing across repositories.

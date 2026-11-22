@@ -45,7 +45,9 @@ Copilot sees only the name and description until it decides to use a skill, so t
 ```markdown
 ---
 name: review-api-changes
-description: Review API changes against documented contracts when asked about API compatibility.
+description: >-
+  Review API changes against documented contracts when asked
+  about API compatibility.
 ---
 ```
 
@@ -58,7 +60,9 @@ Under the front matter, write one bounded procedure: its inputs, steps, expected
 ```markdown
 ---
 name: review-api-changes
-description: Review API changes against documented contracts when asked about API compatibility.
+description: >-
+  Review API changes against documented contracts when asked
+  about API compatibility.
 ---
 
 # Review API changes

@@ -29,7 +29,8 @@ tags:
 - Store money as integer pence, not floating-point values.
 - Add new migrations; do not rewrite committed migrations.
 - Keep changes within the issue's agreed scope.
-- Stop and ask before adding a dependency, changing the database schema, or editing another service.
+- Stop and ask before adding a dependency, changing the database schema,
+  or editing another service.
 
 ## Checks
 

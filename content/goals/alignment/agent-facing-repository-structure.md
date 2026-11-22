@@ -25,16 +25,16 @@ repo/
 ├── .agents/
 │   └── skills/
 │       └── <skill-name>/
-│           └── SKILL.md              # Plus optional scripts/, references/, assets/
+│           └── SKILL.md              # Plus optional folders
 ├── docs/
 │   ├── architecture/                 # Canonical project documentation
 │   └── agents/                       # Reference written for agents
 │       └── README.md                 # Index, once there are several pages
 └── .github/
-    ├── copilot-instructions.md       # Only for Copilot features that don't read AGENTS.md
+    ├── copilot-instructions.md       # For Copilot features that skip AGENTS.md
     ├── instructions/<scope>.instructions.md
     ├── agents/<role>.agent.md        # Copilot custom agents
-    ├── prompts/<task>.prompt.md      # Reusable prompts, in editors that support them
+    ├── prompts/<task>.prompt.md      # Reusable prompts (some editors)
     └── workflows/
         ├── verify.yml               # Runs repository checks in CI
         └── copilot-setup-steps.yml   # Dependencies for the Copilot cloud agent
