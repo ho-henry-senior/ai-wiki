@@ -16,15 +16,15 @@ export const lanes = {
     url: "/guides/",
     description: "Collections of related pages to explore together.",
   },
-  articles: {
-    title: "Articles",
-    url: "/articles/",
-    description: "",
-  },
   "case-studies": {
     title: "Case studies",
     url: "/case-studies/",
     description: "Observed applications of agents, with evidence, outcomes and limits.",
+  },
+  articles: {
+    title: "Articles",
+    url: "/articles/",
+    description: "",
   },
   reference: {
     title: "Reference",
