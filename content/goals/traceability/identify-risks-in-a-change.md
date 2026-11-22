@@ -40,6 +40,3 @@ Next, [review the change and decide](review-decide-and-approve.md).
 ## Sources
 
 - [Warp: Code Review Bottleneck (talk)](https://www.youtube.com/watch?v=uPCH2axUpbc)
-
-- [GitHub CLI manual: gh pr diff](https://cli.github.com/manual/gh_pr_diff) and [gh pr checkout](https://cli.github.com/manual/gh_pr_checkout)
-- [VS Code docs: Work with GitHub in VS Code](https://code.visualstudio.com/docs/sourcecontrol/github)
