@@ -26,7 +26,7 @@ A person asked a coding assistant whether consolidation was worthwhile and then 
 
 ## A second review found what the first missed
 
-During final cleanup of the legacy transport, an initial agent review reported no actionable defects. A separate code review subsequently flagged a regression: removing a legacy response-unwrapping guard could change the error payload returned to callers, including a check-in progress path.
+During final cleanup of the legacy transport, an initial agent review reported no actionable defects. A separate code review subsequently flagged a regression: removing a legacy response-unwrapping guard could change the error payload returned to callers, including an affected application path.
 
 A follow-up discussion reported a corrective change and regression cases. The assistant responding to that discussion also stated that it had not rerun the tests locally. This illustrates why an affirmative review is not a universal correctness certificate, and why reported fixes and independently verified results must be distinguished.
 
@@ -34,4 +34,4 @@ A follow-up discussion reported a corrective change and regression cases. The as
 
 The PR records include focused tests, linting, formatting, security scans and dependency checks. Some reported pre-existing dependency vulnerabilities, session-cookie findings or Dockerfile concerns. Some branches had no CI checks reported, and the exercise did not run every live integration or end-to-end scenario.
 
-The Reviewer published findings; a human still decided whether to accept, amend or merge the work. A review-complete workflow label was not an approval decision.
+The findings and follow-up discussions provided evidence for a person's decision about accepting or amending the change.
