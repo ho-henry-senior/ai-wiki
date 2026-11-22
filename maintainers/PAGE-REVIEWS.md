@@ -88,7 +88,7 @@ From the whole-wiki editorial review ([#183](https://github.com/ho-henry-senior/
   - The _Repository context_ open questions moved to [#245](https://github.com/ho-henry-senior/ai-wiki/issues/245).
   - Completeness statuses were assessed: the five case-study pages, _Agent roles and skills_ and RAG are `established`; the glossary stays without one.
   - The slide is kept. The _Working with repositories_ guide stays deferred until it has a defined reader journey. Rechecking pricing, retention and version facts is left to the daily freshness run.
-- **Slides — removed in PR #NNN.** The slides concept didn't work: it produced one slide, which repeated the diagram that _The tool-call loop_ already shows, with an index and conventions to maintain. This reverses the keep decision in [PR #246](https://github.com/ho-henry-senior/ai-wiki/pull/246). The page, its index, the slide conventions and the Website check are removed; the shared includes stay, used by the concept.
+- **Slides — removed in [PR #248](https://github.com/ho-henry-senior/ai-wiki/pull/248).** The slides concept didn't work: it produced one slide, which repeated the diagram that _The tool-call loop_ already shows, with an index and conventions to maintain. This reverses the keep decision in [PR #246](https://github.com/ho-henry-senior/ai-wiki/pull/246). The page, its index, the slide conventions and the Website check are removed; the shared includes stay, used by the concept.
 
 ## Next
 
