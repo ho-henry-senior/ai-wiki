@@ -2,6 +2,8 @@
 
 This repository publishes a Markdown knowledge base and maintains its own editorial project. Reader-facing knowledge lives in `content/`, `content/concepts/`, and `content/sources/`; project instructions live in `maintainers/`. Keep maintenance instructions out of published wiki pages.
 
+Use British English (en-GB) in prose, following the [writing standard](maintainers/STYLE.md). Preserve exact code, identifiers, commands, product names and quotations.
+
 ## Find the relevant context
 
 - Before substantive content, scope, or structural changes, read [the design goals](maintainers/DESIGN-GOALS.md); mechanical formatting fixes do not require this review.
@@ -14,7 +16,7 @@ This repository publishes a Markdown knowledge base and maintains its own editor
 
 ## Make and verify changes
 
-Keep concepts focused and link to their canonical explanations. Label product-specific behavior and distinguish confirmed facts from proposals or unknowns.
+Keep concepts focused and link to their canonical explanations. Label product-specific behaviour and distinguish confirmed facts from proposals or unknowns.
 
 When editing content, review potentially stale claims in the affected pages using [the freshness guidance](maintainers/MAINTAINING.md#keeping-content-current).
 
