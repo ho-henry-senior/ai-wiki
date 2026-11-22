@@ -78,6 +78,7 @@
     follows the page's lane, not a URL prefix or an article's main goal. -#}
 {% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
 {% from "components/search/macro.njk" import appSearch with context %}
+{% from "sub-navigation.njk" import appSubNavigation %}
 {% block govukHeader %}
   {{ appHeader(options.header) }}
   {{ govukServiceNavigation({
@@ -130,6 +131,30 @@
     {{ appProseScope(articleBody) if articleBody }}
     {%- if listCollection == "articles" %}
     {% include "article-views.njk" %}
+    {%- elif listCollection == "guideListing" %}
+    {#- A group's Guides sit beneath it, so neither needs a second click to find. -#}
+    <ol class="app-document-list app-document-list--large">
+      {%- for entry in collections.guideListing %}
+      <li class="app-document-list__item">
+        <h2 class="app-document-list__item-title"><a class="govuk-link" href="{{ entry.url }}">{{ entry.title }}</a></h2>
+        {%- if entry.description %}
+        <p class="app-document-list__item-description">{{ entry.description | markdown("inline") | safe }}</p>
+        {%- endif %}
+        {%- if entry.children | length %}
+        <ul class="govuk-list app-guide-group">
+          {%- for child in entry.children %}
+          <li>
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-1"><a class="govuk-link" href="{{ child.url }}">{{ child.title }}</a></h3>
+            {%- if child.description %}
+            <p class="govuk-body-s">{{ child.description | markdown("inline") | safe }}</p>
+            {%- endif %}
+          </li>
+          {%- endfor %}
+        </ul>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ol>
     {%- elif listCollection %}
     {{ appDocumentList({ classes: "app-document-list--large", items: collections[listCollection] }) }}
     {%- elif tag %}
@@ -177,7 +202,7 @@
   {% if sidebar %}
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-quarter-from-desktop">
-        {{ xGovukSubNavigation({ items: sidebar }) }}
+        {{ appSubNavigation(sidebar) }}
       </div>
       <div class="govuk-grid-column-three-quarters-from-desktop">
         {{ mainColumn | safe }}

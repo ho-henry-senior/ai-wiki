@@ -2,7 +2,7 @@
 // belongs with front matter: `lane`, and `goal` for a goal overview or an
 // article with a clear main goal. See maintainers/MAINTAINING.md#website.
 
-import { guideForUrl, caseStudyForUrl } from "./guides.mjs";
+import { guideForUrl, caseStudyForUrl, groupForGuide, groupForUrl } from "./guides.mjs";
 
 // The order here is the order of the site's top bar.
 export const lanes = {
@@ -78,6 +78,9 @@ export const eleventyNavigation = {
     const member = guideForUrl(data.page?.url);
     if (data.lane === "guides" && member?.position > 0)
       return guideKey(member.guide);
+    // A grouped Guide's entry nests under its group's overview page.
+    if (data.lane === "guides" && member?.position === 0 && groupForGuide(member.id))
+      return groupForGuide(member.id).group.title;
     if (data.lane === "case-studies" && member?.guide.kind === "case-study" && member.position > 0)
       return guideKey(member.guide);
     if (data.lane !== "goals") return lanes[data.lane]?.title;
@@ -95,33 +98,35 @@ export const eleventyNavigation = {
 // Reference are sorted by title at the top level; Guide chapters follow the
 // registry's order.
 export function laneItems(tree = [], pageUrl, alphabetical = false) {
-  const items = alphabetical
-    ? [...tree].sort((a, b) => a.title.localeCompare(b.title))
-    : tree;
-  return items.map((item) => {
+  const byTitle = (a, b) => a.title.localeCompare(b.title);
+  const items = alphabetical ? [...tree].sort(byTitle) : tree;
+  const contains = (node) =>
+    (node.children ?? []).some((child) => child.url === pageUrl || contains(child));
+  const toItem = (node) => {
     // The Guide registry owns reading order; old page-specific order
-    // values must not rearrange the chapter list in the sidebar.
-    const children = [...(item.children ?? [])];
-    if (guideForUrl(item.url)?.guide.ordered)
+    // values must not rearrange the chapter list in the sidebar. A group's
+    // Guides are listed alphabetically.
+    const children = [...(node.children ?? [])];
+    if (guideForUrl(node.url)?.guide.ordered)
       children.sort((a, b) =>
         (guideForUrl(a.url)?.position ?? Infinity) -
         (guideForUrl(b.url)?.position ?? Infinity),
       );
-    const contains = children.some((child) => child.url === pageUrl);
+    else if (groupForUrl(node.url)) children.sort(byTitle);
+    const current = node.url === pageUrl;
+    const inside = contains(node);
     return {
-      href: item.url,
-      text: item.title,
-      current: item.url === pageUrl,
-      parent: item.url === pageUrl || contains,
-      children: children.length
-        ? children.map((child) => ({
-            href: child.url,
-            text: child.title,
-            current: child.url === pageUrl,
-          }))
-        : false,
+      href: node.url,
+      text: node.title,
+      current,
+      parent: current || inside,
+      // A group always shows its Guides; a Guide shows its chapters only
+      // when the reader is on it or one of them.
+      expanded: current || inside || Boolean(groupForUrl(node.url)),
+      children: children.length ? children.map(toItem) : false,
     };
-  });
+  };
+  return items.map(toItem);
 }
 
 // Mark the current top-level section on both its landing page and its

@@ -251,3 +251,15 @@
   @include govuk.govuk-font($size: 19, $weight: bold);
   text-decoration: underline;
 }
+
+// A group's Guides on the Guides landing page, set in beneath the group.
+.app-guide-group {
+  margin-top: govuk.govuk-spacing(3);
+  padding-left: govuk.govuk-spacing(3);
+  border-left: 4px solid govuk.govuk-colour("black", $variant: "tint-80");
+}
+
+// The sidebar's third level, a group's Guide chapters, set in further.
+.x-govuk-sub-navigation__section--nested .x-govuk-sub-navigation__section--nested {
+  padding-left: govuk.govuk-spacing(3);
+}
