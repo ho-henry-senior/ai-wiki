@@ -48,6 +48,17 @@ export const readingRoutes = {
       { title: "Check integrations and sandbox boundaries", url: "/pages/local-agent-integrations/" },
     ],
   },
+  "define-and-verify": {
+    title: "Define, steer, and verify a task",
+    ordered: true,
+    numbered: false,
+    overview: { title: "Define, steer, and verify a task", url: "/pages/define-and-verify-tasks/" },
+    parts: [
+      { title: "Agree on the problem", url: "/pages/agree-on-the-problem/" },
+      { title: "Turn the specification into issues", url: "/pages/turn-specification-into-issues/" },
+      { title: "Hand off an issue and steer the implementation", url: "/pages/hand-off-and-steer/" },
+    ],
+  },
   "repository-setup": {
     title: "Set up a repository for agents",
     ordered: true,

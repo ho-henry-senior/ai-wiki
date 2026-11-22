@@ -23,6 +23,8 @@ const cases = [
   ["pages/agent-skills-directory/index.html", "guides", "Skills worth trying"],
   ["pages/agent-facing-repository-structure/index.html", "guides", "Set up a repository for agents"],
   ["pages/local-agent-security/index.html", "guides", "Secure a local coding agent"],
+  ["pages/define-and-verify-tasks/index.html", "guides", "Define, steer, and verify a task"],
+  ["pages/agree-on-the-problem/index.html", "guides", "Agree on the problem"],
   ["pages/local-agent-credentials/index.html", "guides", "Protect credentials and sensitive data"],
   ["pages/repository-instructions/index.html", "guides", "Write repository instructions in AGENTS.md"],
   ["concepts/session-history-vs-context/index.html", "guides", "Session history and active context"],
@@ -204,7 +206,7 @@ test("checked metadata shows a date, with optional accessible verification detai
 });
 
 test("Unnumbered ordered Guides have Previous/Next but no chapter numbers", () => {
-  for (const id of ["repository-setup", "local-agent-security"]) {
+  for (const id of ["repository-setup", "local-agent-security", "define-and-verify"]) {
     const guide = guides[id];
     assert.equal(guide.ordered, true, id);
     assert.equal(guide.numbered, false, id);

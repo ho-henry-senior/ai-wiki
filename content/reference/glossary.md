@@ -102,7 +102,7 @@ Generated content that is false, unsupported, or inconsistent with a provided so
 
 ### Hill climbing
 
-A local search approach that repeatedly moves from a candidate to a better nearby alternative according to an evaluation. It can stop at a local optimum even when a better result exists elsewhere. Iterating with an agent until tests pass works like this, so it is only as good as the tests; see [Verify the result](../goals/alignment/define-and-verify-tasks.md#verify-the-result).
+A local search approach that repeatedly moves from a candidate to a better nearby alternative according to an evaluation. It can stop at a local optimum even when a better result exists elsewhere. Iterating with an agent until tests pass works like this, so it is only as good as the tests; see [Verify the result](../goals/alignment/hand-off-and-steer.md#verify-the-result).
 
 ## I
 

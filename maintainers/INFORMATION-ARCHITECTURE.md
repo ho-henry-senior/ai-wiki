@@ -116,6 +116,8 @@ A Guide can gather pages whose **primary purposes differ**. The Guides can inclu
 
 - **Write repository instructions in AGENTS.md, Repository context for coding agents, Enable agents to run repository commands, Give agents a command interface with Just** — Guides lane; members of Set up a repository for agents, with Previous/Next but no chapter numbers.
 
+- **Define, steer, and verify a task** — Guides lane; ordered but unnumbered entry for the task cycle that the Alignment goal explains, followed by three chapters: Agree on the problem; Turn the specification into issues; Hand off an issue and steer the implementation. The Alignment routing pages for requirements discovery and scope were folded into the first chapter ([#213](https://github.com/ho-henry-senior/ai-wiki/issues/213)).
+
 - **Secure a local coding agent** — Guides lane; ordered but unnumbered entry, the setup overview, followed by three chapters. The Security goal explains the risks; this Guide is the setup route.
 
 - **Configure the sandbox and tool restrictions, Protect credentials and sensitive data, Check integrations and sandbox boundaries** — Guides lane; members of Secure a local coding agent, with Previous/Next but no chapter numbers.

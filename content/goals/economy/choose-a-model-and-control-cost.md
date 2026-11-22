@@ -64,7 +64,7 @@ Choose the model and settings before you start. For new work, start a new sessio
 
 ## Cut tokens
 
-- **Write a clear task** with acceptance criteria: [define, steer, and verify a task](../alignment/define-and-verify-tasks.md#turn-the-specification-into-issues).
+- **Write a clear task** with acceptance criteria: [define, steer, and verify a task](../alignment/turn-specification-into-issues.md).
 - **Keep instructions short;** they load with every task in the features that read them: [progressive disclosure](../../concepts/progressive-disclosure.md).
 - **List focused commands,** so the agent does not read whole logs: [enable agents to run repository commands](../alignment/agent-tool-delegation.md).
 - **Enable only the MCP toolsets** the task needs, and raise reasoning effort only for hard tasks.
