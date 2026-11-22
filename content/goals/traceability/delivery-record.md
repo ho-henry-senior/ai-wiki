@@ -1,6 +1,6 @@
 ---
 type: advice
-summary: "Agile delivery already records what was asked, what changed and who approved it; keep agent work to the same process, record what was checked, and show which changes an agent made."
+summary: "Agile delivery already records what was asked, what changed and who approved it; keep agent work to the same process, and show which changes an agent made."
 status: established
 lane: goals
 goal: traceability
@@ -13,13 +13,9 @@ tags:
 
 # A record through your delivery process
 
-Agile delivery already records what was asked, what changed and who approved it; keep agent work to the same process, record what was checked, and show which changes an agent made.
+Agile delivery already records what was asked, what changed and who approved it; keep agent work to the same process, and show which changes an agent made.
 
 Use the norms you use for people's work: a ticket for the request, small commits with clear messages, a pull request that says what changed and why, and an approving review from a named person. Then the record needs no extra process. In public-sector work, it may be an obligation.
-
-## Record what was checked
-
-Note on the pull request what was checked, what it showed, and what wasn't checked. CI results aren't a lasting record: Actions keeps checks, runs and logs for 90 days by default, and public repositories can't keep them longer, while CLI and editor sessions are yours to delete. Make corrections in pull request comments too, [as when steering](../alignment/hand-off-and-steer.md#steer-it).
 
 ## Show which changes an agent made
 
@@ -49,4 +45,3 @@ Someone should be able to answer these five questions from an agent-produced pul
 - [GitHub Docs: Tracking Copilot's sessions](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/track-copilot-sessions)
 - [GitHub Docs: Copilot session data](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/session-data)
 - [GitHub Docs: Creating a commit with multiple authors](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors)
-- [GitHub Changelog: Actions retention will cover checks, workflow runs, and statuses](https://github.blog/changelog/2026-08-27-actions-retention-will-cover-checks-workflow-runs-and-statuses)
