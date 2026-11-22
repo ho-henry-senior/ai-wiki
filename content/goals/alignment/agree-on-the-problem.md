@@ -24,7 +24,7 @@ Its questions surface the aspects you hadn't considered, and it asks better ones
 
 Agents can identify missing requirements, but they can also suggest features, edge cases and complexity the work doesn't need. **Requirements discovery is a negotiation:** the agent helps explore the possibilities, but you decide the scope.
 
-Challenge unnecessary suggestions and agree explicitly what is in and out; an excluded idea may still be worth pursuing later. Excluding work isn't only about saving effort: it leaves more time to refine requirements, work through edge cases and check what matters. Hold to the agreed scope when the agent starts work, too; see [keep it to the task](../traceability/ask-for-work-you-can-approve.md#keep-it-to-the-task).
+Challenge unnecessary suggestions and agree explicitly what is in and out; an excluded idea may still be worth pursuing later. Excluding work isn't only about saving effort: it leaves more time to refine requirements, work through edge cases and check what matters. Hold to the agreed scope when the agent starts work, too; see [keep it to the task](../traceability/ask-for-small-focused-changes.md#keep-it-to-the-task).
 
 ## Agree the specification
 

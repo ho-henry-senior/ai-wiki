@@ -23,6 +23,8 @@ Use **British English (en-GB)** in published and maintainer prose. Prefer spelli
 13. **Make every illustration and example earn its place.** A diagram should make something easier to understand, or show what the text cannot, such as a sequence of handoffs. That a diagram is written in Mermaid is an implementation detail, not a reason to include it, unless the page is about diagrams agents can read. Choose the stronger form: a diagram for relationships and handoffs, a table for comparisons. An example should teach a particular lesson; say why it is worth inspecting, and do not present this wiki's own files as exemplary without assessing them. Trim illustrative detail, such as a full RACI matrix, that could be mistaken for a standard.
 14. **Credit sourced patterns prominently.** Distinguish this wiki's own guidance from a summary of someone else's pattern, and name the original author and source near the top of the page.
 
+**Use action-oriented titles for how-to pages.** Concepts, explanations and case studies should name their subject rather than force an action into the title.
+
 ## What each page does
 
 Each [page type](INFORMATION-ARCHITECTURE.md#page-types) has a job. Write to it:

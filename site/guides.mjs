@@ -65,8 +65,8 @@ export const readingRoutes = {
     numbered: false,
     overview: { title: "Review and approve agent work", url: "/pages/review-and-approve-agent-work/" },
     parts: [
-      { title: "Ask for work you can approve", url: "/pages/ask-for-work-you-can-approve/" },
-      { title: "Decide where to look", url: "/pages/decide-where-to-look/" },
+      { title: "Ask for small, focused changes", url: "/pages/ask-for-small-focused-changes/" },
+      { title: "Identify the risks in a change", url: "/pages/identify-risks-in-a-change/" },
       { title: "Review, decide and approve", url: "/pages/review-decide-and-approve/" },
     ],
   },
