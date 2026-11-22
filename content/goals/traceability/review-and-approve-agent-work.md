@@ -16,7 +16,7 @@ When you approve a change, you stand behind it. An agent can't take that respons
 ## Verification, review and approval
 
 - **Verification:** evidence that particular checks passed.
-- **Review:** a person examining the change and that evidence.
+- **Review:** examining the change and the evidence.
 - **Approval:** the decision to accept the change, and the responsibility that comes with it.
 - **Merging:** putting the change in. It's a separate step, which may happen later under the repository's rules.
 
@@ -38,7 +38,7 @@ An agent's review is review, not approval.
 
 **[Review, decide and approve](review-decide-and-approve.md)**
 
-- Review the diff with a good tool, commit by commit.
+- Review the diff with a good tool; step through the commits when a change is large.
 - Use an agent's review as evidence, not as the decision.
 - Approve only what you can stand behind.
 
