@@ -80,7 +80,7 @@ For the supported page types, their meanings, and how type differs from lane or 
 
 Focused reusable concepts live in `content/concepts/` and use the types described in the [concept conventions](#writing-a-concept). An explanatory article may bring several concepts together without replacing them.
 
-The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it.
+The homepage and outcome overviews are the navigation layer, not a directory scheme. Link a page from every relevant outcome rather than duplicating it. The homepage answers "where should I start, and which way should I go?": First steps first, with one destination each, then the four goals with a short outcome each, then a single link to the Guides landing page and links to the other lanes. It doesn't list individual Guides or lane contents; their landing pages own those listings. Links to a lane's section of `content/README.md`, such as `content/README.md#guides`, go to that lane's landing page on the site.
 
 Give reusable material, whether prose, a diagram or an example, one canonical home, and compose it elsewhere by linking rather than copying. A technical way to include shared assets in several pages is tracked in [#133](https://github.com/ho-henry-senior/ai-wiki/issues/133).
 
