@@ -4,6 +4,7 @@ lane: case-studies
 summary: How local dispatchers used GitHub issue and PR labels to coordinate development and review.
 tags:
   - Agent roles
+status: established
 ---
 
 # Dispatching development with GitHub labels

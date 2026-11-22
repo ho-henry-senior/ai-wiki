@@ -19,6 +19,4 @@ Make the checks discoverable through the repository's existing command interface
 
 On the next task, check whether the agent uses a focused command while editing and runs the full gate before handoff.
 
-Checks raise the standard of the code cheaply; Alignment makes it the right code.
-
 More detail: [Give agents a command interface with Just](justfile-agent-workflows.md), [enable agents to run repository commands](../alignment/agent-tool-delegation.md), and [local checks and tools](../../reference/local-development-tools.md).

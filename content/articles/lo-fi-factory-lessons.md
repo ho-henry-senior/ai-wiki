@@ -4,6 +4,7 @@ lane: case-studies
 summary: Observed outcomes, operational limits and transferable lessons from the lo-fi software factory.
 tags:
   - Permissions and sandboxing
+status: established
 ---
 
 # What worked, what failed, and what remains

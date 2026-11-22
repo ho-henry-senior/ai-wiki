@@ -21,4 +21,3 @@ This directory holds focused explanations that articles can reuse. Each concept 
 These explain general AI ideas behind the guidance. They are not steps in the goal paths.
 
 - [Retrieval-augmented generation](retrieval-augmented-generation.md) — giving the model passages found by search.
-- [Vector stores](vector-stores.md) — search by meaning using embeddings.

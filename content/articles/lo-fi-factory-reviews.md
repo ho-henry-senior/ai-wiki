@@ -4,6 +4,7 @@ lane: case-studies
 summary: Concrete examples of review findings, fixes and human decisions in the agent-assisted refactor.
 tags:
   - Agent roles
+status: established
 ---
 
 # Agent reviews and human decisions

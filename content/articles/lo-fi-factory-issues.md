@@ -4,6 +4,7 @@ lane: case-studies
 summary: How an approved technical refactor became a dependency-aware set of agent-ready issues.
 tags:
   - Agent roles
+status: established
 ---
 
 # From a refactor idea to actionable issues

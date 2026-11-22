@@ -57,12 +57,6 @@ Add a diagram only when it answers a question about components, data flow, or de
 
 For very large documentation sets, [retrieval-augmented generation](../../concepts/retrieval-augmented-generation.md) is background reading on how agents can search them.
 
-## Open questions
-
-- Which kinds of missing context cause the most wrong assumptions?
-- How should consumers in other repositories find a shared contract?
-- How can diagrams and ADRs be kept in step with the code?
-
 ## Sources
 
 - [Microsoft Learn: Responsible use of the Copilot coding agent](https://learn.microsoft.com/en-us/training/modules/github-copilot-code-agent/5-responsible-use-github-copilot-code-agent-github) — the agent can access only the repository where it is creating a pull request.
