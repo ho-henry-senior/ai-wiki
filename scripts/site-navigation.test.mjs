@@ -67,9 +67,9 @@ test("Reference sidebar is alphabetical while the landing page retains purpose g
   const positions = titles.map((title) => sidebar.indexOf(title));
   assert.ok(positions.every((position) => position >= 0), "Expected reference entries exist");
   assert.ok(positions[0] < positions[1] && positions[1] < positions[2], "Reference entries are sorted");
-  assert.ok(html.includes("Examples and assets") && html.includes("Checklists and tools"),
+  assert.ok(html.includes("Examples") && html.includes("Checklists and tools") && html.includes("Other resources"),
     "Reference landing page remains grouped by purpose");
-  assert.ok(html.includes("Write your own skill"), "The skill example keeps a direct link from the Reference landing page");
+  assert.ok(!html.includes("Write your own skill"), "The Skills Guide owns the skill-writing chapter");
   assert.doesNotMatch(sidebar, /Skills worth trying|Agent skills directory/, "The skills list has moved into the Skills guide");
 });
 
