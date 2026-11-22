@@ -32,7 +32,7 @@ The first five come from a talk on the code-review bottleneck; see [the notes on
 ## Three examples
 
 - **A documentation correction** fixes wording in a README. It reaches nothing else, is easy to undo, and a problem would be obvious. Read it and check it is true; that is usually enough.
-- **A dependency update** raises a library's version, and the lock file changes in many places. It reaches everything that uses the library, and its effects can be subtle even though the code change is easy to undo. Read the library's changelog, check that the lock file changes only the packages you expect, confirm the package is the one you meant (see [invented dependencies](../../concepts/hallucinated-dependencies.md)), and rely on integration tests more than unit tests.
+- **A dependency update** raises a library's version, and the lock file changes in many places. It reaches everything that uses the library, and its effects can be subtle even though the code change is easy to undo. Read the library's changelog, check that the lock file changes only the packages you expect, confirm the package is the one you meant (see [invented dependencies](../../concepts/hallucinated-dependencies.md)), and check tests of the behaviour that uses the library and the points where your code calls it, at whatever level exercises them.
 - **An authentication change** shortens the session timeout. The diff is small, but it affects every user, a mistake could fail silently, and it is in sensitive code. Read every line, check that tests cover both expiry and rejection, and have the code's owner review it; a `CODEOWNERS` file can request their review automatically, as [Trust & Traceability](README.md#independent-change-approval) describes.
 
 ## When you can't answer a question

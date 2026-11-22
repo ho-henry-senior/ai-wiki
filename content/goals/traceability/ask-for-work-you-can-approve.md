@@ -17,7 +17,7 @@ Review starts before the agent writes anything. Your request decides how big the
 
 Ask for one change that does one thing, and keep to the pull request and commit sizes your team already uses for work written by people. A change you can hold in your head is one you can stand behind.
 
-Smallest _coherent_ matters. Don't split a change whose parts only make sense together, such as renaming a function and updating every caller; each half is harder to judge alone. When one change has to be large, ask for small commits inside it, one step each with a clear message, so you can review it step by step.
+Smallest _coherent_ matters. Don't split a change whose parts only make sense together, such as renaming a function and updating every caller; each half is harder to judge alone. When one change has to be large, ask for small commits inside it, one step each with a clear message, so you can review it step by step. Commits help you follow a change, but review the complete diff as well: problems can sit in how the commits fit together.
 
 ## Keep it to the task
 
@@ -29,7 +29,7 @@ The agent doesn't share your judgement about what is worth doing, so you may nee
 
 ## Ask for tests that matter
 
-Ask for one test per acceptance criterion, checking a result someone could observe, and ask the agent to say which criterion each new test covers. Tell it not to add tests that only restate the code, such as checking that a function returns a string, or mocking everything the code calls. Fewer tests that each check something real are easier to judge than many that don't. For how to read the tests it writes, see [verify the result](../alignment/hand-off-and-steer.md#verify-the-result).
+Ask for tests that show each acceptance criterion is met, by checking a result someone could observe, and have the agent say which criteria each test covers. Some criteria need several checks; one integration test may cover several criteria. Tell it not to add tests that only restate the code, such as checking that a function returns a string, or mocking everything the code calls. Fewer tests that each check something real are easier to judge than many that don't. For how to read the tests it writes, see [verify the result](../alignment/hand-off-and-steer.md#verify-the-result).
 
 ## Tell it when to stop and ask
 
@@ -37,7 +37,7 @@ Once a task is agreed, an agent carries on to a first draft unless something sto
 
 > If the change needs a new dependency, a database schema change, or an edit to another service, stop and ask before going further.
 
-Approval prompts also stop it, before the actions you haven't allowed it to take on its own; see [deny the commands you never want run](../security/local-sandbox-and-tool-restrictions.md#deny-the-commands-you-never-want-run). Anything else you catch by watching the diffs as it works, and you can interrupt it at any point; see [steer it](../alignment/hand-off-and-steer.md#steer-it).
+A stop condition is an instruction: the agent usually follows it, but nothing enforces it. Approval prompts and deny rules are enforced. They stop the agent before the actions you haven't allowed it to take on its own; see [deny the commands you never want run](../security/local-sandbox-and-tool-restrictions.md#deny-the-commands-you-never-want-run). Anything else you catch by watching the diffs as it works, and you can interrupt it at any point; see [steer it](../alignment/hand-off-and-steer.md#steer-it).
 
 ## Ask for a handoff you can check
 
