@@ -26,8 +26,10 @@ Create `AGENTS.md` with a few lines like these:
 ```markdown
 # Payments API (Python 3.12, FastAPI)
 
-- Run `make test-unit` for focused tests and `make check` before you finish. `make format` rewrites files.
-- Do not edit existing files in `migrations/`. Create a new migration with `make migration`.
+- Run `make test-unit` for focused tests and `make check` before you finish.
+  `make format` rewrites files.
+- Do not edit existing files in `migrations/`.
+  Create a new migration with `make migration`.
 - Store money as integer pence, never as floats.
 - Architecture and past decisions: `docs/architecture.md` and `docs/adr/`.
 ```

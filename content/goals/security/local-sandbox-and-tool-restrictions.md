@@ -50,7 +50,10 @@ The CLI keeps its sandbox settings under `sandbox` in its own `settings.json`, n
     "readonlyPaths": ["/Users/me/projects/shared-library"],
     "deniedPaths": ["/Users/me/.aws"]
   },
-  "chat.agent.sandbox.network.allowedDomains": ["registry.npmjs.org", "api.github.com"]
+  "chat.agent.sandbox.network.allowedDomains": [
+    "registry.npmjs.org",
+    "api.github.com"
+  ]
 }
 ```
 
