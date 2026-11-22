@@ -2,7 +2,7 @@
 
 Write so a developer understands what matters and why, and can act on it, on one read. Most readers use Copilot.
 
-Use **British English (en-GB)**, with **-ise** spellings such as *organise*, *summarise* and *recognise*, in published and maintainer prose. Preserve official names, interface labels, setting names, quotations, code, commands, identifiers, file paths and URLs.
+Use **British English (en-GB)** in published and maintainer prose. Prefer spellings ending in -ise, such as organise, summarise and recognise. Preserve official names, interface labels, setting names, quotations, code, commands, identifiers, file paths and URLs.
 
 ## Rules
 
