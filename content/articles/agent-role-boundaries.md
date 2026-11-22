@@ -21,10 +21,10 @@ For how to define a role contract and restrict a Copilot custom agent's tools, s
 
 This deliberately small RACI table shows the important handoffs, not every activity a team performs. The letters mean:
 
-- **R** Responsible: does the work
-- **A** Accountable: answers for the result
-- **C** Consulted: gives input before the work is done
-- **I** Informed: is told the outcome
+- **R**esponsible: does the work
+- **A**ccountable: answers for the result
+- **C**onsulted: gives input before the work is done
+- **I**nformed: is told the outcome
 
 | Activity                              | Product | Analyst | Developer | Reviewer | Human |
 | ------------------------------------- | :-----: | :-----: | :-------: | :------: | :---: |
