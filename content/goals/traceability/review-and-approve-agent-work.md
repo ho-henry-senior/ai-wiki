@@ -13,15 +13,6 @@ tags:
 
 When you approve a change, you stand behind it. An agent can't take that responsibility, so it stays with you. Agents produce more changes, and larger ones, than teams are used to reviewing; this guide is about keeping approval meaningful anyway.
 
-## Verification, review and approval
-
-- **Verification:** evidence that particular checks passed.
-- **Review:** examining the change and the evidence.
-- **Approval:** the decision to accept the change, and the responsibility that comes with it.
-- **Merging:** putting the change in. It's a separate step, which may happen later under the repository's rules.
-
-An agent's review is review, not approval.
-
 ## The steps
 
 **[Ask for work you can approve](ask-for-work-you-can-approve.md)**
