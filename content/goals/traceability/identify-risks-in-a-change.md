@@ -21,7 +21,7 @@ Not every change needs the same depth of review. Look at what agents tend to get
 | Does it do what was asked, and only that? | The diff has changes nobody asked for, or doesn't match the agent's description of it                           |
 | Did it change tests?                      | Assertions were removed or loosened, tests were skipped, snapshots were regenerated, or many new tests appeared |
 | Who ran the checks?                       | Only the agent ran them, or nothing exercised the behaviour people will use                                     |
-| Is it bigger than it needs to be?         | It's too big to hold in your head; ask for it to be [split](ask-for-small-focused-changes.md)                    |
+| Is it bigger than it needs to be?         | It's too big to hold in your head; ask for it to be [split](ask-for-small-focused-changes.md)                   |
 
 ## Weigh the risk of the change
 
