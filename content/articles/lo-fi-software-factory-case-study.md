@@ -8,7 +8,7 @@ tags:
   - Permissions and sandboxing
 ---
 
-# Case study: a lo-fi software factory
+# Lo-fi software factory
 
 A team tried a structured agent-assisted workflow on a partially completed, cross-cutting refactor of a web application. The work was a relatively AI-friendly technical change: the desired behaviour and technical direction were reasonably clear, with few competing product priorities.
 

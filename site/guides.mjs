@@ -84,10 +84,10 @@ export const readingRoutes = {
   },
   "lo-fi-software-factory": {
     kind: "case-study",
-    title: "Case study: a lo-fi software factory",
+    title: "Lo-fi software factory",
     ordered: true,
     numbered: false,
-    overview: { title: "Case study: a lo-fi software factory", url: "/pages/lo-fi-software-factory-case-study/" },
+    overview: { title: "Lo-fi software factory", url: "/pages/lo-fi-software-factory-case-study/" },
     parts: [
       { title: "From a refactor idea to actionable issues", url: "/pages/lo-fi-factory-issues/" },
       { title: "Dispatching development with GitHub labels", url: "/pages/lo-fi-factory-dispatch/" },

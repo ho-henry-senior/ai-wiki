@@ -119,5 +119,5 @@ test("Case studies retain their canonical URL outside Articles", () => {
   const detail = fs.readFileSync(path.join(siteRoot, url.slice(1), "index.html"), "utf8");
   assert.ok(listing.includes(href), "Case studies listing links to case study");
   assert.ok(!articles.includes(href), "Articles listing no longer duplicates it");
-  assert.match(detail, /Case study: a lo-fi software factory/);
+  assert.match(detail, /Lo-fi software factory/);
 });

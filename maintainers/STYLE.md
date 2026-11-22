@@ -33,7 +33,7 @@ Each [page type](INFORMATION-ARCHITECTURE.md#page-types) has a job. Write to it:
 - **How-to or pattern:** why the change is worth making, what to do, and how to check it worked.
 - **Explanation:** how related ideas fit together, built up step by step.
 - **Reference or checklist:** something to scan or consult. Each line still says why it matters.
-- **Case study:** what happened, and what was learned.
+- **Case study:** what happened, and what was learned. Use a short, sentence-case title that names the study itself, without a redundant “Case study:” prefix; the section already identifies its type.
 
 A long page needs a summary at the top and sections that make sense on their own, so a reader can go straight to the part they need.
 
