@@ -22,8 +22,8 @@ The last step is yours: inspect the change and its evidence, decide what to do w
 
 The agent's report says what it ran, and CI shows what ran there; neither replaces examining the change.
 
-- **Use a diff tool that shows the complete change and individual commits.** Filter generated files when they obscure the review, but inspect lock files when dependencies change. Useful options include [LazyGit](https://github.com/jesseduffield/lazygit), VS Code with GitHub's [Pull Requests extension](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) or [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens), and the GitHub CLI (`gh pr checkout`, `gh pr diff`).
-- **Check what CI ran and read the tests, not just their results.** CI on a trusted runner is often more reproducible than a local run. For a risky change or gaps in the evidence, run relevant checks yourself; see [local checks and tools](../../reference/local-development-tools.md) and [verify the result](../alignment/hand-off-and-steer.md#verify-the-result).
+- **Use a diff tool that shows the complete change and individual commits.** Filter generated files when they obscure the review, but inspect lock files when dependencies change. Options include [LazyGit](https://github.com/jesseduffield/lazygit), VS Code with GitHub's [Pull Requests extension](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) or [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens), and the GitHub CLI (`gh pr checkout`, `gh pr diff`).
+- **Check what CI ran and read the tests, not just their results.** CI on a trusted runner is often more reproducible than a local run. For a risky change or gaps in the evidence, run the checks yourself; see [local checks and tools](../../reference/local-development-tools.md) and [verify the result](../alignment/hand-off-and-steer.md#verify-the-result).
 
 ## Use an agent's review as evidence
 
@@ -51,6 +51,5 @@ Record the decision through the process your team already follows: the ticket, s
 
 - [GitHub CLI manual: gh pr diff](https://cli.github.com/manual/gh_pr_diff) and [gh pr checkout](https://cli.github.com/manual/gh_pr_checkout)
 - [VS Code docs: Work with GitHub in VS Code](https://code.visualstudio.com/docs/sourcecontrol/github)
-
 - [GitHub Docs: Using GitHub Copilot code review](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review)
 - [GitHub Docs: Approving a pull request with required reviews](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews)
