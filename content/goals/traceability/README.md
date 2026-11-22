@@ -1,6 +1,6 @@
 ---
 type: overview
-summary: Why agent work needs a review you can rely on, and a record someone else can follow; let the record make itself, put the check results on the pull request, read the risky parts first, and direct human attention by risk.
+summary: When you approve an agent's change, you take responsibility for it; keep agent work to the delivery process you already use, read the risky parts first, and keep approval with an accountable person.
 status: established
 lane: goals
 goal: traceability
@@ -12,7 +12,9 @@ tags:
 
 # Trust & Traceability
 
-As agents produce more changes, reviewers must decide which to trust, and on what evidence. Agent work splits implementation, decisions and approval between a model and people. Decisions may be buried in private sessions, while checks and logs expire, leaving later readers unable to reconstruct what happened or why. Keep a record and verification evidence where reviewers can find them, so they can judge whether to trust the change without repeating the work; in public-sector work, that record may be an obligation.
+When you approve a change an agent made, you take responsibility for it, because the agent can't. **Trust** means a person can stand behind the change; **traceability** means someone else can later follow what happened and why. In public-sector work, that record may be an obligation.
+
+Neither needs a new process: keep agent work to the delivery process you already use. For getting agent work into a form you can approve, see the [Review and approve agent work](review-and-approve-agent-work.md) guide.
 
 ## Core advice
 
@@ -20,26 +22,28 @@ As agents produce more changes, reviewers must decide which to trust, and on wha
 
 A reader needs to know which changes a person wrote and which an agent did. Copilot cloud agent commits are authored by Copilot, signed, and link to the session log, which stays on GitHub and cannot be deleted. For a tool that commits under your name, add a `Co-authored-by:` line naming it.
 
-### Pull request verification evidence
+### A record through your usual process
 
-Add one comment saying which checks ran, what they showed, and which did not, because the checks themselves do not last: Actions keeps checks, runs, and logs for 90 days by default, and public repositories cannot keep them longer, while CLI and editor sessions are yours to delete. Make corrections in pull request comments too, [as when steering](../alignment/hand-off-and-steer.md#steer-it).
+Use the norms you use for people's work: a ticket for the request, small commits with clear messages, a pull request that says what changed and why, and an approving review from a named person.
 
-Summarize logs rather than pasting them, and never record secrets: a record is shared more widely than the session it came from. If you must keep records longer, check your organization's records policy; GitHub Enterprise Cloud can stream agent audit-log events to long-term storage.
+Add one comment saying which checks ran, what they showed, and which did not, because checks don't last: Actions keeps checks, runs, and logs for 90 days by default, and public repositories cannot keep them longer, while CLI and editor sessions are yours to delete. Make corrections in pull request comments too, [as when steering](../alignment/hand-off-and-steer.md#steer-it).
+
+Summarize logs rather than pasting them, and never record secrets: a record is shared more widely than the session it came from. To keep records longer, check your organization's records policy; GitHub Enterprise Cloud can stream agent audit-log events to long-term storage.
 
 ### Risk-focused change review
 
-The agent's pull request description is its own account of what it did, so check it against the diff. Read tests, configuration, workflows, and new dependencies closely: a change that weakens a test or loosens an access rule can make a task pass without anyone noticing. If the checks pass, the rest can take a lighter read.
+The agent's pull request description is its own account, so check it against the diff. Read tests, configuration, workflows and new dependencies closely: a weakened test or a loosened access rule can make a task pass unnoticed. See [decide where to look](decide-where-to-look.md).
 
 ### Independent change approval
 
-Who looks, and how closely, should depend on what a change touches and what the checks showed, not the agent's confidence. Have someone other than the requester approve, because the person who asked may share the agent's assumptions. Add a `CODEOWNERS` file naming who owns sensitive paths, such as `.github/workflows/`; GitHub then requests their review on any pull request that changes those files, and a repository admin can make their approval required.
+Approval is a person's decision and responsibility; an agent's review is evidence for it, not the decision ([review, decide and approve](review-decide-and-approve.md)). Have someone other than the requester approve, because the person who asked may share the agent's assumptions. Add a `CODEOWNERS` file naming who owns sensitive paths, such as `.github/workflows/`; GitHub then requests their review on any pull request that changes those files, and a repository admin can make their approval required.
 
-## Trust: reviewing changes at scale
+## Automatic approval
 
 <div class="app-developing-card">
-  <p class="govuk-body-s"><strong>Developing — guidance not yet established</strong></p>
-  <p>As agents produce more pull requests, how can automated checks and risk assessments help people decide which changes need human review and which might be safe to merge automatically?</p>
-  <p>This is an area for investigation, not yet a recommended workflow. The aim is to support risk-informed decisions with evidence rather than rely on an agent's confidence.</p>
+  <p class="govuk-body-s"><strong>Developing — an area to watch, not a recommendation</strong></p>
+  <p>Some teams are exploring automatic approval of changes judged low-risk, and tools now allow it: Copilot's code review can be set to submit approvals that count, in public preview.</p>
+  <p>This wiki doesn't recommend it: approval in UK public-sector work needs a person who can answer for the change. Checks and risk assessments can still direct people's attention.</p>
 </div>
 
 ## Example
@@ -88,3 +92,4 @@ For more depth, see [repository context for coding agents](../alignment/reposito
 - [GitHub Docs: Agent management for enterprises](https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/enterprise/agent-management)
 - [GitHub Docs: Review output from Copilot](https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/review-copilot-output)
 - [GitHub Docs: About code owners](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
+- [GitHub Docs: Using GitHub Copilot code review](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review)
