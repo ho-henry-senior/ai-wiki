@@ -16,8 +16,7 @@ When you approve a change an agent made, you take responsibility for it, because
 ## Core advice
 
 - **[Accountable approval](accountable-approval.md)** — A named person approves each change and can answer for it; an agent's review, a passing check or a risk score is evidence for that decision, not the decision.
-- **[A record through your delivery process](delivery-record.md)** — Agile delivery already records what was asked, what changed and who approved it; keep agent work to the same process, record what was checked, and show which changes an agent made.
-- **[Agent changes you can identify](delivery-record.md#show-which-changes-an-agent-made)** — Make clear which changes an agent made, through commit authors, session logs and `Co-authored-by:` lines.
+- **[A record through your delivery process](delivery-record.md)** — Agile delivery already records what was asked, what changed and who approved it; keep agent work to the same process, and show which changes an agent made.
 
 For how to get agent work into a form you can approve, then find its risks and review it, see the [Review and approve agent work](review-and-approve-agent-work.md) guide.
 
