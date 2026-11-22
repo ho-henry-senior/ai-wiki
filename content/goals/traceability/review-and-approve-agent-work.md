@@ -19,13 +19,13 @@ Take an agent's pull request that adds a CSV export:
 
 - **Verification** is evidence from checks. The tests and linting pass in CI. That shows those checks passed; it says nothing about what they don't cover, such as whether a 10,000-row export finishes.
 - **Review** is a person examining the change. Reading the diff commit by commit, you notice the agent also changed the date format in an unrelated report, and added fourteen tests, three of which only check that the function returns a string.
-- **Approval** is the decision to accept responsibility. You ask for the unrelated change and the three tautological tests to be removed, try a large export yourself, then approve. Your name is on it.
+- **Approval** is the decision to accept responsibility. You ask for the unrelated change and the three tautological tests to be removed, and try a large export yourself. One successful run is more evidence, not proof, so you also weigh what is still unchecked before you approve. Your name is on it.
 
 **Merging** is separate again, and may happen later under the repository's rules. An agent's own review, however good its points, is review, not approval.
 
 ## What changes when agents do the work
 
-- **There's more to review,** and changes tend to grow. An agent covers every angle it can think of, and a large diff costs it little to read, so it doesn't see size as a problem the way a reviewer does.
+- **There's more to review,** and changes tend to grow. Agents tend to cover more angles than the task needs, and a large diff costs an agent little to read, so it doesn't see size as a problem the way a reviewer does.
 - **Tests multiply.** Agents add many tests, and some test nothing that matters. More tests can mean more to check, not more confidence.
 - **Scope needs defending.** The agent doesn't share your context or your judgement about what is worth doing, so you need informed views about scope and to insist they are kept.
 
