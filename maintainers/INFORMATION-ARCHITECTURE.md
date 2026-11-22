@@ -70,7 +70,7 @@ Choose the home that serves the reader; don't create a page just to fill the str
 
 Guides don't follow this count. A Guide is a reading route, so its length follows the reader's journey, and its chapters needn't be core points.
 
-Trust & Traceability piloted keeping its core points as sections of the overview ([#183](https://github.com/ho-henry-senior/ai-wiki/issues/183)). The pilot ended in [#239](https://github.com/ho-henry-senior/ai-wiki/issues/239): each section had enough substance for a page, and the overview grew into a second guide. Its points now link to two advice pages, _Accountable approval_ and _A record through your delivery process_, with attribution as a third point linking to a section of the record page.
+Trust & Traceability piloted keeping its core points as sections of the overview ([#183](https://github.com/ho-henry-senior/ai-wiki/issues/183)). The pilot ended in [#239](https://github.com/ho-henry-senior/ai-wiki/issues/239): each section had enough substance for a page, and the overview grew into a second guide. Its two points now link to advice pages: _Accountable approval_ and _A record through your delivery process_, which also covers attribution.
 
 ### Primary navigation, section listings and Guide context
 
