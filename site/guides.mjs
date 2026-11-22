@@ -67,6 +67,7 @@ export const readingRoutes = {
     parts: [
       { title: "Ask for work you can approve", url: "/pages/ask-for-work-you-can-approve/" },
       { title: "Decide where to look", url: "/pages/decide-where-to-look/" },
+      { title: "Review, decide and approve", url: "/pages/review-decide-and-approve/" },
     ],
   },
   "repository-setup": {

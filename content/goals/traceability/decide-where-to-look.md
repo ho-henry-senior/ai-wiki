@@ -1,40 +1,45 @@
 ---
 type: how-to
-summary: Decide how closely to review a change by asking what it reaches, what was checked, how hard it is to undo and how you'd notice a problem, as prompts for judgement rather than a score.
+summary: Decide how closely to review an agent's change, starting with what agents tend to get wrong, then look efficiently with good diff tools and checks you run yourself.
 status: developing
 lane: guides
 goal: traceability
+checked: 2026-11-22
 tags:
   - Pull requests and review
-  - Security
+  - Testing
 ---
 
 # Decide where to look
 
 Not every change needs the same depth of review. These questions help you decide where to spend your attention. They are prompts for judgement, not a score: no total tells you a change is safe to approve.
 
-## Questions to ask
+## Start with what agents tend to get wrong
 
-| Question                                  | Look harder when                                                                                   |
-| ----------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Does it do what was asked, and only that? | The diff has changes the request didn't ask for, or doesn't match the pull request's description   |
-| How far does it reach?                    | It touches shared code, an interface others use, or another system                                 |
-| What was actually checked?                | Only unit tests cover behaviour people use, only the agent ran the checks, or nothing exercised it |
-| How hard is it to undo?                   | It migrates or deletes data, changes a published interface, or changes infrastructure              |
-| How would you notice a problem?           | A failure would be silent, or nothing monitors that path                                           |
-| Did it change sensitive files?            | It changes workflows, access rules, authentication, secrets handling or dependencies               |
-| Did it change tests?                      | Assertions were removed or loosened, tests were skipped, or snapshots were regenerated             |
-| How familiar is it?                       | It introduces a new pattern, or is in code nobody on the team knows well                           |
-| How big is it?                            | It's too big to hold in your head; ask for it to be [split](ask-for-work-you-can-approve.md)       |
+| Question                                  | Look harder when                                                                                                |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Does it do what was asked, and only that? | The diff has changes nobody asked for, or doesn't match the agent's description of it                           |
+| Did it change tests?                      | Assertions were removed or loosened, tests were skipped, snapshots were regenerated, or many new tests appeared |
+| Who ran the checks?                       | Only the agent ran them, or nothing exercised the behaviour people will use                                     |
+| Is it bigger than it needs to be?         | It's too big to hold in your head; ask for it to be [split](ask-for-work-you-can-approve.md)                    |
 
-The first five come from a talk on the code-review bottleneck; see [the notes on it](../../sources/warp-code-review-bottleneck.md). Size isn't the same as risk: a one-line change to an access rule can need more attention than a large, well-tested refactor.
+## Then weigh the risk
 
-## Three examples
+The questions you'd ask of any change still apply. Look harder when it reaches shared code, other systems or interfaces others use; when it is hard to undo, such as a data migration; when a failure would be silent; and when it changes workflows, access rules, authentication or dependencies. A documentation fix may need only a careful read; an authentication change needs every line read and its owner's review, which a [`CODEOWNERS` file](README.md#independent-change-approval) can request. Several of these questions come from a talk on the code-review bottleneck; see [the notes on it](../../sources/warp-code-review-bottleneck.md).
 
-- **A documentation correction** fixes wording in a README. It reaches nothing else, is easy to undo, and a problem would be obvious. Read it and check it is true; that is usually enough.
-- **A dependency update** raises a library's version, and the lock file changes in many places. It reaches everything that uses the library, and its effects can be subtle even though the code change is easy to undo. Read the library's changelog, check that the lock file changes only the packages you expect, confirm the package is the one you meant (see [invented dependencies](../../concepts/hallucinated-dependencies.md)), and check tests of the behaviour that uses the library and the points where your code calls it, at whatever level exercises them.
-- **An authentication change** shortens the session timeout. The diff is small, but it affects every user, a mistake could fail silently, and it is in sensitive code. Read every line, check that tests cover both expiry and rejection, and have the code's owner review it; a `CODEOWNERS` file can request their review automatically, as [Trust & Traceability](README.md#independent-change-approval) describes.
+## Then look
+
+The agent's report says what it ran, and CI shows what ran there; neither is you seeing the change work.
+
+- **Use a diff tool that shows each commit and the whole change,** lets you filter out generated files, and splits a large change into sections you can manage. Review lock files when dependencies change: they show unexpected indirect updates. Some examples: [LazyGit](https://github.com/jesseduffield/lazygit); VS Code's diff with GitHub's [Pull Requests extension](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) and [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens); and the GitHub CLI, where `gh pr checkout` fetches the change and `gh pr diff --exclude 'generated/*'` hides generated files.
+- **Check the evidence, then run what the risk calls for.** Look at what ran in CI and at the tests themselves; CI on a trusted runner is often more reproducible than a local run. When a change is risky or the evidence leaves you unsure, run the checks for the area that changed yourself; see [local checks and tools for coding agents](../../reference/local-development-tools.md).
+- **Read the tests, not just their result;** see [verify the result](../alignment/hand-off-and-steer.md#verify-the-result).
 
 ## When you can't answer a question
 
-If the change and its evidence don't let you answer one of these questions, that is a finding in itself. Ask for what's missing before you approve: the evidence, a check you can run, or a smaller change.
+If the change and its evidence don't let you answer one of these questions, that is a finding in itself. Ask for what's missing before you [decide](review-decide-and-approve.md): the evidence, a check you can run, or a smaller change.
+
+## Sources
+
+- [GitHub CLI manual: gh pr diff](https://cli.github.com/manual/gh_pr_diff) and [gh pr checkout](https://cli.github.com/manual/gh_pr_checkout)
+- [VS Code docs: Work with GitHub in VS Code](https://code.visualstudio.com/docs/sourcecontrol/github)
