@@ -13,7 +13,7 @@ import {
 } from "../scripts/site-links.mjs";
 import { contents, isLetterIndex } from "../scripts/site-contents.mjs";
 import { splitFinalSources } from "../scripts/site-sources.mjs";
-import { caseStudyForUrl, guideNavigation, guides } from "./guides.mjs";
+import { caseStudyForUrl, guideListing, guideNavigation, guides } from "./guides.mjs";
 import { expandIncludes, includesDir } from "../scripts/site-includes.mjs";
 import {
   eleventyNavigation,
@@ -76,11 +76,17 @@ export default async function (eleventyConfig) {
     api.getAll().filter((item) => item.data.lane === "case-studies" && (!caseStudyForUrl(item.url) || caseStudyForUrl(item.url).position === 0))
       .sort((a, b) => a.data.title.localeCompare(b.data.title)),
   );
-  // The registry names entry pages; front matter has no entry marker.
-  eleventyConfig.addCollection("guideEntries", (api) => {
-    const entryUrls = new Set(Object.values(guides).map((guide) => guide.overview.url));
-    return api.getAll().filter((item) => entryUrls.has(item.url))
-      .sort((a, b) => a.data.title.localeCompare(b.data.title));
+  // The Guides landing page: ungrouped Guides and group overviews,
+  // alphabetically, each group with its Guides beneath it. The registry
+  // names the pages; their descriptions come from front matter.
+  eleventyConfig.addCollection("guideListing", (api) => {
+    const pages = new Map(api.getAll().map((item) => [item.url, item]));
+    const withDescription = (entry) => ({
+      ...entry,
+      description: pages.get(entry.url)?.data.description,
+      children: (entry.children ?? []).map(withDescription),
+    });
+    return guideListing().map(withDescription);
   });
   eleventyConfig.addCollection("datedArticles", (api) =>
     api
@@ -184,7 +190,7 @@ export default async function (eleventyConfig) {
   // Markdown files of their own. Each has its lane's sidebar; Goals lists
   // the four goal overviews in order, and Articles lists every article by
   // title, with its type and main goal.
-  const lists = { goals: "goalOverviews", guides: "guideEntries", articles: "articles", "case-studies": "caseStudies" };
+  const lists = { goals: "goalOverviews", guides: "guideListing", articles: "articles", "case-studies": "caseStudies" };
   // Reference is deliberately grouped by reader need rather than a second
   // taxonomy. Keep the sidebar flat and preserve the published page URLs.
   // Site-absolute links are rewritten with the deployment path prefix.

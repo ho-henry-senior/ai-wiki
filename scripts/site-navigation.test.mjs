@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
-import { guides } from "../site/guides.mjs";
+import { guideListing, guides } from "../site/guides.mjs";
 
 const cases = [
   ["goals/index.html", "goals"],
@@ -24,6 +24,7 @@ const cases = [
   ["pages/agent-facing-repository-structure/index.html", "guides", "Set up a repository for agents"],
   ["pages/local-agent-security/index.html", "guides", "Secure a local coding agent"],
   ["pages/review-and-approve-agent-work/index.html", "guides", "Review and approve agent work"],
+  ["pages/agent-roles-and-skills/index.html", "guides", "Agent roles and skills"],
   ["pages/define-and-verify-tasks/index.html", "guides", "Define, steer, and verify a task"],
   ["pages/agree-on-the-problem/index.html", "guides", "Agree on the problem"],
   ["pages/local-agent-credentials/index.html", "guides", "Protect credentials and sensitive data"],
@@ -227,17 +228,21 @@ test("Unnumbered ordered Guides have Previous/Next but no chapter numbers", () =
   }
 });
 
-test("Guides are listed alphabetically on the Guides page and in its sidebar", () => {
-  const entries = Object.values(guides).map((guide) => guide.overview);
-  const expected = [...entries].sort((a, b) => a.title.localeCompare(b.title)).map((entry) => entry.url);
+test("Guides are listed alphabetically on the Guides page and in its sidebar, with groups' Guides beneath them", () => {
+  const listing = guideListing();
+  const titles = (entries) => entries.map((entry) => entry.title);
+  assert.deepEqual(titles(listing), [...titles(listing)].sort((a, b) => a.localeCompare(b)), "top level is alphabetical");
+  for (const entry of listing)
+    assert.deepEqual(titles(entry.children), [...titles(entry.children)].sort((a, b) => a.localeCompare(b)), `${entry.title}: Guides are alphabetical`);
+  const expected = listing.flatMap((entry) => [entry.url, ...entry.children.map((child) => child.url)]);
   const html = fs.readFileSync("_site/guides/index.html", "utf8");
   const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
   assert.ok(sidebar, "Guides sidebar exists");
   const main = html.slice(html.indexOf("</nav>", html.indexOf(sidebar) + 1));
   for (const [where, text] of [["sidebar", sidebar], ["page", main]]) {
     const positions = expected.map((url) => text.indexOf(`href="/ai-wiki${url}"`));
-    assert.ok(positions.every((position) => position >= 0), `${where}: every guide entry is listed`);
-    assert.deepEqual([...positions].sort((a, b) => a - b), positions, `${where}: guides are in alphabetical order`);
+    assert.ok(positions.every((position) => position >= 0), `${where}: every guide entry and group is listed`);
+    assert.deepEqual([...positions].sort((a, b) => a - b), positions, `${where}: guides are in order`);
   }
 });
 
@@ -265,4 +270,21 @@ test("The homepage leads with First steps and routes to lanes rather than listin
     assert.ok(!guidesSection.includes(`href="/ai-wiki${guide.overview.url}"`), `Homepage does not list ${guide.title}`);
   for (const lane of ["articles", "case-studies", "reference"])
     assert.ok(main.includes(`href="/ai-wiki/${lane}/"`), `Homepage routes to ${lane}`);
+});
+
+test("Agent roles and Skills sit under one group; only the active Guide's chapters are expanded", () => {
+  const html = fs.readFileSync("_site/pages/writing-agent-skills/index.html", "utf8");
+  const sidebar = html.match(/<nav[^>]*x-govuk-sub-navigation[^>]*>[\s\S]*?<\/nav>/)?.[0];
+  assert.ok(sidebar, "sidebar exists");
+  const at = (url) => sidebar.indexOf(`href="/ai-wiki${url}"`);
+  const group = at("/pages/agent-roles-and-skills/");
+  assert.ok(group >= 0, "the group is in the sidebar");
+  assert.ok(at("/concepts/skills-profiles-and-tools/") > group, "Agent roles is listed under the group");
+  assert.ok(at("/pages/useful-skills/") > at("/concepts/skills-profiles-and-tools/"), "Skills follows Agent roles");
+  assert.ok(at("/pages/agent-skills-directory/") > at("/pages/useful-skills/"), "the active Guide's chapters are shown");
+  assert.equal(at("/pages/agent-role-boundaries/"), -1, "the sibling Guide's chapters stay collapsed");
+  assert.match(sidebar, /aria-current="true"[^>]*>|href="\/ai-wiki\/pages\/writing-agent-skills\/" aria-current="true"/, "the current chapter is marked");
+  const listing = fs.readFileSync("_site/guides/index.html", "utf8");
+  const main = listing.slice(listing.indexOf("app-document-list"));
+  assert.ok(main.indexOf('href="/ai-wiki/concepts/skills-profiles-and-tools/"') > main.indexOf('href="/ai-wiki/pages/agent-roles-and-skills/"'), "the landing page lists the group's Guides beneath it");
 });

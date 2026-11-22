@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
-import { guideNavigation, guideForUrl, guides, validateGuideUrls } from "../site/guides.mjs";
+import { guideGroups, guideNavigation, guideForUrl, guides, validateGuideUrls } from "../site/guides.mjs";
 import { eleventyNavigation, laneItems } from "../site/lanes.mjs";
 import { pageUrl } from "./site-links.mjs";
 
@@ -137,4 +137,14 @@ test("A Guide whose title has a comma nests its chapters under a comma-free key"
   assert.ok(!key.includes(","), "entry key has no comma");
   assert.equal(eleventyNavigation.parent(chapter), key);
   assert.equal(eleventyNavigation.title(entry), "Define, steer, and verify a task");
+});
+
+test("A grouped Guide's entry nests under its group; its chapters stay under the Guide", () => {
+  const group = guideGroups["agent-roles-and-skills"];
+  assert.deepEqual(group.guides, ["agent-roles", "skills"]);
+  assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/pages/useful-skills/" } }), group.title);
+  assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/concepts/skills-profiles-and-tools/" } }), group.title);
+  assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: group.overview.url } }), "Guides");
+  assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/pages/writing-agent-skills/" } }), "Skills");
+  assert.equal(eleventyNavigation.parent({ lane: "guides", page: { url: "/pages/define-and-verify-tasks/" } }), "Guides");
 });

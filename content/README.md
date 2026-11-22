@@ -19,9 +19,15 @@ Pages are listed here by their section on the website, which their `lane` front 
 
 ## Guides
 
-- [Agent roles](concepts/skills-profiles-and-tools.md) — what a role is, when to add one, and how it differs from a skill and a tool.
-  - [Agile roles in agentic development](articles/agent-role-boundaries.md) — familiar responsibilities and handoffs in an agent-assisted workflow.
-  - [How agent roles use skills](reference/agent-roles-directory.md) — original role files showing explicit skill use and possible adaptations.
+- [Agent roles and skills](articles/agent-roles-and-skills.md) — how skills and agent roles differ, with a Guide for each.
+  - [Agent roles](concepts/skills-profiles-and-tools.md) — what a role is, when to add one, and how it differs from a skill and a tool.
+    - [Agile roles in agentic development](articles/agent-role-boundaries.md) — familiar responsibilities and handoffs in an agent-assisted workflow.
+    - [How agent roles use skills](reference/agent-roles-directory.md) — original role files showing explicit skill use and possible adaptations.
+  - [Skills](goals/economy/useful-skills.md) — what a skill is, how Copilot uses one, and how it differs from AGENTS.md and agent roles.
+    - [Skills worth trying](reference/agent-skills-directory.md) — the skills built into Copilot, and a few community skills this wiki refers to.
+    - [Install an existing skill](reference/install-agent-skills.md) — read it, install a pinned version with `gh skill`, and check Copilot can see it.
+    - [Write your own skill](reference/writing-agent-skills.md) — where it goes, a description that gets it used, and a complete minimal skill.
+    - [Test whether a skill helps](reference/test-agent-skills.md) — compare a real task with and without it, record the result, and retire it when it's not needed.
 - [Define, steer, and verify a task](goals/alignment/define-and-verify-tasks.md) — agree what success means, turn it into issues, then steer the agent and check the result.
   - [Agree on the problem](goals/alignment/agree-on-the-problem.md) — have the agent question you, decide the scope, and agree a specification.
   - [Turn the specification into issues](goals/alignment/turn-specification-into-issues.md) — outcome, acceptance criteria, checks and out of scope for each issue.
@@ -44,11 +50,6 @@ Pages are listed here by their section on the website, which their `lane` front 
   - [Repository context for coding agents](goals/alignment/repository-context-for-agents.md) — write down the facts an agent got wrong, near the code they concern.
   - [Enable agents to run repository commands](goals/alignment/agent-tool-delegation.md) — list commands in `AGENTS.md`, and set up the Copilot cloud agent to run them.
   - [Give agents a command interface with Just](goals/economy/justfile-agent-workflows.md) — advertise recipes, run single tests, compose checks, and define handoff gates.
-- [Skills](goals/economy/useful-skills.md) — what a skill is, how Copilot uses one, and how it differs from AGENTS.md and agent roles.
-  - [Skills worth trying](reference/agent-skills-directory.md) — the skills built into Copilot, and a few community skills this wiki refers to.
-  - [Install an existing skill](reference/install-agent-skills.md) — read it, install a pinned version with `gh skill`, and check Copilot can see it.
-  - [Write your own skill](reference/writing-agent-skills.md) — where it goes, a description that gets it used, and a complete minimal skill.
-  - [Test whether a skill helps](reference/test-agent-skills.md) — compare a real task with and without it, record the result, and retire it when it's not needed.
 
 ## Articles
 

@@ -96,6 +96,8 @@ A Guide can gather pages whose **primary purposes differ**. The Guides can inclu
 
 - **Session history and active context** — Guides lane; fourth ordered chapter of How coding agents work.
 
+- **Agent roles and skills** — Guides lane; a guide group, not a Guide ([#223](https://github.com/ho-henry-senior/ai-wiki/issues/223)). A short overview explains how skills and agent roles differ and links to both Guides, which sit beneath it in the Guides listing and sidebar.
+
 - **Skills** — Guides lane; ordered but unnumbered entry explaining what a skill is and how Copilot uses one, with the shared comparison of AGENTS.md, skills, roles and tools; discoverable via Guides.
 
 - **Install an existing skill** — Guides lane; Skills chapter on reviewing, installing and checking someone else's skill.

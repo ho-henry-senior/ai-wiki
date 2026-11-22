@@ -1,0 +1,26 @@
+{#- The x-govuk sub-navigation, with one more level of nesting: a group of
+    Guides, its Guides, and their chapters. Same markup and classes as the
+    plugin's component, so its styles apply. An item shows its children when
+    `expanded` (or, for items built elsewhere, when `parent`) is set. -#}
+{% macro appSubNavItems(items, nested) %}
+  <ul class="x-govuk-sub-navigation__section{% if nested %} x-govuk-sub-navigation__section--nested{% endif %}">
+  {%- for item in items %}
+    {%- if item %}
+    <li class="x-govuk-sub-navigation__section-item{% if item.parent or item.current %} x-govuk-sub-navigation__section-item--current{% endif %}">
+      <a class="x-govuk-sub-navigation__link" href="{{ item.href }}"{% if item.current %} aria-current="true"{% endif %}>{{ item.text }}</a>
+      {%- if item.expanded is defined %}{% set open = item.expanded %}{% else %}{% set open = item.parent %}{% endif %}
+      {%- if open and item.children and item.children | length > 0 %}
+      {{ appSubNavItems(item.children, true) }}
+      {%- endif %}
+    </li>
+    {%- endif %}
+  {%- endfor %}
+  </ul>
+{% endmacro %}
+
+{% macro appSubNavigation(items) %}
+<nav class="x-govuk-sub-navigation" aria-labelledby="sub-navigation-heading">
+  <h2 class="govuk-visually-hidden" id="sub-navigation-heading">Pages in this section</h2>
+  {{ appSubNavItems(items, false) }}
+</nav>
+{% endmacro %}

@@ -153,7 +153,57 @@ export function validateGuideUrls(publishedUrls) {
     if (!urls.has(url))
       throw new Error(`Unresolved URL in guide ${match.id}: ${url}`);
   }
+  for (const [url, { id }] of groupByUrl) {
+    if (!urls.has(url)) throw new Error(`Unresolved URL in guide group ${id}: ${url}`);
+  }
   return true;
+}
+
+// A group gathers closely related Guides under one navigation entry with a
+// short overview page. It is not a Guide: it has no chapters or reading
+// order, and its Guides keep their own entries, chapters and URLs.
+export const guideGroups = {
+  "agent-roles-and-skills": {
+    title: "Agent roles and skills",
+    overview: { title: "Agent roles and skills", url: "/pages/agent-roles-and-skills/" },
+    guides: ["agent-roles", "skills"],
+  },
+};
+
+const groupByGuide = new Map();
+const groupByUrl = new Map();
+for (const [id, group] of Object.entries(guideGroups)) {
+  if (group.title.includes(","))
+    throw new Error(`Guide group ${id} title must not contain a comma`);
+  if (membersByUrl.has(group.overview.url))
+    throw new Error(`Guide group ${id} overview is also a Guide member`);
+  groupByUrl.set(group.overview.url, { id, group });
+  for (const guideId of group.guides) {
+    if (!guides[guideId]) throw new Error(`Guide group ${id} names unknown Guide ${guideId}`);
+    if (groupByGuide.has(guideId)) throw new Error(`Guide ${guideId} is in more than one group`);
+    groupByGuide.set(guideId, { id, group });
+  }
+}
+
+// The group a Guide belongs to, or null.
+export const groupForGuide = (guideId) => groupByGuide.get(guideId) ?? null;
+// The group whose overview page this is, or null.
+export const groupForUrl = (url) => groupByUrl.get(url) ?? null;
+
+// Top-level entries for the Guides listing: ungrouped Guide entries and
+// group overviews, alphabetically, each group with its Guides beneath it.
+export function guideListing() {
+  const entry = (guideId) => ({ url: guides[guideId].overview.url, title: guides[guideId].title });
+  const byTitle = (a, b) => a.title.localeCompare(b.title);
+  const top = [
+    ...Object.keys(guides).filter((id) => !groupByGuide.has(id)).map((id) => ({ ...entry(id), children: [] })),
+    ...Object.values(guideGroups).map((group) => ({
+      url: group.overview.url,
+      title: group.title,
+      children: group.guides.map(entry).sort(byTitle),
+    })),
+  ];
+  return top.sort(byTitle);
 }
 
 // Case-study lookup is a filtered view of the same registry, not a second
