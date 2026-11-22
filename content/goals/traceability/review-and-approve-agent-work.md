@@ -31,12 +31,13 @@ Take an agent's pull request that adds a CSV export:
 
 The record of who approved what, and why, comes from the delivery process teams already use: tickets, small commits with clear messages, small documented pull requests and a named approver. See [Trust & Traceability](README.md).
 
-## What this guide will cover
+## The steps
 
-This guide is being written. Its chapters will cover:
+- **[Ask for work you can approve](ask-for-work-you-can-approve.md):** the smallest coherent change, firm scope, meaningful tests, when the agent should stop and ask, and a handoff you can check.
+- **[Decide where to look](decide-where-to-look.md):** what makes a change easier or harder to approve, such as how far it reaches, how hard it is to undo, and how you would notice a problem.
 
-- **Ask for work you can approve:** the smallest coherent change, firm scope, meaningful tests, and when the agent should stop and ask.
-- **Decide where to look:** what makes a change easier or harder to approve, such as how far it reaches, how hard it is to undo, and how you would notice a problem.
+Still being written:
+
 - **Assess the change:** what a reviewer needs from their tools, and running checks locally before CI.
 - **Review, decide and approve:** using an agent's review as evidence, asking for changes or more evidence, and making the decision.
 
