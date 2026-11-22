@@ -64,13 +64,13 @@ Each core point has **one clear home for its substantive explanation**. The home
 
 - **An existing page,** when one page already covers the point. Security's _Prompt injection_ point links straight to its page, which states the point and routes readers to the controls.
 - **A routing page** (`type: advice`), when several pages each contribute part of the advice. Economy's two points work this way.
-- **A section of the overview,** when nothing substantial sits behind the point. Trust & Traceability's four points work this way.
+- **A section of the overview,** when nothing substantial sits behind the point.
 
 Choose the home that serves the reader; don't create a page just to fill the structure. A routing page must earn the extra click with a decision, a synthesis or a route that the overview doesn't already give. If it only repeats the overview's summary and lists links, make it a section instead.
 
 Guides don't follow this count. A Guide is a reading route, so its length follows the reader's journey, and its chapters needn't be core points.
 
-Trust & Traceability's overview sections are a recent pilot from [#183](https://github.com/ho-henry-senior/ai-wiki/issues/183). Assess how readers find them before using overview sections, or routing pages, as the default for every goal.
+Trust & Traceability piloted keeping its core points as sections of the overview ([#183](https://github.com/ho-henry-senior/ai-wiki/issues/183)). The pilot ended in [#239](https://github.com/ho-henry-senior/ai-wiki/issues/239): each section had enough substance for a page, and the overview grew into a second guide. Its points now link to two advice pages, _Accountable approval_ and _A record through your delivery process_, with attribution as a third point linking to a section of the record page.
 
 ### Primary navigation, section listings and Guide context
 

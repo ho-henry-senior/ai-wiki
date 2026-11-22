@@ -38,7 +38,7 @@ Addressing an agent's findings doesn't mean the change can go ahead. Decide what
 
 Approve when you can stand behind the change; otherwise request changes, saying what would make it complete, or decline it. Requesting changes and reviewing again is normal review, not a failure. If the evidence is incomplete, ask for what's missing rather than approving on the agent's assurance that it works.
 
-Record the decision through the process your team already follows: the ticket, small commits with clear messages, a documented pull request, and an approving review from a named person. Add a short comment with what a later reader couldn't otherwise tell: anything you knowingly left unchecked, limitations you accepted, and why you approved despite them. For what the record should answer, see [Trust & Traceability](README.md#example).
+Record the decision through the process your team already follows: the ticket, small commits with clear messages, a documented pull request, and an approving review from a named person. Add a short comment with what a later reader couldn't otherwise tell: anything you knowingly left unchecked, limitations you accepted, and why you approved despite them. For what the record should answer, see [check the record](delivery-record.md#check-the-record).
 
 ## Sources
 

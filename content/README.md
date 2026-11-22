@@ -15,7 +15,9 @@ Pages are listed here by their section on the website, which their `lane` front 
   - [Unexpected data exposure](goals/security/unexpected-data-exposure.md)
   - [Prompt injection](goals/security/prompt-injection.md)
   - [Untrusted code execution](goals/security/untrusted-code-execution.md)
-- [Trust & Traceability](goals/traceability/README.md) — developing core advice for reviewing changes you can rely on and keeping a record of agent work.
+- [Trust & Traceability](goals/traceability/README.md) — keep approval with an accountable person, the record in your delivery process, and agent changes identifiable.
+  - [Accountable approval](goals/traceability/accountable-approval.md)
+  - [A record through your delivery process](goals/traceability/delivery-record.md)
 
 ## Guides
 

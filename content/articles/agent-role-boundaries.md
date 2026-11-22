@@ -58,7 +58,7 @@ sequenceDiagram
     Human->>Dev: Merge or release approval
 ```
 
-Roles prepare work and recommend; the human decides and stays accountable. Copilot custom-agent instructions cannot enforce approvals on their own. Keep independent [review and approval controls](../goals/traceability/README.md#independent-change-approval) around the pull request.
+Roles prepare work and recommend; the human decides and stays accountable. Copilot custom-agent instructions cannot enforce approvals on their own. Keep independent [review and approval controls](../goals/traceability/accountable-approval.md) around the pull request.
 
 ## Sources
 
