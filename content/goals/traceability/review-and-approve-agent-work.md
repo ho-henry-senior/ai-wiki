@@ -35,10 +35,7 @@ The record of who approved what, and why, comes from the delivery process teams 
 
 - **[Ask for work you can approve](ask-for-work-you-can-approve.md):** the smallest coherent change, firm scope, meaningful tests, when the agent should stop and ask, and a handoff you can check.
 - **[Decide where to look](decide-where-to-look.md):** what makes a change easier or harder to approve, such as how far it reaches, how hard it is to undo, and how you would notice a problem.
-
-Still being written:
-
-- **Assess the change:** what a reviewer needs from their tools, and running checks locally before CI.
-- **Review, decide and approve:** using an agent's review as evidence, asking for changes or more evidence, and making the decision.
+- **[Assess the change](assess-the-change.md):** what a reviewer needs from their tools, some tools that provide it, and the checks to run yourself.
+- **[Review, decide and approve](review-decide-and-approve.md):** using an agent's review as evidence, approving, asking for changes or declining, and recording the decision.
 
 For the checks to run when an agent hands back a single task, see [hand off an issue and steer the implementation](../alignment/hand-off-and-steer.md#verify-the-result).
