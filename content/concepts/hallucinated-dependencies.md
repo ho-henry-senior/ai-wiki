@@ -35,7 +35,7 @@ Asking the agent in `AGENTS.md` to check before adding a dependency helps, but i
 
 ## Sources
 
-- [Cloud Security Alliance: Slopsquatting, AI hallucinations as supply-chain attack vectors](https://labs.cloudsecurityalliance.org/research-rb/csa-research-note-slopsquatting-ai-coding-assistant-supply-c/) — summarizes the USENIX Security 2025 study.
+- [Cloud Security Alliance: Slopsquatting, AI hallucinations as supply-chain attack vectors](https://labs.cloudsecurityalliance.org/research-rb/csa-research-note-slopsquatting-ai-coding-assistant-supply-c/) — summarises the USENIX Security 2025 study.
 - [CSO Online: Top AIs invent the same fake PyPI and npm package names](https://www.csoonline.com/article/4201164) — reports the 2026 study of recurring names.
 - [GitHub Docs: Customizing the agent firewall](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/customize-the-agent-firewall)
 

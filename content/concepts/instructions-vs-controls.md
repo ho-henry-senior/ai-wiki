@@ -1,6 +1,6 @@
 ---
 type: reference
-summary: Instructions guide model behavior; independently enforced permissions restrict actions even when the model chooses incorrectly.
+summary: Instructions guide model behaviour; independently enforced permissions restrict actions even when the model chooses incorrectly.
 status: established
 lane: articles
 goal: security
@@ -12,7 +12,7 @@ tags:
 
 # Instructions and enforced controls
 
-Asking an agent to avoid an action differs from preventing that action. Instructions guide behavior; access restrictions must be enforced by the [harness](../reference/glossary.md#agent-harness), tool, operating system, or connected service.
+Asking an agent to avoid an action differs from preventing that action. Instructions guide behaviour; access restrictions must be enforced by the [harness](../reference/glossary.md#agent-harness), tool, operating system, or connected service.
 
 For example, "use the database read-only" asks the model to behave. A database identity without write privileges prevents writes through that identity even if the agent requests one.
 
@@ -24,7 +24,7 @@ Keep instructions explicit, but combine them with narrowly scoped tools and cred
 
 The same distinction applies to role profiles: saying that a reviewer does not implement changes is a role contract, not proof that its tools cannot edit files.
 
-No single layer guarantees safety. Scanning and redaction may miss sensitive content; approval can be poorly informed; a sandbox may cover one tool but not another. Check each integration's actual execution and authorization path.
+No single layer guarantees safety. Scanning and redaction may miss sensitive content; approval can be poorly informed; a sandbox may cover one tool but not another. Check each integration's actual execution and authorisation path.
 
 ## Sources and applications
 

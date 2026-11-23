@@ -26,7 +26,7 @@ For example, a local documentation-search server might read project files and se
 
 ## What to check
 
-Review the immediate server, the data and credentials it can access, its downstream destinations, and its retention behavior. Verify which filesystem, credential, and network restrictions actually cover that process or service. A [harness](../reference/glossary.md#agent-harness)'s shell sandbox does not necessarily cover its MCP integrations. For example, the Copilot cloud agent's firewall applies only to processes started through its shell, not to MCP servers.
+Review the immediate server, the data and credentials it can access, its downstream destinations, and its retention behaviour. Verify which filesystem, credential, and network restrictions actually cover that process or service. A [harness](../reference/glossary.md#agent-harness)'s shell sandbox does not necessarily cover its MCP integrations. For example, the Copilot cloud agent's firewall applies only to processes started through its shell, not to MCP servers.
 
 Transport is not a complete security classification: stdio is commonly used for local processes, while HTTP can be used for remote servers or a local service.
 

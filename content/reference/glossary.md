@@ -18,7 +18,7 @@ Copilot's billing unit, worth one US cent. Copilot prices each request's input, 
 
 ### Alignment
 
-How well an AI system's behavior reflects human intentions and values. In this wiki, alignment also describes how well an agent's work matches the intended outcome of a specific task. Reinforcement learning from human feedback (RLHF) is one technique used toward the broader goal; it is not the same as system-level safety controls. See [OpenAI's approach to alignment research](https://openai.com/index/our-approach-to-alignment-research/).
+How well an AI system's behaviour reflects human intentions and values. In this wiki, alignment also describes how well an agent's work matches the intended outcome of a specific task. Reinforcement learning from human feedback (RLHF) is one technique used toward the broader goal; it is not the same as system-level safety controls. See [OpenAI's approach to alignment research](https://openai.com/index/our-approach-to-alignment-research/).
 
 ### Agent
 
@@ -38,7 +38,7 @@ A Markdown file of instructions for coding agents, placed at the root of a repos
 
 ### Agentic system
 
-A system organized to let a model take multiple steps toward a goal, possibly using tools. This term may include both predefined workflows and agents that choose their own next actions; distinguish the two when the control flow matters.
+A system organised to let a model take multiple steps toward a goal, possibly using tools. This term may include both predefined workflows and agents that choose their own next actions; distinguish the two when the control flow matters.
 
 ## B
 
@@ -54,7 +54,7 @@ Intermediate reasoning steps produced or elicited while solving a task. A displa
 
 ### Compaction
 
-Summarizing older parts of a long conversation so it fits the context window. It can lose detail and does not delete the saved history. Copilot CLI compacts automatically, or on request with `/compact`. See [session history and active context](../concepts/session-history-vs-context.md).
+Summarising older parts of a long conversation so it fits the context window. It can lose detail and does not delete the saved history. Copilot CLI compacts automatically, or on request with `/compact`. See [session history and active context](../concepts/session-history-vs-context.md).
 
 ### Context window
 
@@ -78,7 +78,7 @@ A repeatable assessment of how well a model or agent performs defined tasks agai
 
 ### Fine-tuning
 
-Further training of a pre-trained model to adjust its behavior or specialize it for a task. Unlike prompting or retrieval-augmented generation, fine-tuning changes the model's learned parameters. Parameter-efficient methods such as [LoRA](https://arxiv.org/abs/2106.09685) update a smaller set of parameters.
+Further training of a pre-trained model to adjust its behaviour or specialise it for a task. Unlike prompting or retrieval-augmented generation, fine-tuning changes the model's learned parameters. Parameter-efficient methods such as [LoRA](https://arxiv.org/abs/2106.09685) update a smaller set of parameters.
 
 ### Foundation model
 
@@ -124,7 +124,7 @@ A model trained on language data to process and generate text, typically by pred
 
 ### Machine learning
 
-A field of AI in which systems learn patterns or behavior from data rather than relying only on rules explicitly written by a programmer. Training is the process of fitting a model; inference is using the trained model.
+A field of AI in which systems learn patterns or behaviour from data rather than relying only on rules explicitly written by a programmer. Training is the process of fitting a model; inference is using the trained model.
 
 ### Model
 
@@ -132,7 +132,7 @@ A learned computational component that maps input to output based on parameters 
 
 ### Model Context Protocol (MCP)
 
-An open protocol for connecting AI applications to external servers that provide capabilities such as tools, resources, and prompts. MCP standardizes communication between applications and servers; it is not itself a model or an agent. See the [MCP specification](https://modelcontextprotocol.io/specification/latest) and [local versus remote servers](../concepts/local-and-remote-mcp.md).
+An open protocol for connecting AI applications to external servers that provide capabilities such as tools, resources, and prompts. MCP standardises communication between applications and servers; it is not itself a model or an agent. See the [MCP specification](https://modelcontextprotocol.io/specification/latest) and [local versus remote servers](../concepts/local-and-remote-mcp.md).
 
 ### Multimodal model
 
@@ -150,7 +150,7 @@ Reusing input that a provider has stored from a recent request, so it is process
 
 ### Prompt injection
 
-An attack in which untrusted input—directly from a user or indirectly from content the model reads—tries to alter the model's behavior or override intended instructions. The risk depends in part on what tools and permissions the system gives the model. See [OWASP's LLM Prompt Injection guidance](https://genai.owasp.org/llmrisk/llm01-prompt-injection/).
+An attack in which untrusted input—directly from a user or indirectly from content the model reads—tries to alter the model's behaviour or override intended instructions. The risk depends in part on what tools and permissions the system gives the model. See [OWASP's LLM Prompt Injection guidance](https://genai.owasp.org/llmrisk/llm01-prompt-injection/).
 
 ## R
 
@@ -160,7 +160,7 @@ A model marketed or designed for stronger multi-step problem solving, often usin
 
 ### Red teaming
 
-Adversarial testing in which people deliberately probe a system to discover weaknesses, unsafe behavior, or ways it can be misused before deployment.
+Adversarial testing in which people deliberately probe a system to discover weaknesses, unsafe behaviour, or ways it can be misused before deployment.
 
 ### Retrieval-augmented generation (RAG)
 
@@ -188,7 +188,7 @@ Model output constrained to follow a format, such as a JSON schema. Valid struct
 
 ### Token
 
-A unit of text processed by a model, often a word or part of a word. Tokenization varies by model, so a token is not the same as a word or a fixed number of characters. Tokens are commonly used to measure input and output limits, and to charge for use; see [choose a model and control cost](../goals/economy/choose-a-model-and-control-cost.md).
+A unit of text processed by a model, often a word or part of a word. Tokenisation varies by model, so a token is not the same as a word or a fixed number of characters. Tokens are commonly used to measure input and output limits, and to charge for use; see [choose a model and control cost](../goals/economy/choose-a-model-and-control-cost.md).
 
 ### Tool calling
 

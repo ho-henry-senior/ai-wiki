@@ -1,6 +1,6 @@
 # Authored pages
 
-Articles, applied patterns, reference catalogs, and checklists for AI-assisted software work.
+Articles, applied patterns, reference catalogues, and checklists for AI-assisted software work.
 
 Pages are listed here by their section on the website, which their `lane` front matter sets and which can differ from their folder. Focused explanations are also listed in the [concepts index](concepts/README.md).
 

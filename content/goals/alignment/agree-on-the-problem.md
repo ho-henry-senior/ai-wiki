@@ -14,9 +14,9 @@ A short request leaves the agent guessing, and it can build a convincing solutio
 
 ## Have the agent question you
 
-Give it a brief description of what you want, then ask it to question you before proposing a solution. Have it challenge assumptions, ask about missing behavior and edge cases, and identify choices that only you can make. For example:
+Give it a brief description of what you want, then ask it to question you before proposing a solution. Have it challenge assumptions, ask about missing behaviour and edge cases, and identify choices that only you can make. For example:
 
-> Before writing code, question me about the CSV export I want. Ask about ambiguous behavior, edge cases and constraints. Challenge vague answers. Draft a specification with acceptance criteria, non-goals and unresolved questions. Do not create issues or implement anything until I have reviewed it.
+> Before writing code, question me about the CSV export I want. Ask about ambiguous behaviour, edge cases and constraints. Challenge vague answers. Draft a specification with acceptance criteria, non-goals and unresolved questions. Do not create issues or implement anything until I have reviewed it.
 
 Its questions surface the aspects you hadn't considered, and it asks better ones if it understands your repository; see [Economy](../economy/README.md). Matt Pocock's [`/grill-me` and `/grilling`](../../reference/agent-skills-directory.md#grill-me-and-grilling) skills run a structured version of this interview; they are an example, not a prerequisite.
 

@@ -51,7 +51,7 @@ For original sources and their cautions, see [skills worth trying](agent-skills-
 
 ## Check discovery and tool access
 
-In Copilot, skills and custom agents are separate customizations. Supported environments can discover skills through their [documented search locations and loading behaviour](https://docs.github.com/en/copilot/concepts/customizations/agent-skills). A role's mention of a skill is an instruction to use it, **not** a mechanism that installs it or guarantees it loads. Before relying on a pairing, check whether the skill exists in that environment and try the full task.
+In Copilot, skills and custom agents are separate customisations. Supported environments can discover skills through their [documented search locations and loading behaviour](https://docs.github.com/en/copilot/concepts/customizations/agent-skills). A role's mention of a skill is an instruction to use it, **not** a mechanism that installs it or guarantees it loads. Before relying on a pairing, check whether the skill exists in that environment and try the full task.
 
 A Copilot custom agent's [`tools` configuration](https://docs.github.com/en/copilot/reference/custom-agents-configuration) controls which tools it can request. A skill that calls a command cannot work as written if its role lacks an execution tool; similarly, a skill needing GitHub access cannot create issues when its agent lacks the necessary tool or permissions. Match the skill's steps to the role's available capabilities and test the combination. No `tools` field is present in the four original example files, so do not treat their written boundaries as enforced access controls.
 

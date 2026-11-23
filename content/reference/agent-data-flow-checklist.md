@@ -30,7 +30,7 @@ Data reaches more places than anyone chose to send it: the model provider, saved
 | Private code and plans: source, internal documents, unreleased designs                     | File reads, workspace search, attached diffs, pasted prompts, context the editor selects                  |
 | Personal or customer data: support tickets, application logs, production records, fixtures | Investigating real cases; querying logs, databases, or issue trackers; copying production data into tests |
 | Security information: vulnerabilities, incidents, internal endpoints                       | Security investigations, scans, threat-model discussions                                                  |
-| Derived information: summaries, generated code, test results, reports                      | The agent repeats or combines what it was given. A summary is not anonymized just because it is shorter.  |
+| Derived information: summaries, generated code, test results, reports                      | The agent repeats or combines what it was given. A summary is not anonymised just because it is shorter.  |
 
 ## Example: one data flow
 
@@ -51,7 +51,7 @@ This fictional entry shows how to record a flow, including unknowns.
 | Local storage            | Where are histories, caches, and logs stored, and who can read them? Can commands avoid printing secrets?                                                                                                                                                                                                      |
 | Session history          | Is syncing needed? Copilot syncs CLI sessions to your account by default, and cloud agent session logs are visible to anyone with access to the repository and cannot be deleted.                                                                                                                              |
 | Tools and MCP servers    | What data do they send, where do they run, and what do they keep? Are their credentials and network access limited?                                                                                                                                                                                            |
-| Repository and artifacts | Could commits, pull requests, issues, CI logs, or reports disclose data? Are secret scanning, review, and branch protection on?                                                                                                                                                                                |
+| Repository and artefacts | Could commits, pull requests, issues, CI logs, or reports disclose data? Are secret scanning, review, and branch protection on?                                                                                                                                                                                |
 | Anywhere else            | Can the agent or an integration reach any host? Are the local sandbox's network rules or the cloud agent's firewall on, and what do they not cover?                                                                                                                                                            |
 
 ## Check actions as well as data
@@ -64,4 +64,4 @@ This fictional entry shows how to record a flow, including unknowns.
 - [ ] Review generated changes and run tests and security checks before accepting them, because the agent's summary may not mention a weakened test or check.
 - [ ] Inspect reports and logs before sharing, and know how to revoke credentials if data leaks, since a leaked secret stays valid until you rotate it.
 
-A completed checklist is a review, not proof of security. Controls and defaults vary by product, version, account, and organization policy.
+A completed checklist is a review, not proof of security. Controls and defaults vary by product, version, account, and organisation policy.
