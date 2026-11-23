@@ -62,7 +62,7 @@ GitHub's [custom-agent configuration reference](https://docs.github.com/en/copil
 
 A reviewer role can use a reusable review skill if that skill is available in the agent's environment. The role owns **which changes to review, what to deliver, and where authority ends**. The skill owns **the repeatable review procedure**. Tools provide access to the diff, tests and permitted actions.
 
-Naming a skill in an agent's instructions is not a guarantee that the skill is present or loaded. Skills are discovered according to the Copilot environment and its [agent-skills support](https://docs.github.com/en/copilot/concepts/customizations/agent-skills); the skill's steps also need suitable tools. For examples drawn from actual role files, see [How agent roles use skills](../reference/agent-roles-directory.md).
+Naming a skill in a role's instructions doesn't install it or guarantee it loads, and the skill's steps need tools the role has; see [check discovery and tool access](../reference/agent-roles-directory.md#check-discovery-and-tool-access), with examples from real role files.
 
 ## Sources
 

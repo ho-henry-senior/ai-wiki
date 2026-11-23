@@ -31,7 +31,7 @@ When a developer asks an agent to fix a failing test, the harness constructs a r
 }
 ```
 
-**Instructions** describe desired behaviour; **messages** carry the conversation; **tool definitions** tell the model which actions it may request and how to specify their arguments. A request can also include repository instructions, selected source files and earlier tool results. Those sources can come from an agent-requested search or optional automatic retrieval, including semantic search. Access to a whole repository does not mean every file is in this input. The search method affects which evidence becomes visible; it need not use embeddings or vectors.
+**Instructions** describe desired behaviour; **messages** carry the conversation; **tool definitions** tell the model which actions it may request and how to specify their arguments. A request can also include repository instructions, selected source files and earlier tool results. Access to a whole repository does not mean every file is in this input. Only the context included in that particular request is visible to the model; search and retrieval are two ways of selecting it. See [how the agent finds task-related code](inside-coding-agent.md#how-the-agent-finds-task-related-code).
 
 ## A tool request is output, not execution
 
@@ -62,7 +62,7 @@ The harness runs the permitted command and returns the result:
 }
 ```
 
-On a later model call, that result can accompany the original task and additional context. The model can use the failure to choose another action, such as reading the test file. The output is **evidence to interpret**, not a trusted instruction; a file or command result can contain misleading or malicious text.
+On a later model call, that result can accompany the original task and additional context. The model can use the failure to choose another action, such as reading the test file. The output is **evidence to interpret**, not a trusted instruction; a file or command result can contain misleading or malicious text, which is how [prompt injection](../goals/security/prompt-injection.md) reaches an agent.
 
 ## The next request is not necessarily identical
 

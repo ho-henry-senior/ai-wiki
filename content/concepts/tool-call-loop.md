@@ -36,7 +36,7 @@ If the first edit fails, the loop may continue: inspect the new error, revise a 
 
 Each round can add tool execution time and another model call, with new input and output tokens. Repository search may require a tool request, or the harness may use retrieval to supply matching files before a call; see [inside a coding agent](../articles/inside-coding-agent.md#how-the-agent-finds-task-related-code).
 
-Passing tests is evidence that those checks succeeded in that environment. It does not prove that the developer's underlying requirement has been met. The agent's final explanation is likewise a report to review, not an independent record of everything it did. See [define, steer, and verify a task](../goals/alignment/define-and-verify-tasks.md).
+The agent's final explanation, and the passing tests it reports, are evidence to review, not proof that the requirement is met or a record of everything it did; see [verify the result](../goals/alignment/hand-off-and-steer.md#verify-the-result).
 
 ## Sources
 
