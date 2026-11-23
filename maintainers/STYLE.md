@@ -30,7 +30,7 @@ Use **British English (en-GB)** in published and maintainer prose. Prefer spelli
 Each [page type](INFORMATION-ARCHITECTURE.md#page-types) has a job. Write to it:
 
 - **Overview:** what matters for one goal and why, then where to go next. It summarises; other pages own the detail.
-- **Concept:** a reusable mechanism or distinction, usually in `content/concepts/`, explained well enough to reason with. It may include practical implications, but explanation is its main purpose, and it needs no action.
+- **Concept:** not a page type but a page in `content/concepts/`, usually an `explanation`: a reusable mechanism or distinction, explained well enough to reason with. It may include practical implications, but explanation is its main purpose, and it needs no action.
 - **Advice:** a concise recommendation under a Goal, explaining why it matters and where to act.
 - **How-to or pattern:** why the change is worth making, what to do, and how to check it worked.
 - **Explanation:** how related ideas fit together, built up step by step.

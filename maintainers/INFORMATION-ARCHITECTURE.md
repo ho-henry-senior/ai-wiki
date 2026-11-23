@@ -54,17 +54,17 @@ A Guide is a collection, **not** an editorial page type. A `reference`-type page
 - **Case studies** — documented applications of agents: context, actual workflow, outcomes, evidence, limitations and transferable lessons. The landing page lists studies without inventing a hierarchy.
 - **Reference** — reusable instructions, checklists, catalogues, examples, definitions and source material that readers often need directly.
 
-Each published page has at most one primary lane; pages with no lane may remain accessible without an active primary navigation section. **Lane** affects the active top navigation item and its sidebar; **type** describes the editorial form, so a chapter can still be an `explanation`, and a Reference resource may also be part of Skills.
+Each published page has at most one primary lane; pages with no lane may remain accessible without an active primary navigation section. **Lane** affects the active top navigation item and its sidebar; **type** describes the editorial form, so a chapter can still be an `explanation`, and a file authored under `content/reference/`, such as _Install an existing skill_, can sit in the Guides lane as a Skills chapter.
 
 ### Core points
 
-A goal has **two to five core points**: the few things a reader should take away. This is a guideline, not a quota. Fewer than two suggests it is not a collection; more than five, that it has not decided what matters most.
+A goal has **two to five core points**: the few things a reader should take away. This is a guideline, not a quota. Fewer than two suggests it is not a collection; more than five, that it has not decided what matters most. Alignment is the current exception: it has one core point, because its whole task cycle became one Guide, _Define, steer, and verify a task_ ([#213](https://github.com/ho-henry-senior/ai-wiki/issues/213)).
 
 Each core point has **one clear home for its substantive explanation**. The home can be any of these:
 
 - **An existing page,** when one page already covers the point. Security's _Prompt injection_ point links straight to its page, which states the point and routes readers to the controls.
 - **A routing page** (`type: advice`), when several pages each contribute part of the advice. Economy's two points work this way.
-- **A section of the overview,** when nothing substantial sits behind the point.
+- **A section of the overview,** when nothing substantial sits behind the point. Security's _Untrusted code execution_ point works this way, since its page was folded into the overview in [PR #246](https://github.com/ho-henry-senior/ai-wiki/pull/246).
 
 Choose the home that serves the reader; don't create a page just to fill the structure. A routing page must earn the extra click with a decision, a synthesis or a route that the overview doesn't already give. If it only repeats the overview's summary and lists links, make it a section instead.
 
@@ -84,7 +84,7 @@ The navigation tree's structure and the lane's purpose together determine broad 
 
 ## Guides are collections, not mandatory containers
 
-A Guide can gather pages whose **primary purposes differ**. The Guides can include ordered chapters whose primary lane is Guides and independently useful Reference resources:
+A Guide can gather pages whose **primary purposes differ**: ordered chapters whose primary lane is Guides, and independently useful Reference resources that keep their own lane. Every current member is in the Guides lane:
 
 - **How coding agents work** — Guides lane; ordered entry; discoverable via Guides.
 
@@ -100,13 +100,13 @@ A Guide can gather pages whose **primary purposes differ**. The Guides can inclu
 
 - **Skills** — Guides lane; ordered but unnumbered entry explaining what a skill is and how Copilot uses one, with the shared comparison of AGENTS.md, skills, roles and tools; discoverable via Guides.
 
-- **Install an existing skill** — Guides lane; Skills chapter on reviewing, installing and checking someone else's skill.
-
-- **Write your own skill** — Guides lane; Skills chapter on placing, describing and checking a new skill; retains the canonical URL of the former _Write a SKILL.md_.
-
-- **Test whether a skill helps** — Guides lane; final Skills chapter on comparing a task with and without a skill.
-
 - **Skills worth trying** — Guides lane; first Skills chapter, a short list of built-in skills and the community skills the wiki refers to; retains the canonical URL of the former _Agent skills directory_.
+
+- **Install an existing skill** — Guides lane; second Skills chapter, on reviewing, installing and checking someone else's skill.
+
+- **Write your own skill** — Guides lane; third Skills chapter, on placing, describing and checking a new skill; retains the canonical URL of the former _Write a SKILL.md_.
+
+- **Test whether a skill helps** — Guides lane; fourth and final Skills chapter, on comparing a task with and without a skill.
 
 - **Agent roles** — Guides lane; ordered entry that also explains what a role is.
 
@@ -143,7 +143,7 @@ The coding-agent and Agent roles chapters stay in Guides to simplify Articles na
 
 **Guides → Skills → Skills worth trying → Install an existing skill → Write your own skill → Test whether a skill helps:** the reader starts with what a skill is, looks for an existing skill, installs one or writes their own, then tests it. Every chapter is a task, and each still works on direct entry from search or a link.
 
-**Articles or search → The tool-call loop:** the page opens at its canonical URL, explains itself, indicates that it is in the ordered _How coding agents work_ Guide, and offers optional chapter navigation. No prior chapter is required to understand its basic purpose.
+**Search or a link → The tool-call loop:** the page opens at its canonical URL, explains itself, indicates that it is in the ordered _How coding agents work_ Guide, and offers optional chapter navigation. No prior chapter is required to understand its basic purpose.
 
 **Goals → practical how-to:** a Goal can link directly to a standalone Article or Reference page where that is the best action. The destination's primary navigation state is determined by its own lane, not the referring link.
 

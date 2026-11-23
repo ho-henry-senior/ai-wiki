@@ -10,4 +10,4 @@ This directory contains project instructions for maintaining this wiki, not guid
 - [AI glossary terminology research](research/ai-terms-research.md) — sources, distinctions and editorial uncertainties retained for maintainers.
 - [Wiki information architecture skills research](research/wiki-information-architecture-skills.md) — assessment and trial of external skills for maintaining this wiki.
 
-Reader-facing knowledge belongs in [`pages/`](../content/README.md), [`concepts/`](../content/concepts/README.md), and [`sources/`](../content/sources/README.md). Keep instructions for writing and maintaining that knowledge here, not in their public indexes. The root [`AGENTS.md`](../AGENTS.md) remains the entry point for coding agents.
+Reader-facing knowledge belongs in [`content/`](../content/README.md), [`concepts/`](../content/concepts/README.md), and [`sources/`](../content/sources/README.md). Keep instructions for writing and maintaining that knowledge here, not in their public indexes. The root [`AGENTS.md`](../AGENTS.md) remains the entry point for coding agents.
