@@ -126,7 +126,8 @@ test("links to a lane's section of the GitHub index go to that lane's landing pa
   const { lanes } = await import("../site/lanes.mjs");
   assert.equal(rewriteLink("content/README.md#guides", "./README.md"), "/guides/");
   assert.equal(rewriteLink("../../README.md#reference", "./content/goals/alignment/README.md"), "/reference/");
-  assert.equal(rewriteLink("content/README.md#not-a-lane", "./README.md"), "/pages/#not-a-lane");
+  assert.equal(rewriteLink("content/README.md#not-a-lane", "./README.md"), "/sitemap/");
+  assert.equal(rewriteLink("content/README.md", "./README.md"), "/sitemap/");
   for (const lane of Object.values(lanes)) {
     const anchor = "#" + lane.title.toLowerCase().replace(/ /g, "-");
     assert.equal(laneAnchors[anchor], lane.url, lane.title);
