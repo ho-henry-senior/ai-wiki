@@ -25,20 +25,23 @@
 
 <div data-article-views>
   <div class="app-article-view-controls" role="group" aria-label="Arrange articles" hidden>
-    <button type="button" class="govuk-button govuk-button--secondary" data-article-view="alphabetical" aria-controls="articles-alphabetical" aria-pressed="true">Alphabetical</button>
+    <button type="button" class="govuk-button govuk-button--secondary" data-article-view="alphabetical" aria-controls="articles-alphabetical" aria-pressed="true">A to Z</button>
     <button type="button" class="govuk-button govuk-button--secondary" data-article-view="topic" aria-controls="articles-topic" aria-pressed="false">By topic</button>
-    <button type="button" class="govuk-button govuk-button--secondary" data-article-view="type" aria-controls="articles-type" aria-pressed="false">By type</button>
+    <button type="button" class="govuk-button govuk-button--secondary" data-article-view="type" aria-controls="articles-type" aria-pressed="false">By article type</button>
   </div>
   <section id="articles-alphabetical" data-article-panel="alphabetical" aria-label="Articles alphabetically">
+    <p class="govuk-body-s">All Articles, sorted by title.</p>
     {{ articleList(collections.articles, false) }}
   </section>
   <section id="articles-topic" data-article-panel="topic" aria-label="Articles by topic" hidden>
+    <p class="govuk-body-s">Browse Articles grouped by their main subject.</p>
     {%- for group in collections.articles | articleTopicGroups %}
     <h2 class="govuk-heading-m">{{ group.title }}</h2>
     {{ articleList(group.items, true) }}
     {%- endfor %}
   </section>
   <section id="articles-type" data-article-panel="type" aria-label="Articles by type" hidden>
+    <p class="govuk-body-s">Browse by what each Article does: explanation, how-to, pattern and other formats.</p>
     {%- for group in collections.articles | articleTypeGroups %}
     <h2 class="govuk-heading-m">{{ group.title }}</h2>
     {{ articleList(group.items, true) }}
