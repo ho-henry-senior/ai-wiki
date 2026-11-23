@@ -25,19 +25,15 @@ In this article, **coding agent** means the complete system: the model, harness,
 ## Who talks to whom?
 
 ```mermaid
-flowchart LR
-    U["Developer"] -->|"Task"| H["Harness / coding-agent application"]
-    H -->|"Instructions, messages, tool definitions"| M["Model"]
-    M -->|"Text or proposed tool call"| H
-    H -->|"Permitted operation"| T["Tools"]
+flowchart TD
+    U["Developer"] -->|"Task, approvals"| H["Harness, such as Copilot CLI"]
+    H -->|"Answers, approval requests"| U
+    H -->|"Request"| M["Model"]
+    M -->|"Text or tool call"| H
+    H -->|"Permitted operation"| T["Tools, including search"]
     T -->|"Read, run or change"| E["Repository and environment"]
     E -->|"Files, output, errors"| T
     T -->|"Result"| H
-    H -.->|"Optional automatic retrieval"| S["Search / retrieval"]
-    T -->|"Agent-requested search"| S
-    S -->|"Select relevant passages"| E
-    E -->|"Matches"| S
-    S -.->|"Selected context"| H
 ```
 
 The model-to-harness arrow is **not** an arrow into your shell. The harness decides whether to execute a requested operation, seek approval or refuse it. A prompt asking the model not to do something is not a substitute for a permission boundary.
@@ -69,7 +65,7 @@ The agent needs task-related code in the model's input, not just somewhere on di
 
 These are alternative patterns that a product can combine. **Neither requires a vector database.** Search may use filenames, symbols, text matches or [embeddings](../reference/glossary.md#embedding)-based semantic similarity. Retrieval-augmented generation (RAG) means supplying retrieved material to a model; vector search is one possible retrieval mechanism. See [RAG](../concepts/retrieval-augmented-generation.md) and [vector stores](../concepts/retrieval-augmented-generation.md#vector-search) for those distinct concepts.
 
-The choice affects what the model can discover and the costs of indexing or further tool and model calls. The diagram's dashed path represents an _optional conceptual arrangement_, not an assertion that every Copilot surface automatically retrieves context.
+The choice affects what the model can discover and the costs of indexing or further tool and model calls. Automatic retrieval is a possible arrangement, not a claim that every Copilot surface retrieves context automatically.
 
 ## Why the boundary matters
 
