@@ -43,7 +43,8 @@ jobs:
             echo "content/README.md was published; the site uses the sitemap instead." >&2
             exit 1
           fi
-          if ! grep -q 'href="/ai-wiki/sitemap/"' _site/index.html; then
+          # Only the page's main content: the footer links to the sitemap on every page.
+          if ! sed -n '/<main/,/<\/main>/p' _site/index.html | grep -q 'href="/ai-wiki/sitemap/"'; then
             echo "The homepage's link to every page does not go to the sitemap." >&2
             exit 1
           fi
