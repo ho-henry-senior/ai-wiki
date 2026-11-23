@@ -31,7 +31,7 @@ When a developer asks an agent to fix a failing test, the harness constructs a r
 }
 ```
 
-**Instructions** describe desired behaviour; **messages** carry the conversation; **tool definitions** tell the model which actions it may request and how to specify their arguments. A request can also include repository instructions, selected source files and earlier tool results. Access to a whole repository does not mean every file is in this input: only what a search or retrieval step selected is; see [how the agent finds task-related code](inside-coding-agent.md#how-the-agent-finds-task-related-code).
+**Instructions** describe desired behaviour; **messages** carry the conversation; **tool definitions** tell the model which actions it may request and how to specify their arguments. A request can also include repository instructions, selected source files and earlier tool results. Access to a whole repository does not mean every file is in this input. Only the context included in that particular request is visible to the model; search and retrieval are two ways of selecting it. See [how the agent finds task-related code](inside-coding-agent.md#how-the-agent-finds-task-related-code).
 
 ## A tool request is output, not execution
 
