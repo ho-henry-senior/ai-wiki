@@ -46,9 +46,11 @@ sequenceDiagram
 
     Human->>Product: Problem, outcome, constraints
     Product->>Human: Draft specification
+    Note over Human: Approves specification and scope
     Human->>BA: Approved specification
     BA->>Human: Draft tasks
-    Human->>BA: Approve tasks and priorities
+    Note over Human: Approves tasks and priorities
+    Human->>BA: Approved tasks
     BA->>Dev: Approved task
     Dev->>Reviewer: PR with summary and check results
     loop Until findings are resolved
