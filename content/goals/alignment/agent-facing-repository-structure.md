@@ -69,10 +69,9 @@ flowchart TD
     J --> P["package.json: scripts"]
     P --> T["Tests and static checks"]
     C["GitHub Actions: verify.yml"] --> P
-    S["Optional skills"] --> A
 ```
 
-`AGENTS.md` tells the agent which commands to run, the task runner and scripts implement them, and CI runs the checks independently. A passing agent report is not a substitute for the checks actually running. The optional-skills arrow shows that skills complement instructions, not that the contents of `.agents/skills/` are automatically loaded; discovery depends on the agent.
+`AGENTS.md` tells the agent which commands to run, the task runner and scripts implement them, and CI runs the checks independently. A passing agent report is not a substitute for the checks actually running.
 
 ## Real repositories to inspect
 

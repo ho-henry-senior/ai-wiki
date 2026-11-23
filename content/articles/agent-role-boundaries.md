@@ -38,16 +38,19 @@ This deliberately small RACI table shows the important handoffs, not every activ
 
 ```mermaid
 sequenceDiagram
-    actor Human as Human owner
-    participant Product as Product agent
-    participant BA as Analyst agent
-    participant Dev as Developer agent
-    participant Reviewer as Reviewer agent
+    actor Human
+    participant Product
+    participant BA as Analyst
+    participant Dev as Developer
+    participant Reviewer
 
     Human->>Product: Problem, outcome, constraints
-    Product->>BA: Outcome and acceptance intent
-    BA->>Human: Draft specification and tasks
-    Human->>BA: Approve scope and priorities
+    Product->>Human: Draft specification
+    Note over Human: Approves specification and scope
+    Human->>BA: Approved specification
+    BA->>Human: Draft tasks
+    Note over Human: Approves tasks and priorities
+    Human->>BA: Approved tasks
     BA->>Dev: Approved task
     Dev->>Reviewer: PR with summary and check results
     loop Until findings are resolved
