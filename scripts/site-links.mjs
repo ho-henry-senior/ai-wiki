@@ -20,6 +20,9 @@ export const excluded = [
   "scripts/",
   // Shared assets, included into pages by scripts/site-includes.mjs.
   "content/includes/",
+  // The index for browsing on GitHub. The site's generated sitemap lists
+  // every page instead, so links to it go there (see rewriteLink).
+  "content/README.md",
 ];
 
 export const isExcluded = (file) =>
@@ -66,7 +69,8 @@ export const repoPath = (inputPath) =>
 // and site-absolute paths such as /pages/security/ are unchanged; links to other pages point to their site URL; links
 // to files that are not on the site point to the file on GitHub.
 // The GitHub index's section headings are the site's lanes, so a link to one
-// of them goes to that lane's landing page on the site. Keep in step with
+// of them goes to that lane's landing page on the site; any other link to the
+// index goes to the sitemap, which replaces it on the site. Keep in step with
 // site/lanes.mjs.
 export const laneAnchors = {
   "#goals": "/goals/",
@@ -84,7 +88,7 @@ export function rewriteLink(href, inputPath) {
   const from = path.posix.dirname(repoPath(inputPath));
   const file = path.posix.normalize(path.posix.join(from, target));
   if (file.startsWith("..")) return href;
-  if (file === "content/README.md" && laneAnchors[anchor]) return laneAnchors[anchor];
+  if (file === "content/README.md") return laneAnchors[anchor] ?? "/sitemap/";
   if (file.endsWith(".md") && !isExcluded(file)) return pageUrl(file) + anchor;
   return `${repository}/blob/main/${file}${anchor}`;
 }

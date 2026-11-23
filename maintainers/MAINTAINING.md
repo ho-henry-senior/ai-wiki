@@ -12,7 +12,7 @@ Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just 
 
 `just verify` runs it and its tests, and fails on any warning. The [Verify workflow](../.github/workflows/verify.yml) runs the same checks on every pull request, so a contributor who cannot run them locally still sees the result; a ruleset on `main` can require it, and the Website build, to pass before merging. To see warnings without failing, run `node scripts/style.mjs`. If a warning is wrong, improve the check or the rule in `maintainers/STYLE.md` rather than working around it.
 
-When you add or remove a page, update `content/README.md` and the relevant concept or source index if applicable, which is how readers browse on GitHub. The website builds its navigation and its own sitemap from front matter, so it needs no index edits.
+When you add or remove a page, update `content/README.md` and the relevant concept or source index if applicable, which is how readers browse on GitHub. The website doesn't publish `content/README.md`: it builds its navigation and its own sitemap from front matter, so it needs no index edits, and links to `content/README.md` go to the sitemap, or to a lane's landing page when they name its section.
 
 Use `just format` to apply formatting or `just links` to check local links alone. Formatting preserves prose line breaks and leaves embedded code examples unchanged. Recipes delegate to npm scripts, which can also be run directly. See [the agent entrypoint](../AGENTS.md) for context pointers.
 
