@@ -1,6 +1,6 @@
 # Maintaining the wiki
 
-Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just --list` to discover tasks, `just setup` to install the pinned development tools, then `just verify` to test and check Markdown formatting, and internal links, including heading anchors. Checks include `content/concepts/`, `content/slides/`, repository skills under `.agents/skills/`, and workflow Markdown. External URLs and raw material under `data/` are excluded.
+Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just --list` to discover tasks, `just setup` to install the pinned development tools, then `just verify` to test and check Markdown formatting, and internal links, including heading anchors. Checks include `content/concepts/`, repository skills under `.agents/skills/`, and workflow Markdown. External URLs and raw material under `data/` are excluded.
 
 `just style` fails when pages in `content/goals/`, `content/concepts/`, `content/articles/` and `content/reference/` don't meet [the writing standard](STYLE.md). It reads the hedge words and length ceilings from `STYLE.md` itself, so change the rules there. It reports:
 
@@ -12,7 +12,7 @@ Requires [Just](https://just.systems/), Node.js 22 or later, and npm. Run `just 
 
 `just verify` runs it and its tests, and fails on any warning. The [Verify workflow](../.github/workflows/verify.yml) runs the same checks on every pull request, so a contributor who cannot run them locally still sees the result; a ruleset on `main` can require it, and the Website build, to pass before merging. To see warnings without failing, run `node scripts/style.mjs`. If a warning is wrong, improve the check or the rule in `maintainers/STYLE.md` rather than working around it.
 
-When you add or remove a page, update `content/README.md` and the relevant concept, slide or source index if applicable, which is how readers browse on GitHub. The website builds its navigation and its own sitemap from front matter, so it needs no index edits.
+When you add or remove a page, update `content/README.md` and the relevant concept or source index if applicable, which is how readers browse on GitHub. The website builds its navigation and its own sitemap from front matter, so it needs no index edits.
 
 Use `just format` to apply formatting or `just links` to check local links alone. Formatting preserves prose line breaks and leaves embedded code examples unchanged. Recipes delegate to npm scripts, which can also be run directly. See [the agent entrypoint](../AGENTS.md) for context pointers.
 
@@ -63,9 +63,7 @@ The website's build tools have their own `site/package.json` and lock file, so `
 
 Put a standalone explanation or reusable distinction in `content/concepts/` when extracting it helps readers reuse or find it. Follow the [concept conventions](#writing-a-concept). Keep articles coherent: summarize the idea where it supports the narrative, then link to the canonical explanation rather than duplicate its example and caveats.
 
-Length alone is not a reason to split. Keep tightly coupled explanations together; catalogs, checklists, and concrete workflow examples can remain complete pages. Concepts may provide the basis for [short slides](../content/slides/README.md), but slide size is not a required format.
-
-Short slides are standalone summaries of selected concepts, not replacements for their fuller explanations.
+Length alone is not a reason to split. Keep tightly coupled explanations together; catalogs, checklists, and concrete workflow examples can remain complete pages.
 
 Use lightweight YAML front matter to identify each page's primary purpose and summarize it. A page may also serve other purposes:
 
@@ -96,9 +94,7 @@ Use the shared [completeness status conventions](#completeness-status) when a co
 
 State the core idea first. Keep its explanation, a useful example or diagram, essential caveats, and supporting sources together. Link to articles that apply it and to related concepts where that helps navigation.
 
-Extract a concept when it is useful independently or needed in multiple places. Keep its detailed explanation canonical in `content/concepts/`; articles should summarize it in their own narrative and link to it. A concept may suit a short slide, but neither a fixed word count nor slide-sized formatting is required. Keep brief definitions in the [glossary](../content/reference/glossary.md), linking to the concept for depth.
-
-[Short slides](../content/slides/README.md) summarize selected concepts and link back to their fuller explanation.
+Extract a concept when it is useful independently or needed in multiple places. Keep its detailed explanation canonical in `content/concepts/`; articles should summarize it in their own narrative and link to it. Keep brief definitions in the [glossary](../content/reference/glossary.md), linking to the concept for depth.
 
 Follow the [freshness guidance](#keeping-content-current) when editing concepts. Add new concepts to the [concept index](../content/concepts/README.md) and the relevant outcome overviews linked from the [homepage](../README.md).
 
@@ -154,10 +150,6 @@ Each idea below is explained in full on one page. Anywhere else, give a one-line
 | Session history versus context                                                                                             | [Session history and active context](../content/concepts/session-history-vs-context.md)                              |
 | How Copilot charges, model tiers, the cache, session limits                                                                | [Choose a model and control cost](../content/goals/economy/choose-a-model-and-control-cost.md)                       |
 
-## Writing a slide
-
-Keep the takeaway and a small visual or example understandable on their own. Link to the canonical concept rather than duplicating its full explanation. When the slide and its concept show the same diagram or sentence, [include](#website) one shared asset in both rather than keeping two copies. Keep essential qualifications, and check a slide against its concept when either changes; follow the [freshness guidance](#keeping-content-current). Add it to the [slide index](../content/slides/README.md) and the relevant [goal navigation](../README.md).
-
 ## Completeness status
 
 An assessed page or concept may include `status` in its front matter. This is an editorial judgment about completeness for the page's stated purpose, not a guarantee of correctness, safety, or freshness. A missing status means **unassessed**, not established.
@@ -200,7 +192,7 @@ The [daily wiki review](../.github/workflows/daily-wiki-review.md) uses [GitHub 
 
 Each run re-checks the dated page checked longest ago, and remembers what it checked in [gh-aw cache-memory](https://github.github.com/gh-aw/reference/cache-memory/), at `/tmp/gh-aw/cache-memory/rotation.json`. The file holds only page paths, dates, source URLs, and results. A run that finds nothing new updates only that file, so it opens no pull request. Cache-memory lasts 7 days without a run; if it expires, the rotation restarts from the pages' `checked` dates. A source on a domain outside the workflow's network allowlist is recorded as unavailable.
 
-Reviews use the existing skill, check the baseline before starting, and must run `just verify` after their edits before requesting a draft PR. Safe outputs restrict patches to the root topic map and Markdown under `content/`, with at most 12 changed files. Policies, instructions, slides, automation, tooling, and raw archives are outside the edit scope. Nothing merges automatically. Reviews report their actual coverage and evidence; uncertain claims are left unchanged.
+Reviews use the existing skill, check the baseline before starting, and must run `just verify` after their edits before requesting a draft PR. Safe outputs restrict patches to the root topic map and Markdown under `content/`, with at most 12 changed files. Policies, instructions, automation, tooling, and raw archives are outside the edit scope. Nothing merges automatically. Reviews report their actual coverage and evidence; uncertain claims are left unchanged.
 
 The workflow installs a temporary copy of the review skill under `.github/skills/wiki-review/`. Formatting and link checks ignore that generated copy and check the maintained source under `.agents/skills/wiki-review/` instead.
 

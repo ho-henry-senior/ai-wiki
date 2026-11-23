@@ -44,7 +44,7 @@ export function publishedSourcePath(file) {
   }
   if (kind === "articles" || kind === "reference")
     return `pages/${rest.at(-1)}`;
-  if (["concepts", "sources", "slides"].includes(kind))
+  if (["concepts", "sources"].includes(kind))
     return `${kind}/${rest.join("/")}`;
   return file;
 }

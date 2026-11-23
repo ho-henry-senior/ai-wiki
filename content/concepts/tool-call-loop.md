@@ -26,8 +26,6 @@ The model requests an action; the harness checks its permission rules, runs or r
 
 [Copilot CLI: where the harness's check appears](../includes/tool-call-loop-copilot-cli.md)
 
-[View the short slide](../slides/tool-call-loop.md).
-
 ## How observations change the next action
 
 Suppose you ask the agent to fix a failing test. It runs the tests, receives an error, and chooses what to inspect. The failure tells the model _what happened_, not necessarily _why_. Its next action might be to search for the failing assertion, read the handler, inspect recent changes or run a narrower test. The model can choose among available tools, and the harness returns the observations.
