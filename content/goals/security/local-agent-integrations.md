@@ -44,7 +44,7 @@ An MCP server is code that runs with access you give it, and its tools are offer
 - **What it can reach.** Which credentials you pass it, for example a token in `-e`, which files it can read, and which hosts it contacts. Give it its own credential, scoped to that service and to the job, rather than one you use for other work.
 - **Which tools it exposes.** Enable only the tools the task needs, and prefer read-only ones.
 
-In Copilot CLI, `copilot mcp list` shows configured servers and `copilot mcp get NAME` shows a server's tools. Limit a server to named tools in its configuration, in `~/.copilot/mcp-config.json`, or deny one with `--deny-tool='SERVER(tool_name)'`. If your organization sets an MCP allowlist, only servers on it can run.
+In Copilot CLI, `copilot mcp list` shows configured servers and `copilot mcp get NAME` shows a server's tools. Limit a server to named tools in its configuration, in `~/.copilot/mcp-config.json`, or deny one with `--deny-tool='SERVER(tool_name)'`. If your organisation sets an MCP allowlist, only servers on it can run.
 
 ## Treat repository configuration as code
 

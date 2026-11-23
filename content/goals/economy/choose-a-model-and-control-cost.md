@@ -43,7 +43,7 @@ More detail: [The tool-call loop](../../concepts/tool-call-loop.md) and [session
 
 | Tier  | Use it for                                                                |
 | ----- | ------------------------------------------------------------------------- |
-| Small | Renames, formatting, documentation, summarizing output, running subagents |
+| Small | Renames, formatting, documentation, summarising output, running subagents |
 | Mid   | Most tasks, once the plan is clear                                        |
 | Large | Hard debugging, changes across many files, planning                       |
 | Top   | The occasional task the large tier cannot do                              |
@@ -75,7 +75,7 @@ In Copilot CLI, `/limits set max-ai-credits NUMBER` caps a session and `/limits 
 
 ## Current figures
 
-Sources: GitHub's documentation on [pricing](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing), [individual billing](https://docs.github.com/en/copilot/concepts/billing-and-usage/individuals/billing), [organization billing](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises), [optimization](https://docs.github.com/en/copilot/tutorials/optimize-ai-usage), and [session limits](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/set-session-limit).
+Sources: GitHub's documentation on [pricing](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing), [individual billing](https://docs.github.com/en/copilot/concepts/billing-and-usage/individuals/billing), [organization billing](https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-organizations-and-enterprises), [optimisation](https://docs.github.com/en/copilot/tutorials/optimize-ai-usage), and [session limits](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/set-session-limit).
 
 | Plan       | Price per month | AI Credits per month   |
 | ---------- | --------------- | ---------------------- |

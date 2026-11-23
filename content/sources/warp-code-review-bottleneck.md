@@ -26,15 +26,15 @@ The recurring principle is to use evidence and targeted automation to focus huma
 
 - Use a reviewer in a separate context from implementation to reduce shared assumptions. The reviewer can return a structured verdict, findings, severity, or a request for human input. _(7:46–10:45)_
 - Keep agent-to-agent review feedback internal rather than adding every iteration as a public PR comment; preserve an accessible trace for later inspection. _(10:45–12:16)_
-- Bound the number of review rounds and filter low-value findings to avoid over-optimization and churn. _(12:05–13:43)_
+- Bound the number of review rounds and filter low-value findings to avoid over-optimisation and churn. _(12:05–13:43)_
 - Keep PRs small and scoped enough for a human to assess quickly; stacking may help with larger work. _(14:14–15:11)_
 
-### Verify the behavior, not only the code
+### Verify the behaviour, not only the code
 
 - Unit tests and static checks are useful but do not prove that a user workflow works. The talk explicitly treats end-to-end verification as complementary to those checks, not a replacement. _(20:50–21:57)_
 - For UI work, have the agent start the application, exercise the relevant flow, and provide reviewable evidence such as a recording or screenshot. _(22:06–23:12; 26:19–29:39)_
 - A repo-specific verification skill can capture startup steps, tools, debugging details, and gotchas learned through use. _(22:20–23:12)_
-- Verification needs a suitable environment. The talk favors isolated, controlled environments with only the required repositories, tools, and test data, and cautions against exposing local credentials or unnecessary services. _(23:25–31:19)_
+- Verification needs a suitable environment. The talk favours isolated, controlled environments with only the required repositories, tools, and test data, and cautions against exposing local credentials or unnecessary services. _(23:25–31:19)_
 
 ### Make residual risk legible
 
@@ -46,11 +46,11 @@ The proposed PR risk assessment considers:
 - **Rollback cost:** how difficult would it be to reverse the change after an incident?
 - **Error detection:** how would problems be observed after deployment?
 
-The assessment can guide attention and help reduce risk—for example, by splitting a change, adding missing verification, or clarifying rollback and monitoring. Some risk may remain and require human judgment. _(37:23–44:14; 48:44–49:57)_
+The assessment can guide attention and help reduce risk—for example, by splitting a change, adding missing verification, or clarifying rollback and monitoring. Some risk may remain and require human judgement. _(37:23–44:14; 48:44–49:57)_
 
 ### Use specs and feedback to improve future work
 
-- For larger features, a reviewed spec can provide numbered, testable behaviors and edge cases that guide later verification. Smaller bug fixes may not need a separate spec. _(33:49–34:59)_
+- For larger features, a reviewed spec can provide numbered, testable behaviours and edge cases that guide later verification. Smaller bug fixes may not need a separate spec. _(33:49–34:59)_
 - Repeated experience can improve verification skills and agent profiles, such as by adding setup instructions or known gotchas. Treat this as a learning loop that needs evaluation, not automatic rule accumulation. _(22:43–23:12)_
 - Benchmark proposed workflow changes against representative prior tasks. The speaker reports a code-review loop that improved accuracy at roughly three times the cost in one benchmark, and recommends testing the tradeoff on a team's own work. _(6:37–7:39; 16:50–17:26; 47:35–48:24)_
 - A useful benchmark set should be curated and include tasks of different difficulty. The talk describes this as empirical work, not a settled formula. _(54:44–55:20)_
@@ -62,7 +62,7 @@ The assessment can guide attention and help reduce risk—for example, by splitt
 - **Unit tests in the age of AI:** distinguish fast local tests from end-to-end workflow evidence; avoid treating a green unit-test suite as sufficient proof.
 - **Agent role responsibilities and boundaries:** describe the independent reviewer, its handoff to implementation, and the human's final approval authority.
 - **Repository context for agents:** explain the local setup, tools, test data, environment, and reusable verification instructions needed for agents to exercise a system.
-- **Future guide on verification and PR readiness:** connect review loops, behavior verification, risk summaries, evidence, and cost/quality benchmarking.
+- **Future guide on verification and PR readiness:** connect review loops, behaviour verification, risk summaries, evidence, and cost/quality benchmarking.
 - **Skills and profiles:** consider how recurring verification failures or friction can inform skill/profile updates, with examples used to assess whether the change helped.
 
 ## Questions to revisit

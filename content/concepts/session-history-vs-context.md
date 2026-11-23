@@ -1,6 +1,6 @@
 ---
 type: reference
-summary: What a session has saved is not what the model sees in its next request; in Copilot CLI, check with /context and summarize with /compact.
+summary: What a session has saved is not what the model sees in its next request; in Copilot CLI, check with /context and summarise with /compact.
 status: established
 lane: guides
 goal: economy
@@ -15,7 +15,7 @@ tags:
 
 The guide [How coding agents work](../articles/understanding-coding-agents.md) ends here: after [the request payloads](../articles/model-requests-and-responses.md) and [the tool-call loop](tool-call-loop.md), this page shows what the model still sees as a session grows.
 
-What a session has saved is not the same as what the model sees next. Each request to the model carries a selection of the conversation, and long sessions get summarized. The difference matters in both directions: the model may have lost detail you think it still has, and data you think has gone may still be saved. In Copilot CLI, run `/context` to see what the current context holds.
+What a session has saved is not the same as what the model sees next. Each request to the model carries a selection of the conversation, and long sessions get summarised. The difference matters in both directions: the model may have lost detail you think it still has, and data you think has gone may still be saved. In Copilot CLI, run `/context` to see what the current context holds.
 
 |            | Session history                                      | Active context                                                        |
 | ---------- | ---------------------------------------------------- | --------------------------------------------------------------------- |
@@ -25,7 +25,7 @@ What a session has saved is not the same as what the model sees next. Each reque
 
 ## How Copilot keeps long sessions going
 
-When the conversation reaches about 80% of the context window, Copilot CLI summarizes older parts in the background. This is called **compaction**, and it can lose detail. Run `/compact` yourself before a new phase of work, optionally with a focus, such as `/compact focus on the export module`.
+When the conversation reaches about 80% of the context window, Copilot CLI summarises older parts in the background. This is called **compaction**, and it can lose detail. Run `/compact` yourself before a new phase of work, optionally with a focus, such as `/compact focus on the export module`.
 
 Compaction does not delete the saved history. A long debugging log can stay in the session while the model sees only a summary, and both may still contain sensitive data; see [unexpected data exposure](../goals/security/unexpected-data-exposure.md).
 

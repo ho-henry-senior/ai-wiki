@@ -31,7 +31,7 @@ The first command creates the branch `feature/address-form` from local `main` an
 git worktree add -b feature/order-export ../shop-order-export main
 ```
 
-These are separate directories, **not separate repository clones**. Git generally prevents the same branch from being checked out in two worktrees at once. Choose distinct task branches and confirm the base branch contains the revision you want before creating them.
+These are separate directories, **not separate repository clones**. Git refuses to check out a branch that another worktree already has checked out, unless you force it. Choose distinct task branches and confirm the base branch contains the revision you want before creating them.
 
 ```mermaid
 flowchart TD

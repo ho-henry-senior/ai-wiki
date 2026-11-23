@@ -69,13 +69,13 @@ copilot --deny-tool='shell(git push)' --deny-tool='shell(rm)'
 
 A deny rule wins over any allow rule. For `git` and `gh`, name the subcommand, as in `shell(git push)`. Keep prompts for consequential commands: `--allow-all` (also `--yolo`) approves every tool, path and URL, so keep it for disposable environments.
 
-The CLI's URL rules, `--allow-url` and `--deny-url`, cover its web fetch tool and recognized commands such as `curl`. They miss URLs that a command reads from a file, a configuration or an environment variable, so use the sandbox's network rules for real limits. VS Code's equivalents, `chat.tools.terminal.autoApprove` and `chat.tools.urls.autoApprove`, control which commands and URLs run without asking.
+The CLI's URL rules, `--allow-url` and `--deny-url`, cover its web fetch tool and recognised commands such as `curl`. They miss URLs that a command reads from a file, a configuration or an environment variable, so use the sandbox's network rules for real limits. VS Code's equivalents, `chat.tools.terminal.autoApprove` and `chat.tools.urls.autoApprove`, control which commands and URLs run without asking.
 
 ## Check it's working
 
 Test one restriction you rely on, with a harmless command:
 
-1. Run `/sandbox policy` (CLI or VS Code) to see the policy in force. Managed settings from your organization can make it stricter than yours.
+1. Run `/sandbox policy` (CLI or VS Code) to see the policy in force. Managed settings from your organisation can make it stricter than yours.
 2. Create a file in a folder you have denied, then ask the agent to run `cat` on it in the terminal. The command should fail.
 3. If you limited the network, ask it to run `curl -sI https://example.com`. That should fail too, unless you allowed the host.
 
