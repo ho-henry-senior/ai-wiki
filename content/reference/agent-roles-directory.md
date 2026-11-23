@@ -13,7 +13,7 @@ tags:
 
 # How agent roles use skills
 
-An **agent role** has a responsibility, boundaries and a handoff. A **skill** supplies a reusable procedure that the role may call on. Keeping these separate lets multiple roles reuse a procedure without inheriting one another's responsibilities. For the distinction and a complete Copilot custom-agent example, see [Agent roles](../concepts/skills-profiles-and-tools.md).
+A role owns a responsibility and its handoff; a skill it calls on owns a reusable procedure, so several roles can share one procedure without sharing responsibilities. For the distinction and a complete Copilot custom-agent example, see [Agent roles](../concepts/skills-profiles-and-tools.md).
 
 The four [original role files](../../data/role-examples/product.agent.md) below come from the [lo-fi software factory case study](../articles/lo-fi-software-factory-case-study.md). They describe one project's workflow, not a standard agent architecture or tested general configuration.
 

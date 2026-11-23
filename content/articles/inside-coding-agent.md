@@ -46,19 +46,7 @@ The model-to-harness arrow is **not** an arrow into your shell. The harness deci
 
 Suppose the developer asks, “Fix the failing test.” The model may be able to reason about source code, but whether it can inspect that code depends on what is in its current input and which tools the harness offers. Whether it can edit files or run tests depends on the available tools and enforced permissions.
 
-A tool definition tells the model which operation it can request. A simplified example; real definitions vary by product:
-
-```json
-{
-  "name": "run_command",
-  "description": "Run a permitted repository command",
-  "parameters": {
-    "command": "string"
-  }
-}
-```
-
-The interface describes an action, not how the shell tool is implemented. Copilot surfaces can expose different tools and approval rules.
+A tool definition tells the model which operation it can request; it describes an action, not how the tool is implemented. Copilot surfaces can expose different tools and approval rules. The next chapter shows [a tool definition inside a model request](model-requests-and-responses.md#a-request-assembled-by-the-harness).
 
 ## How the agent finds task-related code
 
@@ -67,7 +55,7 @@ The agent needs task-related code in the model's input, not just somewhere on di
 - **Agent-directed search:** the model requests a search tool, such as text search or semantic code search; the harness returns matching files or excerpts, which can inform another model call.
 - **Automatic retrieval:** the harness or a retrieval component selects matching repository passages before a model call, without the model separately requesting each search.
 
-These are alternative patterns that a product can combine. **Neither requires a vector database.** Search may use filenames, symbols, text matches or [embeddings](../reference/glossary.md#embedding)-based semantic similarity. Retrieval-augmented generation (RAG) means supplying retrieved material to a model; vector search is one possible retrieval mechanism. See [RAG](../concepts/retrieval-augmented-generation.md) and [vector stores](../concepts/retrieval-augmented-generation.md#vector-search) for those distinct concepts.
+These are alternative patterns that a product can combine. **Neither requires a vector database.** Search may use filenames, symbols, text matches or [embeddings](../reference/glossary.md#embedding)-based semantic similarity. Supplying retrieved material to a model is [retrieval-augmented generation (RAG)](../concepts/retrieval-augmented-generation.md), and [vector search](../concepts/retrieval-augmented-generation.md#vector-search) is one way to retrieve it.
 
 The choice affects what the model can discover and the costs of indexing or further tool and model calls. The diagram's dashed path represents an _optional conceptual arrangement_, not an assertion that every Copilot surface automatically retrieves context.
 

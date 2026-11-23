@@ -11,7 +11,7 @@ tags:
 
 # Agile roles in agentic development
 
-Start with one agent and a human reviewer. Split work into separate agent roles only when repeated work and reviewable handoffs justify the extra coordination. This is one possible workflow, not a standard arrangement or evidence that it performs better; the [lo-fi software factory case study](lo-fi-software-factory-case-study.md) records one attempt.
+[Add an agent role](../concepts/skills-profiles-and-tools.md) only when repeated work and reviewable handoffs justify the extra coordination. This page shows one possible workflow, not a standard arrangement or evidence that it performs better; the [lo-fi software factory case study](lo-fi-software-factory-case-study.md) records one attempt.
 
 Four roles illustrate the division: a **Product** agent explores requirements, a **Business Analyst** turns approved decisions into tasks, a **Developer** implements them, and a **Reviewer** independently examines the changes. A human retains authority over scope and release. Each additional handoff needs a clear deliverable.
 
