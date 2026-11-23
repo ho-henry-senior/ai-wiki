@@ -6,7 +6,7 @@ Practical guidance for developers using AI agents, focusing on GitHub Copilot.
 
 1. **[Limit what the agent can do](content/goals/security/excessive-agent-access.md).** A mistake or an injected instruction can only do harm through the agent's access. Set limits that its tools and your operating system enforce, locally or in the cloud.
 
-2. **[Prepare your repository for agents](content/goals/alignment/agent-facing-repository-structure.md).** Give the agent short instructions in `AGENTS.md`, the facts it would otherwise guess, and commands it can run to check its work.
+2. **[Prepare your repository for agents](content/goals/alignment/agent-facing-repository-structure.md).** Give the agent short instructions in `AGENTS.md`, facts it might otherwise guess, and commands it can run to check its work.
 
 3. **[Agree on the problem before delegating the solution](content/goals/alignment/define-and-verify-tasks.md).** An agent can build a convincing solution to the wrong problem. Have it question you, agree a specification, then use it to steer and check the work.
 
