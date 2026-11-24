@@ -155,7 +155,10 @@ Each idea below is explained in full on one page. Anywhere else, give a one-line
 | Hallucinated and malicious dependencies                                                                                    | [Invented dependencies and supply-chain attacks](../content/concepts/hallucinated-dependencies.md)                   |
 | The model requests; the harness acts                                                                                       | [The model requests; the harness acts](../content/concepts/tool-call-loop.md)                                        |
 | Session history versus context                                                                                             | [Session history and active context](../content/concepts/session-history-vs-context.md)                              |
-| How Copilot charges, model tiers, the cache, session limits                                                                | [Choose a model and control cost](../content/goals/economy/choose-a-model-and-control-cost.md)                       |
+| How Copilot charges, model tiers, the cache, session limits | [Understanding and controlling costs](../content/goals/economy/model-costs.md) |
+| Model capabilities and differences | [Choose a model and control cost](../content/goals/economy/choose-a-model-and-control-cost.md) |
+| Model choice and failure modes | [Choosing a model](../content/goals/economy/choose-a-model.md) |
+| Comparative model evaluation | [Evaluating your model choice](../content/goals/economy/evaluate-model-choice.md) |
 
 ## Completeness status
 
