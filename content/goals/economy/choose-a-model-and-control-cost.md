@@ -14,6 +14,8 @@ tags:
 
 Models differ in how well they investigate a problem, follow constraints and implement a change. A convincing result is not necessarily a correct one, and a low token price does not establish low delivery cost.
 
+If you have no evidence from your own repository yet, start with Copilot Auto or a mid-tier model for a typical implementation task. Use a stronger model for unresolved design decisions and try a lighter model for specified mechanical work. Check the result against independent acceptance criteria before making that choice routine.
+
 ## What differs between models?
 
 A model choice trades off several things:
