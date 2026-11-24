@@ -14,7 +14,7 @@ A machine-based system that infers outputs from inputs to achieve explicit or im
 
 ### AI Credit
 
-Copilot's billing unit, worth one US cent. Copilot prices each request's input, cached input, and output tokens at the model's rate and converts the total into AI Credits. See [choose a model and control cost](../goals/economy/choose-a-model-and-control-cost.md).
+Copilot's billing unit, worth one US cent. Copilot prices each request's input, cached input, and output tokens at the model's rate and converts the total into AI Credits. See [understanding and controlling costs](../goals/economy/model-costs.md).
 
 ### Alignment
 
@@ -146,7 +146,7 @@ The input provided to a model, including the request and any instructions, examp
 
 ### Prompt caching
 
-Reusing input that a provider has stored from a recent request, so it is processed and charged at a lower rate. Changing the model, tools, or settings mid-session, or a pause long enough for the cache to expire, means the next request pays the full rate. See [choose a model and control cost](../goals/economy/choose-a-model-and-control-cost.md#keep-the-cache).
+Reusing input that a provider has stored from a recent request, so it is processed and charged at a lower rate. Changing the model, tools, or settings mid-session, or a pause long enough for the cache to expire, means the next request pays the full rate. See [understanding and controlling costs](../goals/economy/model-costs.md#control-the-cost-of-a-session).
 
 ### Prompt injection
 
@@ -188,7 +188,7 @@ Model output constrained to follow a format, such as a JSON schema. Valid struct
 
 ### Token
 
-A unit of text processed by a model, often a word or part of a word. Tokenisation varies by model, so a token is not the same as a word or a fixed number of characters. Tokens are commonly used to measure input and output limits, and to charge for use; see [choose a model and control cost](../goals/economy/choose-a-model-and-control-cost.md).
+A unit of text processed by a model, often a word or part of a word. Tokenisation varies by model, so a token is not the same as a word or a fixed number of characters. Tokens are commonly used to measure input and output limits, and to charge for use; see [understanding and controlling costs](../goals/economy/model-costs.md).
 
 ### Tool calling
 

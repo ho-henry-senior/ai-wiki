@@ -20,6 +20,11 @@ Pages are listed here by their section on the website, which their `lane` front 
 
 ## Guides
 
+- [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — understand model differences and choose, evaluate and control costs.
+  - [Choosing a model](goals/economy/choose-a-model.md) — practical failure modes and task selection.
+  - [Evaluating your model choice](goals/economy/evaluate-model-choice.md) — comparative tests and review effort.
+  - [Understanding and controlling costs](goals/economy/model-costs.md) — Copilot pricing and session controls.
+
 - [Agent roles and skills](articles/agent-roles-and-skills.md) — how skills and agent roles differ, with a Guide for each.
   - [Agent roles](concepts/skills-profiles-and-tools.md) — what a role is, when to add one, and how it differs from a skill and a tool.
     - [Agile roles in agentic development](articles/agent-role-boundaries.md) — familiar responsibilities and handoffs in an agent-assisted workflow.
@@ -54,7 +59,8 @@ Pages are listed here by their section on the website, which their `lane` front 
 
 ## Articles
 
-- [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — how Copilot charges for tokens, which model tier to use, and how to cap a session.
+- [Change granularity](concepts/change-granularity.md) — choose a coherent unit of work a person can understand, verify and approve.
+
 - [Secure the Copilot cloud agent](goals/security/cloud-agent-security.md) — what GitHub enforces, and the secrets, firewall, MCP, and approval settings you set.
 - [The Home Repo pattern for agents working across repositories](articles/home-repo-pattern.md) — a shared starting point for agent context and skills across projects, with access and maintenance limits.
 

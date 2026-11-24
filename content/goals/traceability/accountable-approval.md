@@ -15,7 +15,7 @@ tags:
 
 A named person approves each change and can answer for it; an agent's review, a passing check or a risk score is evidence for that decision, not the decision.
 
-An agent can't answer for what it produced, so responsibility stays with the person who approves. Approval means something only if that person understood the change well enough to stand behind it. How to get there is in the [Review and approve agent work](review-and-approve-agent-work.md) guide.
+An agent can't answer for what it produced, so responsibility stays with the person who approves. Approval means something only if that person understood the change well enough to stand behind it. [Change granularity](../../concepts/change-granularity.md) helps keep that responsibility manageable. How to get there is in the [Review and approve agent work](review-and-approve-agent-work.md) guide.
 
 ## Choose the safeguards your risk calls for
 
