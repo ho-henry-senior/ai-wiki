@@ -15,7 +15,9 @@ Ask for a small, focused change before the agent starts. A clear scope, meaningf
 
 ## Ask for the smallest coherent change
 
-Ask for the smallest coherent change that meets the acceptance criteria, using the team's existing review conventions. See [change granularity](../../concepts/change-granularity.md) for how to choose that boundary. If the agent discovers that the work cannot fit within it, ask it to stop and explain the dependency before expanding scope. For a larger coherent pull request, ask for meaningful commits and review the complete diff as well.
+Ask for the smallest coherent change that meets the acceptance criteria, using the team's existing review conventions. See [change granularity](../../concepts/change-granularity.md) for how to choose that boundary.
+
+If the agent discovers that the work cannot fit within it, ask it to stop and explain the dependency before expanding scope. For a larger coherent pull request, ask for meaningful commits and review the complete diff as well.
 
 ## Keep it to the task
 
