@@ -117,8 +117,8 @@ Each idea below is explained in full on one page. Anywhere else, give a one-line
 | Accountable approval: who approves, separating requester and approver, `CODEOWNERS`, automatic approval                    | [Accountable approval](../content/goals/traceability/accountable-approval.md)                                        |
 | The record: the delivery process, agent attribution, the five questions                                                    | [A record through your delivery process](../content/goals/traceability/delivery-record.md)                           |
 | Review and approval as responsibility; verification, review, approval and merge told apart                                 | [Review and approve agent work](../content/goals/traceability/review-and-approve-agent-work.md)                      |
-| Prompting for reviewable work: scope, tests, stop conditions, the handoff                                     | [Ask for small, focused changes](../content/goals/traceability/ask-for-small-focused-changes.md)                     |
-| Change granularity: coherent units of work, understanding and accountability | [Change granularity](../content/concepts/change-granularity.md) |
+| Prompting for reviewable work: scope, tests, stop conditions, the handoff                                                  | [Ask for small, focused changes](../content/goals/traceability/ask-for-small-focused-changes.md)                     |
+| Change granularity: coherent units of work, understanding and accountability                                               | [Change granularity](../content/concepts/change-granularity.md)                                                      |
 | Agent-specific failure patterns, impact and verification risks                                                             | [Identify the risks in a change](../content/goals/traceability/identify-risks-in-a-change.md)                        |
 | Diff tools, running checks yourself, agent review as evidence, approval decisions and recording them                       | [Review, decide and approve](../content/goals/traceability/review-decide-and-approve.md)                             |
 | Judging tests: one per requirement, see it fail, read them                                                                 | [Hand off an issue and steer the implementation](../content/goals/alignment/hand-off-and-steer.md#verify-the-result) |
@@ -155,10 +155,10 @@ Each idea below is explained in full on one page. Anywhere else, give a one-line
 | Hallucinated and malicious dependencies                                                                                    | [Invented dependencies and supply-chain attacks](../content/concepts/hallucinated-dependencies.md)                   |
 | The model requests; the harness acts                                                                                       | [The model requests; the harness acts](../content/concepts/tool-call-loop.md)                                        |
 | Session history versus context                                                                                             | [Session history and active context](../content/concepts/session-history-vs-context.md)                              |
-| How Copilot charges, model tiers, the cache, session limits | [Understanding and controlling costs](../content/goals/economy/model-costs.md) |
-| Model capabilities and differences | [Choose a model and control cost](../content/goals/economy/choose-a-model-and-control-cost.md) |
-| Model choice and failure modes | [Choosing a model](../content/goals/economy/choose-a-model.md) |
-| Comparative model evaluation | [Evaluating your model choice](../content/goals/economy/evaluate-model-choice.md) |
+| How Copilot charges, model tiers, the cache, session limits                                                                | [Understanding and controlling costs](../content/goals/economy/model-costs.md)                                       |
+| Model capabilities and differences                                                                                         | [Choose a model and control cost](../content/goals/economy/choose-a-model-and-control-cost.md)                       |
+| Model choice and failure modes                                                                                             | [Choosing a model](../content/goals/economy/choose-a-model.md)                                                       |
+| Comparative model evaluation                                                                                               | [Evaluating your model choice](../content/goals/economy/evaluate-model-choice.md)                                    |
 
 ## Completeness status
 
