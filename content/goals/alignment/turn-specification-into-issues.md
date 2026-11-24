@@ -11,7 +11,7 @@ tags:
 
 # Turn the specification into issues
 
-Once the specification is agreed, ask the agent to split it into small, verifiable GitHub issues, each linked to the specification. Check that the issues collectively cover the agreed outcome and do not introduce new requirements. For each issue, use four headings. Each answers a question the implementing agent would otherwise answer for itself:
+Once the specification is agreed, ask the agent to split it into [small, verifiable](../../concepts/change-granularity.md) GitHub issues, each linked to the specification. Check that the issues collectively cover the agreed outcome and do not introduce new requirements. For each issue, use four headings. Each answers a question the implementing agent would otherwise answer for itself:
 
 ```markdown
 ## Outcome
