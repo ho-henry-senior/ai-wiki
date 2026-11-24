@@ -9,6 +9,10 @@ This directory holds focused explanations that articles can reuse. Each concept 
 - [Agent roles](skills-profiles-and-tools.md) — what a role is, and how it differs from a skill and a tool.
 - [Progressive disclosure](progressive-disclosure.md) — disclose the detail a task needs on demand, rather than loading everything.
 
+## Working with agents
+
+- [Change granularity](change-granularity.md) — the unit of work a person can understand, verify and approve.
+
 ## Security and data handling
 
 - [Local MCP servers and data access](local-and-remote-mcp.md) — execution location, permissions, and downstream network requests.
