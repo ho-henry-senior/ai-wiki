@@ -2,6 +2,7 @@
 type: explanation
 summary: Compare Copilot models by capability, speed, context and token price, choose one for the task, and estimate and control what a completed agent run costs.
 status: developing
+long-because: Combines model selection, practical failure modes and Copilot pricing in one reference.
 recheck: every-run
 check-against:
   - https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing
@@ -21,19 +22,42 @@ tags:
 
 # Choose a model and control cost
 
-**Choose the least expensive model that reliably completes the task, not simply the cheapest per token.** A stronger model can be worth paying for when it avoids failed attempts, repeated prompts or mistakes. Start with Copilot's automatic selection for unfamiliar work; choose a specific model when you know what the task needs or want to compare results.
+A cheaper model can produce convincing code while missing requirements, dependencies or edge cases. Model choice affects how much investigation and verification a developer must do, as well as the cost of inference.
 
 ## What differs between models?
 
 A model choice trades off several things:
 
-- **Reasoning and reliability.** Hard debugging, architectural decisions and ambiguous requirements can justify a stronger model. A straightforward, specified edit usually cannot.
+- **Reasoning and reliability.** Hard debugging, architectural decisions and ambiguous requirements can justify a stronger model. A straightforward, specified edit may not need that capability.
 - **Speed.** A fast response matters for interactive iteration; a slower, more capable model may still finish an entire difficult task sooner.
 - **Context.** Models differ in how much code, history and tool output they can work with. A larger window does not guarantee that the model will use every detail well.
 - **Tools and inputs.** Models differ in support for images, tools and configurable reasoning. Availability also depends on your Copilot plan and surface.
 - **Price.** Fresh input, cached input, cache writes and output may have different rates. Long-context pricing may apply beyond a threshold.
 
 OpenAI, Anthropic, Google and other providers offer overlapping models. The provider name alone is not a reliable quality ranking. GitHub's [model comparison](https://docs.github.com/en/copilot/reference/ai-models/model-comparison) describes strengths by task, and its [supported models](https://docs.github.com/en/copilot/reference/ai-models/supported-models) page shows availability and capabilities.
+
+## What can cheaper models get wrong?
+
+Price is not a reliable ranking of capability. The following are illustrative failure modes to look for when comparing models, not measured deficiencies of every inexpensive model.
+
+| Failure mode | Example and consequence |
+| --- | --- |
+| Incomplete impact analysis | Changes an API contract but misses a background worker that consumes it; the main application works while queued jobs fail. |
+| Superficial pattern matching | Copies a service without its transaction boundary; partial writes become possible. |
+| Weak edge-case reasoning | Date filtering passes ordinary tests but fails across daylight saving changes. |
+| Tests that confirm the implementation | Implements the wrong business rule and writes tests that encode the same misunderstanding; all checks pass. |
+| Symptom-driven debugging | Suppresses an exception rather than fixing the underlying state transition; the defect becomes harder to diagnose. |
+| Premature completion | Updates the main migration path but misses imports or exports; the diff does not reveal the omission. |
+
+These failures matter because omissions are harder to review than visible mistakes. A successful build or a sequence of successful routine tasks is not evidence that the next task is safe. Repeated local fixes can also accumulate duplicated logic and inconsistent abstractions.
+
+Consider adding a customer field. Updating the schema, entity and form may be straightforward, but deciding whether to backfill existing records, restrict access, redact audit logs or preserve API compatibility requires investigation. If those decisions are already agreed, a lightweight model may be suitable for implementation. If they are not, use a model capable of investigating the wider system, and have a person review the findings before implementation. A stronger model can miss these issues too.
+
+## How to tell whether a model is suitable
+
+Compare models on representative repository tasks from the same starting revision, with equivalent instructions, tools and acceptance criteria. Include a task with an integration boundary or a non-obvious edge case, not just mechanical edits. Define independent checks before running the agents. Inspect affected callers and negative cases, not only the tests each agent writes.
+
+Record missed requirements, unnecessary edits, human corrections, review time and total credits across attempts. If a model repeatedly misses an explicitly supplied constraint, try a different model on the same task. If both miss it, investigate the specification, context and checks before attributing the failure to model capability. A small sample is local evidence, not a general model ranking.
 
 ## Choose by the task
 
@@ -50,7 +74,7 @@ For a complicated feature, a powerful model can help agree the plan, then a chea
 
 ## What the models cost
 
-GitHub bills model usage in **AI Credits**, with **1 AI Credit = US$0.01**. The figures below are selected examples, **US dollars per million tokens**, at the standard context tier, checked on 24 November 2026. They are not a full catalogue or an independent performance ranking.
+GitHub bills model usage in **AI Credits**, with **1 AI Credit = US$0.01**. The figures below are selected examples, **US dollars per million tokens**, at the standard context tier, as recorded in the page's pricing review. They are not a full catalogue or an independent performance ranking.
 
 | Model | Typical role | Input | Cached input | Output |
 | --- | --- | ---: | ---: | ---: |
@@ -73,7 +97,7 @@ A useful approximation is:
 
 Apply any long-context rate and applicable discount; divide dollars by $0.01 to get AI Credits. For illustration, **100,000 fresh input, 400,000 cached input and 20,000 output tokens**, excluding cache-write fees and discounts, cost about **$0.024 (2.4 credits)** with GPT-6 Luna or **$0.44 (44 credits)** with GPT-6.2 Sol. These token totals are across calls, not a claim about one model request.
 
-Actual agent runs include many requests, tool results and retries. A cheap model that needs three attempts may cost more than a dearer model that finishes once. Compare completed tasks on **accepted output, time, credits and review effort**, not a model's rate alone.
+Actual agent runs include many requests, tool results and retries. Retries consume some of the price advantage; whether they erase it depends on the rates and token usage. Human review and remediation can dominate the inference cost. Compare completed tasks on **accepted output, time, credits and review effort**, not a model's rate alone.
 
 ## Control the cost of a session
 
