@@ -269,3 +269,26 @@
 .x-govuk-sub-navigation__section--nested .x-govuk-sub-navigation__section--nested {
   padding-left: govuk.govuk-spacing(3);
 }
+
+// Keep discovery links on the left and project links on the right on wide
+// screens. On smaller screens retain the standard wrapping footer list.
+// The link order and accessible list markup remain unchanged.
+@include govuk.govuk-media-query($from: desktop) {
+  .govuk-footer__meta-item--grow {
+    flex-basis: 100%;
+  }
+
+  .govuk-footer__inline-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  .govuk-footer__inline-list-item:nth-child(3) {
+    margin-left: auto;
+  }
+
+  .govuk-footer__inline-list-item:last-child {
+    margin-right: 0;
+  }
+}
