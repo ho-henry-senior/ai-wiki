@@ -61,7 +61,6 @@ Pages are listed here by their section on the website, which their `lane` front 
 
 - [Change granularity](concepts/change-granularity.md) — choose a coherent unit of work a person can understand, verify and approve.
 
-
 - [Secure the Copilot cloud agent](goals/security/cloud-agent-security.md) — what GitHub enforces, and the secrets, firewall, MCP, and approval settings you set.
 - [The Home Repo pattern for agents working across repositories](articles/home-repo-pattern.md) — a shared starting point for agent context and skills across projects, with access and maintenance limits.
 
