@@ -1,5 +1,5 @@
 ---
-type: explanation
+type: pattern
 summary: Choose a unit of change that a person can understand, verify and take responsibility for.
 status: developing
 lane: articles
@@ -11,7 +11,7 @@ tags:
 
 # Change granularity
 
-Change granularity is the size of the unit of work a person must understand, verify and approve. With coding agents, the rate at which code can be produced can exceed the rate at which people can make sense of it. The useful boundary is therefore not simply how much an agent can implement in one session.
+Change granularity is the size of the unit of work a person must understand, verify and approve. With coding agents, the rate at which code can be produced can exceed the rate at which people can make sense of it. The review boundary is therefore not simply how much an agent can implement in one session.
 
 ## What makes a change coherent?
 
