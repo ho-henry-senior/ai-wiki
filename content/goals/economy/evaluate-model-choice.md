@@ -14,11 +14,11 @@ tags:
 
 Compare models on representative repository tasks from the same starting revision, with equivalent instructions, tools and acceptance criteria. Include a task with an integration boundary or a non-obvious edge case, not just mechanical edits. Define independent checks before running the agents. Inspect affected callers and negative cases, not only the tests each agent writes.
 
-Record missed requirements, unnecessary edits, human corrections, review time and total credits across attempts. If a model repeatedly misses an explicitly supplied constraint, try a different model on the same task. If both miss it, investigate the specification, context and checks before attributing the failure to model capability. A small sample is local evidence, not a general model ranking. 
+Record missed requirements, unnecessary edits, human corrections, review time and total credits across attempts. If a model repeatedly misses an explicitly supplied constraint, try a different model on the same task. If both miss it, investigate the specification, context and checks before attributing the failure to model capability. A small sample is local evidence, not a general model ranking.
 
 ## Record the comparison
 
-Use a clean starting revision for each run. Record the model and reasoning effort, task, acceptance criteria, missed requirements, unrelated edits, human interventions, elapsed time, review time and total credits. Repeat where practical: one successful run does not establish reliability.
+Use a clean starting revision for each run. Record the model and reasoning effort, task, acceptance criteria, missed requirements, unrelated edits, human interventions, elapsed time, review time and total credits. Repeat runs: one successful run does not establish reliability.
 
 For example, ask each model to change an API field with a known secondary consumer. Check the consumer independently, even if the agent's tests pass. A model that misses the consumer has not completed the task, regardless of its token cost.
 
