@@ -54,6 +54,8 @@ Pages are listed here by their section on the website, which their `lane` front 
 
 ## Articles
 
+- [Change granularity](concepts/change-granularity.md) — choose a coherent unit of work a person can understand, verify and approve.
+
 - [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — how Copilot charges for tokens, which model tier to use, and how to cap a session.
 - [Secure the Copilot cloud agent](goals/security/cloud-agent-security.md) — what GitHub enforces, and the secrets, firewall, MCP, and approval settings you set.
 - [The Home Repo pattern for agents working across repositories](articles/home-repo-pattern.md) — a shared starting point for agent context and skills across projects, with access and maintenance limits.
