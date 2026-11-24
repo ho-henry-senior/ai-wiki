@@ -1,6 +1,6 @@
 ---
 type: case-study
-summary: An anonymised account of using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
+summary: Using local agents and polling scripts to coordinate a refactor, with human approval and observed limitations.
 lane: case-studies
 date: 2026-11-14
 tags:
