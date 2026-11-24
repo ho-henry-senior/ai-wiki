@@ -4,6 +4,17 @@
 // An ordered guide with `numbered: false` keeps Previous/Next, which implies
 // a sequence, but shows no "Part n of m", so it does not read as a checklist.
 export const readingRoutes = {
+  "model-choice": {
+    title: "Choose a model and control cost",
+    ordered: true,
+    numbered: false,
+    overview: { title: "Choose a model and control cost", url: "/pages/choose-a-model-and-control-cost/" },
+    parts: [
+      { title: "Choosing a model", url: "/pages/choose-a-model/" },
+      { title: "Evaluating your model choice", url: "/pages/evaluate-model-choice/" },
+      { title: "Understanding and controlling costs", url: "/pages/model-costs/" },
+    ],
+  },
   skills: {
     title: "Skills",
     // Each chapter is a task: find, install or write, then test.
