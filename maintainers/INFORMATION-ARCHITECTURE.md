@@ -122,6 +122,8 @@ A Guide can gather pages whose **primary purposes differ**: ordered chapters who
 
 - **Review and approve agent work** — Guides lane; developing entry for the reviewer's side of approval, alongside Trust & Traceability ([#216](https://github.com/ho-henry-senior/ai-wiki/issues/216)). Ordered but unnumbered; three chapters: Ask for small, focused changes; Identify the risks in a change; Review, decide and approve. Each leads with what is different when an agent did the work. Trust & Traceability keeps the principles and the record; _Define, steer, and verify a task_ keeps the task-level checks.
 
+- **Choose a model and control cost** — Guides lane; ordered but unnumbered entry explaining model differences, followed by Choosing a model, Evaluating your model choice, and Understanding and controlling costs. The original article URL remains the entry point.
+
 - **Secure a local coding agent** — Guides lane; ordered but unnumbered entry, the setup overview, followed by three chapters. The Security goal explains the risks; this Guide is the setup route.
 
 - **Configure the sandbox and tool restrictions, Protect credentials and sensitive data, Check integrations and sandbox boundaries** — Guides lane; members of Secure a local coding agent, with Previous/Next but no chapter numbers.
