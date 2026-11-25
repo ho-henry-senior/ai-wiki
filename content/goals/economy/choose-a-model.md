@@ -1,6 +1,6 @@
 ---
 type: explanation
-summary: Recognise model failure modes and choose a model for the work.
+summary: Choose a model for the work, understand what differs between models, and recognise their failure modes.
 status: developing
 lane: guides
 goal: economy
@@ -16,6 +16,8 @@ Choose a model by how much investigation the task needs: a lightweight model for
 
 ## Choose by the task
 
+If you have no evidence from your own repository yet, start with Copilot Auto or a mid-tier model for a typical implementation task, and check the result against independent acceptance criteria before making that choice routine.
+
 | Work                                              | Starting point                               | When to move up                                                               |
 | ------------------------------------------------- | -------------------------------------------- | ----------------------------------------------------------------------------- |
 | Formatting, documentation, simple transformations | Lightweight model                            | It misunderstands constraints or introduces unwanted edits                    |
@@ -24,6 +26,18 @@ Choose a model by how much investigation the task needs: a lightweight model for
 | Long autonomous implementation                    | A powerful agentic model, with bounded tasks | Compare its completed work against a cheaper alternative before standardising |
 
 For a complicated feature, a powerful model can help agree the plan, then a cheaper model can implement a [small, independently reviewable change](../../concepts/change-granularity.md) in a **new session**. This avoids changing model halfway through a large cached conversation.
+
+## What differs between models?
+
+A model choice trades off several things:
+
+- **Reasoning and reliability.** Hard debugging, architectural decisions and ambiguous requirements can justify a stronger model. A straightforward, specified edit may not need that capability.
+- **Speed.** A fast response matters for interactive iteration; a slower, more capable model may still finish an entire difficult task sooner.
+- **Context.** Models differ in how much code, history and tool output they can work with. A larger window does not guarantee that the model will use every detail well.
+- **Tools and inputs.** Models differ in support for images, tools and configurable reasoning. Availability also depends on your Copilot plan and surface.
+- **Price.** Fresh input, cached input, cache writes and output may have different rates. Long-context pricing may apply beyond a threshold.
+
+OpenAI, Anthropic, Google and other providers offer overlapping models. The provider name alone is not a reliable quality ranking. GitHub's [model comparison](https://docs.github.com/en/copilot/reference/ai-models/model-comparison) describes strengths by task, and its [supported models](https://docs.github.com/en/copilot/reference/ai-models/supported-models) page shows availability and capabilities.
 
 ## What can cheaper models get wrong?
 

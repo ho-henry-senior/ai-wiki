@@ -20,8 +20,8 @@ Pages are listed here by their section on the website, which their `lane` front 
 
 ## Guides
 
-- [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — understand model differences and choose, evaluate and control costs.
-  - [Choosing a model](goals/economy/choose-a-model.md) — practical failure modes and task selection.
+- [Choose a model and control cost](goals/economy/choose-a-model-and-control-cost.md) — why routine work rarely needs the strongest model, then choose, evaluate and control costs.
+  - [Choosing a model](goals/economy/choose-a-model.md) — which model for which task, what differs between models, and failure modes.
   - [Evaluating your model choice](goals/economy/evaluate-model-choice.md) — comparative tests and review effort.
   - [Understanding and controlling costs](goals/economy/model-costs.md) — Copilot pricing and session controls.
 
