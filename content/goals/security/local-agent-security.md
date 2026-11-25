@@ -17,9 +17,9 @@ tags:
 
 # Secure a local coding agent
 
-A local coding agent runs commands on your computer with your access: your files, your credentials, and every network your machine can reach. A mistake, or [an injected instruction](prompt-injection.md), works through that access. Telling the agent "do not push" or "stay in this folder" is not an access limit; see [instructions and enforced controls](../../concepts/instructions-vs-controls.md). An approval prompt helps only when you notice the dangerous command.
+Set limits that hold even when the agent gets it wrong. A local coding agent runs commands on your computer with your access: your files, your credentials, and every network your machine can reach. A mistake, or [an injected instruction](prompt-injection.md), works through that access.
 
-Set limits that hold even when the agent gets it wrong. They are enforced by the sandbox, the tool's permission rules, or the service a credential belongs to, not by the model.
+The limits that hold are enforced by the sandbox, the tool's permission rules, or the service a credential belongs to, not by the model. Telling the agent "do not push" or "stay in this folder" is not an access limit; see [instructions and enforced controls](../../concepts/instructions-vs-controls.md). An approval prompt helps only when you notice the dangerous command.
 
 ## The steps
 
