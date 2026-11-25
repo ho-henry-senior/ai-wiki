@@ -90,6 +90,11 @@ From the whole-wiki editorial review ([#183](https://github.com/ho-henry-senior/
   - The slide is kept (_reversed in [PR #248](https://github.com/ho-henry-senior/ai-wiki/pull/248)_). The _Working with repositories_ guide stays deferred until it has a defined reader journey. Rechecking pricing, retention and version facts is left to the daily freshness run.
 - **Slides — removed in [PR #248](https://github.com/ho-henry-senior/ai-wiki/pull/248).** The slides concept didn't work: it produced one slide, which repeated the diagram that _The tool-call loop_ already shows, with an index and conventions to maintain. This reverses the keep decision in [PR #246](https://github.com/ho-henry-senior/ai-wiki/pull/246). The page, its index, the slide conventions and the Website check are removed; the shared includes stay, used by the concept.
 
+From the readability review ([#271](https://github.com/ho-henry-senior/ai-wiki/issues/271)), the pilot of the problem–solution technique in [the writing standard](STYLE.md):
+
+- [Prompt injection](../content/goals/security/prompt-injection.md) — **Refine in PR #PRNUM.** The definition and the main defence now come first, followed by why it happens. The last _What to do_ bullet bolded a condition, so it now states the problem and bolds the action: revoke the credentials the agent could reach.
+- [Accountable approval](../content/goals/traceability/accountable-approval.md) — **Keep; no change.** Short and already clear, and its two bullets already lead with the action. Its first paragraph matches the front-matter summary, but the site uses the summary only as the page description, so readers see it once.
+
 ## Next
 
 The whole-wiki editorial review in [#183](https://github.com/ho-henry-senior/ai-wiki/issues/183) is closed. Open from it:
