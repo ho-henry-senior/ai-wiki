@@ -92,7 +92,7 @@ From the whole-wiki editorial review ([#183](https://github.com/ho-henry-senior/
 
 From the readability review ([#271](https://github.com/ho-henry-senior/ai-wiki/issues/271)), the pilot of the problem–solution technique in [the writing standard](STYLE.md):
 
-- [Prompt injection](../content/goals/security/prompt-injection.md) — **Refine in PR #PRNUM.** The definition and the main defence now come first, followed by why it happens. The last _What to do_ bullet bolded a condition, so it now states the problem and bolds the action: revoke the credentials the agent could reach.
+- [Prompt injection](../content/goals/security/prompt-injection.md) — **Refined in [PR #273](https://github.com/ho-henry-senior/ai-wiki/pull/273).** The definition and the main defence now come first, followed by why it happens. The last _What to do_ bullet bolded a condition, so it now states the problem and bolds the action: revoke the credentials the agent could reach.
 - [Accountable approval](../content/goals/traceability/accountable-approval.md) — **Keep; no change.** Short and already clear, and its two bullets already lead with the action. Its first paragraph matches the front-matter summary, but the site uses the summary only as the page description, so readers see it once.
 
 ## Next
