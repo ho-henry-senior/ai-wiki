@@ -204,7 +204,7 @@ Each run re-checks the dated page checked longest ago, and remembers what it che
 
 Reviews use the existing skill, check the baseline before starting, and must run `just verify` after their edits before requesting a draft PR. Safe outputs restrict patches to the root topic map and Markdown under `content/`, with at most 12 changed files. Policies, instructions, automation, tooling, and raw archives are outside the edit scope. Nothing merges automatically. Reviews report their actual coverage and evidence; uncertain claims are left unchanged.
 
-Stale claims, contradictions and broken navigation come first. A run with none of those to correct may instead make one small readability edit to a page it has read, following _Write for scanning_ in [the writing standard](STYLE.md). It cannot edit this folder, so its PR proposes the line for [the decision record](PAGE-REVIEWS.md#decisions) rather than adding it.
+Stale claims, contradictions and broken navigation come first. A run with none of those to correct checks one page it has read against _Write for scanning_ in [the writing standard](STYLE.md), and makes one small readability edit if a passage clearly falls short. If it changes nothing, its no-change report names the page and says why it was left. It cannot edit this folder, so its PR proposes the line for [the decision record](PAGE-REVIEWS.md#decisions) rather than adding it.
 
 The workflow installs a temporary copy of the review skill under `.github/skills/wiki-review/`. Formatting and link checks ignore that generated copy and check the maintained source under `.agents/skills/wiki-review/` instead.
 
