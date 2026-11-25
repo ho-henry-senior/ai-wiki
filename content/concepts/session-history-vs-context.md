@@ -13,9 +13,9 @@ tags:
 
 # Session history and active context
 
-The guide [How coding agents work](../articles/understanding-coding-agents.md) ends here: after [the request payloads](../articles/model-requests-and-responses.md) and [the tool-call loop](tool-call-loop.md), this page shows what the model still sees as a session grows.
-
 What a session has saved is not the same as what the model sees next. Each request to the model carries a selection of the conversation, and long sessions get summarised. The difference matters in both directions: the model may have lost detail you think it still has, and data you think has gone may still be saved. In Copilot CLI, run `/context` to see what the current context holds.
+
+The guide [How coding agents work](../articles/understanding-coding-agents.md) ends here: after [the request payloads](../articles/model-requests-and-responses.md) and [the tool-call loop](tool-call-loop.md), this page shows what the model still sees as a session grows.
 
 |            | Session history                                      | Active context                                                        |
 | ---------- | ---------------------------------------------------- | --------------------------------------------------------------------- |
