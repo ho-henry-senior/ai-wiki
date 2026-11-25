@@ -34,7 +34,11 @@ Create `AGENTS.md` with a few lines like these:
 - Architecture and past decisions: `docs/architecture.md` and `docs/adr/`.
 ```
 
-Each line is a command to run, a rule that isn't obvious from the code, or a pointer to where detail lives. Don't repeat formatting and other mechanical rules that linters or tests already enforce. Do include constraints the agent needs before it acts, such as not editing migrations, because a check only catches a mistake after it is made. Leave out what the README already says; the agent can read it when it needs it.
+Each line is a command to run, a rule that isn't obvious from the code, or a pointer to where detail lives.
+
+Leave out what is already covered elsewhere. Don't repeat formatting and other mechanical rules that linters or tests already enforce, or what the README already says; the agent can read it when it needs it.
+
+Do include constraints the agent needs before it acts, such as not editing migrations, because a check only catches a mistake after it is made.
 
 ## Which Copilot features read which file
 
@@ -50,7 +54,9 @@ Each line is a command to run, a rule that isn't obvious from the code, or a poi
 
 ## Fill Copilot's gaps
 
-If your team uses the features in the last three rows, add a short `.github/copilot-instructions.md` with only what those features need, such as the one-line project summary and key conventions. Do not copy `AGENTS.md` into it: features that read both files combine them, so a repeated rule wastes context and two rules that disagree give unpredictable results. Copilot support for `AGENTS.md` has grown through 2026, so check the support table before adding the second file.
+If your team uses the features in the last three rows, add a short `.github/copilot-instructions.md` with only what those features need, such as the one-line project summary and key conventions. Copilot support for `AGENTS.md` has grown through 2026, so check the support table before adding the second file.
+
+Do not copy `AGENTS.md` into it. Features that read both files combine them, so a repeated rule wastes context and two rules that disagree give unpredictable results.
 
 ## Add rules for one part of the codebase
 
