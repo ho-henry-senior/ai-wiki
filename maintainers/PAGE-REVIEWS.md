@@ -96,6 +96,13 @@ From the readability review ([#271](https://github.com/ho-henry-senior/ai-wiki/i
 - [Prompt injection](../content/goals/security/prompt-injection.md) — **Refined in [PR #273](https://github.com/ho-henry-senior/ai-wiki/pull/273).** The definition and the main defence now come first, followed by why it happens. The last _What to do_ bullet bolded a condition, so it now states the problem and bolds the action: revoke the credentials the agent could reach.
 - [Accountable approval](../content/goals/traceability/accountable-approval.md) — **Keep; no change.** Short and already clear, and its two bullets already lead with the action. Its first paragraph matches the front-matter summary, but the site uses the summary only as the page description, so readers see it once.
 
+From the survey of page openings ([#276](https://github.com/ho-henry-senior/ai-wiki/issues/276)), which found pages where the reader waited for the main point:
+
+- [Lo-fi software factory](../content/articles/lo-fi-software-factory-case-study.md) — **Refined in [PR #277](https://github.com/ho-henry-senior/ai-wiki/pull/277).** The entry described what the team tried but not what it found. It now opens with the outcome; the limits of the evidence stay in the last chapter.
+- [From a refactor idea to actionable issues](../content/articles/lo-fi-factory-issues.md) — **Refined in [PR #278](https://github.com/ho-henry-senior/ai-wiki/pull/278).** Opens with the three separate human decisions and what the issues' criteria gave the agents, rather than background on the refactor.
+- [How coding agents work](../content/articles/understanding-coding-agents.md) — **Refined in [PR #279](https://github.com/ho-henry-senior/ai-wiki/pull/279).** The key idea (the model proposes, the application acts) moved from a closing _Why this matters_ section to the opening; that section was removed.
+- [Choosing a model](../content/goals/economy/choose-a-model.md) — **Refined in [PR #280](https://github.com/ho-henry-senior/ai-wiki/pull/280).** Leads with the advice; _Choose by the task_ moved above the failure modes, unchanged. Its overlap with [Choose a model and control cost](../content/goals/economy/choose-a-model-and-control-cost.md) is open in [#276](https://github.com/ho-henry-senior/ai-wiki/issues/276).
+
 ## Next
 
 The whole-wiki editorial review in [#183](https://github.com/ho-henry-senior/ai-wiki/issues/183) is closed. Open from it:
