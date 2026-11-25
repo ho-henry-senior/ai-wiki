@@ -11,9 +11,9 @@ status: established
 
 # Lo-fi software factory
 
-A team tried a structured agent-assisted workflow on a partially completed, cross-cutting refactor of a web application. The work was a relatively AI-friendly technical change: the desired behaviour and technical direction were reasonably clear, with few competing product priorities.
+A team tried a structured agent-assisted workflow on a partially completed, cross-cutting refactor of a web application. Local scripts coordinated specialist coding agents through GitHub issues, pull requests and review comments, while people kept the approval points, and separate agent reviews found problems, including one that a passing test suite had missed. It showed neither that the process could run autonomously nor that it was cheaper or production-ready.
 
-The team first coordinated specialist agents manually, then used local polling scripts to dispatch implementation and review work. The aim was to test whether a lightweight software factory could support a familiar delivery process while keeping people involved in important decisions.
+The work was a relatively AI-friendly technical change: the desired behaviour and technical direction were reasonably clear, with few competing product priorities. The team first coordinated specialist agents manually, then used local polling scripts to dispatch implementation and review work. The aim was to test whether a lightweight software factory could support a familiar delivery process while keeping people involved in important decisions.
 
 ## Read the case study
 
