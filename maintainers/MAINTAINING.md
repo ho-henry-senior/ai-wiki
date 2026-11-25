@@ -204,6 +204,8 @@ Each run re-checks the dated page checked longest ago, and remembers what it che
 
 Reviews use the existing skill, check the baseline before starting, and must run `just verify` after their edits before requesting a draft PR. Safe outputs restrict patches to the root topic map and Markdown under `content/`, with at most 12 changed files. Policies, instructions, automation, tooling, and raw archives are outside the edit scope. Nothing merges automatically. Reviews report their actual coverage and evidence; uncertain claims are left unchanged.
 
+Stale claims, contradictions and broken navigation come first. A run with none of those to correct may instead make one small readability edit to a page it has read, following _Write for scanning_ in [the writing standard](STYLE.md). It cannot edit this folder, so its PR proposes the line for [the decision record](PAGE-REVIEWS.md#decisions) rather than adding it.
+
 The workflow installs a temporary copy of the review skill under `.github/skills/wiki-review/`. Formatting and link checks ignore that generated copy and check the maintained source under `.agents/skills/wiki-review/` instead.
 
 Each review has a 100-AI-credit inference budget split between the main agent (80) and threat detection (20). The agent has a 20-minute execution timeout and a 40-turn limit. A per-user 24-hour guardrail also uses 100 credits; it checks prior usage at activation rather than reserving a shared daily allowance. These are usage guardrails, not a hard dollar billing cap: an in-flight request can exceed the remaining budget, and GitHub Actions runner charges are separate. See [the budget reference](https://github.github.com/gh-aw/reference/cost-management/). Failed agent runs or failed threat detection block PR publication.
