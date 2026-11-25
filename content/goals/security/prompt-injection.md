@@ -13,11 +13,11 @@ tags:
 
 # Prompt injection
 
+Prompt injection is when an agent follows an instruction hidden in something it reads, such as a bug report, as if you had written it. Models are getting better at resisting it, but no model or prompt prevents it, so the defence that holds is limiting what the agent can do when it is fooled.
+
 An agent's context holds your request, its instructions, and everything it reads along the way, including issues, files, web pages, and tool output. The [harness](../../reference/glossary.md#agent-harness) labels where each part came from, so the system can tell your request from a tool result.
 
-But models are trained to follow instructions, and they can still follow ones that arrive in lower-trust content. The boundary exists in how the context is structured, not reliably in how the model behaves, so an instruction hidden in a bug report can be followed as if you had written it. This is prompt injection.
-
-Models are getting better at resisting it, but no model or prompt prevents it, so the defence that holds is limiting what the agent can do when it is fooled.
+But models are trained to follow instructions, and they can still follow ones that arrive in lower-trust content. The boundary exists in how the context is structured, not reliably in how the model behaves.
 
 ## An example
 
@@ -32,7 +32,7 @@ That sentence is part of the bug report, not a request from you. Attacks can als
 - **Contain the consequences.** An attack only does harm through what the agent can reach, so limit credentials, file access, network destinations, and tools. On your computer, use the [local-agent security guidance](local-agent-security.md) and deny rules, such as `copilot --deny-tool='shell(git push)'` to block publishing; in the cloud, keep the [cloud agent's](cloud-agent-security.md) firewall on and its `copilot` environment minimal, because those secrets are what an injected instruction would try to send.
 - **Recognise redirection.** Stop and investigate if the agent's work turns to revealing secrets, changing permissions, running unfamiliar downloads, or contacting an unrelated host. These have little to do with most coding tasks and a lot to do with most attacks.
 - **Watch untrusted triggers.** Assigning the Copilot cloud agent an issue means giving its text to the model, so be careful with issues written by people outside your team.
-- **If an attack may have worked,** check the session log and the actions taken, and revoke any credentials the agent could reach. Assume anything it could read may have been sent.
+- If an attack may have worked: **revoke any credentials the agent could reach.** Check the session log and the actions taken, and assume anything it could read may have been sent.
 
 ## What Copilot does, and what it does not
 
