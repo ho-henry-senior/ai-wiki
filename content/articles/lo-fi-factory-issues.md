@@ -9,7 +9,9 @@ status: established
 
 # From a refactor idea to actionable issues
 
-The exercise began with a bounded, cross-cutting refactor: replacing an older server-side HTTP transport with native Fetch while keeping existing service contracts intact. The technical direction was relatively clear. That made the work suitable for testing whether specialist agents and explicit human decisions could produce implementable tickets.
+The team turned a refactor into eight implementable issues through three separate human decisions: approving the specification, approving the breakdown into tickets, and marking each ticket ready to start. Every issue carried acceptance criteria and verification commands, so the agent implementing it had a bounded change and the agent reviewing it had concrete criteria.
+
+The refactor was bounded but cross-cutting: replacing an older server-side HTTP transport with native Fetch while keeping existing service contracts intact. The technical direction was relatively clear. That made the work suitable for testing whether specialist agents and explicit human decisions could produce implementable tickets.
 
 ## Separate discovery from authorisation
 
