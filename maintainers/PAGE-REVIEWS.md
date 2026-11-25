@@ -90,6 +90,10 @@ From the whole-wiki editorial review ([#183](https://github.com/ho-henry-senior/
   - The slide is kept (_reversed in [PR #248](https://github.com/ho-henry-senior/ai-wiki/pull/248)_). The _Working with repositories_ guide stays deferred until it has a defined reader journey. Rechecking pricing, retention and version facts is left to the daily freshness run.
 - **Slides — removed in [PR #248](https://github.com/ho-henry-senior/ai-wiki/pull/248).** The slides concept didn't work: it produced one slide, which repeated the diagram that _The tool-call loop_ already shows, with an index and conventions to maintain. This reverses the keep decision in [PR #246](https://github.com/ho-henry-senior/ai-wiki/pull/246). The page, its index, the slide conventions and the Website check are removed; the shared includes stay, used by the concept.
 
+From the readability review ([#271](https://github.com/ho-henry-senior/ai-wiki/issues/271)), the pilot of the problem–solution technique in [the writing standard](STYLE.md):
+
+- [Write repository instructions in AGENTS.md](../content/goals/alignment/repository-instructions.md) — **Refined in PR #PRNUM.** Two dense paragraphs are split so each says one thing: under _Start with this_, what each line is, what to leave out, and what to include; under _Fill Copilot's gaps_, when to add the second file, and why not to copy `AGENTS.md` into it. No bold added; the _Things to know_ bullets already lead with the point.
+
 ## Next
 
 The whole-wiki editorial review in [#183](https://github.com/ho-henry-senior/ai-wiki/issues/183) is closed. Open from it:
